@@ -16,7 +16,7 @@
 					
 				</div>
 				
-			<?php endif; ?> <!-- /footer-a -->
+			<?php endif; ?><!-- .footer-a -->
 				
 			<?php if ( is_active_sidebar( 'footer-b' ) ) : ?>
 			
@@ -26,11 +26,11 @@
 			
 						<?php dynamic_sidebar( 'footer-b' ); ?>
 											
-					</div> <!-- /widgets -->
+					</div><!-- .widgets -->
 					
 				</div>
 				
-			<?php endif; ?> <!-- /footer-b -->
+			<?php endif; ?><!-- .footer-b -->
 								
 			<?php if ( is_active_sidebar( 'footer-c' ) ) : ?>
 			
@@ -40,17 +40,17 @@
 			
 						<?php dynamic_sidebar( 'footer-c' ); ?>
 											
-					</div> <!-- /widgets -->
+					</div><!-- .widgets -->
 					
 				</div>
 				
-			<?php endif; ?> <!-- /footer-c -->
+			<?php endif; ?><!-- .footer-c -->
 			
 			<div class="clear"></div>
 		
-		</div> <!-- /footer-inner -->
+		</div><!-- .footer-inner -->
 	
-	</div> <!-- /footer -->
+	</div><!-- .footer -->
 
 <?php endif; ?>
 
@@ -60,21 +60,21 @@
 	
 		<p class="fleft">
 		
-			&copy; <?php echo date("Y") ?> <a href="<?php echo home_url(); ?>" title="<?php esc_attr( bloginfo('name') ); ?>"><?php bloginfo('name'); ?></a>
+			&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>" title="<?php esc_attr( bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 		
 		</p>
 		
 		<p class="fright">
 			
-			<span><?php _e( 'Theme by', 'radcliffe' ); ?> <a href="http://www.andersnoren.se">Anders Nor&eacute;n</a> &mdash; </span><a title="<?php _e('To the top', 'radcliffe'); ?>" href="#" class="tothetop"><?php _e('Up', 'radcliffe' ); ?> &uarr;</a>
+			<span><?php _e( 'Theme by', 'radcliffe' ); ?> <a href="https://www.andersnoren.se">Anders Nor&eacute;n</a> &mdash; </span><a title="<?php _e( 'To the top', 'radcliffe' ); ?>" href="#" class="tothetop"><?php _e( 'Up', 'radcliffe' ); ?> &uarr;</a>
 			
 		</p>
 		
 		<div class="clear"></div>
 		
-	</div> <!-- /credits-inner -->
+	</div><!-- .credits-inner -->
 
-</div> <!-- /credits -->
+</div><!-- .credits -->
 
 <?php wp_footer(); ?>
 
