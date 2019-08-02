@@ -1,0 +1,78 @@
+/* 
+
+HOMEPAGE STYLESHEET
+=============================================
+
+Created by Chelsea Otakan for The Reno Bike Project.
+
+URI: http://www.renobikeproject.com
+
+
+COLORS
+---------------------------------------------
+	Text Color			#bbbbbb
+	Yellow					#e4b12c
+	Orange					#e4792c
+---------------------------------------------
+
+*/
+
+
+/* TYPOGRAPHY
+------------------------------------------------------------------------------------------ */
+#main-content .entry .entry-content h3 a { color: #e4b12c; font-size:24px; letter-spacing:-1px; margin:0 0 14px; line-height:140%; }
+
+
+
+/* ELEMENTS
+------------------------------------------------------------------------------------------ */
+
+
+
+
+/* CONTENT
+------------------------------------------------------------------------------------------ */
+
+/* HOMEPAGE FEATURE */
+
+#feature { margin: 30px 0 }
+#feature a {color:#e4b12c; font-weight: bold}
+#feature a:hover { color: #e4792c; position: relative; top: 1px; left: 1px}
+
+#feature #image { float: left; background: url('../images/bg_main-photo.png') no-repeat;
+	padding: 10px }
+#feature #image img { border: 8px #000 solid }
+
+#feature .content { width: 320px; float: left; margin: 30px 0 0 0; padding: 0 10px 15px 30px;
+	background: url('../images/thin-line.png') no-repeat center bottom }
+#feature .content h2 { margin: 0 0 16px 0}
+
+#feature .content a.action { font-weight: bold; padding-right: 30px;
+	background: url('../images/action-arrow.png') no-repeat right center; line-height: 45px}
+
+#feature a.newsletter { display: block; float:right; padding: 0 30px 0 33px; background: url('../images/bg_email.png') no-repeat left; margin: 30px 0 20px 5px}
+#feature a.newsletter span { padding-right: 32px; background: url('../images/action-arrow.png') no-repeat right }
+
+#feature .social { display: block; float: right; width: 320px; margin: 15px 25px 0 0 }
+#feature .social li { float: left; margin: 0; padding: 0}
+#feature .social li a { background: url('../images/social-icons.png') no-repeat;
+	display: block; width: 60px; height: 60px; margin: 0 2px; float: left; text-indent: -9999px}
+	
+#feature .social li.twitter a { background-position: 0 0} 
+#feature .social li.twitter a:hover { background-position: 0 -60px}
+
+#feature .social li.flickr a { background-position: -65px 0} 
+#feature .social li.flickr a:hover { background-position: -65px -60px}
+
+#feature .social li.instagram a { background-position: -130px 0} 
+#feature .social li.instagram a:hover { background-position: -130px -60px}
+
+#feature .social li.facebook a { background-position: -194px 0} 
+#feature .social li.facebook a:hover { background-position: -194px -60px}
+
+#feature .social li.rss a { background-position: -258px 0} 
+#feature .social li.rss a:hover { background-position: -258px -60px}
+
+
+
+

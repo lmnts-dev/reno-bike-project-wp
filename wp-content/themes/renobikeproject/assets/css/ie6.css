@@ -1,0 +1,8 @@
+#main-nav .search input { margin: 8px 0 0 3px}
+#main-nav .search { margin-top: -43px }
+
+div#main-nav { 
+	background: url('../images/bg_main-nav.gif') repeat-x;  }
+	
+#main-content { margin: 0 20px 0 0 }
+#sidebar { margin: 0 }
