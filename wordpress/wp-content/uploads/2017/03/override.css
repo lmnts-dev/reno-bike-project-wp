@@ -1,0 +1,139 @@
+.product-layout-right .quantityForm .product-attskuselector .prod-includes .prod-includes-part-blocks .prod-includes-part-block .prod-includes-part {	padding: 0px !important;
+}
+.product-layout-right .quantityForm .product-attskuselector .prod-includes .prod-includes-part-blocks .prod-includes-part-block .prod-includes-part .prod-includes-part-img {	width: 100% !important;	height: 100% !important;
+}
+#prod-tab-G, #prod-tab-F {	display: none !important;
+}
+.prlst-itm-flags-left, .prlst-itm-flags-right {	display: none;
+}
+.delivery-date {	width: 230px;
+}
+.hide-nav .header-top {	overflow: visible !important;
+}
+.hide-nav .header-navigation {	height: auto !important;	overflow: visible !important;
+}
+.product-attskuselector {	margin-bottom: 20px !important;
+}
+.bizRateLink {	display: none;
+}
+#ftr { background-image: url("https://cdn-us-cf2.yottaa.net/58b7457632f01c2824000002/9dcf1a60e58301340acf026173a6dedd.yottaa.net/v~13.14/c/images/bkgd-footer.png?yocs=f_h_&yoloc=us") !important;
+}
+.receipt-info,
+.receipt-info .receipt-meta-container .receipt-order-details, .receipt-info p, .receipt-info .receipt-estimates-container span {font-size: 15px !important;}
+.receipt-info a, .receipt-info .receipt-estimates-container span, .receipt-info .receipt-info-content {color: #222 !important;}
+.receipt-info .receipt-meta-container p {font-size: 20px !important;}
+.receipt-info .receipt-estimates-container, .receipt-info .receipt-meta-container, .receipt-info .receipt-address-container, .receipt-info .recipe-purchase-info-container {border-radius: 0px 0px 0px 0px !important;}
+.receipt-info {margin-top: 20px !important;}
+span.info-text-small {font-size: 0.375em !important;}
+.header-top { font-family: 'Lato', sans-serif !important;color: #222 !important;font-size: 0.8em !important;background: #f7f7f7 !important; padding: 0 20px !important}
+.header-top a {color: #222 !important;text-decoration: none;}
+div#hdr-shipping, #hdr-refer, #hdr-support {display: inline;float: right;padding: 7px 20px;}
+div#hdr-phone {display: inline;float: right;padding: 7px 0px 3px 20px;}
+#hdr-live-chat {display: inline;float: right;padding: 7px 0px 3px 15px;}
+div.hdr-divider {display: inline;float: right;padding: 7px 0 3px 0;}
+div#hdr-live-chat, #hdr-phone {font-weight: bold;}
+@media screen and (max-width: 900px) {	#hdr-shipping {margin-left: 10px !important;float: left !important;padding-left: 0px !important;}	#hdr-phone {margin-right: 10px !important;float: right !important;}	.hdr-divider, #hdr-live-chat, #hdr-support, #hdr-refer {display: none !important;}
+}
+.header-top { height: auto !important; }
+@media (min-width: 64em) {	div#hdr-content {max-width: 1600px;margin-left: auto;margin-right: auto;font-size:12px;width: 85%;}	.hide-nav .logo-container .logo { width: 140px !important; height: 78px !important; background-size: 140px 78px !important; }
+}
+@media (min-width: 47.5em) {	.product-prodcode {	width: 90% !important;	margin-left: auto !important;	margin-right: auto !important;	padding: 0 !important;	}
+}
+@media (min-width: 64em) {	.product-prodcode {	width: 100% !important;	margin-left: auto !important;	margin-right: auto !important;	padding: 0 !important;	}
+}
+.product-prodcode {	display: block !important;
+}
+.prod-layout-ftr-name {display: none;}
+.prod-tabcontent-container h2 {font-size: 1.875em; letter-spacing: 1px; border-bottom: 1px solid #222;}
+.prod-alsobought-hdr {padding-bottom: 13px !important;}
+.lp-body {max-width: 1600px; width:100%; margin:0 auto; overflow: auto;}
+.nav-arrow-down {	font-weight: bold;
+}
+.category-header-bg {	width: 100%;	background-size: 1600px 150px !important;	background-color: #ccc !important;	height: 150px;	background-position: center center !important;	background-clip: content-box !important;	display: table;	margin-bottom: 15px;
+}
+.category-header-title {	text-align: center;	color: #fff;	display: table-cell;	vertical-align: middle;
+}
+.brand-header-bg {	width: 100%;	background-size: 1600px 150px !important;	background-color: #ccc !important;	height: 150px;	background-position: center center !important;	background-clip: content-box !important;	display: table;	margin-bottom: 15px;
+}
+@media screen and (min-width: 1601px) { .brand-header-bg, .category-header-bg { background-size: 3200px 300px; }
+}
+.banner {margin-bottom: 25px;}
+.prlist-award {display: none !important;}
+@media (max-width: 47.5em) {	.banner-text {font-size: 24px !important;}	.slider.slider-large .slide {height: 250px !important;}	.slide-content h2 {font-size: 24px !important;}	.btn {font-size: 0.75em !important;}	.slider .slide {height: 250px !important;}	.banner {padding: 45px !important;}	a.slider-prev.slick-arrow {width: 20px !important; height: 30px !important; background-size: 20px 30px !important; margin-top: -15px !important;}	a.slider-next.slick-arrow {width: 20px !important; height: 30px !important; background-size: 20px 30px !important; margin-top: -15px !important;}	img#snowflake-icon {width: 30px !important; top:-5px !important;}	p#bf-sub {font-size: 1.7em !important;}
+}
+.checkout-err-ccard {	color: red;	padding: 25px 0;
+}
+@media (min-width: 47.5em) {	.prod-selector-availability {width: 155px !important;}
+}
+#sale-grid-left {	width: 50%;	display: block;	float: left;
+}
+#sale-grid-right {	width: 50%;	display: block;	float: left;
+}
+.sale-grid-block {	width: 48%;	background-color: #ccc;	margin: 1% 1%;	float: left;
+}
+.sale-grid-feature-block {	width: 98%;	background-color: #ccc;	margin: 1% 1%;	float: left;
+}
+div.full-width-header-title-sale {	text-align: center;	color: #fff;	display: table-cell;	vertical-align: middle;	width: 100%;
+}
+div.full-width-header-title-sale h2 {	margin-bottom: 0px;	font-size: 3.0em;
+}
+div.full-width-header-title-sale span {	font-size: 1.3em;
+}
+div.full-width-header-img-sale {	width: 100%;	max-width: 1600px;	height: 300px;	background-size: 1600px 300px !important;	background-color: #ccc !important;	background-position: center center !important;	background-clip: content-box !important;	margin-bottom: 10px;	display: table;	margin-left: auto;	margin-right: auto;	padding: 0px .5%;
+}
+#sale-grid img {	width: 100%;
+}
+@media screen and (max-width: 760px) {	#sale-grid-left {	width: 100%;	display: block;	float: left;
+}
+#sale-grid-right {	width: 100%;	display: block;	float: left;
+}
+div.full-width-header-title-sale h2 {	font-size: 2.3em;
+}
+div.full-width-header-title-sale span {	font-size: 1.0em;
+}
+}
+.cyber-special {	width: 100%;	background-size: 2400px 220px;	background-color: #f5f5f5 !important;	height: 220px;	background-position: center center !important;	background-clip: content-box !important;	display: table;	margin-bottom:45px;	margin-top: 0px;	margin-left: auto;	margin-right: auto;
+}
+h2.cyber-heading {	display: inline;	margin-right: 7px;	margin-left: 7px;	color: #ffffff;	font-size: 38px;	font-weight: 700;	font-family:'Lato-Bold', sans-serif;	margin-top: 0px;
+}
+.cyber-headline-container {	text-align: center;	color: #fff;	display: table-cell;	vertical-align: middle;	width: 100%;
+}
+.cyber-headline-container p {	font-size: 19px;	margin-top: -2px;	padding-top: 0px;
+}
+@media screen and (max-width: 47.5em) {
+.cyber-headline-container p {	font-size: 14px;	margin-bottom: 0px;
+}
+h2.cyber-heading {	font-size: 24px;	margin-right: 4px;	margin-left: 4px;
+}
+.cyber-special {	background-size: 2400px 220px;	height: 110px;
+}
+.cyber-headline-container a.btn {	display: none;
+}
+}
+@media screen and (max-width: 480px) {
+.cyber-headline-container p {	font-size: 11px;	margin-bottom: 0px;
+}
+h2.cyber-heading {	font-size: 18px;	margin-right: 4px;	margin-left: 4px;
+}
+.cyber-special {	background-size: 2400px 220px;	height: 110px;
+}
+.cyber-headline-container a.btn {	display: none;
+}
+}
+.hp-icon {	display: block;	margin: 0 auto;	padding-bottom: 10px;
+}
+@media screen and (max-width: 760px) {
+img.hp-icon {	width: 60px;
+}
+}
+@media (max-width: 1000px)
+{ #displayFinance { cursor: pointer; float: left; color: #CF0000; font-size: 12px; text-align: right; display: inline-block; width: 139px; position: absolute; margin-top: 32px; right: 0px; } #AffirmOfferText{	width: 274px; margin-top: -111px; position: absolute; margin-left: 40px; font-size: 0.55em; }
+} @media (min-width: 1001px)
+{ #displayFinance{ cursor: pointer; float: right; color: #CF0000; font-size: 12px; text-align: right; display: inline-block; width: 139px; } #AffirmOfferText{	width: 490px;	margin-top: -171px;	position: absolute;	margin-left: 52px;	font-size: 0.7em; }
+} #modifiedPopup{ width: auto; min-height: 122px; max-height: none; height: auto; display: inline-block; position: relative; z-index: 4; } #closeDialog { position: absolute; right: 32px; cursor: pointer; margin-top: 10px; height: 50px; width: 50px;
+} .ui-dialog-titlebar-close{ display: none; } .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable { background: none; border: 0px;
+} .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix.ui-draggable-handle { display: none;
+}
+#chatPopup{	width: 800px;	text-align: center;	display: none;	margin-top:30px;	}	#chatPopup p{	font-size: 1.5em;	font-family: lato;	}	#chatPopup button {	width: 300px;	height: 50px;	background: white;	border: 1px solid #484848;	text-transform: uppercase;	font-size: 1.4em;	margin-bottom: 15px;	}	#chatPopup .jenson-icon-double-arrow-right{	color: #ba0917;	}	#GAChatWin{	display: none;	background:url(https://cdn-us-cf2.yottaa.net/58b7457632f01c2824000002/www.jensonusa.com/v~13.14/c/images/loadingAnimation.gif?yocs=f_h_&yoloc=us) center center no-repeat;	}	#GAChatWin iframe{	border: 0px;	width:800px;	height: 400px;	}	#newChat{	display: inline-block;	margin-left: 15px;	margin-top: 5px;	cursor: pointer;	}
+table.geo th:not(:first-child), table.geo td:not(:first-child), table.spec th:not(:first-child), table.spec td:not(:first-child), table.garminspec th:not(:first-child), table.garminspec td:not(:first-child), table.apparel th:not(:first-child), table.apparel td:not(:first-child), table.shoe th:not(:first-child), table.shoe td:not(:first-child), table.shoewide th:not(:first-child), table.shoewide td:not(:first-child), table.geoskinny th:not(:first-child), table.geoskinny td:not(:first-child), .geometry-table table th:not(:first-child), .geometry-table table td:not(:first-child) {	min-width: 100px !important;	max-width: 125px;
+}
