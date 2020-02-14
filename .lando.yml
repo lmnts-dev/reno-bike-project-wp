@@ -1,0 +1,6 @@
+name: reno-bike-project
+recipe: pantheon
+config:
+  framework: wordpress
+  site: reno-bike-project
+  id: 1e433009-175f-4df4-ba96-8cf8112b9963
