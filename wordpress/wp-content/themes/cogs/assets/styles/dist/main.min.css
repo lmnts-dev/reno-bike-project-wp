@@ -34,10 +34,10 @@ template{display:none}
 [hidden]{display:none}
 .flex-col-reverse-sm{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin:0 auto;overflow:hidden;width:100%;max-width:1680px}
 .anchor{display:block;position:relative;visibility:hidden;-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:0;margin-inline-end:0;top:-164px}
-body{background-color:#fff;color:#000}
-body main{background-color:#fff}
-body main .wrapper{background-color:#fff}
-.txt-clr-red{color:#eb3300 !important}
+body{background-color:#f4f8f8;color:#000}
+body main{background-color:#f4f8f8}
+body main .wrapper{background-color:#f4f8f8}
+.txt-clr-red{color:#f684b4 !important}
 .txt-clr-gunmetal{color:#565c63 !important}
 .bg-clr-white{background-color:#fff}
 .bg-clr-snow{background-color:#f4f8f8}
@@ -45,10 +45,10 @@ body main .wrapper{background-color:#fff}
 @font-face{font-family:"Accord_Med";src:url("/assets/fonts/Accord_Med-webfont.woff2") format("woff2"),url("/assets/fonts/Accord_Med-webfont.woff") format("woff");font-weight:600;font-style:normal}
 @font-face{font-family:"Accord_ExBold";src:url("/assets/fonts/Accord_ExBold-webfont.woff2") format("woff2"),url("/assets/fonts/Accord_ExBold-webfont.woff") format("woff");font-weight:800;font-style:normal}
 body,html{font-family:"Accord_Light","Helvetica",sans-serif;font-size:16px;text-rendering:geometricPrecision}
-a{color:#eb3300;text-decoration:none}
-a:visited,a:active,a:focus{color:#eb3300}
-::-moz-selection{background:#eb3300;opacity:100%;color:#fff}
-::selection{background:#eb3300;opacity:100%;color:#fff}
+a{color:#f684b4;text-decoration:none}
+a:visited,a:active,a:focus{color:#f684b4}
+::-moz-selection{background:#f684b4;opacity:100%;color:#fff}
+::selection{background:#f684b4;opacity:100%;color:#fff}
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{display:block;font-family:"Accord_ExBold","Open Sans","Helvetica",sans-serif;font-weight:800;padding:0;margin:0 0 10px 0;letter-spacing:-1.5px}
 h1,.h1{font-size:4rem}
 h2,.h2{font-size:4rem}
@@ -79,14 +79,14 @@ header .nav-inner{width:100%;max-width:1680px;display:-webkit-box;display:-ms-fl
 footer{background-color:#fff;border-top:#ecdcd7 1px solid;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:1680px;margin:0 auto;padding:0 60px 0 60px}
 footer .footer-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%;padding:60px 0 60px 0;margin:0}
 .ico-logomark{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
-.ico-logomark .ico-brandmark{fill:#eb3300;margin-right:15px}
+.ico-logomark .ico-brandmark{fill:#f684b4;margin-right:15px}
 .ico-logomark .ico-logotype{fill:#000}
 button,.btn{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:0 30px;border-radius:999px;font-size:1rem;font-weight:bold;background-color:#fff;color:#000;margin:0;-webkit-box-shadow:0 0 0 0 rgba(0,0,0,0);box-shadow:0 0 0 0 rgba(0,0,0,0);-webkit-transition:all .5s ease;transition:all .5s ease;line-height:0;border:0;outline:0;height:44px;text-transform:capitalize;cursor:pointer}
 button:focus,button:active,.btn:focus,.btn:active{outline:0;border:0}
 button:hover,.btn:hover{-webkit-box-shadow:0 0 0 6px rgba(0,0,0,0.07);box-shadow:0 0 0 6px rgba(0,0,0,0.07)}
-button.btn-clr-red,.btn.btn-clr-red{background-color:#eb3300;color:#fff}
-button.btn-clr-red:hover,.btn.btn-clr-red:hover{background-color:#ff6439}
-button.btn-clr-red:active,.btn.btn-clr-red:active{background-color:#9f2200}
+button.btn-clr-red,.btn.btn-clr-red{background-color:#f684b4;color:#fff}
+button.btn-clr-red:hover,.btn.btn-clr-red:hover{background-color:#fbcbdf}
+button.btn-clr-red:active,.btn.btn-clr-red:active{background-color:#f13d89}
 button.btn-clr-error,.btn.btn-clr-error{background-color:#f6aa1b;color:#fff}
 button.btn-clr-error:hover,.btn.btn-clr-error:hover{background-color:#f9c565}
 button.btn-clr-error:active,.btn.btn-clr-error:active{background-color:#bd7e07}
@@ -95,20 +95,20 @@ button.btn-clr-success:hover,.btn.btn-clr-success:hover{background-color:#2eec77
 button.btn-clr-success:active,.btn.btn-clr-success:active{background-color:#0b7734}
 button.btn-border-black,.btn.btn-border-black{background:rgba(0,0,0,0);border:1px solid #000;-webkit-box-shadow:none;box-shadow:none;color:#000;-webkit-transition:all .5s ease;transition:all .5s ease}
 button.btn-border-black svg,.btn.btn-border-black svg{fill:none;stroke-width:1px;stroke:#000;-webkit-transition:all .5s ease;transition:all .5s ease}
-button.btn-border-black:hover,.btn.btn-border-black:hover{background:#eb3300;border:1px solid #eb3300;color:#fff}
+button.btn-border-black:hover,.btn.btn-border-black:hover{background:#f684b4;border:1px solid #f684b4;color:#fff}
 button.btn-border-black:hover svg,.btn.btn-border-black:hover svg{stroke:#fff}
-button.btn-border-red,.btn.btn-border-red{background:rgba(235,51,0,0);border:1px solid #eb3300;-webkit-box-shadow:none;box-shadow:none;color:#eb3300;-webkit-transition:all .5s ease;transition:all .5s ease}
-button.btn-border-red svg,.btn.btn-border-red svg{fill:none;stroke-width:1px;stroke:#eb3300;-webkit-transition:all .5s ease;transition:all .5s ease}
-button.btn-border-red:hover,.btn.btn-border-red:hover{background:#eb3300;border:1px solid #eb3300;color:#fff}
+button.btn-border-red,.btn.btn-border-red{background:rgba(246,132,180,0);border:1px solid #f684b4;-webkit-box-shadow:none;box-shadow:none;color:#f684b4;-webkit-transition:all .5s ease;transition:all .5s ease}
+button.btn-border-red svg,.btn.btn-border-red svg{fill:none;stroke-width:1px;stroke:#f684b4;-webkit-transition:all .5s ease;transition:all .5s ease}
+button.btn-border-red:hover,.btn.btn-border-red:hover{background:#f684b4;border:1px solid #f684b4;color:#fff}
 button.btn-border-red:hover svg,.btn.btn-border-red:hover svg{stroke:#fff}
 input,textarea{padding:15px;border-radius:3px;outline:0;border:0;margin:0;width:100%;font-size:1.2rem;font-weight:bold;max-width:100%;resize:none}
 form{margin:0}
 .split-focus-icon-wrapper ul,.split-focus-icon-wrapper ol,.split-focus-advanced-wrapper ul,.split-focus-advanced-wrapper ol,.focus ul,.focus ol,article ul,article ol{list-style-type:none;padding:0;margin:0 0 15px 0;width:auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
 .split-focus-icon-wrapper ul li,.split-focus-advanced-wrapper ul li,.focus ul li,article ul li{position:relative;padding-left:20px;padding-bottom:20px}
-.split-focus-icon-wrapper ul li:before,.split-focus-advanced-wrapper ul li:before,.focus ul li:before,article ul li:before{content:"";position:absolute;top:.8rem;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);height:4px;width:4px;border-radius:50%;background:#eb3300}
+.split-focus-icon-wrapper ul li:before,.split-focus-advanced-wrapper ul li:before,.focus ul li:before,article ul li:before{content:"";position:absolute;top:.8rem;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);height:4px;width:4px;border-radius:50%;background:#f684b4}
 .split-focus-icon-wrapper ol,.split-focus-advanced-wrapper ol,.focus ol,article ol{counter-reset:item}
 .split-focus-icon-wrapper ol li,.split-focus-advanced-wrapper ol li,.focus ol li,article ol li{counter-increment:item}
-.split-focus-icon-wrapper ol li:before,.split-focus-advanced-wrapper ol li:before,.focus ol li:before,article ol li:before{margin-right:10px;content:counter(item) ".";border-radius:100%;color:#eb3300;font-weight:800;width:1.2em;text-align:center;display:inline-block}
+.split-focus-icon-wrapper ol li:before,.split-focus-advanced-wrapper ol li:before,.focus ol li:before,article ol li:before{margin-right:10px;content:counter(item) ".";border-radius:100%;color:#f684b4;font-weight:800;width:1.2em;text-align:center;display:inline-block}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}

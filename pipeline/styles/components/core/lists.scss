@@ -37,7 +37,7 @@ $SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .f
         height: 4px;
         width: 4px;
         border-radius: 50%;
-        background: $ClrRed;
+        background: $clrPrimary;
 
         @media (max-width: $BaseMediaSm) {
           top: .65rem;
@@ -57,7 +57,7 @@ $SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .f
         margin-right: 10px;
         content: counter(item) ".";
         border-radius: 100%;
-        color: $ClrRed;
+        color: $clrPrimary;
         font-weight: 800;
         width: 1.2em;
         text-align: center;

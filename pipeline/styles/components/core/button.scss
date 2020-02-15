@@ -10,10 +10,10 @@ button,
   border-radius: $BaseBtnRadius;
   font-size: 1rem;
   font-weight: bold;
-  background-color: $ClrWhite;
-  color: $ClrBlack;
+  background-color: $clrWhite;
+  color: $clrBlack;
   margin: 0;
-  box-shadow: 0px 0px 0px 0px rgba($ClrBlack, 0);
+  box-shadow: 0px 0px 0px 0px rgba($clrBlack, 0);
   transition: all $BaseTransition ease;
   line-height: 0;
   border: 0;
@@ -40,41 +40,41 @@ button,
   }
 
   &:hover {
-    box-shadow: 0px 0px 0px 6px rgba($ClrBlack, 0.07);
+    box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
   }
 
   // Button Colors:
   // Naming convention is .btn-clr-{ClrName}
   &.btn-clr-red {
-    background-color: $ClrRed;
-    color: $ClrWhite;
+    background-color: $clrPrimary;
+    color: $clrWhite;
     &:hover {
-      background-color: lighten($ClrRed, $BaseLighten);
+      background-color: lighten($clrPrimary, $BaseLighten);
     }
     &:active {
-      background-color: darken($ClrRed, $BaseLighten);
+      background-color: darken($clrPrimary, $BaseLighten);
     }
   }
 
   &.btn-clr-error {
-    background-color: $ClrGold;
-    color: $ClrWhite;
+    background-color: $clrGold;
+    color: $clrWhite;
     &:hover {
-      background-color: lighten($ClrGold, $BaseLighten);
+      background-color: lighten($clrGold, $BaseLighten);
     }
     &:active {
-      background-color: darken($ClrGold, $BaseLighten);
+      background-color: darken($clrGold, $BaseLighten);
     }
   }
 
   &.btn-clr-success {
-    background-color: $ClrLeaf;
-    color: $ClrWhite;
+    background-color: $clrLeaf;
+    color: $clrWhite;
     &:hover {
-      background-color: lighten($ClrLeaf, $BaseLighten);
+      background-color: lighten($clrLeaf, $BaseLighten);
     }
     &:active {
-      background-color: darken($ClrLeaf, $BaseLighten);
+      background-color: darken($clrLeaf, $BaseLighten);
     }
   }
 
@@ -82,45 +82,45 @@ button,
   // These are transparent buttons. Same naming convention
   // as the colored butttons.
   &.btn-border-black {
-    background: rgba($ClrBlack, 0);
-    border: 1px solid $ClrBlack;
+    background: rgba($clrBlack, 0);
+    border: 1px solid $clrBlack;
     box-shadow: none;
-    color: $ClrBlack;
+    color: $clrBlack;
     transition: all $BaseTransition ease;
     svg {
       fill: none;
       stroke-width: 1px;
-      stroke: $ClrBlack;
+      stroke: $clrBlack;
       transition: all $BaseTransition ease;
     }
     &:hover {
-      background: rgba($ClrRed, 1);
-      border: 1px solid $ClrRed;
-      color: $ClrWhite;
+      background: rgba($clrPrimary, 1);
+      border: 1px solid $clrPrimary;
+      color: $clrWhite;
       svg {
-        stroke: $ClrWhite;
+        stroke: $clrWhite;
       }
     }
   }
 
   &.btn-border-red {
-    background: rgba($ClrRed, 0);
-    border: 1px solid $ClrRed;
+    background: rgba($clrPrimary, 0);
+    border: 1px solid $clrPrimary;
     box-shadow: none;
-    color: $ClrRed;
+    color: $clrPrimary;
     transition: all $BaseTransition ease;
     svg {
       fill: none;
       stroke-width: 1px;
-      stroke: $ClrRed;
+      stroke: $clrPrimary;
       transition: all $BaseTransition ease;
     }
     &:hover {
-      background: rgba($ClrRed, 1);
-      border: 1px solid $ClrRed;
-      color: $ClrWhite;
+      background: rgba($clrPrimary, 1);
+      border: 1px solid $clrPrimary;
+      color: $clrWhite;
       svg {
-        stroke: $ClrWhite;
+        stroke: $clrWhite;
       }
     }
   }

@@ -102,3 +102,4 @@ if ($featured_image == false) {
     </header>
 
     <main role="main">
+        <div class="wrapper">

@@ -40,12 +40,12 @@ html {
 // links
 // #####################################
 a {
-  color: $ClrRed;
+  color: $clrPrimary;
   text-decoration: none;
   &:visited,
   &:active,
   &:focus {
-    color: $ClrRed;
+    color: $clrPrimary;
   }
 }
 
@@ -54,14 +54,14 @@ a {
 // #####################################
 
 ::-moz-selection {
-  background: $ClrRed;
+  background: $clrPrimary;
   opacity: 100%;
-  color: $ClrWhite;
+  color: $clrWhite;
 }
 ::selection {
-  background: $ClrRed;
+  background: $clrPrimary;
   opacity: 100%;
-  color: $ClrWhite;
+  color: $clrWhite;
 }
 
 // #####################################

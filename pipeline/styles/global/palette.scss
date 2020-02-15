@@ -1,39 +1,39 @@
 // Sitewide Palette
-$ClrRed: #eb3300;
-$ClrWhite: #ffffff;
-$ClrBlack: #000000;
-$ClrGunmetal: #565c63;
-$ClrSteel: #ECDCD7;
-$ClrSnow: #f4f8f8;
-$ClrGold: #F6AA1B;
-$ClrLeaf:  rgb(17, 189, 83);
+$clrPrimary: #F684B4;
+$clrWhite: #ffffff;
+$clrBlack: #000000;
+$clrGunmetal: #565c63;
+$clrSteel: #ECDCD7;
+$clrSnow: #f4f8f8;
+$clrGold: #F6AA1B;
+$clrLeaf:  rgb(17, 189, 83);
 
 // Universal Color Styles
 body {
-  background-color: $ClrWhite;
-  color: $ClrBlack;
+  background-color: $clrSnow;
+  color: $clrBlack;
   main {
-    background-color: $ClrWhite;
+    background-color: $clrSnow;
     .wrapper {
-      background-color: $ClrWhite;
+      background-color: $clrSnow;
     }
   }
 }
 
 // Text Colors
 .txt-clr-red {
-  color: $ClrRed !important;
+  color: $clrPrimary !important;
 }
 
 .txt-clr-gunmetal {
-  color: $ClrGunmetal !important;
+  color: $clrGunmetal !important;
 }
 
 // Background Colors
 .bg-clr-white {
-  background-color: $ClrWhite;
+  background-color: $clrWhite;
 }
 
 .bg-clr-snow {
-  background-color: $ClrSnow;
+  background-color: $clrSnow;
 }
