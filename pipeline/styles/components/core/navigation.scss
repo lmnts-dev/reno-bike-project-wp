@@ -1,0 +1,31 @@
+// Sitewide Navigation Component
+
+// For nested navigation.
+$SubItemsWidth: 300px;
+
+// Default Navigation Styles
+header {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  z-index: 700;
+
+  // Navigation Inner
+  .nav-inner {
+    width: 100%;
+    max-width: $BaseMaxWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background-color: rgba($ClrWhite, 0);
+    transition: all $BaseTransition $BaseEase;
+  }
+}

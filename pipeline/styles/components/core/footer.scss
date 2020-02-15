@@ -1,0 +1,30 @@
+// Sitewide Footer Component:
+// Appears on all pages.
+
+footer {
+  background-color: $ClrWhite;
+  border-top: $ClrSteel 1px solid;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  max-width: $BaseMaxWidth;
+  margin: 0 auto;
+  padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+
+  @media (max-width: $BaseMediaMd) {
+    padding: 0 $BaseGutterRightMd 0 $BaseGutterLeftMd;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding: 0 $BaseGutterRightSm 0 $BaseGutterLeftSm;
+  }
+
+  // Inner
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: $Base 0 $Base 0;
+    margin: 0;
+  }
+}

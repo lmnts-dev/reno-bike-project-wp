@@ -1,0 +1,22 @@
+// Section wrapper
+
+section, article {
+  width:100%;
+  max-width: $BaseMaxWidth;
+  padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media (max-width: $BaseMediaMd) {
+    padding: 0 $BaseGutterRightMd 0 $BaseGutterLeftMd;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding: 0 $BaseGutterRightSm 0 $BaseGutterLeftSm;
+  }
+}
+
+// From FullpageJS
+.section {
+  width:100%;
+}

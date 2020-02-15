@@ -1,0 +1,33 @@
+//
+// Main.scss
+// @author Pete Laxalt
+// @description This is our Pipeline Main.scss file used to import all of our styles.
+//
+////////////////////////////////////////////////////////////////////////
+
+// Reset
+@import "vendor/normalize";
+
+// Global Variables
+@import "global/base";
+@import "global/palette";
+@import "global/typography";
+@import "global/mixins";
+@import "global/animation";
+
+// Page Structure
+@import "structure/siteWrapper";
+@import "structure/section";
+
+// Components: /Core/
+@import "components/core/navigation";
+@import "components/core/footer";
+@import "components/core/icons";
+@import "components/core/content";
+@import "components/core/hero";
+@import "components/core/button";
+@import "components/core/input";
+@import "components/core/lists";
+
+// Keyframes
+@import "global/keyframes";

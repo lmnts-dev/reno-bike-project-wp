@@ -1,0 +1,39 @@
+// Sitewide Palette
+$ClrRed: #eb3300;
+$ClrWhite: #ffffff;
+$ClrBlack: #000000;
+$ClrGunmetal: #565c63;
+$ClrSteel: #ECDCD7;
+$ClrSnow: #f4f8f8;
+$ClrGold: #F6AA1B;
+$ClrLeaf:  rgb(17, 189, 83);
+
+// Universal Color Styles
+body {
+  background-color: $ClrWhite;
+  color: $ClrBlack;
+  main {
+    background-color: $ClrWhite;
+    .wrapper {
+      background-color: $ClrWhite;
+    }
+  }
+}
+
+// Text Colors
+.txt-clr-red {
+  color: $ClrRed !important;
+}
+
+.txt-clr-gunmetal {
+  color: $ClrGunmetal !important;
+}
+
+// Background Colors
+.bg-clr-white {
+  background-color: $ClrWhite;
+}
+
+.bg-clr-snow {
+  background-color: $ClrSnow;
+}

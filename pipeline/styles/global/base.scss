@@ -1,0 +1,129 @@
+// Measurements
+
+// Media Queries
+$BaseMediaSm: 676px;
+$BaseMediaMd: 1024px;
+$BaseMediaLg: 1280px;
+
+// Base Measurement
+$Base: 60px;
+
+// Navigation Size
+$BaseNavSizeLg: 84px;
+$BaseNavSizeLgScroll: 53px;
+
+$BaseNavSizeMd: 60px;
+$BaseNavSizeMdScroll: 53px;
+
+$BaseNavSizeSm: 53px;
+$BaseNavSizeSmScroll: 40px;
+
+// Body
+$BaseMaxWidth: 1680px;
+$BaseGutterLeft: 60px;
+$BaseGutterLeftMd: 30px;
+$BaseGutterLeftSm: 20px;
+$BaseGutterRight: 60px;
+$BaseGutterRightMd: 30px;
+$BaseGutterRightSm: 20px;
+$BaseParagraphWidth: 500px;
+
+// Buttons
+$BaseBtnRadius: 999px;
+$BaseBtnHeight: 44px;
+$BaseBtnHeightMd: 45px;
+$BaseBtnHeightSm: 45px;
+
+// Border Radius
+$BaseCornerRadiusLg: 100px;
+
+// Hovers
+$BaseLighten: 15%;
+
+// Transitions
+$BaseTransition: 0.5s;
+$BaseEase: cubic-bezier(1,.01,.49,1);
+
+// Browsers
+$IE11: 'all and (-ms-high-contrast:none)';
+/// Usage:
+// @media #{$IE11} { ... }
+
+// Visibility
+
+.hide-sm {
+  @media (max-width: $BaseMediaSm) {
+    display: none;
+  }
+}
+
+.hide-md {
+  @media (max-width: $BaseMediaMd) {
+    display: none;
+  }
+}
+
+.hide-lg {
+  @media (max-width: $BaseMediaLg) {
+    display: none;
+  }
+}
+
+.show-sm {
+  @media (max-width: $BaseMediaSm) {
+    display: block;
+  }
+}
+
+.show-md {
+  @media (max-width: $BaseMediaMd) {
+    display: block;
+  }
+}
+
+.show-lg {
+  @media (max-width: $BaseMediaLg) {
+    display: block;
+  }
+}
+
+// Alignment Overrides
+
+.flex-col-reverse-sm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  overflow: hidden;
+  width:100%;
+  max-width: $BaseMaxWidth;
+  
+  @media (max-width: $BaseMediaSm) {
+    flex-direction: column-reverse;
+  }
+}
+
+// Anchors & Positioning
+
+$BaseAnchorOffsetLg: 80px;
+$BaseAnchorOffsetMd: 80px;
+$BaseAnchorOffsetSm: 80px;
+
+.anchor {
+  display: block;
+  position: relative;
+  visibility: hidden;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+  top: (0-($BaseNavSizeLg+$BaseAnchorOffsetLg));
+
+  @media (max-width: $BaseMediaMd) {
+    top: (0-($BaseNavSizeMd+$BaseAnchorOffsetMd));
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    top: (0-($BaseNavSizeSm+$BaseAnchorOffsetSm));
+  }
+}

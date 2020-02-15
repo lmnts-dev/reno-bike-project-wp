@@ -1,0 +1,188 @@
+// typography
+
+@font-face {
+  font-family: "Accord_Light";
+  src: url("/assets/fonts/Accord_Light-webfont.woff2") format("woff2"),
+    url("/assets/fonts/Accord_Light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Accord_Med";
+  src: url("/assets/fonts/Accord_Med-webfont.woff2") format("woff2"),
+    url("/assets/fonts/Accord_Med-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Accord_ExBold";
+  src: url("/assets/fonts/Accord_ExBold-webfont.woff2") format("woff2"),
+    url("/assets/fonts/Accord_ExBold-webfont.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+$FntBody: "Accord_Light", "Helvetica", sans-serif;
+$FntBodyMedium: "Accord_Med", "Helvetica", sans-serif;
+$FntHeader: "Accord_ExBold", "Open Sans", "Helvetica", sans-serif;
+$FntBaseSize: 16px;
+
+body,
+html {
+  font-family: $FntBody;
+  font-size: $FntBaseSize;
+  text-rendering: geometricPrecision;
+}
+
+// #####################################
+// links
+// #####################################
+a {
+  color: $ClrRed;
+  text-decoration: none;
+  &:visited,
+  &:active,
+  &:focus {
+    color: $ClrRed;
+  }
+}
+
+// #####################################
+// selections
+// #####################################
+
+::-moz-selection {
+  background: $ClrRed;
+  opacity: 100%;
+  color: $ClrWhite;
+}
+::selection {
+  background: $ClrRed;
+  opacity: 100%;
+  color: $ClrWhite;
+}
+
+// #####################################
+// headers
+// #####################################
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  display: block;
+  font-family: $FntHeader;
+  font-weight: 800;
+  padding: 0;
+  margin: 0 0 $Base/6 0;
+  letter-spacing: -1.5px;
+}
+
+h1,
+.h1 {
+  font-size: 4rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 3rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 3rem;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 4rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 2.4rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 2.3rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 2.7rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 1.5rem;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 2.7rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 1.5rem;
+  }
+}
+
+h5,
+.h5 {
+  font-size: 1.6rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 1.2rem;
+  }
+}
+
+// #####################################
+// body copy
+// #####################################
+
+p,
+.p,
+.content {
+  font-size: 1.2rem;
+  font-family: $FntBody;
+  line-height: 1.2;
+  letter-spacing: 0.3;
+  margin: 0 0 $Base/4 0;
+  width: 100%;
+
+  @media (max-width: $BaseMediaMd) {
+    font-size: 1rem;
+  }
+
+  &.p-lg {
+    font-size: 1.5rem;
+    font-weight: 100;
+    line-height: 1.2;
+    @media (max-width: $BaseMediaMd) {
+      font-size: 1rem;
+    }
+    @media (max-width: $BaseMediaSm) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.txt-caption {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  @media (max-width: $BaseMediaMd) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 0.6rem;
+  }
+}
