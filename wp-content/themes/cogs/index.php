@@ -1,19 +1,18 @@
 <?php /* Template Name: Homepage */ ?>
 
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/core/header.php'; ?>
 
 <?php
-    if ($detect_device->isMobile() || $detect_device->isTablet()) {
-        $block_class = "panel-slide";
-    } else  {
-        $block_class = "panel-section";
-    }
+if ($detect_device->isMobile() || $detect_device->isTablet()) {
+    $block_class = "panel-slide";
+} else {
+    $block_class = "panel-section";
+}
 
-    $fields = get_fields();
+$fields = get_fields();
 ?>
 
-<section id="main-section" class="content row">
-    Main Content
-</section>
+<?php include 'includes/lib/sections/home-hero.php' ?>
+<?php include 'includes/lib/sections/block-row.php' ?>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/core/footer.php'; ?>

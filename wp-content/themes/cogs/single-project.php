@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/core/header.php'; ?>
 
 <?php
     function mediaIcon($type) {
@@ -545,4 +545,4 @@
 
     <?php endwhile; wp_reset_query(); ?>
 
-    <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/core/footer.php'; ?>

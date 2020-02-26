@@ -1,6 +1,6 @@
 <?php /* Template Name: Office */ ?>
 
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/core/header.php'; ?>
 
 <section id="main-section" class="content row">
     <div class="index-list column xs-12">
@@ -67,4 +67,4 @@
     </div>
 </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/core/footer.php'; ?>

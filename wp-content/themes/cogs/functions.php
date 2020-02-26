@@ -2,7 +2,7 @@
 // update_option( 'siteurl', 'http://dannyforster.com.s224240.gridserver.com' );
 // update_option( 'home', 'http://dannyforster.com.s224240.gridserver.com' );
 
-include 'includes/functions-disable-comments.php';
+include 'includes/core/functions/disable-comments.php';
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
@@ -346,7 +346,7 @@ function my_login_logo()
 	<style type="text/css">
 		#login h1 a,
 		.login h1 a {
-			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.svg);
+			background-image: url("<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.svg");
 			height: 65px;
 			width: 320px;
 			pointer-events: none;
