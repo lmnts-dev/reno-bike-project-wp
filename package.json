@@ -1,11 +1,11 @@
 {
-  "name": "national-judicial-college-wp",
-  "description": "National Judicial College Wordpress Theme.",
+  "name": "reno-bike-project",
+  "description": "Reno Bike Project Wordpress & Shopify",
   "version": "1.0.0",
   "author": "Peter Laxalt (https://twitter.com/laxaltandmciver/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lmnts-dev/njc-wp"
+    "url": "https://github.com/lmnts-dev/reno-bike-project"
   },
   "license": "MIT",
   "devDependencies": {

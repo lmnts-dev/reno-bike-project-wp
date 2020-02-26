@@ -9,6 +9,7 @@
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'main.min.css' | asset_url | stylesheet_tag }}
   {{ 'app.min.js' | asset_url | script_tag }}
+  {{ 'vendor.min.js' | asset_url | script_tag }}
 </head>
 <body>
 
@@ -42,8 +43,10 @@
   
 
   <main role="main">
-    <h1>Shopify</h1>
-    {{ content_for_layout }}
+    <div class="wrapper">
+      <h1>Shopify</h1>
+        {{ content_for_layout }}
+    </div>
   </main>
 
   <footer>

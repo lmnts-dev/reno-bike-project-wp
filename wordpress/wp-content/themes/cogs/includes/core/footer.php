@@ -1,3 +1,5 @@
+</div> <?php #/.wrapper 
+        ?>
 </main>
 <footer>
   <div class="footer-inner">

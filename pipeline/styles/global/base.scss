@@ -6,10 +6,10 @@ $BaseMediaMd: 1024px;
 $BaseMediaLg: 1280px;
 
 // Base Measurement
-$Base: 60px;
+$Base: 40px;
 
 // Navigation Size
-$BaseNavSizeLg: 84px;
+$BaseNavSizeLg: 64px;
 $BaseNavSizeLgScroll: 53px;
 
 $BaseNavSizeMd: 60px;
@@ -42,10 +42,10 @@ $BaseLighten: 15%;
 
 // Transitions
 $BaseTransition: 0.5s;
-$BaseEase: cubic-bezier(1,.01,.49,1);
+$BaseEase: cubic-bezier(1, 0.01, 0.49, 1);
 
 // Browsers
-$IE11: 'all and (-ms-high-contrast:none)';
+$IE11: "all and (-ms-high-contrast:none)";
 /// Usage:
 // @media #{$IE11} { ... }
 
@@ -94,9 +94,9 @@ $IE11: 'all and (-ms-high-contrast:none)';
   flex-direction: column;
   margin: 0 auto;
   overflow: hidden;
-  width:100%;
+  width: 100%;
   max-width: $BaseMaxWidth;
-  
+
   @media (max-width: $BaseMediaSm) {
     flex-direction: column-reverse;
   }
@@ -117,13 +117,13 @@ $BaseAnchorOffsetSm: 80px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 
-  top: (0-($BaseNavSizeLg+$BaseAnchorOffsetLg));
+  top: (0- ($BaseNavSizeLg + $BaseAnchorOffsetLg));
 
   @media (max-width: $BaseMediaMd) {
-    top: (0-($BaseNavSizeMd+$BaseAnchorOffsetMd));
+    top: (0- ($BaseNavSizeMd + $BaseAnchorOffsetMd));
   }
 
   @media (max-width: $BaseMediaSm) {
-    top: (0-($BaseNavSizeSm+$BaseAnchorOffsetSm));
+    top: (0- ($BaseNavSizeSm + $BaseAnchorOffsetSm));
   }
 }

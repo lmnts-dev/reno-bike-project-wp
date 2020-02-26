@@ -15,7 +15,104 @@ header {
   flex-direction: column;
   align-items: center;
   font-size: 1rem;
-  z-index: 700;
+  z-index: 800;
+  background: $clrWhite;
+
+  // Base List Styles
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+
+    li {
+      margin: 0;
+      flex-shrink: 0;
+    }
+  }
+
+  // Base Link Styles
+  a {
+    font-weight: 600;
+    color: $clrBlack;
+
+    &:visited {
+      color: $clrBlack;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $clrPrimary;
+    }
+  }
+
+  // Base Nav Styles
+  nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    ul {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        a {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0 $Base/2;
+        }
+
+        // Bottom Underlines
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 4px;
+          background: rgba($clrPrimary, 0);
+        }
+
+        &:hover {
+          &:before {
+            background: rgba($clrBlack, 0.1);
+          }
+        }
+
+        // Active Links & Underlines
+        &.active {
+          a,
+          a:visited {
+            color: $clrPrimary;
+          }
+          &:before {
+            background: rgba($clrPrimary, 1);
+          }
+        }
+
+        // Inactive Links & Underlines
+        &.inactive {
+          a,
+          a:visited {
+            color: $clrChrome;
+          }
+
+          a:hover {
+            color: $clrPrimary;
+          }
+        }
+      }
+    }
+  }
 
   // Navigation Inner
   .nav-inner {
@@ -27,5 +124,91 @@ header {
     padding: 0;
     background-color: rgba($clrWhite, 0);
     transition: all $BaseTransition $BaseEase;
+
+    .nav-col {
+      display: flex;
+      align-items: center;
+      height: $BaseNavSizeLg;
+
+      // Branding Column
+      &.nav-col-1 {
+        // Branding itself
+        .nav-branding {
+          height: 100%;
+          width: $BaseNavSizeLg;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $clrPrimary; // Default
+
+          // For Shopify
+          &.nav-shop {
+            background: $clrBlack;
+          }
+
+          a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $clrPrimary;
+
+            &:visited,
+            &:active {
+              color: $clrWhite;
+            }
+
+            &:hover {
+              background: lighten($clrPrimary, 5%);
+            }
+
+            &:active {
+              background: darken($clrPrimary, 5%);
+            }
+
+            // @todo Replace for image
+            span {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: $clrWhite;
+            }
+          }
+        }
+      }
+
+      // CTA Column
+      &.nav-col-3 {
+        .nav-cta {
+          height: 100%;
+          display: flex;
+          align-items: center;
+
+          // CTA Button
+          a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 $Base;
+            background: $clrPrimary;
+            color: $clrWhite;
+
+            &:visited,
+            &:active {
+              color: $clrWhite;
+            }
+
+            &:hover {
+              background: lighten($clrPrimary, 5%);
+            }
+
+            &:active {
+              background: darken($clrPrimary, 5%);
+            }
+          }
+        }
+      }
+    }
   }
 }

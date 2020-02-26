@@ -1,21 +1,29 @@
 // Sitewide Palette
-$clrPrimary: #F684B4;
-$clrWhite: #ffffff;
+////////////////////////////////////////
+
+// Primary
+$clrPrimary: #f684b4;
+
+// Grayscale
 $clrBlack: #000000;
 $clrGunmetal: #565c63;
-$clrSteel: #ECDCD7;
+$clrChrome: #929293;
+$clrSteel: #ecdcd7;
 $clrSnow: #f4f8f8;
-$clrGold: #F6AA1B;
-$clrLeaf:  rgb(17, 189, 83);
+$clrWhite: #ffffff;
+
+// Extended
+$clrGold: #f6aa1b;
+$clrLeaf: rgb(17, 189, 83);
 
 // Universal Color Styles
 body {
-  background-color: $clrSnow;
+  background-color: $clrWhite;
   color: $clrBlack;
   main {
-    background-color: $clrSnow;
+    background-color: $clrWhite;
     .wrapper {
-      background-color: $clrSnow;
+      background-color: $clrWhite;
     }
   }
 }

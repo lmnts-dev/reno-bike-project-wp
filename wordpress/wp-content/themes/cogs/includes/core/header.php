@@ -95,11 +95,8 @@ if ($featured_image == false) {
 
 
 <body>
-    <header>
-        <div class="nav-inner">
-            Navigation
-        </div>
-    </header>
+
+    <?php include 'components/navigation.php' ?>
 
     <main role="main">
         <div class="wrapper">
