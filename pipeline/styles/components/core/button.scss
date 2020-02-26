@@ -7,28 +7,29 @@ button,
   align-items: center;
   justify-content: center;
   padding: 0 $Base/2;
-  border-radius: $BaseBtnRadius;
-  font-size: 1rem;
+  // border-radius: $BaseBtnRadius;
+  font-size: 0.8rem;
   font-weight: bold;
-  background-color: $clrWhite;
+  // background-color: $clrWhite;
   color: $clrBlack;
   margin: 0;
   box-shadow: 0px 0px 0px 0px rgba($clrBlack, 0);
-  transition: all $BaseTransition ease;
+  // transition: all $BaseTransition ease;
   line-height: 0;
   border: 0;
   outline: 0;
   height: $BaseBtnHeight;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   cursor: pointer;
 
   @media (max-width: $BaseMediaMd) {
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: 0 $Base/4;
     height: $BaseBtnHeightMd;
   }
   @media (max-width: $BaseMediaSm) {
-    font-size: .9rem;
+    font-size: 0.9rem;
     padding: 0 $Base/4;
     height: $BaseBtnHeightSm;
   }
@@ -41,6 +42,31 @@ button,
 
   &:hover {
     box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
+  }
+
+  // Button Styles
+  &.btn-arrow {
+    padding: 0 $Base 0 0;
+    position: relative;
+    box-shadow: none;
+
+    &:after {
+      content: "▶";
+      font-family: fixed;
+      transition: all 0.25s ease;
+      transform: translateX(-10px);
+      position: absolute;
+      color: $clrPrimary;
+      right: 0;
+    }
+
+    &:hover {
+      box-shadow: none;
+
+      &:after {
+        transform: translateX(0px);
+      }
+    }
   }
 
   // Button Colors:
@@ -86,12 +112,12 @@ button,
     border: 1px solid $clrBlack;
     box-shadow: none;
     color: $clrBlack;
-    transition: all $BaseTransition ease;
+    // transition: all $BaseTransition ease;
     svg {
       fill: none;
       stroke-width: 1px;
       stroke: $clrBlack;
-      transition: all $BaseTransition ease;
+      // transition: all $BaseTransition ease;
     }
     &:hover {
       background: rgba($clrPrimary, 1);
@@ -108,12 +134,12 @@ button,
     border: 1px solid $clrPrimary;
     box-shadow: none;
     color: $clrPrimary;
-    transition: all $BaseTransition ease;
+    // transition: all $BaseTransition ease;
     svg {
       fill: none;
       stroke-width: 1px;
       stroke: $clrPrimary;
-      transition: all $BaseTransition ease;
+      // transition: all $BaseTransition ease;
     }
     &:hover {
       background: rgba($clrPrimary, 1);

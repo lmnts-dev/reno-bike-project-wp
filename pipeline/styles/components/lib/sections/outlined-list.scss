@@ -9,7 +9,7 @@
 
 .outlined-list {
   background: $clrWhite;
-  padding: $BaseNavSizeLg + $Base $Base $Base $Base;
+  padding: 0 $Base;
 
   .outlined-list-inner {
     // The list itself
@@ -30,19 +30,23 @@
         font-family: sans-serif;
         line-height: 1;
         font-weight: bold;
-        -webkit-text-stroke: 1px $clrBlack;
-        -webkit-text-fill-color: rgba($clrWhite, 0);
-        position: relative;
+        // position: relative;
         display: flex;
         justify-content: flex-start;
 
+        a,
+        a:visited {
+          -webkit-text-stroke: 1px $clrBlack;
+          -webkit-text-fill-color: rgba($clrWhite, 0);
+        }
+
         div {
           opacity: 0;
-          position: fixed;
+          position: absolute;
           right: 0;
           top: 0;
           bottom: 0;
-          width: 50%;
+          width: 20%;
           object-fit: cover;
           object-position: 50% 50%;
           pointer-events: none;
@@ -60,13 +64,18 @@
           }
         }
 
-        &:last-child {
-          -webkit-text-stroke: 1px $clrPrimary;
-          -webkit-text-fill-color: $clrPrimary;
+        &.focus {
+          a,
+          a:visited {
+            -webkit-text-stroke: 1px $clrPrimary;
+            -webkit-text-fill-color: $clrPrimary;
+          }
 
           &:hover {
-            -webkit-text-stroke: 1px $clrBlack;
-            -webkit-text-fill-color: $clrBlack;
+            a {
+              -webkit-text-stroke: 1px $clrBlack;
+              -webkit-text-fill-color: $clrBlack;
+            }
             div {
               opacity: 1;
             }
@@ -74,7 +83,9 @@
         }
 
         &:hover {
-          -webkit-text-fill-color: $clrBlack;
+          a {
+            -webkit-text-fill-color: $clrBlack;
+          }
           div {
             z-index: -999;
             opacity: 1;

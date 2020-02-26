@@ -12,6 +12,6 @@ if ($detect_device->isMobile() || $detect_device->isTablet()) {
 $fields = get_fields();
 ?>
 
-<?php include 'includes/lib/sections/outlined-list.php' ?>
+<?php include 'includes/lib/sections/home-hero.php' ?>
 
 <?php include 'includes/core/footer.php'; ?>

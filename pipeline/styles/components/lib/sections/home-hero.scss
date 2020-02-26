@@ -1,0 +1,99 @@
+////////////////////////////////////////
+//
+// Home Hero Component
+//
+// @author Peter Laxalt
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+//
+////////////////////////////////////////
+
+.home-hero {
+  // height: calc(100vh - #{$BaseNavSizeLg});
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  // padding-top: $BaseNavSizeLg + $Base;
+
+  .home-hero-inner {
+    display: flex;
+
+    // Info Column
+    .col-info {
+      @include fadein(2s);
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      // Hours
+      .col-info-hours {
+        margin-top: $Base;
+        width: 100%;
+
+        .headline {
+          color: $clrChrome;
+          font-weight: bold;
+        }
+
+        ul {
+          border-left: 7px solid $clrPrimary;
+          padding-left: $Base / 4;
+          margin: $Base / 2 0;
+          line-height: 1.4;
+          width: 100%;
+
+          li {
+            display: flex;
+            width: 100%;
+
+            span {
+              flex: 1;
+
+              &:first-child {
+                max-width: 30%;
+              }
+
+              &.label {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+
+      .btn-newsletter {
+        width: 100%;
+      }
+
+      // Bike Wheel
+      .bike-wheel {
+        margin-top: $Base;
+      }
+    }
+
+    // Main Column
+    .col-main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include fadein(3s);
+
+      ul {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}

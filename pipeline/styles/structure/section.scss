@@ -1,7 +1,8 @@
 // Section wrapper
 
-section, article {
-  width:100%;
+section,
+article {
+  width: 100%;
   max-width: $BaseMaxWidth;
   padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
   margin: 0 auto;
@@ -18,5 +19,5 @@ section, article {
 
 // From FullpageJS
 .section {
-  width:100%;
+  width: 100%;
 }
