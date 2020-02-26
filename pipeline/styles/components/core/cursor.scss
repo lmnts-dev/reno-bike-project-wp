@@ -6,13 +6,13 @@
 body,
 html {
   position: relative;
-  cursor: none;
+  cursor: none !important;
 }
 
 a,
 input,
 button {
-  cursor: none;
+  cursor: none !important;
 }
 
 .cursor {

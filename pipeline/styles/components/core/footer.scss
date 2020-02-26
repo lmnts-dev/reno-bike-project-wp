@@ -1,9 +1,14 @@
+////////////////////////////////////////
+//
 // Sitewide Footer Component:
 // Appears on all pages.
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
 
 footer {
-  background-color: $clrWhite;
-  border-top: $clrSteel 1px solid;
+  background-color: $clrSteel;
   width: 100%;
   display: flex;
   align-items: center;
@@ -22,9 +27,162 @@ footer {
   // Inner
   .footer-inner {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    padding: $Base 0 $Base 0;
+    padding: $Base * 2 0;
     margin: 0;
+
+    .footer-col {
+      width: 25%;
+
+      // Base Column Styles
+
+      a {
+        color: $clrBlack;
+
+        &:visited,
+        &:active {
+          color: $clrBlack;
+        }
+
+        &:hover {
+          color: $clrPrimary;
+        }
+      }
+
+      // Copyright & Legal Stuff
+      .copyright,
+      .legal-stuff {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+      }
+
+      .copyright {
+        font-weight: bold;
+        margin-bottom: $Base/3;
+      }
+
+      .legal-stuff {
+        display: flex;
+
+        a {
+          margin-right: $Base/2;
+          position: relative;
+          color: $clrChrome;
+
+          &:visited {
+            color: $clrChrome;
+          }
+
+          &:hover {
+            color: $clrBlack;
+          }
+
+          &:first-child {
+            &:after {
+              content: "|";
+              position: absolute;
+              right: -11px;
+            }
+          }
+        }
+      }
+
+      // Social
+      .social {
+        display: flex;
+
+        ul {
+          display: flex;
+
+          li {
+            a {
+              height: $Base;
+              width: $Base;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: $clrPrimary;
+              font-weight: bold;
+              font-size: 10px;
+              margin: $Base/2 $Base/4 0 0;
+
+              &:visited,
+              &:active {
+                color: $clrPrimary;
+              }
+
+              &:hover {
+                background: lighten($clrPrimary, 5%);
+              }
+
+              &:active {
+                background: darken($clrPrimary, 5%);
+              }
+
+              // @todo Replace for image
+              span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: $clrWhite;
+              }
+            }
+          }
+        }
+      }
+
+      // Footer Headers
+      .footer-header {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+        color: $clrGunmetal;
+        position: relative;
+        top: -5px;
+      }
+
+      // Footer Info Rows
+      .footer-info-row {
+        line-height: 1.6;
+        display: flex;
+
+        span {
+          font-weight: 600;
+          margin-right: $Base/4;
+        }
+      }
+
+      // Footer Search
+      .footer-search {
+        position: relative;
+        border-radius: none;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid $clrBlack;
+        top: -10px;
+
+        .ico {
+          width: $Base * 0.7;
+          height: $Base * 0.7;
+          border: 2px solid $clrPrimary;
+          border-radius: 50%;
+          display: block;
+        }
+
+        form {
+          flex: 1;
+
+          input {
+            background: none;
+            color: $clrBlack;
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
   }
 }
