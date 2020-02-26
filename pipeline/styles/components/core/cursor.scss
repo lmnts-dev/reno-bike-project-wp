@@ -1,0 +1,46 @@
+// Custom cursor styles
+// @author Peter Laxalt
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+////////////////////////////////////////
+
+body,
+html {
+  position: relative;
+  cursor: none;
+}
+
+a,
+input,
+button {
+  cursor: none;
+}
+
+.cursor {
+  display: flex;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  // transition: all 0.25s ease-out;
+  width: 20px;
+  height: 20px;
+  background: $clrWhite;
+  opacity: 0;
+}
+
+.cursor-outline {
+  opacity: 0;
+  display: flex;
+  z-index: 998;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: all 0.5s ease-out;
+  width: 20px;
+  height: 20px;
+  background: $clrGold;
+}

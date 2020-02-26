@@ -94,9 +94,11 @@ if ($featured_image == false) {
 </head>
 
 
-<body>
+<body data-barba="wrapper">
 
-    <?php include 'components/navigation.php' ?>
+    <span class="cursor"></span>
+    <span class="cursor-outline"></span>
+    <?php include 'navigation.php' ?>
 
-    <main role="main">
+    <main role="main" data-barba="container" data-barba-namespace="home">
         <div class="wrapper">

@@ -7,7 +7,9 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/@barba/core"></script>
 <?php wp_footer(); ?>
+
 </body>
 
 </html>

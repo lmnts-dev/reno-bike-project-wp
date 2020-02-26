@@ -1,0 +1,86 @@
+////////////////////////////////////////
+//
+// Outlined List Component
+//
+// @author Peter Laxalt
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+//
+////////////////////////////////////////
+
+.outlined-list {
+  background: $clrWhite;
+  padding: $BaseNavSizeLg + $Base $Base $Base $Base;
+
+  .outlined-list-inner {
+    // The list itself
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+      z-index: 60;
+      background: $clrWhite;
+
+      li {
+        font-size: 9vh;
+        font-family: sans-serif;
+        line-height: 1;
+        font-weight: bold;
+        -webkit-text-stroke: 1px $clrBlack;
+        -webkit-text-fill-color: rgba($clrWhite, 0);
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+
+        div {
+          opacity: 0;
+          position: fixed;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+          object-fit: cover;
+          object-position: 50% 50%;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+          z-index: -1;
+
+          img {
+            // width: 100%;
+            // max-width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+            z-index: -1;
+            mix-blend-mode: multiply;
+          }
+        }
+
+        &:last-child {
+          -webkit-text-stroke: 1px $clrPrimary;
+          -webkit-text-fill-color: $clrPrimary;
+
+          &:hover {
+            -webkit-text-stroke: 1px $clrBlack;
+            -webkit-text-fill-color: $clrBlack;
+            div {
+              opacity: 1;
+            }
+          }
+        }
+
+        &:hover {
+          -webkit-text-fill-color: $clrBlack;
+          div {
+            z-index: -999;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

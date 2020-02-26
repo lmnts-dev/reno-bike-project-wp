@@ -1,32 +1,17 @@
-// typography
+////////////////////////////////////////
+//
+// Typography
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
 
-@font-face {
-  font-family: "Accord_Light";
-  src: url("/assets/fonts/Accord_Light-webfont.woff2") format("woff2"),
-    url("/assets/fonts/Accord_Light-webfont.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Accord_Med";
-  src: url("/assets/fonts/Accord_Med-webfont.woff2") format("woff2"),
-    url("/assets/fonts/Accord_Med-webfont.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Accord_ExBold";
-  src: url("/assets/fonts/Accord_ExBold-webfont.woff2") format("woff2"),
-    url("/assets/fonts/Accord_ExBold-webfont.woff") format("woff");
-  font-weight: 800;
-  font-style: normal;
-}
-
-$FntBody: "Accord_Light", "Helvetica", sans-serif;
-$FntBodyMedium: "Accord_Med", "Helvetica", sans-serif;
-$FntHeader: "Accord_ExBold", "Open Sans", "Helvetica", sans-serif;
+$FntBody: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$FntBodyMedium: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$FntHeader: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $FntBaseSize: 16px;
 
 body,

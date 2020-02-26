@@ -12,6 +12,6 @@ if ($detect_device->isMobile() || $detect_device->isTablet()) {
 $fields = get_fields();
 ?>
 
-<h1>Wordpress</h1>
+<?php include 'includes/lib/sections/outlined-list.php' ?>
 
 <?php include 'includes/core/footer.php'; ?>
