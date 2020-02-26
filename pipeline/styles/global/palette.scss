@@ -19,6 +19,8 @@ $clrWhite: #ffffff;
 
 // Extended
 $clrGold: #f6aa1b;
+$clrOrange: #ff9a4a;
+$clrMustard: #e8cc66;
 $clrLeaf: rgb(17, 189, 83);
 
 // Universal Color Styles
@@ -34,12 +36,16 @@ body {
 }
 
 // Text Colors
+.txt-clr-white {
+  color: $clrWhite;
+}
+
 .txt-clr-red {
-  color: $clrPrimary !important;
+  color: $clrPrimary;
 }
 
 .txt-clr-gunmetal {
-  color: $clrGunmetal !important;
+  color: $clrGunmetal;
 }
 
 // Background Colors
@@ -47,6 +53,18 @@ body {
   background-color: $clrWhite;
 }
 
+.bg-clr-tint {
+  background-color: rgba($clrBlack, 0.3);
+}
+
 .bg-clr-snow {
   background-color: $clrSnow;
+}
+
+.bg-clr-orange {
+  background-color: $clrOrange;
+}
+
+.bg-clr-mustard {
+  background-color: $clrMustard;
 }

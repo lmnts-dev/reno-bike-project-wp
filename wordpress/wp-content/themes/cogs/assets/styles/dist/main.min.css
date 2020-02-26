@@ -39,10 +39,14 @@ ul li{margin:0}
 body{background-color:#fff;color:#000}
 body main{background-color:#fff}
 body main .wrapper{background-color:#fff}
-.txt-clr-red{color:#f684b4 !important}
-.txt-clr-gunmetal{color:#565c63 !important}
+.txt-clr-white{color:#fff}
+.txt-clr-red{color:#f684b4}
+.txt-clr-gunmetal{color:#565c63}
 .bg-clr-white{background-color:#fff}
+.bg-clr-tint{background-color:rgba(0,0,0,0.3)}
 .bg-clr-snow{background-color:#f4f8f8}
+.bg-clr-orange{background-color:#ff9a4a}
+.bg-clr-mustard{background-color:#e8cc66}
 body,html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;font-size:16px;text-rendering:geometricPrecision}
 a{color:#f684b4;text-decoration:none}
 a:visited,a:active,a:focus{color:#f684b4}
@@ -184,7 +188,7 @@ a,input,button{cursor:none !important}
 .outlined-list .outlined-list-inner ul li.focus:hover div{opacity:1}
 .outlined-list .outlined-list-inner ul li:hover a{-webkit-text-fill-color:#000}
 .outlined-list .outlined-list-inner ul li:hover div{z-index:-999;opacity:1}
-.home-hero{height:100vh;min-height:800px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.home-hero{height:100vh;min-height:800px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:84px}
 .home-hero .home-hero-inner{display:-webkit-box;display:-ms-flexbox;display:flex}
 .home-hero .home-hero-inner .col-info{-webkit-animation:fadein 2s 1;animation:fadein 2s 1;max-width:350px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .home-hero .home-hero-inner .col-info h1{font-size:40px}
@@ -200,6 +204,20 @@ a,input,button{cursor:none !important}
 .home-hero .home-hero-inner .col-info .bike-wheel{margin-top:40px}
 .home-hero .home-hero-inner .col-main{height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-animation:fadein 3s 1;animation:fadein 3s 1}
 .home-hero .home-hero-inner .col-main ul{height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.block-row .block-row-inner{display:-webkit-box;display:-ms-flexbox;display:flex}
+.block-row .block-row-inner.block-row-reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
+.block-row .block-row-inner .block-item{-webkit-box-flex:1;-ms-flex:1;flex:1;-ms-flex-negative:0;flex-shrink:0;padding:20px}
+.block-row .block-row-inner .block-item img{max-width:100%}
+.block-row .block-row-inner .block-item:first-child{width:100%;max-width:33%}
+.block-row .block-row-inner .block-item:first-child .block-item-inner{padding-bottom:100%}
+.block-row .block-row-inner .block-item:last-child .block-item-inner{padding-bottom:33%}
+.block-row .block-row-inner .block-item .block-item-inner{position:relative;height:100%}
+.block-row .block-row-inner .block-item .block-item-inner .block-item-image,.block-row .block-row-inner .block-item .block-item-inner .block-item-cover{position:absolute;left:0;right:0;top:0;bottom:0}
+.block-row .block-row-inner .block-item .block-item-inner .block-item-image img{position:absolute;left:0;right:0;top:0;bottom:0;height:100%;width:100%;-o-object-fit:cover;object-fit:cover}
+.block-row .block-row-inner .block-item .block-item-inner .block-item-cover{z-index:2;padding:20px}
+.block-row .block-row-inner .block-item .block-item-inner .block-item-cover span{font-size:4vw;font-weight:bold;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;line-height:1;max-width:400px}
+.block-row .block-row-inner .block-item .block-item-inner .block-item-cover:hover{background-color:#000}
+.block-row+.block-row{padding-bottom:40px}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}
