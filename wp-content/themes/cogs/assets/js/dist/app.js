@@ -1,5 +1,3 @@
-// App Javascript File
-"use strict";
 "use strict";
 
 /*
@@ -15,6 +13,8 @@ function setCursorPosition(e) {
 }
 
 document.addEventListener("mousemove", setCursorPosition, false);
+// App Javascript File
+"use strict";
 "use strict";
 
 /*

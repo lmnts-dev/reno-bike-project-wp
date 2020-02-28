@@ -87,7 +87,7 @@ $linkList = array($getInvolved, $programs, $events, $ourStory, $newsPress, $shop
             </a>
           </span>
           <div>
-            <img src="<?php echo $link->img ?>" alt="<?php echo $link->label ?>" />
+            <img data-src="<?php echo $link->img ?>" alt="<?php echo $link->label ?>" class="lazy" />
           </div>
         </li>
       <?php

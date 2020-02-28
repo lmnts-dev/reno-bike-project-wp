@@ -1,5 +1,3 @@
-// Vendor Javascript File
-"use strict";
 "use strict";
 
 /**
@@ -57,3 +55,17 @@ barba.init({
 //     afterEnter() {}
 //   }]
 // });
+// Vendor Javascript File
+"use strict";
+"use strict";
+
+/**
+ *
+ * Lazyload.js settings
+ * @author Peter Laxalt
+ * @see https://www.andreaverlicchi.eu/lazyload/
+ *
+ */
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
+});
