@@ -58,10 +58,10 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{display:block;font-family:-apple-syste
 h1,.h1{font-size:4rem}
 h2,.h2{font-size:4rem}
 h3,.h3{font-size:2.7rem}
-h4,.h4{font-size:2.7rem}
+h4,.h4{font-size:2.5rem}
 h5,.h5{font-size:1.6rem}
-p,.p,.content{font-size:1.2rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.2;letter-spacing:.3;margin:0 0 10px 0;width:100%}
-p.p-lg,.p.p-lg,.content.p-lg{font-size:1.5rem;font-weight:100;line-height:1.2}
+p{font-size:1.2rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.4;letter-spacing:.3;margin:0 0 10px 0;width:100%}
+p.p-lg{font-size:1.5rem;font-weight:100;line-height:1.2}
 .txt-caption{text-transform:uppercase;letter-spacing:2px;font-weight:bold;font-size:.8rem}
 .slide-up-1{-webkit-animation:slide-up .25s 1;animation:slide-up .25s 1}
 .slide-up-2{-webkit-animation:slide-up .5s 1;animation:slide-up .5s 1}
@@ -235,6 +235,20 @@ a,input,button{cursor:none !important}
 .news-listings .news-listings-inner .news-listing-card .news-listing-card-inner .info .title{display:block;font-weight:500;font-size:32px;margin-bottom:10px}
 .news-listings .news-listings-inner .news-listing-card .news-listing-card-inner .actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .news-listings .news-listings-inner .news-listing-card .news-listing-card-inner .actions .col:first-child{color:#929293}
+.editorial-row{position:relative;padding-right:0;margin:80px 0}
+.editorial-row .editorial-row-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap}
+.editorial-row .editorial-row-inner img{max-width:100%}
+.editorial-row .editorial-row-inner .col{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.editorial-row .editorial-row-inner .col.content-col{padding:120px 40px;width:40%}
+.editorial-row .editorial-row-inner .col.content-col .content-col-inner{width:100%;max-width:450px}
+.editorial-row .editorial-row-inner .col.content-col .content-col-inner .squiggle{display:block;line-height:0;width:100px;height:2px;margin-bottom:20px;background:#f6aa1b}
+.editorial-row .editorial-row-inner .col.content-col .content-col-inner h4{font-weight:600;margin-bottom:20px}
+.editorial-row .editorial-row-inner .col.img-col{width:60%}
+.editorial-row .editorial-row-inner .col.img-col .editorial-row-img{width:100%;padding-bottom:80%;background:#f4f8f8;position:relative}
+.editorial-row .editorial-row-inner .col.img-col .editorial-row-img img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%}
+.editorial-row.reverse{padding-right:60px;padding-left:0}
+.editorial-row.reverse .editorial-row-inner{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
+.editorial-row.reverse .editorial-row-inner .col{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}
@@ -245,8 +259,8 @@ h2,.h2{font-size:2.4rem}
 h3,.h3{font-size:1.6rem}
 h4,.h4{font-size:1.6rem}
 h5,.h5{font-size:1.4rem}
-p,.p,.content{font-size:1rem}
-p.p-lg,.p.p-lg,.content.p-lg{font-size:1rem}
+p{font-size:1rem}
+p.p-lg{font-size:1rem}
 .txt-caption{font-size:.7rem}
 section,article{padding:0 30px 0 30px}
 footer{padding:0 30px 0 30px}
@@ -260,7 +274,7 @@ h2,.h2{font-size:2.3rem}
 h3,.h3{font-size:1.5rem}
 h4,.h4{font-size:1.5rem}
 h5,.h5{font-size:1.2rem}
-p.p-lg,.p.p-lg,.content.p-lg{font-size:1rem}
+p.p-lg{font-size:1rem}
 .txt-caption{font-size:.6rem}
 section,article{padding:0 20px 0 20px}
 footer{padding:0 20px 0 20px}

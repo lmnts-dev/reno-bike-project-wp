@@ -108,7 +108,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   @media (max-width: $BaseMediaMd) {
     font-size: 1.6rem;
   }
@@ -132,12 +132,10 @@ h5,
 // body copy
 // #####################################
 
-p,
-.p,
-.content {
+p {
   font-size: 1.2rem;
   font-family: $FntBody;
-  line-height: 1.2;
+  line-height: 1.4;
   letter-spacing: 0.3;
   margin: 0 0 $Base/4 0;
   width: 100%;

@@ -45,12 +45,12 @@ $newsThree->date = 'February 10th, 2020';
 $newsThree->cover = 'https://source.unsplash.com/1600x900/?community';
 
 $newsListings = array($newsOne, $newsTwo, $newsThree);
-
+ 
 ?>
 
 <section class="news-listings">
   <span class="squiggle"></span>
-  
+
   <div class="news-listings-header">
     <h3>
       Latest News
@@ -73,9 +73,9 @@ $newsListings = array($newsOne, $newsTwo, $newsThree);
             <span class="title">
               <?php echo $listing->title ?>
             </span>
-            <span class="excerpt">
+            <p class="excerpt">
               <?php echo $listing->excerpt ?>
-            </span>
+            </p>
           </div>
 
           <div class="actions">
