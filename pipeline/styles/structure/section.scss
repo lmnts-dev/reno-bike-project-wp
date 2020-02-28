@@ -6,7 +6,6 @@ article {
   max-width: $BaseMaxWidth;
   padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
   margin: 0 auto;
-  overflow: hidden;
 
   @media (max-width: $BaseMediaMd) {
     padding: 0 $BaseGutterRightMd 0 $BaseGutterLeftMd;

@@ -65,7 +65,7 @@ $blockList = array($blockOne, $blockTwo);
             </span>
           </div>
           <div class="block-item-image">
-            <img src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" />
+            <img data-src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" class="lazy" />
           </div>
         </div>
       </a>
@@ -80,7 +80,7 @@ $blockList = array($blockOne, $blockTwo);
             </span>
           </div>
           <div class="block-item-image">
-            <img src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" />
+            <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" class="lazy" />
           </div>
         </div>
       </a>
@@ -101,7 +101,7 @@ $blockList = array($blockOne, $blockTwo);
             </span>
           </div>
           <div class="block-item-image">
-            <img src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" />
+            <img data-src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" class="lazy" />
           </div>
         </div>
       </a>
@@ -116,7 +116,7 @@ $blockList = array($blockOne, $blockTwo);
             </span>
           </div>
           <div class="block-item-image">
-            <img src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" />
+            <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" class="lazy" />
           </div>
         </div>
       </a>

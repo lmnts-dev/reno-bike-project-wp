@@ -10,6 +10,8 @@
 .outlined-list {
   background: $clrWhite;
   padding: 0 $Base;
+  width: 100%;
+  overflow: hidden;
 
   .outlined-list-inner {
     // The list itself
@@ -46,7 +48,7 @@
           right: 0;
           top: 0;
           bottom: 0;
-          width: 20%;
+          width: 50%;
           object-fit: cover;
           object-position: 50% 50%;
           pointer-events: none;

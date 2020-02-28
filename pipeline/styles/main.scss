@@ -6,8 +6,9 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-// Reset
+// Vendor
 @import "vendor/normalize";
+@import "vendor/lazy";
 
 // Global Variables
 @import "global/base";
@@ -35,6 +36,7 @@
 @import "components/lib/sections/outlined-list";
 @import "components/lib/sections/home-hero";
 @import "components/lib/sections/block-row";
+@import "components/lib/sections/news-listings";
 
 // Keyframes
 @import "global/keyframes";

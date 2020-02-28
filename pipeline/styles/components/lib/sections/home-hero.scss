@@ -14,9 +14,11 @@
   display: flex;
   align-items: center;
   padding-top: $BaseNavSizeLg + $Base/2;
+  padding-right: 0;
 
   .home-hero-inner {
     display: flex;
+    width: 100%;
 
     // Info Column
     .col-info {
@@ -87,6 +89,7 @@
       flex-direction: column;
       justify-content: center;
       @include fadein(3s);
+      flex: 1;
 
       ul {
         height: 100vh;

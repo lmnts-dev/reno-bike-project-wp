@@ -13,6 +13,7 @@ $fields = get_fields();
 ?>
 
 <?php include 'includes/lib/sections/home-hero.php' ?>
+<?php include 'includes/lib/sections/news-listings.php' ?>
 <?php include 'includes/lib/sections/block-row.php' ?>
 
 <?php include 'includes/core/footer.php'; ?>
