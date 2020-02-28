@@ -1,0 +1,79 @@
+////////////////////////////////////////
+//
+// Block Slider Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.block-slider {
+  position: relative;
+  margin: $Base * 2 0;
+
+  .block-slider-inner {
+    // The Slider Element Itself
+    .block-slider-el {
+      width: 100%;
+      // Individual Slide
+      .block-slide {
+        width: 100%;
+
+        .block-slide-inner {
+          position: relative;
+          height: 80vh;
+          padding-top: $Base * 4;
+
+          .block-slide-content {
+            background: $clrWhite;
+            padding: $Base * 2 $Base $Base * 2 0;
+            max-width: 450px;
+            position: relative;
+            z-index: 2;
+
+            h4 {
+              font-weight: 500;
+              font-size: 7vw;
+            }
+          }
+
+          .block-slide-cover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: $Base * 6;
+            display: flex;
+
+            .block-slide-cover-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              background: $clrSnow;
+
+              img {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                max-width: 100%;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .flickity-page-dots {
+        position: absolute;
+        left: 0;
+        top: $Base * 3;
+        width: auto;
+      }
+    }
+  }
+}

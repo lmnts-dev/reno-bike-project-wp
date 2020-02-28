@@ -9,6 +9,7 @@
 // Vendor
 @import "vendor/normalize";
 @import "vendor/lazy";
+@import "vendor/flickity";
 
 // Global Variables
 @import "global/base";
@@ -38,6 +39,7 @@
 @import "components/lib/sections/block-row";
 @import "components/lib/sections/news-listings";
 @import "components/lib/sections/editorial-row";
+@import "components/lib/sections/block-slider";
 
 // Keyframes
 @import "global/keyframes";

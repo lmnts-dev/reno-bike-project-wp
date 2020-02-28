@@ -36,6 +36,33 @@ ul{list-style-type:none;padding:0;margin:0}
 ul li{margin:0}
 .lazy{opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}
 .lazy.loaded{opacity:1}
+/*! Flickity v2.2.1
+https://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}
+.flickity-enabled:focus{outline:0}
+.flickity-viewport{overflow:hidden;position:relative;height:100%}
+.flickity-slider{position:absolute;width:100%;height:100%}
+.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}
+.flickity-button{position:absolute;background:rgba(255,255,255,0.75);border:0;color:#333}
+.flickity-button:hover{background:#fff;cursor:pointer}
+.flickity-button:focus{outline:0;-webkit-box-shadow:0 0 0 5px #19f;box-shadow:0 0 0 5px #19f}
+.flickity-button:active{opacity:.6}
+.flickity-button:disabled{opacity:.3;cursor:auto;pointer-events:none}
+.flickity-button-icon{fill:currentColor}
+.flickity-prev-next-button{top:50%;width:44px;height:44px;border-radius:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+.flickity-prev-next-button.previous{left:10px}
+.flickity-prev-next-button.next{right:10px}
+.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}
+.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}
+.flickity-prev-next-button .flickity-button-icon{position:absolute;left:20%;top:20%;width:60%;height:60%}
+.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}
+.flickity-rtl .flickity-page-dots{direction:rtl}
+.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}
+.flickity-page-dots .dot.is-selected{opacity:1}
+.flickity-enabled.is-fade .flickity-slider>*{pointer-events:none;z-index:0}
+.flickity-enabled.is-fade .flickity-slider>.is-selected{pointer-events:auto;z-index:1}
 .flex-col-reverse-sm{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin:0 auto;overflow:hidden;width:100%;max-width:1680px}
 .anchor{display:block;position:relative;visibility:hidden;-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:0;margin-inline-end:0;top:-144px}
 body{background-color:#fff;color:#000}
@@ -249,6 +276,16 @@ a,input,button{cursor:none !important}
 .editorial-row.reverse{padding-right:60px;padding-left:0}
 .editorial-row.reverse .editorial-row-inner{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
 .editorial-row.reverse .editorial-row-inner .col{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.block-slider{position:relative;margin:80px 0}
+.block-slider .block-slider-inner .block-slider-el{width:100%}
+.block-slider .block-slider-inner .block-slider-el .block-slide{width:100%}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner{position:relative;height:80vh;padding-top:160px}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-content{background:#fff;padding:80px 40px 80px 0;max-width:450px;position:relative;z-index:2}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-content h4{font-weight:500;font-size:7vw}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover{position:absolute;top:0;right:0;bottom:0;left:240px;display:-webkit-box;display:-ms-flexbox;display:flex}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner{position:relative;width:100%;height:100%;background:#f4f8f8}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%}
+.block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;width:auto}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}

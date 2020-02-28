@@ -70,7 +70,7 @@ if ($editorialRow->reverse == true) {
 </section>
 
 
-<!-- EXAMPLE ROW REMOVE -->
+<!-- @todo: EXAMPLE ROW REMOVE -->
 <section class="editorial-row reverse">
   <div class="editorial-row-inner">
     <div class="col content-col">

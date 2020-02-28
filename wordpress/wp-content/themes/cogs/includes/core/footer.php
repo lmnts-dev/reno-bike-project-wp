@@ -128,6 +128,8 @@ $twitter = 'https://twitter.com/renobikeproject';
   </div>
 </footer>
 
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.5.1/dist/lazyload.min.js"></script>
 <script src="https://unpkg.com/@barba/core"></script>
