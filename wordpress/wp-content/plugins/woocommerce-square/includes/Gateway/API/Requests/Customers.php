@@ -103,6 +103,11 @@ class Customers extends API\Requests\Customers {
 		$request->setBillingAddress( $this->get_address_from_order( $order ) );
 		$request->setCardholderName( $order->get_formatted_billing_full_name() );
 
+		// 3DS / SCA verification token (from JS)
+		if ( ! empty( $order->payment->verification_token ) ) {
+			$request->setVerificationToken( $order->payment->verification_token );
+		}
+
 		$this->square_request = $request;
 
 		$this->square_api_args = [

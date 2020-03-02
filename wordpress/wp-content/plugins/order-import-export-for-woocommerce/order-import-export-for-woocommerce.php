@@ -6,9 +6,9 @@ Plugin URI: https://wordpress.org/plugins/order-import-export-for-woocommerce/
 Description: Export and Import Order detail including line items, From and To your WooCommerce Store.
 Author: WebToffee
 Author URI: https://www.webtoffee.com/product/woocommerce-order-coupon-subscription-export-import/
-Version: 1.5.1
+Version: 1.6.1
 Text Domain: order-import-export-for-woocommerce
-WC tested up to: 3.7.0
+WC tested up to: 3.9.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -24,12 +24,16 @@ define("WF_CPN_IMP_EXP_ID", "wf_cpn_imp_exp");
 define("wf_coupon_csv_im_ex", "wf_coupon_csv_im_ex");
 
 if (!defined('WF_ORDERIMPEXP_CURRENT_VERSION')) {
-    define("WF_ORDERIMPEXP_CURRENT_VERSION", "1.5.1");
+    define("WF_ORDERIMPEXP_CURRENT_VERSION", "1.6.1");
 }
 
 /**
  * Check if WooCommerce is active
  */
+if ( ! in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) { // deactive if woocommerce in not active
+    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    deactivate_plugins( plugin_basename(__FILE__) );
+}
 register_activation_hook(__FILE__, 'wt_order_basic_register_activation_hook_callback');
 
 function wt_order_basic_register_activation_hook_callback() {
@@ -68,7 +72,6 @@ function wt_order_basic_register_activation_hook_callback() {
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'wf_plugin_action_links' ) );
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 			add_action( 'init', array( $this, 'catch_export_request' ), 20 );
-			add_action( 'init', array( $this, 'catch_save_settings' ), 20 );
 			add_action( 'admin_init', array( $this, 'register_importers' ) );
                                                
                         include_once( 'includes/class-wf-orderimpexpcsv-system-status-tools.php' );
@@ -87,8 +90,8 @@ function wt_order_basic_register_activation_hook_callback() {
 			$plugin_links = array(
 				'<a href="' . admin_url( 'admin.php?page=wf_woocommerce_order_im_ex' ) . '">' . __( 'Import Export', 'order-import-export-for-woocommerce' ) . '</a>',
                                 '<a href="https://www.webtoffee.com/product/woocommerce-order-coupon-subscription-export-import/" target="_blank" style="color:#3db634;">' . __( 'Premium Upgrade', 'order-import-export-for-woocommerce' ) . '</a>',	
-                                '<a target="_blank" href="https://www.webtoffee.com/support/">' . __( 'Support', 'order-import-export-for-woocommerce' ) . '</a>',
-                                '<a target="_blank" href="https://wordpress.org/plugins/order-import-export-for-woocommerce/reviews/">' . __('Review', 'order-import-export-for-woocommerce') . '</a>',
+                                '<a target="_blank" href="https://wordpress.org/support/plugin/order-import-export-for-woocommerce/">' . __( 'Support', 'order-import-export-for-woocommerce' ) . '</a>',
+                                '<a target="_blank" href="https://wordpress.org/support/plugin/order-import-export-for-woocommerce/reviews/">' . __('Review', 'order-import-export-for-woocommerce') . '</a>',
 
 			);
                         if (array_key_exists('deactivate', $links)) {
@@ -119,7 +122,7 @@ function wt_order_basic_register_activation_hook_callback() {
 			if ( ! empty( $_GET['action'] ) && ! empty( $_GET['page'] ) && $_GET['page'] == 'wf_woocommerce_order_im_ex' ) {
 				switch ( $_GET['action'] ) {
 					case "export" :
-                                                $user_ok = $this->hf_user_permission();
+                                                $user_ok = self::hf_user_permission();
                                                 if ($user_ok) {
 						include_once( 'includes/exporter/class-wf-orderimpexpcsv-exporter.php' );
 						WF_OrderImpExpCsv_Exporter::do_export( 'shop_order' );
@@ -130,17 +133,7 @@ function wt_order_basic_register_activation_hook_callback() {
 				}
 			}
 		}
-		
-		public function catch_save_settings() {
-			if ( ! empty( $_GET['action'] ) && ! empty( $_GET['page'] ) && $_GET['page'] == 'wf_woocommerce_order_im_ex' ) {
-				switch ( $_GET['action'] ) {
-					case "settings" :
-						include_once( 'includes/settings/class-wf-orderimpexpcsv-settings.php' );
-						WF_OrderImpExpCsv_Settings::save_settings( );
-					break;
-				}
-			}
-		}
+				
 
 		/**
 		 * Register importers for use
@@ -149,19 +142,22 @@ function wt_order_basic_register_activation_hook_callback() {
 			register_importer( 'woocommerce_wf_order_csv', 'WooCommerce Order (CSV)', __('Import <strong>Orders</strong> to your store via a csv file.', 'order-import-export-for-woocommerce'), 'WF_OrderImpExpCsv_Importer::order_importer' );
 		}
                
-                private function hf_user_permission() {
+                public static function hf_user_permission() {
                 // Check if user has rights to export
                 $current_user = wp_get_current_user();
+                $current_user->roles = apply_filters('hf_add_user_roles', $current_user->roles);
+                $current_user->roles = array_unique($current_user->roles);
                 $user_ok = false;
                 $wf_roles = apply_filters('hf_user_permission_roles', array('administrator', 'shop_manager'));
                 if ($current_user instanceof WP_User) {
                     $can_users = array_intersect($wf_roles, $current_user->roles);
-                    if (!empty($can_users)) {
+                    if (!empty($can_users) || is_super_admin($current_user->ID)) {
                         $user_ok = true;
                     }
                 }
                 return $user_ok;
                 }
+
 	}
 	endif;
 
@@ -190,7 +186,6 @@ function wt_order_basic_register_activation_hook_callback() {
                 add_filter('woocommerce_screen_ids', array($this, 'woocommerce_screen_ids'));
                 add_action('init', array($this, 'load_plugin_textdomain'));
                 add_action('init', array($this, 'catch_export_request'), 20);
-                add_action('init', array($this, 'catch_save_settings'), 20);
                 add_action('admin_init', array($this, 'register_importers'));
 
                 include_once( 'includes/class-wf-cpnimpexpcsv-admin-screen.php' );
@@ -248,7 +243,7 @@ function wt_order_basic_register_activation_hook_callback() {
                 if (!empty($_GET['action']) && !empty($_GET['page']) && $_GET['page'] == 'wf_coupon_csv_im_ex') {
                     switch ($_GET['action']) {
                         case "export" :
-                            $user_ok = $this->hf_user_permission();
+                            $user_ok = self::hf_user_permission();
                             if ($user_ok) {
                                 include_once( 'includes/exporter/class-wf-cpnimpexpcsv-exporter.php' );
                                 WF_CpnImpExpCsv_Exporter::do_export('shop_coupon');
@@ -258,39 +253,30 @@ function wt_order_basic_register_activation_hook_callback() {
                             break;
                     }
                 }
-            }
-
-            public function catch_save_settings() {
-                if (!empty($_GET['action']) && !empty($_GET['page']) && $_GET['page'] == 'wf_coupon_csv_im_ex') {
-                    switch ($_GET['action']) {
-                        case "settings" :
-                            include_once( 'includes/settings/class-wf-allimpexpcsv-settings.php' );
-                            wf_allImpExpCsv_Settings::save_settings();
-                            break;
-                    }
-                }
-            }
+            }            
 
             /**
              * Register importers for use
              */
             public function register_importers() {
                 register_importer('coupon_csv', 'WooCommerce Coupons (CSV)', __('Import <strong>coupon</strong> to your store via a csv file.', 'order-import-export-for-woocommerce'), 'WF_CpnImpExpCsv_Importer::coupon_importer');
-            }
+            }    
 
-            private function hf_user_permission() {
+            public static function hf_user_permission() {
                 // Check if user has rights to export
                 $current_user = wp_get_current_user();
+                $current_user->roles = apply_filters('hf_add_user_roles', $current_user->roles);
+                $current_user->roles = array_unique($current_user->roles);
                 $user_ok = false;
                 $wf_roles = apply_filters('hf_user_permission_roles', array('administrator', 'shop_manager'));
                 if ($current_user instanceof WP_User) {
                     $can_users = array_intersect($wf_roles, $current_user->roles);
-                    if (!empty($can_users)) {
+                    if (!empty($can_users) || is_super_admin($current_user->ID)) {
                         $user_ok = true;
                     }
                 }
                 return $user_ok;
-            }
+                }
             
             
         }
@@ -309,7 +295,7 @@ function wt_order_basic_register_activation_hook_callback() {
 // } 
 function webtoffee_storefrog_admin_notices() {
 
-    if (apply_filters('webtoffee_storefrog_suppress_admin_notices', false)) {
+    if (apply_filters('webtoffee_storefrog_suppress_admin_notices', false) || !WF_Order_Import_Export_CSV::hf_user_permission()) {
         return;
     }
     $screen = get_current_screen();
@@ -335,7 +321,7 @@ function webtoffee_storefrog_admin_notices() {
 
 function webtoffee_storefrog_notice_dismiss() {
 
-    if (!current_user_can('manage_woocommerce')) {
+    if (!WF_Order_Import_Export_CSV::hf_user_permission()) {
         wp_die(-1);
     }
     update_option('OCSEIPF_Webtoffee_storefrog_admin_notices_dismissed', 1);
@@ -349,7 +335,7 @@ add_filter('admin_footer_text', 'WT_admin_footer_text', 100);
 add_action('wp_ajax_ocsie_wt_review_plugin', "review_plugin");
 
 function WT_admin_footer_text($footer_text) {
-    if (!current_user_can('manage_woocommerce') || !function_exists('wc_get_screen_ids')) {
+    if (!WF_Order_Import_Export_CSV::hf_user_permission()) {
         return $footer_text;
     }
     $screen = get_current_screen();
@@ -374,7 +360,7 @@ function WT_admin_footer_text($footer_text) {
 }
 
 function review_plugin() {
-    if (!current_user_can('manage_woocommerce')) {
+    if (!WF_Order_Import_Export_CSV::hf_user_permission()) {
         wp_die(-1);
     }
     update_option('ocsie_wt_plugin_reviewed', 1);

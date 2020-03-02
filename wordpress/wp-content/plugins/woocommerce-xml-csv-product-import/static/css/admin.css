@@ -538,3 +538,16 @@ div#order_taxes.panel.woocommerce_options_panel {
 	display: block;
 }
 
+.wpallimport-plugin .woocommerce-group-label {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.wpallimport-plugin .subscription-billing-settings .subscription-billing-interval,
+.wpallimport-plugin .subscription-billing-settings .subscription-billing-period {
+	float: left;
+	width: 45%;
+	margin-bottom: 10px;
+}
+.wpallimport-plugin .subscription-expiration {
+	margin-bottom: 10px;
+}

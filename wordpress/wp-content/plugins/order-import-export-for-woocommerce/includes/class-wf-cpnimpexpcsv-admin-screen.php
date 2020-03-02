@@ -62,9 +62,7 @@ class WF_CpnImpExpCsv_Admin_Screen {
 			if( $_GET['tab'] == 'export' ) {
 				$tab = 'export';
 			}
-			else if ( $_GET['tab'] == 'settings' ) {
-				$tab = 'settings';
-			}
+			
             else if ( $_GET['tab'] == 'coupon' ) {
                 $tab = 'coupon';
             }
@@ -91,10 +89,6 @@ class WF_CpnImpExpCsv_Admin_Screen {
         include( 'views/export/html-wf-export-coupons.php' );
     }
 
-	public function admin_settings_page() 
-    {
-		include( 'views/settings/html-wf-all-settings.php' );
-	}
 }
 
 new WF_CpnImpExpCsv_Admin_Screen();

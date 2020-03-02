@@ -49,6 +49,13 @@ button,
     padding: 0 $Base 0 0;
     position: relative;
     box-shadow: none;
+    color: $clrPrimary;
+
+    &:visited,
+    &:active,
+    &:hover {
+      color: $clrPrimary;
+    }
 
     &:after {
       content: "▶";

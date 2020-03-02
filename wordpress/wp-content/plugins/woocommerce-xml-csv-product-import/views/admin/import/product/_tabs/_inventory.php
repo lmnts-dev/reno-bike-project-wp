@@ -6,9 +6,7 @@
     </div>
     <?php endif; ?>
 	<div class="options_group show_if_simple show_if_variable">
-		
 		<p class="form-field"><?php _e("Manage stock?", PMWI_Plugin::TEXT_DOMAIN); ?></p>
-		
 		<p class="form-field wpallimport-radio-field">
 			<input type="radio" id="is_product_manage_stock_yes" class="switcher" name="is_product_manage_stock" value="yes" <?php echo 'yes' == $post['is_product_manage_stock'] ? 'checked="checked"': '' ?>/>
 			<label for="is_product_manage_stock_yes"><?php _e("Yes"); ?></label>
@@ -30,7 +28,7 @@
 		</div>
 		
 	</div>
-	<div class="options_group stock_fields show_if_simple show_if_variable">
+	<div class="options_group stock_fields show_if_simple show_if_variable show_if_subscription">
 		<p class="form-field" style="margin-top:0;">
 			<label><?php _e("Stock Qty", PMWI_Plugin::TEXT_DOMAIN); ?></label>
 			<input type="text" class="short" name="single_product_stock_qty" value="<?php echo esc_attr($post['single_product_stock_qty']) ?>"/>			
@@ -71,7 +69,7 @@
 		
 	</div>	
 
-	<div class="options_group show_if_simple show_if_variable">
+	<div class="options_group show_if_simple show_if_variable show_if_subscription">
 		
 		<p class="form-field"><?php _e('Allow Backorders?',PMWI_Plugin::TEXT_DOMAIN);?></p>
 		
@@ -100,7 +98,7 @@
 		</div>
 		
 	</div>
-	<div class="options_group show_if_simple show_if_variable">
+	<div class="options_group show_if_simple show_if_variable show_if_subscription">
 		
 		<p class="form-field"><?php _e('Sold Individually?',PMWI_Plugin::TEXT_DOMAIN);?></p>
 		

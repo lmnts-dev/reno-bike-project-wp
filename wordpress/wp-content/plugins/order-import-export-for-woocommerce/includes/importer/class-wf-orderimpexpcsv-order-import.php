@@ -60,7 +60,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
             $this->merge_empty_cells = 0;
         }
 
-        $step = empty($_GET['step']) ? 0 : (int) $_GET['step'];
+        $step = empty($_GET['step']) ? 0 : absint( $_GET['step']);
 
         switch ($step) {
             case 0 :
@@ -73,9 +73,9 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 check_admin_referer('import-upload');
 
                 if (!empty($_GET['file_url']))
-                    $this->file_url = esc_attr($_GET['file_url']);
+                    $this->file_url = esc_url_raw($_GET['file_url']);
                 if (!empty($_GET['file_id']))
-                    $this->id = $_GET['file_id'];
+                    $this->id = absint ($_GET['file_id']);
 
                 if (!empty($_GET['clearmapping']) || $this->handle_upload())
                     $this->import_options();
@@ -87,10 +87,10 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
 
                 check_admin_referer('import-woocommerce');
 
-                $this->id = (int) $_POST['import_id'];
+                $this->id = absint( $_POST['import_id']);
 
                 if ($this->file_url_import_enabled)
-                    $this->file_url = esc_attr($_POST['import_url']);
+                    $this->file_url = esc_url_raw($_POST['import_url']);
 
                 if ($this->id)
                     $file = get_attached_file($this->id);
@@ -100,6 +100,11 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 $file = str_replace("\\", "/", $file);
 
                 if ($file) {
+                    $file_delimiter = $this->detectDelimiter($file);
+                    if(!empty($file_delimiter) && ($file_delimiter != $this->delimiter)){
+                        echo '<p class="error"><strong>' . __("Basic version supports only ',' as delimiter. Your file's delimiter seems to be unsupported.", 'users-customers-import-export-for-wp-woocommerce') . '</strong></p>';
+                        break;
+                    }
                     ?>
                     <table id="import-progress" class="widefat_importer widefat">
                         <thead>
@@ -133,6 +138,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                                     merge_empty_cells: '<?php echo $this->merge_empty_cells; ?>',
                                     start_pos:  start_pos,
                                     end_pos:    end_pos,
+                                    wt_nonce : '<?php echo wp_create_nonce( WF_ORDER_IMP_EXP_ID )?>',
                                 };
                                 return $.ajax({
                                     url:        '<?php echo add_query_arg(array('import_page' => $this->import_page, 'step' => '3', 'merge' => !empty($_GET['merge']) ? '1' : '0'), admin_url('admin-ajax.php')); ?>',
@@ -227,6 +233,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                                     file: '<?php echo $file; ?>',
                                     processed_terms: processed_terms,
                                     processed_posts: processed_posts,
+                                    wt_nonce : '<?php echo wp_create_nonce( WF_ORDER_IMP_EXP_ID )?>',
                                 };
                                 $.ajax({
                                     url: '<?php echo add_query_arg(array('import_page' => $this->import_page, 'step' => '4', 'merge' => !empty($_GET['merge']) ? 1 : 0), admin_url('admin-ajax.php')); ?>',
@@ -246,17 +253,21 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 }
                 break;
             case 3 :
-                // Check access - cannot use nonce here as it will expire after multiple requests
-                if (!current_user_can('manage_woocommerce'))
+                $nonce = (isset($_POST['wt_nonce']) ? sanitize_text_field($_POST['wt_nonce']) : '');
+                if (!wp_verify_nonce($nonce, WF_ORDER_IMP_EXP_ID) || !WF_Order_Import_Export_CSV::hf_user_permission()) {
+                    wp_die(__('Access Denied', 'order-import-export-for-woocommerce'));
+                }
+                $file      = stripslashes( $_POST['file'] ); // Validating given path is valid path, not a URL
+                if (filter_var($file, FILTER_VALIDATE_URL)) {
                     die();
+                }
                 add_filter('http_request_timeout', array($this, 'bump_request_timeout'));
                 if (function_exists('gc_enable'))
                     gc_enable();
                 @set_time_limit(0);
                 @ob_flush();
                 @flush();
-                $wpdb->hide_errors();
-                $file = stripslashes($_POST['file']);
+                $wpdb->hide_errors();               
                 $start_pos = isset($_POST['start_pos']) ? absint($_POST['start_pos']) : 0;
                 $end_pos = isset($_POST['end_pos']) ? absint($_POST['end_pos']) : '';
                 $position = $this->import_start($file, $start_pos, $end_pos);
@@ -272,9 +283,10 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 exit;
                 break;
             case 4 :
-                // Check access - cannot use nonce here as it will expire after multiple requests
-                if (!current_user_can('manage_woocommerce'))
-                    die();
+                $nonce = (isset($_POST['wt_nonce']) ? sanitize_text_field($_POST['wt_nonce']) : '');
+                if (!wp_verify_nonce($nonce, WF_ORDER_IMP_EXP_ID) || !WF_Order_Import_Export_CSV::hf_user_permission()) {
+                    wp_die(__('Access Denied', 'order-import-export-for-woocommerce'));
+                }
                 add_filter('http_request_timeout', array($this, 'bump_request_timeout'));
                 if (function_exists('gc_enable'))
                     gc_enable();
@@ -282,8 +294,9 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 @ob_flush();
                 @flush();
                 $wpdb->hide_errors();
-                $this->processed_terms = isset($_POST['processed_terms']) ? $_POST['processed_terms'] : array();
-                $this->processed_posts = isset($_POST['processed_posts']) ? $_POST['processed_posts'] : array();
+                $this->processed_terms = isset($_POST['processed_terms']) ? wc_clean($_POST['processed_terms']) : array();
+                $this->processed_posts = isset($_POST['processed_posts']) ? array_map('intval', $_POST['processed_posts']) : array();
+                $file = isset($_POST['file']) ? stripslashes($_POST['file']) : '';                                 
 
                 _e('Step 1...', 'order-import-export-for-woocommerce') . ' ';
 
@@ -299,7 +312,12 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 // SUCCESS
                 _e('Finished. Import complete.', 'order-import-export-for-woocommerce');
 
+                
+                if(in_array(pathinfo($file, PATHINFO_EXTENSION),array('txt','csv'))){
+                    unlink($file);
+                }
                 $this->import_end();
+               
                 exit;
                 break;
         }
@@ -360,7 +378,11 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
         $merging = 1;
         $record_offset = 0;
         foreach ($this->parsed_data as $key => &$item) {
-            $order = $this->parser->parse_orders($item, $this->raw_headers, $merging, $record_offset);
+            $order = $this->parser->parse_orders($item, $this->raw_headers, $merging, $record_offset);            
+            if (empty($order)) {
+                unset($item, $order);
+                continue;
+            }            
             if (!is_wp_error($order))
                 $this->process_orders($order['shop_order'][0]);
             else
@@ -416,11 +438,11 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 echo esc_html($file['error']) . '</p>';
                 return false;
             }
-            $this->id = (int) $file['id'];
+            $this->id = absint($file['id']) ;
             return true;
         } else {
             if (file_exists(ABSPATH . $_POST['file_url'])) {
-                $this->file_url = esc_attr($_POST['file_url']);
+                $this->file_url = esc_url_raw($_POST['file_url']);
                 return true;
             } else {
                 echo '<p><strong>' . __('Sorry, there has been an error.', 'order-import-export-for-woocommerce') . '</strong></p>';
@@ -595,10 +617,13 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                         }
                     }
                 }
+                if(get_post_type($item['product_id']) == 'product_variation'){
+                    $item['product_id'] = wp_get_post_parent_id($item['product_id']);
+                }
 
                 // order item
                 $order_items[] = array(
-                    'order_item_name' => $product ? $product->get_title() : (!empty($item['unknown_product_name']) ? $item['unknown_product_name'] : __('Unknown Product', 'order-import-export-for-woocommerce')),
+                    'order_item_name' => $product ? $product->get_name() : (!empty($item['unknown_product_name']) ? $item['unknown_product_name'] : __('Unknown Product', 'order-import-export-for-woocommerce')),
                     'order_item_type' => 'line_item',
                 );
 
@@ -612,7 +637,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 }
                 // standard order item meta
                 $_order_item_meta = array(
-                    '_qty' => (int) $item['qty'],
+                    '_qty' => absint($item['qty']) ,
                     '_tax_class' => '', // Tax class (adjusted by filters)
                     '_product_id' => $item['product_id'],
                     '_variation_id' => $var_id,
@@ -652,7 +677,16 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                     wc_add_order_item_meta($shipping_order_item_id, 'cost', $order_shipping['cost']);
                 }
             }
-            
+             if (!empty($post['shipping_items'])) {
+                foreach ($post['shipping_items'] as $key => $value) {
+                    if ($shipping_order_item_id) {
+                        wc_add_order_item_meta($shipping_order_item_id, $key, $value);
+                    } else {
+                        $shipping_order_item_id = wc_add_order_item($order_id, $shipping_order_item);
+                        wc_add_order_item_meta($shipping_order_item_id, $key, $value);
+                    }
+                }
+            }
             // create the fee order items
             if (!empty($post['fee_items'])) {
                 if ($merging && $is_order_exist) {
@@ -766,6 +800,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                 if ($merging && $is_order_exist) {
                     $wpdb->query($wpdb->prepare("DELETE comments,meta FROM {$wpdb->prefix}comments comments LEFT JOIN {$wpdb->prefix}commentmeta meta ON comments.comment_ID = meta.comment_id WHERE comments.comment_post_ID = %d",$order_id));
                 }
+
                 foreach ($post['notes'] as $order_note) {
                     $note = explode('|', $order_note);
                     $con = array_shift($note);
@@ -774,10 +809,17 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
                     $date = substr($date, strpos($date, ":") + 1);
                     $cus = array_shift($note);
                     $cus = substr($cus, strpos($cus, ":") + 1);
+                    $system = array_shift($note);
+                    $added_by = substr($system, strpos($system, ":") + 1);
+                    if($added_by == 'system'){
+                        $added_by_user = FALSE;
+                    }else{
+                        $added_by_user = TRUE;
+                    }
                     if($cus == '1'){
                         $comment_id = $order->add_order_note($con,1,1);
                     } else {
-                        $comment_id = $order->add_order_note($con);
+                        $comment_id = $order->add_order_note($con,0,$added_by_user);
                     }
                     wp_update_comment(array('comment_ID' => $comment_id,'comment_date' => $date));
                 }
@@ -838,7 +880,7 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
     /**
      * Log a row's import status
      */
-    protected function add_import_result($status, $reason, $post_id = '', $post_title = '', $order_number = '') {
+    public function add_import_result($status, $reason, $post_id = '', $post_title = '', $order_number = '') {
         $this->import_results[] = array(
             'post_title' => $post_title,
             'post_id' => $post_id,
@@ -895,5 +937,22 @@ class WF_OrderImpExpCsv_Order_Import extends WP_Importer {
             $context = array('source' => $content);
             $this->log->log("debug", $data, $context);
         }
+    }
+    
+    public function detectDelimiter($csvFile) {
+        $delimiters = array(
+            ';' => 0,
+            ',' => 0,
+            "\t" => 0,
+            "|" => 0
+        );
+
+        $handle = fopen($csvFile, "r");
+        $firstLine = fgets($handle);
+        fclose($handle); 
+        foreach ($delimiters as $delimiter => &$count) {
+            $count = count(str_getcsv($firstLine, $delimiter));
+        }
+        return array_search(max($delimiters), $delimiters);
     }
 }

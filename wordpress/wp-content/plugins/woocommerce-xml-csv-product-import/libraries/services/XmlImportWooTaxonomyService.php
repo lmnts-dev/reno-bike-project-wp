@@ -113,13 +113,6 @@ class XmlImportWooTaxonomyService extends XmlImportWooServiceBase {
             }
         }
 
-        // Clear WooCommerce attributes cache.
-        $prefix      = WC_Cache_Helper::get_cache_prefix( 'woocommerce-attributes' );
-        foreach (['ids', 'attributes'] as $cache_key) {
-            wp_cache_delete( $prefix . $cache_key, 'woocommerce-attributes' );
-        }
-        delete_transient( 'wc_attribute_taxonomies' );
-
         if (!wc_attribute_taxonomy_id_by_name($attr_name_real) && strlen($attribute_name) < 31) {
             $this->createWooCommerceAttribute($args);
         }
@@ -131,11 +124,18 @@ class XmlImportWooTaxonomyService extends XmlImportWooServiceBase {
      * @param $args
      */
     public function createWooCommerceAttribute($args) {
+        // Clear WooCommerce attributes cache.
+        $prefix = WC_Cache_Helper::get_cache_prefix('woocommerce-attributes');
+        foreach (['ids', 'attributes'] as $cache_key) {
+            wp_cache_delete($prefix . $cache_key, 'woocommerce-attributes');
+        }
+        delete_transient('wc_attribute_taxonomies');
+
         $this->wpdb->insert(
             $this->wpdb->prefix . 'woocommerce_attribute_taxonomies',
             $args
         );
-        $attribute_taxonomies = $this->wpdb->get_results( "SELECT * FROM " . $this->wpdb->prefix . "woocommerce_attribute_taxonomies" );
+        $attribute_taxonomies = $this->wpdb->get_results( "SELECT * FROM " . $this->wpdb->prefix . "woocommerce_attribute_taxonomies WHERE attribute_name != '' ORDER BY attribute_name ASC;" );
         set_transient( 'wc_attribute_taxonomies', $attribute_taxonomies );
     }
 }

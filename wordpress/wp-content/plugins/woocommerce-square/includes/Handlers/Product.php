@@ -26,6 +26,7 @@ namespace WooCommerce\Square\Handlers;
 use SkyVerge\WooCommerce\PluginFramework\v5_4_0 as Framework;
 use SquareConnect\Model\CatalogObject;
 use WooCommerce\Square\Utilities\Money_Utility;
+use WooCommerce\Square\Sync\Records;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -121,7 +122,10 @@ class Product {
 					$variation->update_meta_data( self::SQUARE_VARIATION_ID_META_KEY, $catalog_variation->getId() );
 
 					$variation->set_name( $catalog_variation->getItemVariationData()->getName() );
-					$variation->set_regular_price( Money_Utility::cents_to_float( $catalog_variation->getItemVariationData()->getPriceMoney()->getAmount() ) );
+
+					if ( $catalog_variation->getItemVariationData()->getPriceMoney() ) {
+						$variation->set_regular_price( Money_Utility::cents_to_float( $catalog_variation->getItemVariationData()->getPriceMoney()->getAmount() ) );
+					}
 
 					if ( $with_inventory && wc_square()->get_settings_handler()->is_inventory_sync_enabled() ) {
 						self::update_stock_from_square( $variation, false );
@@ -153,7 +157,9 @@ class Product {
 
 			$product->update_meta_data( self::SQUARE_VARIATION_ID_META_KEY, $catalog_variation->getId() );
 
-			$product->set_regular_price( Money_Utility::cents_to_float( $catalog_variation->getItemVariationData()->getPriceMoney()->getAmount() ) );
+			if ( $catalog_variation->getItemVariationData()->getPriceMoney() ) {
+				$product->set_regular_price( Money_Utility::cents_to_float( $catalog_variation->getItemVariationData()->getPriceMoney()->getAmount() ) );
+			}
 
 			if ( $with_inventory && wc_square()->get_settings_handler()->is_inventory_sync_enabled() ) {
 				self::update_stock_from_square( $product, false );
@@ -161,6 +167,33 @@ class Product {
 		}
 
 		$product->set_name( wc_clean( $catalog_item->getName() ) );
+		$product->set_description( $catalog_item->getDescription() );
+
+		$category_id = Category::get_category_id_by_square_id( $catalog_item->getCategoryId() );
+
+		if ( $category_id ) {
+			wp_set_object_terms( $product->get_id(), intval( $category_id ), 'product_cat' );
+		} else {
+			$message = sprintf(
+				/* translators: Placeholder: %s category ID */
+				__( 'Square category with id (%s) was not imported to your Store. Please run Import Products from Square settings.', 'woocommerce-square' ),
+				$catalog_item->getCategoryId()
+			);
+
+			$records = Records::get_records();
+			foreach ($records as $record) {
+				if ( $record->get_message() === $message ) {
+					$is_recorded = true;
+				}
+			}
+
+			if ( ! isset( $is_recorded ) ) {
+				Records::set_record( [
+					'type'       => 'alert',
+					'message'    => $message,
+				] );
+			}
+		}
 
 		if ( $catalog_id ) {
 			$product->update_meta_data( self::SQUARE_ID_META_KEY, $catalog_id );
@@ -465,11 +498,22 @@ class Product {
 		return (bool) apply_filters( 'wc_square_product_can_sync_with_square', $can_sync, $product );
 	}
 
+	/**
+	 * Return a link to the product's edit page
+	 *
+	 * @since 2.0.8
+	 *
+	 * @param \WC_Product $product product object
+	 * @return string
+	 */
+	public static function get_product_edit_link( \WC_Product $product ) {
+		return '<a href="' . esc_url( get_edit_post_link( $product->get_id() ) ) . '">' . esc_html( $product->get_formatted_name() ) . '</a>';
+	}
 
 	/**
 	 * Determines if a product has a SKU set.
 	 *
-	 * For variable products, this checks if at least one of its variations has a SKU.
+	 * For variable products, this checks if all of its variations have a SKU.
 	 *
 	 * @since 2.0.2
 	 *
@@ -477,27 +521,18 @@ class Product {
 	 * @return bool
 	 */
 	public static function has_sku( \WC_Product $product ) {
+		if ( $product->is_type( 'variable' ) && $product->has_child() ) {
+			foreach ( $product->get_children() as $variation_id ) {
+				$variation = wc_get_product( $variation_id );
 
-		$has_sku = (bool) $product->get_sku();
-
-		if ( ! $has_sku && $product->is_type( 'variable' ) ) {
-
-			foreach ( $product->get_children() as $child ) {
-
-				$child = wc_get_product( $child );
-
-				if ( ! $child instanceof \WC_Product ) {
-					continue;
-				}
-
-				if ( $child->get_sku() ) {
-					$has_sku = true;
-					break;
+				if ( $variation instanceof \WC_Product && empty( $variation->get_sku() ) ) {
+					return false;
 				}
 			}
+			return true;
 		}
 
-		return $has_sku;
+		return ! empty( $product->get_sku() );
 	}
 
 
@@ -1282,14 +1317,14 @@ class Product {
 
 
 	/**
-	 * Gets an InventoryChange object for a given product.
+	 * Gets an InventoryChange object filled with a \SquareConnect\Model\InventoryPhysicalCount object for a given product.
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param \WC_Product $product the product object
 	 * @return \SquareConnect\Model\InventoryChange|null
 	 */
-	public static function get_inventory_change( \WC_Product $product ) {
+	public static function get_inventory_change_physical_count_type( \WC_Product $product ) {
 
 		$inventory_change = null;
 
@@ -1311,4 +1346,44 @@ class Product {
 	}
 
 
+	/**
+	 * Gets an InventoryChange object filled with a \SquareConnect\Model\InventoryAdjustment object for a given product.
+	 *
+	 * @since 2.0.8
+	 *
+	 * @param \WC_Product $product the product object
+	 * @param int $adjustment Value can negative or positive.
+	 *
+	 * @return \SquareConnect\Model\InventoryChange|null
+	 */
+	public static function get_inventory_change_adjustment_type( \WC_Product $product, $adjustment ) {
+
+		$square_variation_id = self::get_square_item_variation_id( $product->get_id(), false );
+
+		if ( empty( $square_variation_id ) || 0 === $adjustment) {
+			return null;
+		}
+
+		if ( 0 > $adjustment ) {
+			$from = 'IN_STOCK';
+			$to   = 'SOLD';
+		} else {
+			$from = 'NONE';
+			$to   = 'IN_STOCK';
+		}
+
+		$inventory_change = new \SquareConnect\Model\InventoryChange([
+			'type'           => 'ADJUSTMENT',
+			'adjustment' => new \SquareConnect\Model\InventoryAdjustment([
+				'catalog_object_id' => $square_variation_id,
+				'location_id'       => wc_square()->get_settings_handler()->get_location_id(),
+				'quantity'          => '' . absint( $adjustment ),
+				'from_state'        => $from,
+				'to_state'          => $to,
+				'occurred_at'       => date( 'Y-m-d\TH:i:sP' ),
+			]),
+		]);
+
+		return $inventory_change;
+	}
 }

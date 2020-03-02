@@ -25,7 +25,6 @@ namespace WooCommerce\Square;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_4_0 as Framework;
 use WooCommerce\Square\Handlers\Product;
 
 /**
@@ -36,7 +35,7 @@ use WooCommerce\Square\Handlers\Product;
 class Admin {
 
 
-	/** @var Admin\Products */
+	/** @var Handlers\Products */
 	private $products_handler;
 
 	/** @var Admin\Privacy */
@@ -57,8 +56,12 @@ class Admin {
 
 		$this->plugin = $plugin;
 
-		$this->products_handler = new Admin\Products();
-		$this->privacy_handler  = new Admin\Privacy();
+		$this->products_handler = $this->plugin->get_products_handler();
+
+		// privacy
+		if ( version_compare( WC_VERSION, '3.4', '>=' ) ) {
+			$this->privacy_handler = new Admin\Privacy();
+		}
 
 		$this->add_hooks();
 	}

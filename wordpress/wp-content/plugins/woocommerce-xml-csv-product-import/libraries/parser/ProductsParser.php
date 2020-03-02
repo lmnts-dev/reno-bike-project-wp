@@ -82,7 +82,9 @@ class ProductsParser extends ProductsParserBase  {
                 'product_up_sells',
                 'product_cross_sells',
                 'product_purchase_note',
-                'product_menu_order'
+                'product_menu_order',
+                'product_subscription_price',
+                'product_subscription_sign_up_fee',
             ),
             'parseOptionType_4' => array(
                 'sale_price_dates_from',
@@ -92,7 +94,12 @@ class ProductsParser extends ProductsParserBase  {
                 'type',
                 'tax_status',
                 'tax_class',
-                'shipping_class'
+                'shipping_class',
+                'subscription_period',
+                'subscription_period_interval',
+                'subscription_trial_period',
+                'subscription_length',
+                'subscription_limit',
             ),
             'parseStockStatus' => array(),
             'parseGroupingProducts' => array(),

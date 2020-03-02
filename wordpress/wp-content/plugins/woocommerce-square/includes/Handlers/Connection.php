@@ -49,13 +49,6 @@ class Connection {
 	/** @var string sandbox refresh URL */
 	const REFRESH_URL_SANDBOX = 'https://connect.woocommerce.com/renew/squaresandbox';
 
-	/** @var string production revoke URL */
-	const REVOKE_URL_PRODUCTION = 'https://connect.woocommerce.com/revoke/square';
-
-	/** @var string sandbox revoke URL */
-	const REVOKE_URL_SANDBOX = 'https://connect.woocommerce.com/revoke/squaresandbox';
-
-
 	/** @var Square\Plugin plugin instance */
 	protected $plugin;
 
@@ -86,9 +79,6 @@ class Connection {
 
 		add_action( 'admin_action_wc_' . $this->get_plugin()->get_id() . '_disconnect', [ $this, 'handle_disconnect' ] );
 
-		// ensure the token refresh is scheduled whenever Square is connected
-		add_action( 'init', [ $this, 'schedule_refresh' ] );
-
 		// refresh the connection, triggered by Action Scheduler
 		add_action( 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection', [ $this, 'refresh_connection' ] );
 
@@ -113,27 +103,46 @@ class Connection {
 			wp_die( __( 'Sorry, you do not have permission to manage the Square connection.', 'woocommerce-square' ) );
 		}
 
-		$token = ! empty( $_GET['square_access_token'] ) ? sanitize_text_field( urldecode( $_GET['square_access_token'] ) ) : '';
+		$access_token = ! empty( $_GET['square_access_token'] ) ? sanitize_text_field( urldecode( $_GET['square_access_token'] ) ) : '';
 
-		if ( $token ) {
-
-			$this->get_plugin()->get_settings_handler()->update_access_token( $token );
-
-			$this->schedule_customer_index();
-
-			// on connect after upgrading to v2.0 from v1.0, initiate a catalog sync to refresh the Square item IDs
-			if ( get_option( 'wc_square_updated_to_2_0_0' ) ) {
-
-				// delete any old access token from v1, as it will be invalidated
-				delete_option( 'woocommerce_square_merchant_access_token' );
-
-				if ( $this->get_plugin()->get_settings_handler()->is_system_of_record_square() ) {
-					$this->get_plugin()->get_sync_handler()->start_manual_sync();
-				}
-			}
-
-			delete_option( 'wc_square_updated_to_2_0_0' );
+		if ( empty( $access_token ) ) {
+			$this->get_plugin()->log( 'Error: No access token was received.' );
+			add_action( 'admin_notices', function () {
+			?>
+				<div class="notice notice-error is-dismissible">
+					<p><?php _e( 'Square Error: We could not connect to Square. No access token was given.!', 'woocommerce-square' ); ?></p>
+				</div>
+			<?php
+			});
+			return;
 		}
+
+		$this->get_plugin()->get_settings_handler()->update_access_token( $access_token );
+		$this->get_plugin()->log( 'Access token successfully received.' );
+
+		$refresh_token = ! empty( $_GET['square_refresh_token'] ) ? sanitize_text_field( urldecode( $_GET['square_refresh_token'] ) ) : '';
+		if ( empty( $refresh_token ) ) {
+			$this->get_plugin()->log( 'Failed to receive refresh token from connect server.' );
+		} else {
+			$this->get_plugin()->get_settings_handler()->update_refresh_token( $refresh_token );
+			$this->get_plugin()->log( 'Refresh token successfully received.' );
+		}
+
+		$this->schedule_refresh();
+		$this->schedule_customer_index();
+
+		// on connect after upgrading to v2.0 from v1.0, initiate a catalog sync to refresh the Square item IDs
+		if ( get_option( 'wc_square_updated_to_2_0_0' ) ) {
+
+			// delete any old access token from v1, as it will be invalidated
+			delete_option( 'woocommerce_square_merchant_access_token' );
+
+			if ( $this->get_plugin()->get_settings_handler()->is_system_of_record_square() ) {
+				$this->get_plugin()->get_sync_handler()->start_manual_sync();
+			}
+		}
+
+		delete_option( 'wc_square_updated_to_2_0_0' );
 
 		wp_safe_redirect( $this->get_plugin()->get_settings_url() );
 		exit;
@@ -159,29 +168,7 @@ class Connection {
 			wp_die( __( 'Sorry, you do not have permission to manage the Square connection.', 'woocommerce-square' ) );
 		}
 
-		try {
-
-			// make the request
-			$response = wp_remote_post( $this->get_revoke_url(), [
-				'body' => [
-					'token' => $this->get_plugin()->get_settings_handler()->get_access_token(),
-					'url'   => admin_url(),
-				],
-				'timeout' => 45,
-			] );
-
-			// handle HTTP errors
-			if ( is_wp_error( $response ) ) {
-				throw new Framework\SV_WC_Plugin_Exception( $response->get_error_message() );
-			}
-
-		} catch ( Framework\SV_WC_Plugin_Exception $exception ) {
-
-			// log the failure, but still disconnect below
-			$this->get_plugin()->log( 'Could not revoke token remotely. ' . $exception->getMessage() );
-		}
-
-		// fully disconnect by clearing tokens, unscheduling syncs, etc...
+		// disconnect by clearing tokens, unscheduling syncs, etc...
 		$this->disconnect();
 
 		$this->get_plugin()->log( 'Manually disconnected' );
@@ -208,6 +195,7 @@ class Connection {
 
 		// fully clear the access token
 		$this->get_plugin()->get_settings_handler()->clear_access_tokens();
+		$this->get_plugin()->get_settings_handler()->clear_refresh_tokens();
 
 		// clear all background jobs so further API requests aren't attempted
 		$this->get_plugin()->get_background_job_handler()->clear_all_jobs();
@@ -237,9 +225,10 @@ class Connection {
 		 */
 		$interval = apply_filters( 'wc_' . $this->get_plugin()->get_id() . '_connection_refresh_interval', WEEK_IN_SECONDS );
 
-		if ( false === as_next_scheduled_action( 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection' ) ) {
-			as_schedule_recurring_action( time() + $interval, $interval, 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection', [], $this->get_plugin()->get_id() );
-		}
+		// Make sure that all refresh actions are cancelled before scheduling it.
+		$this->unschedule_refresh();
+
+		as_schedule_single_action( time() + $interval, 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection', [], $this->get_plugin()->get_id() );
 	}
 
 
@@ -249,6 +238,9 @@ class Connection {
 	 * @since 2.0.0
 	 */
 	public function refresh_connection() {
+		if ( $this->get_plugin()->get_settings_handler()->is_sandbox() ) {
+			return;
+		}
 
 		try {
 
@@ -256,9 +248,18 @@ class Connection {
 				$this->get_plugin()->log( 'Refreshing connection...' );
 			}
 
+			$refresh_token = $this->get_plugin()->get_settings_handler()->get_refresh_token();
+
+			if ( ! $refresh_token ) {
+				$this->get_plugin()->log( 'No refresh token stored, cannot refresh connection.' );
+				update_option( 'wc_' . $this->get_plugin()->get_id() . '_refresh_failed', 'yes' );
+				wc_square()->get_email_handler()->get_access_token_email()->trigger();
+				return;
+			}
+
 			$request = [
 				'body' => [
-					'token' => $this->get_plugin()->get_settings_handler()->get_access_token(),
+					'token' => $this->get_plugin()->get_settings_handler()->get_refresh_token(),
 				],
 				'timeout' => 45,
 			];
@@ -286,12 +287,24 @@ class Connection {
 			// store the new token
 			$this->get_plugin()->get_settings_handler()->update_access_token( $response->get_token() );
 
+			// In case square updates the refresh token.
+			if( $response->get_refresh_token() ) {
+				$this->get_plugin()->get_settings_handler()->update_refresh_token( $response->get_refresh_token() );
+				$this->get_plugin()->log( 'Connection successfully refreshed.' );
+			}
+
+			// in case this option was set
+			delete_option( 'wc_' . $this->get_plugin()->get_id() . '_refresh_failed' );
 		} catch ( Framework\SV_WC_Plugin_Exception $exception ) {
 
 			$this->get_plugin()->log( 'Unable to refresh connection: ' . $exception->getMessage() );
 
 			update_option( 'wc_' . $this->get_plugin()->get_id() . '_refresh_failed', 'yes' );
+
+			wc_square()->get_email_handler()->get_access_token_email()->trigger();
 		}
+
+		$this->schedule_refresh();
 	}
 
 
@@ -301,8 +314,7 @@ class Connection {
 	 * @since 2.0.0
 	 */
 	protected function unschedule_refresh() {
-
-		as_unschedule_action( 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection', [], $this->get_plugin()->get_id() );
+		as_unschedule_all_actions( 'wc_' . $this->get_plugin()->get_id() . '_refresh_connection', [], $this->get_plugin()->get_id() );
 	}
 
 
@@ -462,20 +474,6 @@ class Connection {
 
 		return $this->get_plugin()->get_settings_handler()->is_sandbox() ? self::REFRESH_URL_SANDBOX : self::REFRESH_URL_PRODUCTION;
 	}
-
-
-	/**
-	 * Gets the token revoke URL.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @return string
-	 */
-	protected function get_revoke_url() {
-
-		return $this->get_plugin()->get_settings_handler()->is_sandbox() ? self::REVOKE_URL_SANDBOX : self::REVOKE_URL_PRODUCTION;
-	}
-
 
 	/**
 	 * Gets the connection scopes.

@@ -26,6 +26,7 @@ namespace WooCommerce\Square\Sync;
 use SkyVerge\WooCommerce\PluginFramework\v5_4_0 as Framework;
 use SquareConnect\Model\SearchCatalogObjectsResponse;
 use WooCommerce\Square\Handlers\Product;
+use WooCommerce\Square\Handlers\Category;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -51,6 +52,7 @@ class Interval_Polling extends Stepped_Job {
 		if ( $this->is_system_of_record_square() ) {
 
 			$next_steps = [
+				'update_category_data',
 				'update_product_data',
 			];
 		}
@@ -63,6 +65,42 @@ class Interval_Polling extends Stepped_Job {
 		$this->set_attr( 'next_steps', $next_steps );
 	}
 
+	/**
+	 * Updates categories from Square.
+	 *
+	 * @since 2.0.8
+	 *
+	 * @throws Framework\SV_WC_Plugin_Exception
+	 */
+	protected function update_category_data() {
+		$date = new \DateTime();
+		$date->setTimestamp( $this->get_attr( 'catalog_last_synced_at', (int) wc_square()->get_sync_handler()->get_last_synced_at() ) );
+		$date->setTimezone( new \DateTimeZone( 'UTC' ) );
+
+		$response = wc_square()->get_api()->search_catalog_objects( [
+			'object_types'            => [ 'CATEGORY' ],
+			'begin_time'              => $date->format( DATE_ATOM ),
+		] );
+
+		$categories = $response->get_data()->getObjects();
+
+		if ( $categories && is_array( $categories ) ) {
+			foreach ( $categories as $category ) {
+				Category::import_or_update( $category );
+			}
+
+			Records::set_record( [
+				'type'    => 'info',
+				'message' => sprintf(
+					/* translator: Placeholder %d number of categories */
+					_n( 'Updated data for %d category.', 'Updated data for %d categories.', count( $categories ), 'woocommerce-square' ),
+					count( $categories )
+				)
+			] );
+		}
+
+		$this->complete_step( 'update_category_data' );
+	}
 
 	/**
 	 * Updates products from Square.

@@ -71,7 +71,8 @@ class Money_Utility {
 			$currency = get_woocommerce_currency();
 		}
 
-		return (int) ( ( 10 ** self::get_currency_decimals( $currency ) ) * $amount );
+		$cents_factor = 10 ** self::get_currency_decimals( $currency );
+		return (int) ( round( $cents_factor * $amount ) );
 	}
 
 
@@ -90,7 +91,8 @@ class Money_Utility {
 			$currency = get_woocommerce_currency();
 		}
 
-		return (float) ( $cents / ( 10 ** self::get_currency_decimals( $currency ) ) );
+		$cents_factor = 10 ** self::get_currency_decimals( $currency );
+		return (float) ( $cents / $cents_factor );
 	}
 
 

@@ -1,7 +1,7 @@
 <div class="panel woocommerce_options_panel" id="general_product_data">
     <?php if (class_exists('PMWI_Plugin') && PMWI_EDITION == 'free'): ?>
     <div class="woo-add-on-free-edition-notice upgrade_template">
-        <a href="https://www.wpallimport.com/checkout/?edd_action=purchase_collection&taxonomy=download_category&terms=14&utm_source=import-wooco-products-addon-free&utm_medium=upgrade-notice&utm_campaign=import-variable-wooco-products" target="_blank" class="upgrade_woo_link"><?php _e('Upgrade to the Pro edition of WP All Import and the WooCommerce Add-On to Import to Variable, Affiliate, and Grouped Products.', PMWI_Plugin::TEXT_DOMAIN);?></a>
+        <a href="https://www.wpallimport.com/checkout/?edd_action=purchase_collection&taxonomy=download_category&terms=14&utm_source=import-wooco-products-addon-free&utm_medium=upgrade-notice&utm_campaign=import-variable-wooco-products" target="_blank" class="upgrade_woo_link"><?php _e('Upgrade to the Pro edition of WP All Import and the WooCommerce Add-On to Import to Variable, Affiliate, and Grouped Products', PMWI_Plugin::TEXT_DOMAIN);?></a>
         <p><?php _e('If you already own it, remove the free edition and install the Pro edition.', 'wp_all_import_plugin'); ?></p>
     </div>
     <?php endif; ?>
@@ -11,7 +11,10 @@
 			<input type="text" class="short" name="single_product_sku" style="" value="<?php echo esc_attr($post['single_product_sku']) ?>"/>			
 		</p>
 	</div>
-	<div class="options_group show_if_external">
+    <?php if (class_exists('WC_Subscriptions')): ?>
+        <?php include('subscriptions/_simple_subscription.php'); ?>
+    <?php endif; ?>
+    <div class="options_group show_if_external">
 		<p class="form-field">
 			<label><?php _e("Product URL", PMWI_Plugin::TEXT_DOMAIN); ?></label>
 			<input type="text" class="short" name="single_product_url" value="<?php echo esc_attr($post['single_product_url']) ?>"/>
@@ -24,11 +27,12 @@
 		</p>
 	</div>
 	<div class="options_group pricing show_if_simple show_if_external show_if_variable">
-		
 		<p class="form-field">
 			<label><?php printf(__("Regular Price (%s)", PMWI_Plugin::TEXT_DOMAIN), get_woocommerce_currency_symbol()); ?></label>
 			<input type="text" class="short" name="single_product_regular_price" value="<?php echo esc_attr($post['single_product_regular_price']) ?>"/> <strong class="options_group show_if_variable" style="position:relative; top:4px; left:4px;">(<?php _e('required', PMWI_Plugin::TEXT_DOMAIN); ?>)</strong>
 		</p>
+    </div>
+    <div class="options_group pricing show_if_simple show_if_external show_if_variable show_if_subscription show_if_variable_subscription">
 		<p class="form-field">
 			<label><?php printf(__("Sale Price (%s)", PMWI_Plugin::TEXT_DOMAIN), get_woocommerce_currency_symbol()); ?></label>
 			<input type="text" class="short" name="single_product_sale_price" value="<?php echo esc_attr($post['single_product_sale_price']) ?>"/>&nbsp;<a id="regular_price_shedule" href="javascript:void(0);" <?php if ($post['is_regular_price_shedule']):?>style="display:none;"<?php endif; ?>><?php _e('schedule', PMWI_Plugin::TEXT_DOMAIN);?></a>
@@ -102,39 +106,14 @@
 
 	</div>
 
-	<div class="options_group show_if_variable">
+	<div class="options_group show_if_variable show_if_variable_subscription">
 		<p class="form-field">
 			<label><?php _e("Variation Description"); ?></label>
 			<input type="text" class="short" name="single_product_variation_description" value="<?php echo esc_attr($post['single_product_variation_description']) ?>"/>			
 		</p>
 	</div>
 
-	<!--div class="options_group show_if_variable">
-
-		<p class="form-field"><?php _e('Variation Enabled',PMWI_Plugin::TEXT_DOMAIN);?><a href="#help" class="wpallimport-help" title="<?php _e('This option is the same as the Enabled checkbox when editing an individual variation in WooCommerce.', PMWI_Plugin::TEXT_DOMAIN) ?>" style="position:relative; top:0px;">?</a></p>
-			
-		<p class="form-field wpallimport-radio-field">
-			<input type="radio" id="variation_enabled_yes" class="switcher" name="is_variation_enabled" value="yes" <?php echo 'yes' == $post['is_variation_enabled'] ? 'checked="checked"': '' ?>/>
-			<label for="variation_enabled_yes"><?php _e("Yes"); ?></label>
-		</p>
-		<p class="form-field wpallimport-radio-field">
-			<input type="radio" id="variation_enabled_no" class="switcher" name="is_variation_enabled" value="no" <?php echo 'no' == $post['is_variation_enabled'] ? 'checked="checked"': '' ?>/>
-			<label for="variation_enabled_no"><?php _e("No"); ?></label>
-		</p>
-		<div class="form-field wpallimport-radio-field">
-			<input type="radio" id="variation_enabled_xpath" class="switcher" name="is_variation_enabled" value="xpath" <?php echo 'xpath' == $post['is_variation_enabled'] ? 'checked="checked"': '' ?>/>
-			<label for="variation_enabled_xpath"><?php _e('Set with XPath', PMWI_Plugin::TEXT_DOMAIN )?></label>
-			<span class="wpallimport-clear"></span>
-			<div class="switcher-target-variation_enabled_xpath set_with_xpath">
-				<span class="wpallimport-slide-content" style="padding-left:0;">
-					<input type="text" class="smaller-text" name="single_variation_enabled" style="width:300px;" value="<?php echo esc_attr($post['single_variation_enabled']) ?>"/>
-					<a href="#help" class="wpallimport-help" title="<?php _e('The value of presented XPath should be one of the following: (\'yes\', \'no\').', PMWI_Plugin::TEXT_DOMAIN) ?>" style="position:relative; top:2px;">?</a>
-				</span>
-			</div>
-		</div>
-	</div-->
-
-	<div class="options_group show_if_simple show_if_external show_if_variable">
+	<div class="options_group show_if_simple show_if_external show_if_variable show_if_subscription show_if_variable_subscription">
 		
 			<p class="form-field wpallimport-radio-field">
 				<input type="radio" id="is_product_virtual_yes" class="switcher" name="is_product_virtual" value="yes" <?php echo 'yes' == $post['is_product_virtual'] ? 'checked="checked"': '' ?>/>
@@ -157,7 +136,7 @@
 			</div>
 		
 	</div>
-	<div class="options_group show_if_simple show_if_external show_if_variable">
+	<div class="options_group show_if_simple show_if_external show_if_variable show_if_subscription show_if_variable_subscription">
 		
 		<p class="form-field wpallimport-radio-field">
 			<input type="radio" id="is_product_downloadable_yes" class="switcher" name="is_product_downloadable" value="yes" <?php echo 'yes' == $post['is_product_downloadable'] ? 'checked="checked"': '' ?>/>
@@ -210,7 +189,7 @@
 		</p>				
 	</div>
 
-	<div class="options_group show_if_simple show_if_external show_if_variable">
+	<div class="options_group show_if_simple show_if_external show_if_variable show_if_subscription show_if_variable_subscription">
 		
 		<div class="form-field wpallimport-radio-field">
 			<input type="radio" id="multiple_product_tax_status_yes" class="switcher" name="is_multiple_product_tax_status" value="yes" <?php echo 'no' != $post['is_multiple_product_tax_status'] ? 'checked="checked"': '' ?>/>
@@ -240,7 +219,7 @@
 		</div>
 
 	</div>
-	<div class="options_group show_if_simple show_if_external show_if_variable">
+	<div class="options_group show_if_simple show_if_external show_if_variable show_if_subscription show_if_variable_subscription">
 		
 		<div class="form-field wpallimport-radio-field">		
 			<input type="radio" id="multiple_product_tax_class_yes" class="switcher" name="is_multiple_product_tax_class" value="yes" <?php echo 'no' != $post['is_multiple_product_tax_class'] ? 'checked="checked"': '' ?>/>
@@ -250,7 +229,7 @@
 			<div class="switcher-target-multiple_product_tax_class_yes set_with_xpath">
 				<span class="wpallimport-slide-content" style="padding-left:0;">
 					<?php
-					$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option( 'woocommerce_tax_classes' ) ) ) );
+					$tax_classes = \WC_Tax::get_tax_classes();
 					$classes_options = array();
 					$classes_options[''] = __( 'Standard', PMWI_Plugin::TEXT_DOMAIN );
 

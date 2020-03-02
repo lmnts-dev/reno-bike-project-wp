@@ -151,8 +151,13 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 	 * @since 2.0.0
 	 */
 	protected function enqueue_gateway_assets() {
+		if ( $this->get_plugin()->get_settings_handler()->is_sandbox() ) {
+			$url = 'https://js.squareupsandbox.com/v2/paymentform';
+		} else {
+			$url = 'https://js.squareup.com/v2/paymentform';
+		}
 
-		wp_enqueue_script( 'wc-' . $this->get_plugin()->get_id_dasherized() . '-payment-form', 'https://js.squareup.com/v2/paymentform', [], Plugin::VERSION );
+		wp_enqueue_script( 'wc-' . $this->get_plugin()->get_id_dasherized() . '-payment-form', $url, [], Plugin::VERSION );
 
 		parent::enqueue_gateway_assets();
 	}
@@ -160,8 +165,6 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 
 	/**
 	 * Validates the entered payment fields.
-	 *
-	 * This only validates the nonce for now.
 	 *
 	 * @since 2.0.0
 	 *
@@ -171,11 +174,15 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 
 		$is_valid = true;
 
-		if ( Framework\SV_WC_Helper::get_post( 'wc-' . $this->get_id_dasherized() . '-payment-token' ) ) {
-			return $is_valid;
-		}
-
 		try {
+
+			if ( $this->is_3d_secure_enabled() && ! Framework\SV_WC_Helper::get_post( 'wc-' . $this->get_id_dasherized() . '-buyer-verification-token' ) ) {
+				throw new Framework\SV_WC_Payment_Gateway_Exception( '3D Secure Verification Token is missing' );
+			}
+
+			if ( Framework\SV_WC_Helper::get_post( 'wc-' . $this->get_id_dasherized() . '-payment-token' ) ) {
+				return $is_valid;
+			}
 
 			if ( ! Framework\SV_WC_Helper::get_post( 'wc-' . $this->get_id_dasherized() . '-payment-nonce' ) ) {
 				throw new Framework\SV_WC_Payment_Gateway_Exception( 'Payment nonce is missing' );
@@ -205,6 +212,10 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 	public function get_order( $order_id ) {
 
 		$order = parent::get_order( $order_id );
+
+		if ( $this->is_3d_secure_enabled() ) {
+			$order->payment->verification_token = Framework\SV_WC_Helper::get_post( 'wc-' . $this->get_id_dasherized() . '-buyer-verification-token' );
+		}
 
 		if ( empty( $order->payment->token ) ) {
 
@@ -606,6 +617,27 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 	}
 
 
+	/**
+	 * Determines if 3d secure is enabled.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return bool
+	 */
+	public function is_3d_secure_enabled() {
+
+		/**
+		 * Filters whether or not 3d Secure should be enabled.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @param bool $enabled
+		 * @param Gateway $gateway_instance
+		 */
+		return apply_filters( 'wc_square_is_3d_secure_enabled', true, $this );
+	}
+
+
 	/** Getter methods ************************************************************************************************/
 
 
@@ -673,7 +705,8 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 	public function get_api() {
 
 		if ( ! $this->api ) {
-			$this->api = new Gateway\API( $this->get_plugin()->get_settings_handler()->get_access_token(), $this->get_plugin()->get_settings_handler()->get_location_id() );
+			$settings  = $this->get_plugin()->get_settings_handler();
+			$this->api = new Gateway\API( $settings->get_access_token(), $settings->get_location_id(), $settings->is_sandbox() );
 		}
 
 		return $this->api;
@@ -757,6 +790,12 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 	 */
 	public function get_application_id() {
 
+		$square_application_id = 'sq0idp-wGVapF8sNt9PLrdj5znuKA';
+
+		if ( $this->get_plugin()->get_settings_handler()->is_sandbox() ) {
+			$square_application_id = $this->get_plugin()->get_settings_handler()->get_option( 'sandbox_application_id' );
+		}
+
 		/**
 		 * Filters the configured application ID.
 		 *
@@ -764,7 +803,7 @@ class Gateway extends Framework\SV_WC_Payment_Gateway_Direct {
 		 *
 		 * @param string $application_id application ID
 		 */
-		return apply_filters( 'wc_square_application_id', 'sq0idp-wGVapF8sNt9PLrdj5znuKA' );
+		return apply_filters( 'wc_square_application_id', $square_application_id );
 	}
 
 

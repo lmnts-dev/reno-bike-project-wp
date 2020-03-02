@@ -31,6 +31,29 @@ class Card_Handler extends Framework\SV_WC_Payment_Gateway_Payment_Tokens_Handle
 
 
 	/**
+	 * Tokenizes the current payment method and adds the standard transaction
+	 * data to the order post record.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param \WC_Order $order order object
+	 * @param Framework\SV_WC_Payment_Gateway_API_Create_Payment_Token_Response|null $response payment token API response, or null if the request should be made
+	 * @param string $environment_id optional environment ID, defaults to the current environment
+	 * @return \WC_Order order object
+	 * @throws Framework\SV_WC_Plugin_Exception on transaction failure
+	 */
+	public function create_token( \WC_Order $order, $response = null, $environment_id = null ) {
+
+		$order = parent::create_token( $order, $response, $environment_id );
+
+		// remove the verification token that was used to store the card so it's not also sent in the payment request
+		$order->payment->verification_token = null;
+
+		return $order;
+	}
+
+
+	/**
 	 * Determines if a token should be deleted locally after a failed API attempt.
 	 *
 	 * Checks the response code, and if Square indicates the card ID was not found then it's probably safe to delete.

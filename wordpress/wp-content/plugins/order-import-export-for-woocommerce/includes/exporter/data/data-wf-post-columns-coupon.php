@@ -19,6 +19,7 @@ return apply_filters('coupon_csv_coupon_post_columns', array(
     'exclude_product_ids'   => 'exclude_product_ids',
     'usage_limit'           => 'usage_limit',
     'usage_limit_per_user'  => 'usage_limit_per_user',
+    'usage_count'           => 'usage_count',
     'limit_usage_to_x_items' => 'limit_usage_to_x_items',
     'expiry_date'           => 'expiry_date',
     'date_expires'          => 'date_expires',
@@ -29,4 +30,5 @@ return apply_filters('coupon_csv_coupon_post_columns', array(
     'minimum_amount'        => 'minimum_amount',
     'maximum_amount'        => 'maximum_amount',
     'customer_email'        => 'customer_email',
+    
 ) );

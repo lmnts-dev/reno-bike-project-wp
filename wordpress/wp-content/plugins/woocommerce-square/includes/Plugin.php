@@ -31,6 +31,7 @@ use WooCommerce\Square\Handlers\Email;
 use WooCommerce\Square\Handlers\Order;
 use WooCommerce\Square\Handlers\Product;
 use WooCommerce\Square\Handlers\Sync;
+use WooCommerce\Square\Handlers\Products;
 
 /**
  * The main plugin class.
@@ -41,7 +42,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 
 	/** plugin version number */
-	const VERSION = '2.0.4';
+	const VERSION = '2.1.0';
 
 	/** plugin ID */
 	const PLUGIN_ID = 'square';
@@ -77,6 +78,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	/** @var Order orders handler */
 	private $order_handler;
 
+	/** @var Products products handler */
+	private $products_handler;
 
 	/**
 	 * Constructs the plugin.
@@ -209,6 +212,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	public function init_plugin() {
 
 		$this->settings_handler = new Settings( $this );
+		$this->products_handler = new Products( $this );
 
 		if ( ! $this->admin_handler && is_admin() ) {
 			$this->admin_handler = new Admin( $this );
@@ -367,6 +371,9 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 		// add a notice when background processing is not supported
 		$this->add_background_processing_notice();
 
+		// add a notice when no refresh token is available
+		$this->add_missing_refresh_token_notice();
+
 		// add a tax-inclusive warning to product pages
 		$this->add_tax_inclusive_pricing_notice();
 
@@ -437,6 +444,48 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 			), 'wc-square-background-processing', [
 				'notice_class' => 'notice-warning',
 			] );
+		}
+	}
+
+	/**
+	 * Adds a notice if no refresh token has been cached.
+	 *
+	 * @since 2.0.5
+	 */
+	protected function add_missing_refresh_token_notice() {
+		if ( $this->get_settings_handler()->is_sandbox() ) {
+			return;
+		}
+
+		$refresh_token = '';
+		$settings_handler = $this->get_settings_handler();
+
+		if ( method_exists( $settings_handler, 'get_access_token' ) ) {
+			$access_token = $settings_handler->get_access_token();
+			if ( empty( $access_token ) ) {
+				// We are already in a disconnected state, don't show the warning.
+				return;
+			}
+		}
+
+		if ( method_exists( $settings_handler, 'get_refresh_token' ) ) {
+			$refresh_token = $settings_handler->get_refresh_token();
+		}
+
+		if ( empty( $refresh_token ) ) {
+			$this->get_admin_notice_handler()->add_admin_notice(
+				sprintf(
+					/* translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag, %3$s - <a> tag, %4$s - </a> tag */
+					__( '%1$sWooCommerce Square:%2$s Automatic refreshing of the connection to Square is inactive. Please disconnect and reconnect to resolve.', 'woocommerce-square' ),
+					'<strong>',
+					'</strong>'
+				),
+				'wc-square-missing-refresh-token',
+				[
+					'dismissible'  => false,
+					'notice_class' => 'notice-error',
+				]
+			);
 		}
 	}
 
@@ -522,7 +571,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 		 *
 		 * @param string $key_input
 		 */
-		return apply_filters( 'wc_square_idempotency_key', $key_input );
+		return apply_filters( 'wc_square_idempotency_key', md5( get_option( 'siteurl' ) ) . ':' . $key_input );
 	}
 
 
@@ -553,13 +602,17 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 * @param string|null $access_token API access token
 	 * @return API
 	 */
-	public function get_api( $access_token = null ) {
+	public function get_api( $access_token = null, $is_sandbox = null ) {
 
 		if ( ! $access_token ) {
 			$access_token = $this->get_settings_handler()->get_access_token();
 		}
 
-		return new API( $access_token );
+		if ( is_null( $is_sandbox ) ) {
+			$is_sandbox = $this->get_settings_handler()->is_sandbox();
+		}
+
+		return new API( $access_token, $is_sandbox );
 	}
 
 
@@ -654,6 +707,17 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	public function get_order_handler() {
 
 		return $this->order_handler;
+	}
+
+	/**
+	 * Get the products handler instance/
+	 *
+	 * @since 2.0.8
+	 *
+	 * @return Products
+	 */
+	public function get_products_handler() {
+		return $this->products_handler;
 	}
 
 

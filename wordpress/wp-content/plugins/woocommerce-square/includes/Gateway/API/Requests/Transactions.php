@@ -109,6 +109,11 @@ class Transactions extends \WooCommerce\Square\API\Request {
 			$this->square_request->setCardNonce( $order->payment->nonce );
 		}
 
+		// 3DS / SCA verification token (from JS)
+		if ( ! empty( $order->payment->verification_token ) ) {
+			$this->square_request->setVerificationToken( $order->payment->verification_token );
+		}
+
 		$billing_address = new Address();
 		$billing_address->setFirstName( $order->get_billing_first_name() );
 		$billing_address->setLastName( $order->get_billing_last_name() );
@@ -179,8 +184,12 @@ class Transactions extends \WooCommerce\Square\API\Request {
 
 		$this->square_api_method = 'createRefund';
 
+		// The refund objects are sorted by date DESC, so the last one created will be at the start of the array
+		$refunds = $order->get_refunds();
+		$refund_obj = $refunds[0];
+
 		$this->square_request = new CreateRefundRequest();
-		$this->square_request->setIdempotencyKey( wc_square()->get_idempotency_key( (string) $order->get_id() ) );
+		$this->square_request->setIdempotencyKey( wc_square()->get_idempotency_key( $order->get_id() . ':' . $refund_obj->get_id() ) );
 		$this->square_request->setTenderId( $order->refund->tender_id );
 		$this->square_request->setReason( $order->refund->reason );
 

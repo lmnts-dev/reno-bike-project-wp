@@ -8,13 +8,13 @@ class WF_CpnImpExpCsv_Exporter {
 
     public static function do_export($post_type = 'shop_coupon') {
         global $wpdb;
-
-        $export_limit = !empty($_POST['limit']) ? intval($_POST['limit']) : 999999999;
+        absint($maybeint);
+        $export_limit = !empty($_POST['limit']) ? absint($_POST['limit']) : 999999999;
         $export_count = 0;
         $limit = 100;
-        $current_offset = !empty($_POST['offset']) ? intval($_POST['offset']) : 0;
-        $sortcolumn = !empty($_POST['sortcolumn']) ? $_POST['sortcolumn'] : 'ID';
-        $delimiter = !empty($_POST['delimiter']) ? $_POST['delimiter'] : ',';
+        $current_offset = !empty($_POST['offset']) ? absint($_POST['offset']) : 0;
+        $sortcolumn = !empty($_POST['sortcolumn']) ? sanitize_text_field($_POST['sortcolumn']) : 'ID';
+        $delimiter = !empty($_POST['delimiter']) ? wc_clean( wp_unslash($_POST['delimiter'])): ',';
         $csv_columns = include( 'data/data-wf-post-columns-coupon.php' );
         if ($limit > $export_limit)
             $limit = $export_limit;

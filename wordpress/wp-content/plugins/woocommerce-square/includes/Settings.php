@@ -49,6 +49,9 @@ class Settings extends \WC_Settings_API {
 	const SYSTEM_OF_RECORD_DISABLED = 'disabled';
 
 
+	/** @var string un-encrypted refresh token */
+	protected $refresh_token;
+
 	/** @var string un-encrypted access token */
 	protected $access_token;
 
@@ -83,6 +86,20 @@ class Settings extends \WC_Settings_API {
 
 			return $fields;
 		} );
+
+		// Save sandbox token.
+		if ( $this->is_sandbox() ) {
+			add_action(
+				'woocommerce_settings_api_sanitized_fields_' . $this->id,
+				function( $fields ) {
+					$this->update_access_token( $fields['sandbox_token'] );
+					$this->access_token = false; // Remove encrypted token.
+					$this->refresh_token = false; // Remove encrypted token.
+					$this->init_form_fields();   // Reload form fields after saving token.
+					return $fields;
+				}
+			);
+		}
 	}
 
 
@@ -112,6 +129,28 @@ class Settings extends \WC_Settings_API {
 				'description' => $general_description,
 			],
 		];
+
+		if ( $this->is_sandbox() ) {
+			$fields['sandbox_settings']       = [
+				'type'        => 'title',
+				'title'       => __( 'Sandbox settings', 'woocommerce-square' ),
+				'description' => sprintf(
+					// translators: Placeholders: %1$s - URL
+					__( 'Sandbox details can be created at: %s', 'woocommerce-square' ),
+					sprintf( '<a href="%1$s">%1$s</a>', 'https://developer.squareup.com/apps' )
+				),
+			];
+			$fields['sandbox_application_id'] = [
+				'type'        => 'input',
+				'title'       => __( 'Sandbox Application ID', 'woocommerce-square' ),
+				'description' => __( 'Application ID for the Sandbox Application, see the details in the My Applications section.', 'woocommerce-square' ),
+			];
+			$fields['sandbox_token']          = [
+				'type'        => 'input',
+				'title'       => __( 'Sandbox Access Token', 'woocommerce-square' ),
+				'description' => __( 'Access Token for the Sandbox Test Account, see the details in the Sandbox Test Account section. Make sure you use the correct Sandbox Access Token for your application. For a given Sandbox Test Account, each Authorized Application is assigned a different Access Token.', 'woocommerce-square' ),
+			];
+		}
 
 		// display these fields only if connected
 		if ( $this->is_connected() ) {
@@ -164,28 +203,39 @@ class Settings extends \WC_Settings_API {
 			$fields['import_products'] = [
 				'title'    => __( 'Import Products', 'woocommerce-square' ),
 				'type'     => 'import_products',
-				'desc_tip' => '',
+				'desc_tip' => __( 'Run an import to create new products in this WooCommerce store for each new product created in Square that has a unique SKU not existing in here. Needs to be run each time new items are created in Square.', 'woocommerce-square' ),
 			];
 		}
 
-		// always display these fields
-		$fields = array_merge( $fields, [
-			'connect' => [
-				'title'    => __( 'Connection', 'woocommerce-square' ),
-				'type'     => 'connect',
-				'desc_tip' => '',
-			],
-			'debug_logging_enabled' => [
-				'title' => __( 'Enable Logging', 'woocommerce-square' ),
-				'type'  => 'checkbox',
-				'label' => sprintf(
-					/* translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag */
-					__( 'Log debug messages to the %1$sWooCommerce status log%2$s', 'woocommerce-square' ),
-					'<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs' ) ) . '">', '</a>'
-				),
-			],
+		// In sandbox mode we don't want to intially display the connect button, only disconnect.
+		if ( ! ( $this->is_sandbox() && ! $this->is_connected() ) ) {
+			$fields = array_merge(
+				$fields,
+				[
+					'connect' => [
+						'title'    => __( 'Connection', 'woocommerce-square' ),
+						'type'     => 'connect',
+						'desc_tip' => '',
+					],
+				]
+			);
+		}
 
-		] );
+		// Always display these fields.
+		$fields = array_merge(
+			$fields,
+			[
+				'debug_logging_enabled' => [
+					'title' => __( 'Enable Logging', 'woocommerce-square' ),
+					'type'  => 'checkbox',
+					'label' => sprintf(
+						/* translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag */
+						__( 'Log debug messages to the %1$sWooCommerce status log%2$s', 'woocommerce-square' ),
+						'<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs' ) ) . '">', '</a>'
+					),
+				],
+			]
+		);
 
 		$this->form_fields = $fields;
 	}
@@ -279,6 +329,44 @@ class Settings extends \WC_Settings_API {
 
 
 	/**
+	 * Updates the stored refresh token.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $token refresh token
+	 */
+	public function update_refresh_token( $token ) {
+
+		$refresh_tokens = $this->get_refresh_tokens();
+		$environment   = $this->get_environment();
+
+		if ( ! empty( $token ) ) {
+
+			$this->refresh_token = $token;
+
+			if ( Utilities\Encryption_Utility::is_encryption_supported() ) {
+
+				$encryption = new Utilities\Encryption_Utility();
+
+				try {
+
+					$token = $encryption->encrypt_data( $token );
+
+				} catch ( Framework\SV_WC_Plugin_Exception $exception ) {
+
+					// log the event, but don't halt the process
+					$this->get_plugin()->log( 'Could not encrypt refresh token. ' . $exception->getMessage() );
+				}
+			}
+
+			$refresh_tokens[ $environment ] = $token;
+		}
+
+		update_option( 'wc_square_refresh_tokens', $refresh_tokens );
+	}
+
+
+	/**
 	 * Updates the stored access token.
 	 *
 	 * @since 2.0.0
@@ -291,6 +379,8 @@ class Settings extends \WC_Settings_API {
 		$environment   = $this->get_environment();
 
 		if ( ! empty( $token ) ) {
+
+			$this->access_token = $token;
 
 			if ( Utilities\Encryption_Utility::is_encryption_supported() ) {
 
@@ -307,10 +397,20 @@ class Settings extends \WC_Settings_API {
 				}
 			}
 
-			$access_tokens[ $environment ] = $this->access_token = $token;
+			$access_tokens[ $environment ] = $token;
 		}
 
 		update_option( 'wc_square_access_tokens', $access_tokens );
+	}
+
+
+	/**
+	 * Clears any stored refresh tokens.
+	 *
+	 * @since 2.0.0
+	 */
+	public function clear_refresh_tokens() {
+		delete_option( 'wc_square_refresh_tokens' );
 	}
 
 
@@ -509,7 +609,7 @@ class Settings extends \WC_Settings_API {
 			try {
 
 				// cache the locations returned so they can be used elsewhere
-				$this->locations = $this->get_plugin()->get_api( $this->get_access_token() )->get_locations();
+				$this->locations = $this->get_plugin()->get_api( $this->get_access_token(), $this->is_sandbox() )->get_locations();
 
 				// check the returned IDs against what's currently configured
 				$stored_location_id = $this->get_location_id();
@@ -576,6 +676,51 @@ class Settings extends \WC_Settings_API {
 		return $sor;
 	}
 
+	/**
+	 * Gets the refresh token.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string|null
+	 */
+	public function get_refresh_token() {
+
+		if ( empty( $this->refresh_token ) ) {
+
+			$tokens = $this->get_refresh_tokens();
+			$token  = null;
+
+			if ( ! empty( $tokens[ $this->get_environment() ] ) ) {
+				$token = $tokens[ $this->get_environment() ];
+			}
+
+			if ( $token && Utilities\Encryption_Utility::is_encryption_supported() ) {
+
+				$encryption = new Utilities\Encryption_Utility();
+
+				try {
+
+					$token = $encryption->decrypt_data( $token );
+
+				} catch ( Framework\SV_WC_Plugin_Exception $exception ) {
+
+					// log the event, but don't halt the process
+					$this->get_plugin()->log( 'Could not decrypt refresh token. ' . $exception->getMessage() );
+				}
+			}
+
+			$this->refresh_token = $token;
+		}
+
+		/**
+		 * Filters the configured refresh token.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param string $refresh_token
+		 */
+		return apply_filters( 'wc_square_refresh_token', $this->refresh_token );
+	}
 
 	/**
 	 * Gets the access token.
@@ -634,8 +779,21 @@ class Settings extends \WC_Settings_API {
 	 * @return array
 	 */
 	public function get_access_tokens() {
-
 		return (array) get_option( 'wc_square_access_tokens', [] );
+	}
+
+
+	/**
+	 * Gets the stored refresh tokens.
+	 *
+	 * Each environment may have its own token.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return array
+	 */
+	public function get_refresh_tokens() {
+		return (array) get_option( 'wc_square_refresh_tokens', [] );
 	}
 
 
@@ -647,8 +805,7 @@ class Settings extends \WC_Settings_API {
 	 * @return string
 	 */
 	public function get_environment() {
-
-		return 'production';
+		return defined( 'WC_SQUARE_SANDBOX' ) && WC_SQUARE_SANDBOX ? 'sandbox' : 'production';
 	}
 
 

@@ -55,8 +55,6 @@ barba.init({
 //     afterEnter() {}
 //   }]
 // });
-// Vendor Javascript File
-"use strict";
 "use strict";
 
 /**
@@ -69,3 +67,5 @@ barba.init({
 var lazyLoadInstance = new LazyLoad({
   elements_selector: ".lazy"
 });
+// Vendor Javascript File
+"use strict";

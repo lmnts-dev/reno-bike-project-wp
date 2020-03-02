@@ -6,6 +6,10 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
      */
     class WF_OrderImpExp_Uninstall_Feedback {
 
+        protected $api_url='https://feedback.webtoffee.com/wp-json/wforderimpexp/v1/uninstall';
+        protected $current_version=WF_ORDERIMPEXP_CURRENT_VERSION;
+        protected $auth_key='wforderimpexp_uninstall_1234#';
+        protected $plugin_id='wforderimpexp';
         public function __construct() {
             add_action('admin_footer', array($this, 'deactivate_scripts'));
             add_action('wp_ajax_wforderimpexp_submit_uninstall_reason', array($this, "send_uninstall_reason"));
@@ -91,6 +95,9 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                     </div>
                     <div class="wforderimpexp-modal-footer">
                         <a href="#" class="dont-bother-me"><?php _e('I rather wouldn\'t say', 'order-import-export-for-woocommerce'); ?></a>
+                        <a class="button-primary" href="https://wordpress.org/support/plugin/order-import-export-for-woocommerce/" target="_blank">
+                        <span class="dashicons dashicons-external" style="margin-top:3px;"></span>
+                        <?php _e('Go to support', 'order-import-export-for-woocommerce'); ?></a>
                         <button class="button-primary wforderimpexp-model-submit"><?php _e('Submit & Deactivate', 'order-import-export-for-woocommerce'); ?></button>
                         <button class="button-secondary wforderimpexp-model-cancel"><?php _e('Cancel', 'order-import-export-for-woocommerce'); ?></button>
                     </div>
@@ -218,8 +225,8 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
 
             $data = array(
                 'reason_id' => sanitize_text_field($_POST['reason_id']),
-                'plugin' => "orderimpexp",
-                'auth' => 'wforderimpexp_uninstall_1234#',
+                'plugin' => $this->plugin_id,
+                'auth' => $this->auth_key,
                 'date' => gmdate("M d, Y h:i:s A"),
                 'url' => '',
                 'user_email' => '',
@@ -231,10 +238,11 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                 'wc_version' => (!defined('WC_VERSION')) ? '' : WC_VERSION,
                 'locale' => get_locale(),
                 'multisite' => is_multisite() ? 'Yes' : 'No',
-                'wforderimpexp_version' => WF_ORDERIMPEXP_CURRENT_VERSION
+                'wforderimpexp_version' => $this->current_version,
             );
+            
             // Write an action/hook here in webtoffe to recieve the data
-            $resp = wp_remote_post('http://feedback.webtoffee.com/wp-json/wforderimpexp/v1/uninstall', array(
+            $resp = wp_remote_post($this->api_url, array(
                 'method' => 'POST',
                 'timeout' => 45,
                 'redirection' => 5,
@@ -244,6 +252,7 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                 'cookies' => array()
                )
             );
+
 
             wp_send_json_success();
         }

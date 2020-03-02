@@ -49,6 +49,17 @@ class Connection_Refresh_Response extends Framework\SV_WC_API_JSON_Response {
 		return $this->access_token;
 	}
 
+	/**
+	 * Gets the refresh token, if any.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string|null
+	 */
+	public function get_refresh_token() {
+		return $this->refresh_token;
+	}
+
 
 	/**
 	 * Gets the error message, if any.
