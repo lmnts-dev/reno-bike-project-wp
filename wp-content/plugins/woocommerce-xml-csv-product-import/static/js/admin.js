@@ -18,6 +18,8 @@
 		var is_grouped = ($('#product-type').val() == 'grouped');
 		var is_simple = ($('#product-type').val() == 'simple');
 		var is_external = ($('#product-type').val() == 'external');		
+		var is_simple_subscription = ($('#product-type').val() == 'subscription');
+		var is_variable_subscription = ($('#product-type').val() == 'variable-subscription');
 		var is_downloadable = !($('input[name=is_product_downloadable]:checked').val() == 'no');
 		var is_variable_downloadable = !($('input[name=is_variable_product_downloadable]:checked').val() == 'no');		
 		var is_virtual = ($('#_virtual').is(':checked'));			
@@ -25,77 +27,202 @@
 
 		if (!is_multiple_product_type) $('.product_data_tabs li, .options_group').show();
 
-		if ( ! is_variable && ! is_grouped && ! is_external && is_multiple_product_type ) {
+		if (!is_variable && !is_grouped && !is_external && !is_simple_subscription && !is_variable_subscription && is_multiple_product_type ) {
 			is_simple = true;
 		}		
 
 		$('.product_data_tabs li, .options_group').each(function(){
 
-			if (($(this).hasClass('hide_if_grouped') || 				
-				$(this).hasClass('hide_if_external')) && is_multiple_product_type)				
-			{
-	 			if ($(this).hasClass('hide_if_grouped') && is_grouped) { $(this).hide(); return true; } else if ( $(this).hasClass('hide_if_grouped') && !is_grouped )  $(this).show(); 	 			
-	 			if ($(this).hasClass('hide_if_external') && is_external) { $(this).hide(); return true; } else if ( $(this).hasClass('hide_if_external') && !is_external )  $(this).show();	 				 			
-	 		}
-
-	 		if (($(this).hasClass('show_if_simple') || $(this).hasClass('show_if_variable') || $(this).hasClass('show_if_grouped') || $(this).hasClass('show_if_external')) && is_multiple_product_type){
-	 			if ($(this).hasClass('show_if_simple') && is_simple) $(this).show(); else if ( ! is_simple ){  
+			if (($(this).hasClass('hide_if_grouped') || $(this).hasClass('hide_if_external')) && is_multiple_product_type) {
+	 			if ($(this).hasClass('hide_if_grouped') && is_grouped) {
 	 				$(this).hide();
-	 				if ($(this).hasClass('show_if_variable') && is_variable) $(this).show(); else if ( ! is_variable ){  
+	 				return true;
+	 			}
+	 			else if ( $(this).hasClass('hide_if_grouped') && !is_grouped ) {
+					$(this).show();
+				}
+	 			if ($(this).hasClass('hide_if_external') && is_external) {
+	 				$(this).hide();
+	 				return true;
+	 			}
+	 			else if ($(this).hasClass('hide_if_external') && !is_external) {
+					$(this).show();
+				}
+	 		}
+
+	 		if (($(this).hasClass('show_if_simple') || $(this).hasClass('show_if_variable') || $(this).hasClass('show_if_grouped') || $(this).hasClass('show_if_external') || $(this).hasClass('show_if_subscription') || $(this).hasClass('show_if_variable_subscription')) && is_multiple_product_type) {
+	 			if ($(this).hasClass('show_if_simple') && is_simple) {
+					$(this).show();
+				} else if (!is_simple) {
+	 				$(this).hide();
+	 				if ($(this).hasClass('show_if_variable') && is_variable) {
+						$(this).show();
+					} else if (!is_variable) {
 	 					$(this).hide();
-	 					if ($(this).hasClass('show_if_grouped') && is_grouped) $(this).show(); else if ( ! is_grouped ) { 
+	 					if ($(this).hasClass('show_if_grouped') && is_grouped) {
+							$(this).show();
+						} else if (!is_grouped) {
 	 						$(this).hide();
-	 						if ($(this).hasClass('show_if_external') && is_external) $(this).show(); else if ( ! is_external ) $(this).hide();
+	 						if ($(this).hasClass('show_if_external') && is_external) {
+								$(this).show();
+							} else if (!is_external) {
+								$(this).hide();
+								if ($(this).hasClass('show_if_subscription') && is_simple_subscription) {
+									$(this).show();
+								} else if (!is_simple_subscription) {
+									$(this).hide();
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+							}
 	 					}
 	 				}
 	 			}
-	 			else if( !$(this).hasClass('show_if_simple') ){	 				
-	 				if ($(this).hasClass('show_if_variable') && is_variable) $(this).show(); else if ( ! is_variable ){  
+	 			else if (!$(this).hasClass('show_if_simple')) {
+	 				if ($(this).hasClass('show_if_variable') && is_variable) {
+						$(this).show();
+					} else if (!is_variable) {
 	 					$(this).hide();
-	 					if ($(this).hasClass('show_if_grouped') && is_grouped) $(this).show(); else if ( ! is_grouped ) { 
+	 					if ($(this).hasClass('show_if_grouped') && is_grouped) {
+							$(this).show();
+						} else if (!is_grouped) {
 	 						$(this).hide();
-	 						if ($(this).hasClass('show_if_external') && is_external) $(this).show(); else if ( ! is_external ) $(this).hide();
+	 						if ($(this).hasClass('show_if_external') && is_external) {
+								$(this).show();
+							} else if (!is_external) {
+								$(this).hide();
+								if ($(this).hasClass('show_if_subscription') && is_simple_subscription) {
+									$(this).show();
+								} else if (!is_simple_subscription) {
+									$(this).hide();
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+							}
 	 					}
 	 				}
-	 				else if ( !$(this).hasClass('show_if_variable') ){	 					
-	 					if ($(this).hasClass('show_if_grouped') && is_grouped) $(this).show(); else if ( ! is_grouped ) { 
+	 				else if (!$(this).hasClass('show_if_variable')) {
+	 					if ($(this).hasClass('show_if_grouped') && is_grouped) {
+							$(this).show();
+						} else if (!is_grouped) {
 	 						$(this).hide();
-	 						if ($(this).hasClass('show_if_external') && is_external) $(this).show(); else if ( ! is_external ) $(this).hide();
+	 						if ($(this).hasClass('show_if_external') && is_external) {
+								$(this).show();
+							} else if (!is_external) {
+								$(this).hide();
+								if ($(this).hasClass('show_if_subscription') && is_simple_subscription) {
+									$(this).show();
+								} else if (!is_simple_subscription) {
+									$(this).hide();
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+							}
 	 					}
-	 					else if ( !$(this).hasClass('show_if_grouped') ){
-	 						if ($(this).hasClass('show_if_external') && is_external) $(this).show(); else if ( ! is_external ) $(this).hide();
+	 					else if (!$(this).hasClass('show_if_grouped')) {
+	 						if ($(this).hasClass('show_if_external') && is_external) {
+								$(this).show();
+							} else if (!is_external) {
+								$(this).hide();
+								if ($(this).hasClass('show_if_subscription') && is_simple_subscription) {
+									$(this).show();
+								} else if (!is_simple_subscription) {
+									$(this).hide();
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+							}
+							else if (!$(this).hasClass('show_if_external')) {
+								if ($(this).hasClass('show_if_subscription') && is_simple_subscription) {
+									$(this).show();
+								} else if (!is_simple_subscription) {
+									$(this).hide();
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+								else if (!$(this).hasClass('show_if_subscription')) {
+									if ($(this).hasClass('show_if_variable_subscription') && is_variable_subscription) {
+										$(this).show();
+									} else if (!is_variable_subscription) {
+										$(this).hide();
+									}
+								}
+							}
 	 					}
 	 				}
 	 			}
 	 		}
 
-	 		if ($(this).hasClass('hide_if_virtual') || 
-				$(this).hasClass('show_if_virtual') || 
-				$(this).hasClass('show_if_downloadable') || 
-				$(this).hasClass('variable_downloadable'))
-	 		{
-	 			if ($(this).hasClass('hide_if_virtual') && is_virtual) $(this).hide(); else if ( $(this).hasClass('hide_if_virtual') && !is_virtual )  $(this).show();
-	 			if ($(this).hasClass('show_if_virtual') && is_virtual) $(this).show(); else if ( $(this).hasClass('show_if_virtual') && !is_virtual )  $(this).hide();
-	 			if ($(this).hasClass('show_if_downloadable') && is_downloadable) $(this).show(); else if ( $(this).hasClass('show_if_downloadable') && !is_downloadable )  $(this).hide();
-	 			if ($(this).hasClass('variable_downloadable') && is_variable_downloadable) $(this).show(); else if ( $(this).hasClass('variable_downloadable') && !is_variable_downloadable )  $(this).hide();
+	 		if ($(this).hasClass('hide_if_virtual') || $(this).hasClass('show_if_virtual') || $(this).hasClass('show_if_downloadable') || $(this).hasClass('variable_downloadable')) {
+	 			if ($(this).hasClass('hide_if_virtual') && is_virtual) {
+					$(this).hide();
+				} else if ($(this).hasClass('hide_if_virtual') && !is_virtual)	{
+					$(this).show();
+				}
+	 			if ($(this).hasClass('show_if_virtual') && is_virtual) {
+					$(this).show();
+				} else if ($(this).hasClass('show_if_virtual') && !is_virtual) {
+					$(this).hide();
+				}
+	 			if ($(this).hasClass('show_if_downloadable') && is_downloadable) {
+					$(this).show();
+				} else if ($(this).hasClass('show_if_downloadable') && !is_downloadable) {
+					$(this).hide();
+				}
+	 			if ($(this).hasClass('variable_downloadable') && is_variable_downloadable) {
+					$(this).show();
+				} else if ($(this).hasClass('variable_downloadable') && !is_variable_downloadable) {
+					$(this).hide();
+				}
 	 		}
 		});
 
-		if ($('input[name=is_product_manage_stock]:checked').val() == 'no') $('.stock_fields').hide(); else $('.stock_fields').show(); 
+		if ($('input[name=is_product_manage_stock]:checked').val() == 'no') {
+			$('.stock_fields').hide();
+		} else {
+			$('.stock_fields').show();
+		}
 
-		if ($('input[name=is_variable_product_manage_stock]:checked').val() == 'no') $('.variable_stock_fields').hide(); else $('.variable_stock_fields').fadeIn(); 		
+		if ($('input[name=is_variable_product_manage_stock]:checked').val() == 'no') {
+			$('.variable_stock_fields').hide();
+		} else {
+			$('.variable_stock_fields').fadeIn();
+		}
 		
-		if ($('#link_all_variations').is(':checked')) $('.variations_tab').hide(); else if (is_variable) $('.variations_tab').show();			
+		if ($('#link_all_variations').is(':checked')) {
+			$('.variations_tab').hide();
+		} else if (is_variable) {
+			$('.variations_tab').show();
+		}
 		
-		if ($('#xml_matching_parent').is(':checked') && is_variable) $('#variations_tag').show(); else $('#variations_tag').hide();
+		if ($('#xml_matching_parent').is(':checked') && is_variable) {
+			$('#variations_tag').show();
+		} else {
+			$('#variations_tag').hide();
+		}
 
 		var matching_parent = $('input[name=matching_parent]:checked').val();
 
-		if (matching_parent == "xml" || matching_parent == "first_is_parent_title" || matching_parent == "auto" || matching_parent == "existing"){
+		if (matching_parent == "xml" || matching_parent == "first_is_parent_title" || matching_parent == "auto" || matching_parent == "existing") {
 			$('#variations_tag').show();
 			$('.variations_are_not_child_elements').hide();
 		} 
-		else{ 
+		else {
 			$('#variations_tag').hide();
 			$('.variations_are_not_child_elements').show();
 		}
@@ -123,20 +250,28 @@
 
 	$('input[name=matching_parent]').click(function(){
 
-		if ($(this).val() == "xml" || $(this).val() == "first_is_parent_title" || $(this).val() == "auto" || $(this).val() == "existing"){
+		if ($(this).val() == "xml" || $(this).val() == "first_is_parent_title" || $(this).val() == "auto" || $(this).val() == "existing") {
 			$('#variations_tag').show();
 			$('.variations_are_not_child_elements').hide();
 		} 
 		else{ 
 			$('#variations_tag').hide();
 			$('.variations_are_not_child_elements').show();
-			if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no') $('.variation_stock_fields').hide(); else $('.variation_stock_fields').fadeIn(); 
+			if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no') {
+				$('.variation_stock_fields').hide();
+			} else {
+				$('.variation_stock_fields').fadeIn();
+			}
 		}
 
 	});
 
 	$('input[name=is_variation_product_manage_stock]').click(function(){
-		if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no') $('.variation_stock_fields').hide(); else $('.variation_stock_fields').fadeIn(); 
+		if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no') {
+			$('.variation_stock_fields').hide();
+		} else {
+			$('.variation_stock_fields').fadeIn();
+		}
 	}); 
 
 	change_depencies();
@@ -151,10 +286,12 @@
 		$('.wc-tabs').find('li:visible:first').find('a').click();
 	});
 	$('#link_all_variations').change(function(){
-		if ($(this).is(':checked'))
-			$('.variations_tab').hide();		
-		else
+		if ($(this).is(':checked')) {
+			$('.variations_tab').hide();
+		}
+		else {
 			$('.variations_tab').show();
+		}
 	});
 	$('#regular_price_shedule').click(function(){
 		$('#sale_price_range').show();
@@ -251,7 +388,6 @@
         mouseenter: function () {
             if ("" == $(this).attr('for')) {
                 var counter = $(this).parents('table:first').find('tr.form-field:visible').length;
-
                 $(this).parents('span:first').find('input').attr('id', $(this).parents('span:first').find('input').attr('name').replace('[]', '') + '_' + counter);
                 $(this).attr('for', $(this).parents('span:first').find('input').attr('id'));
                 var $create_terms = $(this).parents('.wpallimport-radio-field:first').find('.is_create_taxonomy');
@@ -316,7 +452,7 @@
 		$('#attributes_table').find('textarea[name^=attribute_value]').each(function(){
 			if ("" != $(this).val() && $(this).val() != undefined) attrs.push($(this).val());
 		});
-		if (attrs.length){
+		if (attrs.length) {
 			$(this).parents('#product:first').find('input[name=unique_key]').val($unique_key + attrs.join('-'));
 			alert('The unique key has been successfully generated');
 		}
@@ -326,11 +462,11 @@
 	});
 
 	$('.pmwi_adjust_type').change(function(){
-		if ($(this).val() == '%'){
+		if ($(this).val() == '%') {
 			$(this).parents('.form-field:first').find('.pmwi_reduce_prices_note').hide();
 			$(this).parents('.form-field:first').find('.pmwi_percentage_prices_note').show();
 		}
-		else{
+		else {
 			$(this).parents('.form-field:first').find('.pmwi_reduce_prices_note').show();
 			$(this).parents('.form-field:first').find('.pmwi_percentage_prices_note').hide();	
 		}
@@ -508,6 +644,22 @@
 			$('.is_guest_matching_notice').slideDown();
 		}
 	}).change();
+
+	$('input[name="is_multiple_product_subscription_period"]').live('click', function(){
+		if ($(this).val() == 'no') {
+			$('select[name="multiple_product_subscription_length"]').html($('.subscription_length-xpath').html());
+		}
+		else {
+			var $period = $('select[name="multiple_product_subscription_period"]').val();
+			$('select[name="multiple_product_subscription_length"]').html($('.subscription_length-' + $period).html());
+	}
+	});
+
+	$('input[name="is_multiple_product_subscription_period"]:checked').click();
+
+	$('select[name="multiple_product_subscription_period"]').live('change', function(){
+		$('select[name="multiple_product_subscription_length"]').html($('.subscription_length-' + $(this).val()).html());
+	});
 
 	// Sortable product attributes.
 	$('#attributes_table tbody, #variation_attributes_table tbody').sortable({

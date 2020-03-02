@@ -18,12 +18,16 @@
 										<div class="switcher-target-multiple_product_type_yes"  style="float:left;">
 											<div class="input">
 												<?php
-													$product_type_selector = apply_filters( 'product_type_selector', array(
-														'simple'   => __( 'Simple product', PMWI_Plugin::TEXT_DOMAIN ),
-														'grouped'  => __( 'Grouped product', PMWI_Plugin::TEXT_DOMAIN ),
-														'external' => __( 'External/Affiliate product', PMWI_Plugin::TEXT_DOMAIN ),
-														'variable' => __( 'Variable product', PMWI_Plugin::TEXT_DOMAIN )
-													), false );
+                                                    $product_types = array(
+                                                        'simple'   => __( 'Simple product', PMWI_Plugin::TEXT_DOMAIN ),
+                                                        'grouped'  => __( 'Grouped product', PMWI_Plugin::TEXT_DOMAIN ),
+                                                        'external' => __( 'External/Affiliate product', PMWI_Plugin::TEXT_DOMAIN ),
+                                                        'variable' => __( 'Variable product', PMWI_Plugin::TEXT_DOMAIN )
+                                                    );
+													$product_type_selector = apply_filters( 'product_type_selector', $product_types, false );
+                                                    if (isset($product_type_selector['variable-subscription'])) {
+                                                        unset($product_type_selector['variable-subscription']);
+                                                    }
 												?>
 												<select name="multiple_product_type" id="product-type">
 													<optgroup label="Product Type">
@@ -54,7 +58,7 @@
 
 											<li class="general_options active"><a href="javascript:void(0);" rel="general_product_data"><?php _e('General',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="inventory_tab show_if_simple show_if_variable show_if_grouped inventory_options" style="display: block;"><a href="javascript:void(0);" rel="inventory_product_data"><?php _e('Inventory', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
+											<li class="inventory_tab show_if_simple show_if_variable show_if_grouped show_if_subscription show_if_variable_subscription inventory_options" style="display: block;"><a href="javascript:void(0);" rel="inventory_product_data"><?php _e('Inventory', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
 											<li class="shipping_tab shipping_options hide_if_grouped hide_if_external"><a href="javascript:void(0);" rel="shipping_product_data"><?php _e('Shipping', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
@@ -64,7 +68,7 @@
 
 											<li class="advanced_tab advanced_options"><a href="javascript:void(0);" rel="advanced_product_data"><?php _e('Advanced',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="variations_tab show_if_variable variation_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="variable_product_options"><?php _e('Variations',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
+											<li class="variations_tab show_if_variable show_if_variable_subscription variation_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="variable_product_options"><?php _e('Variations',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
 											<li class="options_tab advanced_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="add_on_options"><?php _e('Add-On Options', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 

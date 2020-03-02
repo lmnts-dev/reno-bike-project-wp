@@ -22,4 +22,5 @@ return apply_filters( 'coupon_csv_product_postmeta_defaults', array(
 	'minimum_amount' => '',
 	'maximum_amount' => '',
 	'customer_email' => '',
+        'usage_count'    => 'usage_count',
 ) );

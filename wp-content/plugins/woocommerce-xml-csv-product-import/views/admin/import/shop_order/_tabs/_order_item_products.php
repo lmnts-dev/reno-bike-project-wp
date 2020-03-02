@@ -18,7 +18,7 @@
 					<?php
 					foreach ($post['pmwi_order']['products'] as $i => $product): 
 
-						$product += array('sku' => '', 'qty' => '', 'price_per_unit' => '', 'tax_rates' => array());
+						$product += array('unique_key' => '', 'sku' => '', 'qty' => '', 'price_per_unit' => '', 'tax_rates' => array());
 						
 						if (empty($product['sku'])) continue;
 						?>
@@ -26,21 +26,25 @@
 						<tr>
 							<td colspan="2">
 								<div style="float:left; width:50%;">
-									<label><?php _e('Product SKU', PMWI_Plugin::TEXT_DOMAIN); ?></label>
-									<input type="text" class="short rad4" name="pmwi_order[products][<?php echo $i; ?>][sku]" value="<?php echo esc_attr($product['sku']) ?>" style="width:95%;"/>	
+									<label><?php _e('Product Unique Key', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+									<input type="text" class="short rad4" name="pmwi_order[products][<?php echo $i; ?>][unique_key]" value="<?php echo esc_attr($product['unique_key']) ?>" style="width:95%;"/>
 								</div>
 								<div style="float:right; width:50%;">
 									<label><?php _e('Quantity', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 									<input type="text" class="short rad4" name="pmwi_order[products][<?php echo $i; ?>][qty]" value="<?php echo esc_attr($product['qty']) ?>" style="width:95%;"/>	
 								</div>
 								<div class="wpallimport-clear"></div>
+                                <div style="float:left; width:50%;">
+									<label><?php _e('Product SKU', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+									<input type="text" class="short rad4" name="pmwi_order[products][<?php echo $i; ?>][sku]" value="<?php echo esc_attr($product['sku']) ?>" style="width:95%;"/>
+								</div>
 								<div style="float:right; width:50%;">
 									<label><?php _e('Price', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 									<input type="text" class="short rad4" name="pmwi_order[products][<?php echo $i; ?>][price_per_unit]" value="<?php echo esc_attr($product['price_per_unit']) ?>" style="width:95%;"/>
 								</div>
 								<div class="wpallimport-clear"></div>
 								<!-- Product Taxes -->
-								<!--a class="switcher" id="taxes_existing_products_<?php echo $i; ?>" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a-->
+								<a class="switcher" id="taxes_existing_products_<?php echo $i; ?>" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a>
 								<div class="wpallimport-clear"></div>
 								<div class="switcher-target-taxes_existing_products_<?php echo $i; ?>">
 									<span class="wpallimport-slide-content" style="padding-left:0;">
@@ -140,39 +144,43 @@
 												</td>
 												<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 											</tr>
-<!--											<tr>-->
-<!--												<td colspan="2">-->
-<!--													<div class="form-field">														-->
-<!--														<a class="add-new-line" title="Add Tax" href="javascript:void(0);">--><?php //_e("Add Tax", "	wp_all_import_plugin"); ?><!--</a>-->
-<!--													</div>-->
-<!--												</td>-->
-<!--											</tr>-->
+											<tr>
+												<td colspan="2">
+													<div class="form-field">
+														<a class="add-new-line" title="Add Tax" href="javascript:void(0);"><?php _e("Add Tax", "	wp_all_import_plugin"); ?></a>
+													</div>
+												</td>
+											</tr>
 										</table>
 									</span>
 								</div>
 								<!-- <hr> -->
 							</td>
-							<td class="action remove"><!--a href="#remove" style="top: 33px;"></a--></td>
+							<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 						</tr>
 					<?php endforeach; ?>
 					<tr class="template">
 						<td colspan="2">
-							<div style="float:left; width:50%;">
-								<label><?php _e('Product SKU', PMWI_Plugin::TEXT_DOMAIN); ?></label>
-								<input type="text" class="short rad4" name="pmwi_order[products][ROWNUMBER][sku]" value="" style="width:95%;"/>	
-							</div>
+                            <div style="float:left; width:50%;">
+                                <label><?php _e('Product Unique Key', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+                                <input type="text" class="short rad4" name="pmwi_order[products][ROWNUMBER][unique_key]" value="" style="width:95%;"/>
+                            </div>
 							<div style="float:right; width:50%;">
 								<label><?php _e('Quantity', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 								<input type="text" class="short rad4" name="pmwi_order[products][ROWNUMBER][qty]" value="" style="width:95%;"/>	
 							</div>
 							<div class="wpallimport-clear"></div>
+                            <div style="float:left; width:50%;">
+								<label><?php _e('Product SKU', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+								<input type="text" class="short rad4" name="pmwi_order[products][ROWNUMBER][sku]" value="" style="width:95%;"/>
+							</div>
 							<div style="float:right; width:50%;">
 								<label><?php _e('Price', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 								<input type="text" class="short rad4" name="pmwi_order[products][ROWNUMBER][price_per_unit]" value="" style="width:95%;"/>
 							</div>
 							<div class="wpallimport-clear"></div>
 							<!-- Product Taxes -->
-							<!--a class="switcher" id="taxes_existing_products_ROWNUMBER" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a-->
+							<a class="switcher" id="taxes_existing_products_ROWNUMBER" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a>
 							<div class="wpallimport-clear"></div>
 							<div class="switcher-target-taxes_existing_products_ROWNUMBER">
 								<span class="wpallimport-slide-content" style="padding-left:0;">
@@ -220,19 +228,19 @@
 											</td>
 											<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 										</tr>
-<!--										<tr>-->
-<!--											<td colspan="2">-->
-<!--												<div class="form-field">													-->
-<!--													<a class="add-new-line" title="Add Tax" href="javascript:void(0);">--><?php //_e("Add Tax", "	wp_all_import_plugin"); ?><!--</a>-->
-<!--												</div>-->
-<!--											</td>-->
-<!--										</tr>-->
+										<tr>
+											<td colspan="2">
+												<div class="form-field">
+													<a class="add-new-line" title="Add Tax" href="javascript:void(0);"><?php _e("Add Tax", "	wp_all_import_plugin"); ?></a>
+												</div>
+											</td>
+										</tr>
 									</table>
 								</span>
 							</div>
 							<!-- <hr> -->
 						</td>
-						<td class="action remove"><!--a href="#remove" style="top: 33px;"></a--></td>
+						<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 					</tr>
 					<tr class="wpallimport-row-actions" style="display:none;">
 						<td colspan="3">												
@@ -258,8 +266,9 @@
 						foreach ($post['pmwi_order']['manual_products'] as $i => $product):
 							
 							$product += array(
-								'sku' => '', 
-								'meta_name' => array(), 
+								'unique_key' => '',
+								'sku' => '',
+								'meta_name' => array(),
 								'meta_value' => array(), 
 								'price_per_unit' => '',
 								'qty' => '',
@@ -272,7 +281,13 @@
 						<tr class="form-field">
 							<td colspan="2">
 								
-								<label><?php _e('Product Name', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+								<label><?php _e('Product Unique Key', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+								<div class="clear"></div>
+								<input type="text" class="short rad4" name="pmwi_order[manual_products][<?php echo $i; ?>][unique_key]" value="<?php echo esc_attr($product['unique_key']) ?>" style="width:100%;"/>
+
+								<span class="wpallimport-clear"></span>
+
+                                <label><?php _e('Product Name', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 								<div class="clear"></div>
 								<input type="text" class="short rad4" name="pmwi_order[manual_products][<?php echo $i; ?>][sku]" value="<?php echo esc_attr($product['sku']) ?>" style="width:100%;"/>	
 															
@@ -323,7 +338,7 @@
 									</tr>																			
 								</table>
 
-								<!--a class="switcher" id="taxes_manual_products_<?php echo $i; ?>" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a-->
+								<a class="switcher" id="taxes_manual_products_<?php echo $i; ?>" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a>
 								<div class="wpallimport-clear"></div>
 								<div class="switcher-target-taxes_manual_products_<?php echo $i; ?>">
 									<span class="wpallimport-slide-content" style="padding-left:0;">
@@ -425,26 +440,32 @@
 												</td>
 												<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 											</tr>
-<!--											<tr>-->
-<!--												<td colspan="2">-->
-<!--													<div class="form-field">														-->
-<!--														<a class="add-new-line" title="Add Tax" href="javascript:void(0);">--><?php //_e("Add Tax", "	wp_all_import_plugin"); ?><!--</a>-->
-<!--													</div>-->
-<!--												</td>-->
-<!--											</tr>-->
+											<tr>
+												<td colspan="2">
+													<div class="form-field">
+														<a class="add-new-line" title="Add Tax" href="javascript:void(0);"><?php _e("Add Tax", "	wp_all_import_plugin"); ?></a>
+													</div>
+												</td>
+											</tr>
 										</table>
 									</span>
 								</div>
 								<!-- <hr> -->
 							</td>
-							<td class="action remove"><!--a href="#remove" style="top: 33px;"></a--></td>
+							<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 						</tr>
 
 						<?php endforeach; ?>
 						<tr class="form-field template">
 							<td colspan="2">
 								
-								<label><?php _e('Product Name', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+								<label><?php _e('Product Unique Key', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+								<div class="clear"></div>
+								<input type="text" class="short rad4" name="pmwi_order[manual_products][ROWNUMBER][unique_key]" value="" style="width:100%;"/>
+
+								<span class="wpallimport-clear"></span>
+
+                                <label><?php _e('Product Name', PMWI_Plugin::TEXT_DOMAIN); ?></label>
 								<div class="clear"></div>
 								<input type="text" class="short rad4" name="pmwi_order[manual_products][ROWNUMBER][sku]" value="" style="width:100%;"/>	
 															
@@ -482,7 +503,7 @@
 									</tr>																			
 								</table>
 
-								<!--a class="switcher" id="taxes_manual_products_ROWNUMBER" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a-->
+								<a class="switcher" id="taxes_manual_products_ROWNUMBER" href="javascript:void(0);" style="display: block;margin: 10px 0 15px;width: 50px;"><span>-</span> <?php _e("Taxes", PMWI_Plugin::TEXT_DOMAIN); ?></a>
 								<div class="wpallimport-clear"></div>
 								<div class="switcher-target-taxes_manual_products_ROWNUMBER">
 									<span class="wpallimport-slide-content" style="padding-left:0;">
@@ -530,19 +551,19 @@
 												</td>
 												<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 											</tr>
-<!--											<tr>-->
-<!--												<td colspan="2">-->
-<!--													<div class="form-field">														-->
-<!--														<a class="add-new-line" title="Add Tax" href="javascript:void(0);">--><?php //_e("Add Tax", "	wp_all_import_plugin"); ?><!--</a>-->
-<!--													</div>-->
-<!--												</td>-->
-<!--											</tr>-->
+											<tr>
+												<td colspan="2">
+													<div class="form-field">
+														<a class="add-new-line" title="Add Tax" href="javascript:void(0);"><?php _e("Add Tax", "	wp_all_import_plugin"); ?></a>
+													</div>
+												</td>
+											</tr>
 										</table>
 									</span>
 								</div>		
 								<!-- <hr>						 -->
 							</td>
-							<td class="action remove"><!--a href="#remove" style="top: 33px;"></a--></td>
+							<td class="action remove"><a href="#remove" style="top: 33px;"></a></td>
 						</tr>																
 						<tr class="wpallimport-row-actions" style="display:none;">
 							<td colspan="3">																

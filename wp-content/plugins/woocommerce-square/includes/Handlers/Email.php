@@ -34,11 +34,11 @@ defined( 'ABSPATH' ) or exit;
  * @since 2.0.0
  */
 class Email {
-
-
 	/** @var Emails\Sync_Completed instance */
 	private $square_sync_completed;
 
+	/** @var Emails\Access_Token_Email instance */
+	private $square_access_token_email;
 
 	/**
 	 * Sets up Square emails.
@@ -46,12 +46,10 @@ class Email {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-
 		// add email handlers to WooCommerce core
 		add_action( 'woocommerce_loaded',        [ $this, 'init_emails' ] );
 		add_filter( 'woocommerce_email_classes', [ $this, 'get_email_classes' ] );
 	}
-
 
 	/**
 	 * Ensures the WooCommerce email handlers are loaded.
@@ -59,13 +57,11 @@ class Email {
 	 * @since 2.0.0
 	 */
 	private function init_mailer() {
-
 		// loads the base WooCommerce Email base class
 		if ( ! class_exists( 'WC_Email' ) ) {
 			WC()->mailer();
 		}
 	}
-
 
 	/**
 	 * Initializes Square email classes.
@@ -75,14 +71,16 @@ class Email {
 	 * @since 2.0.0
 	 */
 	public function init_emails() {
-
 		$this->init_mailer();
 
 		if ( null === $this->square_sync_completed ) {
 			$this->square_sync_completed = new Emails\Sync_Completed();
 		}
-	}
 
+		if ( null === $this->square_access_token_email ) {
+			$this->square_access_token_email = new Emails\Access_Token_Email();
+		}
+	}
 
 	/**
 	 * Adds WooCommerce Square email handlers.
@@ -95,7 +93,6 @@ class Email {
 	 * @return \WC_Email[]
 	 */
 	public function get_email_classes( $emails = [] ) {
-
 		// init emails if uninitialized
 		$this->init_emails();
 
@@ -103,9 +100,12 @@ class Email {
 			$emails['wc_square_sync_completed'] = $this->square_sync_completed;
 		}
 
+		if ( ! array_key_exists( 'wc_square_access_token_email', $emails ) || ! $emails['wc_square_access_token_email'] instanceof Emails\Sync_Completed ) {
+			$emails['wc_square_access_token_email'] = $this->square_access_token_email;
+		}
+
 		return $emails;
 	}
-
 
 	/**
 	 * Gets the Square sync completed email instance.
@@ -115,15 +115,19 @@ class Email {
 	 * @return Emails\Sync_Completed
 	 */
 	public function get_sync_completed_email() {
-
-		$this->init_mailer();
-
-		if ( null === $this->square_sync_completed ) {
-			$this->square_sync_completed = new Emails\Sync_Completed();
-		}
-
+		$this->init_emails();
 		return $this->square_sync_completed;
 	}
 
-
+	/**
+	 * Gets the Square access token email instance.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return Emails\Access_Token_Email
+	 */
+	public function get_access_token_email() {
+		$this->init_emails();
+		return $this->square_access_token_email;
+	}
 }

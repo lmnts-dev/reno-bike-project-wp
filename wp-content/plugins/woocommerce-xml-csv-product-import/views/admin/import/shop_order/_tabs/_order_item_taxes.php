@@ -7,7 +7,7 @@
 		</div>	 -->		
 		<table class="form-field wpallimport_variable_table" style="width:98%;">
 			<?php 
-			$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option( 'woocommerce_tax_classes' ) ) ) );
+			$tax_classes = \WC_Tax::get_tax_classes();
 			$classes_options = array();
 			$classes_options[''] = __( 'Standard', PMWI_Plugin::TEXT_DOMAIN );
     		if ( $tax_classes )
@@ -53,7 +53,7 @@
 										foreach ($classes_options as $key => $value):?>
 											<optgroup label="<?php echo $value; ?>">
 												<?php foreach ( WC_Tax::get_rates_for_tax_class($key) as $rate_key => $rate): $taxes_for_tooltip[] = $rate->tax_rate_id . " - " . $rate->tax_rate_name;?>
-												<option value="<?php echo $rate->tax_rate_id;?>" <?php if ($tax['tax_code'] == $rate->tax_rate_id) echo 'selected="selected"';?>><?php echo $rate->tax_rate_name;?></option>											
+												<option value="<?php echo $rate->tax_rate_id;?>" <?php if ($tax['tax_code'] == $rate->tax_rate_id) echo 'selected="selected"';?>><?php echo $rate->tax_rate_id . " - " . $rate->tax_rate_name;?></option>
 												<?php endforeach; ?>																		
 											</optgroup>
 										<?php endforeach; ?>																													
@@ -101,7 +101,7 @@
 									<?php foreach ($classes_options as $key => $value):?>										
 										<optgroup label="<?php echo $value; ?>">
 											<?php foreach ( WC_Tax::get_rates_for_tax_class($key) as $rate_key => $rate): ?>
-											<option value="<?php echo $rate->tax_rate_id;?>"><?php echo $rate->tax_rate_name;?></option>											
+											<option value="<?php echo $rate->tax_rate_id;?>"><?php echo $rate->tax_rate_id . " - " . $rate->tax_rate_name;?></option>
 											<?php endforeach; ?>																		
 										</optgroup>
 									<?php endforeach; ?>																													

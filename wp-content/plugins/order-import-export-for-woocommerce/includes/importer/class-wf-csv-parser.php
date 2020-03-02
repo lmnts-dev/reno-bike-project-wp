@@ -145,6 +145,7 @@ class WF_CSV_Parser {
         }
         $row++;
         if ($row <= $record_offset) {
+            $WF_CSV_Order_Import->add_import_result('skipped', __('skipped due to record offset', 'order-import-export-for-woocommerce')); 
             $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> Row %s - skipped due to record offset.', 'order-import-export-for-woocommerce'), $row));
             unset($item);
             return;
@@ -159,12 +160,14 @@ class WF_CSV_Parser {
             if (is_numeric($order_number_formatted) && !$order_number)
                 $order_number = $order_number_formatted;  // use formatted for underlying order number if possible
             if ($order_number && !is_numeric($order_number)) {
+                $WF_CSV_Order_Import->add_import_result('skipped', sprintf(__('> > Skipped. Order number field must be an integer: %s.', 'order-import-export-for-woocommerce'), $order_number));                    
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Skipped. Order number field must be an integer: %s.', 'order-import-export-for-woocommerce'), $order_number));
                 $skipped++;
                 unset($item);
                 return;
             }
             if ($order_number_formatted && !$order_number) {
+                $WF_CSV_Order_Import->add_import_result('skipped', __('Skipped. Formatted order number provided but no numerical order number, see the documentation for further details.', 'order-import-export-for-woocommerce'));                    
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', __('> > Skipped. Formatted order number provided but no numerical order number, see the documentation for further details.', 'order-import-export-for-woocommerce'));
                 $skipped++;
                 unset($item);
@@ -192,6 +195,7 @@ class WF_CSV_Parser {
             $order_id = apply_filters('woocommerce_find_order_by_order_number', $order_id, $order_number_formatted);
             if ($order_id) {
                 // skip if order ID already exist. 
+                $WF_CSV_Order_Import->add_import_result('skipped', sprintf(__('Skipped. Order %s already exists.', 'order-import-export-for-woocommerce'), $order_number_formatted));                    
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Skipped. Order %s already exists.', 'order-import-export-for-woocommerce'), $order_number_formatted));
                 $skipped++;
                 unset($item);
@@ -205,11 +209,11 @@ class WF_CSV_Parser {
             if (is_int($item['customer_id'])) {
                 $found_customer = get_user_by('id', $item['customer_id']);
                 if (!$found_customer) {
+                    $WF_CSV_Order_Import->add_import_result('skipped', sprintf(__('Skipped. Unknown order status (%s).', 'order-import-export-for-woocommerce'), $item['status']));                    
                     $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Skipped. Cannot find customer with id %s.', 'order-import-export-for-woocommerce'), $item['customer_id']));
                     $skipped++;
                     unset($item);
-                    return;
-                    ;
+                    return;                    
                 }
             } elseif (is_email($item['customer_id'])) {
                 // check by email
@@ -245,6 +249,7 @@ class WF_CSV_Parser {
                 $available_statuses[] = $status_slug;
             }
             if (!$found_status) {
+                $WF_CSV_Order_Import->add_import_result('skipped', sprintf(__('Skipped. Unknown order status (%s).', 'order-import-export-for-woocommerce'), $item['status']));
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Skipped. Unknown order status %s (%s).', 'order-import-export-for-woocommerce'), $item['status'], implode($available_statuses, ', ')));
                 $skipped++;
                 unset($item);
@@ -263,6 +268,7 @@ class WF_CSV_Parser {
             }
             if (false === ( $item['date'] = strtotime($item['date']) )) {
                 // invalid date format
+                $WF_CSV_Order_Import->add_import_result('skipped', __('Skipped. Invalid date format', 'order-import-export-for-woocommerce'));
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Skipped. Invalid date format %s.', 'order-import-export-for-woocommerce'), $item['date']));
                 $skipped++;
                 unset($item);
@@ -551,6 +557,7 @@ class WF_CSV_Parser {
             $total = $item['row_price'];
             if (!$sku || !$qty || !is_numeric($total)) {
                 // invalid item
+                $WF_CSV_Order_Import->add_import_result('skipped', __('skipped. Missing SKU, quantity or total', 'order-import-export-for-woocommerce'));
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Row %d - %s - skipped. Missing SKU, quantity or total', 'order-import-export-for-woocommerce'), $row, $item['order_id']));
                 $skipped++;
                 unset($item);
@@ -560,6 +567,7 @@ class WF_CSV_Parser {
             $product_id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' AND meta_value=%s LIMIT 1", $sku));
             if (!$product_id) {
                 // unknown product
+                $WF_CSV_Order_Import->add_import_result('skipped', __('skipped. Unknown order item', 'order-import-export-for-woocommerce'));
                 $WF_CSV_Order_Import->hf_order_log_data_change('order-csv-import', sprintf(__('> > Row %d - %s - skipped. Unknown order item: %s.', 'order-import-export-for-woocommerce'), $row, $item['order_id'], $sku));
                 $skipped++;
                 unset($item);
@@ -679,6 +687,23 @@ class WF_CSV_Parser {
             }
         }
         
+        $shipping_items = $shipping_line_items = array();
+        if(isset($item['shipping_items']) && !empty($item['shipping_items'])){
+            $shipping_line_items = explode('|', $item['shipping_items']);
+            $items = array_shift($shipping_line_items);
+            $items = substr($items, strpos($items, ":") + 1);
+            $method_id = array_shift($shipping_line_items);
+            $method_id = substr($method_id, strpos($method_id, ":") + 1);
+            $taxes = array_shift($shipping_line_items);
+            $taxes = substr($taxes, strpos($taxes, ":") + 1);
+            
+            $shipping_items = array(
+                'Items' => $items,
+                'method_id' => $method_id,
+                'taxes' => $taxes
+            );
+        }
+        
         if ($order) {
             $order['postmeta'] = $postmeta;
             $order['order_items'] = $order_items;
@@ -687,6 +712,7 @@ class WF_CSV_Parser {
             $order['order_shipping'] = $order_shipping_methods;
             $order['tax_items'] = $tax_items;
             $order['fee_items'] = $fee_items;
+            $order['shipping_items'] = $shipping_items;
             // the order array will now contain the necessary name-value pairs for the wp_posts table, and also any meta data in the 'postmeta' array
             $results[] = $order;
         }

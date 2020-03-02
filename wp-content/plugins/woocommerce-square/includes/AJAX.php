@@ -77,13 +77,18 @@ class AJAX {
 
 		if ( isset( $_POST['product_id'] ) && ( $product = wc_get_product( $_POST['product_id'] ) ) ) {
 
-			if ( empty( $product->get_sku() ) ) {
-				wp_send_json_error( 'missing_sku' );
-			} elseif ( count( $product->get_attributes() ) > 1 ) {
-				wp_send_json_error( 'multiple_attributes' );
+			if ( $product->is_type( 'variable' ) && $product->has_child() ) {
+				if ( Product::has_multiple_variation_attributes( $product ) ) {
+					wp_send_json_error( 'multiple_attributes' );
+				} else if ( ! Product::has_sku( $product ) ) {
+					wp_send_json_error( 'missing_variation_sku' );
+				}
 			} else {
-				wp_send_json_success( Product::is_synced_with_square( $product ) ? 'yes' : 'no' );
+				if ( ! Product::has_sku( $product ) ) {
+					wp_send_json_error( 'missing_sku' );
+				}
 			}
+			wp_send_json_success( Product::is_synced_with_square( $product ) ? 'yes' : 'no' );
 		}
 
 		wp_send_json_error( 'invalid_product' );

@@ -12,13 +12,13 @@ class WF_OrderImpExpCsv_Exporter {
     
     public static function do_export($post_type = 'shop_order') {
         global $wpdb;
-        $limit = !empty($_POST['limit']) ? intval($_POST['limit']) : 999999999;
-        $export_offset = !empty($_POST['offset']) ? intval($_POST['offset']) : 0;
+        $limit = !empty($_POST['limit']) ? absint($_POST['limit']) : 999999999;
+        $export_offset = !empty($_POST['offset']) ? absint($_POST['offset']) : 0;
         $csv_columns = include( 'data/data-wf-post-columns.php' );
-        $user_columns_name           = ! empty( $_POST['columns_name'] ) ? $_POST['columns_name'] : $csv_columns;
-        $export_columns              = ! empty( $_POST['columns'] ) ? $_POST['columns'] : array();
-        $export_order_statuses = !empty($_POST['order_status']) ? $_POST['order_status'] : 'any';
-        $delimiter = !empty($_POST['delimiter']) ? $_POST['delimiter'] : ',';
+        $user_columns_name           = ! empty( $_POST['columns_name'] ) ? wc_clean($_POST['columns_name']) : $csv_columns;
+        $export_columns              = ! empty( $_POST['columns'] ) ? wc_clean($_POST['columns']) : array();
+        $export_order_statuses = !empty($_POST['order_status']) ? wc_clean($_POST['order_status']) : 'any';
+        $delimiter = !empty($_POST['delimiter']) ? wc_clean( wp_unslash($_POST['delimiter'])) : ',';
 
         $wpdb->hide_errors();
         @set_time_limit(0);
@@ -138,11 +138,37 @@ class WF_OrderImpExpCsv_Exporter {
             $line_items[] = $line_item;
         }
         
-        foreach ($order->get_shipping_methods() as $_ => $shipping_item) {
+       /* foreach ($order->get_shipping_methods() as $_ => $shipping_item) {
             $shipping_items[] = implode('|', array(
                 'method:' . $shipping_item['name'],
                 'total:' . wc_format_decimal($shipping_item['cost'], 2),
             ));
+        }*/
+        
+        $line_items_shipping = $order->get_items('shipping');
+        
+        foreach ($line_items_shipping as $item_id => $item) {
+            $item_meta = self::get_order_line_item_meta($item_id);
+            foreach ($item_meta as $key => $value) {
+                switch ($key){
+                    case 'Items':
+                    case 'method_id':
+                    case 'taxes':
+                        if(is_object($value))
+                            $value = $value->meta_value;
+                        if (is_array($value))
+                            $value = implode(',', $value);
+                        $meta[$key] = $value;
+                        break;
+                        
+                }
+            }
+            foreach (array('Items','method_id','taxes') as $value){
+                if(!isset($meta[$value])){
+                    $meta[$value] = '';
+                }
+            }
+            $shipping_items[] = trim(implode('|', array('items:' .$meta['Items'], 'method_id:' .$meta['method_id'], 'taxes:' .$meta['taxes'])));  
         }
 
         // get fee items & total
@@ -180,12 +206,22 @@ class WF_OrderImpExpCsv_Exporter {
         }
         
         foreach ($order->get_refunds() as $refunded_items){
-            $refund_items[] = implode('|', array(
-                'amount:' . $refunded_items->get_amount(),
-		'reason:' . $refunded_items->get_reason(),
-                'date:'. date('Y-m-d H:i:s',strtotime((WC()->version < '2.7.0') ? $refunded_items->date_created : $refunded_items->get_date_created())),
-            ));
-        }
+           
+           if ((WC()->version < '2.7.0')) {
+               $refund_items[] = implode('|', array(
+                   'amount:' . $refunded_items->get_refund_amount(),
+                   'reason:' . $refunded_items->reason,
+                   'date:' . date('Y-m-d H:i:s', strtotime( $refunded_items->date_created )),
+               ));
+           } else {
+               $refund_items[] = implode('|', array(
+                   'amount:' . $refunded_items->get_amount(),
+                   'reason:' . $refunded_items->get_reason(),
+                   'date:' . date('Y-m-d H:i:s', strtotime( $refunded_items->get_date_created())),
+               ));
+           }      
+           
+       }
 
         if (version_compare(WC_VERSION, '2.7', '<')) {
             $order_data = array(
@@ -322,7 +358,6 @@ class WF_OrderImpExpCsv_Exporter {
         add_filter('comments_clauses', $callback);
         $notes = array_reverse($notes);
         $order_notes = array();
-
         foreach ($notes as $note) {
             $date = $note->comment_date;
             $customer_note = 0;
@@ -332,7 +367,8 @@ class WF_OrderImpExpCsv_Exporter {
             $order_notes[] = implode('|', array(
                 'content:' .str_replace(array("\r", "\n"), ' ', $note->comment_content),
                 'date:'.(!empty($date) ? $date : current_time( 'mysql' )),
-                'customer:'.$customer_note
+                'customer:'.$customer_note,
+                'added_by:'.$note->added_by
              ));
         }
         return $order_notes;
@@ -345,9 +381,23 @@ class WF_OrderImpExpCsv_Exporter {
             $order_notes[] = implode('|', array(
                 'content:' .str_replace(array("\r", "\n"), ' ', $note->content),
                 'date:'.$note->date_created->date('Y-m-d H:i:s'),
-                'customer:'.$note->customer_note
+                'customer:'.$note->customer_note,
+                'added_by:'.$note->added_by
              ));
         }
         return $order_notes;
+    }
+    
+     public static function get_order_line_item_meta($item_id){
+        global $wpdb;
+        $filtered_meta = apply_filters('wt_order_export_select_line_item_meta',array());
+        $filtered_meta = !empty($filtered_meta) ? implode("','",$filtered_meta) : '';
+        $query = "SELECT meta_key,meta_value
+            FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = '$item_id'";
+        if(!empty($filtered_meta)){
+            $query .= " AND meta_key IN ('".$filtered_meta."')";
+        }
+        $meta_keys = $wpdb->get_results($query , OBJECT_K );
+        return $meta_keys;
     }
 }

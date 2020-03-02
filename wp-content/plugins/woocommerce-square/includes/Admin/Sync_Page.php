@@ -76,7 +76,7 @@ class Sync_Page {
 						<td>
 							<?php printf(
 								/* translators: Placeholders: %1$s, %3$s - opening <strong> HTML tag, %2$s, $4%s - closing </strong> HTML tag */
-								esc_html__( '%1$sSquare%2$s is the system of record. The following data from Square will overwrite WooCommerce data for synced products: %3$sname, price, inventory%4$s.', 'woocommerce-square' ),
+								esc_html__( '%1$sSquare%2$s is the system of record. The following data from Square will overwrite WooCommerce data for synced products: %3$sname, price, description, category, inventory%4$s.', 'woocommerce-square' ),
 								'<strong>', '</strong>', '<strong>', '</strong>'
 							); ?>
 						</td>

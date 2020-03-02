@@ -55,10 +55,18 @@ class API extends Framework\SV_WC_API_Base {
 	 * @since 2.0.0
 	 *
 	 * @param string $access_token Square API access token
+	 * @param bool   $is_sandbox   If sandbox access is desired
 	 */
-	public function __construct( $access_token ) {
+	public function __construct( $access_token, $is_sandbox = null ) {
+		$api_config = SquareConnect\Configuration::getDefaultConfiguration();
+		$api_config->setAccessToken( $access_token );
 
-		$this->client = new SquareConnect\ApiClient( SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken( $access_token ) );
+		// Set sandbox URL if enabled.
+		if ( $is_sandbox ) {
+			$api_config->setHost( 'https://connect.squareupsandbox.com' );
+		}
+
+		$this->client = new SquareConnect\ApiClient( $api_config );
 	}
 
 
@@ -785,29 +793,43 @@ class API extends Framework\SV_WC_API_Base {
 	 */
 	protected function do_post_parse_response_validation() {
 
-		if ( $this->get_response()->has_errors() ) {
+		if ( ! $this->get_response()->has_errors() ) {
+			return true;
+		}
 
-			$errors = [];
+		$errors = [];
 
-			foreach ( $this->get_response()->get_errors() as $error ) {
+		foreach ( $this->get_response()->get_errors() as $error ) {
+			if ( empty( $error->code ) ) {
+				continue;
+			}
 
-				$errors[] = trim( "[{$error->code}] {$error->detail}" );
+			$errors[] = trim( "[{$error->code}] {$error->detail}" );
 
-				// if the error indicates that access token is bad, disconnect the plugin to prevent further attempts
-				if ( ! empty( $error->code ) && in_array( $error->code, [ 'UNAUTHORIZED', 'ACCESS_TOKEN_EXPIRED', 'ACCESS_TOKEN_REVOKED' ], true ) ) {
+			// Last attempt to refresh access token.
+			if ( 'ACCESS_TOKEN_EXPIRED'  == $error->code ) {
+				$this->get_plugin()->log( 'Access Token Expired, attempting a refresh.' );
+				$this->get_plugin()->get_connection_handler()->refresh_connection();
 
-					$this->get_plugin()->get_connection_handler()->disconnect();
+				$failure_value = get_option( 'wc_' . $this->get_plugin()->get_id() . '_refresh_failed', 'yes' );
 
-					$this->get_plugin()->log( 'Disconnected due to invalid authorization' );
+				if ( empty( $failure_value ) ) {
+					// Successfully refreshed on the last attempt
+					$this->get_plugin()->log( 'Connection successfully refreshed.' );
+					return true;
 				}
 			}
 
-			throw new Framework\SV_WC_API_Exception( implode( ' | ', $errors ) );
+			// if the error indicates that access token is bad, disconnect the plugin to prevent further attempts
+			if ( in_array( $error->code, [ 'ACCESS_TOKEN_EXPIRED', 'ACCESS_TOKEN_REVOKED' ], true ) ) {
+				$this->get_plugin()->get_connection_handler()->disconnect();
+				$this->get_plugin()->log( 'Disconnected due to invalid authorization. Please try connecting again.' );
+			}
 		}
 
-		return true;
+		// At this point we could not validate the response and assume a failed attempt.
+		throw new Framework\SV_WC_API_Exception( implode( ' | ', $errors ) );
 	}
-
 
 	/**
 	 * Performs a remote request with the Square API class.

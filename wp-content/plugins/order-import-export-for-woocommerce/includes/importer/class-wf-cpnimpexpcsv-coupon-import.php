@@ -51,7 +51,7 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
 //		} else{
 //			$this->merge_empty_cells = 0;
 //		}
-        $step = empty( $_GET['step'] ) ? 0 : (int) $_GET['step'];
+        $step = empty( $_GET['step'] ) ? 0 : absint($_GET['step']);
         switch ( $step ) {
             case 0 :
                 $this->header();
@@ -61,9 +61,9 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                 $this->header();
                 check_admin_referer( 'import-upload' );
                 if(!empty($_GET['file_url']))
-                    $this->file_url = esc_attr( $_GET['file_url'] );
+                    $this->file_url = esc_url_raw( $_GET['file_url'] );
                 if(!empty($_GET['file_id']))
-                    $this->id = $_GET['file_id'] ;
+                    $this->id = absint($_GET['file_id']) ;
                 if ( !empty($_GET['clearmapping']) || $this->handle_upload() )
                     $this->import_options();
                 else
@@ -74,15 +74,20 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
             case 2 :
                 $this->header();
                 check_admin_referer( 'import-woocommerce' );
-                $this->id = (int) $_POST['import_id'];
+                $this->id = absint($_POST['import_id']);
                 if ( $this->file_url_import_enabled )
-                    $this->file_url = esc_attr( $_POST['import_url'] );
+                    $this->file_url = esc_url_raw( $_POST['import_url'] );
                 if ( $this->id )
                     $file = get_attached_file( $this->id );
                 else if ( $this->file_url_import_enabled )
                     $file = ABSPATH . $this->file_url;
                 $file = str_replace( "\\", "/", $file );
                 if ( $file ) {
+                    $file_delimiter = $this->detectDelimiter($file);
+                    if(!empty($file_delimiter) && ($file_delimiter != $this->delimiter)){
+                        echo '<p class="error"><strong>' . __("Basic version supports only ',' as delimiter. Your file's delimiter seems to be unsupported.", 'users-customers-import-export-for-wp-woocommerce') . '</strong></p>';
+                        break;
+                    }
                 ?>
                     <table id="import-progress" class="widefat_importer widefat">
                         <thead>
@@ -115,6 +120,7 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                                     //merge_empty_cells: '<?php //echo $this->merge_empty_cells; ?>',
                                     start_pos:  start_pos,
                                     end_pos:    end_pos,
+                                    wt_nonce : '<?php echo wp_create_nonce( WF_CPN_IMP_EXP_ID )?>',
                                 };
                                 return $.ajax({
                                     url:        '<?php echo add_query_arg( array( 'import_page' => $this->import_page, 'step' => '3', 'merge' => ! empty( $_GET['merge'] ) ? '1' : '0' ), admin_url( 'admin-ajax.php' ) ); ?>',
@@ -209,6 +215,7 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                                             action: 'coupon_csv_import_request',
                                             file: '<?php echo $file; ?>',
                                             processed_posts: processed_posts,
+                                            wt_nonce : '<?php echo wp_create_nonce( WF_CPN_IMP_EXP_ID )?>',
                                     };
 
                                     $.ajax({
@@ -229,18 +236,22 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                         echo '<p class="error">' . __( 'Error finding uploaded file!', 'order-import-export-for-woocommerce' ) . '</p>';
                 }
             break;
-            case 3 :
-                // Check access - cannot use nonce here as it will expire after multiple requests
-                if ( ! current_user_can( 'manage_woocommerce' ) )
-                        die();
+            case 3 :  
+                $nonce = (isset($_POST['wt_nonce']) ? sanitize_text_field($_POST['wt_nonce']) : '');
+                if (!wp_verify_nonce($nonce, WF_CPN_IMP_EXP_ID) || !WF_Coupon_Import_Export_CSV::hf_user_permission()) {
+                    wp_die(__('Access Denied', 'order-import-export-for-woocommerce'));
+                }
+                $file      = stripslashes( $_POST['file'] );
+                if (filter_var($file, FILTER_VALIDATE_URL)){ // Validating given path is valid path, not a URL
+                    die();
+                }                                
                 add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
                 if ( function_exists( 'gc_enable' ) )
                         gc_enable();
                 @set_time_limit(0);
                 @ob_flush();
                 @flush();
-                $wpdb->hide_errors();
-                $file      = stripslashes( $_POST['file'] );
+                $wpdb->hide_errors();                                    
                 $start_pos = isset( $_POST['start_pos'] ) ? absint( $_POST['start_pos'] ) : 0;
                 $end_pos   = isset( $_POST['end_pos'] ) ? absint( $_POST['end_pos'] ) : '';
                 $position = $this->import_start( $file, $start_pos, $end_pos );
@@ -257,10 +268,10 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                 exit;
             break;
             case 4 :
-                // Check access - cannot use nonce here as it will expire after multiple requests
-                if ( ! current_user_can( 'manage_woocommerce' ) )
-                        die();
-
+                $nonce = (isset($_POST['wt_nonce']) ? sanitize_text_field($_POST['wt_nonce']) : '');
+                if (!wp_verify_nonce($nonce, WF_CPN_IMP_EXP_ID) || !WF_Coupon_Import_Export_CSV::hf_user_permission()) {
+                    wp_die(__('Access Denied', 'order-import-export-for-woocommerce'));
+                } 
                 add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
 
                 if ( function_exists( 'gc_enable' ) )
@@ -271,7 +282,8 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                 @flush();
                 $wpdb->hide_errors();
 
-                $this->processed_posts = isset( $_POST['processed_posts']) ? $_POST['processed_posts'] : array();
+                $this->processed_posts = isset( $_POST['processed_posts']) ? array_map('intval', $_POST['processed_posts']) : array();
+                $file = isset($_POST['file']) ? stripslashes($_POST['file']) : ''; 
 
                 _e( 'Step 1...', 'order-import-export-for-woocommerce' ) . ' ';
                 wp_defer_term_counting( true );
@@ -281,6 +293,9 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                 _e( 'Finalizing...', 'order-import-export-for-woocommerce' ) . ' ';
                 // SUCCESS
                 _e( 'Finished. Import complete.', 'order-import-export-for-woocommerce' );
+                if(in_array(pathinfo($file, PATHINFO_EXTENSION),array('txt','csv'))){
+                    unlink($file);
+                }
                 $this->import_end();
                 exit;
             break;
@@ -389,11 +404,11 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
                 echo esc_html( $file['error'] ) . '</p>';
                 return false;
             }
-            $this->id = (int) $file['id'];
+            $this->id = absint($file['id']);
             return true;
         } else {
             if ( file_exists( ABSPATH . $_POST['file_url'] ) ){
-                $this->file_url = esc_attr( $_POST['file_url'] );
+                $this->file_url = esc_url_raw( $_POST['file_url'] );
                 return true;
             } else {
                 echo '<p><strong>' . __( 'Sorry, there has been an error.', 'order-import-export-for-woocommerce' ) . '</strong></p>';
@@ -652,5 +667,22 @@ class WF_CpnImpExpCsv_Coupon_Import extends WP_Importer {
             $context = array( 'source' => $content );
             $this->log->log("debug", $data ,$context);
         }
+    }
+    
+    public function detectDelimiter($csvFile) {
+        $delimiters = array(
+            ';' => 0,
+            ',' => 0,
+            "\t" => 0,
+            "|" => 0
+        );
+
+        $handle = fopen($csvFile, "r");
+        $firstLine = fgets($handle);
+        fclose($handle); 
+        foreach ($delimiters as $delimiter => &$count) {
+            $count = count(str_getcsv($firstLine, $delimiter));
+        }
+        return array_search(max($delimiters), $delimiters);
     }
 }

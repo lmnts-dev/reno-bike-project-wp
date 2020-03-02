@@ -170,7 +170,7 @@ class Category {
 
 			if ( $category = get_term_by( 'name', $name, 'product_cat', ARRAY_A ) ) {
 
-				$category_id = isset( $category['name'] ) ? $category['name'] : null;
+				$category_id = isset( $category['term_id'] ) ? absint( $category['term_id'] ) : null;
 			}
 		}
 
@@ -184,7 +184,7 @@ class Category {
 
 
 		if ( $category_id ) {
-
+			wp_update_term( $category_id, 'product_cat', [ 'name' => $name ] );
 			self::update_square_meta( $category_id, $id, $version );
 		}
 

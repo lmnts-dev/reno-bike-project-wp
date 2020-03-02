@@ -168,8 +168,9 @@ class Background_Job extends Framework\SV_WP_Background_Job_Handler {
 		}
 
 		if ( $job instanceof Job ) {
-
+			$current_user_id = get_current_user_id();
 			$job = $job->run();
+			wp_set_current_user( $current_user_id );
 		}
 
 		return $job;
@@ -189,9 +190,7 @@ class Background_Job extends Framework\SV_WP_Background_Job_Handler {
 
 		wc_square()->get_sync_handler()->record_sync( $job->processed_product_ids, $job );
 
-		if ( ! empty( $job->manual ) ) {
-			wc_square()->get_email_handler()->get_sync_completed_email()->trigger( $job );
-		}
+		wc_square()->get_email_handler()->get_sync_completed_email()->trigger( $job );
 	}
 
 
@@ -209,9 +208,7 @@ class Background_Job extends Framework\SV_WP_Background_Job_Handler {
 			'message' => 'Sync failed. Please try again',
 		] );
 
-		if ( ! empty( $job->manual ) ) {
-			wc_square()->get_email_handler()->get_sync_completed_email()->trigger( $job );
-		}
+		wc_square()->get_email_handler()->get_sync_completed_email()->trigger( $job );
 	}
 
 

@@ -173,6 +173,7 @@ final class XmlImportWooCommerceService {
                 }
             }
         }
+        $isNewProduct = get_post_meta($product->get_id(), self::FLAG_IS_NEW_PRODUCT, true);
         // Sync parent product with variation if at least one variation exist.
         if (!empty($variations)) {
             /** @var WC_Product_Variable_Data_Store_CPT $data_store */
@@ -182,7 +183,7 @@ final class XmlImportWooCommerceService {
                 $data_store->sync_stock_status( $product );
             }
             // Set product default attributes.
-            if ($this->isUpdateDataAllowed('is_update_attributes') && $this->getImport()->options['is_default_attributes']) {
+            if ($this->isUpdateDataAllowed('is_update_attributes', $isNewProduct) && $this->getImport()->options['is_default_attributes']) {
                 $defaultVariation = FALSE;
                 // Set first variation as the default selection.
                 if ($this->getImport()->options['default_attributes_type'] == 'first') {
@@ -231,6 +232,9 @@ final class XmlImportWooCommerceService {
         $minimumVariations = apply_filters('wp_all_import_minimum_number_of_variations', 2, $product->get_id(), $this->getImport()->id);
         if (count($variationIDs) < $minimumVariations) {
             $this->maybeMakeProductSimple($product, $variationIDs);
+        }
+        if ($this->isUpdateDataAllowed('is_update_attributes', $isNewProduct)) {
+            $this->recountAttributes($product);
         }
         do_action('wp_all_import_variable_product_imported', $product->get_id());
         // Delete originally parsed data, which was temporary stored in
@@ -322,6 +326,28 @@ final class XmlImportWooCommerceService {
     }
 
     /**
+     * Re-count product attributes.
+     *
+     * @param WC_Product $product
+     */
+    public function recountAttributes(\WC_Product $product) {
+        $attributes = $product->get_attributes();
+        /** @var \WC_Product_Attribute $attribute */
+        foreach ($attributes as $attributeName => $attribute) {
+            if ($attribute->is_taxonomy()) {
+                $attribute_values = $attribute->get_terms();
+                if (!empty($attribute_values)) {
+                  $terms = [];
+                  foreach ($attribute_values as $key => $object) {
+                    $terms[] = $object->term_id;
+                  }
+                  wp_update_term_count_now($terms, $attributeName);
+                }
+            }
+        }
+    }
+
+    /**
      * @param string $option
      * @param bool $isNewProduct
      * @return bool
@@ -378,7 +404,7 @@ final class XmlImportWooCommerceService {
      *
      * @return bool
      */
-    public function isUpdateAttribute($attributeName, $pid, $isNewProduct = TRUE) {
+    public function isUpdateAttribute($attributeName, $isNewProduct = TRUE) {
         $is_update_attributes = TRUE;
         // Update only these Attributes, leave the rest alone.
         if ( ! $isNewProduct && $this->getImport()->options['update_all_data'] == "no" && $this->getImport()->options['is_update_attributes'] && $this->getImport()->options['update_attributes_logic'] == 'only') {

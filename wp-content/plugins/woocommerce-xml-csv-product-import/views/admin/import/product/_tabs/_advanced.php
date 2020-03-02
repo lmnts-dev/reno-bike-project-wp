@@ -1,7 +1,7 @@
 <div class="panel woocommerce_options_panel" id="advanced_product_data" style="display:none;">
     <?php if (class_exists('PMWI_Plugin') && PMWI_EDITION == 'free'): ?>
     <div class="woo-add-on-free-edition-notice upgrade_template">
-        <a href="https://www.wpallimport.com/checkout/?edd_action=purchase_collection&taxonomy=download_category&terms=14&utm_source=import-wooco-products-addon-free&utm_medium=upgrade-notice&utm_campaign=import-variable-wooco-products" target="_blank" class="upgrade_woo_link"><?php _e('Upgrade to the Pro edition of WP All Import and the WooCommerce Add-On to import to Variable, Affiliate, and Grouped Products', PMWI_Plugin::TEXT_DOMAIN);?></a>
+        <a href="https://www.wpallimport.com/checkout/?edd_action=purchase_collection&taxonomy=download_category&terms=14&utm_source=import-wooco-products-addon-free&utm_medium=upgrade-notice&utm_campaign=import-variable-wooco-products" target="_blank" class="upgrade_woo_link"><?php _e('Upgrade to the Pro edition of WP All Import and the WooCommerce Add-On to Import to Variable, Affiliate, and Grouped Products', PMWI_Plugin::TEXT_DOMAIN);?></a>
         <p><?php _e('If you already own it, remove the free edition and install the Pro edition.', 'wp_all_import_plugin'); ?></p>
     </div>
     <?php endif; ?>
@@ -17,6 +17,35 @@
 			<input type="text" class="short" placeholder="" name="single_product_menu_order" value="<?php echo esc_attr($post['single_product_menu_order']) ?>"/>
 		</p>
 	</div>
+
+    <div class="options_group show_if_subscription show_if_variable_subscription">
+        <div class="form-field wpallimport-radio-field">
+            <input type="radio" id="multiple_product_subscription_limit_yes" class="switcher" name="is_multiple_product_subscription_limit" value="yes" <?php echo 'no' != $post['is_multiple_product_subscription_limit'] ? 'checked="checked"': '' ?>/>
+            <label for="multiple_product_subscription_limit_yes"><?php _e("Subscription Limit", PMWI_Plugin::TEXT_DOMAIN); ?></label>
+            <span class="wpallimport-clear"></span>
+            <div class="switcher-target-multiple_product_subscription_limit_yes set_with_xpath">
+				<span class="wpallimport-slide-content" style="padding-left:0;">
+					<select class="select short" name="multiple_product_subscription_limit">
+						<option value="no" <?php echo 'no' == $post['multiple_product_subscription_limit'] ? 'selected="selected"': '' ?>><?php _e('No', PMWI_Plugin::TEXT_DOMAIN);?></option>
+						<option value="active" <?php echo 'active' == $post['multiple_product_subscription_limit'] ? 'selected="selected"': '' ?>><?php _e('Active', PMWI_Plugin::TEXT_DOMAIN);?></option>
+						<option value="any" <?php echo 'any' == $post['multiple_product_subscription_limit'] ? 'selected="selected"': '' ?>><?php _e('Any', PMWI_Plugin::TEXT_DOMAIN);?></option>
+					</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="form-field wpallimport-radio-field">
+            <input type="radio" id="multiple_product_subscription_limit_no" class="switcher" name="is_multiple_product_subscription_limit" value="no" <?php echo 'no' == $post['is_multiple_product_subscription_limit'] ? 'checked="checked"': '' ?>/>
+            <label for="multiple_product_subscription_limit_no"><?php _e('Set with XPath', PMWI_Plugin::TEXT_DOMAIN ); ?></label>
+            <span class="wpallimport-clear"></span>
+            <div class="switcher-target-multiple_product_subscription_limit_no set_with_xpath">
+				<span class="wpallimport-slide-content" style="padding-left:0;">
+					<input type="text" class="smaller-text" name="single_product_subscription_limit" style="width:300px;" value="<?php echo esc_attr($post['single_product_subscription_limit']) ?>"/>
+					<a href="#help" class="wpallimport-help" title="<?php _e('Value should be the slug for the tax status - \'no\', \'active\', and \'any\' are the default slugs.', PMWI_Plugin::TEXT_DOMAIN) ?>">?</a>
+				</span>
+            </div>
+        </div>
+    </div>
 
 	<div class="options_group reviews">
 

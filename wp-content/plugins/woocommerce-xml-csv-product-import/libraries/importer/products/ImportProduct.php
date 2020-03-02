@@ -69,6 +69,9 @@ abstract class ImportProduct extends ImportProductBase {
     public function import() {
         $this->setProperties();
         $this->save();
+        if (!in_array($this->productType, ['variable', 'product_variation']) && $this->getImportService()->isUpdateDataAllowed('is_update_attributes', $this->isNewProduct())) {
+            $this->getImportService()->recountAttributes($this->product);
+        }
     }
 
     /**
@@ -354,7 +357,7 @@ abstract class ImportProduct extends ImportProductBase {
                 }
                 $isTaxonomy = intval($attribute['in_taxonomy']);
                 $attributeName = ($isTaxonomy) ? wc_attribute_taxonomy_name( $real_attr_name ) : $real_attr_name;
-                $isUpdateAttributes = $this->getImportService()->isUpdateAttribute($attributeName, $this->getPid(), $this->isNewProduct());
+                $isUpdateAttributes = $this->getImportService()->isUpdateAttribute($attributeName, $this->isNewProduct());
                 $attribute_position++;
                 if ($isUpdateAttributes) {
                     $values = $attribute['value'];
@@ -427,7 +430,7 @@ abstract class ImportProduct extends ImportProductBase {
                     }
                 }
                 $name = $attribute->is_taxonomy() ? $attributeName : $attribute->get_name();
-                if (!$this->getImportService()->isUpdateAttribute($name, $this->getPid(), $this->isNewProduct()) || $isAddNew) {
+                if (!$this->getImportService()->isUpdateAttribute($name, $this->isNewProduct()) || $isAddNew) {
                     $productAttributes[$attributeName] = array(
                         'name' => $attribute->is_taxonomy() ? urldecode_deep($attributeName) : $attribute->get_name(),
                         'value' => $attribute->is_taxonomy() ? $attribute->get_options() : implode("|", $attribute->get_options()),
@@ -518,7 +521,7 @@ abstract class ImportProduct extends ImportProductBase {
         // Unique SKU.
         $newSKU = wc_clean( trim( stripslashes( $this->getValue('product_sku') ) ) );
 
-        if ( ( in_array($this->productType, array('variation', 'variable')) || $this->getValue('product_types') == "variable" ) && ! $this->getImport()->options['link_all_variations'] ){
+        if ( ( in_array($this->productType, array('variation', 'variable', 'variable-subscription')) || $this->getValue('product_types') == "variable" || $this->getValue('product_types') == 'variable-subscription' ) && ! $this->getImport()->options['link_all_variations'] ){
             $identity = FALSE;
             switch ($this->getImport()->options['matching_parent']){
                 case 'first_is_parent_id':
@@ -553,7 +556,7 @@ abstract class ImportProduct extends ImportProductBase {
                     }
                 }
 
-                if ( ( in_array($this->productType, array('variation', 'variable')) || $this->getValue('product_types') == "variable" ) && ! $this->getImport()->options['link_all_variations'] ) {
+                if ( ( in_array($this->productType, array('variation', 'variable', 'variable-subscription')) || $this->getValue('product_types') == "variable" || $this->getValue('product_types') == "variable-subscription" ) && ! $this->getImport()->options['link_all_variations'] ) {
                     $identity = FALSE;
                     switch ($this->getImport()->options['matching_parent']){
                         case 'first_is_parent_id':
@@ -577,7 +580,7 @@ abstract class ImportProduct extends ImportProductBase {
      */
     protected function importGrouping() {
         // Group products by Parent.
-        if (in_array($this->productType, array( 'simple', 'external', 'variable' ))) {
+        if (in_array($this->productType, array( 'simple', 'external', 'variable', 'variable-subscription' ))) {
             // Group all product to one parent ( no XPath provided ).
             if ($this->getImport()->options['is_multiple_grouping_product'] != 'yes') {
                 // Trying to find parent product according to matching options.
@@ -710,7 +713,7 @@ abstract class ImportProduct extends ImportProductBase {
      *
      * @return mixed
      */
-    private function getPropertyMetaKey($property) {
+    public function getPropertyMetaKey($property) {
         switch ($property) {
             case 'stock_quantity':
                 $property = '_stock';

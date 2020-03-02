@@ -25,12 +25,16 @@ jQuery( document ).ready ( $ ) ->
 			@enabled_card_types = args.enabled_card_types
 			@square_card_types  = args.square_card_types
 
-			@logging_enabled  = args.logging_enabled
-			@general_error    = args.general_error
-			@ajax_url         = args.ajax_url
-			@ajax_log_nonce   = args.ajax_log_nonce
-			@input_styles     = args.input_styles
-			@application_id   = args.application_id
+			@ajax_log_nonce             = args.ajax_log_nonce
+			@ajax_url                   = args.ajax_url
+			@application_id             = args.application_id
+			@currency_code              = args.currency_code
+			@general_error              = args.general_error
+			@input_styles               = args.input_styles
+			@is_3ds_enabled             = args.is_3d_secure_enabled
+			@is_add_payment_method_page = args.is_add_payment_method_page
+			@location_id                = args.location_id
+			@logging_enabled            = args.logging_enabled
 
 			# which payment form?
 			if $( 'form.checkout' ).length
@@ -46,7 +50,7 @@ jQuery( document ).ready ( $ ) ->
 				this.handle_add_payment_method_page()
 
 			else
-				console.log( 'No payment form found!' )
+				this.log 'No payment form found!'
 				return
 
 			# localized error messages
@@ -55,6 +59,7 @@ jQuery( document ).ready ( $ ) ->
 			# unblock the UI and clear any payment nonces when a server-side error occurs
 			$( document.body ).on( 'checkout_error', ->
 				$( "input[name=wc-square-credit-card-payment-nonce]" ).val( '' )
+				$( "input[name=wc-square-credit-card-buyer-verification-token]" ).val( '' )
 			)
 
 
@@ -187,7 +192,8 @@ jQuery( document ).ready ( $ ) ->
 			$postal_code = $( "#wc-#{@id_dasherized}-postal-code-hosted" )
 
 			return {
-				applicationId: @application_id
+				applicationId: @application_id,
+				locationId:    @location_id,
 				cardNumber: {
 					elementId: $card_number.attr( 'id' )
 					placeholder: $card_number.data( 'placeholder' )
@@ -208,7 +214,7 @@ jQuery( document ).ready ( $ ) ->
 				inputStyles: @input_styles
 				callbacks: {
 					inputEventReceived: ( event ) => this.handle_input_event( event )
-					cardNonceResponseReceived: ( errors, nonce, cardData ) => this.handle_response( errors, nonce, cardData )
+					cardNonceResponseReceived: ( errors, nonce, cardData ) => this.handle_card_nonce_response( errors, nonce, cardData )
 					unsupportedBrowserDetected: => this.handle_unsupported_browser()
 					paymentFormLoaded: => this.handle_form_loaded()
 				}
@@ -276,29 +282,50 @@ jQuery( document ).ready ( $ ) ->
 			# bail when already processing
 			return false if @form.is( '.processing' )
 
-			# let through if nonce is already present
+			# let through if nonce is already present - nonce is only present on non-tokenized payments
 			if this.has_nonce()
 				this.log 'Payment nonce present, placing order'
 				return true
 
-			return true if $( ".payment_method_#{ @id }" ).find( '.js-wc-square-credit-card-payment-token:checked' ).val()
+			tokenized_card_id = this.get_tokenized_payment_method_id()
+
+			if tokenized_card_id
+
+				# if 3DS is disabled and paying with a saved method, no further validation needed
+				return true unless @is_3ds_enabled
+
+				if this.has_verification_token()
+					this.log 'Tokenized payment verification token present, placing order'
+					return true
+
+				this.log 'Requesting verification token for tokenized payment'
+				this.block_ui()
+				@payment_form.verifyBuyer tokenized_card_id, this.get_verification_details(), this.handle_verify_buyer_response
+				return false
 
 			this.log 'Requesting payment nonce'
-
 			this.block_ui()
-
 			@payment_form.requestCardNonce()
-
 			return false
 
 
-		# Handles the Square payment form response.
+		# Gets the selected tokenized payment method ID, if there is one.
 		#
-		# @since 2.0.0
+		# @since 2.1.0
+		#
+		# @return String
+		get_tokenized_payment_method_id: ->
+			return $( ".payment_method_#{ @id }" ).find( '.js-wc-square-credit-card-payment-token:checked' ).val()
+
+
+		# Handles the Square payment form card nonce response.
+		#
+		# @since 2.1.0
 		#
 		# @param Object[] errors validation errors, if any
 		# @param String nonce payment nonce
-		handle_response: ( errors, nonce, cardData ) ->
+		# @param Object cardData non-confidential info about the card used
+		handle_card_nonce_response: ( errors, nonce, cardData ) ->
 
 			# if we have real errors to display from Square
 			if errors
@@ -316,7 +343,7 @@ jQuery( document ).ready ( $ ) ->
 
 			# if we made it this far, we have payment data
 			this.log 'Card data received'
-			console.log cardData
+			this.log cardData
 			this.log_data( cardData, 'response' )
 
 			if cardData.last_4
@@ -334,8 +361,108 @@ jQuery( document ).ready ( $ ) ->
 			# payment nonce data
 			$( "input[name=wc-#{@id_dasherized}-payment-nonce]" ).val( nonce )
 
+			# if 3ds is enabled, we need to verify the buyer and record the verification token before continuing
+			if @is_3ds_enabled
+
+				this.log 'Verifying buyer'
+
+				@payment_form.verifyBuyer nonce, this.get_verification_details(), this.handle_verify_buyer_response
+				return
+
 			# now that we have a nonce, resubmit the form
 			@form.submit()
+
+
+		# Handles the response from a call to verifyBuyer()
+		#
+		# @since 2.1.0
+		#
+		# @param Object[] errors verification errors, if any
+		# @param Object verification_result the results of verification
+		handle_verify_buyer_response: ( errors, verification_result ) =>
+
+			if errors
+				return this.handle_errors( errors )
+
+			# no errors, but also no verification token
+			if not verification_result or not verification_result.token
+
+				message = 'Verification token is missing from the Square response'
+
+				this.log message, 'error'
+				this.log_data message, 'response'
+
+				return this.handle_errors()
+
+			this.log 'Verification result received'
+			this.log verification_result
+
+			$( "input[name=wc-#{@id_dasherized}-buyer-verification-token]" ).val( verification_result.token )
+
+			@form.submit()
+
+
+		# Gets a verification details object to be used in verifyBuyer()
+		#
+		# @since 2.1.0
+		#
+		# @return Object verification details object
+		get_verification_details: ->
+
+			verification_details = {
+				billingContact: {
+					familyName:   $( '#billing_last_name' ).val()
+					givenName:    $( '#billing_first_name' ).val()
+					email:        $( '#billing_email' ).val()
+					country:      $( '#billing_country' ).val()
+					region:       $( '#billing_state' ).val()
+					city:         $( '#billing_city' ).val()
+					postalCode:   $( '#billing_postcode' ).val()
+					phone:        $( '#billing_phone' ).val()
+					addressLines: [
+						$( '#billing_address_1' ).val(),
+						$( '#billing_address_2' ).val()
+					]
+				}
+				intent: this.get_intent()
+			}
+
+			if 'CHARGE' is verification_details.intent
+				verification_details.amount       = this.get_amount()
+				verification_details.currencyCode = @currency_code
+
+			this.log verification_details
+
+			return verification_details
+
+
+		# Gets the intent of this processing - either 'CHARGE' or 'STORE'
+		#
+		# The gateway stores cards before processing a payment, so this checks whether the customer checked "save method"
+		# at checkout, and isn't otherwise using a saved method already.
+		#
+		# @since 2.1.0
+		#
+		# return String {'CHARGE'|'STORE'}
+		get_intent: ->
+
+			$save_method_input = $( '#wc-square-credit-card-tokenize-payment-method' )
+
+			if $save_method_input.is( 'input:checkbox' )
+				save_payment_method = $save_method_input.is( ':checked' )
+			else
+				save_payment_method = $save_method_input.val() is 'true'
+
+			return if not this.get_tokenized_payment_method_id() and save_payment_method then 'STORE' else 'CHARGE'
+
+
+		# Gets the amount of this payment.
+		#
+		# @since 2.1.0
+		#
+		# return String
+		get_amount: ->
+			return $( "input[name=wc-#{@id_dasherized}-amount]" ).val()
 
 
 		# Handles unsupported browsers.
@@ -351,6 +478,10 @@ jQuery( document ).ready ( $ ) ->
 		handle_errors: ( errors = null ) ->
 
 			this.log 'Error getting payment data', 'error'
+
+			# clear any previous nonces
+			$( "input[name=wc-square-credit-card-payment-nonce]" ).val( '' )
+			$( "input[name=wc-square-credit-card-buyer-verification-token]" ).val( '' )
 
 			messages = []
 
@@ -414,6 +545,14 @@ jQuery( document ).ready ( $ ) ->
 		# @since 2.0.0
 		# @return Bool
 		has_nonce: -> $( "input[name=wc-#{@id_dasherized}-payment-nonce]" ).val()
+
+
+		# Determines if a verification token is present in the hidden input.
+		#
+		# @since 2.1.0
+		#
+		# @return Bool
+		has_verification_token: -> $( "input[name=wc-#{@id_dasherized}-buyer-verification-token]" ).val()
 
 
 		# Logs data to the debug log via AJAX.

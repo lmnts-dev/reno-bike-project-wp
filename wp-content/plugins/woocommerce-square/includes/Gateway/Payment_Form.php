@@ -31,8 +31,74 @@ use SkyVerge\WooCommerce\PluginFramework\v5_4_0 as Framework;
  * The payment form handler.
  *
  * @since 2.0.0
+ *
+ * @method \WooCommerce\Square\Gateway get_gateway()
  */
 class Payment_Form extends Framework\SV_WC_Payment_Gateway_Payment_Form {
+
+
+	/**
+	 * Renders any additional billing information we need for processing on pages other than checkout
+	 * e.g. pay page, add payment method page
+	 *
+	 * @since 2.1.0
+	 */
+	public function render_supplementary_billing_info() {
+
+		$billing_data        = [];
+		$billing_data_source = null;
+
+		if ( is_checkout_pay_page() ) {
+
+			if ( $order = wc_get_order( $this->get_gateway()->get_checkout_pay_page_order_id() ) ) {
+				$billing_data_source = $order;
+			}
+
+		} elseif ( WC()->customer && ! is_checkout() ) {
+
+			$billing_data_source = WC()->customer;
+		}
+
+		if ( $billing_data_source ) {
+
+			$billing_data = [ 'billing_postcode' => $billing_data_source->get_billing_postcode() ];
+
+			// 3d secure requires the full billing info
+			if ( $this->get_gateway()->is_3d_secure_enabled() ) {
+
+				$billing_data = array_merge( $billing_data, [
+					'billing_first_name' => $billing_data_source->get_billing_first_name(),
+					'billing_last_name'  => $billing_data_source->get_billing_last_name(),
+					'billing_email'      => $billing_data_source->get_billing_email(),
+					'billing_country'    => $billing_data_source->get_billing_country(),
+					'billing_address_1'  => $billing_data_source->get_billing_address_1(),
+					'billing_address_2'  => $billing_data_source->get_billing_address_2(),
+					'billing_state'      => $billing_data_source->get_billing_state(),
+					'billing_city'       => $billing_data_source->get_billing_city(),
+					'billing_phone'      => $billing_data_source->get_billing_phone(),
+				] );
+			}
+		}
+
+		foreach ( $billing_data as $key => $value ) {
+			echo '<input type="hidden" id="'. esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
+		}
+
+		if ( is_checkout_pay_page() ) {
+
+			$order = wc_get_order( $this->get_gateway()->get_checkout_pay_page_order_id() );
+
+			$total_amount = $order->get_total();
+
+		} else {
+
+			$total_amount = WC()->cart->total;
+		}
+
+		echo '<input type="hidden" name="wc-' . $this->get_gateway()->get_id_dasherized() . '-amount" value="' . esc_attr( $total_amount > 0 ? $total_amount : '' ) . '" />';
+
+		echo '<style> #sq-nudata-modal { z-index: 999999 !important; } </style>';
+	}
 
 
 	/**
@@ -53,26 +119,15 @@ class Payment_Form extends Framework\SV_WC_Payment_Gateway_Payment_Form {
 			'payment-postcode',
 		];
 
+		if ( $this->get_gateway()->is_3d_secure_enabled() ) {
+			$fields[] = 'buyer-verification-token';
+		}
+
 		foreach ( $fields as $field_id ) {
 			echo '<input type="hidden" name="wc-' . esc_attr( $this->get_gateway()->get_id_dasherized() ) . '-' . esc_attr( $field_id ) . '" />';
 		}
 
-		$postcode = '';
-
-		if ( is_checkout_pay_page() ) {
-
-			if ( $order = wc_get_order( $this->get_gateway()->get_checkout_pay_page_order_id() ) ) {
-				$postcode = $order->get_billing_postcode();
-			}
-
-		} elseif ( WC()->customer && ! is_checkout() ) {
-
-			$postcode = WC()->customer->get_billing_postcode();
-		}
-
-		if ( $postcode ) {
-			echo '<input type="hidden" id="billing_postcode" value="' . esc_attr( $postcode ) . '" />';
-		}
+		$this->render_supplementary_billing_info();
 	}
 
 
@@ -140,14 +195,18 @@ class Payment_Form extends Framework\SV_WC_Payment_Gateway_Payment_Form {
 	public function render_js() {
 
 		$args = [
-			'id'                      => $this->get_gateway()->get_id(),
-			'id_dasherized'           => $this->get_gateway()->get_id_dasherized(),
-			'csc_required'            => $this->get_gateway()->csc_enabled(),
-			'logging_enabled'         => $this->get_gateway()->debug_log(),
-			'general_error'           => __( 'An error occurred, please try again or try an alternate form of payment.', 'woocommerce-square' ),
-			'ajax_url'                => admin_url( 'admin-ajax.php' ),
-			'ajax_log_nonce'          => wp_create_nonce( 'wc_' . $this->get_gateway()->get_id() . '_log_js_data' ),
-			'application_id'          => $this->get_gateway()->get_application_id(),
+			'application_id'             => $this->get_gateway()->get_application_id(),
+			'ajax_log_nonce'             => wp_create_nonce( 'wc_' . $this->get_gateway()->get_id() . '_log_js_data' ),
+			'ajax_url'                   => admin_url( 'admin-ajax.php' ),
+			'csc_required'               => $this->get_gateway()->csc_enabled(),
+			'currency_code'              => get_woocommerce_currency(),
+			'general_error'              => __( 'An error occurred, please try again or try an alternate form of payment.', 'woocommerce-square' ),
+			'id'                         => $this->get_gateway()->get_id(),
+			'id_dasherized'              => $this->get_gateway()->get_id_dasherized(),
+			'is_3d_secure_enabled'       => $this->get_gateway()->is_3d_secure_enabled(),
+			'is_add_payment_method_page' => is_add_payment_method_page(),
+			'location_id'                => wc_square()->get_settings_handler()->get_location_id(),
+			'logging_enabled'            => $this->get_gateway()->debug_log(),
 		];
 
 		// map the unique square card type string to our framework standards

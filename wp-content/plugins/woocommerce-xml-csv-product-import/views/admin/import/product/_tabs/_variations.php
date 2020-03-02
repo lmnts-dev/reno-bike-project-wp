@@ -423,7 +423,7 @@
 							<div class="switcher-target-multiple_variable_product_tax_class_yes set_with_xpath">
 								<span class="wpallimport-slide-content" style="padding-left:0;">
 									<?php
-									$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option( 'woocommerce_tax_classes' ) ) ) );
+									$tax_classes = \WC_Tax::get_tax_classes();
 									$classes_options = array();
 									$classes_options[''] = __( 'Standard', PMWI_Plugin::TEXT_DOMAIN );
 						    		if ( $tax_classes )

@@ -45,12 +45,17 @@ jQuery( document ).ready ( $ ) ->
 				$errors       = $editRow.find( '.wc-square-sync-with-square-errors' )
 
 				if response and response.data
-
 					# if the product has multiple attributes we show an inline error message and bail
 					if 'multiple_attributes' is response.data
 						$squareSynced.prop( 'checked', false )
 						$squareSynced.prop( 'disabled', true )
 						$errors.find( '.multiple_attributes' ).show()
+						return
+					# if the product has variations without an SKU we show an inline error message and bail
+					else if 'missing_variation_sku' is response.data
+						$squareSynced.prop( 'checked', false )
+						$squareSynced.prop( 'disabled', true )
+						$errors.find( '.missing_variation_sku' ).show()
 						return
 					else
 						# a missing sku can be recoverable instead, since the admin can enter one from the quick edit panel

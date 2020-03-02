@@ -2,9 +2,9 @@
 Contributors: automattic, royho, woothemes, bor0
 Tags: credit card, square, woocommerce, inventory sync
 Requires at least: 4.6
-Tested up to: 5.2.0
+Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 2.0.4
+Stable tag: 2.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,46 @@ If you get stuck, you can ask for help in the [Plugin Forum](https://wordpress.o
 2. The payment gateway settings.
 
 == Changelog ==
+
+= 2.1.0 - 2020.02.11 =
+* Feature - Add support for SCA (3D Secure 2)
+* Fix     - Minor fixes to the Sync completed emails
+* Tweak   - Add email notifications when connection issues are detected
+* Fix     - Category sync when WooCommerce is the System of Record and there have been changes in Square
+
+= 2.0.8 - 2019.12.09 =
+* Fix   - Inventory changes through payments and refunds from other gateways not reflected on Square.
+* Fix   - Fatal error on versions of WooCommerce before 4.3.
+* Fix   - Sandbox API calls by passing is_sandbox flag to the Gateway API.
+* Fix   - Quick edit view when editing a variable product without all variations SKU.
+* Fix   - Verify if the product can be synced with Square before enabling sync when bulk/quick updating.
+* Fix   - Disable sync for products that should not be synced after a REST API update.
+* Fix   - Unable to create products during import.
+* Fix   - Product inventory sync issue when WooCommerce is set as the Source of Record.
+* Fix   - Inventory not updated when purchased through another gateway.
+* Fix   - Category and description data not updated in a sync from Square.
+* Fix   - Transactions on multiple stores connected to the same Square account would appear to succeed without actually charging the customer.
+* Fix   - When making multiple partial refunds on the same order, only the first one would work.
+* Tweak - Include product ID on failed sync record message.
+* Tweak - Remove notices for refresh token when sandbox is enabled.
+* Tweak - Prevent refreshing a token token when sandbox is enabled.
+
+= 2.0.7 - 2019.11.18 =
+* Fix   - No longer automatically disconnect on unexpected authorization errors
+* Fix   - Bump compatibility for WooCommerce 3.8 and WordPress 5.3
+* Fix   - Correct cents rounding that was causing invalid value errors
+* Fix   - Fix encrypted token handling
+* Fix   - No longer call revoke when disconnecting - just disconnect the site
+
+= 2.0.6 - 2019.11.07 =
+* Fix   - Access token renewal schedule action duplication.
+
+= 2.0.5 - 2019.10.16 =
+* Fix   - Access token renewal by adding support for refresh tokens as per the new Square API
+* Fix   - Variable pricing import and adding an alert when these type of products are ignored.
+* Fix   - Line item discounts and other adjustments being ignored.
+* Tweak - Add a notice when a refresh token is not present to warn users to re-connect their accounts.
+* Feature - Added support for Sandbox accounts.
 
 = 2.0.4 - 2019.09.03 =
 * Fix - Add adjustments to Square order in the event of discrepancy with WooCommerce total

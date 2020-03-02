@@ -117,17 +117,14 @@ class Orders extends API\Request {
 			$line_item = new SquareModel\OrderLineItem();
 
 			$line_item->setQuantity( (string) $item->get_quantity() );
+			$line_item->setBasePriceMoney( Money_Utility::amount_to_money( $order->get_item_subtotal( $item ), $order->get_currency() ) );
 
 			$square_id = $item->get_meta( Product::SQUARE_VARIATION_ID_META_KEY );
 
 			if ( $square_id ) {
-
 				$line_item->setCatalogObjectId( $square_id );
-
 			} else {
-
 				$line_item->setName( $item->get_name() );
-				$line_item->setBasePriceMoney( Money_Utility::amount_to_money( $order->get_item_subtotal( $item ), $order->get_currency() ) );
 			}
 
 			$line_items[] = $line_item;

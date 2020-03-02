@@ -27,6 +27,7 @@ use SkyVerge\WooCommerce\PluginFramework\v5_4_0 as Framework;
 use SquareConnect\Model\SearchCatalogObjectsResponse;
 use WooCommerce\Square\Handlers\Category;
 use WooCommerce\Square\Handlers\Product;
+use WooCommerce\Square\Sync\Records\Record;
 use WooCommerce\Square\Utilities\Money_Utility;
 
 defined( 'ABSPATH' ) or exit;
@@ -255,7 +256,6 @@ class Product_Import extends Stepped_Job {
 	private function import_product( $catalog_object ) {
 
 		$product_id = 0;
-		$data       = $this->extract_product_data( $catalog_object );
 
 		try {
 
@@ -263,6 +263,13 @@ class Product_Import extends Stepped_Job {
 			if ( ! current_user_can( 'publish_products' ) ) {
 				throw new Framework\SV_WC_Plugin_Exception( __( 'You do not have permission to create products', 'woocommerce-square' ) );
 			}
+
+			// sanity check for valid API data
+			if ( ! $catalog_object instanceof \SquareConnect\Model\CatalogObject || ! $catalog_object->getItemData() instanceof \SquareConnect\Model\CatalogItem ) {
+				throw new Framework\SV_WC_Plugin_Exception( __( 'Invalid data', 'woocommerce-square' ) );
+			}
+
+			$data = $this->extract_product_data( $catalog_object );
 
 			/**
 			 * Filters the data that is used to create a new WooCommerce product during import.
@@ -351,6 +358,31 @@ class Product_Import extends Stepped_Job {
 
 		} catch ( Framework\SV_WC_Plugin_Exception $e ) {
 
+			if ( $catalog_object instanceof \SquareConnect\Model\CatalogObject && $catalog_object->getItemData() instanceof \SquareConnect\Model\CatalogItem ) {
+
+				$message = sprintf(
+					/* translators: Placeholders: %1$s - Square item name, %2$s - failure reason */
+					__( 'Could not import "%1$s" from Square. %2$s', 'woocommerce-square' ),
+					$catalog_object->getItemData()->getName(),
+					$e->getMessage()
+				);
+
+			// use a generic alert for invalid data
+			} else {
+
+				$message = sprintf(
+					/* translators: Placeholders: %s - failure reason */
+					__( 'Could not import item from Square. %s', 'woocommerce-square' ),
+					$e->getMessage()
+				);
+			}
+
+			// alert for failed product imports
+			Records::set_record( [
+				'type'    => 'alert',
+				'message' => $message,
+			] );
+
 			wc_square()->log( 'Error creating product during import: ' . $e->getMessage() );
 
 			// remove the product when creation fails
@@ -369,6 +401,7 @@ class Product_Import extends Stepped_Job {
 	 *
 	 * @param \SquareConnect\Model\CatalogObject $catalog_object the catalog object
 	 * @return array|null
+	 * @throws Framework\SV_WC_Plugin_Exception
 	 */
 	protected function extract_product_data( $catalog_object ) {
 
@@ -400,7 +433,30 @@ class Product_Import extends Stepped_Job {
 			$data['variations'] = [];
 
 			foreach ( $variations as $variation ) {
-				$data['variations'][] = $this->extract_square_item_variation_data( $variation );
+
+				// sanity check for valid API data
+				if ( ! $variation instanceof \SquareConnect\Model\CatalogObject || ! $variation->getItemVariationData() instanceof \SquareConnect\Model\CatalogItemVariation ) {
+					continue;
+				}
+
+				try {
+
+					$data['variations'][] = $this->extract_square_item_variation_data( $variation );
+
+				} catch ( Framework\SV_WC_Plugin_Exception $exception ) {
+
+					// alert for failed variation imports
+					Records::set_record( [
+						'type'    => 'alert',
+						'message' => sprintf(
+							/* translators: Placeholders: %1$s - Square item name, %2$s - Square item variation name, %3$s - failure reason */
+							__( 'Could not import "%1$s - %2$s" from Square. %3$s', 'woocommerce-square' ),
+							$catalog_object->getItemData()->getName(),
+							$variation->getItemVariationData()->getName(),
+							$exception->getMessage()
+						),
+					] );
+				}
 			}
 
 			$data['attributes'] = [ [
@@ -438,13 +494,20 @@ class Product_Import extends Stepped_Job {
 	 *
 	 * @param \SquareConnect\Model\CatalogObject $variation the variation object
 	 * @return array
+	 * @throws Framework\SV_WC_Plugin_Exception
 	 */
 	protected function extract_square_item_variation_data( $variation ) {
 
+		$variation_data = $variation->getItemVariationData();
+
+		if ( 'VARIABLE_PRICING' === $variation_data->getPricingType() ) {
+			throw new Framework\SV_WC_Plugin_Exception( __( 'Items with variable pricing cannot be imported.', 'woocommerce-square' ) );
+		}
+
 		$data = [
-			'name'           => $variation->getItemVariationData()->getName() ?: '',
-			'sku'            => $variation->getItemVariationData()->getSku() ?: '',
-			'regular_price'  => Money_Utility::cents_to_float( $variation->getItemVariationData()->getPriceMoney()->getAmount() ),
+			'name'           => $variation_data->getName() ?: '',
+			'sku'            => $variation_data->getSku() ?: '',
+			'regular_price'  => $variation_data->getPriceMoney() && $variation_data->getPriceMoney()->getAmount() ? Money_Utility::cents_to_float( $variation->getItemVariationData()->getPriceMoney()->getAmount() ) : null,
 			'stock_quantity' => null,
 			'managing_stock' => true,
 			'square_meta'    => [
@@ -455,7 +518,7 @@ class Product_Import extends Stepped_Job {
 				[
 					'name'         => 'Attribute',
 					'is_variation' => true,
-					'option'       => $variation->getItemVariationData()->getName() ?: '',
+					'option'       => $variation_data->getName() ?: '',
 				],
 			],
 		];

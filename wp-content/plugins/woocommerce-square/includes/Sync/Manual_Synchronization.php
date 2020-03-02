@@ -192,7 +192,7 @@ class Manual_Synchronization extends Stepped_Job {
 
 						$category_id = $mapped_category_audit[ $category->getId() ];
 
-						$map[ $category_id ]['version'] = $category->getVersion();
+						$map[ $category_id ]['square_version'] = $category->getVersion();
 						unset( $mapped_category_audit[ $category->getId() ] );
 					}
 				}
@@ -1081,7 +1081,11 @@ class Manual_Synchronization extends Stepped_Job {
 			Records::set_record( [
 				'type'       => 'alert',
 				'product_id' => $product_id,
-				'message'    => __( 'Product could not be updated in Square', 'woocommerce-square' ),
+				'message'    => sprintf(
+					/* translators: Placeholder: %s - product ID */
+					esc_html__( 'Product %s could not be updated in Square.', 'woocommerce-square' ),
+					'<a href="' . esc_url( get_edit_post_link( $product_id ) ) . '">' . $product_id . '</a>'
+				),
 			] );
 		}
 
@@ -1185,7 +1189,7 @@ class Manual_Synchronization extends Stepped_Job {
 
 						$child = wc_get_product( $child_id );
 
-						if ( $child instanceof \WC_Product && $inventory_change = Product::get_inventory_change( $child ) ) {
+						if ( $child instanceof \WC_Product && $inventory_change = Product::get_inventory_change_physical_count_type( $child ) ) {
 
 							$product_inventory_changes[] = $inventory_change;
 						}
@@ -1193,7 +1197,7 @@ class Manual_Synchronization extends Stepped_Job {
 
 				} elseif ( $square_variation_id = Product::get_square_item_variation_id( $product_id, false ) ) {
 
-					if ( $inventory_change = Product::get_inventory_change( $product ) ) {
+					if ( $inventory_change = Product::get_inventory_change_physical_count_type( $product ) ) {
 
 						$product_inventory_changes[] = $inventory_change;
 					}
@@ -1269,6 +1273,7 @@ class Manual_Synchronization extends Stepped_Job {
 				$response = wc_square()->get_api()->search_catalog_objects( [
 					'cursor'       => $cursor,
 					'object_types' => [ 'ITEM' ],
+					'include_related_objects' => true,
 					'limit'        => $this->get_max_objects_to_retrieve(),
 				] );
 
@@ -1296,6 +1301,17 @@ class Manual_Synchronization extends Stepped_Job {
 
 			$this->fail( 'Product sync failed. ' . $exception->getMessage() );
 			return;
+		}
+
+		$related_objects = $response->get_data()->getRelatedObjects();
+
+		if ( $related_objects && is_array( $related_objects ) ) {
+			// first import any related categories
+			foreach ( $related_objects as $related_object ) {
+				if ( 'CATEGORY' === $related_object->getType() ) {
+					Category::import_or_update( $related_object );
+				}
+			}
 		}
 
 		$pull_inventory_variation_ids = $this->get_attr( 'pull_inventory_variation_ids', [] );
@@ -1568,26 +1584,22 @@ class Manual_Synchronization extends Stepped_Job {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param int[] $product_ids array of product IDs
+	 * @param  int[] $product_ids array of product IDs.
 	 * @return int[]
 	 */
 	protected function get_shared_category_ids( $product_ids ) {
-		global $wpdb;
 
 		if ( ! empty( $product_ids ) ) {
-
-			$term_ids     = $wpdb->get_col( " SELECT term_taxonomy_id FROM $wpdb->term_taxonomy WHERE taxonomy = 'product_cat' " );
-			$term_in      = '(' . implode( ',', array_map( 'absint', array_merge( [ 0 ], $term_ids ) ) ) . ')';
-			$post_in      = '(' . implode( ',', array_map( 'absint', array_merge( [ 0 ], $product_ids ) ) ) . ')';
-			$category_ids = $wpdb->get_results( "
-				SELECT term_taxonomy_id
-				FROM $wpdb->term_relationships
-				WHERE object_id IN $post_in
-				AND term_taxonomy_id IN $term_in
-			", ARRAY_N );
+			$category_ids = get_terms(
+				[
+					'taxonomy'   => 'product_cat',
+					'fields'     => 'ids',
+					'object_ids' => $product_ids,
+				]
+			);
 		}
 
-		return ! empty( $category_ids ) ? array_unique( array_map( 'absint', array_merge( ...$category_ids ) ) ) : [];
+		return ! empty( $category_ids ) && ! is_wp_error( $category_ids ) ? $category_ids : [];
 	}
 
 

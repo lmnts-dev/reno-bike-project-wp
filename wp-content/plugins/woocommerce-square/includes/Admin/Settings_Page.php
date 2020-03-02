@@ -177,7 +177,7 @@ class Settings_Page extends \WC_Settings_Page {
 						</header>
 						<article>
 							<?php /* translators: Placeholders: %1$s - <strong>, %2%s - </strong> */ ?>
-							<?php printf( esc_html__( 'You are about to import all products from Square. This will create a new product in WooCommerce for every product retrieved from Square. %1$sOnly use this action to perform a one-time import!%2$s', 'woocommerce-square' ), '<strong>', '</strong>' ); ?>
+							<?php printf( esc_html__( 'You are about to import all products from Square. This will create a new product in WooCommerce for every product retrieved from Square. If you have products in the trash from the previous imports, these will be ignored in the import. %1$sOnly use this action to perform a one-time import!%2$s', 'woocommerce-square' ), '<strong>', '</strong>' ); ?>
 						</article>
 						<footer>
 							<div class="inner">

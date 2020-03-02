@@ -51,9 +51,9 @@ class API extends \WooCommerce\Square\API {
 	 * @param string $access_token the API access token
 	 * @param string $location_id location ID to use for requests
 	 */
-	public function __construct( $access_token, $location_id ) {
+	public function __construct( $access_token, $location_id, $is_sandbox = null ) {
 
-		parent::__construct( $access_token );
+		parent::__construct( $access_token, $is_sandbox );
 
 		$this->location_id = $location_id;
 	}

@@ -1,4 +1,4 @@
-<?php $tab = (isset($_GET['tab'])?$_GET['tab']:'import'); ?>
+<?php $tab = (isset($_GET['tab'])?sanitize_text_field($_GET['tab']):'import'); ?>
 <div class="woocommerce">
 	<div class="icon32" id="icon-woocommerce-importer"><br></div>
     <h2 class="nav-tab-wrapper woo-nav-tab-wrapper">

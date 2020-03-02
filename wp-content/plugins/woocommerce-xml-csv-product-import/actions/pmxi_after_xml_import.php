@@ -103,5 +103,9 @@ function pmwi_pmxi_after_xml_import($importID) {
             delete_option('wp_all_import_products_maybe_to_delete_' . $importID);
         }
         delete_option('wp_all_import_not_linked_products_' . $importID);
+        // Regenerate product lookup tables.
+        if ( ! wc_update_product_lookup_tables_is_running() ) {
+            wc_update_product_lookup_tables();
+        }
     }
 }
