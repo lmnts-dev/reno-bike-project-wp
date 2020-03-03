@@ -14,19 +14,23 @@
 <?php include 'includes/core/header.php'; ?>
 
 <?php
-if ($detect_device->isMobile() || $detect_device->isTablet()) {
-    $block_class = "panel-slide";
-} else {
-    $block_class = "panel-section";
+$device = 'Not detected';
+
+if ($detect_device->isMobile()) {
+    $device = "mobile";
 }
 
-$fields = get_fields();
+if ($detect_device->isTablet()) {
+    $device = "tablet";
+}
 ?>
+
+<?php include 'includes/lib/sections/page_hero.php'; ?>
 
 <?php
 if (have_rows('sections')) {
     $idx = 0; // Establish our index.
-    
+
     while (have_rows('sections')) {
         the_row();
 

@@ -8,6 +8,13 @@
  * @since 2/2020
  */
 
+/************************************/
+/** Variables */
+/************************************/
+
+$cta = get_field('navigation_bar', 'option')['call_to_action'];
+$ecommerce = get_field('ecommerce', 'option');
+
 ?>
 
 
@@ -30,7 +37,7 @@
             </a>
           </li>
           <li class="inactive">
-            <a href="/">
+            <a href="<?php echo $ecommerce['shopify_url'] ?>" target="_blank">
               Shop
             </a>
           </li>
@@ -44,38 +51,7 @@
     ?>
     <div class="nav-col nav-col-2">
       <nav class="main-nav">
-        <ul>
-          <li class="active">
-            <a href="/">
-              Get Involved
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Membership
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Programs
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Events
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Our Story
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              News & Press
-            </a>
-          </li>
-        </ul>
+        <?php wp_nav_menu(array('theme_location' => 'main-menu')); ?>
       </nav>
     </div>
     <?php /** Main Navigation  */
@@ -85,8 +61,8 @@
     ?>
     <div class="nav-col nav-col-3">
       <div class="nav-cta">
-        <a href="/">
-          Donate
+        <a href="<?php echo $cta['button_url'] ?>">
+          <?php echo $cta['button_label'] ?>
         </a>
       </div>
     </div>
