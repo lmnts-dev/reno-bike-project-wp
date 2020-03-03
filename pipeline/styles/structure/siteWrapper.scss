@@ -37,3 +37,10 @@ body {
 * {
   box-sizing: border-box;
 }
+
+body,
+html {
+  &.scroll-lock {
+    overflow: hidden;
+  }
+}

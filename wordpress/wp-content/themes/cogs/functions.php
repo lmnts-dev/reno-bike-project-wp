@@ -282,8 +282,67 @@ function create_programs_cpt()
 	register_post_type('program', $args);
 }
 
+// Register Custom Post Type Press
+// Post Type Key: press
+add_action('init', 'create_press_cpt', 0);
+function create_press_cpt()
+{
+	$labels = array(
+		'name' => __('Press', 'Post Type General Name', 'textdomain'),
+		'singular_name' => __('Press', 'Post Type Singular Name', 'textdomain'),
+		'menu_name' => __('Press', 'textdomain'),
+		'name_admin_bar' => __('Press', 'textdomain'),
+		'archives' => __('Press Archives', 'textdomain'),
+		'attributes' => __('Press Attributes', 'textdomain'),
+		'parent_item_colon' => __('Parent Press:', 'textdomain'),
+		'all_items' => __('All Press', 'textdomain'),
+		'add_new_item' => __('Add New Press', 'textdomain'),
+		'add_new' => __('Add New', 'textdomain'),
+		'new_item' => __('New Press', 'textdomain'),
+		'edit_item' => __('Edit Press', 'textdomain'),
+		'update_item' => __('Update Press', 'textdomain'),
+		'view_item' => __('View Press', 'textdomain'),
+		'view_items' => __('View Presss', 'textdomain'),
+		'search_items' => __('Search Press', 'textdomain'),
+		'not_found' => __('Not found', 'textdomain'),
+		'not_found_in_trash' => __('Not found in Trash', 'textdomain'),
+		'featured_image' => __('Featured Image', 'textdomain'),
+		'set_featured_image' => __('Set featured image', 'textdomain'),
+		'remove_featured_image' => __('Remove featured image', 'textdomain'),
+		'use_featured_image' => __('Use as featured image', 'textdomain'),
+		'insert_into_item' => __('Insert into Press', 'textdomain'),
+		'uploaded_to_this_item' => __('Uploaded to this Press', 'textdomain'),
+		'items_list' => __('Press list', 'textdomain'),
+		'items_list_navigation' => __('Press list navigation', 'textdomain'),
+		'filter_items_list' => __('Filter Press list', 'textdomain'),
+	);
+	$args = array(
+		'label' => __('Press', 'textdomain'),
+		'description' => __('', 'textdomain'),
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-megaphone',
+		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 4,
+		'show_in_admin_bar' => true,
+		'show_in_nav_menus' => true,
+		'can_export' => true,
+		'has_archive' => true,
+		'hierarchical' => false,
+		'exclude_from_search' => false,
+		'show_in_rest' => true,
+		'publicly_queryable' => true,
+		'capability_type' => 'post',
+		'taxonomies' => array('post_tag'),
+	);
+	register_post_type('press', $args);
+}
+
+
 // Register Custom Post Type Staff
-// Post Type Key: team
+// Post Type Key: staff
 add_action('init', 'create_staff_cpt', 0);
 function create_staff_cpt()
 {
@@ -325,7 +384,7 @@ function create_staff_cpt()
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 4,
+		'menu_position' => 8,
 		'show_in_admin_bar' => true,
 		'show_in_nav_menus' => true,
 		'can_export' => true,
@@ -340,43 +399,6 @@ function create_staff_cpt()
 	register_post_type('staff', $args);
 }
 
-function locations_taxonomy()
-{
-	register_taxonomy(
-		'locations',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		'project',             // post type name
-		array(
-			'hierarchical' => true,
-			'label' => 'Locations', // display name
-			'query_var' => true,
-			'show_in_rest'	=> true,
-			'rewrite' => array(
-				'slug' => 'locations',    // This controls the base slug that will display before each term
-				'with_front' => false  // Don't display the category base before
-			)
-		)
-	);
-}
-add_action('init', 'locations_taxonomy');
-
-function industries_taxonomy()
-{
-	register_taxonomy(
-		'industries',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-		'project',             // post type name
-		array(
-			'hierarchical' => true,
-			'label' => 'Industries', // display name
-			'query_var' => true,
-			'show_in_rest'	=> true,
-			'rewrite' => array(
-				'slug' => 'industries',    // This controls the base slug that will display before each term
-				'with_front' => false  // Don't display the category base before
-			)
-		)
-	);
-}
-add_action('init', 'industries_taxonomy');
 
 //CAPABILITIES
 $editor = get_role('editor');

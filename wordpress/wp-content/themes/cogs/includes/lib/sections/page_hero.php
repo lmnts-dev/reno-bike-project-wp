@@ -12,7 +12,7 @@
 if (get_row_layout() == 'page_hero') {
 ?>
 
-  <section class="page-hero">
+  <section class="page-hero page-hero-<?php echo $idx ?>">
     <div class="page-hero-inner layout-<?php echo get_sub_field_object('layout')['value']; ?>">
       <div class="col content">
         <h1>

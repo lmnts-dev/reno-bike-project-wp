@@ -89,6 +89,30 @@ button,
     }
   }
 
+  &.btn-clr-black {
+    background-color: $clrBlack;
+    color: $clrWhite;
+    padding-left: calc(#{$Base} / 3);
+    padding-right: calc(#{$Base} * 1.3);
+
+    &:after {
+      color: $clrWhite;
+      right: calc(#{$Base} / 4);
+    }
+
+    &:hover {
+      background-color: $clrPrimary;
+      color: $clrWhite;
+
+      &:after {
+        color: $clrWhite;
+      }
+    }
+    &:active {
+      background-color: darken($clrPrimary, $BaseLighten);
+    }
+  }
+
   &.btn-clr-error {
     background-color: $clrGold;
     color: $clrWhite;

@@ -49,6 +49,7 @@
 
       &.img-col {
         width: 60%;
+        justify-content: space-between;
 
         .editorial-row-img {
           width: 100%;
@@ -70,6 +71,21 @@
             width: 100%;
           }
         }
+
+        &.img-col-alt {
+          .editorial-row-img {
+            max-width: 47%;
+
+            &:first-child {
+              margin-top: $Base * 4;
+              padding-bottom: 50%;
+            }
+            &:last-child {
+              margin-bottom: $Base * 2;
+              padding-bottom: 65%;
+            }
+          }
+        }
       }
     }
   }
@@ -83,6 +99,12 @@
 
       .col {
         justify-content: center;
+
+        &.img-col {
+          &.img-col-alt {
+            justify-content: space-between;
+          }
+        }
       }
     }
   }

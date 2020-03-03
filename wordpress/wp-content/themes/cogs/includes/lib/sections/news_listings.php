@@ -48,7 +48,7 @@ $newsListings = array($newsOne, $newsTwo, $newsThree);
  
 ?>
 
-<section class="news-listings">
+<section class="news-listings news-listings-<?php echo $idx ?>">
   <span class="squiggle"></span>
 
   <div class="news-listings-header">

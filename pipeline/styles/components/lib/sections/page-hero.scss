@@ -87,6 +87,9 @@
 
     &.layout-2 {
       .col {
+        &.content {
+          padding-left: calc(#{$Base} * 3);
+        }
         &.image {
           justify-content: flex-end;
           right: unset;
