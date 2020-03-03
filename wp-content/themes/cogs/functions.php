@@ -260,9 +260,9 @@ function custom_styles()
 	            	padding-bottom: 30px;
 	            }
 
-				#menu-pages {
-					display: none;
-				}
+				// #menu-pages {
+				// 	display: none;
+				// }
 
 				.image-wrap img {
 					max-height: 120px;
@@ -297,9 +297,9 @@ function custom_styles()
 					display: none;
 				}
 
-				#menu-users {
-					display: none;
-				}
+				// #menu-users {
+				// 	display: none;
+				// }
 
 				#wp-admin-bar-edit-profile, #wp-admin-bar-user-info {
 					display: none;
@@ -346,11 +346,12 @@ function my_login_logo()
 	<style type="text/css">
 		#login h1 a,
 		.login h1 a {
-			background-image: url("<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.svg");
-			height: 65px;
-			width: 320px;
+			background-image: url("<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.svg");
+			height: 200px;
+			width: 200px;
 			pointer-events: none;
-			background-size: 320px 65px;
+			background-size: contain;
+			background-position: center center;
 			background-repeat: no-repeat;
 			margin-bottom: 0;
 			padding-bottom: 0;
@@ -371,7 +372,7 @@ add_action('admin_menu', 'linkedurl_function');
 function linkedurl_function()
 {
 	global $menu;
-	$menu[1][2] = "post.php?post=5&action=edit";
+	$menu[1][2] = "post.php?post=14734&action=edit";
 }
 
 // REMOVE WP UNUSED STUFF

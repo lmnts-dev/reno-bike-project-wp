@@ -17,12 +17,13 @@ barba.init({
           next = _ref.next,
           trigger = _ref.trigger;
     },
-    enter: function enter(_ref2) {// do something with `next.container` for your enter transition
-      // then return a promise or use `this.async()`
-
+    beforeEnter: function beforeEnter(_ref2) {
       var current = _ref2.current,
           next = _ref2.next,
           trigger = _ref2.trigger;
+      var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+      });
     }
   }]
 }); // // dummy example to illustrate rules and hooks
@@ -55,8 +56,6 @@ barba.init({
 //     afterEnter() {}
 //   }]
 // });
-// Vendor Javascript File
-"use strict";
 "use strict";
 
 /**
@@ -69,3 +68,5 @@ barba.init({
 var lazyLoadInstance = new LazyLoad({
   elements_selector: ".lazy"
 });
+// Vendor Javascript File
+"use strict";

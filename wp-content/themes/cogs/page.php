@@ -1,4 +1,15 @@
-<?php /* Template Name: Homepage */ ?>
+<?php
+
+/** 
+ * Default Page Template
+ * 
+ * @author Peter Laxalt
+ * @since 2/2020
+ */
+
+/*************************************/
+
+?>
 
 <?php include 'includes/core/header.php'; ?>
 

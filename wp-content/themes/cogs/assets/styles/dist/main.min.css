@@ -169,7 +169,8 @@ footer .footer-inner .footer-col .footer-search form input{background:0;color:#0
 button,.btn{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:0 20px;font-size:.8rem;font-weight:bold;color:#000;margin:0;-webkit-box-shadow:0 0 0 0 rgba(0,0,0,0);box-shadow:0 0 0 0 rgba(0,0,0,0);line-height:0;border:0;outline:0;height:44px;text-transform:uppercase;letter-spacing:1.5px;cursor:none !important}
 button:focus,button:active,.btn:focus,.btn:active{outline:0;border:0}
 button:hover,.btn:hover{-webkit-box-shadow:0 0 0 6px rgba(0,0,0,0.07);box-shadow:0 0 0 6px rgba(0,0,0,0.07)}
-button.btn-arrow,.btn.btn-arrow{padding:0 40px 0 0;position:relative;-webkit-box-shadow:none;box-shadow:none}
+button.btn-arrow,.btn.btn-arrow{padding:0 40px 0 0;position:relative;-webkit-box-shadow:none;box-shadow:none;color:#f684b4}
+button.btn-arrow:visited,button.btn-arrow:active,button.btn-arrow:hover,.btn.btn-arrow:visited,.btn.btn-arrow:active,.btn.btn-arrow:hover{color:#f684b4}
 button.btn-arrow:after,.btn.btn-arrow:after{content:"▶";font-family:fixed;-webkit-transition:all .25s ease;transition:all .25s ease;-webkit-transform:translateX(-10px);transform:translateX(-10px);position:absolute;color:#f684b4;right:0}
 button.btn-arrow:hover,.btn.btn-arrow:hover{-webkit-box-shadow:none;box-shadow:none}
 button.btn-arrow:hover:after,.btn.btn-arrow:hover:after{-webkit-transform:translateX(0);transform:translateX(0)}
@@ -285,7 +286,7 @@ a,input,button{cursor:none !important}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover{position:absolute;top:0;right:0;bottom:0;left:240px;display:-webkit-box;display:-ms-flexbox;display:flex}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner{position:relative;width:100%;height:100%;background:#f4f8f8}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%}
-.block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;width:auto}
+.block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;height:50px;width:auto}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}
