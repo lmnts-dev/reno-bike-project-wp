@@ -21,9 +21,13 @@ barba.init({
       var current = _ref2.current,
           next = _ref2.next,
           trigger = _ref2.trigger;
+      // Scroll to top of page
+      window.scrollTo(0, 0); // Re-init our Lazy Loading
+
       var lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy"
-      });
+      }); // Re-init our bicycle wheel script.
+
       var rotated = document.getElementsByClassName("bike-wheel-el")[0];
       window.addEventListener("mousemove", function (ev) {
         ev.preventDefault();

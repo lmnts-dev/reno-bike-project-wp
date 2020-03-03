@@ -42,11 +42,11 @@ function remove_class_id($classes)
 // add_filter('wp_nav_menu','add_menuclass');
 
 // Remove Default Post Type
-add_action('admin_menu', 'remove_default_post_type');
-function remove_default_post_type()
-{
-	remove_menu_page('edit.php');
-}
+// add_action('admin_menu', 'remove_default_post_type');
+// function remove_default_post_type()
+// {
+// 	remove_menu_page('edit.php');
+// }
 
 // REMOVE POST META BOXES
 function remove_my_post_metaboxes()
@@ -108,45 +108,45 @@ function tinymce_paste_as_text($init)
 }
 add_filter('tiny_mce_before_init', 'tinymce_paste_as_text');
 
-// Register Custom Post Type Project
-// Post Type Key: project
-add_action('init', 'create_project_cpt', 0);
-function create_project_cpt()
+// Register Custom Post Type Event
+// Post Type Key: event
+add_action('init', 'create_events_cpt', 0);
+function create_events_cpt()
 {
 	$labels = array(
-		'name' => __('Project', 'Post Type General Name', 'textdomain'),
-		'singular_name' => __('Project', 'Post Type Singular Name', 'textdomain'),
-		'menu_name' => __('Projects', 'textdomain'),
-		'name_admin_bar' => __('Project', 'textdomain'),
-		'archives' => __('Project Archives', 'textdomain'),
-		'attributes' => __('Project Attributes', 'textdomain'),
-		'parent_item_colon' => __('Parent Project:', 'textdomain'),
-		'all_items' => __('All Projects', 'textdomain'),
-		'add_new_item' => __('Add New Project', 'textdomain'),
+		'name' => __('Event', 'Post Type General Name', 'textdomain'),
+		'singular_name' => __('Event', 'Post Type Singular Name', 'textdomain'),
+		'menu_name' => __('Events', 'textdomain'),
+		'name_admin_bar' => __('Event', 'textdomain'),
+		'archives' => __('Event Archives', 'textdomain'),
+		'attributes' => __('Event Attributes', 'textdomain'),
+		'parent_item_colon' => __('Parent Event:', 'textdomain'),
+		'all_items' => __('All Events', 'textdomain'),
+		'add_new_item' => __('Add New Event', 'textdomain'),
 		'add_new' => __('Add New', 'textdomain'),
-		'new_item' => __('New Project', 'textdomain'),
-		'edit_item' => __('Edit Project', 'textdomain'),
-		'update_item' => __('Update Project', 'textdomain'),
-		'view_item' => __('View Project', 'textdomain'),
-		'view_items' => __('View Projects', 'textdomain'),
-		'search_items' => __('Search Project', 'textdomain'),
+		'new_item' => __('New Event', 'textdomain'),
+		'edit_item' => __('Edit Event', 'textdomain'),
+		'update_item' => __('Update Event', 'textdomain'),
+		'view_item' => __('View Event', 'textdomain'),
+		'view_items' => __('View Events', 'textdomain'),
+		'search_items' => __('Search Event', 'textdomain'),
 		'not_found' => __('Not found', 'textdomain'),
 		'not_found_in_trash' => __('Not found in Trash', 'textdomain'),
 		'featured_image' => __('Featured Image', 'textdomain'),
 		'set_featured_image' => __('Set featured image', 'textdomain'),
 		'remove_featured_image' => __('Remove featured image', 'textdomain'),
 		'use_featured_image' => __('Use as featured image', 'textdomain'),
-		'insert_into_item' => __('Insert into Project', 'textdomain'),
-		'uploaded_to_this_item' => __('Uploaded to this Project', 'textdomain'),
-		'items_list' => __('Projects list', 'textdomain'),
-		'items_list_navigation' => __('Projects list navigation', 'textdomain'),
-		'filter_items_list' => __('Filter Projects list', 'textdomain'),
+		'insert_into_item' => __('Insert into Event', 'textdomain'),
+		'uploaded_to_this_item' => __('Uploaded to this Event', 'textdomain'),
+		'items_list' => __('Events list', 'textdomain'),
+		'items_list_navigation' => __('Events list navigation', 'textdomain'),
+		'filter_items_list' => __('Filter Events list', 'textdomain'),
 	);
 	$args = array(
-		'label' => __('Project', 'textdomain'),
+		'label' => __('Event', 'textdomain'),
 		'description' => __('', 'textdomain'),
 		'labels' => $labels,
-		'menu_icon' => 'dashicons-admin-post',
+		'menu_icon' => 'dashicons-calendar-alt',
 		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
 		'public' => true,
 		'show_ui' => true,
@@ -163,7 +163,181 @@ function create_project_cpt()
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
-	register_post_type('project', $args);
+	register_post_type('event', $args);
+}
+
+// Register Custom Post Type Memberships
+// Post Type Key: membership
+add_action('init', 'create_membership_cpt', 0);
+function create_membership_cpt()
+{
+	$labels = array(
+		'name' => __('Membership', 'Post Type General Name', 'textdomain'),
+		'singular_name' => __('Membership', 'Post Type Singular Name', 'textdomain'),
+		'menu_name' => __('Memberships', 'textdomain'),
+		'name_admin_bar' => __('Membership', 'textdomain'),
+		'archives' => __('Membership Archives', 'textdomain'),
+		'attributes' => __('Membership Attributes', 'textdomain'),
+		'parent_item_colon' => __('Parent Membership:', 'textdomain'),
+		'all_items' => __('All Memberships', 'textdomain'),
+		'add_new_item' => __('Add New Membership', 'textdomain'),
+		'add_new' => __('Add New', 'textdomain'),
+		'new_item' => __('New Membership', 'textdomain'),
+		'edit_item' => __('Edit Membership', 'textdomain'),
+		'update_item' => __('Update Membership', 'textdomain'),
+		'view_item' => __('View Membership', 'textdomain'),
+		'view_items' => __('View Memberships', 'textdomain'),
+		'search_items' => __('Search Membership', 'textdomain'),
+		'not_found' => __('Not found', 'textdomain'),
+		'not_found_in_trash' => __('Not found in Trash', 'textdomain'),
+		'featured_image' => __('Featured Image', 'textdomain'),
+		'set_featured_image' => __('Set featured image', 'textdomain'),
+		'remove_featured_image' => __('Remove featured image', 'textdomain'),
+		'use_featured_image' => __('Use as featured image', 'textdomain'),
+		'insert_into_item' => __('Insert into Membership', 'textdomain'),
+		'uploaded_to_this_item' => __('Uploaded to this Membership', 'textdomain'),
+		'items_list' => __('Memberships list', 'textdomain'),
+		'items_list_navigation' => __('Memberships list navigation', 'textdomain'),
+		'filter_items_list' => __('Filter Memberships list', 'textdomain'),
+	);
+	$args = array(
+		'label' => __('Membership', 'textdomain'),
+		'description' => __('', 'textdomain'),
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-universal-access-alt',
+		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 4,
+		'show_in_admin_bar' => true,
+		'show_in_nav_menus' => true,
+		'can_export' => true,
+		'has_archive' => true,
+		'hierarchical' => false,
+		'exclude_from_search' => false,
+		'show_in_rest' => true,
+		'publicly_queryable' => true,
+		'capability_type' => 'post',
+		'taxonomies' => array('post_tag'),
+	);
+	register_post_type('membership', $args);
+}
+
+// Register Custom Post Type Program
+// Post Type Key: event
+add_action('init', 'create_programs_cpt', 0);
+function create_programs_cpt()
+{
+	$labels = array(
+		'name' => __('Program', 'Post Type General Name', 'textdomain'),
+		'singular_name' => __('Program', 'Post Type Singular Name', 'textdomain'),
+		'menu_name' => __('Programs', 'textdomain'),
+		'name_admin_bar' => __('Program', 'textdomain'),
+		'archives' => __('Program Archives', 'textdomain'),
+		'attributes' => __('Program Attributes', 'textdomain'),
+		'parent_item_colon' => __('Parent Program:', 'textdomain'),
+		'all_items' => __('All Programs', 'textdomain'),
+		'add_new_item' => __('Add New Program', 'textdomain'),
+		'add_new' => __('Add New', 'textdomain'),
+		'new_item' => __('New Program', 'textdomain'),
+		'edit_item' => __('Edit Program', 'textdomain'),
+		'update_item' => __('Update Program', 'textdomain'),
+		'view_item' => __('View Program', 'textdomain'),
+		'view_items' => __('View Programs', 'textdomain'),
+		'search_items' => __('Search Program', 'textdomain'),
+		'not_found' => __('Not found', 'textdomain'),
+		'not_found_in_trash' => __('Not found in Trash', 'textdomain'),
+		'featured_image' => __('Featured Image', 'textdomain'),
+		'set_featured_image' => __('Set featured image', 'textdomain'),
+		'remove_featured_image' => __('Remove featured image', 'textdomain'),
+		'use_featured_image' => __('Use as featured image', 'textdomain'),
+		'insert_into_item' => __('Insert into Program', 'textdomain'),
+		'uploaded_to_this_item' => __('Uploaded to this Program', 'textdomain'),
+		'items_list' => __('Programs list', 'textdomain'),
+		'items_list_navigation' => __('Programs list navigation', 'textdomain'),
+		'filter_items_list' => __('Filter Programs list', 'textdomain'),
+	);
+	$args = array(
+		'label' => __('Program', 'textdomain'),
+		'description' => __('', 'textdomain'),
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-welcome-learn-more',
+		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 4,
+		'show_in_admin_bar' => true,
+		'show_in_nav_menus' => true,
+		'can_export' => true,
+		'has_archive' => true,
+		'hierarchical' => false,
+		'exclude_from_search' => false,
+		'show_in_rest' => true,
+		'publicly_queryable' => true,
+		'capability_type' => 'post',
+		'taxonomies' => array('post_tag'),
+	);
+	register_post_type('program', $args);
+}
+
+// Register Custom Post Type Staff
+// Post Type Key: team
+add_action('init', 'create_staff_cpt', 0);
+function create_staff_cpt()
+{
+	$labels = array(
+		'name' => __('Staff', 'Post Type General Name', 'textdomain'),
+		'singular_name' => __('Staff', 'Post Type Singular Name', 'textdomain'),
+		'menu_name' => __('Staff', 'textdomain'),
+		'name_admin_bar' => __('Staff', 'textdomain'),
+		'archives' => __('Staff Archives', 'textdomain'),
+		'attributes' => __('Staff Attributes', 'textdomain'),
+		'parent_item_colon' => __('Parent Staff:', 'textdomain'),
+		'all_items' => __('All Staff', 'textdomain'),
+		'add_new_item' => __('Add New Staff', 'textdomain'),
+		'add_new' => __('Add New', 'textdomain'),
+		'new_item' => __('New Staff', 'textdomain'),
+		'edit_item' => __('Edit Staff', 'textdomain'),
+		'update_item' => __('Update Staff', 'textdomain'),
+		'view_item' => __('View Staff', 'textdomain'),
+		'view_items' => __('View Staffs', 'textdomain'),
+		'search_items' => __('Search Staff', 'textdomain'),
+		'not_found' => __('Not found', 'textdomain'),
+		'not_found_in_trash' => __('Not found in Trash', 'textdomain'),
+		'featured_image' => __('Featured Image', 'textdomain'),
+		'set_featured_image' => __('Set featured image', 'textdomain'),
+		'remove_featured_image' => __('Remove featured image', 'textdomain'),
+		'use_featured_image' => __('Use as featured image', 'textdomain'),
+		'insert_into_item' => __('Insert into Staff', 'textdomain'),
+		'uploaded_to_this_item' => __('Uploaded to this Staff', 'textdomain'),
+		'items_list' => __('Staff list', 'textdomain'),
+		'items_list_navigation' => __('Staff list navigation', 'textdomain'),
+		'filter_items_list' => __('Filter Staff list', 'textdomain'),
+	);
+	$args = array(
+		'label' => __('Staff', 'textdomain'),
+		'description' => __('', 'textdomain'),
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-admin-users',
+		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 4,
+		'show_in_admin_bar' => true,
+		'show_in_nav_menus' => true,
+		'can_export' => true,
+		'has_archive' => true,
+		'hierarchical' => false,
+		'exclude_from_search' => false,
+		'show_in_rest' => true,
+		'publicly_queryable' => true,
+		'capability_type' => 'post',
+		'taxonomies' => array('post_tag'),
+	);
+	register_post_type('staff', $args);
 }
 
 function locations_taxonomy()
@@ -303,9 +477,9 @@ function custom_styles()
 					display: none;
 				}
 
-				// #menu-users {
-				// 	display: none;
-				// }
+				#menu-users {
+					display: none;
+				}
 
 				#wp-admin-bar-edit-profile, #wp-admin-bar-user-info {
 					display: none;
@@ -482,9 +656,9 @@ function restrict_post_deletion($post_id)
 //REDIRECT FIRST ADMIN PAGE
 function dashboard_redirect()
 {
-	wp_redirect(admin_url('edit.php?post_type=project'));
+	wp_redirect(admin_url('post.php?post=14734&action=edit'));
 }
-//add_action('load-index.php','dashboard_redirect');
+add_action('load-index.php','dashboard_redirect');
 
 //SUPPOSEDELY REMOVES END TRAILING SLASH
 //remove_action('template_redirect', 'redirect_canonical');

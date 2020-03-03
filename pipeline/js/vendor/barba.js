@@ -15,10 +15,16 @@ barba.init({
         // then return a promise or use `this.async()`
       },
       beforeEnter({ current, next, trigger }) {
+
+        // Scroll to top of page
+        window.scrollTo(0, 0);
+
+        // Re-init our Lazy Loading
         var lazyLoadInstance = new LazyLoad({
           elements_selector: ".lazy"
         });
 
+        // Re-init our bicycle wheel script.
         var rotated = document.getElementsByClassName("bike-wheel-el")[0];
         window.addEventListener(
           "mousemove",
