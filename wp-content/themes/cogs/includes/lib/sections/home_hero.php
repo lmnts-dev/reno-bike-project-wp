@@ -12,7 +12,7 @@
 if (get_row_layout() == 'home_hero') {
 ?>
 
-  <section class="home-hero">
+  <section class="home-hero home-hero-<?php echo $idx ?>">
     <div class="home-hero-inner">
       <div class="col-info">
         <div class="col-info-top">
@@ -48,9 +48,9 @@ if (get_row_layout() == 'home_hero') {
             </ul>
           </div>
 
-          <a href="/" class="btn btn-border-black btn-newsletter">
+          <span class="btn btn-border-black btn-newsletter">
             Join Our Newsletter
-          </a>
+          </span>
 
           <div class="bike-wheel">
             <?php include get_template_directory() . '/includes/lib/svg/bike_wheel.php' ?>

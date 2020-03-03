@@ -53,7 +53,7 @@ $blockList = array($blockOne, $blockTwo);
 
 ?>
 
-<section class="block-row">
+<section class="block-row block-row-<?php echo $idx ?>">
   <div class="block-row-inner">
 
     <div class="block-item">
