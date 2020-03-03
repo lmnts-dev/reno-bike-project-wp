@@ -17,11 +17,17 @@ if (function_exists('acf_add_options_page')) {
 
 
 // MENU
-add_action('init', 'register_menus');
 function register_menus()
 {
-	register_nav_menu('main-menu', 'Main Menu');
+	register_nav_menus(
+		array(
+			'main-menu' => __('Main Menu'),
+			'overlay-menu' => __('Overlay Menu'),
+			'footer-menu' => __('Footer Menu'),
+		)
+	);
 }
+add_action('init', 'register_menus');
 
 add_filter('nav_menu_css_class', 'remove_class_id');
 add_filter('nav_menu_item_id', 'remove_class_id', 100, 1);

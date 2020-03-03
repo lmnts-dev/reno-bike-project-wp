@@ -49,6 +49,10 @@ header {
     display: flex;
     align-items: center;
 
+    div {
+      height: 100%;
+    }
+
     ul {
       height: 100%;
       display: flex;

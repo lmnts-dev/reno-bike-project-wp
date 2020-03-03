@@ -1,0 +1,161 @@
+////////////////////////////////////////
+//
+// Home Hero Component
+//
+// @author Peter Laxalt
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+//
+////////////////////////////////////////
+
+.page-hero {
+  // height: calc(100vh - #{$BaseNavSizeLg});
+  padding-top: $BaseNavSizeLg;
+  padding-bottom: $Base;
+  overflow: hidden;
+
+  $baseHeight: 80vh;
+  $baseFontSize: 10vw;
+  $gutterOffset: calc(#{$BaseGutterRight} * -1);
+  $baseWidth: 50%;
+  $baseMaxWidth: 650px;
+
+  .page-hero-inner {
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    // Default Layout
+    .col {
+      &.content {
+        z-index: 10;
+        padding-top: calc((#{$baseHeight} / 2) - (#{$baseFontSize} / 2));
+
+        h1 {
+          font-size: 10vw;
+          max-width: $baseMaxWidth;
+          word-wrap: none;
+          white-space: nowrap;
+          font-weight: 700;
+          line-height: 1;
+          margin-bottom: calc(#{$Base} / 2);
+          -webkit-text-stroke: 1px $clrBlack;
+          -webkit-text-fill-color: rgba($clrWhite, 0);
+        }
+
+        p {
+          max-width: $baseMaxWidth;
+          font-size: 1.6rem;
+        }
+      }
+
+      &.image {
+        position: absolute;
+        top: 0;
+        right: calc(#{$BaseGutterRight} * -1);
+        width: 70vw;
+        object-fit: cover;
+
+        .image-wrapper {
+          position: relative;
+          display: flex;
+          height: calc(#{$baseHeight} / 2);
+          width: 70vw;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+          }
+        }
+      }
+    }
+
+    &.layout-1 {
+      .col {
+        &.content {
+          padding-left: calc(#{$Base} * 2);
+        }
+      }
+    }
+
+    &.layout-2 {
+      .col {
+        &.image {
+          justify-content: flex-end;
+          right: unset;
+          left: $gutterOffset;
+        }
+      }
+    }
+
+    &.layout-3 {
+      .col {
+        &.content {
+          width: $baseWidth;
+        }
+
+        &.image {
+          position: relative;
+          top: unset;
+          bottom: unset;
+          right: #{$gutterOffset};
+          left: unset;
+          width: calc(100% - #{$baseWidth});
+          height: $baseHeight;
+
+          .image-wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: $baseHeight;
+          }
+        }
+      }
+    }
+
+    &.layout-4 {
+      flex-direction: row-reverse;
+
+      .col {
+        &.content {
+          width: $baseWidth;
+
+          h1 {
+            position: relative;
+            left: calc((#{$baseMaxWidth} / 4) * -1);
+          }
+        }
+
+        &.image {
+          position: relative;
+          top: unset;
+          bottom: unset;
+          left: #{$gutterOffset};
+          right: unset;
+          width: calc(100% - #{$baseWidth});
+          height: $baseHeight;
+
+          .image-wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: $baseHeight;
+          }
+        }
+      }
+    }
+  }
+}
