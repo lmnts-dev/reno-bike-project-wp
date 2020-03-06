@@ -6,11 +6,13 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
 // Vendor
 @import "vendor/normalize";
 @import "vendor/lazy";
 @import "vendor/flickity";
 
+////////////////////////////////////////////////////////////////////////
 // Global Variables
 @import "global/base";
 @import "global/palette";
@@ -18,10 +20,12 @@
 @import "global/mixins";
 @import "global/animation";
 
+////////////////////////////////////////////////////////////////////////
 // Page Structure
 @import "structure/siteWrapper";
 @import "structure/section";
 
+////////////////////////////////////////////////////////////////////////
 // Components: Core
 @import "components/core/navigation";
 @import "components/core/footer";
@@ -33,21 +37,33 @@
 @import "components/core/lists";
 @import "components/core/cursor";
 
+////////////////////////////////////////////////////////////////////////
 // Components: Elements
 @import "components/lib/elements/section-header";
 
+////////////////////////////////////////////////////////////////////////
 // Components: Sections
-@import "components/lib/sections/outlined-list";
+
+//----- Heroes
 @import "components/lib/sections/home-hero";
 @import "components/lib/sections/page-hero";
 @import "components/lib/sections/block-row";
+@import "components/lib/sections/outlined-list";
+
+//----- Listings
 @import "components/lib/sections/news-listings";
 @import "components/lib/sections/event-listings";
+@import "components/lib/sections/membership-listings";
+
+//----- Content
 @import "components/lib/sections/grid-section";
 @import "components/lib/sections/editorial-row";
 @import "components/lib/sections/block-slider";
+
+//----- Newsletter
 @import "components/lib/sections/newsletter-overlay";
 @import "components/lib/sections/newsletter-row";
 
+////////////////////////////////////////////////////////////////////////
 // Keyframes
 @import "global/keyframes";

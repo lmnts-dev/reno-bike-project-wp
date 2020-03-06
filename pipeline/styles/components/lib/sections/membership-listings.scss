@@ -1,0 +1,94 @@
+////////////////////////////////////////
+//
+// Membership Listings Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+// Listings Container
+.membership-listings {
+  .membership-listings-inner {
+    display: flex;
+    flex-wrap: wrap;
+
+    .membership-listing-card {
+      width: 50%;
+    }
+  }
+}
+
+// Cards
+.membership-listing-card {
+  padding: $Base;
+
+  .membership-listing-card-inner {
+    background: $clrAsphalt;
+
+    .card-top,
+    .card-bottom {
+      padding: $Base;
+    }
+
+    .card-top {
+      background: $clrSnow;
+      position: relative;
+
+      .title {
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: $Base/2;
+
+        .icon {
+          display: block;
+          width: $Base;
+          height: $Base;
+          border-radius: 50%;
+          background: $clrPrimary;
+          margin-right: $Base/2;
+        }
+
+        .name {
+          font-weight: 600;
+          font-size: 1.9rem;
+        }
+      }
+
+      .price {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $clrAsphalt;
+        color: $clrPrimary;
+        font-size: 1.4rem;
+        padding: $Base/3;
+      }
+    }
+
+    .card-bottom {
+      color: $clrWhite;
+
+      .caption {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-bottom: $Base/2;
+        font-size: 0.8rem;
+        display: block;
+      }
+
+      .content {
+        padding-bottom: $Base/2;
+
+        ul,
+        p {
+          font-size: 1.2rem;
+        }
+
+        ul {
+          padding-bottom: $Base/2;
+          line-height: 2;
+        }
+      }
+    }
+  }
+}
