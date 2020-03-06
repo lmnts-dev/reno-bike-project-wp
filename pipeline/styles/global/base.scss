@@ -52,7 +52,7 @@ $BaseTransition: 0.5s;
 $BaseEase: cubic-bezier(1, 0.01, 0.49, 1);
 
 // Browsers
-$IE11: "all and (-ms-high-contrast:none)";
+$ie11: "all and (-ms-high-contrast:none)";
 /// Usage:
 // @media #{$IE11} { ... }
 
@@ -91,21 +91,6 @@ $IE11: "all and (-ms-high-contrast:none)";
 .show-lg {
   @media (max-width: $BaseMediaLg) {
     display: block;
-  }
-}
-
-// Alignment Overrides
-
-.flex-col-reverse-sm {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  overflow: hidden;
-  width: 100%;
-  max-width: $BaseMaxWidth;
-
-  @media (max-width: $BaseMediaSm) {
-    flex-direction: column-reverse;
   }
 }
 

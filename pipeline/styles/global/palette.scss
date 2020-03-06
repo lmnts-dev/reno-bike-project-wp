@@ -11,11 +11,14 @@ $clrPrimary: #f684b4;
 
 // Grayscale
 $clrBlack: #000000;
+$clrWhite: #ffffff;
+$clrPlaceholder: rgba($clrBlack, 0.05);
+
 $clrGunmetal: #565c63;
 $clrChrome: #929293;
 $clrSteel: #f2f1f1;
 $clrSnow: #f4f8f8;
-$clrWhite: #ffffff;
+$clrSnow: #f4f8f8;
 
 // Extended
 $clrGold: #f6aa1b;
@@ -54,7 +57,7 @@ body {
 }
 
 .bg-clr-primary {
-  background-color: $clrWhite;
+  background-color: $clrPrimary;
 }
 
 .bg-clr-tint {

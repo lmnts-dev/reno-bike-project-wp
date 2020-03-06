@@ -13,42 +13,29 @@
   // justify-content: center;
   align-items: center;
   padding-top: $Base * 3;
-  padding-bottom: $Base * 3;
+  padding-bottom: $Base * 2;
+  position: relative;
 
-  .grid-section-header {
-    width: 100%;
-    max-width: 850px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: $Base;
-
-    h3,
-    p {
-      text-align: center;
-    }
-
-    h3 {
-      font-weight: 600;
-    }
-
-    .icon {
-      background: $clrGold;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      margin-bottom: $Base/2;
-    }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: $Base * 15;
+    background: $clrSnow;
   }
 
   .grid-section-inner {
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
+    position: relative; 
+    z-index: 2;
+    max-width: $BaseMaxWidth * .8;
 
-    .event-listing-card {
-      flex: 1;
-      margin-right: $Base/4;
+    .grid-card {
+      width: 50%;
 
       &:last-child {
         margin-right: 0;
@@ -57,33 +44,11 @@
   }
 }
 
-.event-listing-card {
-  padding: $Base/4;
+.grid-card {
+  padding: $Base;
   display: flex;
 
-  &:hover {
-    background: $clrSnow;
-  }
-
-  &.view-all {
-    .event-listing-card-inner {
-      background: $clrBlack;
-      padding: $Base/2;
-
-      span {
-        font-weight: 600;
-        font-size: 4vw;
-        line-height: 1;
-        color: $clrWhite;
-      }
-
-      &:hover {
-        background: $clrPrimary;
-      }
-    }
-  }
-
-  .event-listing-card-inner {
+  .grid-card-inner {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -91,9 +56,9 @@
 
     .cover {
       width: 100%;
-      padding-bottom: 100%;
+      padding-bottom: 60%;
       position: relative;
-      background: $clrSnow;
+      background: $clrPlaceholder;
 
       img {
         @include objectFit();
@@ -101,20 +66,16 @@
     }
 
     .info {
-      padding-top: $Base/2;
       padding-bottom: $Base/2;
 
       span {
         display: block;
 
-        &.date {
-          color: $clrChrome;
-        }
-
         &.title {
-          font-size: 1.3rem;
-          font-weight: 600;
+          font-size: 1.5rem;
+          font-weight: 700;
           color: $clrBlack;
+          margin: $Base/2 0;
         }
       }
     }

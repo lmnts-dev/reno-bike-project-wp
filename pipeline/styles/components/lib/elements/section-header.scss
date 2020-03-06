@@ -8,19 +8,31 @@
 
 .section-header {
   width: 100%;
-  max-width: 850px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: $Base;
+  margin: 0 auto;
 
   h3,
   p {
     text-align: center;
+    max-width: 850px;
   }
 
   h3 {
     font-weight: 600;
+
+    span {
+      &.squiggle {
+        display: block;
+        line-height: 0;
+        width: 100px;
+        height: 2px;
+        margin-bottom: $Base / 2;
+        background: $clrGold;
+      }
+    }
   }
 
   .icon {
@@ -29,5 +41,15 @@
     height: 80px;
     display: flex;
     margin-bottom: $Base/2;
+  }
+
+  &.split {
+    flex-direction: row;
+    justify-content: space-between;
+
+    h3, p {
+      text-align: left;
+      padding: $Base/2;
+    }
   }
 }

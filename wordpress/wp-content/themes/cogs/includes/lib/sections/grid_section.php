@@ -17,34 +17,29 @@
 class GridBlock
 {
   public $title;
-  public $slug;
-  public $date;
+  public $copy;
   public $cover;
 }
 
 $blockOne = new GridBlock();
-$blockOne->title = 'Lorem Ipsum Solor Sit';
-$blockOne->slug = '/';
-$blockOne->date = 'February 10th, 2020';
-$blockOne->cover = 'https://source.unsplash.com/1600x900/?bike';
+$blockOne->title = 'Community Outreach Events/Bike Valet';
+$blockOne->copy = 'We provide Bike Valet Parking for several events throughout the year and man outreach tables at several others. If you have interest in being a voice for the Reno Bike Project please contact us and we will send you a schedule of events.';
+$blockOne->cover = 'https://source.unsplash.com/1600x900/?dog';
 
 $blockTwo = new GridBlock();
-$blockTwo->title = 'Lorem Ipsum Solor Sit';
-$blockTwo->slug = '/';
-$blockTwo->date = 'February 10th, 2020';
-$blockTwo->cover = 'https://source.unsplash.com/1600x900/?smile';
+$blockTwo->title = 'Greeters';
+$blockTwo->copy = 'Especially during the summer months, we need help with greeting people who visit the shop and directing them to the appropriate place. Some bike knowledge is a plus but isn’t totally necessary.';
+$blockTwo->cover = 'https://source.unsplash.com/1600x900/?monkey';
 
 $blockThree = new GridBlock();
-$blockThree->title = 'Lorem Ipsum Solor Sit';
-$blockThree->slug = '/';
-$blockThree->date = 'February 10th, 2020';
-$blockThree->cover = 'https://source.unsplash.com/1600x900/?community';
+$blockThree->title = 'Shop Improvements';
+$blockThree->copy = 'The shop constantly needs to be improved upon. If you have a skill or trade like plumbing, carpentry, electrical, etc. we can probably use your assistance. If you would like to volunteer your services in such a way please contact us and we will find a job for you.';
+$blockThree->cover = 'https://source.unsplash.com/1600x900/?bear';
 
 $blockFour = new GridBlock();
-$blockFour->title = 'Lorem Ipsum Solor Sit';
-$blockFour->slug = '/';
-$blockFour->date = 'February 10th, 2020';
-$blockFour->cover = 'https://source.unsplash.com/1600x900/?community';
+$blockFour->title = 'Mechanics';
+$blockFour->copy = 'We can always use help wrenching. Experienced mechanics that have a well-rounded knowledge of bikes are a great help during open hours or during classes, and volunteering will teach you how to teach others. If you’re interested in becoming a wrench but don’t know much yet, we’ll teach you here!';
+$blockFour->cover = 'https://source.unsplash.com/1600x900/?donkey';
 
 $gridBlocks = array($blockOne, $blockTwo, $blockThree, $blockFour);
 
@@ -60,7 +55,7 @@ if (get_row_layout() == 'grid_section') {
         Give us a hand
       </h3>
       <p>
-        Whether you are looking to volunteer or just want to come and enjoy the festivities, attending RBP events is a great way to get involved and meet other bike loving folks.
+        Some specific roles we can always use help with.
       </p>
     </div>
 
@@ -68,18 +63,18 @@ if (get_row_layout() == 'grid_section') {
 
       <?php foreach ($gridBlocks as $listing) { ?>
 
-        <div class="event-listing-card">
-          <div class="event-listing-card-inner">
+        <div class="grid-card">
+          <div class="grid-card-inner">
             <div class="cover">
               <img data-src="<?php echo $listing->cover ?>" alt="<?php echo $listing->title ?>" class="lazy" />
             </div>
             <div class="info">
-              <span class="date">
-                <?php echo $listing->date ?>
-              </span>
               <span class="title">
                 <?php echo $listing->title ?>
               </span>
+              <p>
+                <?php echo $listing->copy ?>
+              </p>
             </div>
           </div>
         </div>
@@ -87,14 +82,6 @@ if (get_row_layout() == 'grid_section') {
       <?php
         #/forEach 
       } ?>
-
-      <div class="event-listing-card view-all">
-        <div class="event-listing-card-inner">
-          <span class="title">
-            See all events
-          </span>
-        </div>
-      </div>
 
     </div>
   </section>
