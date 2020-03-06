@@ -1,0 +1,95 @@
+////////////////////////////////////////
+//
+// Event Listings Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.event-listings {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  padding-top: $Base * 3;
+  padding-bottom: $Base * 3;
+
+  .event-listings-inner {
+    display: flex;
+    width: 100%;
+
+    .event-listing-card {
+      flex: 1;
+      margin-right: $Base/4;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.event-listing-card {
+  padding: $Base/4;
+  display: flex;
+
+  &:hover {
+    background: $clrSnow;
+  }
+
+  &.view-all {
+    .event-listing-card-inner {
+      background: $clrBlack;
+      padding: $Base/2;
+
+      span {
+        font-weight: 600;
+        font-size: 4vw;
+        line-height: 1;
+        color: $clrWhite;
+      }
+
+      &:hover {
+        background: $clrPrimary;
+      }
+    }
+  }
+
+  .event-listing-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .cover {
+      width: 100%;
+      padding-bottom: 100%;
+      position: relative;
+      background: $clrSnow;
+
+      img {
+        @include objectFit();
+      }
+    }
+
+    .info {
+      padding-top: $Base/2;
+      padding-bottom: $Base/2;
+
+      span {
+        display: block;
+
+        &.date {
+          color: $clrChrome;
+        }
+
+        &.title {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: $clrBlack;
+        }
+      }
+    }
+  }
+}

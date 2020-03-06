@@ -15,12 +15,12 @@
     width: 2px;
     height: 100px;
     left: 50%;
-    top: 0px;
+    top: -100px;
     z-index: 200;
     transform: translateY(-50%);
     background: $clrOrange;
   }
-  
+
   .news-listings-header {
     position: relative;
 
@@ -35,7 +35,7 @@
       text-align: center;
       font-weight: 600;
       margin-bottom: $Base;
-      padding-top: $Base * 2;
+      margin-top: $Base * 2;
     }
   }
 
@@ -61,17 +61,7 @@
           background: $clrSnow;
 
           img {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            max-width: 100%;
-            width: 100%;
+            @include objectFit();
           }
         }
 

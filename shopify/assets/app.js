@@ -19,27 +19,6 @@ document.addEventListener("mousemove", setCursorPosition, false);
 
 /*
  ** @author: Peter Laxalt
- ** @description: Super simple script for the Bike Wheel SVG to
- ** follow the mouse position.
- */
-var rotated = document.getElementsByClassName("bike-wheel-el")[0];
-window.addEventListener("mousemove", function (ev) {
-  ev.preventDefault();
-  ev.stopPropagation();
-  var deltaX = ev.pageX - innerWidth / 2;
-  var deltaY = ev.pageY - innerHeight / 2;
-  var angle = Math.atan(deltaX / deltaY);
-
-  if (deltaY < 0) {
-    rotated.style.transform = "rotate(" + -angle + "rad)";
-  } else {
-    rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
-  }
-}, false);
-"use strict";
-
-/*
- ** @author: Peter Laxalt
  ** @description: Functions to show/hide the newsletter overlay.
  */
 var newsletterBtnClass = "btn-newsletter";
@@ -66,4 +45,25 @@ document.addEventListener("click", function (event) {
   event.preventDefault(); // Log the clicked element in the console
 
   toggleNavOverlay(event);
+}, false);
+"use strict";
+
+/*
+ ** @author: Peter Laxalt
+ ** @description: Super simple script for the Bike Wheel SVG to
+ ** follow the mouse position.
+ */
+var rotated = document.getElementsByClassName("bike-wheel-el")[0];
+window.addEventListener("mousemove", function (ev) {
+  ev.preventDefault();
+  ev.stopPropagation();
+  var deltaX = ev.pageX - innerWidth / 2;
+  var deltaY = ev.pageY - innerHeight / 2;
+  var angle = Math.atan(deltaX / deltaY);
+
+  if (deltaY < 0) {
+    rotated.style.transform = "rotate(" + -angle + "rad)";
+  } else {
+    rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
+  }
 }, false);

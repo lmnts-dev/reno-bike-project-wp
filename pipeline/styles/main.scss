@@ -22,7 +22,7 @@
 @import "structure/siteWrapper";
 @import "structure/section";
 
-// Components: /Core/
+// Components: Core
 @import "components/core/navigation";
 @import "components/core/footer";
 @import "components/core/icons";
@@ -33,12 +33,17 @@
 @import "components/core/lists";
 @import "components/core/cursor";
 
-// Sections
+// Components: Elements
+@import "components/lib/elements/section-header";
+
+// Components: Sections
 @import "components/lib/sections/outlined-list";
 @import "components/lib/sections/home-hero";
 @import "components/lib/sections/page-hero";
 @import "components/lib/sections/block-row";
 @import "components/lib/sections/news-listings";
+@import "components/lib/sections/event-listings";
+@import "components/lib/sections/grid-section";
 @import "components/lib/sections/editorial-row";
 @import "components/lib/sections/block-slider";
 @import "components/lib/sections/newsletter-overlay";

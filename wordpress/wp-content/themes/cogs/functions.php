@@ -440,6 +440,10 @@ function custom_styles()
 					display: none;
 				}
 
+				.editor-block-list__layout .block-editor-block-list__layout {
+					display: none;
+				}
+
 				.menu-icon-dashboard {
 					display: none;
 				}
@@ -680,7 +684,7 @@ function dashboard_redirect()
 {
 	wp_redirect(admin_url('post.php?post=14734&action=edit'));
 }
-add_action('load-index.php','dashboard_redirect');
+add_action('load-index.php', 'dashboard_redirect');
 
 //SUPPOSEDELY REMOVES END TRAILING SLASH
 //remove_action('template_redirect', 'redirect_canonical');
