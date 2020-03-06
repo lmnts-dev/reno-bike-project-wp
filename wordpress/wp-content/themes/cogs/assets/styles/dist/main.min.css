@@ -220,6 +220,7 @@ a,input,button{cursor:none !important}
 .section-header h3 span.squiggle{display:block;line-height:0;width:100px;height:2px;margin-bottom:20px;background:#f6aa1b}
 .section-header .icon{border-radius:50%;width:80px;height:80px;display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:20px}
 .section-header.split{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.section-header.split h3{max-width:650px}
 .section-header.split h3,.section-header.split p{text-align:left;padding:20px}
 .outlined-list{background:#fff;padding:0 40px;width:100%;overflow:hidden}
 .outlined-list .outlined-list-inner ul{list-style-type:none;padding:0;margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;position:relative;z-index:60;background:#fff}
@@ -372,6 +373,23 @@ a,input,button{cursor:none !important}
 .newsletter-overlay .newsletter-overlay-inner .bottom form .row .col .input-outer{padding:10px}
 .newsletter-overlay .newsletter-overlay-inner .bottom form .row .col .input-outer input{font-size:1.5rem;height:60px;background:0;border-bottom:2px solid #000}
 .newsletter-overlay .newsletter-overlay-inner .bottom form .row .col.col-submit .input-outer{padding:10px}
+.newsletter-row{position:relative;background:#000;color:#fff;padding-top:80px;padding-bottom:80px}
+.newsletter-row .section-header h3{color:#f684b4}
+.newsletter-row .newsletter-row-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap;padding:20px;width:100%}
+.newsletter-row .newsletter-row-inner form{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}
+.newsletter-row .newsletter-row-inner form .col{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:25%}
+.newsletter-row .newsletter-row-inner form .col.col-email{width:50%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.newsletter-row .newsletter-row-inner form .col.col-email .col{width:unset}
+.newsletter-row .newsletter-row-inner form .col.col-email .col:first-child{-webkit-box-flex:1;-ms-flex:1;flex:1}
+.newsletter-row .newsletter-row-inner form .col.col-email .col:first-child .input-outer{padding-right:40px}
+.newsletter-row .newsletter-row-inner form .col.col-email .col.last-child{-webkit-box-flex:1;-ms-flex:1;flex:1;background:yellow}
+.newsletter-row .newsletter-row-inner form .col.col-email .col.last-child .input-outer{width:100%}
+.newsletter-row .newsletter-row-inner form .col.col-email .col.last-child .input-outer button{width:100%}
+.newsletter-row .newsletter-row-inner form .col.col-email .col button{border:1px solid #f684b4}
+.newsletter-row .newsletter-row-inner form .col .input-outer{width:100%;padding-right:40px}
+.newsletter-row .newsletter-row-inner form .col .input-outer input{width:100%;background:0;border-bottom:#fff 1px solid;color:#fff}
+.newsletter-row .newsletter-row-inner form .col .input-outer input:focus,.newsletter-row .newsletter-row-inner form .col .input-outer input:active{border-bottom:#f684b4 1px solid}
+.newsletter-row .newsletter-row-inner form .col:last-child .input-outer{padding-right:0}
 @media(max-width:1280px){.hide-lg{display:none}
 .show-lg{display:block}
 }@media(max-width:1024px){.hide-md{display:none}

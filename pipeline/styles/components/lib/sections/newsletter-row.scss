@@ -1,0 +1,98 @@
+////////////////////////////////////////
+//
+// Newsletter Row Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.newsletter-row {
+  position: relative;
+  background: $clrBlack;
+  color: $clrWhite;
+  padding-top: $Base * 2;
+  padding-bottom: $Base * 2;
+
+  .section-header {
+    h3 {
+      color: $clrPrimary;
+    }
+  }
+
+  .newsletter-row-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: $Base/2;
+    width: 100%;
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .col {
+        display: flex;
+        align-items: center;
+        width: 25%;
+
+        &.col-email {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+
+          .col {
+            width: unset;
+
+            &:first-child {
+              flex: 1;
+
+              .input-outer {
+                padding-right: $Base;
+              }
+            }
+
+            &.last-child {
+              flex: 1;
+              background: yellow;
+
+              .input-outer {
+                width: 100%;
+
+                button {
+                  width: 100%;
+                }
+              }
+            }
+
+            button {
+              border: 1px solid $clrPrimary;
+            }
+          }
+        }
+
+        .input-outer {
+          width: 100%;
+          padding-right: $Base;
+
+          input {
+            width: 100%;
+            background: none;
+            border-bottom: $clrWhite 1px solid;
+            color: $clrWhite;
+
+            &:focus,
+            &:active {
+              border-bottom: $clrPrimary 1px solid;
+            }
+          }
+        }
+
+        &:last-child {
+          .input-outer {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

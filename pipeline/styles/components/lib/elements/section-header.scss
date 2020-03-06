@@ -47,6 +47,10 @@
     flex-direction: row;
     justify-content: space-between;
 
+    h3 {
+      max-width: 650px;
+    }
+
     h3, p {
       text-align: left;
       padding: $Base/2;
