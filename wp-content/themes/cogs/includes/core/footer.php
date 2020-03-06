@@ -129,7 +129,7 @@ $twitter = 'https://twitter.com/renobikeproject';
 </footer>
 
 <?php
-include get_template_directory() . '/includes/lib/sections/newsletter-overlay.php';
+include get_template_directory() . '/includes/lib/sections/newsletter_overlay.php';
 ?>
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
