@@ -15,7 +15,6 @@ barba.init({
         // then return a promise or use `this.async()`
       },
       beforeEnter({ current, next, trigger }) {
-
         // Scroll to top of page
         window.scrollTo(0, 0);
 
@@ -26,22 +25,26 @@ barba.init({
 
         // Re-init our bicycle wheel script.
         var rotated = document.getElementsByClassName("bike-wheel-el")[0];
-        window.addEventListener(
-          "mousemove",
-          function(ev) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            var deltaX = ev.pageX - innerWidth / 2;
-            var deltaY = ev.pageY - innerHeight / 2;
-            var angle = Math.atan(deltaX / deltaY);
-            if (deltaY < 0) {
-              rotated.style.transform = "rotate(" + -angle + "rad)";
-            } else {
-              rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
-            }
-          },
-          false
-        );
+
+        if (rotated != undefined) {
+          window.addEventListener(
+            "mousemove",
+            function(ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              var deltaX = ev.pageX - innerWidth / 2;
+              var deltaY = ev.pageY - innerHeight / 2;
+              var angle = Math.atan(deltaX / deltaY);
+              if (deltaY < 0) {
+                rotated.style.transform = "rotate(" + -angle + "rad)";
+              } else {
+                rotated.style.transform =
+                  "rotate(" + (Math.PI - angle) + "rad)";
+              }
+            },
+            false
+          );
+        }
       }
     }
   ]
