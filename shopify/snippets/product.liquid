@@ -1,0 +1,139 @@
+{% comment %}
+
+Product:
+The product page component.
+
+@author Peter Laxalt
+@since 3/2020
+
+/*************************************/
+
+{% endcomment %}
+
+<section class="product" itemscope itemtype="http://schema.org/Product">
+  <div class="product-inner">
+    <div class="col image-col">
+      <div class="featured-images">
+        <div class="img-wrapper">
+          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?pink" alt="Title" class="lazy" />
+        </div>
+        <div class="img-wrapper">
+          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?yellow" alt="Title" class="lazy" />
+        </div>
+        <div class="img-wrapper">
+          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?blue" alt="Title" class="lazy" />
+        </div>
+        <div class="img-wrapper">
+          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?red" alt="Title" class="lazy" />
+        </div>
+      </div>
+
+      <div class="specifics-outer">
+        <div class="accordion">
+          <div class="accordion-row">
+            Details
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col details">
+      <div class="details-top">
+
+        <div class="title-and-price">
+          <div class="title">
+            <h1 itemprop="name">
+              Product Title
+            </h1>
+          </div>
+          <div class="price">
+            <span itemprop="priceCurrency" content="USD">$</span>
+            <span itemprop="price" content="1000.00">1,000.00</span>
+          </div>
+          </span>
+        </div>
+
+        <div class="quantity-and-purchase">
+          <div class="quantity">
+            <input type="number" id="Quantity" name="quantity" value="1" min="1">
+          </div>
+          <div class="purchase">
+            <button type="submit" name="add" id="AddToCart" class="btn btn-clr-black btn-arrow">Add to basket</button>
+          </div>
+        </div>
+
+        <div class="variant-selector">
+          <div class="selector">
+            Dropdown
+          </div>
+        </div>
+
+        <div class="description" itemprop="description">
+          <p>
+            Vintage Team Fuji racing bike. Amazing condition with new components and tires. This rare smaller frame is
+            perfect for short riders (4’10” - 5’0”).
+          </p>
+        </div>
+
+      </div>
+
+      <div class="details-bottom">
+        <span>
+          Keep Browsing
+        </span>
+        <ul>
+          <li>
+            <a href="/">
+              Used Bicycles
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Road Bikes
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Fuji Team
+            </a>
+          </li>
+          <li>
+            <a href="/collections/">
+              All Products
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</section>
+<!-- 
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+{% for image in product.images %}
+  <a href="{{ image.src | img_url: 'large' }}">
+    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+  </a>
+{% endfor %}
+<h1>{{ product.title }}</h1>
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+  <select name="id" id="productSelect">
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - sold out
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+  {{ current_variant.price | money }}
+  <label for="Quantity">quantity</label>
+  <input type="number" id="Quantity" name="quantity" value="1" min="1">
+  <button type="submit" name="add" id="AddToCart">Add to cart</button>
+</form>
+<div>{{ product.description }}</div> -->

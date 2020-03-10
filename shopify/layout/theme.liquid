@@ -1,3 +1,13 @@
+{% comment %}
+
+Core Theme Template:
+Houses our theme header & wrapper.
+
+@author Peter Laxalt
+@since 2/2020
+
+{% endcomment %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -75,7 +85,7 @@
   Header hook for plugins
   {% endcomment %}
   {{ content_for_header }}
-  {{ 'main.css' | asset_url | stylesheet_tag }}
+  {{ 'main.min.css' | asset_url | stylesheet_tag }}
 </head>
 
 

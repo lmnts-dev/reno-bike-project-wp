@@ -4,15 +4,19 @@
  ** @author: Peter Laxalt
  ** @description: Super simple custom cursor library.
  */
-var cursor = document.querySelector(".cursor");
-var cursorOutline = document.querySelector(".cursor-outline");
+function initCursor() {
+  var cursor = document.querySelector(".cursor");
+  var cursorOutline = document.querySelector(".cursor-outline");
 
-function setCursorPosition(e) {
-  cursor.setAttribute("style", "opacity: 1; transform: translate(" + e.clientX + "px," + e.clientY + "px)");
-  cursorOutline.setAttribute("style", "opacity: 1; transform: translate(" + e.clientX + "px," + e.clientY + "px)");
+  function setCursorPosition(e) {
+    cursor.setAttribute("style", "opacity: 1; transform: translate(" + e.clientX + "px," + e.clientY + "px)");
+    cursorOutline.setAttribute("style", "opacity: 1; transform: translate(" + e.clientX + "px," + e.clientY + "px)");
+  }
+
+  document.addEventListener("mousemove", setCursorPosition, false);
 }
 
-document.addEventListener("mousemove", setCursorPosition, false);
+initCursor();
 // App Javascript File
 "use strict";
 "use strict";
@@ -53,20 +57,24 @@ document.addEventListener("click", function (event) {
  ** @description: Super simple script for the Bike Wheel SVG to
  ** follow the mouse position.
  */
-var rotated = document.getElementsByClassName("bike-wheel-el")[0];
+function initBikeWheel() {
+  var rotated = document.getElementsByClassName("bike-wheel-el")[0];
 
-if (rotated != undefined) {
-  window.addEventListener("mousemove", function (ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    var deltaX = ev.pageX - innerWidth / 2;
-    var deltaY = ev.pageY - innerHeight / 2;
-    var angle = Math.atan(deltaX / deltaY);
+  if (rotated != undefined) {
+    window.addEventListener("mousemove", function (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      var deltaX = ev.pageX - innerWidth / 2;
+      var deltaY = ev.pageY - innerHeight / 2;
+      var angle = Math.atan(deltaX / deltaY);
 
-    if (deltaY < 0) {
-      rotated.style.transform = "rotate(" + -angle + "rad)";
-    } else {
-      rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
-    }
-  }, false);
+      if (deltaY < 0) {
+        rotated.style.transform = "rotate(" + -angle + "rad)";
+      } else {
+        rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
+      }
+    }, false);
+  }
 }
+
+initBikeWheel();

@@ -1,3 +1,16 @@
+{% comment %}
+
+Collection Listings Page:
+The collection listings template. It lists all collections.
+
+@author Peter Laxalt
+@since 3/2020
+
+@todo
+Link into Shopify data.
+
+{% endcomment %}
+
 {% for collection in collections %}
   {% unless collection.handle == 'frontpage' %}
     {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}

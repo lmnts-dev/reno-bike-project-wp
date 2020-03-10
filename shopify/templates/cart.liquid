@@ -1,3 +1,16 @@
+{% comment %}
+
+Cart Page:
+The cart template.
+
+@author Peter Laxalt
+@since 3/2020
+
+@todo
+Link into Shopify data.
+
+{% endcomment %}
+
 {% if cart.item_count > 0 %}
   <h1>cart</h1>
   <form action="/cart" method="post" novalidate>

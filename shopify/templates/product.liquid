@@ -1,3 +1,31 @@
+{% comment %}
+
+Product Template:
+The default Product template.
+
+@author Peter Laxalt
+@since 3/2020
+
+@todo
+Link into Shopify data.
+
+{% endcomment %}
+
+{% include 'product' %}
+
+{% include 'collection-listings-slider' 
+  collectionTitle: 'Related Accessories', 
+  slug: '/collections/parts-and-components' 
+%}
+
+{% include 'collection-listings-slider' 
+  collectionTitle: 'Similar Products', 
+  slug: '/collections/parts-and-components' 
+%}
+
+{% section 'block-row' %}
+
+<!-- 
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
@@ -26,4 +54,4 @@
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
   <button type="submit" name="add" id="AddToCart">Add to cart</button>
 </form>
-<div>{{ product.description }}</div>
+<div>{{ product.description }}</div> -->
