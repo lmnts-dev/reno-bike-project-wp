@@ -27,10 +27,11 @@ $BaseNavSizeSmScroll: 40px;
 
 // Body
 $BaseMaxWidth: 1680px;
-$BaseGutterLeft: 60px;
+$BaseGutter: 60px;
+$BaseGutterLeft: $BaseGutter;
 $BaseGutterLeftMd: 30px;
 $BaseGutterLeftSm: 20px;
-$BaseGutterRight: 60px;
+$BaseGutterRight: $BaseGutter;
 $BaseGutterRightMd: 30px;
 $BaseGutterRightSm: 20px;
 $BaseParagraphWidth: 500px;

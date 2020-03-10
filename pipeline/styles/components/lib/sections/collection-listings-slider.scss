@@ -33,7 +33,7 @@
       .view-all-card {
         display: flex;
         height: 100%;
-        padding: $Base / 4 $Base / 4 $Base / 4 0;
+        padding: $Base / 2 $Base / 2 $Base / 2 0; // Same padding as .product-card
 
         .view-all-card-inner {
           width: 100%;

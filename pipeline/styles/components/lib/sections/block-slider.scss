@@ -8,7 +8,7 @@
 
 .block-slider {
   position: relative;
-  margin: $BaseGutterLeft 0;
+  margin: $BaseGutter 0;
 
   .block-slider-inner {
     // The Slider Element Itself
@@ -74,13 +74,13 @@
 .shop-wrapper {
   .block-slider {
     padding-top: 0;
-    margin-top: calc(#{$BaseGutterLeft} + #{$BaseNavSizeLg});
+    margin-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
 
     .block-slider-inner {
       .block-slider-el {
         .block-slide-inner {
           // Readjust for bottom / top paddings to be consistent relative to viewport
-          height: calc(100vh - (#{$BaseNavSizeLg} + (#{$BaseGutterLeft} * 2)));
+          height: calc(100vh - (#{$BaseNavSizeLg} + (#{$BaseGutter} * 2)));
         }
       }
     }

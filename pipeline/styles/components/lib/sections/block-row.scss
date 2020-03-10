@@ -12,6 +12,18 @@
 
     &.block-row-reverse {
       flex-direction: row-reverse;
+
+      .block-item {
+        &:first-child {
+          padding-left: $Base / 2;
+          padding-right: 0px;
+        }
+
+        &:last-child {
+          padding-left: 0px;
+          padding-right: $Base / 2;
+        }
+      }
     }
 
     .block-item {
@@ -26,6 +38,7 @@
       &:first-child {
         width: 100%;
         max-width: 33%;
+        padding-left: 0;
 
         .block-item-inner {
           padding-bottom: 100%;
@@ -33,6 +46,8 @@
       }
 
       &:last-child {
+        padding-right: 0;
+
         .block-item-inner {
           padding-bottom: 33%;
         }

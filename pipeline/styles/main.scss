@@ -39,7 +39,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 // Components: Elements
+//----- General
 @import "components/lib/elements/section-header";
+
+//----- eCommerce
 @import "components/lib/elements/product-card";
 
 ////////////////////////////////////////////////////////////////////////
@@ -50,11 +53,13 @@
 @import "components/lib/sections/page-hero";
 @import "components/lib/sections/block-row";
 @import "components/lib/sections/outlined-list";
+@import "components/lib/sections/fullwidth-hero";
 
 //----- Listings
 @import "components/lib/sections/news-listings";
 @import "components/lib/sections/event-listings";
 @import "components/lib/sections/membership-listings";
+@import "components/lib/sections/product-listings";
 @import "components/lib/sections/collection-listings-slider";
 
 //----- Content

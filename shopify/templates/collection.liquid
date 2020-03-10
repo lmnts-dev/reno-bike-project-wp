@@ -1,4 +1,26 @@
-{% paginate collection.products by 2 %}
+{% comment %}
+
+Collection Page:
+The collection template.
+
+@author Peter Laxalt
+@since 2/2020
+
+@todo
+Link into Shopify data.
+
+{% endcomment %}
+
+{% include 'fullwidth-hero' 
+headline: collection.title, 
+cover: 'https://source.unsplash.com/1600x900/?bike' 
+%}
+
+{% section 'product-listings' %}
+
+{% section 'block-row' %}
+
+<!-- {% paginate collection.products by 2 %}
   <h1>{{ collection.title }}</h1>
   {% for product in collection.products %}
     <div>
@@ -15,4 +37,4 @@
   {% if paginate.pages > 1 %}
     {{ paginate | default_pagination }}
   {% endif %}
-{% endpaginate %}
+{% endpaginate %} -->

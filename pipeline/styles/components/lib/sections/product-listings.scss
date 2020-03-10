@@ -1,0 +1,22 @@
+////////////////////////////////////////
+//
+// Product Listings Component
+//
+// @author Peter Laxalt
+// @since 2/2020
+//
+////////////////////////////////////////
+
+.product-listings {
+  .product-listings-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: $Base * 3;
+
+    .product-card {
+      width: 33%;
+      margin-bottom: $Base;
+    }
+  }
+}

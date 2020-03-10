@@ -1,0 +1,26 @@
+{% comment %}
+
+Fullwidth Hero:
+A fullwidth hero component.
+
+@author Peter Laxalt
+@since 2/2020
+
+@params
+{{ headline }}: Headline
+{{ cover }}: Cover image
+
+@todo
+Link into Shopify data.
+
+{% endcomment %}
+
+<section class="fullwidth-hero">
+  <div class="fullwidth-hero-inner">
+    <h1>{{ headline }}</h1>
+    
+    {% if collection.image %}
+      <img data-src="{{ collection.image | collection_img_url: '1400x800' }}" alt="{{ title }}" class="lazy" />
+    {% endif %}
+  </div>
+</section>
