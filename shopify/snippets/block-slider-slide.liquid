@@ -1,0 +1,36 @@
+{% comment %}
+
+Block Slider Slide:
+For the block-slider.liquid section.
+
+@author Peter Laxalt
+@since 2/2020
+
+@params
+{{ headline }}: Headline
+{{ slug }}: Button url
+{{ label }}: Button label
+{{ cover }}: Cover image
+
+/*************************************/
+
+{% endcomment %}
+
+<div class="block-slide">
+  <div class="block-slide-inner">
+    <div class="block-slide-content">
+      <h4>
+        {{ headline }}
+      </h4>
+      <a href="{{ slug }}" class="btn btn-arrow">
+        {{ label }}
+      </a>
+    </div>
+
+    <div class="block-slide-cover">
+      <div class="block-slide-cover-inner">
+        <img data-src="{{ cover }}" class="lazy" alt="{{ headline }}" />
+      </div>
+    </div>
+  </div>
+</div>

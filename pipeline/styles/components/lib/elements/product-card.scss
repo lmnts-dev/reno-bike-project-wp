@@ -1,0 +1,61 @@
+////////////////////////////////////////
+//
+// Product Card Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: $Base / 4;
+  color: $clrBlack;
+
+  &:hover {
+    color: $clrBlack;
+    background: $clrSnow;
+  }
+
+  &:active {
+    background: darken($clrSnow, 2%);
+  }
+
+  .product-card-inner {
+    display: block;
+    width: 100%;
+
+    .product-cover {
+      position: relative;
+      width: 100%;
+      padding-bottom: 80%;
+      background: $clrPlaceholder;
+      margin-bottom: $Base / 4;
+
+      img {
+        @include objectFit();
+      }
+    }
+
+    .product-details {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .title,
+      .price {
+        width: 50%;
+        font-weight: 700;
+      }
+
+      .title {
+        color: $clrBlack;
+      }
+
+      .price {
+        text-align: right;
+        color: $clrPrimary;
+      }
+    }
+  }
+}

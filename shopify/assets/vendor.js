@@ -59,6 +59,20 @@ barba.init({
             autoPlay: true
           });
         });
+      } // Re-init our collection-listing-sliders
+
+
+      var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
+
+      if (collectionListingsSliderElements.length > 0) {
+        collectionListingsSliderElements.forEach(function (el) {
+          new Flickity(el, {
+            contain: true,
+            cellAlign: "left",
+            prevNextButtons: true,
+            pageDots: false
+          });
+        });
       }
     }
   }]
@@ -96,25 +110,11 @@ barba.init({
 
 /**
  *
- * Lazyload.js settings
- * @author Peter Laxalt
- * @see https://www.andreaverlicchi.eu/lazyload/
- *
- */
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy"
-});
-// Vendor Javascript File
-"use strict";
-"use strict";
-
-/**
- *
  * Flickity.js settings
  * @author Peter Laxalt
  *
  */
-// Re-init our sliders
+// Re-init our block-sliders
 var blockSliderElements = document.querySelectorAll(".block-slider-el");
 
 if (blockSliderElements.length > 0) {
@@ -127,10 +127,33 @@ if (blockSliderElements.length > 0) {
       autoPlay: true
     });
   });
-} // var flkty = new Flickity(elem, {
-//   cellAlign: "left",
-//   prevNextButtons: false,
-//   fade: true,
-//   wrapAround: true,
-//   autoPlay: true
-// });
+} // Re-init our collection-listing-sliders
+
+
+var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
+
+if (collectionListingsSliderElements.length > 0) {
+  collectionListingsSliderElements.forEach(function (el) {
+    new Flickity(el, {
+      contain: true,
+      cellAlign: "left",
+      prevNextButtons: true,
+      pageDots: false,
+      freeScroll: true
+    });
+  });
+}
+"use strict";
+
+/**
+ *
+ * Lazyload.js settings
+ * @author Peter Laxalt
+ * @see https://www.andreaverlicchi.eu/lazyload/
+ *
+ */
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
+});
+// Vendor Javascript File
+"use strict";

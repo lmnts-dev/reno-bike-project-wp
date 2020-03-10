@@ -1,0 +1,37 @@
+{% comment %}
+
+Product Card:
+The product card component.
+
+@author Peter Laxalt
+@since 2/2020
+
+@params
+{{ title }}: Title
+{{ price }}: Button url
+{{ slug }}: Product url
+{{ cover }}: Product image
+
+/*************************************/
+
+{% endcomment %}
+
+<a href="{{ slug }}" class="product-card" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+  <div class="product-card-inner">
+    <div class="product-cover">
+      <img data-src="{{ cover }}" class="lazy" alt="{{ title }}" itemprop="image" />
+    </div>
+    <div class="product-details">
+      <div class="title">
+        <span itemprop="name">
+          {{ title }}
+        </span>
+      </div>
+      <div class="price">
+        <span itemprop="itemListElement" itemtype="http://schema.org/Product">
+          {{ price }}
+        </span>
+      </div>
+    </div>
+  </div>
+</a>

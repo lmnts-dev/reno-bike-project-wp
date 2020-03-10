@@ -40,6 +40,7 @@
 ////////////////////////////////////////////////////////////////////////
 // Components: Elements
 @import "components/lib/elements/section-header";
+@import "components/lib/elements/product-card";
 
 ////////////////////////////////////////////////////////////////////////
 // Components: Sections
@@ -54,6 +55,7 @@
 @import "components/lib/sections/news-listings";
 @import "components/lib/sections/event-listings";
 @import "components/lib/sections/membership-listings";
+@import "components/lib/sections/collection-listings-slider";
 
 //----- Content
 @import "components/lib/sections/grid-section";

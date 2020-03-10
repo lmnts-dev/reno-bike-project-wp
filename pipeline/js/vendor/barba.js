@@ -60,6 +60,22 @@ barba.init({
             });
           });
         }
+
+        // Re-init our collection-listing-sliders
+        let collectionListingsSliderElements = document.querySelectorAll(
+          ".collection-listings-slider-el"
+        );
+
+        if (collectionListingsSliderElements.length > 0) {
+          collectionListingsSliderElements.forEach(el => {
+            new Flickity(el, {
+              contain: true,
+              cellAlign: "left",
+              prevNextButtons: true,
+              pageDots: false
+            });
+          });
+        }
       }
     }
   ]

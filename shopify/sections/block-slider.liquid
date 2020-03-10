@@ -1,13 +1,10 @@
 {% comment %}
 
-/**
-* Block Slider
-*
-* @author Peter Laxalt
-* @since 2/2020
-*/
+Block Slider:
+A simple slider section.
 
-/*************************************/
+@author Peter Laxalt
+@since 2/2020
 
 {% endcomment %}
 
@@ -15,62 +12,23 @@
   <div class="block-slider-inner">
     <div class="block-slider-el block-slider-1">
 
-      <div class="block-slide">
-        <div class="block-slide-inner">
-          <div class="block-slide-content">
-            <h4>
-              Title
-            </h4>
-            <a href="/" class="btn btn-arrow">
-              Label
-            </a>
-          </div>
+      {% include 'block-slider-slide' 
+      headline: 'New bike, <br />Who dis?', 
+      slug: '/', 
+      label: 'Check it out', 
+      cover: 'https://source.unsplash.com/1600x900/?pink' %}
 
-          <div class="block-slide-cover">
-            <div class="block-slide-cover-inner">
-              <img data-src="https://source.unsplash.com/1600x900/?pink" class="lazy" alt="Title" />
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include 'block-slider-slide' 
+      headline: 'New bike, <br />Who der?', 
+      slug: '/', 
+      label: 'Check it out', 
+      cover: 'https://source.unsplash.com/1600x900/?yellow' %}
 
-      <div class="block-slide">
-        <div class="block-slide-inner">
-          <div class="block-slide-content">
-            <h4>
-              Title
-            </h4>
-            <a href="/" class="btn btn-arrow">
-              Label
-            </a>
-          </div>
-
-          <div class="block-slide-cover">
-            <div class="block-slide-cover-inner">
-              <img data-src="https://source.unsplash.com/1600x900/?yellow" class="lazy" alt="Title" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block-slide">
-        <div class="block-slide-inner">
-          <div class="block-slide-content">
-            <h4>
-              Title
-            </h4>
-            <a href="/" class="btn btn-arrow">
-              Label
-            </a>
-          </div>
-
-          <div class="block-slide-cover">
-            <div class="block-slide-cover-inner">
-              <img data-src="https://source.unsplash.com/1600x900/?blue" class="lazy" alt="Title" />
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include 'block-slider-slide' 
+      headline: 'New bike, <br />Who dat?', 
+      slug: '/', 
+      label: 'Check it out', 
+      cover: 'https://source.unsplash.com/1600x900/?blue' %}
 
     </div>
   </div>

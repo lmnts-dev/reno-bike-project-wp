@@ -1,6 +1,26 @@
+{% comment %}
+
+Home Page:
+Site home page
+
+@author Peter Laxalt
+@since 2/2020
+
+{% endcomment %}
 
 {% section 'block-slider' %}
-{% section 'block-slider' %}
+{% include 'collection-listings-slider' 
+  collectionTitle: 'Used Bikes', 
+  slug: '/' 
+%}
+{% include 'collection-listings-slider' 
+  collectionTitle: 'Parts & Components', 
+  slug: '/' 
+%}
+{% include 'collection-listings-slider' 
+  collectionTitle: 'Accessories', 
+  slug: '/' 
+%}
 {% section 'block-row' %}
 
 <!-- {% for product in collections.frontpage.products limit:4 %}
