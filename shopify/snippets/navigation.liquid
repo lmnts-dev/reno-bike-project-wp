@@ -1,0 +1,84 @@
+{% comment %}
+
+/**
+* Navigation
+* Site Navigation
+*
+* @author Peter Laxalt
+* @since 2/2020
+*/
+
+/************************************/
+/** Variables */
+/************************************/
+
+{% endcomment %}
+
+
+<header>
+
+  {% comment %}
+  /** Inter-site Navigation */
+  {% endcomment %}
+  <div class="nav-inner nav-shop">
+    <div class="nav-col nav-col-1">
+      <div class="nav-branding nav-shop">
+        <a href="{{ site.url }}">
+          <span></span>
+        </a>
+      </div>
+      <nav class="nav-switch">
+        <ul>
+          <li class="inactive">
+            <a href="http://2020-reno-bike-project.pantheonsite.io/">
+              Community
+            </a>
+          </li>
+          <li class="active nav-shop">
+            <a href="{{ site.url }}">
+              Shop
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    {% comment %}
+    /** /Inter-site Navigation */
+    {% endcomment %}
+
+    {% comment %}
+    /** Main Navigation */
+    {% endcomment %}
+    <div class="nav-col nav-col-2">
+      <nav class="main-nav">
+        <div>
+          <ul>
+            {% for link in linklists.main-navigation.links %}
+            <li>
+              <a href="{{link.url}}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    {% comment %}
+    /** /Main Navigation */
+    {% endcomment %}
+
+    {% comment %}
+    /** CTA Navigation */
+    {% endcomment %}
+    <div class="nav-col nav-col-3">
+      <div class="nav-cta">
+        <a href="/">
+          Donate
+        </a>
+      </div>
+    </div>
+    {% comment %}
+    /** /CTA Navigation */
+    {% endcomment %}
+
+  </div>
+</header>

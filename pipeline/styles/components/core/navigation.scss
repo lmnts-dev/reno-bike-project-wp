@@ -97,6 +97,21 @@ header {
           &:before {
             background: rgba($clrPrimary, 1);
           }
+
+          &.nav-shop {
+            a,
+            a:visited {
+              color: $clrBlack;
+            }
+
+            &:before {
+              background: rgba($clrBlack, 1);
+            }
+
+            &:hover {
+              color: $clrBlack;
+            }
+          }
         }
 
         // Inactive Links & Underlines
@@ -144,6 +159,10 @@ header {
           // For Shopify
           &.nav-shop {
             background: $clrBlack;
+
+            a {
+              background: $clrBlack;
+            }
           }
 
           a {

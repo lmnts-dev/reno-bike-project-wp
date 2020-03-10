@@ -1,4 +1,8 @@
-{% for product in collections.frontpage.products limit:4 %}
+
+{% section 'block-slider' %}
+{% section 'block-row' %}
+
+<!-- {% for product in collections.frontpage.products limit:4 %}
   <div>
     <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
     {{ product.price | money }}
@@ -7,4 +11,4 @@
       <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
     </a>
   </div>
-{% endfor %}
+{% endfor %} -->

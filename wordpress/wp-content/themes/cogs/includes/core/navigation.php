@@ -37,7 +37,7 @@ $ecommerce = get_field('ecommerce', 'option');
             </a>
           </li>
           <li class="inactive">
-            <a href="<?php echo $ecommerce['shopify_url'] ?>" target="_blank">
+            <a href="<?php echo $ecommerce['shopify_url'] ?>">
               Shop
             </a>
           </li>
@@ -54,7 +54,7 @@ $ecommerce = get_field('ecommerce', 'option');
         <?php wp_nav_menu(array('theme_location' => 'main-menu')); ?>
       </nav>
     </div>
-    <?php /** Main Navigation  */
+    <?php /** /Main Navigation  */
     ?>
 
     <?php /** CTA Navigation */
@@ -67,7 +67,7 @@ $ecommerce = get_field('ecommerce', 'option');
       </div>
     </div>
 
-    <?php /** CTA Navigation */
+    <?php /** /CTA Navigation */
     ?>
 
   </div>

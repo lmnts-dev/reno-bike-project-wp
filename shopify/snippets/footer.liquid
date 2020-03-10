@@ -1,0 +1,135 @@
+{% comment %}
+
+/**
+* Website Footer
+*
+* @author Peter Laxalt
+* @since 2/2020
+*/
+
+/*************************************/
+/** Variables */
+/*************************************/
+
+/**
+* @todo Convert to Shopify data
+*/
+
+{% endcomment %}
+
+{% comment %}
+/**
+* Location Data
+*/
+{% endcomment %}
+<!-- 
+$flagShip = new Location();
+$flagShip->name = 'Flagship';
+$flagShip->address = '216 E Grove St. Reno, NV 89502';
+$flagShip->googleMapsUrl = '/';
+
+$auxillary = new Location();
+$auxillary->name = 'Auxillary';
+$auxillary->address = '635 E 4th St. Reno, NV 89512';
+$auxillary->googleMapsUrl = '/';
+
+$locationsList = array($flagShip, $auxillary); -->
+
+{% comment %}
+/**
+* Website Data
+*/
+{% endcomment %}
+
+{% assign phoneNumber = '+1 775 323 4488' %}
+{% assign emailAddress = 'info@renobikeproject.com' %}
+{% assign facebook = 'https://www.facebook.com/renobikeproject' %}
+{% assign instagram = 'https://www.instagram.com/renobikeproject/' %}
+{% assign twitter = 'https://twitter.com/renobikeproject' %}
+
+</div>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="copyright">
+        &copy; {{ 'now' | date: "%Y" }} Reno Bike Project
+      </div>
+      <div class="legal-stuff">
+        <a href="/">
+          Privacy
+        </a>
+        <a href="/">
+          Legal
+        </a>
+      </div>
+      <div class="social">
+        <ul>
+          {% if twitter != '') %}
+          <li>
+            <a href="{{ twitter }}" title="Find us on Twitter" target="_blank">
+              <span class="ico">T</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if instagram != '') %}
+          <li>
+            <a href="{{ instagram }}" title="Find us on Instagram" target="_blank">
+              <span class="ico">I</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if facebook != '') %}
+          <li>
+            <a href="{{ facebook }}" title="Find us on Facebook" target="_blank">
+              <span class="ico">F</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-header">
+        Contact Us
+      </div>
+      <div class="footer-info-row">
+        <a href="tel:{{ phoneNumber }}" target="_blank">{{ phoneNumber }}</a>
+      </div>
+      <div class="footer-info-row">
+        <a href="mailto:{{ emailAddress }}" target="_blank">{{ emailAddress }}</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-header">
+        Find Us
+      </div>
+      <div class="footer-info-row">
+        <span>{{ location->name }}:</span>
+        <a href="{{ location->googleMapsUrl }}" title="{{ location->name }}" target="_blank">{{ location->address }}</a>
+      </div>
+
+    </div>
+    <div class="footer-col">
+      <div class="footer-search">
+        <span class="ico"></span>
+        <form>
+          <input placeholder="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% include 'newsletter-overlay' %}
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.5.1/dist/lazyload.min.js"></script>
+<script src="https://unpkg.com/@barba/core"></script>
+
+{{ 'app.min.js' | asset_url | script_tag }}
+{{ 'vendor.min.js' | asset_url | script_tag }}
