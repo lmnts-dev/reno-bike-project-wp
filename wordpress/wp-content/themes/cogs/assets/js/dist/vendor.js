@@ -44,6 +44,21 @@ barba.init({
             rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
           }
         }, false);
+      } // Re-init our sliders
+
+
+      var blockSliderElements = document.querySelectorAll(".block-slider-el");
+
+      if (blockSliderElements.length > 0) {
+        blockSliderElements.forEach(function (el) {
+          new Flickity(el, {
+            cellAlign: "left",
+            prevNextButtons: false,
+            fade: true,
+            wrapAround: true,
+            autoPlay: true
+          });
+        });
       }
     }
   }]
@@ -91,3 +106,31 @@ var lazyLoadInstance = new LazyLoad({
 });
 // Vendor Javascript File
 "use strict";
+"use strict";
+
+/**
+ *
+ * Flickity.js settings
+ * @author Peter Laxalt
+ *
+ */
+// Re-init our sliders
+var blockSliderElements = document.querySelectorAll(".block-slider-el");
+
+if (blockSliderElements.length > 0) {
+  blockSliderElements.forEach(function (el) {
+    new Flickity(el, {
+      cellAlign: "left",
+      prevNextButtons: false,
+      fade: true,
+      wrapAround: true,
+      autoPlay: true
+    });
+  });
+} // var flkty = new Flickity(elem, {
+//   cellAlign: "left",
+//   prevNextButtons: false,
+//   fade: true,
+//   wrapAround: true,
+//   autoPlay: true
+// });

@@ -45,6 +45,21 @@ barba.init({
             false
           );
         }
+
+        // Re-init our sliders
+        let blockSliderElements = document.querySelectorAll(".block-slider-el");
+
+        if (blockSliderElements.length > 0) {
+          blockSliderElements.forEach(el => {
+            new Flickity(el, {
+              cellAlign: "left",
+              prevNextButtons: false,
+              fade: true,
+              wrapAround: true,
+              autoPlay: true
+            });
+          });
+        }
       }
     }
   ]

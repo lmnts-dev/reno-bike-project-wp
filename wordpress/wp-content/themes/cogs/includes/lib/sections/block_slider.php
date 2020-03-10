@@ -15,7 +15,7 @@ if (get_row_layout() == 'block_slider') {
 
   <section class="block-slider">
     <div class="block-slider-inner">
-      <div class="block-slider-el js-flickity block-slider-<?php echo $idx; ?>" data-flickity='{ "cellAlign": "left", "prevNextButtons": false, "fade": true, "wrapAround": true, "autoPlay": true }'>
+      <div class="block-slider-el block-slider-<?php echo $idx; ?>">
 
         <?php while (have_rows('slides')) {
           the_row();
