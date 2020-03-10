@@ -542,6 +542,22 @@ function custom_styles()
 				#postexcerpt {
 					display: block !important;
 				}
+
+				/* Disable Gutenberg block functionality */
+
+				/*
+				.block-editor-rich-text, 
+				.components-drop-zone, 
+				.editor-block-drop-zone, 
+				.block-editor-block-drop-zone, 
+				.editor-block-list__layout, 
+				.block-editor-block-list__layout,
+				.edit-post-sidebar__panel-tab:last-child,
+				.block-editor-inserter__toggle {
+					display: none;
+				}
+				*/
+				
 	    	</style>";
 }
 

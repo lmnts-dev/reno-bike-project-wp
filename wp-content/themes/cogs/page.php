@@ -13,18 +13,6 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php
-$device = 'Not detected';
-
-if ($detect_device->isMobile()) {
-    $device = "mobile";
-}
-
-if ($detect_device->isTablet()) {
-    $device = "tablet";
-}
-?>
-
 <?php include 'includes/lib/sections/page_hero.php'; ?>
 
 <?php

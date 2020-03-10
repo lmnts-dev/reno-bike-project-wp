@@ -122,12 +122,16 @@ header nav ul li:before{content:"";position:absolute;left:0;right:0;bottom:0;hei
 header nav ul li:hover:before{background:rgba(0,0,0,0.1)}
 header nav ul li.active a,header nav ul li.active a:visited{color:#f684b4}
 header nav ul li.active:before{background:#f684b4}
+header nav ul li.active.nav-shop a,header nav ul li.active.nav-shop a:visited{color:#000}
+header nav ul li.active.nav-shop:before{background:black}
+header nav ul li.active.nav-shop:hover{color:#000}
 header nav ul li.inactive a,header nav ul li.inactive a:visited{color:#929293}
 header nav ul li.inactive a:hover{color:#f684b4}
 header .nav-inner{width:100%;max-width:1680px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0;background-color:rgba(255,255,255,0);-webkit-transition:all .5s cubic-bezier(1,0.01,0.49,1);transition:all .5s cubic-bezier(1,0.01,0.49,1)}
 header .nav-inner .nav-col{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:64px}
 header .nav-inner .nav-col.nav-col-1 .nav-branding{height:100%;width:64px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#f684b4}
 header .nav-inner .nav-col.nav-col-1 .nav-branding.nav-shop{background:#000}
+header .nav-inner .nav-col.nav-col-1 .nav-branding.nav-shop a{background:#000}
 header .nav-inner .nav-col.nav-col-1 .nav-branding a{height:100%;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#f684b4}
 header .nav-inner .nav-col.nav-col-1 .nav-branding a:visited,header .nav-inner .nav-col.nav-col-1 .nav-branding a:active{color:#fff}
 header .nav-inner .nav-col.nav-col-1 .nav-branding a:hover{background:#f89cc2}
@@ -222,17 +226,6 @@ a,input,button{cursor:none !important}
 .section-header.split{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .section-header.split h3{max-width:650px}
 .section-header.split h3,.section-header.split p{text-align:left;padding:20px}
-.outlined-list{background:#fff;padding:0 40px;width:100%;overflow:hidden}
-.outlined-list .outlined-list-inner ul{list-style-type:none;padding:0;margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;position:relative;z-index:60;background:#fff}
-.outlined-list .outlined-list-inner ul li{font-size:9vh;font-family:sans-serif;line-height:1;font-weight:bold;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
-.outlined-list .outlined-list-inner ul li a,.outlined-list .outlined-list-inner ul li a:visited{-webkit-text-stroke:1px #000;-webkit-text-fill-color:rgba(255,255,255,0)}
-.outlined-list .outlined-list-inner ul li div{opacity:0;position:absolute;right:0;top:0;bottom:0;width:50%;-o-object-fit:cover;object-fit:cover;-o-object-position:50% 50%;object-position:50% 50%;pointer-events:none;mix-blend-mode:multiply;z-index:-1}
-.outlined-list .outlined-list-inner ul li div img{height:100%;display:block;position:relative;z-index:-1;mix-blend-mode:multiply}
-.outlined-list .outlined-list-inner ul li.focus a,.outlined-list .outlined-list-inner ul li.focus a:visited{-webkit-text-stroke:1px #f684b4;-webkit-text-fill-color:#f684b4}
-.outlined-list .outlined-list-inner ul li.focus:hover a{-webkit-text-stroke:1px #000;-webkit-text-fill-color:#000}
-.outlined-list .outlined-list-inner ul li.focus:hover div{opacity:1}
-.outlined-list .outlined-list-inner ul li:hover a{-webkit-text-fill-color:#000}
-.outlined-list .outlined-list-inner ul li:hover div{z-index:-999;opacity:1}
 .home-hero{height:100vh;min-height:800px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:84px;padding-right:0}
 .home-hero .home-hero-inner{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%}
 .home-hero .home-hero-inner .col-info{-webkit-animation:fadein 2s 1;animation:fadein 2s 1;max-width:350px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
@@ -282,6 +275,17 @@ a,input,button{cursor:none !important}
 .block-row .block-row-inner .block-item .block-item-inner .block-item-cover span{font-size:4vw;font-weight:bold;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;line-height:1;max-width:400px}
 .block-row .block-row-inner .block-item .block-item-inner .block-item-cover:hover{background-color:#000}
 .block-row+.block-row{padding-bottom:40px}
+.outlined-list{background:#fff;padding:0 40px;width:100%;overflow:hidden}
+.outlined-list .outlined-list-inner ul{list-style-type:none;padding:0;margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;position:relative;z-index:60;background:#fff}
+.outlined-list .outlined-list-inner ul li{font-size:9vh;font-family:sans-serif;line-height:1;font-weight:bold;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
+.outlined-list .outlined-list-inner ul li a,.outlined-list .outlined-list-inner ul li a:visited{-webkit-text-stroke:1px #000;-webkit-text-fill-color:rgba(255,255,255,0)}
+.outlined-list .outlined-list-inner ul li div{opacity:0;position:absolute;right:0;top:0;bottom:0;width:50%;-o-object-fit:cover;object-fit:cover;-o-object-position:50% 50%;object-position:50% 50%;pointer-events:none;mix-blend-mode:multiply;z-index:-1}
+.outlined-list .outlined-list-inner ul li div img{height:100%;display:block;position:relative;z-index:-1;mix-blend-mode:multiply}
+.outlined-list .outlined-list-inner ul li.focus a,.outlined-list .outlined-list-inner ul li.focus a:visited{-webkit-text-stroke:1px #f684b4;-webkit-text-fill-color:#f684b4}
+.outlined-list .outlined-list-inner ul li.focus:hover a{-webkit-text-stroke:1px #000;-webkit-text-fill-color:#000}
+.outlined-list .outlined-list-inner ul li.focus:hover div{opacity:1}
+.outlined-list .outlined-list-inner ul li:hover a{-webkit-text-fill-color:#000}
+.outlined-list .outlined-list-inner ul li:hover div{z-index:-999;opacity:1}
 .news-listings{position:relative}
 .news-listings .squiggle{position:absolute;width:2px;height:100px;left:50%;top:-100px;z-index:200;-webkit-transform:translateY(-50%);transform:translateY(-50%);background:#ff9a4a}
 .news-listings .news-listings-header{position:relative}
@@ -313,6 +317,21 @@ a,input,button{cursor:none !important}
 .event-listing-card .event-listing-card-inner .info span{display:block}
 .event-listing-card .event-listing-card-inner .info span.date{color:#929293}
 .event-listing-card .event-listing-card-inner .info span.title{font-size:1.3rem;font-weight:600;color:#000}
+.membership-listings .membership-listings-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.membership-listings .membership-listings-inner .membership-listing-card{width:50%}
+.membership-listing-card{padding:40px}
+.membership-listing-card .membership-listing-card-inner{background:#3a3a3a}
+.membership-listing-card .membership-listing-card-inner .card-top,.membership-listing-card .membership-listing-card-inner .card-bottom{padding:40px}
+.membership-listing-card .membership-listing-card-inner .card-top{background:#f4f8f8;position:relative}
+.membership-listing-card .membership-listing-card-inner .card-top .title{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;padding-bottom:20px}
+.membership-listing-card .membership-listing-card-inner .card-top .title .icon{display:block;width:40px;height:40px;border-radius:50%;background:#f684b4;margin-right:20px}
+.membership-listing-card .membership-listing-card-inner .card-top .title .name{font-weight:600;font-size:1.9rem}
+.membership-listing-card .membership-listing-card-inner .card-top .price{position:absolute;top:0;right:0;background:#3a3a3a;color:#f684b4;font-size:1.4rem;padding:13.3333333333px}
+.membership-listing-card .membership-listing-card-inner .card-bottom{color:#fff}
+.membership-listing-card .membership-listing-card-inner .card-bottom .caption{text-transform:uppercase;letter-spacing:2px;padding-bottom:20px;font-size:.8rem;display:block}
+.membership-listing-card .membership-listing-card-inner .card-bottom .content{padding-bottom:20px}
+.membership-listing-card .membership-listing-card-inner .card-bottom .content ul,.membership-listing-card .membership-listing-card-inner .card-bottom .content p{font-size:1.2rem}
+.membership-listing-card .membership-listing-card-inner .card-bottom .content ul{padding-bottom:20px;line-height:2}
 .grid-section{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:120px;padding-bottom:80px;position:relative}
 .grid-section:after{content:"";position:absolute;bottom:0;left:0;right:0;top:600px;background:#f4f8f8}
 .grid-section .grid-section-inner{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-ms-flex-wrap:wrap;flex-wrap:wrap;position:relative;z-index:2;max-width:1344px}
