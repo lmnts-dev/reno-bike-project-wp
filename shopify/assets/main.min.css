@@ -142,6 +142,11 @@ header .nav-inner .nav-col.nav-col-3 .nav-cta a{height:100%;display:-webkit-box;
 header .nav-inner .nav-col.nav-col-3 .nav-cta a:visited,header .nav-inner .nav-col.nav-col-3 .nav-cta a:active{color:#fff}
 header .nav-inner .nav-col.nav-col-3 .nav-cta a:hover{background:#f89cc2}
 header .nav-inner .nav-col.nav-col-3 .nav-cta a:active{background:#f46ca6}
+header .nav-inner .nav-col.nav-col-3 .nav-cart{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+header .nav-inner .nav-col.nav-col-3 .nav-cart a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;height:100%;padding:0 20px;position:relative}
+header .nav-inner .nav-col.nav-col-3 .nav-cart a:hover{background:#f4f8f8}
+header .nav-inner .nav-col.nav-col-3 .nav-cart a:active{background:#e4eeee}
+header .nav-inner .nav-col.nav-col-3 .nav-cart a svg{fill:#3a3a3a;-webkit-transform:scale(0.8);transform:scale(0.8);-webkit-transform-origin:center center;transform-origin:center center}
 footer{background-color:#f2f1f1;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:1680px;margin:0 auto;padding:0 60px 0 60px}
 footer .footer-inner{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;padding:80px 0;margin:0}
 footer .footer-inner .footer-col{width:25%}
@@ -387,16 +392,18 @@ a,input,button{cursor:none !important}
 .editorial-row.reverse .editorial-row-inner{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
 .editorial-row.reverse .editorial-row-inner .col{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .editorial-row.reverse .editorial-row-inner .col.img-col.img-col-alt{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
-.block-slider{position:relative;margin:80px 0}
+.block-slider{position:relative;margin:60px 0}
 .block-slider .block-slider-inner .block-slider-el{width:100%}
 .block-slider .block-slider-inner .block-slider-el .block-slide{width:100%}
-.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner{position:relative;height:80vh;padding-top:160px}
+.block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner{position:relative;height:80vh;min-height:640px;padding-top:160px}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-content{background:#fff;padding:80px 40px 80px 0;max-width:450px;position:relative;z-index:2}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-content h4{font-weight:500;font-size:5vw}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover{position:absolute;top:0;right:0;bottom:0;left:240px;display:-webkit-box;display:-ms-flexbox;display:flex}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner{position:relative;width:100%;height:100%;background:rgba(0,0,0,0.05)}
 .block-slider .block-slider-inner .block-slider-el .block-slide .block-slide-inner .block-slide-cover .block-slide-cover-inner img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%}
 .block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;height:50px;width:auto}
+.shop-wrapper .block-slider{padding-top:0;margin-top:calc(60px + 64px)}
+.shop-wrapper .block-slider .block-slider-inner .block-slider-el .block-slide-inner{height:calc(100vh - (64px + (60px * 2)))}
 .newsletter-overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:#f2f1f1;z-index:800;padding:0;margin:0;display:none;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .newsletter-overlay.visible{display:-webkit-box;display:-ms-flexbox;display:flex}
 .newsletter-overlay .btn-close{position:absolute;right:40px;top:40px}

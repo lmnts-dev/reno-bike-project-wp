@@ -8,7 +8,7 @@
 
 .block-slider {
   position: relative;
-  margin: $Base * 2 0;
+  margin: $BaseGutterLeft 0;
 
   .block-slider-inner {
     // The Slider Element Itself
@@ -21,6 +21,7 @@
         .block-slide-inner {
           position: relative;
           height: 80vh;
+          min-height: 640px;
           padding-top: $Base * 4;
 
           .block-slide-content {
@@ -64,6 +65,23 @@
         top: $Base * 3;
         height: 50px;
         width: auto;
+      }
+    }
+  }
+}
+
+// Shopify Overrides
+.shop-wrapper {
+  .block-slider {
+    padding-top: 0;
+    margin-top: calc(#{$BaseGutterLeft} + #{$BaseNavSizeLg});
+
+    .block-slider-inner {
+      .block-slider-el {
+        .block-slide-inner {
+          // Readjust for bottom / top paddings to be consistent relative to viewport
+          height: calc(100vh - (#{$BaseNavSizeLg} + (#{$BaseGutterLeft} * 2)));
+        }
       }
     }
   }

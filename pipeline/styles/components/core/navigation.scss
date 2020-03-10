@@ -227,6 +227,35 @@ header {
             }
           }
         }
+
+        .nav-cart {
+          display: flex;
+          height: 100%;
+          align-items: center;
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 $Base/2;
+            position: relative;
+
+            &:hover {
+              background: $clrSnow;
+            }
+
+            &:active {
+              background: darken($clrSnow, 5%);
+            }
+
+            svg {
+              fill: $clrAsphalt;
+              transform: scale(0.8);
+              transform-origin: center center;
+            }
+          }
+        }
       }
     }
   }

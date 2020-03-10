@@ -70,7 +70,8 @@ barba.init({
             contain: true,
             cellAlign: "left",
             prevNextButtons: true,
-            pageDots: false
+            pageDots: false,
+            freeScroll: true
           });
         });
       }
