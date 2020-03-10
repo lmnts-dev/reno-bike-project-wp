@@ -44,6 +44,36 @@ barba.init({
             rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
           }
         }, false);
+      } // Re-init our sliders
+
+
+      var blockSliderElements = document.querySelectorAll(".block-slider-el");
+
+      if (blockSliderElements.length > 0) {
+        blockSliderElements.forEach(function (el) {
+          new Flickity(el, {
+            cellAlign: "left",
+            prevNextButtons: false,
+            fade: true,
+            wrapAround: true,
+            autoPlay: true
+          });
+        });
+      } // Re-init our collection-listing-sliders
+
+
+      var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
+
+      if (collectionListingsSliderElements.length > 0) {
+        collectionListingsSliderElements.forEach(function (el) {
+          new Flickity(el, {
+            contain: true,
+            cellAlign: "left",
+            prevNextButtons: true,
+            pageDots: false,
+            freeScroll: true
+          });
+        });
       }
     }
   }]
@@ -77,6 +107,43 @@ barba.init({
 //     afterEnter() {}
 //   }]
 // });
+"use strict";
+
+/**
+ *
+ * Flickity.js settings
+ * @author Peter Laxalt
+ *
+ */
+// Re-init our block-sliders
+var blockSliderElements = document.querySelectorAll(".block-slider-el");
+
+if (blockSliderElements.length > 0) {
+  blockSliderElements.forEach(function (el) {
+    new Flickity(el, {
+      cellAlign: "left",
+      prevNextButtons: false,
+      fade: true,
+      wrapAround: true,
+      autoPlay: true
+    });
+  });
+} // Re-init our collection-listing-sliders
+
+
+var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
+
+if (collectionListingsSliderElements.length > 0) {
+  collectionListingsSliderElements.forEach(function (el) {
+    new Flickity(el, {
+      contain: true,
+      cellAlign: "left",
+      prevNextButtons: true,
+      pageDots: false,
+      freeScroll: true
+    });
+  });
+}
 "use strict";
 
 /**
