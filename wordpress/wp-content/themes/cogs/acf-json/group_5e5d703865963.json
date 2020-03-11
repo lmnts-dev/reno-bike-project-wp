@@ -708,17 +708,10 @@
                     "min": "",
                     "max": ""
                 },
-<<<<<<< HEAD
-                "layout_5e69717b8005d": {
-                    "key": "layout_5e69717b8005d",
-                    "name": "icon_block",
-                    "label": "Icon Block",
-=======
                 "layout_5e6971602934a": {
                     "key": "layout_5e6971602934a",
                     "name": "press_listings",
                     "label": "Press Listings",
->>>>>>> 56f0023190385cbd5dc2a5c33ac6041bb5a3c2fc
                     "display": "block",
                     "sub_fields": [],
                     "min": "",
