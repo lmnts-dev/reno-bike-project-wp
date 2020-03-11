@@ -682,7 +682,7 @@
                 "layout_5e69384a08933": {
                     "key": "layout_5e69384a08933",
                     "name": "event_row",
-                    "label": "Event Rrow",
+                    "label": "Event Row",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -738,5 +738,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1583962561
+    "modified": 1583968508
 }
