@@ -250,9 +250,50 @@ header {
             }
 
             svg {
-              fill: $clrAsphalt;
-              transform: scale(0.8);
+              fill: $clrBlack;
+              transform: scale(1);
+              width: calc(#{$Base} * 0.8);
+              height: calc(#{$Base} * 0.8);
               transform-origin: center center;
+            }
+          }
+        }
+
+        &.nav-shop {
+          .nav-cart {
+            svg {
+              fill: $clrBlack;
+            }
+          }
+          .nav-cta {
+            a {
+              background: $clrBlack;
+
+              &:hover {
+                background: $clrPrimary;
+              }
+
+              .count {
+                // background: $clrWhite;
+                border: 2px solid $clrWhite;
+                color: $clrWhite;
+                width: calc(#{$Base});
+                height: calc(#{$Base});
+                font-size: 1rem;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 0;
+                margin-left: calc(#{$Base} / 2);
+                margin-right: calc(#{$Base} / 2);
+              }
+            }
+
+            &.items-added {
+              a {
+                padding-right: 0;
+              }
             }
           }
         }

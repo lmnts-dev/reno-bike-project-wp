@@ -7,19 +7,22 @@
 //
 ////////////////////////////////////////
 
+$BaseCardPadding: calc(#{$Base} / 2);
+$BaseCardGutters: calc(#{$BaseGutter} - #{$BaseCardPadding});
+
 .product-card {
   display: flex;
   flex-direction: column;
-  padding: $Base / 2;
+  padding: $BaseCardPadding;
   color: $clrBlack;
 
   &:hover {
     color: $clrBlack;
-    background: $clrSnow;
+    background: rgba(0, 0, 0, 0.05);
   }
 
   &:active {
-    background: darken($clrSnow, 2%);
+    background: rgba(0, 0, 0, 0.08);
   }
 
   .product-card-inner {

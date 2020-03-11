@@ -28,7 +28,7 @@ $clrMustard: #e8cc66;
 $clrLeaf: rgb(17, 189, 83);
 
 // Universal Color Styles
-body {
+body, html {
   background-color: $clrWhite;
   color: $clrBlack;
   main {

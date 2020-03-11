@@ -8,15 +8,23 @@
 ////////////////////////////////////////
 
 .product-listings {
+  padding: 0 $BaseCardGutters;
+
   .product-listings-inner {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: $Base * 3;
 
     .product-card {
       width: 33%;
       margin-bottom: $Base;
+
+      &:last-child {
+        justify-self: center;
+        align-self: center;
+        margin: 0 auto;
+      }
     }
   }
 }

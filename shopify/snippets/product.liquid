@@ -9,6 +9,10 @@ The product page component.
 
 {% endcomment %}
 
+{% comment %}
+@todo: Hook into Product Data
+{% endcomment %}
+
 {% capture accordionContent %}
 
 <p>
@@ -34,6 +38,10 @@ The product page component.
 </ul>
 
 {% endcapture %}
+
+{% comment %}
+Begin product page component
+{% endcomment %}
 
 <section class="product" itemscope itemtype="http://schema.org/Product">
   <div class="product-inner">
@@ -130,6 +138,8 @@ The product page component.
     </div>
 
 </section>
+
+
 <!-- 
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}

@@ -98,6 +98,21 @@ function initSliders() {
         freeScroll: true
       });
     });
+  } // Re-init our featured-product-sliders
+
+
+  var featuredProductsSlider = document.querySelectorAll(".featured-products-slider-el");
+
+  if (featuredProductsSlider.length > 0) {
+    featuredProductsSlider.forEach(function (el) {
+      new Flickity(el, {
+        cellAlign: "left",
+        prevNextButtons: true,
+        pageDots: false,
+        wrapAround: true,
+        autoPlay: true
+      });
+    });
   }
 }
 

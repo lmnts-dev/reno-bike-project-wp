@@ -37,6 +37,23 @@ function initSliders() {
       });
     });
   }
+
+  // Re-init our featured-product-sliders
+  let featuredProductsSlider = document.querySelectorAll(
+    ".featured-products-slider-el"
+  );
+
+  if (featuredProductsSlider.length > 0) {
+    featuredProductsSlider.forEach(el => {
+      new Flickity(el, {
+        cellAlign: "left",
+        prevNextButtons: true,
+        pageDots: false,
+        wrapAround: true,
+        autoPlay: true
+      });
+    });
+  }
 }
 
 initSliders();

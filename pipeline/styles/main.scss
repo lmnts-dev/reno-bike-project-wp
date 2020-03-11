@@ -41,8 +41,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 // Components: Elements
-//----- General
+//----- Headers
 @import "components/lib/elements/section-header";
+@import "components/lib/elements/slider-header";
+
+//----- Content
 @import "components/lib/elements/accordion-row";
 
 //----- eCommerce
@@ -63,7 +66,6 @@
 @import "components/lib/sections/event-listings";
 @import "components/lib/sections/membership-listings";
 @import "components/lib/sections/product-listings";
-@import "components/lib/sections/collection-listings-slider";
 
 //----- Content
 @import "components/lib/sections/grid-section";
@@ -72,6 +74,8 @@
 
 //----- eCommerce
 @import "components/lib/sections/product";
+@import "components/lib/sections/collection-listings-slider";
+@import "components/lib/sections/featured-products-slider";
 
 //----- Newsletter
 @import "components/lib/sections/newsletter-overlay";
