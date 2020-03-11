@@ -417,12 +417,15 @@ form{margin:0}
 .block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;height:50px;width:auto}
 .shop-wrapper .block-slider{padding-top:0;margin-top:calc(60px + 64px)}
 .shop-wrapper .block-slider .block-slider-inner .block-slider-el .block-slide-inner{height:calc(100vh - (64px + (60px * 2)))}
+.event-row{margin:0}
 .event-row .event-row-inner{-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;min-height:calc(40px * 9)}
 .event-row .event-row-inner .col.content-col,.event-row .event-row-inner .col.img-col{width:50%}
 .event-row .event-row-inner .col.content-col{padding-top:calc(40px * 2);padding-bottom:calc(40px * 2)}
-.event-row .event-row-inner .col.content-col .content-col-inner{max-width:calc(40px * 14.5)}
+.event-row .event-row-inner .col.content-col .content-col-inner{max-width:calc(40px * 13)}
 .event-row .event-row-inner .col.img-col{position:relative}
 .event-row .event-row-inner .col.img-col .event-row-img,.event-row .event-row-inner .col.img-col img{position:absolute;top:0;left:0;width:100%;height:100%}
+.icon-block .icon-block-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.icon-block .icon-block-inner div{min-width:33.33%;-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center;padding:calc(40px / 2)}
 .product{overflow:visible}
 .product .product-inner{display:-webkit-box;display:-ms-flexbox;display:flex;margin-top:calc(64px + 60px);padding-bottom:120px}
 .product .product-inner .col.details{-webkit-box-flex:1;-ms-flex:1;flex:1;max-width:450px;min-width:450px;height:calc(100vh - calc(64px + 60px));min-height:750px;padding-left:calc(40px);padding-bottom:60px;position:-webkit-sticky;position:sticky;top:calc(64px + 60px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
