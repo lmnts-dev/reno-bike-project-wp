@@ -90,6 +90,9 @@ h5,.h5{font-size:1.6rem}
 p{font-size:1.2rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.4;letter-spacing:.3;margin:0 0 10px 0;width:100%}
 p.p-lg{font-size:1.5rem;font-weight:100;line-height:1.2}
 .txt-caption{text-transform:uppercase;letter-spacing:2px;font-weight:bold;font-size:.8rem}
+.content ul{font-size:1.2rem;margin-top:40px}
+.content ul li{padding-left:calc(40px / 2);margin-bottom:calc(40px / 2);position:relative}
+.content ul li:before{content:"■";font-size:.45em;position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 .slide-up-1{-webkit-animation:slide-up .25s 1;animation:slide-up .25s 1}
 .slide-up-2{-webkit-animation:slide-up .5s 1;animation:slide-up .5s 1}
 .slide-up-3{-webkit-animation:slide-up 1s 1;animation:slide-up 1s 1}
@@ -229,6 +232,14 @@ form{margin:0}
 .section-header.split{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .section-header.split h3{max-width:650px}
 .section-header.split h3,.section-header.split p{text-align:left;padding:20px}
+.accordion .accordion-row{width:100%;border-bottom:2px solid #000}
+.accordion .accordion-row input{position:absolute;width:0;height:0;opacity:0;z-index:-1}
+.accordion .accordion-row .row-label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:calc(40px / 2) 0 calc(40px / 4) 0;background:#fff;font-weight:bold;font-size:3rem;cursor:pointer;position:relative}
+.accordion .accordion-row .row-label::after{content:"";position:absolute;right:0;top:55%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:0;height:0;border-top:calc(40px * 0.3) solid transparent;border-bottom:calc(40px * 0.3) solid transparent;border-left:calc(40px * 0.3) solid #000}
+.accordion .accordion-row .row-content{max-height:0;overflow:hidden;padding:0;color:#000;background:white;max-width:650px;width:100%}
+.accordion .accordion-row input:checked+.row-label{background:#fff}
+.accordion .accordion-row input:checked+.row-label::after{top:65%;-webkit-transform:translateY(-50%) rotate(90deg);transform:translateY(-50%) rotate(90deg);right:10px}
+.accordion .accordion-row input:checked ~ .row-content{max-height:100vh;padding:0 0 calc(40px / 1.5) 0}
 .product-card{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px;color:#000}
 .product-card:hover{color:#000;background:#f4f8f8}
 .product-card:active{background:#eef4f4}
@@ -412,7 +423,7 @@ form{margin:0}
 .shop-wrapper .block-slider{padding-top:0;margin-top:calc(60px + 64px)}
 .shop-wrapper .block-slider .block-slider-inner .block-slider-el .block-slide-inner{height:calc(100vh - (64px + (60px * 2)))}
 .product{overflow:visible}
-.product .product-inner{display:-webkit-box;display:-ms-flexbox;display:flex;margin-top:calc(64px + 60px)}
+.product .product-inner{display:-webkit-box;display:-ms-flexbox;display:flex;margin-top:calc(64px + 60px);padding-bottom:120px}
 .product .product-inner .col.details{-webkit-box-flex:1;-ms-flex:1;flex:1;max-width:450px;min-width:450px;height:calc(100vh - calc(64px + 60px));min-height:750px;padding-left:calc(40px);padding-bottom:60px;position:-webkit-sticky;position:sticky;top:calc(64px + 60px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .product .product-inner .col.details .details-top .title-and-price{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:calc(40px / 2)}
 .product .product-inner .col.details .details-top .title-and-price .title{width:60%}

@@ -1,0 +1,149 @@
+////////////////////////////////////////
+//
+// Product Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.product {
+  $offsetTop: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+  $detailsVerticalSpacing: calc(#{$Base} / 2);
+
+  overflow: visible;
+
+  .product-inner {
+    display: flex;
+    margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+    padding-bottom: $Base * 3;
+
+    .col {
+      &.details {
+        flex: 1;
+        max-width: 450px;
+        min-width: 450px;
+        height: calc(100vh - #{$offsetTop});
+        min-height: 750px;
+        padding-left: calc(#{$Base});
+        padding-bottom: $BaseGutter;
+        position: sticky;
+        top: $offsetTop;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .details-top {
+          .title-and-price {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: $detailsVerticalSpacing;
+
+            .title {
+              width: 60%;
+              h1 {
+                font-size: 1.8rem;
+                margin: 0;
+                padding: 0;
+              }
+            }
+
+            .price {
+              display: flex;
+              flex: 1;
+              justify-content: flex-end;
+
+              span {
+                font-size: 1.5rem;
+                color: $clrPrimary;
+                font-weight: 600;
+                text-align: right;
+              }
+            }
+          }
+
+          .quantity-and-purchase {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: $detailsVerticalSpacing;
+
+            .quantity {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 1px solid $clrBlack;
+
+              input {
+                text-align: center;
+                font-size: 1.2rem;
+              }
+            }
+
+            .purchase {
+              width: 80%;
+              flex-shrink: 0;
+              background: yellow;
+
+              button {
+                width: 100%;
+              }
+            }
+          }
+
+          .variant-selector {
+            width: 100%;
+            margin-bottom: $detailsVerticalSpacing;
+
+            .selector {
+              border: 1px solid $clrBlack;
+              width: 100%;
+              padding: $Base/4;
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+        .details-bottom {
+          font-size: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          font-weight: 600;
+
+          span {
+            display: block;
+            margin-bottom: $detailsVerticalSpacing;
+            color: $clrChrome;
+          }
+
+          ul {
+            li {
+              margin-bottom: calc(#{$Base} / 6);
+            }
+          }
+        }
+      }
+
+      &.image-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .img-wrapper {
+          width: 100%;
+          position: relative;
+          padding-bottom: 70%;
+          margin-bottom: calc(#{$Base} / 4);
+          background: $clrPlaceholder;
+
+          img {
+            @include objectFit();
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

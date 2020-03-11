@@ -169,3 +169,30 @@ p {
     font-size: 0.6rem;
   }
 }
+
+// #####################################
+// Content
+// #####################################
+
+.content {
+  // Lists
+  ul {
+    font-size: 1.2rem;
+    margin-top: #{$Base};
+
+    li {
+      padding-left: calc(#{$Base} / 2);
+      margin-bottom: calc(#{$Base} / 2);
+      position: relative;
+
+      &:before {
+        content: "■";
+        font-size: 0.45em;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

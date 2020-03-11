@@ -90,6 +90,9 @@ h5,.h5{font-size:1.6rem}
 p{font-size:1.2rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.4;letter-spacing:.3;margin:0 0 10px 0;width:100%}
 p.p-lg{font-size:1.5rem;font-weight:100;line-height:1.2}
 .txt-caption{text-transform:uppercase;letter-spacing:2px;font-weight:bold;font-size:.8rem}
+.content ul{font-size:1.2rem;margin-top:40px}
+.content ul li{padding-left:calc(40px / 2);margin-bottom:calc(40px / 2);position:relative}
+.content ul li:before{content:"■";font-size:.45em;position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 .slide-up-1{-webkit-animation:slide-up .25s 1;animation:slide-up .25s 1}
 .slide-up-2{-webkit-animation:slide-up .5s 1;animation:slide-up .5s 1}
 .slide-up-3{-webkit-animation:slide-up 1s 1;animation:slide-up 1s 1}
@@ -129,7 +132,7 @@ header nav ul li.inactive a,header nav ul li.inactive a:visited{color:#929293}
 header nav ul li.inactive a:hover{color:#f684b4}
 header .nav-inner{width:100%;max-width:1680px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0;background-color:rgba(255,255,255,0);-webkit-transition:all .5s cubic-bezier(1,0.01,0.49,1);transition:all .5s cubic-bezier(1,0.01,0.49,1)}
 header .nav-inner .nav-col{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:64px}
-header .nav-inner .nav-col.nav-col-1 .nav-branding{height:100%;width:64px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#f684b4}
+header .nav-inner .nav-col.nav-col-1 .nav-branding{height:100%;width:60px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#f684b4}
 header .nav-inner .nav-col.nav-col-1 .nav-branding.nav-shop{background:#000}
 header .nav-inner .nav-col.nav-col-1 .nav-branding.nav-shop a{background:#000}
 header .nav-inner .nav-col.nav-col-1 .nav-branding a{height:100%;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#f684b4}
@@ -219,8 +222,6 @@ form{margin:0}
 .split-focus-icon-wrapper ol,.split-focus-advanced-wrapper ol,.focus ol,article ol{counter-reset:item}
 .split-focus-icon-wrapper ol li,.split-focus-advanced-wrapper ol li,.focus ol li,article ol li{counter-increment:item}
 .split-focus-icon-wrapper ol li:before,.split-focus-advanced-wrapper ol li:before,.focus ol li:before,article ol li:before{margin-right:10px;content:counter(item) ".";border-radius:100%;color:#f684b4;font-weight:800;width:1.2em;text-align:center;display:inline-block}
-body,html{position:relative;cursor:none !important}
-a,input,button{cursor:none !important}
 .cursor{display:-webkit-box;display:-ms-flexbox;display:flex;z-index:999;position:fixed;left:0;top:0;pointer-events:none;mix-blend-mode:exclusion;width:20px;height:20px;background:#fff;opacity:0}
 .cursor-outline{opacity:0;display:-webkit-box;display:-ms-flexbox;display:flex;z-index:998;position:fixed;left:0;top:0;pointer-events:none;mix-blend-mode:multiply;-webkit-transition:all .5s ease-out;transition:all .5s ease-out;width:20px;height:20px;background:#f6aa1b}
 .section-header{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-bottom:40px;margin:0 auto}
@@ -231,6 +232,14 @@ a,input,button{cursor:none !important}
 .section-header.split{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .section-header.split h3{max-width:650px}
 .section-header.split h3,.section-header.split p{text-align:left;padding:20px}
+.accordion .accordion-row{width:100%;border-bottom:2px solid #000}
+.accordion .accordion-row input{position:absolute;width:0;height:0;opacity:0;z-index:-1}
+.accordion .accordion-row .row-label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:calc(40px / 2) 0 calc(40px / 4) 0;background:#fff;font-weight:bold;font-size:3rem;cursor:pointer;position:relative}
+.accordion .accordion-row .row-label::after{content:"";position:absolute;right:0;top:55%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:0;height:0;border-top:calc(40px * 0.3) solid transparent;border-bottom:calc(40px * 0.3) solid transparent;border-left:calc(40px * 0.3) solid #000}
+.accordion .accordion-row .row-content{max-height:0;overflow:hidden;padding:0;color:#000;background:white;max-width:650px;width:100%}
+.accordion .accordion-row input:checked+.row-label{background:#fff}
+.accordion .accordion-row input:checked+.row-label::after{top:65%;-webkit-transform:translateY(-50%) rotate(90deg);transform:translateY(-50%) rotate(90deg);right:10px}
+.accordion .accordion-row input:checked ~ .row-content{max-height:100vh;padding:0 0 calc(40px / 1.5) 0}
 .product-card{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px;color:#000}
 .product-card:hover{color:#000;background:#f4f8f8}
 .product-card:active{background:#eef4f4}
@@ -413,6 +422,27 @@ a,input,button{cursor:none !important}
 .block-slider .block-slider-inner .block-slider-el .flickity-page-dots{position:absolute;left:0;top:120px;height:50px;width:auto}
 .shop-wrapper .block-slider{padding-top:0;margin-top:calc(60px + 64px)}
 .shop-wrapper .block-slider .block-slider-inner .block-slider-el .block-slide-inner{height:calc(100vh - (64px + (60px * 2)))}
+.product{overflow:visible}
+.product .product-inner{display:-webkit-box;display:-ms-flexbox;display:flex;margin-top:calc(64px + 60px);padding-bottom:120px}
+.product .product-inner .col.details{-webkit-box-flex:1;-ms-flex:1;flex:1;max-width:450px;min-width:450px;height:calc(100vh - calc(64px + 60px));min-height:750px;padding-left:calc(40px);padding-bottom:60px;position:-webkit-sticky;position:sticky;top:calc(64px + 60px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.product .product-inner .col.details .details-top .title-and-price{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:calc(40px / 2)}
+.product .product-inner .col.details .details-top .title-and-price .title{width:60%}
+.product .product-inner .col.details .details-top .title-and-price .title h1{font-size:1.8rem;margin:0;padding:0}
+.product .product-inner .col.details .details-top .title-and-price .price{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
+.product .product-inner .col.details .details-top .title-and-price .price span{font-size:1.5rem;color:#f684b4;font-weight:600;text-align:right}
+.product .product-inner .col.details .details-top .quantity-and-purchase{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:calc(40px / 2)}
+.product .product-inner .col.details .details-top .quantity-and-purchase .quantity{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid #000}
+.product .product-inner .col.details .details-top .quantity-and-purchase .quantity input{text-align:center;font-size:1.2rem}
+.product .product-inner .col.details .details-top .quantity-and-purchase .purchase{width:80%;-ms-flex-negative:0;flex-shrink:0;background:yellow}
+.product .product-inner .col.details .details-top .quantity-and-purchase .purchase button{width:100%}
+.product .product-inner .col.details .details-top .variant-selector{width:100%;margin-bottom:calc(40px / 2)}
+.product .product-inner .col.details .details-top .variant-selector .selector{border:1px solid #000;width:100%;padding:10px;font-size:1.2rem}
+.product .product-inner .col.details .details-bottom{font-size:1.2rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;font-weight:600}
+.product .product-inner .col.details .details-bottom span{display:block;margin-bottom:calc(40px / 2);color:#929293}
+.product .product-inner .col.details .details-bottom ul li{margin-bottom:calc(40px / 6)}
+.product .product-inner .col.image-col{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.product .product-inner .col.image-col .img-wrapper{width:100%;position:relative;padding-bottom:70%;margin-bottom:calc(40px / 4);background:rgba(0,0,0,0.05)}
+.product .product-inner .col.image-col .img-wrapper img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%;max-width:100%;width:100%}
 .newsletter-overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:#f2f1f1;z-index:800;padding:0;margin:0;display:none;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .newsletter-overlay.visible{display:-webkit-box;display:-ms-flexbox;display:flex}
 .newsletter-overlay .btn-close{position:absolute;right:40px;top:40px}

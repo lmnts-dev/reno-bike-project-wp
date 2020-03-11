@@ -19,64 +19,13 @@ barba.init({
         window.scrollTo(0, 0);
 
         // Re-init our Lazy Loading
-        var lazyLoadInstance = new LazyLoad({
-          elements_selector: ".lazy"
-        });
+        initLazyLoad();
 
         // Re-init our bicycle wheel script.
-        var rotated = document.getElementsByClassName("bike-wheel-el")[0];
-
-        if (rotated != undefined) {
-          window.addEventListener(
-            "mousemove",
-            function(ev) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              var deltaX = ev.pageX - innerWidth / 2;
-              var deltaY = ev.pageY - innerHeight / 2;
-              var angle = Math.atan(deltaX / deltaY);
-              if (deltaY < 0) {
-                rotated.style.transform = "rotate(" + -angle + "rad)";
-              } else {
-                rotated.style.transform =
-                  "rotate(" + (Math.PI - angle) + "rad)";
-              }
-            },
-            false
-          );
-        }
+        initBikeWheel();
 
         // Re-init our sliders
-        let blockSliderElements = document.querySelectorAll(".block-slider-el");
-
-        if (blockSliderElements.length > 0) {
-          blockSliderElements.forEach(el => {
-            new Flickity(el, {
-              cellAlign: "left",
-              prevNextButtons: false,
-              fade: true,
-              wrapAround: true,
-              autoPlay: true
-            });
-          });
-        }
-
-        // Re-init our collection-listing-sliders
-        let collectionListingsSliderElements = document.querySelectorAll(
-          ".collection-listings-slider-el"
-        );
-
-        if (collectionListingsSliderElements.length > 0) {
-          collectionListingsSliderElements.forEach(el => {
-            new Flickity(el, {
-              contain: true,
-              cellAlign: "left",
-              prevNextButtons: true,
-              pageDots: false,
-              freeScroll: true
-            });
-          });
-        }
+        initSliders();
       }
     }
   ]

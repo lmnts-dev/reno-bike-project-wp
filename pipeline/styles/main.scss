@@ -3,6 +3,8 @@
 // Main.scss
 // @author Pete Laxalt
 // @description This is our Pipeline Main.scss file used to import all of our styles.
+// @since 2/2020
+// @website renobikeproject.org
 //
 ////////////////////////////////////////////////////////////////////////
 
@@ -41,6 +43,7 @@
 // Components: Elements
 //----- General
 @import "components/lib/elements/section-header";
+@import "components/lib/elements/accordion-row";
 
 //----- eCommerce
 @import "components/lib/elements/product-card";
@@ -66,6 +69,9 @@
 @import "components/lib/sections/grid-section";
 @import "components/lib/sections/editorial-row";
 @import "components/lib/sections/block-slider";
+
+//----- eCommerce
+@import "components/lib/sections/product";
 
 //----- Newsletter
 @import "components/lib/sections/newsletter-overlay";

@@ -24,57 +24,11 @@ barba.init({
       // Scroll to top of page
       window.scrollTo(0, 0); // Re-init our Lazy Loading
 
-      var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
-      }); // Re-init our bicycle wheel script.
+      initLazyLoad(); // Re-init our bicycle wheel script.
 
-      var rotated = document.getElementsByClassName("bike-wheel-el")[0];
+      initBikeWheel(); // Re-init our sliders
 
-      if (rotated != undefined) {
-        window.addEventListener("mousemove", function (ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          var deltaX = ev.pageX - innerWidth / 2;
-          var deltaY = ev.pageY - innerHeight / 2;
-          var angle = Math.atan(deltaX / deltaY);
-
-          if (deltaY < 0) {
-            rotated.style.transform = "rotate(" + -angle + "rad)";
-          } else {
-            rotated.style.transform = "rotate(" + (Math.PI - angle) + "rad)";
-          }
-        }, false);
-      } // Re-init our sliders
-
-
-      var blockSliderElements = document.querySelectorAll(".block-slider-el");
-
-      if (blockSliderElements.length > 0) {
-        blockSliderElements.forEach(function (el) {
-          new Flickity(el, {
-            cellAlign: "left",
-            prevNextButtons: false,
-            fade: true,
-            wrapAround: true,
-            autoPlay: true
-          });
-        });
-      } // Re-init our collection-listing-sliders
-
-
-      var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
-
-      if (collectionListingsSliderElements.length > 0) {
-        collectionListingsSliderElements.forEach(function (el) {
-          new Flickity(el, {
-            contain: true,
-            cellAlign: "left",
-            prevNextButtons: true,
-            pageDots: false,
-            freeScroll: true
-          });
-        });
-      }
+      initSliders();
     }
   }]
 }); // // dummy example to illustrate rules and hooks
@@ -115,35 +69,39 @@ barba.init({
  * @author Peter Laxalt
  *
  */
-// Re-init our block-sliders
-var blockSliderElements = document.querySelectorAll(".block-slider-el");
+function initSliders() {
+  // Re-init our block-sliders
+  var blockSliderElements = document.querySelectorAll(".block-slider-el");
 
-if (blockSliderElements.length > 0) {
-  blockSliderElements.forEach(function (el) {
-    new Flickity(el, {
-      cellAlign: "left",
-      prevNextButtons: false,
-      fade: true,
-      wrapAround: true,
-      autoPlay: true
+  if (blockSliderElements.length > 0) {
+    blockSliderElements.forEach(function (el) {
+      new Flickity(el, {
+        cellAlign: "left",
+        prevNextButtons: false,
+        fade: true,
+        wrapAround: true,
+        autoPlay: true
+      });
     });
-  });
-} // Re-init our collection-listing-sliders
+  } // Re-init our collection-listing-sliders
 
 
-var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
+  var collectionListingsSliderElements = document.querySelectorAll(".collection-listings-slider-el");
 
-if (collectionListingsSliderElements.length > 0) {
-  collectionListingsSliderElements.forEach(function (el) {
-    new Flickity(el, {
-      contain: true,
-      cellAlign: "left",
-      prevNextButtons: true,
-      pageDots: false,
-      freeScroll: true
+  if (collectionListingsSliderElements.length > 0) {
+    collectionListingsSliderElements.forEach(function (el) {
+      new Flickity(el, {
+        contain: true,
+        cellAlign: "left",
+        prevNextButtons: true,
+        pageDots: false,
+        freeScroll: true
+      });
     });
-  });
+  }
 }
+
+initSliders();
 "use strict";
 
 /**
@@ -153,8 +111,12 @@ if (collectionListingsSliderElements.length > 0) {
  * @see https://www.andreaverlicchi.eu/lazyload/
  *
  */
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy"
-});
+function initLazyLoad() {
+  var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+  });
+}
+
+initLazyLoad();
 // Vendor Javascript File
 "use strict";

@@ -6,6 +6,10 @@
  *
  */
 
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy"
-});
+function initLazyLoad() {
+  var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+  });
+}
+
+initLazyLoad();
