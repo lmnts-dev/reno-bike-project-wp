@@ -30,13 +30,14 @@
       justify-content: space-between;
       padding: calc(#{$Base} / 2) 0 calc(#{$Base} / 4) 0;
       background: $clrWhite;
+      color: $clrBlack;
       font-weight: bold;
       font-size: 3rem;
       cursor: pointer;
       position: relative;
 
       // Icon
-      &::after {
+      &:after {
         content: "";
         position: absolute;
         right: 0;
@@ -47,6 +48,14 @@
         border-top: calc(#{$Base} * 0.3) solid transparent;
         border-bottom: calc(#{$Base} * 0.3) solid transparent;
         border-left: calc(#{$Base} * 0.3) solid $clrBlack;
+      }
+
+      &:hover {
+        color: $clrPrimary;
+
+        &:after {
+          border-left: calc(#{$Base} * 0.3) solid $clrPrimary;
+        }
       }
     }
 
@@ -66,7 +75,7 @@
         background: $clrWhite;
 
         // Icon
-        &::after {
+        &:after {
           top: 65%;
           transform: translateY(-50%) rotate(90deg);
           right: 10px;

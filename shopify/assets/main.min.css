@@ -234,11 +234,13 @@ form{margin:0}
 .section-header.split h3,.section-header.split p{text-align:left;padding:20px}
 .accordion .accordion-row{width:100%;border-bottom:2px solid #000}
 .accordion .accordion-row input{position:absolute;width:0;height:0;opacity:0;z-index:-1}
-.accordion .accordion-row .row-label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:calc(40px / 2) 0 calc(40px / 4) 0;background:#fff;font-weight:bold;font-size:3rem;cursor:pointer;position:relative}
-.accordion .accordion-row .row-label::after{content:"";position:absolute;right:0;top:55%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:0;height:0;border-top:calc(40px * 0.3) solid transparent;border-bottom:calc(40px * 0.3) solid transparent;border-left:calc(40px * 0.3) solid #000}
+.accordion .accordion-row .row-label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:calc(40px / 2) 0 calc(40px / 4) 0;background:#fff;color:#000;font-weight:bold;font-size:3rem;cursor:pointer;position:relative}
+.accordion .accordion-row .row-label:after{content:"";position:absolute;right:0;top:55%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:0;height:0;border-top:calc(40px * 0.3) solid transparent;border-bottom:calc(40px * 0.3) solid transparent;border-left:calc(40px * 0.3) solid #000}
+.accordion .accordion-row .row-label:hover{color:#f684b4}
+.accordion .accordion-row .row-label:hover:after{border-left:calc(40px * 0.3) solid #f684b4}
 .accordion .accordion-row .row-content{max-height:0;overflow:hidden;padding:0;color:#000;background:white;max-width:650px;width:100%}
 .accordion .accordion-row input:checked+.row-label{background:#fff}
-.accordion .accordion-row input:checked+.row-label::after{top:65%;-webkit-transform:translateY(-50%) rotate(90deg);transform:translateY(-50%) rotate(90deg);right:10px}
+.accordion .accordion-row input:checked+.row-label:after{top:65%;-webkit-transform:translateY(-50%) rotate(90deg);transform:translateY(-50%) rotate(90deg);right:10px}
 .accordion .accordion-row input:checked ~ .row-content{max-height:100vh;padding:0 0 calc(40px / 1.5) 0}
 .product-card{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px;color:#000}
 .product-card:hover{color:#000;background:#f4f8f8}
