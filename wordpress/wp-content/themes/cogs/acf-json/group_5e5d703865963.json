@@ -707,6 +707,15 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_5e6971602934a": {
+                    "key": "layout_5e6971602934a",
+                    "name": "press_listings",
+                    "label": "Press Listings",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "+ Add Section",
@@ -738,5 +747,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1583968508
+    "modified": 1583968615
 }
