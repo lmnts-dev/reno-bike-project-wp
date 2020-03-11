@@ -1,0 +1,30 @@
+{% comment %}
+
+Search Overlay:
+An overlay search bar.
+
+@author Peter Laxalt
+@since 3/2020
+@stylesheet: search-overlay.scss
+
+@todo
+Convert to section.
+
+{% endcomment %}
+
+<div class="search-overlay">
+  <div class="search-overlay-inner">
+    <div class="row search-bar">
+      <div class="btn-cancel">
+        <span class="search-toggle"></span>
+      </div>
+      <form action="/search" method="get" role="search">
+        <input type="search" name="q" placeholder="Search for products..." autofocus>
+        <button type="submit">
+          {% include 'svg-icon-search' %}
+        </button>
+      </form>
+    </div>
+    <div class="row close-overlay search-toggle"></div>
+  </div>
+</div>

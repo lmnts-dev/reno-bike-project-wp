@@ -228,12 +228,12 @@ header {
           }
         }
 
-        .nav-cart {
+        .nav-search {
           display: flex;
           height: 100%;
           align-items: center;
 
-          a {
+          button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,6 +243,7 @@ header {
 
             &:hover {
               background: $clrSnow;
+              box-shadow: none;
             }
 
             &:active {

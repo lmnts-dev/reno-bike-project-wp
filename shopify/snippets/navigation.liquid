@@ -26,7 +26,7 @@ Site Navigation
         <ul>
           <li class="inactive">
             <a href="http://reno-bike-project.lndo.site/">
-            <!-- <a href="http://2020-reno-bike-project.pantheonsite.io/"> -->
+              <!-- <a href="http://2020-reno-bike-project.pantheonsite.io/"> -->
               Community
             </a>
           </li>
@@ -66,10 +66,10 @@ Site Navigation
     /** CTA Navigation */
     {% endcomment %}
     <div class="nav-col nav-col-3 nav-shop">
-      <div class="nav-cart">
-        <a href="/search?type=product&q=vintage">
-          {% include 'svg-icon-search' %}
-        </a>
+      <div class="nav-search">
+        <button class="search-toggle">
+          {% include 'svg-icon-search' className: 'search-toggle' %}
+        </button>
       </div>
       <div class="nav-cta items-added">
         <a href="/cart">

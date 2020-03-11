@@ -21,7 +21,7 @@ button,
   height: $BaseBtnHeight;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  cursor: none !important;
+  cursor: pointer !important;
 
   @media (max-width: $BaseMediaMd) {
     font-size: 0.9rem;

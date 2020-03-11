@@ -5,13 +5,20 @@ SVG Cart Icon:
 @author Peter Laxalt
 @since 3/2020
 
+@params:
+{{ className }} : string : Add a class
+
 /*************************************/
 
 {% endcomment %}
 
-<?xml version="1.0" encoding="UTF-8"?>
+{% assign addClass = "ico" %}
+{% if className %}
+{% assign addClass = className %}
+{% endif%}
+
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
+  xmlns:xlink="http://www.w3.org/1999/xlink" class="{{ addClass }}">
 
   <g id="Symbols" fill-rule="evenodd">
     <g id="Footer2" transform="translate(-1012.000000, -978.000000)">

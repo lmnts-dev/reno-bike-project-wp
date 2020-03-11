@@ -1,11 +1,13 @@
 /*
+ ** Toggle Search Overlay
+ **
  ** @author: Peter Laxalt
  ** @description: Functions to show/hide the newsletter overlay.
  */
 
-function initNewsletter() {
-  let newsletterBtnClass = "btn-newsletter";
-  let newsletterOverlayClass = "newsletter-overlay";
+function initSearchOverlay() {
+  let searchToggleClass = "search-toggle";
+  let newsletterOverlayClass = "search-overlay";
 
   const toggleNavOverlay = e => {
     let newsletterOverlay = document.getElementsByClassName(
@@ -27,7 +29,7 @@ function initNewsletter() {
     "click",
     function(event) {
       // If the clicked element doesn't have the right selector, bail
-      if (!event.target.classList.contains(newsletterBtnClass)) return;
+      if (!event.target.classList.contains(searchToggleClass)) return;
 
       // Don't follow the link
       event.preventDefault();
@@ -39,4 +41,4 @@ function initNewsletter() {
   );
 }
 
-initNewsletter();
+initSearchOverlay();
