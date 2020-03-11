@@ -682,7 +682,7 @@
                 "layout_5e69384a08933": {
                     "key": "layout_5e69384a08933",
                     "name": "event_row",
-                    "label": "Event Row",
+                    "label": "Event Rowwww",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -708,10 +708,10 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_5e6971602934a": {
-                    "key": "layout_5e6971602934a",
-                    "name": "press_listings",
-                    "label": "Press Listings",
+                "layout_5e69717b8005d": {
+                    "key": "layout_5e69717b8005d",
+                    "name": "icon_block",
+                    "label": "Icon Block",
                     "display": "block",
                     "sub_fields": [],
                     "min": "",
@@ -747,9 +747,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-<<<<<<< HEAD
-    "modified": 1583968660
-=======
-    "modified": 1583968615
->>>>>>> 56f0023190385cbd5dc2a5c33ac6041bb5a3c2fc
+    "modified": 1583968959
 }
