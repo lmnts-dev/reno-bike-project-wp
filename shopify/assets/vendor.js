@@ -1331,6 +1331,69 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /**
  *
+ * Barba.js settings
+ * @author Peter Laxalt
+ * @see https://barba.js.org/docs/userguide/markup/
+ *
+ */
+// basic default transition (with no rules and minimal hooks)
+barba.init({
+  transitions: [{
+    leave: function leave(_ref) {// do something with `current.container` for your leave transition
+      // then return a promise or use `this.async()`
+
+      var current = _ref.current,
+          next = _ref.next,
+          trigger = _ref.trigger;
+    },
+    beforeEnter: function beforeEnter(_ref2) {
+      var current = _ref2.current,
+          next = _ref2.next,
+          trigger = _ref2.trigger;
+      // Scroll to top of page
+      window.scrollTo(0, 0); // Re-init our Lazy Loading
+
+      initLazyLoad(); // Re-init our bicycle wheel script.
+
+      initBikeWheel(); // Re-init our sliders
+
+      initSliders();
+    }
+  }]
+}); // // dummy example to illustrate rules and hooks
+// barba.init({
+//   transitions: [{
+//     name: 'dummy-transition',
+//     // apply only when leaving `[data-barba-namespace="home"]`
+//     from: 'home',
+//     // apply only when transitioning to `[data-barba-namespace="products | contact"]`
+//     to: {
+//       namespace: [
+//         'products',
+//         'contact'
+//       ]
+//     },
+//     // apply only if clicked link contains `.cta`
+//     custom: ({ current, next, trigger })
+//       => trigger.classList && trigger.classList.contains('cta'),
+//     // do leave and enter concurrently
+//     sync: true,
+//     // available hooks…
+//     beforeOnce() {},
+//     once() {},
+//     afterOnce() {},
+//     beforeLeave() {},
+//     leave() {},
+//     afterLeave() {},
+//     beforeEnter() {},
+//     enter() {},
+//     afterEnter() {}
+//   }]
+// });
+"use strict";
+
+/**
+ *
  * Flickity.js settings
  * @author Peter Laxalt
  *
@@ -1401,66 +1464,3 @@ function initLazyLoad() {
 initLazyLoad();
 // Vendor Javascript File
 "use strict";
-"use strict";
-
-/**
- *
- * Barba.js settings
- * @author Peter Laxalt
- * @see https://barba.js.org/docs/userguide/markup/
- *
- */
-// basic default transition (with no rules and minimal hooks)
-barba.init({
-  transitions: [{
-    leave: function leave(_ref) {// do something with `current.container` for your leave transition
-      // then return a promise or use `this.async()`
-
-      var current = _ref.current,
-          next = _ref.next,
-          trigger = _ref.trigger;
-    },
-    beforeEnter: function beforeEnter(_ref2) {
-      var current = _ref2.current,
-          next = _ref2.next,
-          trigger = _ref2.trigger;
-      // Scroll to top of page
-      window.scrollTo(0, 0); // Re-init our Lazy Loading
-
-      initLazyLoad(); // Re-init our bicycle wheel script.
-
-      initBikeWheel(); // Re-init our sliders
-
-      initSliders();
-    }
-  }]
-}); // // dummy example to illustrate rules and hooks
-// barba.init({
-//   transitions: [{
-//     name: 'dummy-transition',
-//     // apply only when leaving `[data-barba-namespace="home"]`
-//     from: 'home',
-//     // apply only when transitioning to `[data-barba-namespace="products | contact"]`
-//     to: {
-//       namespace: [
-//         'products',
-//         'contact'
-//       ]
-//     },
-//     // apply only if clicked link contains `.cta`
-//     custom: ({ current, next, trigger })
-//       => trigger.classList && trigger.classList.contains('cta'),
-//     // do leave and enter concurrently
-//     sync: true,
-//     // available hooks…
-//     beforeOnce() {},
-//     once() {},
-//     afterOnce() {},
-//     beforeLeave() {},
-//     leave() {},
-//     afterLeave() {},
-//     beforeEnter() {},
-//     enter() {},
-//     afterEnter() {}
-//   }]
-// });
