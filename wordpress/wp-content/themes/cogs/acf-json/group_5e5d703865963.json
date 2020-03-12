@@ -684,27 +684,7 @@
                     "name": "event_row",
                     "label": "Event Row",
                     "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5e69570c34e1f",
-                            "label": "Reverse",
-                            "name": "reverse",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        }
-                    ],
+                    "sub_fields": [],
                     "min": "",
                     "max": ""
                 },
@@ -810,6 +790,15 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_5e6a747c6d0fe": {
+                    "key": "layout_5e6a747c6d0fe",
+                    "name": "member_row",
+                    "label": "Member Row",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_5e6a79703dc07": {
                     "key": "layout_5e6a79703dc07",
                     "name": "featured_news_slider",
@@ -849,5 +838,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584033740
+    "modified": 1584038165
 }

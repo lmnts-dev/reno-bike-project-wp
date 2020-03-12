@@ -15,7 +15,6 @@
 /*************************************/
 
 if (get_row_layout() == 'icon_block') {
-   // $reverseClass = '';
 
     $blocks = get_sub_field('block');
 ?>
@@ -24,7 +23,7 @@ if (get_row_layout() == 'icon_block') {
         <div class="icon-block-inner">
             <?php foreach ( $blocks as $block ){ ?>
                 <div class="icon-block">
-                    <span class='icon'></span>
+                    <span class='icon'></span><!-- TODO: Icon -->
                     <h6 class='h5'><?php echo $block['header_text'] ?></h6>
                     <p><?php echo $block['paragraph_text'] ?></p>
                 </div>
