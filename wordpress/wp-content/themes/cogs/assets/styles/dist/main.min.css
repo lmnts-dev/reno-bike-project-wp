@@ -375,6 +375,16 @@ form{margin:0}
 .product-listings .product-listings-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding-bottom:120px}
 .product-listings .product-listings-inner .product-card{width:33%;margin-bottom:40px}
 .product-listings .product-listings-inner .product-card:last-child{justify-self:center;-ms-flex-item-align:center;align-self:center;margin:0 auto}
+.press-listings .section-header{position:relative;z-index:25}
+.press-listings .press-listings-inner{padding:40px 0}
+.press-listings .press-listings-inner ul{position:relative;z-index:20}
+.press-listings .press-listings-inner ul li{position:relative}
+.press-listings .press-listings-inner ul li a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:calc(40px) 0;font-size:1.2rem;font-weight:700;border-top:1px solid #929293;position:relative;z-index:5}
+.press-listings .press-listings-inner ul li a .tag{background:#000;color:#fff;padding:calc(40px / 6) calc(40px / 4);font-size:.8rem;margin-right:calc(40px / 4)}
+.press-listings .press-listings-inner ul li .img-wrapper{position:fixed;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background:rgba(0,0,0,0.05);z-index:1;mix-blend-mode:multiply;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:hidden;pointer-events:none}
+.press-listings .press-listings-inner ul li .img-wrapper div{position:relative;width:calc(1680px / 4);padding-bottom:200%}
+.press-listings .press-listings-inner ul li .img-wrapper div img{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%}
+.press-listings .press-listings-inner ul li:hover .img-wrapper{visibility:visible}
 .grid-section{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:120px;padding-bottom:80px;position:relative}
 .grid-section:after{content:"";position:absolute;bottom:0;left:0;right:0;top:600px;background:#f4f8f8}
 .grid-section .grid-section-inner{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-ms-flex-wrap:wrap;flex-wrap:wrap;position:relative;z-index:2;max-width:1344px}

@@ -1,0 +1,77 @@
+////////////////////////////////////////
+//
+// Press Listings Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.press-listings {
+  .section-header {
+    position: relative;
+    z-index: 25;
+  }
+
+  .press-listings-inner {
+    padding: $Base 0;
+
+    ul {
+      position: relative;
+      z-index: 20;
+
+      li {
+        position: relative;
+
+        a {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: calc(#{$Base}) 0;
+          font-size: 1.2rem;
+          font-weight: 700;
+          border-top: 1px solid $clrChrome;
+          position: relative;
+          z-index: 5;
+
+          .tag {
+            background: $clrBlack;
+            color: $clrWhite;
+            padding: calc(#{$Base} / 6) calc(#{$Base} / 4);
+            font-size: 0.8rem;
+            margin-right: calc(#{$Base} / 4);
+          }
+        }
+
+        .img-wrapper {
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background: $clrPlaceholder;
+          z-index: 1;
+          mix-blend-mode: multiply;
+          display: flex;
+          visibility: hidden;
+          pointer-events: none;
+
+          div {
+            position: relative;
+            width: calc(#{$BaseMaxWidth} / 4);
+            padding-bottom: 200%;
+
+            img {
+              @include objectFit();
+            }
+          }
+        }
+
+        &:hover {
+          .img-wrapper {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

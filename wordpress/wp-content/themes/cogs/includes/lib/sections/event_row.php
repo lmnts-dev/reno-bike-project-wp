@@ -6,10 +6,8 @@
  * event date, time, title, description and link, and the image displays the 
  * events featured image.
  * 
- * @author Alisha Garric
+ * @author Peter Laxalt & Alisha Garric
  * @since 3/2020
- * @stylesheet event-row.scss
- * 
  */
 
 /*************************************/
@@ -27,7 +25,7 @@ if (get_row_layout() == 'event_row') {
 ?>
 
   <section class="event-row <?php echo get_sub_field('layout') . ' ' . $reverseClass; ?> event-row-<?php echo $idx ?>">
-    <div class="event-row-inner">
+    <div class="editorial-row-inner">
       <div class="col content-col">
         <div class="content-col-inner">
             <p class="txt-clr-gunmetal">January 25, 11:30am - 3pm</p>
