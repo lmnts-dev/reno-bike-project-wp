@@ -798,6 +798,15 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_5e6a8de1e557b": {
+                    "key": "layout_5e6a8de1e557b",
+                    "name": "side_labeled_lists",
+                    "label": "Side Labeled Lists",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "+ Add Section",
@@ -829,5 +838,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584038165
+    "modified": 1584041655
 }

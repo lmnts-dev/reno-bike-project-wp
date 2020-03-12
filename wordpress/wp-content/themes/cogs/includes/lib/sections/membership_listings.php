@@ -107,7 +107,7 @@ if (get_row_layout() == 'membership_listings') {
                 <a href="<?php echo $membership->joinLink ?>" class="btn btn-clr-black btn-arrow">
                   Join
                 </a>
-                <a href="<?php echo $membership->giftLink ?>" class="btn btn-clr-black btn-arrow">
+                <a href="<?php echo $membership->giftLink ?>" class="btn btn-border-white btn-arrow">
                   Gift
                 </a>
               </div>
