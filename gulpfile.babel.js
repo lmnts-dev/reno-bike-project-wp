@@ -270,8 +270,12 @@ gulp.task("vendorsJS", () => {
         cb(null, file);
       })
     )
-    .pipe(gulp.dest(config.jsWordpressVendorDestination))
-    .pipe(gulp.dest(config.jsShopifyVendorDestination))
+    .pipe(
+      multiDest([
+        config.jsWordpressVendorDestination,
+        config.jsShopifyVendorDestination
+      ])
+    )
     .pipe(
       rename({
         basename: config.jsVendorFile,
@@ -290,8 +294,12 @@ gulp.task("vendorsJS", () => {
         cb(null, file);
       })
     )
-    .pipe(gulp.dest(config.jsWordpressVendorDestination))
-    .pipe(gulp.dest(config.jsShopifyVendorDestination))
+    .pipe(
+      multiDest([
+        config.jsWordpressVendorDestination,
+        config.jsShopifyVendorDestination
+      ])
+    )
     .pipe(
       notify({ message: "\n\n✅  ===> VENDOR JS — completed!\n", onLast: true })
     );
@@ -337,8 +345,12 @@ gulp.task("customJS", () => {
         cb(null, file);
       })
     )
-    .pipe(gulp.dest(config.jsWordpressCustomDestination))
-    .pipe(gulp.dest(config.jsShopifyCustomDestination))
+    .pipe(
+      multiDest([
+        config.jsWordpressCustomDestination,
+        config.jsShopifyCustomDestination
+      ])
+    )
     .pipe(
       rename({
         basename: config.jsCustomFile,
@@ -357,8 +369,12 @@ gulp.task("customJS", () => {
         cb(null, file);
       })
     )
-    .pipe(gulp.dest(config.jsWordpressCustomDestination))
-    .pipe(gulp.dest(config.jsShopifyCustomDestination))
+    .pipe(
+      multiDest([
+        config.jsWordpressCustomDestination,
+        config.jsShopifyCustomDestination
+      ])
+    )
     .pipe(
       notify({ message: "\n\n✅  ===> CUSTOM JS — completed!\n", onLast: true })
     );
