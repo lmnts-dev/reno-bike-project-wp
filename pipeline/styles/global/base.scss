@@ -35,6 +35,7 @@ $BaseGutterRight: $BaseGutter;
 $BaseGutterRightMd: 30px;
 $BaseGutterRightSm: 20px;
 $BaseParagraphWidth: 500px;
+$BaseIndentMaxWidth: calc(#{$BaseMaxWidth} * .8);
 
 // Buttons
 $BaseBtnRadius: 999px;

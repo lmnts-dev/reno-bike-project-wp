@@ -1,44 +1,47 @@
 ////////////////////////////////////////
 //
-// Event Row Row Component
+// Event Row Component
 //
 // @author Alisha Garric
 //
 ////////////////////////////////////////
 
-.event-row {
-  @extend .editorial-row;
-  margin: 0;
+.event-row-listing {
+  .event-row {
+    @extend .editorial-row;
+    margin: 0;
 
-  .event-row-inner {
-    @extend .editorial-row-inner;
-    align-items: stretch;
-    min-height: calc(#{$Base} * 9);
-
-    .col.content-col,
-    .col.img-col {
-      width: 50%;
+    &:nth-child(odd){
+      @extend .reverse;
     }
 
-    .col.content-col {
-      padding-top: calc(#{$Base} * 2);
-      padding-bottom: calc(#{$Base} * 2);
+    .event-row-inner {
+      @extend .editorial-row-inner;
+      align-items: stretch;
+      min-height: calc(#{$Base} * 9);
 
-      .content-col-inner {
-        max-width: calc(#{$Base} * 13);
+      .col.content-col {
+        padding-top: calc(#{$Base} * 2);
+        padding-bottom: calc(#{$Base} * 2);
+        width: calc(50% - #{$Base * 0.75});
+
+        .content-col-inner {
+          max-width: calc(#{$Base} * 13);
+        }
       }
-    }
 
-    .col.img-col {
-      position: relative;
+      .col.img-col {
+        position: relative;
+        width: calc(50% + #{$Base * 0.75});
 
-      .event-row-img,
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        .event-row-img,
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

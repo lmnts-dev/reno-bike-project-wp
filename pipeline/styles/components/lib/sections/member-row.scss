@@ -1,0 +1,70 @@
+////////////////////////////////////////
+//
+// Member Row Component
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.member-row {
+    max-width: $BaseIndentMaxWidth;
+    
+    .member-row-inner {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: calc(#{$Base} * 1.5) 0;
+        border-bottom: 1px solid rgba( $clrGunmetal, 0.1 );
+        
+        &:nth-of-type(even){
+            flex-direction: row-reverse;
+
+            .col.content-col {
+                padding: 0 calc(#{$Base} * 2) 0 0;
+            }
+        }
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+
+        &:last-of-type {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .col.img-col {
+            flex: 1;
+
+            .member-row-img {
+                width: 100%;
+                padding-top: 116%;
+                height: 0;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    object-fit: cover;
+                    object-position: 50% 50%;
+                }
+            }
+        }
+
+        .col.content-col {
+            flex: 2;
+            padding: 0 0 0 calc(#{$Base} * 2);
+
+            .content-col-inner {
+                max-width: none;
+
+                .h5 {
+                    margin-bottom: calc(#{$Base} / 1.5);
+                }
+            }
+        }
+    }
+}
