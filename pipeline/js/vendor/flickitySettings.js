@@ -6,7 +6,7 @@
  */
 
 function initSliders() {
-  // Re-init our block-sliders
+  // Init our block-sliders
   let blockSliderElements = document.querySelectorAll(".block-slider-el");
 
   if (blockSliderElements.length > 0) {
@@ -21,7 +21,7 @@ function initSliders() {
     });
   }
 
-  // Re-init our collection-listing-sliders
+  // Init our collection-listing-sliders
   let collectionListingsSliderElements = document.querySelectorAll(
     ".collection-listings-slider-el"
   );
@@ -38,7 +38,7 @@ function initSliders() {
     });
   }
 
-  // Re-init our featured-product-sliders
+  // Init our featured-product-sliders
   let featuredProductsSlider = document.querySelectorAll(
     ".featured-products-slider-el"
   );
@@ -49,6 +49,23 @@ function initSliders() {
         cellAlign: "left",
         prevNextButtons: true,
         pageDots: false,
+        wrapAround: true,
+        autoPlay: true
+      });
+    });
+  }
+
+  // Init our featured-news-sliders
+  let featuredNewsSlider = document.querySelectorAll(
+    ".featured-news-slider-el"
+  );
+
+  if (featuredNewsSlider.length > 0) {
+    featuredNewsSlider.forEach(el => {
+      new Flickity(el, {
+        cellAlign: "left",
+        prevNextButtons: false,
+        fade: true,
         wrapAround: true,
         autoPlay: true
       });

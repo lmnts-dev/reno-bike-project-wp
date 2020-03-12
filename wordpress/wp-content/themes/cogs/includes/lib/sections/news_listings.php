@@ -5,6 +5,8 @@
  * 
  * @author Peter Laxalt
  * @since 2/2020
+ * @stylesheet news-listings.scss
+ * 
  */
 
 /*************************************/
@@ -44,7 +46,7 @@ $newsThree->slug = '/';
 $newsThree->date = 'February 10th, 2020';
 $newsThree->cover = 'https://source.unsplash.com/1600x900/?community';
 
-$newsListings = array($newsOne, $newsTwo, $newsThree);
+$newsListings = array($newsOne, $newsTwo, $newsThree, $newsOne, $newsTwo, $newsThree);
  
 if (get_row_layout() == 'news_listings') {
 ?>

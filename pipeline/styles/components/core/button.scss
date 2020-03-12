@@ -57,21 +57,35 @@ button,
       color: $clrPrimary;
     }
 
+    // Icon
     &:after {
-      content: "▶";
-      font-family: fixed;
-      transition: all 0.25s ease;
-      transform: translateX(-10px);
+      content: "";
       position: absolute;
-      color: $clrPrimary;
       right: 0;
+      top: 50%;
+      transition: all 0.25s ease;
+      transform: translate(-10px, -50%);
+      width: 0;
+      height: 0;
+      border-top: calc(#{$Base} * 0.15) solid transparent;
+      border-bottom: calc(#{$Base} * 0.15) solid transparent;
+      border-left: calc(#{$Base} * 0.15) solid $clrPrimary;
     }
+
+    // &:after {
+    //   content: "▶";
+    //   font-family: fixed;
+    //   transform: translateX(-10px);
+    //   position: absolute;
+    //   color: $clrPrimary;
+    //   right: 0;
+    // }
 
     &:hover {
       box-shadow: none;
 
       &:after {
-        transform: translateX(0px);
+        transform: translate(0px, -50%);
       }
     }
   }
