@@ -1,0 +1,21 @@
+////////////////////////////////////////
+//
+// Icon Block Component
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.icon-block {
+    .icon-block-inner {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        div {
+            min-width: 33.33%;
+            flex: 1;
+            text-align: center;
+            padding: calc( #{$Base} / 2);
+        }
+    }
+}
