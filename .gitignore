@@ -62,6 +62,16 @@ Thumbs.db
 ##########
 node_modules/
 
+############
 # Ignore our generated files #
 ############
 dist/
+dist/*
+
+# In Shopify #
+shopify/assets/*.js
+shopify/assets/*.css
+
+# In Wordpress #
+wordpress/wp-content/themes/cogs/assets/js/dist/*.js
+wordpress/wp-content/themes/cogs/assets/styles/dist/*.css
