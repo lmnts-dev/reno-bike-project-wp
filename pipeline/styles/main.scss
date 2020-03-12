@@ -44,6 +44,7 @@
 
 //----- eCommerce
 @import "components/lib/elements/product-card";
+@import "components/lib/elements/news-listing-card";
 
 //----- Headers
 @import "components/lib/elements/section-header";
@@ -72,9 +73,12 @@
 //----- Content
 @import "components/lib/sections/grid-section";
 @import "components/lib/sections/editorial-row";
-@import "components/lib/sections/block-slider";
 @import "components/lib/sections/event-row";
 @import "components/lib/sections/icon-block";
+
+//----- Sliders
+@import "components/lib/sections/block-slider";
+@import "components/lib/sections/featured-news-slider";
 
 //----- eCommerce
 @import "components/lib/sections/product";

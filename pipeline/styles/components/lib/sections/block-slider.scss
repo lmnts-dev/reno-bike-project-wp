@@ -23,11 +23,11 @@
           position: relative;
           height: 80vh;
           min-height: 640px;
-          padding-top: $Base * 4;
+          padding-top: calc(#{$Base} * 4);
 
           .block-slide-content {
             background: $clrWhite;
-            padding: $Base * 2 $Base $Base * 2 0;
+            padding: calc(#{$Base} * 2) $Base calc(#{$Base} * 2) 0;
             max-width: 450px;
             position: relative;
             z-index: 2;
@@ -43,7 +43,7 @@
             top: 0;
             right: 0;
             bottom: 0;
-            left: $Base * 6;
+            left: calc(#{$Base} * 6);
             display: flex;
 
             .block-slide-cover-inner {
@@ -63,7 +63,7 @@
       .flickity-page-dots {
         position: absolute;
         left: 0;
-        top: $Base * 3;
+        top: calc(#{$Base} * 3);
         height: 50px;
         width: auto;
       }

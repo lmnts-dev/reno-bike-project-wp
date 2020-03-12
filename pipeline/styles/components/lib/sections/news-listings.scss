@@ -44,54 +44,11 @@
 
   .news-listings-inner {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding: 0 0 $Base * 2 0;
 
     .news-listing-card {
-      padding: $Base / 2;
-
-      &:hover {
-        background: $clrSnow;
-      }
-
-      .news-listing-card-inner {
-        position: relative;
-
-        .cover {
-          width: 100%;
-          padding-bottom: 60%;
-          position: relative;
-          background: $clrPlaceholder;
-
-          img {
-            @include objectFit();
-          }
-        }
-
-        .info {
-          padding: $Base/2 0 $Base/2 0;
-
-          .title {
-            display: block;
-            font-weight: 500;
-            font-size: 32px;
-            margin-bottom: $Base/4;
-          }
-        }
-
-        .actions {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          align-items: center;
-
-          .col {
-            &:first-child {
-              color: $clrChrome;
-            }
-          }
-        }
-      }
+      width: 33%;
     }
   }
 }
