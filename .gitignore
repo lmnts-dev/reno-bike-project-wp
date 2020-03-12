@@ -71,7 +71,9 @@ dist/*
 # In Shopify #
 shopify/assets/*.js
 shopify/assets/*.css
+shopify/assets/*.map
 
 # In Wordpress #
 wordpress/wp-content/themes/cogs/assets/js/dist/*.js
 wordpress/wp-content/themes/cogs/assets/styles/dist/*.css
+wordpress/wp-content/themes/cogs/assets/styles/dist/*.map
