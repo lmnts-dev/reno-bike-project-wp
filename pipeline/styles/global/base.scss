@@ -42,6 +42,10 @@ $BaseBtnHeight: 44px;
 $BaseBtnHeightMd: 45px;
 $BaseBtnHeightSm: 45px;
 
+// Cards
+$BaseCardPadding: calc(#{$Base} / 2);
+$BaseCardGutters: calc(#{$BaseGutter} - #{$BaseCardPadding});
+
 // Border Radius
 $BaseCornerRadiusLg: 100px;
 

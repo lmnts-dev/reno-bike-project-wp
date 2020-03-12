@@ -51,9 +51,16 @@
       max-width: 650px;
     }
 
-    h3, p {
+    h3,
+    p {
       text-align: left;
-      padding: $Base/2;
+      padding: $Base/2 0;
+    }
+
+    p {
+      width: auto;
+      max-width: 450px;
+      padding-left: $Base/2;
     }
   }
 }

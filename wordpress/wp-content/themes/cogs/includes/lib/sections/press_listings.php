@@ -29,17 +29,24 @@ $samplePress->title = "Ashlee’s Toy Closet Helps Kids Who Need It KOLO 8";
 $samplePress->slug = "/";
 $samplePress->date = "3.19.19";
 $samplePress->publisher = "KOLO 8";
-$samplePress->cover = "https://source.unsplash.com/1600x900/?community";
+$samplePress->cover = "https://source.unsplash.com/1600x900/?blue";
+
+$samplePressTwo = new Listing();
+$samplePressTwo->title = "Reno Bike Project Tuning Up and Collecting Bike for Kids in Need";
+$samplePressTwo->slug = "/";
+$samplePressTwo->date = "3.19.19";
+$samplePressTwo->publisher = "Reynolds School of Journalism";
+$samplePressTwo->cover = "https://source.unsplash.com/1600x900/?pink";
 
 $pressListings = array(
   $samplePress,
+  $samplePressTwo,
   $samplePress,
+  $samplePressTwo,
   $samplePress,
+  $samplePressTwo,
   $samplePress,
-  $samplePress,
-  $samplePress,
-  $samplePress,
-  $samplePress
+  $samplePressTwo,
 );
 
 if (get_row_layout() == 'press_listings') {
@@ -60,7 +67,7 @@ if (get_row_layout() == 'press_listings') {
       <ul>
         <?php foreach ($pressListings as $press) { ?>
           <li>
-            <a href="<?php echo $press->slug ?>">
+            <a href="<?php echo $press->slug ?>" target="_blank" title="<?php echo $press->title ?>">
               <span class="tag date">
                 <?php echo $press->date ?>
               </span>

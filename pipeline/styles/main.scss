@@ -41,15 +41,16 @@
 
 ////////////////////////////////////////////////////////////////////////
 // Components: Elements
+
+//----- eCommerce
+@import "components/lib/elements/product-card";
+
 //----- Headers
 @import "components/lib/elements/section-header";
 @import "components/lib/elements/slider-header";
 
 //----- Content
 @import "components/lib/elements/accordion-row";
-
-//----- eCommerce
-@import "components/lib/elements/product-card";
 
 ////////////////////////////////////////////////////////////////////////
 // Components: Sections
