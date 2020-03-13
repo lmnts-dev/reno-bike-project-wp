@@ -799,10 +799,10 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_5e6a8de1e557b": {
-                    "key": "layout_5e6a8de1e557b",
-                    "name": "side_labeled_lists",
-                    "label": "Side Labeled Lists",
+                "layout_5e6acdc21411c": {
+                    "key": "layout_5e6acdc21411c",
+                    "name": "four_column_grid_section",
+                    "label": "Four Column Grid Section",
                     "display": "block",
                     "sub_fields": [],
                     "min": "",
@@ -838,5 +838,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584041655
+    "modified": 1584057807
 }
