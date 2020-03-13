@@ -28,5 +28,12 @@ if (get_row_layout() == 'video_row') {
     </div>
   </section>
 
+  <div class="video-overlay">
+    <div class="video-toggle"></div>
+    <div class="video-overlay-inner">
+      <iframe src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&controls=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+
 
 <?php } ?>
