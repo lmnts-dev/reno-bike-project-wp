@@ -1,21 +1,33 @@
-<?php /* Template Name: 404 */ ?>
+<?php
+/* Template Name: 404 */
+
+/** 
+ * 404 Template
+ * 
+ * @author Peter Laxalt
+ * @since 3/2020
+ * @stylesheet four-oh-four.scss
+ * 
+ */
+
+/*************************************/
+
+?>
 
 <?php include 'includes/core/header.php'; ?>
 
-<section id="main-section" class="content row">
-    <div class="index-list column xs-12">
-      <!-- 404 -->
-      <div id="404" data-theme="dark" data-panel-title="404">
-
-          <div class="panel-section-inner">
-              <h3 class="index-title">
-                  <span>This page doesn't seem to be available.</span>
-              </h3>
-              <p>Our bad. Here's some work you might dig in the meantime.</p>
-          </div>
-      </div>
-      <!-- End 404 -->
-    </div>
+<section class="four-oh-four">
+  <div class="four-oh-four-inner">
+    <h1 class="glitch" data-text="Aw Shucks.">Aw shucks.</h1>
+    <p>Sorry about that.</p>
+    <p>That page doesn't exist.</p>
+    <a href="/" class="btn btn-arrow btn-clr-black">
+      Go back home
+    </a>
+  </div>
 </section>
+
+<?php addComponent("news_listings") ?>
+<?php addComponent("newsletter_row") ?>
 
 <?php include 'includes/core/footer.php'; ?>
