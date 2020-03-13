@@ -125,6 +125,71 @@ header {
             color: $clrPrimary;
           }
         }
+
+        .sub-menu {
+          $borderSize: 2px;
+
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 350px;
+          background: $clrWhite;
+          border: $borderSize $clrBlack solid;
+          flex-direction: column;
+          height: unset;
+          display: none;
+
+          &:before {
+            content: "";
+            position: absolute;
+            left: calc(#{$borderSize} * -1);
+            right: calc(#{$borderSize} * -1);
+            top: calc(#{$borderSize} * -3);
+            height: calc(#{$borderSize} * 2);
+            background: rgba($clrBlack, 1);
+          }
+          // display: none;
+
+          li {
+            width: 100%;
+            height: calc(#{$BaseNavSizeLg} * 0.8);
+            border-bottom: 1px solid rgba($clrBlack, 0.1);
+            position: relative;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            a {
+              width: 100%;
+            }
+
+            &:before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0;
+              bottom: 0;
+              width: calc(#{$borderSize} * 3);
+              background: $clrPrimary;
+              opacity: 0;
+              height: unset;
+              right: unset;
+            }
+
+            &:hover {
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          .sub-menu {
+            display: flex;
+          }
+        }
       }
     }
   }
