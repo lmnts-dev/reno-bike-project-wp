@@ -15,7 +15,7 @@
     flex-wrap: wrap;
 
     .grid-item {
-      padding: $Base / 3;
+      padding: calc(#{$Base} / 3);
       min-width: 21%;
       flex: 1;
 
@@ -43,7 +43,7 @@
       }
 
       p {
-        margin-top: $Base / 4;
+        margin-top: calc(#{$Base} / 4);
         font-weight: 600;
       }
     }
