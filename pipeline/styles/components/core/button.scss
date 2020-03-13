@@ -90,6 +90,31 @@ button,
     }
   }
 
+  &.btn-download {
+    padding: 0 $Base / 4 0 $Base * 1.25;
+    position: relative;
+
+    // Icon
+    &:after {
+      background: url('../../images/icon-file.png');
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transition: all 0.25s ease;
+      transform: translate( 15px, -50%);
+      width: 20px;
+      height: 22px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &:hover:after {
+      transform: translate( 15px, -50%);
+      filter: brightness(3);
+    }
+  }
+
   // Button Colors:
   // Naming convention is .btn-clr-{ClrName}
   &.btn-clr-red {

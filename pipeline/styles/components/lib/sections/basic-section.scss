@@ -1,0 +1,54 @@
+////////////////////////////////////////
+//
+// basic Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.basic-section {
+    padding-bottom: $Base;
+
+    .basic-section-inner {
+        max-width: $Base * 24;
+    }
+
+    a.btn {
+        margin-right: $Base;
+        margin-top: $Base / 2;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    .section-header {
+        padding-bottom: $Base / 4;
+    }
+
+    &.align-left {
+
+        .section-header * {
+            text-align: left;
+
+        }
+
+        .section-header {
+            align-items: flex-start;
+        }
+    }
+
+    &.align-center {
+        p, .basic-section-inner {
+            text-align: center;
+        }
+
+        .squiggle {
+            @extend .squiggle-vertical;
+        }
+
+        .basic-section-inner { 
+            margin: $Base * 4 auto 0 auto;
+        }
+    }
+}

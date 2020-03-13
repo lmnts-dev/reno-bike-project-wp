@@ -7,3 +7,14 @@
   margin-bottom: $Base / 2;
   background: $clrGold;
 }
+
+  .squiggle-vertical {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    left: 50%;
+    top: -100px;
+    z-index: 200;
+    transform: translateY(-50%);
+    background: $clrOrange;
+  }
