@@ -195,4 +195,32 @@ button,
       }
     }
   }
+
+  &.btn-border-white {
+    @extend .btn-clr-black;
+    background: rgba($clrPrimary, 0);
+    border: 1px solid $clrSnow;
+    box-shadow: none;
+    color: $clrSnow;
+  //  transition: all $BaseTransition ease;
+
+    &:visited {
+      color: $clrSnow;
+    }
+     
+    svg {
+      fill: none;
+      stroke-width: 1px;
+      stroke: $clrSnow;
+      // transition: all $BaseTransition ease;
+    }
+    &:hover {
+      background: rgba($clrSnow, 1);
+      border-color: transparent;
+      color: $clrBlack;
+      &:after {
+        color: $clrBlack;
+      }
+    }
+  }
 }

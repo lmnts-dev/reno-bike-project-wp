@@ -17,6 +17,27 @@
             flex: 1;
             text-align: center;
             padding: calc( #{$Base} / 2);
+            @media( max-width: $BaseMediaMd ){
+                min-width: 50%;
+            }
+            @media( max-width: $BaseMediaSm ){
+                min-width: 100%;
+            }
+
+            p, .h5 {
+                max-width: $Base * 11;
+                margin: 0 auto;
+
+                @media( max-width: $BaseMediaMd ){
+                    max-width: $Base * 9;
+                }
+            }
+
+            .h5 {
+                margin-bottom: $Base / 4;
+            }
+            
+
         }
 
         .icon {
