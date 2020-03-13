@@ -28,21 +28,21 @@ class FeaturedNewsListing
 $featuredNewsOne = new FeaturedNewsListing();
 $featuredNewsOne->title = 'Lorem Ipsum Solor Sit';
 $featuredNewsOne->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsOne->slug = '/';
+$featuredNewsOne->slug = '/sample-post';
 $featuredNewsOne->date = 'February 10th, 2020';
 $featuredNewsOne->cover = 'https://source.unsplash.com/1600x900/?bike';
 
 $featuredNewsTwo = new FeaturedNewsListing();
 $featuredNewsTwo->title = 'Lorem Ipsum Solor Sit';
 $featuredNewsTwo->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsTwo->slug = '/';
+$featuredNewsTwo->slug = '/sample-post';
 $featuredNewsTwo->date = 'February 10th, 2020';
 $featuredNewsTwo->cover = 'https://source.unsplash.com/1600x900/?smile';
 
 $featuredNewsThree = new FeaturedNewsListing();
 $featuredNewsThree->title = 'Lorem Ipsum Solor Sit';
 $featuredNewsThree->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsThree->slug = '/';
+$featuredNewsThree->slug = '/sample-post';
 $featuredNewsThree->date = 'February 10th, 2020';
 $featuredNewsThree->cover = 'https://source.unsplash.com/1600x900/?community';
 

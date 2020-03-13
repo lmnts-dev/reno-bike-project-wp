@@ -26,6 +26,9 @@ barba.init({
 
         // Re-init our sliders
         initSliders();
+
+        // Re-init social share buttons
+        initSocialOverlay();
       }
     }
   ]

@@ -26,7 +26,7 @@ $ecommerce = get_field('ecommerce', 'option');
     <div class="nav-col nav-col-1">
       <div class="nav-branding">
         <a href="/">
-          <span></span>
+          <span itemprop="logo"></span>
         </a>
       </div>
       <nav class="nav-switch">
