@@ -1270,6 +1270,15 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_5e6c015171dc3": {
+                    "key": "layout_5e6c015171dc3",
+                    "name": "featured_news_slider",
+                    "label": "Featured News Slider",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "+ Add Section",
@@ -1301,5 +1310,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584127263
+    "modified": 1584136545
 }
