@@ -1,0 +1,85 @@
+////////////////////////////////////////
+//
+// Video Row
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.video-row {
+  padding: 0;
+  overflow: hidden;
+
+  .video-row-inner {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9
+    background: $clrPlaceholder;
+    overflow: hidden;
+    z-index: -1;
+
+    .cover {
+      @include objectFit();
+      z-index: 2;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+      min-height: 100vh;
+      min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .video-toggle {
+      $buttonSize: calc(#{$Base} * 5);
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      background: rgba($clrWhite, 0.5);
+      width: calc(#{$Base} * 5);
+      height: calc(#{$Base} * 5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      &:hover {
+        background: rgba($clrWhite, 0.8);
+      }
+
+      &:active {
+        background: rgba($clrWhite, 0.95);
+      }
+
+      span {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-top: calc(#{$buttonSize} * 0.25) solid transparent;
+        border-bottom: calc(#{$buttonSize} * 0.25) solid transparent;
+        border-left: calc(#{$buttonSize} * 0.25) solid $clrBlack;
+        transform: scaleY(0.7);
+        transform-origin: center center;
+        right: calc((#{$Base} / 4) * -1);
+        cursor: pointer;
+
+        &:hover {
+          border-left-color: $clrPrimary;
+        }
+      }
+    }
+  }
+}
+
+.video-overlay {
+  .video-overlay-inner {
+  }
+}
