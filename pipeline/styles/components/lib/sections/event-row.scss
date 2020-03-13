@@ -9,6 +9,10 @@
 .event-row-listing {
   padding-bottom: calc(#{$Base} * 4);
 
+  .section-header {
+    margin-bottom: calc(#{$Base});
+  }
+
   .event-row {
     @extend .editorial-row;
     margin: 0;

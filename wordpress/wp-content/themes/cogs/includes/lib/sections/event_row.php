@@ -8,6 +8,8 @@
  * 
  * @author Alisha Garric
  * @since 3/2020
+ * @stylesheet event-row.scss
+ * 
  */
 
 /*************************************/
@@ -26,7 +28,7 @@ class EventRow
 $eventRow = new EventRow();
 
 //TODO: hookup data to wordpress
-$eventRows = array($eventRow, $eventRow, $eventRow);
+$eventRows = array($eventRow, $eventRow, $eventRow, $eventRow, $eventRow, $eventRow);
 
 if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
 
@@ -34,9 +36,9 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
   <div class="event-row-listing">
 
     <div class="section-header">
-      <span class="squiggle vertical"></span>
       <h3>
-        Upcoming Events
+        <span class="squiggle vertical"></span>
+        <span>Upcoming Events</span>
       </h3>
     </div>
 
