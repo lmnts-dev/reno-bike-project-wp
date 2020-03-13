@@ -57,6 +57,7 @@ function remove_my_post_metaboxes()
 //add_action('admin_menu','remove_my_post_metaboxes');
 
 add_theme_support('post-thumbnails');
+set_post_thumbnail_size( 1280, 1280, true ); // default Featured Image dimensions (cropped)
 add_post_type_support('page', 'excerpt');
 
 //TINYMCE
