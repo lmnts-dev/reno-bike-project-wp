@@ -68,6 +68,7 @@ node_modules/
 dist/
 dist/*
 
+
 # In Shopify #
 shopify/assets/*.js
 shopify/assets/*.css
