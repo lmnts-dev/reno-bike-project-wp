@@ -29,7 +29,7 @@ function register_menus()
 }
 add_action('init', 'register_menus');
 
-add_filter('nav_menu_css_class', 'remove_class_id');
+// add_filter('nav_menu_css_class', 'remove_class_id');
 add_filter('nav_menu_item_id', 'remove_class_id', 100, 1);
 function remove_class_id($classes)
 {
@@ -48,6 +48,28 @@ function remove_class_id($classes)
 // 	remove_menu_page('edit.php');
 // }
 
+// Add has-children class to navigation items with children.
+// add_filter('wp_nav_menu_objects', 'add_menu_parent_class');
+// function add_menu_parent_class($items)
+// {
+// 	$parents = array();
+// 	foreach ($items as $item) {
+// 		//Check if the item is a parent item
+// 		if ($item->menu_item_parent && $item->menu_item_parent > 0) {
+// 			$parents[] = $item->menu_item_parent;
+// 		}
+// 	}
+
+// 	foreach ($items as $item) {
+// 		if (in_array($item->ID, $parents)) {
+// 			//Add "menu-parent-item" class to parents
+// 			$item->classes[] = 'menu-parent-item';
+// 		}
+// 	}
+
+// 	return $items;
+// }
+
 // REMOVE POST META BOXES
 function remove_my_post_metaboxes()
 {
@@ -57,7 +79,7 @@ function remove_my_post_metaboxes()
 //add_action('admin_menu','remove_my_post_metaboxes');
 
 add_theme_support('post-thumbnails');
-set_post_thumbnail_size( 1280, 1280, true ); // default Featured Image dimensions (cropped)
+set_post_thumbnail_size(1280, 1280, true); // default Featured Image dimensions (cropped)
 add_post_type_support('page', 'excerpt');
 
 //TINYMCE
