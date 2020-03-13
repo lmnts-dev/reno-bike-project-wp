@@ -1,13 +1,13 @@
 // Icons
 .ico-logomark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    .ico-brandmark {
-        fill: $clrPrimary;
-        margin-right: $Base/4;
-    }
-    .ico-logotype {
-        fill: $clrBlack;
-    }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  .ico-brandmark {
+    fill: $clrPrimary;
+    margin-right: $Base/4;
+  }
+  .ico-logotype {
+    fill: $clrBlack;
+  }
 }

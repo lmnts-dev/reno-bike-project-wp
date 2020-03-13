@@ -7,47 +7,49 @@
 ////////////////////////////////////////
 
 .icon-block {
-    .icon-block-inner {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+  padding: calc(#{$Base} * 2) 0;
 
-        .icon-block {
-            min-width: 33.33%;
-            flex: 1;
-            text-align: center;
-            padding: calc( #{$Base} / 2);
-            @media( max-width: $BaseMediaMd ){
-                min-width: 50%;
-            }
-            @media( max-width: $BaseMediaSm ){
-                min-width: 100%;
-            }
+  .icon-block-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: calc(#{$Base}) 0 calc(#{$Base}* 3) 0;
 
-            p, .h5 {
-                max-width: $Base * 11;
-                margin: 0 auto;
+    .icon-block {
+      min-width: 33.33%;
+      flex: 1;
+      text-align: center;
+      padding: calc(#{$Base} / 2);
+      @media (max-width: $BaseMediaMd) {
+        min-width: 50%;
+      }
+      @media (max-width: $BaseMediaSm) {
+        min-width: 100%;
+      }
 
-                @media( max-width: $BaseMediaMd ){
-                    max-width: $Base * 9;
-                }
-            }
+      p,
+      .h5 {
+        max-width: calc(#{$Base} * 11);
+        margin: 0 auto;
 
-            .h5 {
-                margin-bottom: $Base / 4;
-            }
-            
-
+        @media (max-width: $BaseMediaMd) {
+          max-width: calc(#{$Base} * 9);
         }
+      }
 
-        .icon {
-            display: block;
-            height: calc(#{$Base} * 1.5);
-            width: calc(#{$Base} * 1.5);
-            background-color: $clrPrimary;
-            border-radius: 50%;
-            margin: 0 auto;
-            margin-bottom: $Base / 2;
-        }
+      .h5 {
+        margin-bottom: calc(#{$Base} / 4);
+      }
     }
+
+    .icon {
+      display: block;
+      height: calc(#{$Base} * 1.5);
+      width: calc(#{$Base} * 1.5);
+      background-color: $clrPrimary;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-bottom: calc(#{$Base} / 2);
+    }
+  }
 }
