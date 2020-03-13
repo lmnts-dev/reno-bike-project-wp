@@ -60,3 +60,14 @@ Thumbs.db
 # Node Modules #
 ##########
 node_modules/
+
+############
+# Ignore our generated files #
+############
+dist/
+dist/*
+
+# In Wordpress #
+wp-content/themes/cogs/assets/js/dist/*.js
+wp-content/themes/cogs/assets/styles/dist/*.css
+wp-content/themes/cogs/assets/styles/dist/*.map
