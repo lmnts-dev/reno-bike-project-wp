@@ -14,6 +14,10 @@
     background: $clrSnow;
   }
 
+  &:active {
+    background: darken($clrSnow, 5%);
+  }
+
   .news-listing-card-inner {
     position: relative;
 
@@ -36,6 +40,11 @@
         font-weight: 500;
         font-size: 32px;
         margin-bottom: $Base/4;
+        color: $clrBlack;
+      }
+
+      .excerpt {
+        color: $clrBlack;
       }
     }
 

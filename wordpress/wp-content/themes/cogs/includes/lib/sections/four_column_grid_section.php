@@ -12,9 +12,10 @@
 /** Variables */
 /*************************************/
 
-class FourColumnGridItem {
-    public $label;
-    public $image;
+class FourColumnGridItem
+{
+  public $label;
+  public $image;
 }
 
 $gridItem = new FourColumnGridItem();
@@ -26,19 +27,30 @@ $gridItems = array($gridItem, $gridItem, $gridItem, $gridItem, $gridItem, $gridI
 if (get_row_layout() == 'four_column_grid_section') {
 
 ?>
-  <section class="four-column-grid-section <?php echo get_sub_field('layout')?> four-column-grid-<?php echo $idx ?>">
-        <div class="four-column-grid-section-inner">
-            <?php foreach ($gridItems as $item) { ?>
-                <div class="grid-item">
-                    <div class="grid-item-img">
-                        <img data-src="https://source.unsplash.com/1600x900/?event" alt="Tour de Pizza: New Member Drive" class="lazy" />
-                    </div>
-                    <p><?php echo $item->label ?></p>
-                </div>
-    
-            <?php } ?>
+  <section class="four-column-grid-section <?php echo get_sub_field('layout') ?> four-column-grid-<?php echo $idx ?>">
+
+    <div class="section-header split">
+      <h2>
+        <span class="squiggle"></span>
+
+        <span>
+          Board of Directors
+        </span>
+      </h2>
+    </div>
+
+    <div class="four-column-grid-section-inner">
+      <?php foreach ($gridItems as $item) { ?>
+        <div class="grid-item">
+          <div class="grid-item-img">
+            <img data-src="https://source.unsplash.com/1600x900/?event" alt="Tour de Pizza: New Member Drive" class="lazy" />
+          </div>
+          <p><?php echo $item->label ?></p>
         </div>
-      </section>
+
+      <?php } ?>
+    </div>
+  </section>
 
 
 <?php } ?>

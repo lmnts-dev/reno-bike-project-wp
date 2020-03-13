@@ -7,43 +7,45 @@
 ////////////////////////////////////////
 
 .four-column-grid-section {
-    .four-column-grid-section-inner {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+  padding-bottom: calc(#{$Base} * 4);
 
-        .grid-item {
-            padding: $Base / 3;
-            min-width: 21%;
-            flex: 1;
+  .four-column-grid-section-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-            &:nth-of-type(4n){
-                padding-right: 0;
-            }
+    .grid-item {
+      padding: calc(#{$Base} / 3);
+      min-width: 21%;
+      flex: 1;
 
-            &:nth-of-type(4n - 3){
-                padding-left: 0;
-            }
+      &:nth-of-type(4n) {
+        padding-right: 0;
+      }
 
-            .grid-item-img {
-                padding-top: 75%;
-                position: relative;
+      &:nth-of-type(4n - 3) {
+        padding-left: 0;
+      }
 
-                img {
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: 50% 50%;
-                }
-            }
+      .grid-item-img {
+        padding-top: 75%;
+        position: relative;
 
-            p {
-                margin-top: $Base / 4;
-                font-weight: 600;
-            }
+        img {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
         }
+      }
+
+      p {
+        margin-top: calc(#{$Base} / 4);
+        font-weight: 600;
+      }
     }
+  }
 }

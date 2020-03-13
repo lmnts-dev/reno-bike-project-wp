@@ -128,6 +128,11 @@ h5,
   }
 }
 
+h6,
+.h6 {
+  font-size: 1.4rem;
+}
+
 // #####################################
 // body copy
 // #####################################
@@ -174,7 +179,8 @@ p {
 // Content
 // #####################################
 
-.content {
+.content,
+.article-body {
   // Lists
   ul {
     font-size: 1.2rem;
@@ -193,6 +199,71 @@ p {
         top: 50%;
         transform: translateY(-50%);
       }
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    margin-top: $Base;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  blockquote {
+    padding: calc(#{$Base} * 2) 0;
+    margin: 0;
+
+    p {
+      font-size: 2.5rem;
+      font-weight: 100;
+      font-style: italic;
+    }
+
+    cite {
+      font-weight: 600;
+      font-size: 1.2rem;
+      font-style: normal;
+    }
+  }
+
+  hr {
+    margin: calc(#{$Base} * 2) 0;
+    background: none;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px dashed $clrPrimary;
+  }
+
+  a {
+    font-weight: 600;
+  }
+
+  p {
+    padding: calc(#{$Base} / 2) 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  figure {
+    width: 100%;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
     }
   }
 }

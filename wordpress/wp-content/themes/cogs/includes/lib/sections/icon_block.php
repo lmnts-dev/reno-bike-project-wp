@@ -16,19 +16,26 @@
 
 if (get_row_layout() == 'icon_block') {
 
-    $blocks = get_sub_field('block');
+  $blocks = get_sub_field('block');
 ?>
 
-    <section class="icon-block <?php echo get_sub_field('layout');?> icon-block-<?php echo $idx ?>">
-        <div class="icon-block-inner">
-            <?php foreach ( $blocks as $block ){ ?>
-                <div class="icon-block">
-                    <span class='icon'></span><!-- TODO: Icon -->
-                    <h6 class='h5'><?php echo $block['header_text'] ?></h6>
-                    <p><?php echo $block['paragraph_text'] ?></p>
-                </div>
-            <?php } ?>
+  <section class="icon-block <?php echo get_sub_field('layout'); ?> icon-block-<?php echo $idx ?>">
+    <div class="section-header">
+      <h3>
+        <span>
+          How we’re working towards a cycling-friendly community
+        </span>
+      </h3>
+    </div>
+    <div class="icon-block-inner">
+      <?php foreach ($blocks as $block) { ?>
+        <div class="icon-block">
+          <span class='icon'></span><!-- TODO: Icon -->
+          <h6 class='h5'><?php echo $block['header_text'] ?></h6>
+          <p><?php echo $block['paragraph_text'] ?></p>
         </div>
-    </section>
+      <?php } ?>
+    </div>
+  </section>
 
 <?php } ?>
