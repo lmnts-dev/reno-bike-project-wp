@@ -9,5 +9,6 @@
 
 .accordion-row {
   .accordion-row-inner {
+    padding-bottom: calc(#{$Base} * 4);
   }
 }
