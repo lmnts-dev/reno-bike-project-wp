@@ -1359,7 +1359,9 @@ barba.init({
 
       initSliders(); // Re-init social share buttons
 
-      initSocialOverlay();
+      initSocialOverlay(); // Re-init our video overlays
+
+      initVideoOverlay();
     }
   }]
 }); // // dummy example to illustrate rules and hooks

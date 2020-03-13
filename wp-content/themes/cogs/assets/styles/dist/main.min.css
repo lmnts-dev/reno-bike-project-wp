@@ -485,6 +485,31 @@ form{margin:0}
 .four-column-grid-section .four-column-grid-section-inner .grid-item .grid-item-img{padding-top:75%;position:relative}
 .four-column-grid-section .four-column-grid-section-inner .grid-item .grid-item-img img{position:absolute;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:50% 50%;object-position:50% 50%}
 .four-column-grid-section .four-column-grid-section-inner .grid-item p{margin-top:calc(40px / 4);font-weight:600}
+.video-row{padding:0;overflow:hidden}
+.video-row .video-row-inner{position:relative;padding-bottom:56.25%;background:rgba(0,0,0,0.05);overflow:hidden;z-index:-1}
+.video-row .video-row-inner .cover{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:100%;width:100%;z-index:2}
+.video-row .video-row-inner iframe{width:100vw;height:56.25vw;min-height:100vh;min-width:177.77vh;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:5;pointer-events:none}
+.video-row .video-row-inner .video-toggle{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:10;background:rgba(255,255,255,0.5);width:calc(40px * 5);height:calc(40px * 5);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:50%;cursor:pointer}
+.video-row .video-row-inner .video-toggle:hover{background:rgba(255,255,255,0.8)}
+.video-row .video-row-inner .video-toggle:active{background:rgba(255,255,255,0.95)}
+.video-row .video-row-inner .video-toggle span{position:relative;width:0;height:0;border-top:calc(calc(40px * 5) * 0.25) solid transparent;border-bottom:calc(calc(40px * 5) * 0.25) solid transparent;border-left:calc(calc(40px * 5) * 0.25) solid #000;-webkit-transform:scaleY(0.7);transform:scaleY(0.7);-webkit-transform-origin:center center;transform-origin:center center;right:calc((40px / 4) * -1);pointer-events:none;cursor:pointer}
+.video-row .video-row-inner .video-toggle span:hover{border-left-color:#f684b4}
+.video-overlay{position:fixed;left:0;top:0;width:100vw;height:100vh;overflow:hidden;background:rgba(0,0,0,0.3);z-index:900;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;visibility:hidden}
+.video-overlay.visible{visibility:visible}
+.video-overlay .video-overlay-inner{width:auto;position:relative}
+.video-overlay .video-overlay-inner iframe{padding:0;margin:0;width:calc(100vw / 1.5);height:calc(56.25vw / 1.5);min-height:calc(100vh / 1.5);min-width:calc(177.77vh / 1.5)}
+.video-overlay .video-toggle{background:rgba(0,0,0,0);position:absolute;left:0;right:0;top:0;bottom:0}
+.sticky-section.row{padding-left:0}
+.sticky-section.row .sticky-section-inner{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
+.sticky-section.row .text-content{padding:calc(40px) 0 calc(40px * 2) calc(40px)}
+.sticky-section.row-reverse{padding-right:0}
+.sticky-section.row-reverse .sticky-section-inner{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
+.sticky-section.row-reverse .text-content{padding:calc(40px) calc(40px * 2) calc(40px) 0}
+.sticky-section .sticky-section-inner{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}
+.sticky-section .sticky-section-inner .images{width:var(--width);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.sticky-section .sticky-section-inner .images img{width:100%}
+.sticky-section .sticky-section-inner .text-content{width:var(--width);position:-webkit-sticky;position:sticky;top:0;max-width:calc(40px * 13)}
+.sticky-section .sticky-section-inner .text-content h6{margin-top:calc(40px)}
 .block-slider{position:relative;margin:60px 0}
 .block-slider .block-slider-inner .block-slider-el{width:100%}
 .block-slider .block-slider-inner .block-slider-el .block-slide{width:100%}
