@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 
 <?php
+
+/** 
+ * 
+ * Header:
+ * Our site header
+ * 
+ * @author Peter Laxalt
+ * @since 3/2020
+ * 
+ */
+
 require_once "utils/mobileDetect.php";
 require_once "functions/functions.php";
+require_once "utils/addComponent.php";
 $detect_device = new Mobile_Detect;
 
 $mobile_class = "";

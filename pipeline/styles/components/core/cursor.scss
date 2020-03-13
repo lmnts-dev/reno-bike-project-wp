@@ -39,8 +39,8 @@
   top: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  transition: all 0.5s ease-out;
+  transition: all 0.15s ease-out;
   width: 20px;
   height: 20px;
-  background: $clrGold;
+  border: 1px solid $clrGold;
 }

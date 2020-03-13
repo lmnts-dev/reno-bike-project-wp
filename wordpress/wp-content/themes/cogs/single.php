@@ -132,6 +132,6 @@ endwhile;
 ?>
 
 <?php include 'includes/lib/sections/news_listings.php'; ?>
-<?php include 'includes/lib/sections/newsletter_row.php'; ?>
+<?php addComponent("newsletter_row"); ?>
 
 <?php include 'includes/core/footer.php'; ?>
