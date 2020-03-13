@@ -1,0 +1,9 @@
+//TODO: Remove once we add real squiggle
+.squiggle {
+  display: block;
+  line-height: 0;
+  width: 100px;
+  height: 2px;
+  margin-bottom: $Base / 2;
+  background: $clrGold;
+}

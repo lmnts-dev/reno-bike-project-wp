@@ -23,12 +23,12 @@ if (get_row_layout() == 'sticky_section') {
   $imagesColumnSize = get_sub_field('image_width');
   $orientation = get_sub_field('orientation');
   if ( $imagesColumnSize == "Medium") {
-    $imagesWidth = "40%";
-    $contentWidth = "60%";
+    $imagesWidth = "45%";
+    $contentWidth = "55%";
   }
   else {
-    $imagesWidth = "60%";
-    $contentWidth = "40%";
+    $imagesWidth = "65%";
+    $contentWidth = "35%";
   }
 
 ?>

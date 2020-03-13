@@ -41,7 +41,6 @@
             flex-direction: column;
             img {
                 width: 100%;
-                
             }
         }
 
@@ -50,10 +49,22 @@
             position: -webkit-sticky; /* Safari */
             position: sticky;
             top: 0;
-            max-width: calc(#{$Base} * 13);
+
+            * {
+                max-width: calc(#{$Base} * 12);
+            }
 
             h6 {
                 margin-top: calc(#{$Base});
+            }
+
+            .flexible-content-icon, .flexible-content-icon img {
+                max-width: var(--width);
+                margin-top: calc(#{$Base});
+
+                ~ h6 {
+                    margin-top: calc(#{$Base} / 2);
+                }
             }
         }
     }

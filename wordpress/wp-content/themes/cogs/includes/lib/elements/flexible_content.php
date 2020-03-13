@@ -13,18 +13,21 @@
 
 
 <?php } else if ( get_row_layout() == "icon") { ?>
-    <div class="flexible-content-image" style="--width:<?php echo get_sub_field('width') ?>">
-        <?php wp_get_attachment_image( get_sub_field('image'), 'full' ) ?>
+    <?php $image = get_sub_field('image'); ?>
+    <div class="flexible-content-icon" style="--width:<?php echo get_sub_field('width') . 'px' ?>">
+        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
     </div>
 
 
 <?php } else if ( get_row_layout() == "button") { ?>
     <?php 
         $button = get_sub_field('button_link'); 
-        $buttonTarget = $link['target'] ? $link['target'] : '_self';
+        $buttonTarget = $button['target'] ? $button['target'] : '_self';
+        $buttonText = $button['title'];
+        $buttonLink = $button['url'];
     ?>
-    <a href="<?php echo esc_url( $button['url'] ); ?>" class="btn btn-arrow" target="<?php echo esc_attr( $buttonTarget ); ?>">
-        <?php echo esc_html( $button['title'] ); ?>
+    <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn btn-arrow" target="<?php echo esc_attr( $buttonTarget ); ?>">
+        <?php echo esc_html( $buttonText ); ?>
     </a>
 
 
