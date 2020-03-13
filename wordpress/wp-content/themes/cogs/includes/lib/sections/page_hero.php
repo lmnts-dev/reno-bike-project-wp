@@ -9,7 +9,7 @@
 
 /*************************************/
 
-if (get_row_layout() == 'page_hero') {
+if (get_row_layout() == 'page_hero' || $rowLayout == 'page_hero') {
 ?>
 
   <section class="page-hero page-hero-<?php echo $idx ?>">

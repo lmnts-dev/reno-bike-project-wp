@@ -10,7 +10,7 @@
 /*************************************/
 
 // First check if we are in an ACF loop.
-if (get_row_layout() == 'block_slider') {
+if (get_row_layout() == 'block_slider' || $rowLayout == 'block_slider') {
 ?>
 
   <section class="block-slider">

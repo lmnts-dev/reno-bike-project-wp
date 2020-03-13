@@ -38,7 +38,7 @@ $memberRows = array(
   $memberRow
 );
 
-if (get_row_layout() == 'member_row') {
+if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
 
 ?>
   <section class="member-row <?php echo get_sub_field('layout'); ?> member-row-<?php echo $idx ?>">

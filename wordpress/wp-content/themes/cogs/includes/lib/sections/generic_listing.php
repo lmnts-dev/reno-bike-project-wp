@@ -17,7 +17,7 @@
 
 $listings = get_sub_field('listing');
 
-if (get_row_layout() == 'generic_listing') {
+if (get_row_layout() == 'generic_listing' || $rowLayout == 'generic_listing') {
 
 ?>
   <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">    <span class="squiggle"></span>

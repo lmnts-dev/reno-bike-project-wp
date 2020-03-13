@@ -7,11 +7,13 @@
 ////////////////////////////////////////
 
 .event-row-listing {
+  padding-bottom: calc(#{$Base} * 4);
+
   .event-row {
     @extend .editorial-row;
     margin: 0;
 
-    &:nth-child(odd){
+    &:nth-child(odd) {
       @extend .reverse;
     }
 
@@ -33,8 +35,8 @@
       .col.img-col {
         position: relative;
         width: calc(50% + #{$Base * 0.75});
+        background: $clrPlaceholder;
 
-        .event-row-img,
         img {
           position: absolute;
           top: 0;

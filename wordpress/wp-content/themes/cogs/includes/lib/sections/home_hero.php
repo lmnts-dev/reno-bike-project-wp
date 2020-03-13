@@ -9,7 +9,7 @@
 
 /*************************************/
 
-if (get_row_layout() == 'home_hero') {
+if (get_row_layout() == 'home_hero' || $rowLayout == 'home_hero') {
 ?>
 
   <section class="home-hero home-hero-<?php echo $idx ?>">
