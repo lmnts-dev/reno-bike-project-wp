@@ -131,7 +131,7 @@ while (have_posts()) : the_post();
 endwhile;
 ?>
 
-<?php include 'includes/lib/sections/news_listings.php'; ?>
-<?php include 'includes/lib/sections/newsletter_row.php'; ?>
+<?php addComponent("news_listings"); ?>
+<?php addComponent("newsletter_row"); ?>
 
 <?php include 'includes/core/footer.php'; ?>

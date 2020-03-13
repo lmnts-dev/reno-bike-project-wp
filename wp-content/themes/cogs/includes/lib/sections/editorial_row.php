@@ -12,7 +12,7 @@
 /** Variables */
 /*************************************/
 
-if (get_row_layout() == 'editorial_row') {
+if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
   $imgColClass = '';
 
   if (get_sub_field('image_1') && get_sub_field('image_2')) {

@@ -24,7 +24,7 @@ $gridItem->label = 'David Fiore';
 //TODO: hookup data to wordpress
 $gridItems = array($gridItem, $gridItem, $gridItem, $gridItem, $gridItem, $gridItem, $gridItem, $gridItem);
 
-if (get_row_layout() == 'four_column_grid_section') {
+if (get_row_layout() == 'four_column_grid_section' || $rowLayout == 'four_column_grid_section') {
 
 ?>
   <section class="four-column-grid-section <?php echo get_sub_field('layout') ?> four-column-grid-<?php echo $idx ?>">

@@ -14,7 +14,7 @@
 /*************************************/
 
 
-if (get_row_layout() == 'sticky_section') {
+if (get_row_layout() == 'sticky_section' || $rowLayout == 'sticky_section') {
 
 
   $images = get_sub_field('images');

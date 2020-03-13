@@ -21,7 +21,7 @@ if (have_rows('sections')) {
     while (have_rows('sections')) {
         the_row();
 
-        include 'includes/lib/sections/' . get_row_layout() . '.php';
+        addComponent(get_row_layout());
 
         $idx++; // Increment our index.
     }
