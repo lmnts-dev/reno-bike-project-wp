@@ -10,16 +10,16 @@
 /*************************************/
 
 if (get_row_layout() == 'page_hero' || $rowLayout == 'page_hero') {
-  if ( $rowLayout ){
+  if ( get_row_layout() ){
+    $headline = get_sub_field('headline');
+    $image = get_sub_field('cover_image');
+    $layout = get_sub_field_object('layout')['value'];
+  }
+  else {
     $headline = get_the_title();
     $excerpt = get_the_excerpt();
     $image = get_the_post_thumbnail_url();
     $layout = '5';
-  }
-  else {
-    $headline = get_sub_field('headline');
-    $image = get_sub_field('cover_image');
-    $layout = get_sub_field_object('layout')['value'];
   }
   
 ?>

@@ -36,7 +36,7 @@ $exampleListing->giftLink = '/';
 
 $membershipListings = array($exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing);
 
-if (get_row_layout() == 'membership_listings') {
+if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listings') {
 ?>
 
   <section class="membership-listings membership-listings-<?php echo $idx ?>">

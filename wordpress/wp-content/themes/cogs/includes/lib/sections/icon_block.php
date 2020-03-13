@@ -14,7 +14,7 @@
 /** Variables */
 /*************************************/
 
-if (get_row_layout() == 'icon_block') {
+if (get_row_layout() == 'icon_block' || $rowLayout == 'icon_block') {
 
   $blocks = get_sub_field('block');
 ?>

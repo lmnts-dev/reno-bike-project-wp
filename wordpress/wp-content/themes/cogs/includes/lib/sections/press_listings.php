@@ -49,7 +49,7 @@ $pressListings = array(
   $samplePressTwo,
 );
 
-if (get_row_layout() == 'press_listings') {
+if (get_row_layout() == 'press_listings' || $rowLayout == 'press_listings') {
 ?>
 
   <section class="press-listings press-listings-<?php echo $idx ?>">

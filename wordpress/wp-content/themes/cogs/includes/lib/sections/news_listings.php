@@ -48,7 +48,7 @@ $newsThree->cover = 'https://source.unsplash.com/1600x900/?community';
 
 $newsListings = array($newsOne, $newsTwo, $newsThree, $newsOne, $newsTwo, $newsThree);
 
-if (get_row_layout() == 'news_listings') {
+if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
 ?>
 
   <section class="news-listings news-listings-<?php echo $idx ?>">

@@ -51,7 +51,7 @@ $blockTwo->$size = '2';
 
 $blockList = array($blockOne, $blockTwo);
 
-if (get_row_layout() == 'block_row') {
+if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
 ?>
 
   <section class="block-row block-row-<?php echo $idx ?>">

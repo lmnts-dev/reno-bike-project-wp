@@ -43,7 +43,7 @@ $eventThree->cover = 'https://source.unsplash.com/1600x900/?community';
 $eventListings = array($eventOne, $eventTwo, $eventThree);
 
 
-if (get_row_layout() == 'event_listings') {
+if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 ?>
 
   <section class="event-listings event-listings-<?php echo $idx ?>">

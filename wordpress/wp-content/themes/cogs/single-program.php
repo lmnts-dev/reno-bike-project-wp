@@ -13,10 +13,7 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php 
-    $rowLayout = 'page_hero';
-    include 'includes/lib/sections/page_hero.php'; 
-?>
+<?php addComponent("page_hero"); ?>
 
 <?php get_template_part('content', get_post_format()); ?>
 

@@ -44,7 +44,7 @@ $blockFour->cover = 'https://source.unsplash.com/1600x900/?donkey';
 $gridBlocks = array($blockOne, $blockTwo, $blockThree, $blockFour);
 
 
-if (get_row_layout() == 'grid_section') {
+if (get_row_layout() == 'grid_section' || $rowLayout == 'grid_section') {
 ?>
 
   <section class="grid-section grid-section-<?php echo $idx ?>">
