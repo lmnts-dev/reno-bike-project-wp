@@ -8,6 +8,7 @@
 
 
 .sticky-section {
+    margin-bottom: calc(#{$Base} * 3);
 
     &.row {
         padding-left: 0;

@@ -20,7 +20,15 @@ $listings = get_sub_field('listing');
 if (get_row_layout() == 'generic_listing') {
 
 ?>
-  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">
+  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">    <span class="squiggle"></span>
+    <div class="news-listings-header">
+      <h3>
+        Serving Reno
+      </h3>
+      <a href="/news-and-press" class="btn btn-border-black">
+        The following are a just couple of examples of our success we’ve had with the community and its streets.
+      </a>
+    </div>
     <div class="generic-listing-inner">
         <?php foreach ($listings as $listing) { ?>
             <div class="generic-listing-row">
