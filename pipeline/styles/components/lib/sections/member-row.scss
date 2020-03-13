@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: calc(#{$Base}) 0;
+    padding: calc(#{$Base} * 1.5) 0;
     border-bottom: 1px solid rgba($clrGunmetal, 0.1);
 
     &:last-child {

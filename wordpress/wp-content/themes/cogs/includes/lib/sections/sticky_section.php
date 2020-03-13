@@ -36,9 +36,7 @@ if (get_row_layout() == 'sticky_section') {
       <div class="sticky-section-inner">
         <div class="images" style="--width: <?php echo $imagesWidth ?>; ">
           <?php foreach ($images as $image) { ?>
-    
                <img src="<?php echo esc_url($image['image']['url']); ?>" alt="<?php echo esc_attr($image['image']['alt']); ?>" />
-     
           <?php } ?>
         </div>
         <div class="text-content" style="--width: <?php echo $contentWidth ?>; ">

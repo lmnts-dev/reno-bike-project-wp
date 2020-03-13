@@ -1,0 +1,41 @@
+////////////////////////////////////////
+//
+// Generic Listing
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+
+.generic-listing {
+    @extend .member-row;
+    max-width: $BaseMaxWidth;
+
+    .generic-listing-inner {
+
+        .generic-listing-row {
+            @extend .member-row-item;
+
+            &:nth-of-type(even) {
+                flex-direction: row;
+
+                .col.content-col {
+                    padding: 0 0 0 calc(#{$Base} * 2);
+                }
+            }
+
+            .col.img-col {
+                .generic-listing-img {
+                    @extend .member-row-img;
+                    padding-top: 54%;
+
+                }
+            }
+
+            .col.content-col { 
+                flex: 1;
+            }
+        }
+
+    }
+}
