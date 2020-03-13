@@ -1,8 +1,8 @@
 /*
- ** Toggle Search Overlay
+ ** Social Share Dialogs
  **
  ** @author: Peter Laxalt
- ** @description: Functions to show/hide the newsletter overlay.
+ ** @description: Functions to initiate social sharing.
  */
 
 function initSocialOverlay() {

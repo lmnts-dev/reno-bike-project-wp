@@ -59,12 +59,12 @@ while (have_posts()) : the_post();
 
           <div class="social-icons">
             <div>
-              <span data-href="<?php echo $facebookShareUrl ?>" class="social-share">
+              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share">
                 F
               </span>
             </div>
             <div>
-              <span data-href="<?php echo $twitterShareUrl ?>" class="social-share">
+              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share">
                 T
               </span>
             </div>
@@ -93,12 +93,12 @@ while (have_posts()) : the_post();
           </div>
           <div class="social-icons">
             <div>
-              <span data-href="<?php echo $facebookShareUrl ?>" class="social-share">
+              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share">
                 F
               </span>
             </div>
             <div>
-              <span data-href="<?php echo $twitterShareUrl ?>" class="social-share">
+              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share">
                 T
               </span>
             </div>
