@@ -26,7 +26,6 @@ function initVideoOverlay() {
   document.addEventListener(
     "click",
     function(event) {
-      console.log(event);
       // If the clicked element doesn't have the right selector, bail
       if (!event.target.classList.contains(videoToggleClass)) return;
 
