@@ -1,0 +1,210 @@
+////////////////////////////////////////
+//
+// Cart Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.cart {
+  $offsetTop: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+
+  .cart-inner {
+    min-height: 70vh;
+
+    &.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h1,
+      p {
+        text-align: center;
+        max-width: 550px;
+        margin: 0 auto;
+      }
+
+      p {
+        margin-bottom: $Base;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-wrap: nowrap;
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: $offsetTop;
+
+        img {
+          max-width: 100%;
+        }
+
+        &.subtotal {
+          flex: 1;
+          max-width: $BaseSidebarWidth;
+          min-width: $BaseSidebarWidth;
+          height: calc(100vh - #{$offsetTop});
+          min-height: 750px;
+          padding-left: calc(#{$Base});
+          padding-bottom: $BaseGutter;
+          position: sticky;
+          top: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: stretch;
+
+          .total {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: calc(#{$Base} / 4);
+            color: $clrBlack;
+          }
+
+          .label {
+            color: rgba($clrBlack, 0.2);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: calc(#{$Base} / 2);
+          }
+
+          .btn {
+            margin-bottom: calc(#{$Base} / 4);
+            text-align: left;
+            justify-content: flex-start;
+          }
+
+          .disclaimer {
+            max-width: 80%;
+            margin: 0 auto;
+            text-align: center;
+          }
+        }
+
+        &.cart-items {
+          padding-bottom: calc(#{$Base} * 4);
+
+          h1 {
+            font-size: 5vw;
+            margin-bottom: $Base;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cart-item {
+  $cartThumbSize: 250px;
+  $colSpacing: calc(#{$Base} / 2);
+
+  display: block;
+  color: $clrBlack;
+  border-top: 2px solid $clrBlack;
+
+  &:last-child {
+    border-bottom: 2px solid $clrBlack;
+  }
+
+  .cart-item-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: calc(#{$Base}) 0;
+
+    .cart-item-col {
+      margin-right: $colSpacing;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.cover {
+        width: $cartThumbSize;
+
+        .cart-item-img {
+          background: $clrPlaceholder;
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%;
+
+          img {
+            @include objectFit();
+          }
+        }
+      }
+
+      &.title {
+        padding-right: $Base;
+
+        span {
+          font-weight: 600;
+          color: $clrBlack;
+          font-size: 1.6rem;
+          margin-bottom: calc(#{$Base} / 4);
+          display: block;
+        }
+
+        p {
+          font-size: 1.1rem;
+          color: $clrBlack;
+        }
+      }
+
+      &.quantity {
+        width: 100px;
+        position: relative;
+        top: -5px;
+
+        input {
+          border: 1px solid $clrBlack;
+          text-align: center;
+        }
+      }
+
+      &.price {
+        font-weight: 600;
+        color: $clrPrimary;
+        font-size: 1.6rem;
+        text-align: right;
+
+        span {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .cart-item-inner {
+      .cart-item-col {
+        &.title {
+          span {
+            color: $clrPrimary;
+          }
+
+          p {
+            color: $clrPrimary;
+          }
+        }
+
+        &.quantity {
+          input {
+            border: 1px solid $clrPrimary;
+          }
+        }
+
+        &.price {
+          color: $clrPrimary;
+        }
+      }
+    }
+  }
+}

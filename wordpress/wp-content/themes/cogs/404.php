@@ -18,7 +18,7 @@
 
 <section class="four-oh-four">
   <div class="four-oh-four-inner">
-    <h1 class="glitch" data-text="Aw Shucks.">Aw shucks.</h1>
+    <h1 class="glitch" data-text="Flat Tire">Flat Tire.</h1>
     <p>Sorry about that.</p>
     <p>That page doesn't exist.</p>
     <a href="/" class="btn btn-arrow btn-clr-black">

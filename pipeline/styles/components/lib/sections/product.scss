@@ -21,8 +21,8 @@
     .col {
       &.details {
         flex: 1;
-        max-width: 450px;
-        min-width: 450px;
+        max-width: $BaseSidebarWidth;
+        min-width: $BaseSidebarWidth;
         height: calc(100vh - #{$offsetTop});
         min-height: 750px;
         padding-left: calc(#{$Base});

@@ -1,0 +1,73 @@
+{% comment %}
+
+Cart Item:
+The Cart Item template.
+
+@author Peter Laxalt
+@since 3/2020
+
+@todo
+Link into Shopify data.
+
+// For later
+{% if cart.item_count > 0 %}{% endif %}
+{% if cart.item_count <= 0 %}empty{% endif %}
+
+{% endcomment %}
+
+<div class="cart-item">
+  <a href="/products/vintage-team-fuji-road-bike" class="cart-item-inner">
+
+    <div class="cart-item-col cover">
+      <div class="cart-item-img">
+        <img data-src="https://source.unsplash.com/1600x900/?pink" class="lazy" alt="Title" />
+      </div>
+    </div>
+
+    <div class="cart-item-col title">
+      <span>
+        Vintage Team Fuji Road Bike
+      </span>
+      <p>
+        Vintage Team Fuji racing bike. Amazing condition with new components and tires. This rare smaller frame is
+        perfect...
+      </p>
+    </div>
+
+    <div class="cart-item-col quantity">
+      <input type="number" name="updates[]" id="updates_ADD_KEY_HERE" value="1" min="0">
+    </div>
+
+    <div class="cart-item-col price">
+      <span>
+        $250.00
+      </span>
+    </div>
+
+
+  </a>
+</div>
+
+{% comment %}
+<tr>
+  <td>
+    <a href="{{ item.url | within: collections.all }}">
+      <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+    </a>
+  </td>
+  <td>
+    <a href="{{ item.url }}">{{ item.product.title }}</a>
+    {{ item.variant.title }}
+    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a>
+  </td>
+  <td>{{ item.price | money }}</td>
+  <td>
+    <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
+  </td>
+  <td>
+    {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+    {{ item.line_price | money }}
+    {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+  </td>
+</tr>
+{% endcomment %}
