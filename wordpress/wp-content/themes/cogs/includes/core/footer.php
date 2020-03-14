@@ -120,9 +120,7 @@ $twitter = 'https://twitter.com/renobikeproject';
     <div class="footer-col">
       <div class="footer-search">
         <span class="ico"></span>
-        <form>
-          <input placeholder="Search">
-        </form>
+        <?php get_search_form(); ?>
       </div>
     </div>
   </div>
