@@ -1,0 +1,16 @@
+////////////////////////////////////////
+//
+// WYSIWYG Content Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.wysiwyg-content-section {
+    @extend article;
+
+    img {
+       //TODO: Alter WYSIWIG to give larger image and 
+       // then make it as wide as the content around it
+    }
+}
