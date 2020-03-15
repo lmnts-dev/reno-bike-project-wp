@@ -763,3 +763,12 @@ function alx_thumbnail_upscale($default, $orig_w, $orig_h, $dest_w, $dest_h, $cr
 }
 
 add_filter('image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6);
+
+
+function custom_image_size() {
+    // Set default values for the upload media box
+    update_option('image_default_align', 'center' );
+    update_option('image_default_size', 'large' );
+
+}
+add_action('after_setup_theme', 'custom_image_size');

@@ -10,7 +10,7 @@
     @extend article;
 
     img {
-       //TODO: Alter WYSIWIG to give larger image and 
-       // then make it as wide as the content around it
+       width: 100%;
+       height: auto;
     }
 }

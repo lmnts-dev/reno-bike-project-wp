@@ -10,6 +10,7 @@
 .generic-listing {
     @extend .member-row;
     max-width: $BaseMaxWidth;
+    padding-top: calc(#{$Base} * 3);
 
     .generic-listing-inner {
 
@@ -32,8 +33,12 @@
                 }
             }
 
-            .col.content-col { 
+            .col.content-col, .col.img-col { 
                 flex: 1;
+
+                .content-col-inner {
+                    max-width: calc(#{$Base} * 11.25);
+                }
             }
         }
 
