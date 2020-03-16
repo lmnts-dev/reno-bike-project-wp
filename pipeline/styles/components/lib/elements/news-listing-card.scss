@@ -2,13 +2,17 @@
 //
 // News Listing Card Component
 //
-// @author Peter Laxalt
+// @author Peter Laxalt and Alisha Garric (for responsive)
 //
 ////////////////////////////////////////
 
 .news-listing-card {
   padding: $Base / 2;
   margin-bottom: $Base;
+
+  @media (max-width: $BaseMediaMd) {
+    margin-bottom: $Base / 2;
+  }
 
   &:hover {
     background: $clrSnow;
@@ -41,6 +45,10 @@
         font-size: 32px;
         margin-bottom: $Base/4;
         color: $clrBlack;
+
+        @media (max-width: $BaseMediaMd) {
+          font-size: 24px;
+        }
       }
 
       .excerpt {

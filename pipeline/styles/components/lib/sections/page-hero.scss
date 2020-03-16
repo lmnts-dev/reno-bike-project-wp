@@ -2,7 +2,7 @@
 //
 // Home Hero Component
 //
-// @author Peter Laxalt
+// @author Peter Laxalt and Alisha Garric (for responsive)
 // @see https://codepen.io/peterlaxalt/pen/XWJyLJE
 //
 ////////////////////////////////////////
@@ -40,6 +40,10 @@
           margin-bottom: calc(#{$Base} / 2);
           -webkit-text-stroke: 1px $clrBlack;
           -webkit-text-fill-color: rgba($clrWhite, 0);
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 4rem;
+          }
         }
 
         p {
@@ -64,12 +68,28 @@
         width: 70vw;
         object-fit: cover;
 
+        @media (max-width: $BaseMediaMd) {
+          width: 85vw;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          width: 90vw;
+        }
+
         .image-wrapper {
           position: relative;
           display: flex;
           height: calc(#{$baseHeight} / 2);
           width: 70vw;
           overflow: hidden;
+
+          @media (max-width: $BaseMediaMd) {
+            width: 85vw;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            width: 90vw;
+          }
 
           img {
             @include objectFit();
@@ -82,6 +102,14 @@
       .col {
         &.content {
           padding-left: calc(#{$Base} * 2);
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base});
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
         }
       }
     }

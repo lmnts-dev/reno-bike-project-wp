@@ -2,7 +2,7 @@
 //
 // Event Listings Component
 //
-// @author Peter Laxalt
+// @author Peter Laxalt and Alisha Garric (for responsive)
 //
 ////////////////////////////////////////
 
@@ -15,13 +15,35 @@
   padding-top: $Base * 3;
   padding-bottom: $Base * 3;
 
+  @media (max-width: $BaseMediaSm) {
+    padding-left: $Base / 4;
+    padding-right: $Base / 4;
+  }
+
   .event-listings-inner {
     display: flex;
     width: 100%;
 
+    @media (max-width: $BaseMediaMd) {
+      flex-wrap: wrap;
+      max-width: $Base * 14;
+    }
+
     .event-listing-card {
       flex: 1;
       margin-right: $Base/4;
+
+      @media (max-width: $BaseMediaMd) {
+        min-width: 35%;
+
+        &:nth-of-type(2){
+          margin-right: 0;
+        }
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        margin-right: 0;
+      }
 
       &:last-child {
         margin-right: 0;
@@ -82,12 +104,20 @@
 
         &.date {
           color: $clrChrome;
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: .8rem;
+          }
         }
 
         &.title {
           font-size: 1.3rem;
           font-weight: 600;
           color: $clrBlack;
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1rem;
+          }
         }
       }
     }
