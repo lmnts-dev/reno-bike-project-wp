@@ -14,6 +14,14 @@
   padding-bottom: $Base;
   margin: 0 auto;
 
+  @media (max-width: $BaseMediaMd) {
+    padding-bottom: calc(#{$Base} / 2);
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding-bottom: 0;
+  }
+
   h3,
   h2,
   p {

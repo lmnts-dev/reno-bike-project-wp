@@ -9,16 +9,6 @@
 .member-row {
   max-width: $BaseIndentMaxWidth;
 
-  .section-header {
-    @media (max-width: $BaseMediaMd) {
-      padding-bottom: calc(#{$Base} / 2);
-    }
-
-    @media (max-width: $BaseMediaSm) {
-      padding-bottom: 0;
-    }
-  }
-
   .member-row-item {
     display: flex;
     flex-direction: row;

@@ -2,12 +2,22 @@
 //
 // Four Column Grid Section
 //
-// @author Peter Laxalt
+// @author Alisha Garric
 //
 ////////////////////////////////////////
 
+$gridSpacing: calc(#{$Base} / 3);
+
 .four-column-grid-section {
-  padding-bottom: calc(#{$Base} * 4);
+  margin-bottom: calc(#{$Base} * 4);
+
+  @media (max-width: $BaseMediaMd) {
+    margin-bottom: calc(#{$Base} * 3);
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    margin-bottom: calc(#{$Base} * 1.5);
+  }
 
   .four-column-grid-section-inner {
     display: flex;
@@ -15,16 +25,61 @@
     flex-wrap: wrap;
 
     .grid-item {
-      padding: calc(#{$Base} / 3);
+      padding: $gridSpacing;
       min-width: 21%;
       flex: 1;
 
-      &:nth-of-type(4n) {
+      //three columns
+      @media (max-width: $BaseMediaMd) {
+        min-width: 33%;
+      }
+
+      // two columns
+      @media (max-width: $BaseMediaSm) {
+        min-width: 50%;
+        padding-top: calc(#{$gridSpacing} / 2);
+        padding-bottom: calc(#{$gridSpacing} / 2);
+      }
+
+      //spacing for default four columns
+      &:nth-of-type(4n), &:last-of-type {
         padding-right: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-right: $gridSpacing;
+        }
       }
 
       &:nth-of-type(4n - 3) {
         padding-left: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-left: $gridSpacing;
+        }
+      }
+
+      //spacing for three columns
+      @media (max-width: $BaseMediaMd) {
+        &:nth-of-type(3n), &:last-of-type {
+            padding-right: 0;
+        }
+
+        &:nth-of-type(3n - 2) {
+            padding-left: 0;
+        }
+      }
+
+      //spacing for two columns
+      @media (max-width: $BaseMediaSm) {
+        &:nth-of-type(2n), &:last-of-type {
+            padding-right: 0;
+            padding-left: calc(#{$gridSpacing} / 2);
+        }
+
+        &:nth-of-type(2n - 1) {
+          padding-left: 0;
+          padding-right: calc(#{$gridSpacing} / 2);
+        }
       }
 
       .grid-item-img {
@@ -39,6 +94,7 @@
           height: 100%;
           object-fit: cover;
           object-position: 50% 50%;
+          background: $clrPlaceholder;
         }
       }
 
