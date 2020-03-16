@@ -2,18 +2,31 @@
 //
 // Editorial Row Component
 //
-// @author Peter Laxalt
+// @author Peter Laxalt and Alisha Garric (for responsive)
 //
 ////////////////////////////////////////
 
 .editorial-row {
   position: relative;
   padding-right: 0;
-  margin: $Base * 2 0;
+  margin: calc(#{$Base} * 2) 0;
+
+  @media (max-width: $BaseMediaMd) {
+    margin: calc(#{$Base} * 1.5) 0;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    margin: calc(#{$Base}) 0;
+    padding-right: calc(#{$Base} / 2);
+  }
 
   .editorial-row-inner {
     display: flex;
     flex-wrap: nowrap;
+
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+    }
 
     img {
       max-width: 100%;
@@ -24,8 +37,18 @@
       align-items: center;
 
       &.content-col {
-        padding: $Base * 3 $Base;
+        padding: calc(#{$Base} * 3) calc(#{$Base});
         width: 40%;
+
+        @media (max-width: $BaseMediaMd) {
+          padding: calc(#{$Base}) calc(#{$Base} * 0.75) calc(#{$Base}) 0;
+          width: 50%;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          padding-right: 0;
+          width: 100%;
+        }
 
         .content-col-inner {
           width: 100%;
@@ -51,6 +74,14 @@
         width: 60%;
         justify-content: space-between;
 
+        @media (max-width: $BaseMediaMd) {
+          width: 50%;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          width: 100%;
+        }
+
         .editorial-row-img {
           width: 100%;
           padding-bottom: 80%;
@@ -65,6 +96,10 @@
         &.img-col-alt {
           .editorial-row-img {
             max-width: 47%;
+
+            @media (max-width: $BaseMediaSm) {
+              max-width: 100%;
+            }
 
             &:first-child {
               margin-top: $Base * 4;
@@ -84,13 +119,37 @@
     padding-right: $BaseGutterRight;
     padding-left: 0;
 
+    @media (max-width: $BaseMediaMd) {
+      padding-right: calc(#{$Base} * 0.75);
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      display: flex;
+      flex-direction: column-reverse;
+      padding-right: calc(#{$Base} / 2);
+    }
+
     .editorial-row-inner {
       flex-direction: row-reverse;
 
       .col {
         justify-content: center;
 
+        &.content-col {
+          @media (max-width: $BaseMediaMd) {
+            padding: calc(#{$Base}) 0 calc(#{$Base}) calc(#{$Base} * 0.75);
+          }
+          @media (max-width: $BaseMediaSm) {
+            justify-content: flex-start;
+            padding-left: calc(#{$Base} / 2); 
+          }
+        }
+
         &.img-col {
+          @media (max-width: $BaseMediaSm) {
+            padding-left: calc(#{$Base} / 2); 
+          }
+
           &.img-col-alt {
             justify-content: space-between;
           }
