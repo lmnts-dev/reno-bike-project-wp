@@ -16,6 +16,10 @@
     padding: calc(#{$Base} * 1.5) 0;
     border-bottom: 1px solid rgba($clrGunmetal, 0.1);
 
+    @media (max-width: $BaseMediaMd) {
+      padding: calc(#{$Base} * 1.25) 0;
+    }
+
     @media (max-width: $BaseMediaSm) {
       display: block;
       padding: calc(#{$Base}) 0;
@@ -66,7 +70,7 @@
 
       @media (max-width: $BaseMediaSm) {
         max-width: calc(#{$Base} * 8);
-        padding-bottom: calc(#{$Base});
+        padding-bottom: calc(#{$Base} / 1.5);
       }
 
       .member-row-img {
@@ -109,6 +113,14 @@
 
         .h5 {
           margin-bottom: calc(#{$Base} / 1.5);
+
+          @media (max-width: $BaseMediaMd) {
+            margin-bottom: calc(#{$Base} / 2);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            margin-bottom: calc(#{$Base} / 3);
+          }
         }
       }
     }

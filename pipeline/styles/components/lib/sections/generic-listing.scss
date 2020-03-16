@@ -10,7 +10,11 @@
 .generic-listing {
     @extend .member-row;
     max-width: $BaseMaxWidth;
-    padding-top: calc(#{$Base} * 3);
+    margin-top: calc(#{$Base} * 3);
+
+    @media (max-width: $BaseMediaSm) {
+        margin-top: calc(#{$Base} * 1.5);
+    }
 
     .generic-listing-inner {
 
@@ -22,6 +26,14 @@
 
                 .col.content-col {
                     padding: 0 0 0 calc(#{$Base} * 2);
+                    @media (max-width: $BaseMediaMd) {
+                        padding-left: calc(#{$Base} / 1.5);
+                        padding-right: 0;
+                    }
+
+                    @media (max-width: $BaseMediaSm) {
+                        padding-left: 0;
+                    }
                 }
             }
 
