@@ -7,19 +7,45 @@
 ////////////////////////////////////////
 
 .basic-section {
-    padding-bottom: $Base;
+    padding-bottom: $Base * 2;
+
+    @media (max-width: $BaseMediaMd) {
+        padding-bottom: $Base * 1.5;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+        padding-bottom: $Base;
+    }
 
     .basic-section-inner {
         max-width: $Base * 24;
+
+        @media (max-width: $BaseMediaMd) {
+            max-width: $Base * 20;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 
     a.btn {
         margin-right: $Base;
         margin-top: $Base / 2;
 
+        @media (max-width: $BaseMediaSm) {
+            margin-top: $Base / 4;
+        }
+
         &:last-of-type {
             margin-right: 0;
         }
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
     }
 
     .section-header {
@@ -30,7 +56,18 @@
 
         .section-header * {
             text-align: left;
+        }
 
+        a.btn-border-black, a.btn-border-black ~ .btn {
+            @media (max-width: $BaseMediaMd) {
+                margin-top: $Base / 1.5;
+            }
+        }
+
+        a.btn-border-black ~ .btn {
+            @media (max-width: $BaseMediaSm) {
+                margin-top: $Base / 4;
+            }
         }
 
         .section-header {
@@ -45,10 +82,19 @@
 
         .squiggle {
             @extend .squiggle-vertical;
+
+            @media (max-width: $BaseMediaSm) {
+                top: $Base * -2;
+            }
         }
 
         .basic-section-inner { 
-            margin: $Base * 4 auto 0 auto;
+            margin: $Base * 5.5 auto 0 auto;
+
+            @media (max-width: $BaseMediaSm) {
+                margin: $Base * 4.5 auto 0 auto;
+                align-items: center;
+            }
         }
     }
 }
