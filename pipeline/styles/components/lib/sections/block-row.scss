@@ -2,7 +2,7 @@
 //
 // Block Row Component
 //
-// @author Peter Laxalt
+// @author Peter Laxalt and Alisha Garric (for responsive)
 // @since 2/2020
 //
 ////////////////////////////////////////
@@ -11,6 +11,10 @@
   .block-row-inner {
     display: flex;
 
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+    }
+
     &.block-row-reverse {
       flex-direction: row-reverse;
 
@@ -18,11 +22,27 @@
         &:first-child {
           padding-left: $Base / 2;
           padding-right: 0px;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base} / 3);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
         }
 
         &:last-child {
           padding-left: 0px;
           padding-right: $Base / 2;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-right: calc(#{$Base} / 3);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-right: 0;
+          }
         }
       }
     }
@@ -31,6 +51,14 @@
       flex: 1;
       flex-shrink: 0;
       padding: $Base/2;
+
+      @media (max-width: $BaseMediaMd) {
+        padding: calc(#{$Base} / 3);
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding: calc(#{$Base} / 8) 0;
+      }
 
       img {
         max-width: 100%;
@@ -41,8 +69,16 @@
         max-width: 33%;
         padding-left: 0;
 
+        @media (max-width: $BaseMediaSm) {
+          max-width: 100%;
+        }
+
         .block-item-inner {
           padding-bottom: 100%;
+
+          @media (max-width: $BaseMediaSm) {
+            padding-bottom: 33%;
+          }
         }
       }
 

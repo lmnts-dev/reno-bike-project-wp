@@ -45,6 +45,15 @@
         p {
           max-width: $baseMaxWidth;
           font-size: 1.6rem;
+
+          &:last-of-type {
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.2rem;
+          }
         }
       }
 
@@ -156,14 +165,20 @@
     &.layout-5 {
       flex-direction: column-reverse;
       align-items: flex-end;
+
       .col {
         &.image {
           position: relative;
           right: #{$gutterOffset};
           width: 90vw;
 
-          .image-wrapper {
+          @media (max-width: $BaseMediaSm) {
             width: 100%;
+            right: 0;
+          }
+
+          .image-wrapper {
+            width: calc(100% + #{$Base / 2});
           }
         }
 
@@ -173,12 +188,25 @@
           right: #{$gutterOffset};
           position: relative;
 
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc(#{$Base} * 1.5);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            right: 0;
+            width: 100%;
+          }
+
           &:after {
             @extend .squiggle;
             position: absolute;
             content: "";
             top: calc(#{$Base} * 1.5);
             left: 0;
+
+            @media (max-width: $BaseMediaMd) {
+              top: calc(#{$Base} * 0.75);
+            }
           }
 
           h1 {
@@ -188,6 +216,10 @@
             margin-bottom: calc(#{$Base} / 2);
             -webkit-text-stroke: none;
             -webkit-text-fill-color: $clrBlack;
+
+            @media (max-width: $BaseMediaMd) {
+              margin-bottom: 0;
+            }
           }
         }
       }
