@@ -133,6 +133,10 @@
             width: 100%;
             line-height: 1;
             max-width: 400px;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1.2rem;
+            }
           }
 
           // Hovers

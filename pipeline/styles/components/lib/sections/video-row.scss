@@ -37,6 +37,8 @@
 
     .video-toggle {
       $buttonSize: calc(#{$Base} * 5);
+      $buttonSizeMd: calc(#{$Base} * 4);
+      $buttonSizeSm: calc(#{$Base} * 3);
 
       position: absolute;
       top: 50%;
@@ -44,13 +46,23 @@
       transform: translate(-50%, -50%);
       z-index: 10;
       background: rgba($clrWhite, 0.5);
-      width: calc(#{$Base} * 5);
-      height: calc(#{$Base} * 5);
+      width: $buttonSize;
+      height: $buttonSize;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       cursor: pointer;
+
+      @media (max-width: $BaseMediaMd) {
+        width: $buttonSizeMd;
+        height: $buttonSizeMd;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        width: $buttonSizeSm;
+        height: $buttonSizeSm;
+      }
 
       &:hover {
         background: rgba($clrWhite, 0.8);
@@ -72,6 +84,18 @@
         right: calc((#{$Base} / 4) * -1);
         pointer-events: none;
         cursor: pointer;
+
+        @media (max-width: $BaseMediaMd) {
+          border-top: calc(#{$buttonSizeMd} * 0.25) solid transparent;
+          border-bottom: calc(#{$buttonSizeMd} * 0.25) solid transparent;
+          border-left: calc(#{$buttonSizeMd} * 0.25) solid $clrBlack;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          border-top: calc(#{$buttonSizeSm} * 0.25) solid transparent;
+          border-bottom: calc(#{$buttonSizeSm} * 0.25) solid transparent;
+          border-left: calc(#{$buttonSizeSm} * 0.25) solid $clrBlack;
+        }
 
         &:hover {
           border-left-color: $clrPrimary;

@@ -19,6 +19,10 @@
   $baseWidth: 50%;
   $baseMaxWidth: 650px;
 
+  @media (max-width: $BaseMediaSm) {
+    padding-top: $BaseNavSizeSm;
+  }
+
   .page-hero-inner {
     display: flex;
     width: 100%;
