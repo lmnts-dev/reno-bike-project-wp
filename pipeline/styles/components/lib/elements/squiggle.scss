@@ -8,13 +8,56 @@
   background: $clrGold;
 }
 
-  .squiggle-vertical {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    left: 50%;
-    top: -100px;
-    z-index: 200;
-    transform: translateY(-50%);
-    background: $clrOrange;
+.squiggle-vertical:not(.squiggle-svg) {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  left: 50%;
+  top: -100px;
+  z-index: 200;
+  transform: translateY(-50%);
+  background: $clrOrange;
+}
+
+$longHeight: 189px;
+$shortHeight: 105px;
+$longTranslate: 140px;
+$shortTranslate: 60px;
+
+.squiggle-svg {
+  display: block;
+  margin-bottom: calc(#{$Base} * 0.75);
+  width: $longHeight;
+
+  svg {
+    &:nth-of-type(2) {
+      transform: translateX(-10px);
+    }
   }
+
+  &.squiggle-orange path {
+    stroke: $clrOrange;
+  }
+
+  &.squiggle-pink path {
+    stroke: $clrPrimary;
+  }
+
+  &.squiggle-short {
+    svg:first-of-type {
+      display: none;
+    }
+
+    &.squiggle-vertical {
+      height: $shortHeight;
+      width: $shortHeight;
+      transform: rotate(90deg) translateY(#{$shortTranslate});
+    }
+  }
+
+  &.squiggle-vertical {
+    transform: rotate(90deg) translateY(#{$longTranslate});
+    height: $longHeight;
+    margin-bottom: 0;
+  }
+}

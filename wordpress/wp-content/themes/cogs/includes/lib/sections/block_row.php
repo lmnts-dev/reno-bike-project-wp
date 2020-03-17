@@ -58,7 +58,8 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
 
     <div class="section-header split">
       <h3>
-        <span class="squiggle"></span>
+        
+        <div class="squiggle-svg squiggle-orange squiggle-vertical squiggle-short"><?php require_once ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>Community Programs</span>
       </h3>
       <p>
