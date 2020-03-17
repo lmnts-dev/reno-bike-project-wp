@@ -56,7 +56,7 @@ if (get_row_layout() == 'press_listings' || $rowLayout == 'press_listings') {
     <div class="press-listings-inner">
       <div class="section-header split">
         <h3>
-          <span class="squiggle"></span>
+        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
           <span>Press & Media</span>
         </h3>
         <p>

@@ -20,7 +20,7 @@
     <div class="top">
       <div class="col">
         <h3>
-          <span class="squiggle"></span>
+        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
           <span>Subscribe to our Newsletter</span>
         </h3>
       </div>

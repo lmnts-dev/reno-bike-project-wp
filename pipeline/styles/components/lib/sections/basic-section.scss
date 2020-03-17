@@ -89,10 +89,10 @@
         }
 
         .basic-section-inner { 
-            margin: $Base * 5.5 auto 0 auto;
+            margin: $Base * 1.5 auto 0 auto;
 
             @media (max-width: $BaseMediaSm) {
-                margin: $Base * 4.5 auto 0 auto;
+                margin: $Base auto 0 auto;
                 align-items: center;
             }
         }

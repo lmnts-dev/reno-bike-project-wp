@@ -20,7 +20,7 @@ if (get_row_layout() == 'accordion_row' || $rowLayout == 'accordion_row') {
   <section class="accordion-row <?php echo get_sub_field('layout'); ?> accordion-row-<?php echo $idx ?>">
     <div class="section-header split">
       <h3 class="h1">
-        <span class="squiggle"></span>
+        <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>
           Reports & Financials
         </span>

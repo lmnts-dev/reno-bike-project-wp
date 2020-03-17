@@ -25,7 +25,7 @@ if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
     <div class="editorial-row-inner">
       <div class="col content-col">
         <div class="content-col-inner">
-          <span class="squiggle"></span>
+        <div class="squiggle-svg"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
           <h4>
             <?php echo get_sub_field('headline'); ?>
           </h4>

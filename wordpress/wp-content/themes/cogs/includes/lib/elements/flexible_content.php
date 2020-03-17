@@ -9,7 +9,7 @@
 
 <?php } else if ( get_row_layout() == "squiggly") { ?>
     <!-- TO DO apply get_sub_field('squiggle_color')-->
-    <span class="squiggle"></span>
+    <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
 
 
 <?php } else if ( get_row_layout() == "icon") { ?>

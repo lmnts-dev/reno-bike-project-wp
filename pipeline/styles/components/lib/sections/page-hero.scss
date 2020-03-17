@@ -46,6 +46,10 @@
           }
         }
 
+        .squiggle-svg {
+          display: none;
+        }
+
         p {
           max-width: $baseMaxWidth;
           font-size: 1.6rem;
@@ -211,13 +215,13 @@
         }
 
         &.content {
-          padding-top: calc(#{$Base} * 3);
+          padding-top: calc(#{$Base} * 1.5);
           width: 90vw;
           right: #{$gutterOffset};
           position: relative;
 
           @media (max-width: $BaseMediaMd) {
-            padding-top: calc(#{$Base} * 1.5);
+            padding-top: calc(#{$Base});
           }
 
           @media (max-width: $BaseMediaSm) {
@@ -225,16 +229,8 @@
             width: 100%;
           }
 
-          &:after {
-            @extend .squiggle;
-            position: absolute;
-            content: "";
-            top: calc(#{$Base} * 1.5);
-            left: 0;
-
-            @media (max-width: $BaseMediaMd) {
-              top: calc(#{$Base} * 0.75);
-            }
+          .squiggle-svg {
+            display: block;
           }
 
           h1 {
@@ -247,6 +243,10 @@
 
             @media (max-width: $BaseMediaMd) {
               margin-bottom: 0;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              margin-top: 0;
             }
           }
         }

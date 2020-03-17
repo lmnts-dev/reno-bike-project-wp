@@ -37,7 +37,7 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
 
     <div class="section-header">
       <h3>
-        <span class="squiggle vertical"></span>
+      <div class="squiggle-svg squiggle-orange squiggle-short squiggle-centered squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>Upcoming Events</span>
       </h3>
     </div>

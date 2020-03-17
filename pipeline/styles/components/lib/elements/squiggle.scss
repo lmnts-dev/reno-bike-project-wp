@@ -19,7 +19,7 @@
   background: $clrOrange;
 }
 
-$longHeight: 189px;
+$longHeight: 190px;
 $shortHeight: 105px;
 $longTranslate: 140px;
 $shortTranslate: 60px;
@@ -28,6 +28,11 @@ $shortTranslate: 60px;
   display: block;
   margin-bottom: calc(#{$Base} * 0.75);
   width: $longHeight;
+  pointer-events: none;
+
+  @media(max-width: $BaseMediaSm) {
+    margin-bottom: calc(#{$Base} / 2);
+  }
 
   svg {
     &:nth-of-type(2) {
@@ -59,5 +64,18 @@ $shortTranslate: 60px;
     transform: rotate(90deg) translateY(#{$longTranslate});
     height: $longHeight;
     margin-bottom: 0;
+  }
+
+  &.squiggle-centered {
+    margin: 0 auto;
+    transform: rotate(90deg) translateY(#{$shortTranslate});
+
+    &.squiggle-vertical {
+      margin: 0 auto;
+    }
+
+    &.squiggle-short {
+      transform: rotate(90deg) translateY(#{$shortTranslate / 1.5});
+    }
   }
 }
