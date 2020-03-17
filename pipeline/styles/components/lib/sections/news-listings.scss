@@ -13,25 +13,43 @@
   padding-left: $BaseCardGutters;
   padding-right: $BaseCardGutters;
 
-  .squiggle {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    left: 50%;
-    top: -100px;
-    z-index: 200;
-    transform: translateY(-50%);
-    background: $clrOrange;
+  @media (max-width: $BaseMediaSm) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .squiggle-svg.squiggle-centered.squiggle-short {
+    @media (max-width: $BaseMediaSm) {
+      transform: none;
+      margin: 0 0 0 $BaseGutterLeftSm;
+      height: auto;
+
+    }
   }
 
   .news-listings-header {
     position: relative;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
 
     a {
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
+
+      @media (max-width: $BaseMediaSm) {
+        position: relative;
+        transform: none;
+        top: auto;
+        right: auto;
+      }
     }
 
     h3 {
@@ -39,6 +57,10 @@
       font-weight: 600;
       margin-bottom: $Base;
       margin-top: $Base / 4;
+
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: $Base / 4;
+      }
     }
   }
 

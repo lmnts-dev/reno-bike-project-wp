@@ -32,6 +32,10 @@ $shortTranslate: 60px;
       display: none;
     }
 
+    svg:nth-of-type(2) {
+      transform: none;
+    }
+
     &.squiggle-vertical {
       height: $shortHeight;
       width: $shortHeight;

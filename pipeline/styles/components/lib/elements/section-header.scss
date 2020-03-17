@@ -64,9 +64,17 @@
     flex-direction: row;
     justify-content: space-between;
 
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+    }
+
     h3,
     h2 {
       max-width: 650px;
+      
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: 0;
+      }
     }
 
     h3,
@@ -80,6 +88,11 @@
       width: auto;
       max-width: 450px;
       padding-left: $Base/2;
+
+      @media (max-width: $BaseMediaSm) {
+        padding-left: 0;
+        padding-top: 0;
+      }
     }
   }
 }
