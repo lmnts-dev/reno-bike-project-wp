@@ -69,6 +69,10 @@ header {
           display: flex;
           align-items: center;
           padding: 0 $Base/2;
+
+          @media (max-width: $BaseMediaSm) {
+            padding: 0 $Base/4;
+          }
         }
 
         // Bottom Underlines
@@ -229,6 +233,10 @@ header {
       align-items: center;
       height: $BaseNavSizeLg;
 
+      @media (max-width: $BaseMediaSm) {
+        height: $BaseNavSizeSm;
+      }
+
       // Branding Column
       &.nav-col-1 {
         // Branding itself
@@ -239,6 +247,10 @@ header {
           align-items: center;
           justify-content: center;
           background: $clrPrimary; // Default
+
+          @media (max-width: $BaseMediaSm) {
+            width: $BaseNavSizeSm;
+          }
 
           // For Shopify
           &.nav-shop {
@@ -281,6 +293,13 @@ header {
         }
       }
 
+      //Main Links
+      &.nav-col-2 {
+        @media( max-width: $BaseNavBreak ){
+          display: none;
+        }
+      }
+
       // CTA Column
       &.nav-col-3 {
         .nav-cta {
@@ -296,6 +315,10 @@ header {
             padding: 0 $Base;
             background: $clrPrimary;
             color: $clrWhite;
+
+            @media (max-width: $BaseMediaSm) {
+              padding: 0 $Base / 2;
+            }
 
             &:visited,
             &:active {

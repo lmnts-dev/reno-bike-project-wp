@@ -32,9 +32,63 @@ footer {
     width: 100%;
     padding: $Base * 2 0;
     margin: 0;
+    font-size: .9rem;
+    @media (max-width: $BaseMediaMd) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      flex-direction: column;
+      padding-bottom: $Base / 2;
+    }
 
     .footer-col {
-      width: 25%;
+      flex: 1;
+      padding-right: $Base / 1.5;
+
+      @media (max-width: $BaseMediaMd) {
+        order: 2;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: $Base;
+      }
+
+      //search bar
+      &:last-of-type {
+        padding-right: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          order: 1;
+          margin-bottom: $Base * 1.5;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          margin-bottom: $Base;
+        }
+      }
+
+      // copywright/legal and search bar
+      &:last-of-type, &:first-of-type {
+        flex: 2;
+
+        @media (max-width: $BaseMediaMd) {
+          min-width: 100%;
+        }
+      }
+
+      //copywright/legal
+      &:first-of-type {
+        @media (max-width: $BaseMediaMd) {
+          margin-top: $Base * 1.5;
+          order: 4;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          margin-bottom: 0;
+          margin-top: $Base / 2;
+        }
+      }
 
       // Base Column Styles
 
@@ -57,10 +111,12 @@ footer {
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 1.4px;
+        white-space: nowrap;
       }
 
       .copyright {
         font-weight: bold;
+        font-size: .7rem;
         margin-bottom: $Base/3;
       }
 
@@ -145,6 +201,10 @@ footer {
         color: $clrGunmetal;
         position: relative;
         top: -5px;
+
+        @media (max-width: $BaseMediaSm) {
+          font-size: 1.4rem;
+        }
       }
 
       // Footer Info Rows
@@ -156,6 +216,10 @@ footer {
           font-weight: 600;
           margin-right: $Base/4;
         }
+
+        a {
+          white-space: nowrap;
+        }
       }
 
       // Footer Search
@@ -164,8 +228,18 @@ footer {
         border-radius: none;
         display: flex;
         align-items: center;
+        margin-left: auto;
+        margin-right: 0;
         border-bottom: 2px solid $clrBlack;
         top: -10px;
+        width: 80%;
+
+        @media (max-width: $BaseMediaMd) {
+          width: 100%;
+          max-width: $Base * 9;
+          margin-left: 0;
+          margin-right: auto;
+        }
 
         .ico {
           width: $Base * 0.7;
@@ -173,6 +247,11 @@ footer {
           border: 2px solid $clrPrimary;
           border-radius: 50%;
           display: block;
+
+          @media (max-width: $BaseMediaSm) {
+            width: $Base / 2;
+            height: $Base / 2;
+          }
         }
 
         form {
@@ -182,6 +261,10 @@ footer {
             background: none;
             color: $clrBlack;
             font-size: 1.8rem;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1rem;
+            }
           }
         }
       }

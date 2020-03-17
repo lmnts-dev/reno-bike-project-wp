@@ -1,24 +1,3 @@
-//TODO: Remove once we add real squiggle
-.squiggle {
-  display: block;
-  line-height: 0;
-  width: 100px;
-  height: 2px;
-  margin-bottom: $Base / 2;
-  background: $clrGold;
-}
-
-.squiggle-vertical:not(.squiggle-svg) {
-  position: absolute;
-  width: 2px;
-  height: 100px;
-  left: 50%;
-  top: -100px;
-  z-index: 200;
-  transform: translateY(-50%);
-  background: $clrOrange;
-}
-
 $longHeight: 190px;
 $shortHeight: 105px;
 $longTranslate: 140px;
@@ -36,7 +15,7 @@ $shortTranslate: 60px;
 
   svg {
     &:nth-of-type(2) {
-      transform: translateX(-10px);
+      transform: translateX(-9px);
     }
   }
 

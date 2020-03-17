@@ -48,8 +48,10 @@ $twitter = 'https://twitter.com/renobikeproject';
 
 ?>
 
-</div> <?php #/.wrapper 
-        ?>
+</div> 
+
+<?php #/.wrapper ?>
+
 </main>
 <footer>
   <div class="footer-inner">
