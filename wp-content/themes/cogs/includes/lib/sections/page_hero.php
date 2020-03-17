@@ -27,6 +27,7 @@ if (get_row_layout() == 'page_hero' || $rowLayout == 'page_hero') {
   <section class="page-hero page-hero-<?php echo $idx ?>">
     <div class="page-hero-inner layout-<?php echo $layout ?>">
       <div class="col content">
+        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <h1>
           <?php echo $headline ?>
         </h1>

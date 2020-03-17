@@ -31,7 +31,7 @@ if (get_row_layout() == 'four_column_grid_section' || $rowLayout == 'four_column
 
     <div class="section-header split">
       <h2>
-        <span class="squiggle"></span>
+      <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
 
         <span>
           Board of Directors
