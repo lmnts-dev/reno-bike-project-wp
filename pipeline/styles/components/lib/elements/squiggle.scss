@@ -1,7 +1,12 @@
 $longHeight: 190px;
 $shortHeight: 105px;
-$longTranslate: 140px;
-$shortTranslate: 60px;
+$longTranslate: $longHeight * 0.73;
+$shortTranslate: $shortHeight * 0.57;
+
+$longHeightSm: 150px;
+$shortHeightSm: 83px;
+$longTranslateSm: $longHeightSm * 0.73;
+$shortTranslateSm: $shortHeightSm * 0.93;
 
 .squiggle-svg {
   display: block;
@@ -9,14 +14,25 @@ $shortTranslate: 60px;
   width: $longHeight;
   pointer-events: none;
 
-  @media(max-width: $BaseMediaSm) {
+  @media (max-width: $BaseMediaSm) {
+    width: $longHeightSm;
     margin-bottom: calc(#{$Base} / 2);
+
+    .short-squiggle-line {
+      width: $shortHeightSm;
+    }
+
+    .addon-squiggle-line {
+      width: $longHeightSm - $shortHeightSm - 5px;
+    }
+
+    svg:nth-of-type(2) {
+      transform: translateX(-5px);
+    }
   }
 
-  svg {
-    &:nth-of-type(2) {
+  svg:nth-of-type(2) {
       transform: translateX(-9px);
-    }
   }
 
   &.squiggle-orange path {
@@ -53,12 +69,20 @@ $shortTranslate: 60px;
     margin: 0 auto;
     transform: rotate(90deg) translateY(#{$shortTranslate});
 
+    @media (max-width: $BaseMediaSm) {
+      transform: rotate(90deg) translateY(#{$shortTranslateSm});
+    }
+
     &.squiggle-vertical {
       margin: 0 auto;
     }
 
     &.squiggle-short {
       transform: rotate(90deg) translateY(#{$shortTranslate / 1.5});
+
+      @media (max-width: $BaseMediaSm) {
+        transform: rotate(90deg) translateY(#{$shortTranslateSm / 1.5});
+      }
     }
   }
 }
