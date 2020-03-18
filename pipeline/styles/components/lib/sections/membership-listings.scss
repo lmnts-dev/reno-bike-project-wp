@@ -11,9 +11,15 @@
   .membership-listings-inner {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
 
     .membership-listing-card {
-      width: 50%;
+      flex: 1;
+      min-width: 40%;
+
+      @media (max-width: $BaseMediaSm) {
+        min-width: 100%;
+      }
     }
   }
 }
@@ -22,12 +28,28 @@
 .membership-listing-card {
   padding: $Base;
 
+  @media (max-width: $BaseMediaMd) {
+    padding: $Base / 2 0;
+
+    &:nth-of-type(odd){
+      padding-right: $Base / 2;
+
+      @media (max-width: $BaseMediaSm) {
+        padding-right: 0;
+      }
+    }
+  }
+
   .membership-listing-card-inner {
     background: $clrAsphalt;
 
     .card-top,
     .card-bottom {
       padding: $Base;
+
+      @media (max-width: $BaseMediaMd) {
+        padding: $Base * 0.75;
+      }
     }
 
     .card-top {
@@ -51,6 +73,14 @@
         .name {
           font-weight: 600;
           font-size: 1.9rem;
+
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.6rem;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1.4rem;
+          }
         }
       }
 
@@ -62,6 +92,14 @@
         color: $clrPrimary;
         font-size: 1.4rem;
         padding: $Base/3;
+
+        @media (max-width: $BaseMediaMd) {
+          font-size: 1.3rem;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          font-size: 1.2rem;
+        }
       }
     }
 
@@ -74,6 +112,10 @@
         padding-bottom: $Base/2;
         font-size: 0.8rem;
         display: block;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-bottom: 0;
+        }
       }
 
       .content {
@@ -82,11 +124,22 @@
         ul,
         p {
           font-size: 1.2rem;
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.1rem;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1rem;
+          }
         }
 
         ul {
           padding-bottom: $Base/2;
           line-height: 2;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-bottom: 0;
+          }
         }
       }
     }

@@ -104,10 +104,19 @@
             &:first-child {
               margin-top: $Base * 4;
               padding-bottom: 50%;
+
+              @media (max-width: $BaseMediaSm) {
+                margin-top: 0;
+              }
             }
             &:last-child {
               margin-bottom: $Base * 2;
               padding-bottom: 65%;
+
+              @media (max-width: $BaseMediaSm) {
+                margin-left: $Base / 2;
+                margin-bottom: 0;
+              }
             }
           }
         }
