@@ -26,7 +26,11 @@
 
     @media (max-width: $BaseMediaMd) {
       flex-wrap: wrap;
-      max-width: $Base * 14;
+      max-width: $BaseIndentMaxWidthMd
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      max-width: 100%;
     }
 
     .event-listing-card {

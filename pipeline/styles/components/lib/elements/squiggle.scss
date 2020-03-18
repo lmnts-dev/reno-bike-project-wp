@@ -13,6 +13,7 @@ $shortTranslateSm: $shortHeightSm * 0.93;
   margin-bottom: calc(#{$Base} * 0.75);
   width: $longHeight;
   pointer-events: none;
+  display: flex;
 
   @media (max-width: $BaseMediaSm) {
     width: $longHeightSm;
@@ -23,11 +24,11 @@ $shortTranslateSm: $shortHeightSm * 0.93;
     }
 
     .addon-squiggle-line {
-      width: $longHeightSm - $shortHeightSm - 5px;
+      width: $longHeightSm - $shortHeightSm - 8px;
     }
 
     svg:nth-of-type(2) {
-      transform: translateX(-5px);
+      transform: translateX(-7px);
     }
   }
 

@@ -14,6 +14,8 @@
   padding-bottom: $Base * 2;
 
   .section-header {
+    align-items: flex-start;
+
     h3 {
       color: $clrPrimary;
     }
@@ -24,21 +26,59 @@
     flex-wrap: nowrap;
     padding: $Base/2;
     width: 100%;
+    @media (max-width: $BaseMediaMd) {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     form {
       display: flex;
       justify-content: space-between;
       width: 100%;
+      @media (max-width: $BaseMediaMd) {
+        flex-wrap: wrap;
+      }
 
       .col {
         display: flex;
         align-items: center;
         width: 25%;
 
+        @media (max-width: $BaseMediaMd) {
+          &.col-fname, &.col-lname {
+            flex: 1;
+          }
+
+          &.col-lname .input-outer {
+            padding-right: 0;
+          }
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          &.col-fname .input-outer {
+            padding-right: calc(#{$Base} / 2);
+          }
+        }
+
         &.col-email {
           width: 50%;
           display: flex;
           justify-content: space-between;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc(#{$Base});
+            min-width: 100%;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            flex-wrap: wrap;
+            padding-top: calc(#{$Base} / 2);
+
+            .col-submit {
+              min-width: 100%;
+              margin-top: calc(#{$Base});
+            }
+          }
 
           .col {
             width: unset;
@@ -48,6 +88,9 @@
 
               .input-outer {
                 padding-right: $Base;
+                @media (max-width: $BaseMediaSm) {
+                  padding-right: 0;
+                }
               }
             }
 
@@ -79,6 +122,10 @@
             background: none;
             border-bottom: $clrWhite 1px solid;
             color: $clrWhite;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1rem;
+            }
 
             &:focus,
             &:active {

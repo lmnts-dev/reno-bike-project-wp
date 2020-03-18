@@ -33,12 +33,14 @@
       &.content {
         z-index: 10;
         padding-top: calc((#{$baseHeight} / 2) - (#{$baseFontSize} / 2));
+        width: 100%;
 
         h1 {
           font-size: 10vw;
-          max-width: $baseMaxWidth;
+       //   max-width: $baseMaxWidth;
           word-wrap: none;
         //  white-space: nowrap;
+          margin-top: 0;
           font-weight: 700;
           line-height: 1;
           margin-bottom: calc(#{$Base} / 2);

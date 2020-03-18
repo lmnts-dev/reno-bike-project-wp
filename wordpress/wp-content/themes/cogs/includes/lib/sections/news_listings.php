@@ -99,6 +99,12 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
         #/forEach 
       } ?>
 
+      <div class="mobile-btn">
+        <a href="/news-and-press" class="btn btn-border-black">
+            All Latest Posts
+        </a>
+      </div>
+
     </div>
   </section>
 
