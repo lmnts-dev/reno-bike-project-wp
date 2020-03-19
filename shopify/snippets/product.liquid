@@ -108,6 +108,12 @@ Begin product page component
 
       </div>
 
+      <div class="specifics-outer mobile-visible">
+        {% include 'accordion-row' id:1, headline: 'Details', content: accordionContent %}
+        {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: accordionContent %}
+        {% include 'accordion-row' id:3, headline: 'Shipping', content: accordionContent %}
+      </div>
+
       <div class="details-bottom">
         <span>
           Keep Browsing
