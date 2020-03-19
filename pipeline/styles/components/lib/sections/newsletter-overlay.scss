@@ -27,14 +27,28 @@
   // Close button
   .btn-close {
     position: absolute;
-    right: $Base;
-    top: $Base;
+    right: $Base * 0.75;
+    top: $Base * 1.25;
+    pointer-events: all;
+    z-index: 999;
+
+    @media (max-width: $BaseMediaMd) {
+      right: $Base / 2;
+      top: $Base / 2;
+    }
 
     span {
       position: relative;
       display: block;
-      width: calc(#{$Base} * 3);
-      height: calc(#{$Base} * 3);
+      max-width: calc(#{$Base} * 3);
+      max-height: calc(#{$Base} * 3);
+      width: 10vw;
+      height: 10vw;
+
+      @media (max-width: $BaseMediaMd) {
+        width: $Base;
+        height: $Base;
+      }
 
       &:hover {
         background: rgba($clrBlack, 0.04);
@@ -48,10 +62,15 @@
       &:after {
         content: "";
         position: absolute;
-        width: calc(#{$Base} * 3);
+        max-width: calc(#{$Base} * 3);
         height: 2px;
         background: $clrPrimary;
         top: 50%;
+        width: 10vw;
+
+        @media (max-width: $BaseMediaMd) {
+          width: $Base;
+        }
       }
 
       &:before {
@@ -73,15 +92,33 @@
     padding: $BaseGutterLeft;
     margin: 0;
 
+    @media (max-width: $BaseMediaSm) {
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+    }
+
     .top {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       padding-bottom: $Base;
 
+      @media (max-width: $BaseMediaMd) {
+        align-items: flex-start;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        display: block;
+        padding-bottom: $Base / 4;
+      }
+
       .col {
         width: 50%;
         padding: $Base/4;
+
+        @media (max-width: $BaseMediaSm) {
+          width: 100%;
+        }
 
         h3 {
           font-weight: 600;
@@ -118,6 +155,11 @@
                 height: $Base * 1.5;
                 background: none;
                 border-bottom: 2px solid $clrBlack;
+
+                @media (max-width: $BaseMediaMd) {
+                  font-size: 1rem;
+                  height: $Base;
+                }
               }
             }
 
