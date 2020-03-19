@@ -29,6 +29,10 @@
         @media (max-width: $BaseMediaMd ){
           width: $Base * 7;
         }
+
+        @media (max-width: $BaseMediaSm ){
+          width: 40%;
+        }
       }
 
       .view-all-card {
@@ -38,7 +42,9 @@
 
         @media (max-width: $BaseMediaSm ){
           padding: $Base / 4 $Base / 4 $Base / 4 0;
-          width: $Base * 2.5;
+          max-width: $Base * 2.5;
+          width: 15%;
+          min-width: $Base * 1.25;
         }
 
         .view-all-card-inner {
@@ -50,6 +56,11 @@
           font-weight: 600;
           padding: $Base / 2;
           position: relative;
+
+          @media (max-width: $BaseMediaSm ){
+            font-size: 1rem;
+            padding: 0;
+          }
 
           &:hover {
             background: $clrBlack;
