@@ -186,13 +186,25 @@ p {
     font-size: 1.2rem;
     margin-top: #{$Base};
 
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$Base} / 2);
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: calc(#{$Base} / 4);
+    }
+
     li {
       padding-left: calc(#{$Base} / 2);
       margin-bottom: calc(#{$Base} / 2);
       position: relative;
 
+      @media (max-width: $BaseMediaSm) {
+        padding-left: calc(#{$Base} / 4);
+      }
+
       &:before {
-        content: "■";
+       // content: "■";
         font-size: 0.45em;
         position: absolute;
         left: 0;
@@ -233,16 +245,37 @@ p {
     padding: calc(#{$Base} * 2) 0;
     margin: 0;
 
+    @media (max-width: $BaseMediaMd) {
+      padding: calc(#{$Base} * 1) 0;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      padding: calc(#{$Base} / 2) 0;
+    }
+
     p {
       font-size: 2.5rem;
       font-weight: 100;
       font-style: italic;
+      margin-bottom: 0;
+
+      @media (max-width: $BaseMediaMd) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        font-size: 1.6rem;
+      }
     }
 
     cite {
       font-weight: 600;
       font-size: 1.2rem;
       font-style: normal;
+
+      @media (max-width: $BaseMediaMd) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -253,6 +286,14 @@ p {
     border-left: 0px;
     border-right: 0px;
     border-bottom: 1px dashed $clrPrimary;
+
+    @media (max-width: $BaseMediaMd) {
+      margin: calc(#{$Base} * 1.5) 0;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin: calc(#{$Base}) 0;
+    }
   }
 
   a {
@@ -276,11 +317,20 @@ p {
 
   figure {
     width: 100%;
+    @media (max-width: $BaseMediaSm) {
+      text-align: center;
+    }
 
     img {
       width: 100%;
       max-width: 100%;
       height: auto;
+
+      @media (max-width: $BaseMediaSm) {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      } 
     }
   }
 }

@@ -22,10 +22,11 @@ $SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .f
 
   // Unordered Lists
   ul {
+    list-style: none;
+
     li {
       position: relative;
       padding-left: $Base/3;
-      padding-bottom: $Base/3;
       // font-family: $FntBodyMedium;
 
       &:before {
@@ -52,6 +53,8 @@ $SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .f
 
     li {
       counter-increment: item;
+      padding-left: $Base/3;
+      padding-bottom: $Base/3;
 
       &:before {
         margin-right: 10px;
