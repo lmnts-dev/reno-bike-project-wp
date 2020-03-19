@@ -13,6 +13,10 @@
   padding: $BaseCardPadding;
   color: $clrBlack;
 
+  @media (max-width: $BaseMediaSm ){
+    padding: $BaseGutterLeftSm / 2;
+  }
+
   &:hover {
     color: $clrBlack;
     background: rgba(0, 0, 0, 0.05);
@@ -43,10 +47,18 @@
       width: 100%;
       justify-content: space-between;
 
+      @media (max-width: $BaseMediaSm ){
+        display: block;
+      }
+
       .title,
       .price {
         width: 50%;
         font-weight: 700;
+
+        @media (max-width: $BaseMediaSm ){
+          width: 100%;
+        }
       }
 
       .title {
@@ -56,6 +68,11 @@
       .price {
         text-align: right;
         color: $clrPrimary;
+
+        @media (max-width: $BaseMediaSm ){
+          text-align: left;
+          padding-top: $Base / 5;
+        }
       }
     }
   }

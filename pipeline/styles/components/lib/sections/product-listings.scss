@@ -10,6 +10,11 @@
 .product-listings {
   padding: 0 $BaseCardGutters;
 
+  @media (max-width: $BaseMediaSm ){
+    padding-left: $BaseGutterLeftSm / 2;
+    padding-right: $BaseGutterRightSm / 2;
+  }
+
   .product-listings-inner {
     display: flex;
     flex-wrap: wrap;
@@ -20,9 +25,17 @@
       width: 33%;
       margin-bottom: $Base;
 
+      @media (max-width: $BaseMediaMd ){
+        width: 50%;
+      }
+
+      @media (max-width: $BaseMediaSm ){
+        margin-bottom: $Base / 2;
+      }
+
       &:last-child {
-        justify-self: center;
-        align-self: center;
+       // justify-self: center;
+       // align-self: center;
         margin: 0 auto;
       }
     }
