@@ -19,6 +19,15 @@
 
     &:nth-child(odd) {
       @extend .reverse;
+
+      @media (max-width: $BaseMediaSm) {
+        padding-left: $BaseGutterLeftSm;
+
+        .event-row-inner .col.content-col {
+          padding-top: 0;
+          padding-left: 0;
+        }
+      }
     }
 
     .event-row-inner {
@@ -31,6 +40,10 @@
         padding-bottom: calc(#{$Base} * 2);
         width: calc(50% - #{$Base * 0.75});
 
+        @media (max-width: $BaseMediaSm) {
+          padding-top: 0;
+        }
+
         .content-col-inner {
           max-width: calc(#{$Base} * 13);
         }
@@ -41,12 +54,13 @@
         width: calc(50% + #{$Base * 0.75});
         background: $clrPlaceholder;
 
-        img {
-          position: absolute;
-          top: 0;
-          left: 0;
+        @media (max-width: $BaseMediaSm) {
+          height: 35vw;
           width: 100%;
-          height: 100%;
+        }
+
+        img {
+          @include objectFit();
         }
       }
     }
