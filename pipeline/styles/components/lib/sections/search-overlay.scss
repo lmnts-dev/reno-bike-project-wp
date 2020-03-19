@@ -8,6 +8,8 @@
 
 .search-overlay {
   $searchBarHeight: calc(#{$Base} * 3);
+  $searchBarHeightMd: calc(#{$Base} * 2.5);
+  $searchBarHeightSm: calc(#{$Base} * 2);
 
   position: fixed;
   left: 0;
@@ -46,6 +48,16 @@
             width: $searchBarHeight;
             height: $searchBarHeight;
 
+            @media (max-width: $BaseMediaMd ){
+              width: $searchBarHeightMd;
+              height: $searchBarHeightMd;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              width: calc(#{$searchBarHeightSm} / 2);
+              height: calc(#{$searchBarHeightSm} / 2);
+            }
+
             &:hover {
               background: rgba($clrBlack, 0.04);
             }
@@ -63,6 +75,14 @@
               background: $clrChrome;
               top: 50%;
               left: calc(#{$Base} / 4);
+
+              @media (max-width: $BaseMediaMd ){
+                width: calc(#{$searchBarHeightMd} * 0.8);
+              }
+
+              @media (max-width: $BaseMediaSm ){
+                width: calc(#{$searchBarHeightSm} * 0.4);
+              }
             }
 
             &:before {
@@ -89,6 +109,18 @@
             color: $clrBlack;
             padding-left: $Base;
             font-weight: 800;
+
+            @media (max-width: $BaseMediaMd ){
+              height: $searchBarHeightMd;
+              font-size: 2rem;
+              padding-left: $Base / 2;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              height: $searchBarHeightSm;
+              font-size: 1rem;
+              padding-left: $Base / 4;
+            }
           }
 
           button {
@@ -99,10 +131,30 @@
             align-items: center;
             justify-content: center;
 
+            @media (max-width: $BaseMediaMd ){
+              height: $searchBarHeightMd;
+              width: $searchBarHeightMd;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              height: $searchBarHeightSm;
+              width: $searchBarHeightSm;
+            }
+
             svg {
               fill: $clrWhite;
               width: calc(#{$searchBarHeight} * 0.3);
               height: calc(#{$searchBarHeight} * 0.3);
+
+              @media (max-width: $BaseMediaMd ){
+                width: calc(#{$searchBarHeightMd} * 0.3);
+                height: calc(#{$searchBarHeightMd} * 0.3);
+              }
+
+              @media (max-width: $BaseMediaSm ){
+                width: calc(#{$searchBarHeightSm} * 0.3);
+                height: calc(#{$searchBarHeightSm} * 0.3);
+              }
             }
 
             &:hover {
