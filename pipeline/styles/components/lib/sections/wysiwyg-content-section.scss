@@ -10,7 +10,13 @@
     @extend article;
 
     img {
-       width: 100%;
-       height: auto;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+
+        @media (max-width: $BaseMediaSm) {
+                width: 80%;
+        }
     }
 }

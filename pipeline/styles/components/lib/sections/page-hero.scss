@@ -133,6 +133,10 @@
           justify-content: flex-end;
           right: unset;
           left: $gutterOffset;
+
+          @media (max-width: $BaseMediaMd) {
+            left: $gutterOffset / 2;
+          }
         }
       }
     }
