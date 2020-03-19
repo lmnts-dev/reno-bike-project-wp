@@ -50,6 +50,10 @@
           width: 100%;
           position: relative;
 
+          @media (max-width: $BaseMediaMd) {
+            flex-wrap: wrap;
+          }
+
           // Icon
           &:after {
             content: "";
@@ -75,8 +79,12 @@
             text-overflow: ellipsis;
             min-width: 60px;
 
+
             &.publisher {
               background: $clrPrimary;
+              @media (max-width: $BaseMediaMd) {
+                margin-right: 0;
+              }
             }
           }
 
@@ -85,6 +93,16 @@
             overflow: hidden;
             text-overflow: ellipsis;
             margin-right: $Base;
+
+            @media (max-width: $BaseMediaMd) {
+              min-width: 100%;
+              padding-top: $Base / 4;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              white-space: normal;
+              padding-right: $Base / 4;
+            }
           }
         }
 
@@ -102,7 +120,11 @@
           div {
             position: relative;
             width: 35vw;
-            padding-bottom: calc(100vh - (#{$BaseNavSizeLg} + (#{$Base} * 3)));
+            padding-bottom: 75%;
+
+            @media (max-width: $BaseMediaSm) {
+              width: 45vw;
+            }
 
             img {
               @include objectFit();
