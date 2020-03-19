@@ -37,6 +37,10 @@
       display: flex;
       flex-wrap: nowrap;
 
+      @media (max-width: $BaseMediaSm ){
+        display: block;
+      }
+
       .col {
         display: flex;
         flex-direction: column;
@@ -51,7 +55,7 @@
         &.subtotal {
           flex: 1;
           max-width: $BaseSidebarWidth;
-        //  min-width: $BaseSidebarWidth;
+          min-width: 250px;
           height: calc(100vh - #{$offsetTop});
           min-height: 750px;
           padding-left: calc(#{$Base});
@@ -63,6 +67,13 @@
           justify-content: flex-start;
           align-items: stretch;
 
+          @media (max-width: $BaseMediaSm ){
+            padding-top: $Base;
+            padding-left: 0;
+            min-height: 1px;
+            height: auto;
+          }
+
           .total {
             font-size: 4rem;
             font-weight: 700;
@@ -71,6 +82,10 @@
 
             @media (max-width: $BaseMediaLg ){
               font-size: 4vw;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              font-size: 2rem;
             }
           }
 
@@ -82,6 +97,9 @@
 
             @media (max-width: $BaseMediaLg ){
               font-size: 3vw;
+            }
+            @media (max-width: $BaseMediaSm ){
+              font-size: 1.5rem;
             }
           }
 
@@ -102,12 +120,22 @@
           padding-bottom: calc(#{$Base} * 4);
           flex: 2;
 
+          @media (max-width: $BaseMediaSm ){
+            padding-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
+            padding-bottom: 0;
+          }
+
           h1 {
             font-size: 5vw;
             margin-bottom: $Base;
 
             @media (max-width: $BaseMediaLg ){
               font-size: 4vw;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              margin-bottom: $Base / 4;
+              font-size: 1.5rem;
             }
           }
         }
@@ -134,12 +162,16 @@
     justify-content: space-between;
     padding: calc(#{$Base}) 0;
 
-    @media (max-width: $BaseMediaLg ){
-    //  flex-wrap: wrap;
+    @media (max-width: $BaseMediaMd ){
+      display: block;
     }
 
     .cart-item-col {
       margin-right: $colSpacing;
+
+      @media (max-width: $BaseMediaMd ){
+        display: inline-block;
+      }
 
       &:last-child {
         margin-right: 0;
@@ -148,8 +180,8 @@
       &.cover {
         width: $cartThumbSize;
 
-        @media (max-width: $BaseMediaLg ){
-        //  flex: 1;
+        @media (max-width: $BaseMediaMd ){
+          margin-right: 0;
         }
 
         .cart-item-img {
@@ -167,9 +199,10 @@
       &.title {
         padding-right: $Base;
 
-        @media (max-width: $BaseMediaLg ){
-        //  min-width: 80%;
-        //  flex: 3;
+        @media (max-width: $BaseMediaMd ){
+          width: 100%;
+          margin-right: 0;
+          padding: $Base / 4 0;
         }
 
         span {
