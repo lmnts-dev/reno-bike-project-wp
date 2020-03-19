@@ -17,6 +17,16 @@
     width: 100%;
     border-bottom: 2px solid $clrBlack;
 
+    ul {
+      @media (max-width: $BaseMediaMd) {
+        margin-top: $Base / 2;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        margin-top: $Base / 4;
+      }
+    }
+
     input {
       position: absolute;
       width: 0px;
@@ -36,6 +46,14 @@
       cursor: pointer;
       position: relative;
 
+      @media (max-width: $BaseMediaMd) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        font-size: 1.6rem;
+      }
+
       // Icon
       &:after {
         content: "";
@@ -48,6 +66,12 @@
         border-top: calc(#{$Base} * 0.3) solid transparent;
         border-bottom: calc(#{$Base} * 0.3) solid transparent;
         border-left: calc(#{$Base} * 0.3) solid $clrBlack;
+
+        @media (max-width: $BaseMediaMd) {
+          border-top: calc(#{$Base} * 0.2) solid transparent;
+          border-bottom: calc(#{$Base} * 0.2) solid transparent;
+          border-left: calc(#{$Base} * 0.2) solid $clrBlack;
+        }
       }
 
       &:hover {
