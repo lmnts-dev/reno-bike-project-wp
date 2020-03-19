@@ -12,6 +12,8 @@
 
   .cart-inner {
     min-height: 70vh;
+    padding-left: 0;
+    padding-right: 0;
 
     &.empty {
       display: flex;
@@ -49,7 +51,7 @@
         &.subtotal {
           flex: 1;
           max-width: $BaseSidebarWidth;
-          min-width: $BaseSidebarWidth;
+        //  min-width: $BaseSidebarWidth;
           height: calc(100vh - #{$offsetTop});
           min-height: 750px;
           padding-left: calc(#{$Base});
@@ -66,6 +68,10 @@
             font-weight: 700;
             margin-bottom: calc(#{$Base} / 4);
             color: $clrBlack;
+
+            @media (max-width: $BaseMediaLg ){
+              font-size: 4vw;
+            }
           }
 
           .label {
@@ -73,6 +79,10 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: calc(#{$Base} / 2);
+
+            @media (max-width: $BaseMediaLg ){
+              font-size: 3vw;
+            }
           }
 
           .btn {
@@ -90,10 +100,15 @@
 
         &.cart-items {
           padding-bottom: calc(#{$Base} * 4);
+          flex: 2;
 
           h1 {
             font-size: 5vw;
             margin-bottom: $Base;
+
+            @media (max-width: $BaseMediaLg ){
+              font-size: 4vw;
+            }
           }
         }
       }
@@ -119,6 +134,10 @@
     justify-content: space-between;
     padding: calc(#{$Base}) 0;
 
+    @media (max-width: $BaseMediaLg ){
+    //  flex-wrap: wrap;
+    }
+
     .cart-item-col {
       margin-right: $colSpacing;
 
@@ -128,6 +147,10 @@
 
       &.cover {
         width: $cartThumbSize;
+
+        @media (max-width: $BaseMediaLg ){
+        //  flex: 1;
+        }
 
         .cart-item-img {
           background: $clrPlaceholder;
@@ -143,6 +166,11 @@
 
       &.title {
         padding-right: $Base;
+
+        @media (max-width: $BaseMediaLg ){
+        //  min-width: 80%;
+        //  flex: 3;
+        }
 
         span {
           font-weight: 600;

@@ -23,6 +23,19 @@
     margin-top: $BaseNavSizeLg;
     margin-bottom: calc(#{$Base} * .5);
 
+    @media (max-width: $BaseMediaMd ){
+      padding-bottom: calc(#{$Base});
+      padding-left: $BaseGutterLeftMd;
+      padding-right: $BaseGutterRightMd;
+    }
+
+    @media (max-width: $BaseMediaSm ){
+      padding-bottom: calc(#{$Base} / 2);
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+      margin-top: $BaseNavSizeSm;
+    }
+
     h1 {
       z-index: 3;
     }
