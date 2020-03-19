@@ -9,16 +9,21 @@
 
 .featured-products-slider {
   $cardSize: 38%;
+  $cardSizeSm: 60%;
 
   position: relative;
   overflow: visible;
-  padding: calc(#{$Base} + #{$BaseCardPadding}) $BaseCardGutters 0
+  padding: calc(#{$Base} + #{$BaseCardPadding}) 0 0
     $BaseCardGutters;
   background: $clrWhite;
 
+  @media (max-width: $BaseMediaSm ){
+    padding-left: $BaseGutterLeftSm / 2;
+  }
+
   // Pseudo element to compensate for card gutters
   &:after {
-    content: "";
+  //  content: "";
     position: absolute;
     top: 0;
     right: calc(#{$BaseCardGutters} - 1px);
@@ -34,6 +39,10 @@
     background: $clrWhite;
     margin-bottom: calc(#{$Base} * 2);
 
+    @media (max-width: $BaseMediaSm ){
+      padding: $Base 0 $Base / 2 0;
+    }
+
     &:before {
       content: "";
       position: absolute;
@@ -42,6 +51,10 @@
       top: 0;
       left: $cardSize;
       background: $clrAsphalt;
+
+      @media (max-width: $BaseMediaSm ){
+        left: $cardSizeSm * .75;
+      }
     }
 
     // The Slider Element Itself
@@ -51,6 +64,10 @@
       .product-card {
         display: flex;
         width: $cardSize;
+
+        @media (max-width: $BaseMediaSm ){
+          width: $cardSizeSm;
+        }
 
         &:not(.is-selected) {
           .product-card-inner {
@@ -89,6 +106,10 @@
         position: absolute;
         top: calc((#{$buttonSize} * 2) * -1);
 
+        @media (max-width: $BaseMediaSm ){
+          top: $Base / -2;
+        }
+
         &.flickity-prev-next-button {
           width: $buttonSize;
           height: $buttonSize;
@@ -100,6 +121,14 @@
 
           &.next {
             right: calc(#{$buttonBorder} + #{$BaseCardPadding});
+
+            @media (max-width: $BaseMediaSm ){
+              right: unset;
+              left: calc(
+                #{$buttonSize} + #{$BaseCardPadding / 2} + #{$buttonSize /
+                  2}
+              );
+            }
 
             &:before {
               content: "";
@@ -117,6 +146,11 @@
               #{$buttonSize} + #{$buttonBorder} + #{$BaseCardPadding} + #{$buttonSize /
                 2}
             );
+
+            @media (max-width: $BaseMediaSm ){
+              right: unset;
+              left: calc(#{$BaseCardPadding} / 2);
+            }
 
             &:before {
               content: "";
