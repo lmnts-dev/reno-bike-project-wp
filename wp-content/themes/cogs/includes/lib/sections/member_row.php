@@ -44,8 +44,7 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
   <section class="member-row <?php echo get_sub_field('layout'); ?> member-row-<?php echo $idx ?>">
     <div class="section-header split">
       <h2>
-        <span class="squiggle"></span>
-
+      <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>
           Meet the Staff
         </span>

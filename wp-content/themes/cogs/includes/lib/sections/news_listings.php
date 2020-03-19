@@ -52,7 +52,7 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
 ?>
 
   <section class="news-listings news-listings-<?php echo $idx ?>">
-    <span class="squiggle"></span>
+  <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
 
     <div class="news-listings-header">
       <h3>
@@ -99,6 +99,12 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
         #/forEach 
       } ?>
 
+      <div class="mobile-btn">
+        <a href="/news-and-press" class="btn btn-border-black">
+            All Latest Posts
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -107,7 +113,7 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
 
 
   <section class="news-listings news-listings-<?php echo $idx ?>">
-    <span class="squiggle"></span>
+    <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
 
     <div class="news-listings-header">
       <h3>

@@ -25,12 +25,12 @@ if (get_row_layout() == 'newsletter_row' || $rowLayout == 'newsletter_row') {
     <div class="newsletter-row-inner">
 
       <form>
-        <div class="col">
+        <div class="col col-fname">
           <div class="input-outer">
             <input placeholder="First Name">
           </div>
         </div>
-        <div class="col">
+        <div class="col col-lname">
           <div class="input-outer">
             <input placeholder="Last Name">
           </div>
@@ -41,7 +41,7 @@ if (get_row_layout() == 'newsletter_row' || $rowLayout == 'newsletter_row') {
               <input placeholder="Enter your email">
             </div>
           </div>
-          <div class="col">
+          <div class="col col-submit">
             <div class="input-outer">
               <button class="btn btn-clr-black btn-arrow">
                 Submit
