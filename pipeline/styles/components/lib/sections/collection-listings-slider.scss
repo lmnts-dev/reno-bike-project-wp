@@ -10,6 +10,7 @@
 .collection-listings-slider {
   position: relative;
   overflow: hidden;
+  padding-right: 0;
 
   .collection-listings-slider-inner {
     padding: $Base 0;
@@ -24,12 +25,21 @@
       .product-card {
         display: flex;
         width: 27%;
+
+        @media (max-width: $BaseMediaMd ){
+          width: $Base * 7;
+        }
       }
 
       .view-all-card {
         display: flex;
         height: 100%;
         padding: $Base / 2 $Base / 2 $Base / 2 0; // Same padding as .product-card
+
+        @media (max-width: $BaseMediaSm ){
+          padding: $Base / 4 $Base / 4 $Base / 4 0;
+          width: $Base * 2.5;
+        }
 
         .view-all-card-inner {
           width: 100%;
@@ -39,9 +49,22 @@
           font-size: 3vw;
           font-weight: 600;
           padding: $Base / 2;
+          position: relative;
 
           &:hover {
             background: $clrBlack;
+          }
+
+          span {
+            @media (max-width: $BaseMediaSm ){
+              position: absolute;
+              height: 0;
+              width: 0;
+              transform: rotate(90deg);
+              top: $Base / 2;
+              right: $Base / 4;
+              white-space: nowrap;
+            }
           }
         }
       }
@@ -52,6 +75,10 @@
 
         position: absolute;
         top: calc(#{$buttonSize} * -1);
+
+        @media (max-width: $BaseMediaMd ){
+          top: calc(#{$buttonSize} / -1.5);
+        }
 
         &.flickity-prev-next-button {
           width: $buttonSize;

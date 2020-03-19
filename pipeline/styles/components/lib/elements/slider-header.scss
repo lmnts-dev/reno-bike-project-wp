@@ -10,4 +10,8 @@
 
 .slider-header {
   padding-bottom: calc(#{$Base} / 2);
+
+  @media (max-width: $BaseMediaMd ){
+    padding-bottom: calc(#{$Base} / 4);
+  }
 }
