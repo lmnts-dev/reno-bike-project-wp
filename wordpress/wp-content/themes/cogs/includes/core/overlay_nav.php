@@ -13,62 +13,48 @@
 /************************************/
 
 $cta = get_field('navigation_bar', 'option')['call_to_action'];
-$ecommerce = get_field('ecommerce', 'option');
+$nav = wp_nav_menu(array('menu' => 'primary', 'echo' => false ));
+$nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="sub-menu">', $nav );
 
 ?>
 
 
-<header>
-
-  <?php /** Inter-site Navigation */
-  ?>
-  <div class="nav-inner">
-    <div class="nav-col nav-col-1">
-      <div class="nav-branding">
-        <a href="/">
-          <span itemprop="logo"></span>
-        </a>
-      </div>
-      <nav class="nav-switch">
-        <ul>
-          <li class="active">
-            <a href="/">
-              Community
+<div class="overlay-nav-container flex-row" id="overlay-nav">
+    <div class="left">
+        <div class="top">
+            <a href="/" class="branding">
+                <?php // echo '<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo">'; ?>
             </a>
-          </li>
-          <li class="inactive">
-            <a href="<?php echo $ecommerce['shopify_url'] ?>">
-              Shop
-            </a>
-          </li>
-        </ul>
-      </nav>
+            <div class="exit" id="overlay-exit"></div>
+        </div>
+        <nav class="overlay-nav">
+            <?php  echo $nav ?>
+        </nav>
+        <div class="overlay-nav-cta">
+          <a href="<?php echo $cta['button_url'] ?>">
+            <?php echo $cta['button_label'] ?>
+          </a>
+        </div>
     </div>
-    <?php /** /Inter-site Navigation  */
-    ?>
+    <div class="right"></div>
+</div>
 
-    <?php /** Main Navigation */
-    ?>
-    <div class="nav-col nav-col-2">
-      <nav class="main-nav">
-        <?php wp_nav_menu(array('theme_location' => 'main-menu')); ?>
-      </nav>
-    </div>
-    <?php /** /Main Navigation  */
-    ?>
+<script>
+    (function($) {
+    "use strict";
+        $(document).ready(function(){
+            $( "#mobile-nav-icon" ).click(function() {
+                $( "#overlay-nav" ).addClass("visible");
+                $( "header" ).addClass("hidden");
+                $( "body" ).addClass("overlay-lock");
+            });
 
-    <?php /** CTA Navigation */
-    ?>
-    <div class="nav-col nav-col-3">
-      <div class="nav-cta">
-        <a href="<?php echo $cta['button_url'] ?>">
-          <?php echo $cta['button_label'] ?>
-        </a>
-      </div>
-    </div>
+            $( "#overlay-exit" ).click(function() {
+                $( "#overlay-nav" ).removeClass("visible");
+                $( "header" ).removeClass("hidden");
+                $( "body" ).removeClass("overlay-lock");
+            });
+        });
+    })(window.jQuery);
 
-    <?php /** /CTA Navigation */
-    ?>
-
-  </div>
-</header>
+</script>

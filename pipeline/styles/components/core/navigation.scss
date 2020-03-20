@@ -17,6 +17,14 @@ header {
   font-size: 1rem;
   z-index: 800;
   background: $clrWhite;
+  transition: .25s;
+
+  &.hidden {
+      opacity: 0;
+      @media (min-width: $BaseNavBreak) {
+        opacity: 1;
+      }
+  }
 
   // Base List Styles
   ul {
