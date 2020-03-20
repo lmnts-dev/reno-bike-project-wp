@@ -16,7 +16,6 @@
   .product-inner {
     display: flex;
     margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
-    padding-bottom: $Base * 3;
 
     @media (max-width: $BaseMediaMd) {
       margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeftMd});

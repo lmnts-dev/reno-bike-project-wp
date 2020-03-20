@@ -51,7 +51,7 @@ $newsListings = array($newsOne, $newsTwo, $newsThree, $newsOne, $newsTwo, $newsT
 if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
 ?>
 
-  <section class="news-listings news-listings-<?php echo $idx ?>">
+  <section class="news-listings padding-top-half news-listings-<?php echo $idx ?>">
   <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
 
     <div class="news-listings-header">

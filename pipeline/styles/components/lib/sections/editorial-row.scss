@@ -9,14 +9,8 @@
 .editorial-row {
   position: relative;
   padding-right: 0;
-  margin: calc(#{$Base} * 2) 0;
-
-  @media (max-width: $BaseMediaMd) {
-    margin: calc(#{$Base} * 1.5) 0;
-  }
-
+  
   @media (max-width: $BaseMediaSm) {
-    margin: 0 0 calc(#{$Base}) 0;
     padding-right: calc(#{$Base} / 2);
   }
 
@@ -37,7 +31,7 @@
       align-items: center;
 
       &.content-col {
-        padding: calc(#{$Base} * 3) calc(#{$Base});
+        padding: calc(#{$Base}) calc(#{$Base});
         width: 40%;
 
         @media (max-width: $BaseMediaMd) {

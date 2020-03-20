@@ -7,7 +7,18 @@
 //
 ////////////////////////////////////////
 
-.block-row {
+section.block-row {
+    padding-bottom: 0;
+
+  ~ .block-row {
+    padding-top: 0;
+    padding-bottom: $BasePadding;
+  }
+
+  &:last-of-type {
+    padding-bottom: $BasePadding;
+  }
+
   .block-row-inner {
     display: flex;
 

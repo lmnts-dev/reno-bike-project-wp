@@ -8,6 +8,9 @@
 
 .wysiwyg-content-section {
     @extend article;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+    padding-bottom: $BaseGutter !important;
 
     img {
         width: 100%;

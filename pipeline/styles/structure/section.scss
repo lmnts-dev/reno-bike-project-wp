@@ -6,16 +6,47 @@ article {
   max-width: $BaseMaxWidth;
   padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
   margin: 0 auto;
+  padding-top: $BasePadding;
+  padding-bottom: $BasePadding;
   position: relative;
   z-index: 5;
 
   @media (max-width: $BaseMediaMd) {
-    padding: 0 $BaseGutterRightMd 0 $BaseGutterLeftMd;
+    padding-right: $BaseGutterRightMd;
+    padding-left: $BaseGutterLeftMd;
   }
 
   @media (max-width: $BaseMediaSm) {
-    padding: 0 $BaseGutterRightSm 0 $BaseGutterLeftSm;
+    padding-top: $BasePaddingSm;
+    padding-bottom: $BasePaddingSm;
+    padding-right: $BaseGutterRightSm;
+    padding-left: $BaseGutterLeftSm;
   }
+
+  &.padding-top-none {
+    padding-top: 0;
+  }
+
+  &.padding-bottom-none {
+    padding-bottom: 0;
+  }
+
+  &.padding-top-half {
+    padding-top: calc(#{$BasePadding} / 2);
+
+    @media (max-width: $BaseMediaSm) {
+      padding-top: $BaseGutterRightSm / 2;
+    }
+  }
+
+  &.padding-bottom-half {
+    padding-bottom: calc(#{$BasePadding} / 2);
+
+    @media (max-width: $BaseMediaSm) {
+      padding-bottom: $BaseGutterRightSm / 2;
+    }
+  }
+
 }
 
 // From FullpageJS

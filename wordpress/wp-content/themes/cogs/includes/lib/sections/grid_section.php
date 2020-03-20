@@ -47,7 +47,7 @@ $gridBlocks = array($blockOne, $blockTwo, $blockThree, $blockFour);
 if (get_row_layout() == 'grid_section' || $rowLayout == 'grid_section') {
 ?>
 
-  <section class="grid-section grid-section-<?php echo $idx ?>">
+  <section class="grid-section padding-top-half grid-section-<?php echo $idx ?>">
 
     <div class="section-header">
       <span class="icon bg-clr-primary"></span>

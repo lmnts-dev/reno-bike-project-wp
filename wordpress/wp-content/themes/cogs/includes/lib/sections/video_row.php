@@ -12,7 +12,7 @@
 if (get_row_layout() == 'video_row') {
 ?>
 
-  <section class="video-row video-row-<?php echo $idx ?>">
+  <section class="video-row padding-top-half padding-bottom-half video-row-<?php echo $idx ?>">
     <div class="video-row-inner">
 
       <span class="video-toggle">

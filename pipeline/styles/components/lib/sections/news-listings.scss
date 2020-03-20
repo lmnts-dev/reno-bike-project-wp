@@ -52,15 +52,6 @@
   .news-listings-inner {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 0 $Base * 2 0;
-
-    @media (max-width: $BaseMediaMd) {
-      padding: 0 0 $Base * 1.5 0;
-    }
-
-    @media (max-width: $BaseMediaSm) {
-      padding: 0 0 $Base 0;
-    }
 
     .news-listing-card {
       width: 33%;

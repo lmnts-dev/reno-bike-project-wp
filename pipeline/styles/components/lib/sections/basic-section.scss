@@ -7,15 +7,6 @@
 ////////////////////////////////////////
 
 .basic-section {
-    padding-bottom: $Base * 2;
-
-    @media (max-width: $BaseMediaMd) {
-        padding-bottom: $Base * 1.5;
-    }
-
-    @media (max-width: $BaseMediaSm) {
-        padding-bottom: $Base;
-    }
 
     .basic-section-inner {
         max-width: $Base * 24;
@@ -89,10 +80,9 @@
         }
 
         .basic-section-inner { 
-            margin: $Base * 1.5 auto 0 auto;
+            margin: 0 auto;
 
             @media (max-width: $BaseMediaSm) {
-                margin: $Base auto 0 auto;
                 align-items: center;
             }
         }

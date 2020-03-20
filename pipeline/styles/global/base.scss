@@ -36,6 +36,8 @@ $BaseGutterLeftSm: 20px;
 $BaseGutterRight: $BaseGutter;
 $BaseGutterRightMd: 30px;
 $BaseGutterRightSm: 20px;
+$BasePadding: calc(#{$Base} * 1.25);
+$BasePaddingSm: calc(#{$BasePadding} / 1.5);
 $BaseParagraphWidth: 500px;
 $BaseIndentMaxWidth: calc(#{$BaseMaxWidth} * .8);
 $BaseIndentMaxWidthMd: calc(#{$Base} * 14);

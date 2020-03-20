@@ -7,7 +7,8 @@
 ////////////////////////////////////////
 
 .event-row-listing {
-  padding-bottom: calc(#{$Base} * 4);
+  padding-left: 0;
+  padding-right: 0;
 
   .section-header {
     margin-bottom: calc(#{$Base});
@@ -16,6 +17,8 @@
   .event-row {
     @extend .editorial-row;
     margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 
     &:nth-child(odd) {
       @extend .reverse;

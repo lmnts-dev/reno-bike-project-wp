@@ -9,15 +9,6 @@
 $gridSpacing: calc(#{$Base} / 3);
 
 .four-column-grid-section {
-  margin-bottom: calc(#{$Base} * 4);
-
-  @media (max-width: $BaseMediaMd) {
-    margin-bottom: calc(#{$Base} * 3);
-  }
-
-  @media (max-width: $BaseMediaSm) {
-    margin-bottom: calc(#{$Base} * 1.5);
-  }
 
   .four-column-grid-section-inner {
     display: flex;

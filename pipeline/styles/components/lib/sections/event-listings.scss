@@ -12,8 +12,6 @@
   flex-direction: column;
   // justify-content: center;
   align-items: center;
-  padding-top: $Base * 3;
-  padding-bottom: $Base * 3;
 
   @media (max-width: $BaseMediaSm) {
     padding-left: $Base / 4;

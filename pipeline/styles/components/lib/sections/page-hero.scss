@@ -7,10 +7,9 @@
 //
 ////////////////////////////////////////
 
-.page-hero {
+section.page-hero {
   // height: calc(100vh - #{$BaseNavSizeLg});
   padding-top: $BaseNavSizeLg;
-  padding-bottom: $Base;
   overflow: hidden;
 
   $baseHeight: 80vh;

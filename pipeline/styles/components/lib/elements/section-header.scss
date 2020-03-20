@@ -81,13 +81,17 @@
     h2,
     p {
       text-align: left;
-      padding: $Base/2 0;
+      padding-bottom: $Base/2;
     }
 
     p {
       width: auto;
       max-width: 450px;
       padding-left: $Base/2;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
 
       @media (max-width: $BaseMediaSm) {
         padding-left: 0;

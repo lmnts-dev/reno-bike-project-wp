@@ -25,16 +25,8 @@
       padding: calc(#{$Base}) 0;
     }
 
-    &:last-child {
-      margin-bottom: calc(#{$Base} * 6);
-
-      @media (max-width: $BaseMediaMd) {
-        margin-bottom: calc(#{$Base} * 3);
-      }
-
-      @media (max-width: $BaseMediaSm) {
-        margin-bottom: calc(#{$Base} * 1.5);
-      }
+    &:first-child {
+      padding-top: 0; //TODO why isn't this working
     }
 
     &:nth-of-type(even) {
@@ -51,10 +43,6 @@
           padding-right: 0;
         }
       }
-    }
-
-    &:first-of-type {
-      padding-top: 0;
     }
 
     &:last-of-type {

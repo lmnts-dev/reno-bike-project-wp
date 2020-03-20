@@ -117,12 +117,10 @@
         }
 
         &.cart-items {
-          padding-bottom: calc(#{$Base} * 4);
           flex: 2;
 
           @media (max-width: $BaseMediaSm ){
             padding-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
-            padding-bottom: 0;
           }
 
           h1 {

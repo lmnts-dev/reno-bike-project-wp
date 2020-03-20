@@ -7,13 +7,11 @@
 ////////////////////////////////////////
 
 .icon-block {
-  padding: calc(#{$Base} * 2) 0;
 
   .icon-block-inner {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: calc(#{$Base}) 0 calc(#{$Base}* 3) 0;
 
     .icon-block {
       min-width: 33.33%;

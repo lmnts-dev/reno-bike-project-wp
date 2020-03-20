@@ -28,7 +28,7 @@ $sideLabeledLists = array($exampleList, $exampleList, $exampleList);
 if (get_row_layout() == 'side_labeled_lists' || $rowLayout == 'side_labeled_lists') {
 ?>
 
-  <section class="side-labeled-lists side-labeled-list-<?php echo $idx ?>">
+  <section class="side-labeled-lists padding-top-none padding-bottom-none side-labeled-list-<?php echo $idx ?>">
     <div class="side-labeled-lists-inner">
 
       <?php foreach ($sideLabeledLists as $listRow) { ?>
