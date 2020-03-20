@@ -1,11 +1,11 @@
 <?php
 
 /** 
- * Navigation
- * Site Navigation
+ * Overlay Navigation
+ * Site Overlay Navigation
  * 
- * @author Peter Laxalt
- * @since 2/2020
+ * @author Alisha Garric
+ * @since 3/2020
  */
 
 /************************************/
@@ -68,25 +68,6 @@ $ecommerce = get_field('ecommerce', 'option');
     </div>
 
     <?php /** /CTA Navigation */
-    ?>
-
-    <?php /** Overlay Nav Toggle */
-    ?>
-    <div class="nav-col nav-col-4">
-      <div class="grid">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-    <?php /** /Overlay Nav Toggle */
     ?>
 
   </div>

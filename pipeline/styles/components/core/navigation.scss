@@ -72,6 +72,7 @@ header {
 
           @media (max-width: $BaseMediaSm) {
             padding: 0 $Base/4;
+            font-size: .8rem;
           }
         }
 
@@ -302,10 +303,22 @@ header {
 
       // CTA Column
       &.nav-col-3 {
+        @media (max-width: $BaseNavBreak ) {
+          flex: 10;
+        }
+
         .nav-cta {
           height: 100%;
           display: flex;
           align-items: center;
+
+          @media (max-width: $BaseNavBreak ) {
+            margin-left: auto;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            display: none;
+          }
 
           // CTA Button
           a {
@@ -340,6 +353,24 @@ header {
           height: 100%;
           align-items: center;
 
+          @media (max-width: $BaseNavBreak ) {
+            margin-left: auto;
+
+            //if there is a search icon next to the cta then its shopify
+            //and we don't want a margin spacing out the cta and the search icon
+            ~ .nav-cta {
+              margin-left: 0;
+            }
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            //if there is a search icon next to the cta then its shopify
+            //and we don't want to get rid of the cta
+            ~ .nav-cta {
+              display: block;
+            }
+          }
+
           button {
             display: flex;
             align-items: center;
@@ -347,6 +378,11 @@ header {
             height: 100%;
             padding: 0 $Base/2;
             position: relative;
+
+            @media (max-width: $BaseMediaSm) {
+              padding: $Base / 6;
+              background: transparent;
+            }
 
             &:hover {
               background: $clrSnow;
@@ -363,6 +399,11 @@ header {
               width: calc(#{$Base} * 0.8);
               height: calc(#{$Base} * 0.8);
               transform-origin: center center;
+
+              @media (max-width: $BaseMediaSm) {
+                width: calc(#{$Base} * 0.6);
+                height: calc(#{$Base} * 0.6);
+              }
             }
           }
         }
@@ -374,11 +415,37 @@ header {
             }
           }
           .nav-cta {
+
             a {
               background: $clrBlack;
+              @media (max-width: $BaseMediaSm) {
+                background: transparent;
+                position: relative;
+                padding-left: $Base / 8;
+              }
+
+              #cart-icon {
+                display: none;
+                width: $Base * 0.8;
+  
+                @media (max-width: $BaseMediaSm) {
+                  display: block;
+                }
+              }
+
+              //cart label
+              span {
+                @media (max-width: $BaseMediaSm) {
+                  display: none;
+                }
+              }
 
               &:hover {
                 background: $clrPrimary;
+
+                @media (max-width: $BaseMediaSm) {
+                  background: $clrSnow;
+                }
               }
 
               .count {
@@ -395,6 +462,20 @@ header {
                 line-height: 0;
                 margin-left: calc(#{$Base} / 2);
                 margin-right: calc(#{$Base} / 2);
+
+                @media (max-width: $BaseMediaSm) {
+                  position: absolute;
+                  background: $clrPrimary;
+                  border-radius: $Base;
+                  padding: $Base / 8;
+                  height: $Base / 2;
+                  width: $Base / 2;
+                  border: none;
+                  top: 15px;
+                  right: $Base / -8;
+                  font-size: 12px;
+                  margin: 0;
+                }
               }
             }
 
@@ -403,6 +484,32 @@ header {
                 padding-right: 0;
               }
             }
+          }
+        }
+      }
+      &.nav-col-4 {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0 $Base / 4;
+
+        @media (max-width: $BaseNavBreak ) {
+          display: flex;
+        }
+
+        .grid {
+          $gridItemWidth: 10px;
+          width: $gridItemWidth * 3;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          span {
+            width: $gridItemWidth;
+            height: $gridItemWidth;
+            border: 2px solid $clrWhite;
+            background: $clrPrimary;
+            border-radius: 3px;
           }
         }
       }

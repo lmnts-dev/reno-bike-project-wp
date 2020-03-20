@@ -74,12 +74,33 @@ Site Navigation
       <div class="nav-cta items-added">
         <a href="/cart">
           <span>Cart</span>
+          {% include 'shopping-cart' %}
           <span class="count">5</span>
         </a>
       </div>
     </div>
     {% comment %}
     /** /CTA Navigation */
+    {% endcomment %}
+
+    {% comment %}
+    /** Nav Overlay Toggle */
+    {% endcomment %}
+    <div class="nav-col nav-col-4">
+      <div class="grid">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    {% comment %}
+    /** /Nav Overlay Toggle */
     {% endcomment %}
 
   </div>
