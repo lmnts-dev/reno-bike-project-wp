@@ -39,7 +39,7 @@ $membershipListings = array($exampleListing, $exampleListing, $exampleListing, $
 if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listings') {
 ?>
 
-  <section class="membership-listings membership-listings-<?php echo $idx ?>">
+  <section class="membership-listings padding-top-half membership-listings-<?php echo $idx ?>">
 
     <div class="section-header">
     <div class="squiggle-svg squiggle-pink squiggle-short squiggle-centered squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>

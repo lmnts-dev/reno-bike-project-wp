@@ -23,7 +23,7 @@ $alignment = get_sub_field('alignment');
 if (get_row_layout() == 'basic_section' || $rowLayout == 'basic_section') {
 
 ?>
-  <section class="basic-section <?php echo get_sub_field('layout') . 'align-' . $alignment; ?> basic-section-<?php echo $idx ?>"> 
+  <section class="basic-section padding-top-half <?php echo get_sub_field('layout') . 'align-' . $alignment; ?> basic-section-<?php echo $idx ?>"> 
     <div class="basic-section-inner">
         <div class="section-header">
             <h3 class="<?php echo $headerSize ?>">

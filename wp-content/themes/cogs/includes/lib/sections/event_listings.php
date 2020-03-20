@@ -46,7 +46,7 @@ $eventListings = array($eventOne, $eventTwo, $eventThree);
 if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 ?>
 
-  <section class="event-listings event-listings-<?php echo $idx ?>">
+  <section class="event-listings padding-top-half event-listings-<?php echo $idx ?>">
 
     <div class="section-header">
       <span class="icon bg-clr-mustard"></span>

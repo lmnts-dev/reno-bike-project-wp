@@ -33,7 +33,7 @@ $eventRows = array($eventRow, $eventRow, $eventRow, $eventRow, $eventRow, $event
 if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
 
 ?>
-  <div class="event-row-listing">
+  <section class="event-row-listing padding-top-half">
 
     <div class="section-header">
       <h3>
@@ -69,6 +69,6 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
         </div>
       </section>
     <?php } ?>
-  </div>
+  </section>
 
 <?php } ?>
