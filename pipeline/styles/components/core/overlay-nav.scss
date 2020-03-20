@@ -91,6 +91,16 @@
     z-index: -1;
     transition-duration: .25s;
 
+    &.dark-theme {
+        .overlay-nav-cta a, .left .top .branding {
+            background-color: $clrBlack;
+        }
+        .left .top .exit:before, .left .top .exit:after {
+            background-color: $clrGunmetal;
+        }
+
+    }
+
     &.visible {
         opacity: 1;
         pointer-events: all;

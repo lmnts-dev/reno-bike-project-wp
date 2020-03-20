@@ -1,0 +1,43 @@
+{% comment %}
+
+Overlay Nav Navigation
+Overlay Site Navigation
+
+@author Alisha Garric
+@since 3/2020
+
+$cta = get_field('navigation_bar', 'option')['call_to_action'];
+$nav = wp_nav_menu(array('menu' => 'primary', 'echo' => false ));
+$nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="sub-menu">', $nav );
+
+{% endcomment %}
+
+
+
+<div class="overlay-nav-container dark-theme" id="overlay-nav">
+    <div class="left">
+        <div class="top">
+            <a href="/" class="branding">
+                {% comment %}<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo"> {% endcomment %}
+            </a>
+            <div class="exit" id="overlay-exit"></div>
+        </div>
+        <nav class="overlay-nav">
+            <div>
+                <ul class="menu">
+                    {% for link in linklists.main-navigation.links %}
+                        <li>
+                            <a href="{{link.url}}">{{ link.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+        <div class="overlay-nav-cta">
+            <a href="/cart">
+                <span>Cart</span>
+            </a>
+        </div>
+    </div>
+    <div class="right"></div>
+</div>

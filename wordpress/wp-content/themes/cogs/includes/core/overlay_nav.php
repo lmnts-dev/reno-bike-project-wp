@@ -19,7 +19,7 @@ $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="
 ?>
 
 
-<div class="overlay-nav-container flex-row" id="overlay-nav">
+<div class="overlay-nav-container" id="overlay-nav">
     <div class="left">
         <div class="top">
             <a href="/" class="branding">
@@ -38,23 +38,3 @@ $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="
     </div>
     <div class="right"></div>
 </div>
-
-<script>
-    (function($) {
-    "use strict";
-        $(document).ready(function(){
-            $( "#mobile-nav-icon" ).click(function() {
-                $( "#overlay-nav" ).addClass("visible");
-                $( "header" ).addClass("hidden");
-                $( "body" ).addClass("overlay-lock");
-            });
-
-            $( "#overlay-exit" ).click(function() {
-                $( "#overlay-nav" ).removeClass("visible");
-                $( "header" ).removeClass("hidden");
-                $( "body" ).removeClass("overlay-lock");
-            });
-        });
-    })(window.jQuery);
-
-</script>

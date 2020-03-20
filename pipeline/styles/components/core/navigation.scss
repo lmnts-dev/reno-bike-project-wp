@@ -516,6 +516,14 @@ header {
             background: $clrBlack;
           }
 
+          &:hover span {
+            background: $clrBlack;
+          }
+
+          &.black-grid:hover span {
+            background: $clrPrimary;
+          }
+
           span {
             width: $gridItemWidth;
             height: $gridItemWidth;
