@@ -73,7 +73,7 @@ $ecommerce = get_field('ecommerce', 'option');
     <?php /** Overlay Nav Toggle */
     ?>
     <div class="nav-col nav-col-4">
-      <div class="grid">
+      <div class="grid" id="mobile-nav-icon">
         <span></span>
         <span></span>
         <span></span>
@@ -91,3 +91,5 @@ $ecommerce = get_field('ecommerce', 'option');
 
   </div>
 </header>
+
+<?php include get_template_directory() . '/includes/core/overlay_nav.php'; ?>
