@@ -504,6 +504,10 @@ header {
           flex-direction: row;
           flex-wrap: wrap;
 
+          &.black-grid span {
+            background: $clrBlack;
+          }
+
           span {
             width: $gridItemWidth;
             height: $gridItemWidth;
