@@ -8,6 +8,8 @@
 ////////////////////////////////////////
 
 section.home-hero {
+  $mobileBikeWheelSize: calc(#{$Base} * 2);
+
   // height: calc(100vh - #{$BaseNavSizeLg});
   height: 100vh;
   min-height: 800px;
@@ -20,7 +22,9 @@ section.home-hero {
     align-items: flex-start;
     height: unset;
     min-height: unset;
-    padding-right: $BaseGutterLeftSm;
+    padding-top: calc(#{$BaseNavSizeSm});
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .home-hero-inner {
@@ -40,11 +44,27 @@ section.home-hero {
       width: 100%;
       flex-direction: column;
       justify-content: center;
+      position: relative;
+      z-index: 400;
 
       @media (max-width: $BaseMediaSm) {
         justify-content: flex-start;
         max-width: unset;
         width: 100%;
+        position: relative;
+
+        .btn-newsletter {
+          position: absolute;
+          top: calc(#{$Base} / 2.3);
+          right: 0;
+          width: calc(100vw - (#{$mobileBikeWheelSize} + (#{$Base} * 2)));
+          background: $clrBlack;
+          color: $clrWhite;
+
+          &:hover {
+            border-color: $clrBlack;
+          }
+        }
       }
 
       h1 {
@@ -89,6 +109,10 @@ section.home-hero {
             }
           }
         }
+
+        @media (max-width: $BaseMediaSm) {
+          background: $clrSnow;
+        }
       }
 
       .btn-newsletter {
@@ -106,13 +130,18 @@ section.home-hero {
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
+          position: relative;
+          z-index: 500;
+          top: calc((#{$mobileBikeWheelSize} / 2) * -1);
 
           .bike-wheel {
             order: 1;
+            margin-top: 0px;
+            margin-left: $BaseGutterLeftSm;
 
             svg {
-              width: calc(#{$Base} * 2);
-              height: calc(#{$Base} * 2);
+              width: $mobileBikeWheelSize;
+              height: $mobileBikeWheelSize;
             }
           }
 
@@ -122,6 +151,31 @@ section.home-hero {
           .col-info-hours,
           .btn-newsletter {
             order: 2;
+            padding: 0 $BaseGutterLeftSm;
+          }
+
+          .col-info-hours {
+            padding-top: $BaseGutterLeftSm;
+            padding-bottom: $BaseGutterLeftSm;
+            margin-top: $BaseGutterLeftSm;
+
+            ul {
+              display: flex;
+              width: 100%;
+              border-left: unset;
+              padding-left: 0;
+              margin-left: 0;
+
+              li {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                  width: 100%;
+                  max-width: unset;
+                }
+              }
+            }
           }
         }
       }
@@ -138,6 +192,8 @@ section.home-hero {
 
       @media (max-width: $BaseMediaSm) {
         height: unset;
+        position: relative;
+        z-index: 200;
       }
 
       ul {
@@ -148,6 +204,8 @@ section.home-hero {
 
         @media (max-width: $BaseMediaSm) {
           height: unset;
+          display: block;
+          flex-direction: row;
         }
       }
     }
