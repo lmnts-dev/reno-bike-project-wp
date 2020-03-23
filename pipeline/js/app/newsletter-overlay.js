@@ -7,7 +7,7 @@ function initNewsletter() {
   let newsletterBtnClass = "btn-newsletter";
   let newsletterOverlayClass = "newsletter-overlay";
 
-  const toggleNavOverlay = e => {
+  const toggleNewsletterOverlay = e => {
     let newsletterOverlay = document.getElementsByClassName(
       newsletterOverlayClass
     )[0];
@@ -33,7 +33,7 @@ function initNewsletter() {
       event.preventDefault();
 
       // Log the clicked element in the console
-      toggleNavOverlay(event);
+      toggleNewsletterOverlay(event);
     },
     false
   );
