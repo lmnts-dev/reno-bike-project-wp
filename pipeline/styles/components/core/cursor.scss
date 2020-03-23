@@ -44,3 +44,10 @@
   height: 20px;
   border: 1px solid $clrGold;
 }
+
+.cursor,
+.cursor-outline {
+  @media (max-width: $BaseMediaMd) {
+    display: none;
+  }
+}
