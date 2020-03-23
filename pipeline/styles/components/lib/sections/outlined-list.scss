@@ -13,6 +13,10 @@
   width: 100%;
   overflow: hidden;
 
+  @media (max-width: $BaseMediaSm) {
+    padding: 0;
+  }
+
   .outlined-list-inner {
     // The list itself
     ul {
@@ -35,6 +39,10 @@
         // position: relative;
         display: flex;
         justify-content: flex-start;
+
+        @media (max-width: $BaseMediaSm) {
+          font-size: 6vh;
+        }
 
         a,
         a:visited {
@@ -63,6 +71,12 @@
             position: relative;
             z-index: -1;
             mix-blend-mode: multiply;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            display: none;
+            opacity: 0;
+            visibility: hidden;
           }
         }
 
