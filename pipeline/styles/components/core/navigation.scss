@@ -17,13 +17,13 @@ header {
   font-size: 1rem;
   z-index: 800;
   background: $clrWhite;
-  transition: .25s;
+  transition: 0.25s;
 
   &.hidden {
-      opacity: 0;
-      @media (min-width: $BaseNavBreak) {
-        opacity: 1;
-      }
+    opacity: 0;
+    @media (min-width: $BaseNavBreak) {
+      opacity: 1;
+    }
   }
 
   // Base List Styles
@@ -80,7 +80,7 @@ header {
 
           @media (max-width: $BaseMediaSm) {
             padding: 0 $Base/4;
-            font-size: .8rem;
+            font-size: 0.8rem;
           }
         }
 
@@ -134,8 +134,10 @@ header {
             color: $clrChrome;
           }
 
-          a:hover {
-            color: $clrPrimary;
+          @media (min-width: $BaseMediaMd) {
+            a:hover {
+              color: $clrPrimary;
+            }
           }
         }
 
@@ -190,9 +192,11 @@ header {
               right: unset;
             }
 
-            &:hover {
-              &:before {
-                opacity: 1;
+            @media (min-width: $BaseMediaMd) {
+              &:hover {
+                &:before {
+                  opacity: 1;
+                }
               }
             }
           }
@@ -304,14 +308,14 @@ header {
 
       //Main Links
       &.nav-col-2 {
-        @media( max-width: $BaseNavBreak ){
+        @media (max-width: $BaseNavBreak) {
           display: none;
         }
       }
 
       // CTA Column
       &.nav-col-3 {
-        @media (max-width: $BaseNavBreak ) {
+        @media (max-width: $BaseNavBreak) {
           flex: 10;
         }
 
@@ -320,7 +324,7 @@ header {
           display: flex;
           align-items: center;
 
-          @media (max-width: $BaseNavBreak ) {
+          @media (max-width: $BaseNavBreak) {
             margin-left: auto;
           }
 
@@ -361,7 +365,7 @@ header {
           height: 100%;
           align-items: center;
 
-          @media (max-width: $BaseNavBreak ) {
+          @media (max-width: $BaseNavBreak) {
             margin-left: auto;
 
             //if there is a search icon next to the cta then its shopify
@@ -423,7 +427,6 @@ header {
             }
           }
           .nav-cta {
-
             a {
               background: $clrBlack;
               @media (max-width: $BaseMediaSm) {
@@ -435,7 +438,7 @@ header {
               #cart-icon {
                 display: none;
                 width: $Base * 0.8;
-  
+
                 @media (max-width: $BaseMediaSm) {
                   display: block;
                 }
@@ -501,7 +504,7 @@ header {
         align-items: center;
         padding: 0 $Base / 4;
 
-        @media (max-width: $BaseNavBreak ) {
+        @media (max-width: $BaseNavBreak) {
           display: flex;
         }
 
@@ -530,6 +533,7 @@ header {
             border: 2px solid $clrWhite;
             background: $clrPrimary;
             border-radius: 3px;
+            pointer-events: none;
           }
         }
       }

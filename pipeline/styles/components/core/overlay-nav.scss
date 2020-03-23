@@ -1,342 +1,353 @@
 //overlay nav
 
+// .active-nav-item-hover-styles {
+//   width: 100%;
+//   left: 0;
+// }
 
-.active-nav-item-hover-styles {
-    width: 100%; 
-    left: 0;
-}
+$overlayNavWidth: 450px;
 
 .nav-item-styles {
-    color: $clrBlack;
-    font-size: 1rem;
-    font-weight: 600;
+  color: $clrBlack;
+  font-size: 1rem;
+  font-weight: 600;
   //  transition-duration: .25s;
 
-    @media (max-width: $BaseMediaSm) {
-        line-height: 1.6;
-    }
+  @media (max-width: $BaseMediaSm) {
+    line-height: 1.6;
+  }
 
-    &:after {
-        background: none repeat scroll 0 0 transparent;
-        top: 0;
-        content: "";
-        display: block;
-        height: 5px;
-        left: 50%;
-        position: absolute;
-        background: $clrSteel;
-      //  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-        width: 0;
-    }
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    top: 0;
+    content: "";
+    display: block;
+    height: 5px;
+    left: 50%;
+    position: absolute;
+    background: $clrSteel;
+    //  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
 }
 
 .fixed-bottom-button-styles {
-    position: fixed;
-    bottom: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+
+  @media (max-width: $BaseMediaSm) {
+    width: 100%;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: #{$Base / -2};
+    height: $Base / 2;
     left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
+    background: linear-gradient(to top, white, transparent);
+    pointer-events: none;
+  }
 
-    @media (max-width: $BaseMediaSm) {
-        width: 100%;
+  a {
+    background-color: $clrPrimary;
+    padding: $Base / 2;
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+
+    &:active {
+      background-color: $clrPrimary;
     }
-
     &:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        top: #{$Base / -2};
-        height: $Base / 2;
-        left: 0;
-        background: linear-gradient( to top, white, transparent);
-        pointer-events: none;
+      background-color: white;
     }
-
-    a {
-        background-color: $clrPrimary;
-        padding: $Base / 2;
-        width: 100%;
-        display: block;
-        text-align: center;
-        color: white;
-        font-weight: 600;
-
-        &:hover {
-            background-color: $clrPrimary;
-        }
-        &:after {
-            background-color: white;
-        }
-    }
-    .sub-menu {
-        display: none;
-    }
+  }
+  .sub-menu {
+    display: none;
+  }
 }
 
 .overlay-nav-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    transition-duration: .25s;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  transition-duration: 0.25s;
 
-    &.dark-theme {
-        .overlay-nav-cta a, .left .top .branding {
-            background-color: $clrBlack;
+  &.dark-theme {
+    .overlay-nav-cta a,
+    .left .top .branding {
+      background-color: $clrBlack;
+    }
+    .left .top .exit:before,
+    .left .top .exit:after {
+      background-color: $clrGunmetal;
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 999;
+  }
+  @media (min-width: $BaseNavBreak) {
+    display: none;
+  }
+
+  .left {
+    background: $clrWhite;
+    position: relative;
+    width: $overlayNavWidth;
+
+    @media (max-width: $BaseMediaSm) {
+      width: 100%;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: $Base / 2;
+      @media (max-width: $BaseMediaSm) {
+        padding-right: $Base / 4;
+      }
+
+      .branding img {
+        height: $Base * 0.75;
+        @media (max-width: $BaseMediaSm) {
+          height: $Base / 2;
         }
-        .left .top .exit:before, .left .top .exit:after {
-            background-color: $clrGunmetal;
-        }
+      }
 
-    }
+      //temp
+      .branding {
+        width: $Base;
+        height: $Base;
+        background-color: $clrPrimary;
+        border-radius: 50%;
+      }
 
-    &.visible {
-        opacity: 1;
-        pointer-events: all;
-        z-index: 999;
-    }
-    @media (min-width: $BaseNavBreak) {
-        display: none;
-    }
-
-    .left {
-        background: white;
+      .exit {
         position: relative;
-        width: 80%;
+        height: $Base * 0.75;
+        width: $Base * 0.75;
+        transition-duration: 0.25s;
 
         @media (max-width: $BaseMediaSm) {
-            width: 100%;
+          height: $Base / 2;
+          width: $Base / 2;
         }
 
-        .top {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            padding: $Base / 2;
-            @media (max-width: $BaseMediaSm) {
-                padding-right: $Base / 4;
-            }
+        &:active {
+          cursor: pointer;
+          transform: scale(1.05);
+        }
 
-            .branding img {
-                height: $Base * .75;
+        &:after,
+        &:before {
+          content: "";
+          background-color: $clrPrimary;
+          border: none;
+          position: absolute;
+          top: calc(50% - 20px);
+          right: 30px;
+          height: 40px;
+          width: 3px;
+          margin: 0;
+          transition-duration: 0.25s;
+          pointer-events: all;
+          @media (max-width: $BaseMediaSm) {
+            height: 30px;
+            right: 15px;
+          }
+        }
+
+        &:after {
+          transform: rotate(45deg);
+        }
+
+        &:before {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    nav {
+      position: absolute;
+      width: 100%;
+      top: $Base * 2;
+      bottom: 0;
+      overflow: auto;
+      left: 0;
+
+      @media (max-width: $BaseMediaSm) {
+        top: $Base * 2;
+      }
+
+      ul {
+        a {
+          @extend .nav-item-styles;
+          position: relative;
+          font-size: 1.5rem;
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1.2rem;
+          }
+
+          &:after {
+            top: auto;
+            bottom: 0;
+          }
+        }
+
+        &.menu {
+          padding-bottom: $Base * 2;
+
+          > li {
+            border-top: 1px solid rgba($clrChrome, 0.2);
+            position: relative;
+
+            input[type="checkbox"] {
+              display: block;
+              background-color: transparent;
+              position: absolute;
+              right: $Base / 2;
+              top: $Base / 2;
+              height: $Base;
+              width: $Base;
+
+              @media (max-width: $BaseMediaSm) {
+                // height: $Base / 1.5;
+                // width: $Base / 1.5;
+                right: $Base / 4;
+              }
+
+              &:after,
+              &:before {
+                content: "";
+                background: linear-gradient(
+                  $clrWhite calc(50% - 1.5px),
+                  $clrBlack calc(50% - 1.5px),
+                  $clrBlack calc(50% + 1.5px),
+                  $clrWhite calc(50% + 1.5px)
+                );
+                border: none;
+                position: absolute;
+                top: 0;
+                height: calc(#{$Base} / 1.5);
+                width: calc(#{$Base} / 1.5);
+                margin: 0;
+                transition-duration: 0.25s;
+                left: auto;
+                cursor: pointer;
+
                 @media (max-width: $BaseMediaSm) {
-                    height: $Base / 2;
+                  height: $Base / 1.5;
+                  width: $Base / 1.5;
+                  top: 0;
                 }
-            }
+              }
 
-            //temp
-            .branding {
-                width: $Base;
-                height: $Base;
-                background-color: $clrPrimary;
-                border-radius: 50%;
-            }
+              &:focus {
+                border: none;
+              }
 
-            .exit {
-                position: relative;
-                height: $Base * .75;
-                width: $Base * .75;
-                transition-duration: .25s;
-                
-                @media (max-width: $BaseMediaSm) {
-                    height: $Base / 2;
-                    width: $Base / 2;
-                }
+              &:after {
+                transform: rotate(90deg);
+                background: linear-gradient(
+                  transparent calc(50% - 1.5px),
+                  $clrBlack calc(50% - 1.5px),
+                  $clrBlack calc(50% + 1.5px),
+                  transparent calc(50% + 1.5px)
+                );
+              }
 
-                &:hover {
-                    cursor: pointer;
-                    transform: scale(1.05);
-                }
-
-                &:after, &:before {
-                    content: '';
-                    background-color: $clrPrimary;
-                    border: none;
-                    position: absolute;
-                    top: calc(50% - 20px);
-                    right: 30px;
-                    height: 40px;
-                    width: 3px;
-                    margin: 0;
-                    transition-duration: .25s;
-                    pointer-events: all;
-                    @media (max-width: $BaseMediaSm) {
-                        height: 30px;
-                        right: 15px;
-                    }
+              &:checked {
+                &:before {
+                  transform: rotate(45deg);
                 }
 
                 &:after {
-                    transform: rotate(45deg);
+                  transform: rotate(135deg);
                 }
 
-                &:before {
-                    transform: rotate(-45deg);
+                ~ .sub-menu {
+                  max-height: $Base * 100;
                 }
-            }
-        }
-
-        nav {
-            position: absolute;
-            width: 100%;
-            top: $Base * 2;
-            bottom: 0;
-            overflow: auto;
-            left: 0;
-
-            @media (max-width: $BaseMediaSm) {
-                top: $Base * 2;
+              }
             }
 
-            ul {
-                a {
-                    @extend .nav-item-styles;
-                    position: relative;
-                    font-size: 1.5rem;
-                    @media (max-width: $BaseMediaSm) {
-                        font-size: 1.2rem;
-                    }
-
-                    &:after {
-                        top: auto;
-                        bottom: 0;
-                    }
-                }
-
-                &.menu {
-                    padding-bottom: $Base * 2;
-
-                    > li {
-                        border-top: 1px solid rgba($clrChrome, .2);
-                        position: relative;
-    
-
-                        input[type=checkbox] {
-                            display: block;
-                            background-color: transparent;
-                            position: absolute;
-                            right: $Base / 2;
-                            top: 0;
-                            height: $Base;
-                            width: $Base;
-
-                            @media (max-width: $BaseMediaSm) {
-                                height: $Base / 1.5;
-                                width: $Base / 1.5;
-                                right: $Base / 4;
-                                top: $Base / 7;
-                            }
-
-                            &:after, &:before {
-                                content: '';
-                                background: linear-gradient($clrWhite calc(50% - 1.5px), $clrBlack calc(50% - 1.5px), $clrBlack calc(50% + 1.5px), $clrWhite calc(50% + 1.5px));
-                                border: none;
-                                position: absolute;
-                                top: calc(50% - 10px);
-                                height: $Base / 2;
-                                width: $Base / 2;
-                                margin: 0;
-                                transition-duration: .25s;
-                                left: auto;
-                                cursor: pointer;
-
-                                @media (max-width: $BaseMediaSm) {
-                                    height: $Base / 1.5;
-                                    width: $Base / 1.5;
-                                    top: 0;
-                                }
-                            }
-
-                            &:focus {
-                                border: none;
-                            }
-
-                            &:after {
-                                transform: rotate(90deg);
-                                background: linear-gradient(transparent calc(50% - 1.5px), $clrBlack calc(50% - 1.5px), $clrBlack calc(50% + 1.5px), transparent calc(50% + 1.5px));
-                            }
-
-                            &:checked {
-
-                                &:before {
-                                    transform: rotate(45deg);
-                                }
-
-                                &:after {
-                                    transform: rotate(135deg);
-                                }
-
-                                ~ .sub-menu {
-                                   max-height: $Base * 100; 
-                                }
-                            }
-                        }
-
-                        &:last-of-type input {
-                            display: none;
-                        }
-
-                        &:first-of-type {
-                            border-top: none;
-                        }
-
-                        a {
-                            padding: $Base / 5 $Base / 2;
-                            display: block;
-                            @media (max-width: $BaseMediaSm) {
-                                padding: $Base / 8 $Base / 2;
-                            }
-
-                            &:hover {
-                                color: $clrPrimary;
-
-                                &:after {
-                                    @extend .active-nav-item-hover-styles;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                &.sub-menu {
-                    margin-left: 0;
-                    max-height: 0px;
-                    transition-duration: .25s;
-                    overflow: hidden;
-
-                    li {
-                        a {
-                            color: $clrChrome;
-                            padding-left: $Base / 2;
-                        }
-                    }
-                }
+            &:last-of-type input {
+              display: none;
             }
 
+            &:first-of-type {
+              border-top: none;
+            }
+
+            a {
+              padding: $Base / 2;
+              display: block;
+
+              @media (min-width: $BaseMediaMd) {
+                &:hover {
+                  color: $clrPrimary;
+                }
+              }
+            }
+          }
         }
 
-        .overlay-nav-cta {
-            @extend .fixed-bottom-button-styles;
+        &.sub-menu {
+          margin-left: 0;
+          max-height: 0px;
+          transition-duration: 0.25s;
+          overflow: hidden;
+
+          li {
+            a {
+              color: $clrChrome;
+              padding-left: $Base / 2;
+            }
+          }
         }
+      }
     }
-    .right {
-        background-color: rgba($clrBlack, .6);
-        position: relative;
-        width: 20%;
-        @media (max-width: $BaseMediaSm) {
-            width: 0px;
-        }
+
+    .overlay-nav-cta {
+      width: $overlayNavWidth;
+
+      @media (max-width: $BaseMediaSm) {
+        width: 100%;
+      }
+
+      @extend .fixed-bottom-button-styles;
     }
+  }
+  .right {
+    background-color: rgba($clrBlack, 0.6);
+    position: relative;
+    width: calc(100% - #{$overlayNavWidth});
+    @media (max-width: $BaseMediaSm) {
+      width: 0px;
+    }
+  }
 }

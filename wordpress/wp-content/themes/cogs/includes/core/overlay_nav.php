@@ -25,7 +25,7 @@ $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="
             <a href="/" class="branding">
                 <?php // echo '<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo">'; ?>
             </a>
-            <div class="exit" id="overlay-exit"></div>
+            <div class="exit nav-overlay-toggle" id="overlay-exit"></div>
         </div>
         <nav class="overlay-nav">
             <?php  echo $nav ?>
