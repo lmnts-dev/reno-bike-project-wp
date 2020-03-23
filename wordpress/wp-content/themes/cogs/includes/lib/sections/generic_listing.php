@@ -20,9 +20,10 @@ $listings = get_sub_field('listing');
 if (get_row_layout() == 'generic_listing' || $rowLayout == 'generic_listing') {
 
 ?>
-  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">    <span class="squiggle"></span>
+  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">
   <div class="section-header split">
       <h3>
+        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>Our Partners</span>
       </h3>
       <p>

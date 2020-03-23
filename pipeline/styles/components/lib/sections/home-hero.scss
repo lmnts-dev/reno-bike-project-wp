@@ -18,7 +18,7 @@ section.home-hero {
   padding-top: calc(#{$BaseNavSizeLg} + #{$Base/2});
   padding-right: 0;
 
-  @media (max-width: $BaseMediaSm) {
+  @media (max-width: $BaseMediaMd) {
     align-items: flex-start;
     height: unset;
     min-height: unset;
@@ -31,7 +31,7 @@ section.home-hero {
     display: flex;
     width: 100%;
 
-    @media (max-width: $BaseMediaSm) {
+    @media (max-width: $BaseMediaMd) {
       //temporary just so the home screen isn't so wide on mobile
       flex-direction: column-reverse;
     }
@@ -47,7 +47,7 @@ section.home-hero {
       position: relative;
       z-index: 400;
 
-      @media (max-width: $BaseMediaSm) {
+      @media (max-width: $BaseMediaMd) {
         justify-content: flex-start;
         max-width: unset;
         width: 100%;
@@ -110,7 +110,7 @@ section.home-hero {
           }
         }
 
-        @media (max-width: $BaseMediaSm) {
+        @media (max-width: $BaseMediaMd) {
           background: $clrSnow;
         }
       }
@@ -124,7 +124,7 @@ section.home-hero {
         margin-top: $Base;
       }
 
-      @media (max-width: $BaseMediaSm) {
+      @media (max-width: $BaseMediaMd) {
         .col-info-top {
           display: flex;
           flex-direction: column;
@@ -190,7 +190,7 @@ section.home-hero {
       @include fadein(3s);
       flex: 1;
 
-      @media (max-width: $BaseMediaSm) {
+      @media (max-width: $BaseMediaMd) {
         height: unset;
         position: relative;
         z-index: 200;
@@ -202,7 +202,7 @@ section.home-hero {
         flex-direction: column;
         justify-content: center;
 
-        @media (max-width: $BaseMediaSm) {
+        @media (max-width: $BaseMediaMd) {
           height: unset;
           display: block;
           flex-direction: row;

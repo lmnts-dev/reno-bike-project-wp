@@ -20,7 +20,6 @@ function hideNavOverlay() {
 function toggleNavOverlay(e) {
   if (navigationOverlay.classList.contains("visible")) {
     // console.log("CLOSE!");
-
     document.body.classList.remove("scroll-lock");
     navigationOverlay.classList.remove("visible");
     document.getElementsByTagName("header")[0].classList.remove("hidden");

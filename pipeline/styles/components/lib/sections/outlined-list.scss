@@ -15,7 +15,7 @@ $outlinedListMobileHeight: 50vh;
   width: 100%;
   overflow: hidden;
 
-  @media (max-width: $BaseMediaSm) {
+  @media (max-width: $BaseMediaMd) {
     padding: 0;
   }
 
@@ -33,7 +33,7 @@ $outlinedListMobileHeight: 50vh;
       z-index: 60;
       background: $clrWhite;
 
-      @media (max-width: $BaseMediaSm) {
+      @media (max-width: $BaseMediaMd) {
         display: block;
         width: 100%;
         // flex-direction: row;
@@ -52,7 +52,7 @@ $outlinedListMobileHeight: 50vh;
         display: flex;
         justify-content: flex-start;
 
-        @media (max-width: $BaseMediaSm) {
+        @media (max-width: $BaseMediaMd) {
           font-size: 5vh;
           display: inline-flex;
           position: relative;
@@ -81,7 +81,7 @@ $outlinedListMobileHeight: 50vh;
           -webkit-text-stroke: 1px $clrBlack;
           -webkit-text-fill-color: rgba($clrWhite, 0);
 
-          @media (max-width: $BaseMediaSm) {
+          @media (max-width: $BaseMediaMd) {
             -webkit-text-stroke: 1px $clrWhite;
           }
         }
@@ -111,7 +111,7 @@ $outlinedListMobileHeight: 50vh;
             mix-blend-mode: multiply;
           }
 
-          @media (max-width: $BaseMediaSm) {
+          @media (max-width: $BaseMediaMd) {
             display: block;
             opacity: 1;
             left: 0;
@@ -137,7 +137,7 @@ $outlinedListMobileHeight: 50vh;
             -webkit-text-stroke: 1px $clrPrimary;
             -webkit-text-fill-color: $clrPrimary;
 
-            @media (max-width: $BaseMediaSm) {
+            @media (max-width: $BaseMediaMd) {
               -webkit-text-stroke: 1px $clrWhite;
               -webkit-text-fill-color: $clrWhite;
             }
@@ -148,7 +148,7 @@ $outlinedListMobileHeight: 50vh;
               -webkit-text-stroke: 1px $clrBlack;
               -webkit-text-fill-color: $clrBlack;
 
-              @media (max-width: $BaseMediaSm) {
+              @media (max-width: $BaseMediaMd) {
                 -webkit-text-stroke: 1px $clrWhite;
                 -webkit-text-fill-color: $clrWhite;
               }
@@ -163,7 +163,7 @@ $outlinedListMobileHeight: 50vh;
           a {
             -webkit-text-fill-color: $clrBlack;
 
-            @media (max-width: $BaseMediaSm) {
+            @media (max-width: $BaseMediaMd) {
               -webkit-text-fill-color: $clrWhite;
             }
           }
