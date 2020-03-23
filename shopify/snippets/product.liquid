@@ -13,31 +13,10 @@ The product page component.
 @todo: Hook into Product Data
 {% endcomment %}
 
-{% capture accordionContent %}
-
-<p>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis. Lorem ipsum dolor sit amet consectetur,
-  adipisicing elit. Ipsum, reiciendis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis.
-</p>
-<ul>
-  <li>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-  </li>
-  <li>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-  </li>
-  <li>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-  </li>
-  <li>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-  </li>
-  <li>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-  </li>
-</ul>
-
-{% endcapture %}
+{% comment %}
+  Get first variant, or deep linked one
+{% endcomment %}
+{% assign current_variant = product.selected_or_first_available_variant %}
 
 {% comment %}
 Begin product page component
@@ -46,20 +25,15 @@ Begin product page component
 <section class="product padding-top-none" itemscope itemtype="http://schema.org/Product">
   <div class="product-inner">
     <div class="col image-col">
-      <div class="featured-images">
-        <div class="img-wrapper">
-          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?pink" alt="Title" class="lazy" />
+      {% if product.images.size > 1 %}
+        <div class="featured-images">
+          {% for image in product.images %}
+            <div class="img-wrapper">
+              <img itemprop="image" data-src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" class="lazy" />
+            </div>
+          {% endfor %}
         </div>
-        <div class="img-wrapper">
-          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?yellow" alt="Title" class="lazy" />
-        </div>
-        <div class="img-wrapper">
-          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?blue" alt="Title" class="lazy" />
-        </div>
-        <div class="img-wrapper">
-          <img itemprop="image" data-src="https://source.unsplash.com/1600x900/?red" alt="Title" class="lazy" />
-        </div>
-      </div>
+      {% endif %}
 
       <div class="specifics-outer">
         {% include 'accordion-row' id:1, headline: 'Details', content: accordionContent %}
@@ -71,77 +45,108 @@ Begin product page component
     <div class="col details">
       <div class="details-top">
 
-        <div class="title-and-price">
-          <div class="title">
-            <h1 itemprop="name">
-              Product Title
-            </h1>
-          </div>
-          <div class="price">
-            <span itemprop="priceCurrency" content="USD">$</span>
-            <span itemprop="price" content="1000.00">1,000.00</span>
-          </div>
-          </span>
-        </div>
+        {% comment %}
+          ID addToCartForm is a selector for the ajax cart plugin
+        {% endcomment %}
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
-        <div class="quantity-and-purchase">
-          <div class="quantity">
-            <input type="number" id="Quantity" name="quantity" value="1" min="1">
-          </div>
-          <div class="purchase">
-            <button href="/cart" type="submit" name="add" id="AddToCart" class="btn btn-clr-black btn-arrow">Add to basket</button>
-          </div>
-        </div>
+          <div class="title-and-price">
+            <div class="title">
+              <h1 itemprop="name">
+                {{ product.title }} 
+              </h1>
+            </div>
+            <div class="price">
+              {% comment %}<span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>{% endcomment %}
+              <span itemprop="priceCurrency" content="USD">$</span>
+              <span itemprop="price" content="1000.00" id="ProductPrice" content="{{ current_variant.price | divided_by: 100.00 }}">
+                {{ current_variant.price | money | remove: '$' }}
+              </span>
 
-        <div class="variant-selector">
-          <div class="selector">
-            Dropdown
+              {% if product.compare_at_price_max > product.price %}
+                {% comment %}<span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>{% endcomment %}
+                <span class="compare-price" id="ComparePrice">
+                  <strike>
+                    {{ current_variant.compare_at_price | money }}
+                  </strike>
+                </span>
+              {% endif %}
+
+            </div>
+            </span>
           </div>
-        </div>
 
-        <div class="description" itemprop="description">
-          <p>
-            Vintage Team Fuji racing bike. Amazing condition with new components and tires. This rare smaller frame is
-            perfect for short riders (4’10” - 5’0”).
-          </p>
-        </div>
+          <div class="quantity-and-purchase">
+            {% if product.available %}
+              <div class="quantity">
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+              </div>
+            {% endif %}
+            <div class="purchase">
+              {% if product.available %}
+                <button type="submit" name="add" id="AddToCart" class="btn btn-clr-black btn-arrow">Add to basket</button>
+              {% else %}
+                <button class="btn btn-clr-black sold-out-btn">Sold Out</button>
+              {% endif %}
+            </div>
+          </div>
 
+          {% assign variantSize = product.variants | size %}
+          {% if variantSize > 1 and product.available %}
+            <div class="variant-selector">
+              <select name="id" id="productSelect" class="selecter">
+            
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                  {% else %}
+                    <option disabled="disabled">
+                      {{ variant.title }} - Sold Out
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+        </form>
+      {% comment %}
+        End form
+      {% endcomment %}
+
+      <div class="description" itemprop="description">
+        <p>
+          {{ product.description }}
+        </p>
       </div>
 
-      <div class="specifics-outer mobile-visible">
-        {% include 'accordion-row' id:1, headline: 'Details', content: accordionContent %}
-        {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: accordionContent %}
-        {% include 'accordion-row' id:3, headline: 'Shipping', content: accordionContent %}
-      </div>
-
-      <div class="details-bottom">
-        <span>
-          Keep Browsing
-        </span>
-        <ul>
-          <li>
-            <a href="/">
-              Used Bicycles
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Road Bikes
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Fuji Team
-            </a>
-          </li>
-          <li>
-            <a href="/collections/">
-              All Products
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
+
+    <div class="specifics-outer mobile-visible">
+      {% if product.metafields.details %}
+        {% include 'accordion-row' id:1, headline: 'Details', content: product.metafields.details  %}
+      {% endif %}
+      {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: accordionContent %}
+      {% include 'accordion-row' id:3, headline: 'Shipping', content: accordionContent %}
+    </div>
+
+    <div class="details-bottom">
+      <span>
+        Keep Browsing
+      </span>
+      <ul>
+        {% for link in linklists.main-navigation.links | limit: 4 %}
+          <li>
+            {{ link.title | link_to: link.url }}
+          </li>
+        {% endfor %}
+        <li>
+          <a href="/collections/">
+            All Products
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 </section>
 

@@ -85,6 +85,7 @@
               display: flex;
               flex: 1;
               justify-content: flex-end;
+              flex-wrap: wrap;
 
               @media (max-width: $BaseMediaSm) {
                 justify-content: flex-start;
@@ -95,6 +96,12 @@
                 color: $clrPrimary;
                 font-weight: 600;
                 text-align: right;
+
+                &.compare-price {
+                  display: block;
+                  min-width: 100%;
+                  color: $clrGunmetal;
+                }
 
                 @media (max-width: $BaseMediaSm) {
                   font-size: 1.3rem;
@@ -128,6 +135,10 @@
 
               button {
                 width: 100%;
+
+                &.sold-out-btn {
+                  padding-right: $Base / 4;
+                }
               }
             }
           }
@@ -135,12 +146,36 @@
           .variant-selector {
             width: 100%;
             margin-bottom: $detailsVerticalSpacing;
+            position: relative;
 
-            .selector {
+            &:after {
+              content: "";
+              position: absolute;
+              right: $Base / 4;
+              top: 50%;
+              transition: all 0.25s ease;
+              transform: translate(-10px, -50%);
+              width: 0;
+              height: 0;
+              border-right: calc(#{$Base} * 0.15) solid transparent;
+              border-left: calc(#{$Base} * 0.15) solid transparent;
+              border-top: calc(#{$Base} * 0.15) solid $clrBlack;
+            }
+
+            select.selecter {
               border: 1px solid $clrBlack;
+              padding-right: calc(#{$Base} * 1.3);
               width: 100%;
               padding: $Base/4;
               font-size: 1.2rem;
+              height: $BaseBtnHeight;
+              background-color: transparent;
+              -webkit-appearance: none;
+              -webkit-border-radius: 0px;
+
+              &:focus {
+                outline-width: 0;
+              }
             }
           }
         }

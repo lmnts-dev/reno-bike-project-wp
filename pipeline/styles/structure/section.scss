@@ -17,10 +17,7 @@ article {
   }
 
   @media (max-width: $BaseMediaSm) {
-    padding-top: $BasePaddingSm;
-    padding-bottom: $BasePaddingSm;
-    padding-right: $BaseGutterRightSm;
-    padding-left: $BaseGutterLeftSm;
+    padding: $BasePaddingSm $BaseGutterRightSm $BasePaddingSm $BaseGutterLeftSm;
   }
 
   &.padding-top-none {

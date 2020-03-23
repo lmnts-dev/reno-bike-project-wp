@@ -13,10 +13,17 @@ section.block-row {
   ~ .block-row {
     padding-top: 0;
     padding-bottom: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-bottom: $BasePaddingSm;
+    }
   }
 
   &:last-of-type {
     padding-bottom: $BasePadding;
+    @media (max-width: $BaseMediaSm) {
+      padding-bottom: $BasePaddingSm;
+    }
   }
 
   .block-row-inner {

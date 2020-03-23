@@ -9,11 +9,11 @@ $longTranslateSm: $longHeightSm * 0.73;
 $shortTranslateSm: $shortHeightSm * 0.93;
 
 .squiggle-svg {
-  display: block;
   margin-bottom: calc(#{$Base} * 0.75);
   width: $longHeight;
   pointer-events: none;
   display: flex;
+  flex-direction: row;
 
   @media (max-width: $BaseMediaSm) {
     width: $longHeightSm;
@@ -28,12 +28,12 @@ $shortTranslateSm: $shortHeightSm * 0.93;
     }
 
     svg:nth-of-type(2) {
-      transform: translateX(-7px);
+      transform: translateX(-2px);
     }
   }
 
   svg:nth-of-type(2) {
-      transform: translateX(-9px);
+      transform: translateX(-2px);
   }
 
   &.squiggle-orange path {
