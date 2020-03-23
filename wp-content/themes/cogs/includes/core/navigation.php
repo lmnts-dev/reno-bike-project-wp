@@ -70,5 +70,26 @@ $ecommerce = get_field('ecommerce', 'option');
     <?php /** /CTA Navigation */
     ?>
 
+    <?php /** Overlay Nav Toggle */
+    ?>
+    <div class="nav-col nav-col-4">
+      <div class="grid nav-overlay-toggle" id="mobile-nav-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <?php /** /Overlay Nav Toggle */
+    ?>
+
   </div>
 </header>
+
+<?php include get_template_directory() . '/includes/core/overlay_nav.php'; ?>

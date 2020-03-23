@@ -1,4 +1,4 @@
-<svg width="208px" height="207px" viewBox="0 0 208 207" class="bike-wheel-el">
+<svg width="208px" height="207px" viewBox="0 0 208 207" preserveAspectRatio="none" class="bike-wheel-el">
   <defs>
     <polygon id="path-1" points="0 0 208 0 208 207 0 207"></polygon>
   </defs>
