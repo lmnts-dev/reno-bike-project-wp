@@ -16,3 +16,7 @@ By Laxalt & McIver
 ## Shopify Setup
 1. Install Shopify Themekit.
 2. Run `theme watch` from the `/shopify` folder.
+
+## Run _ngrok for mobile testing
+1. Run Gulp / Lando
+2. Run `_ngrok/ngrok http 3000` from `/`
