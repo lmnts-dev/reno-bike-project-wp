@@ -241,47 +241,15 @@ function initVideoOverlay() {
 initVideoOverlay();
 "use strict";
 
-/*
- ** @author: Peter Laxalt
- ** @description: Functions to show/hide the navigation overlay.
- */
-var navigationBtnClass = "nav-overlay-toggle";
-var navigationOverlayClass = "overlay-nav-container";
-var navigationOverlay = document.getElementsByClassName(navigationOverlayClass)[0];
-
-function hideNavOverlay() {
-  if (navigationOverlay.classList.contains("visible")) {
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  }
-}
-
-function toggleNavOverlay(e) {
-  if (navigationOverlay.classList.contains("visible")) {
-    // console.log("CLOSE!");
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  } else {
-    // console.log("SHOW!");
-    document.body.classList.add("scroll-lock");
-    navigationOverlay.classList.add("visible");
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("mobile-nav-icon").addEventListener('click', function () {
+    document.getElementById("overlay-nav").classList.add("visible");
     document.getElementsByTagName("header")[0].classList.add("hidden");
-  }
-}
-
-function initNavOverlay() {
-  document.addEventListener("click", function (event) {
-    // If the clicked element doesn't have the right selector, bail
-    if (!event.target.classList.contains(navigationBtnClass)) {
-      // console.log("WRONG TARGET");
-      return;
-    } else {
-      // Don't follow the link
-      event.preventDefault(); // Log the clicked element in the console
-
-      toggleNavOverlay(event);
-    }
-  }, false);
-}
+    document.getElementsByTagName("body")[0].classList.add("overlay-lock");
+  });
+  document.getElementById("overlay-exit").addEventListener('click', function () {
+    document.getElementById("overlay-nav").classList.remove("visible");
+    document.getElementsByTagName("header")[0].classList.remove("hidden");
+    document.getElementsByTagName("body")[0].classList.remove("overlay-lock");
+  });
+});

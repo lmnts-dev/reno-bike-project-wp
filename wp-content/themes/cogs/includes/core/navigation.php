@@ -73,7 +73,7 @@ $ecommerce = get_field('ecommerce', 'option');
     <?php /** Overlay Nav Toggle */
     ?>
     <div class="nav-col nav-col-4">
-      <div class="grid nav-overlay-toggle" id="mobile-nav-icon">
+      <div class="grid" id="mobile-nav-icon">
         <span></span>
         <span></span>
         <span></span>
