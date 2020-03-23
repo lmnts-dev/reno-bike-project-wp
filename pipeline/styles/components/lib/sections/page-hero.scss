@@ -36,9 +36,9 @@ section.page-hero {
 
         h1 {
           font-size: 10vw;
-       //   max-width: $baseMaxWidth;
+          //   max-width: $baseMaxWidth;
           word-wrap: none;
-        //  white-space: nowrap;
+          //  white-space: nowrap;
           margin-top: 0;
           font-weight: 700;
           line-height: 1;
@@ -76,6 +76,7 @@ section.page-hero {
         right: calc(#{$BaseGutterRight} * -1);
         width: 70vw;
         object-fit: cover;
+        background-color: $clrPlaceholder;
 
         @media (max-width: $BaseMediaMd) {
           width: 85vw;
@@ -91,6 +92,7 @@ section.page-hero {
           height: calc(#{$baseHeight} / 2);
           width: 70vw;
           overflow: hidden;
+          background-color: $clrPlaceholder;
 
           @media (max-width: $BaseMediaMd) {
             width: 85vw;

@@ -125,8 +125,13 @@ $outlinedListMobileHeight: 50vh;
 
             img {
               width: 100%;
-              opacity: 0.5;
+              opacity: 0;
+              transition: opacity .25s ease;
               mix-blend-mode: unset;
+
+              &.loaded {
+                opacity: 0.5;
+              }
             }
           }
         }
