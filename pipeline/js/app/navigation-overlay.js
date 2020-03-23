@@ -19,13 +19,13 @@ function hideNavOverlay() {
 
 function toggleNavOverlay(e) {
   if (navigationOverlay.classList.contains("visible")) {
-    console.log("CLOSE!");
+    // console.log("CLOSE!");
 
     document.body.classList.remove("scroll-lock");
     navigationOverlay.classList.remove("visible");
     document.getElementsByTagName("header")[0].classList.remove("hidden");
   } else {
-    console.log("SHOW!");
+    // console.log("SHOW!");
     document.body.classList.add("scroll-lock");
     navigationOverlay.classList.add("visible");
     document.getElementsByTagName("header")[0].classList.add("hidden");
@@ -38,7 +38,7 @@ function initNavOverlay() {
     function(event) {
       // If the clicked element doesn't have the right selector, bail
       if (!event.target.classList.contains(navigationBtnClass)) {
-        console.log("WRONG TARGET");
+        // console.log("WRONG TARGET");
         return;
       } else {
         // Don't follow the link
