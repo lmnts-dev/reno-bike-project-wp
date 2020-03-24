@@ -75,7 +75,8 @@
       text-align: center;
       padding-left: $BaseGutterLeftSm;
       padding-right: $BaseGutterRightSm;
-  
+      margin-top: $Base;
+
       @media (max-width: $BaseMediaSm) {
         display: block;
       }
