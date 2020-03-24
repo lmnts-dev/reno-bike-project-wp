@@ -19,16 +19,33 @@
     margin: 0;
     padding-top: 0;
     padding-bottom: 0;
+    color: $clrBlack;
+    display: block;
+
+    &:hover {
+      background-color: $clrSnow;
+
+      .col.content-col {
+        color: $clrPrimary;
+        background-color: $clrSnow;
+      }
+    }
 
     &:nth-child(odd) {
       @extend .reverse;
 
       @media (max-width: $BaseMediaSm) {
-        padding-left: $BaseGutterLeftSm;
+        .event-row-inner {
+          display: flex;
+          padding-left: $BaseGutterLeftSm;
+          padding-right: $BaseGutterLeftSm;
+          flex-direction: column-reverse;
 
-        .event-row-inner .col.content-col {
-          padding-top: 0;
-          padding-left: 0;
+          .col {
+            &.content-col {
+              padding-left: 0;
+            }
+          }
         }
       }
     }
@@ -37,14 +54,18 @@
       @extend .editorial-row-inner;
       align-items: stretch;
       min-height: calc(#{$Base} * 9);
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
 
       .col.content-col {
         padding-top: calc(#{$Base} * 2);
         padding-bottom: calc(#{$Base} * 2);
-        width: calc(50% - #{$Base * 0.75});
+        width: 50%;
 
         @media (max-width: $BaseMediaSm) {
-          padding-top: 0;
+          padding-top: calc(#{$Base} * 0.5);
+          margin-bottom: calc(#{$Base});
         }
 
         .content-col-inner {
@@ -54,7 +75,7 @@
 
       .col.img-col {
         position: relative;
-        width: calc(50% + #{$Base * 0.75});
+        width: 50%;
         background: $clrPlaceholder;
 
         @media (max-width: $BaseMediaSm) {
@@ -65,6 +86,13 @@
         img {
           @include objectFit();
         }
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        display: flex;
+        padding-left: $BaseGutterLeftSm;
+        padding-right: $BaseGutterLeftSm;
+        flex-direction: column-reverse;
       }
     }
   }
