@@ -22,6 +22,11 @@
     color: $clrBlack;
     display: block;
 
+    @media (max-width: $BaseMediaSm) {
+      margin-bottom: calc(#{$Base});
+      padding-top: calc(#{$Base} * 0.5);
+    }
+
     &:hover {
       background-color: $clrSnow;
 
@@ -43,6 +48,7 @@
 
           .col {
             &.content-col {
+              padding-top: calc(#{$Base} * 0.5);
               padding-left: 0;
             }
           }
@@ -65,7 +71,6 @@
 
         @media (max-width: $BaseMediaSm) {
           padding-top: calc(#{$Base} * 0.5);
-          margin-bottom: calc(#{$Base});
         }
 
         .content-col-inner {
