@@ -25,6 +25,7 @@
     @media (max-width: $BaseMediaSm) {
       margin-bottom: calc(#{$Base});
       padding-top: calc(#{$Base} * 0.5);
+      padding-right: 0;
     }
 
     &:hover {
@@ -40,6 +41,8 @@
       @extend .reverse;
 
       @media (max-width: $BaseMediaSm) {
+        padding-right: 0;
+        
         .event-row-inner {
           display: flex;
           padding-left: $BaseGutterLeftSm;
