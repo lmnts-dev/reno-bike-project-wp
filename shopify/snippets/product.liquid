@@ -18,6 +18,11 @@ The product page component.
 {% endcomment %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 
+{% comment %} Get metafeild variables {% endcomment %}
+{% assign details = product.metafields.custom_fields['details'] %}
+{% assign shipping = product.metafields.custom_fields['shipping_description'] %}
+{% assign pickUpInstructions = product.metafields.custom_fields['pick_up_instructions'] %}
+
 {% comment %}
 Begin product page component
 {% endcomment %}
@@ -35,11 +40,19 @@ Begin product page component
         </div>
       {% endif %}
 
-      <div class="specifics-outer">
-        {% include 'accordion-row' id:1, headline: 'Details', content: accordionContent %}
-        {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: accordionContent %}
-        {% include 'accordion-row' id:3, headline: 'Shipping', content: accordionContent %}
-      </div>
+      {% if details or pickUpInstructions or shipping %}
+        <div class="specifics-outer"> 
+          {% if details %}
+            {% include 'accordion-row' id:1, headline: 'Details', content: details %}
+          {% endif %}
+          {% if pickUpInstructions %}
+            {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: pickUpInstructions %}
+          {% endif %}
+          {% if shipping %}
+            {% include 'accordion-row' id:3, headline: 'Shipping', content: shipping %}
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
 
     <div class="col details">
@@ -121,13 +134,20 @@ Begin product page component
 
     </div>
 
-    <div class="specifics-outer mobile-visible">
-      {% if product.metafields.details %}
-        {% include 'accordion-row' id:1, headline: 'Details', content: product.metafields.details  %}
-      {% endif %}
-      {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: accordionContent %}
-      {% include 'accordion-row' id:3, headline: 'Shipping', content: accordionContent %}
-    </div>
+    
+    {% if details or pickUpInstructions or shipping %}
+      <div class="specifics-outer mobile-visible"> 
+        {% if details %}
+          {% include 'accordion-row' id:1, headline: 'Details', content: details %}
+        {% endif %}
+        {% if pickUpInstructions %}
+          {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: pickUpInstructions %}
+        {% endif %}
+        {% if shipping %}
+          {% include 'accordion-row' id:3, headline: 'Shipping', content: 'testing' %}
+        {% endif %}
+      </div>
+    {% endif %}
 
     <div class="details-bottom">
       <span>
