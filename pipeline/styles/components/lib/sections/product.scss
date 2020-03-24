@@ -148,6 +148,10 @@
             margin-bottom: $detailsVerticalSpacing;
             position: relative;
 
+            &.visually-hidden {
+              display: none;
+            }
+
             &:after {
               content: "";
               position: absolute;

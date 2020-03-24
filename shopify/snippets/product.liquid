@@ -105,22 +105,21 @@ Begin product page component
           </div>
 
           {% assign variantSize = product.variants | size %}
-          {% if variantSize > 1 and product.available %}
-            <div class="variant-selector">
-              <select name="id" id="productSelect" class="selecter">
-            
-                {% for variant in product.variants %}
-                  {% if variant.available %}
-                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-                  {% else %}
-                    <option disabled="disabled">
-                      {{ variant.title }} - Sold Out
-                    </option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-            </div>
-          {% endif %}
+          
+          <div class="variant-selector {% if variantSize > 1 and product.available %}{% else %}visually-hidden{% endif %}">
+            <select name="id" id="productSelect" class="selecter">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - Sold Out
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+          
         </form>
       {% comment %}
         End form

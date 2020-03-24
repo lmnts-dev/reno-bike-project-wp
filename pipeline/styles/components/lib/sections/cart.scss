@@ -7,8 +7,13 @@
 //
 ////////////////////////////////////////
 
-.cart {
+section.cart {
   $offsetTop: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+
+  &.empty-cart {
+    padding-top: $offsetTop;
+    text-align: center;
+  }
 
   .cart-inner {
     min-height: 70vh;

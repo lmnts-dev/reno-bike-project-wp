@@ -3,80 +3,78 @@
 Cart Page:
 The cart template.
 
-@author Peter Laxalt
+@author Peter Laxalt and Alisha Garric
 @since 3/2020
-
-@todo
-Link into Shopify data.
-
-// For later
-{% if cart.item_count > 0 %}{% endif %}
-{% if cart.item_count <= 0 %}empty{% endif %}
 
 {% endcomment %}
 
-<section class="cart padding-top-none">
-  <section class="cart-inner padding-top-none">
 
-    {% if cart.item_count %}
-    <form action="/cart" method="post" novalidate>
+{% if cart.item_count > 0 %}
 
-      <div class="col cart-items">
+  <section class="cart padding-top-none">
+    <section class="cart-inner padding-top-none">
 
-        <h1>Your Cart</h1>
+      <form action="/cart" method="post" novalidate>
 
-        {% include 'cart-item' %}
-        {% include 'cart-item' %}
-        {% include 'cart-item' %}
-        {% include 'cart-item' %}
-        {% include 'cart-item' %}
+        <div class="col cart-items">
 
-        <div class="cart-meta">
-          <div class="cart-meta-col">
-            <textarea name="note" class="cart-instructions" id="CartSpecialInstructions"
-              placeholder="Leave a note"></textarea>
-          </div>
-          <div class="cart-meta-col">
-            <button type="submit" class="btn" name="update">Update Cart</button>
+          <h1>Your Cart</h1>
+
+          {% for item in cart.items %}
+            {% include 'cart-item' %}
+          {% endfor %}
+
+          <div class="cart-meta">
+            <div class="cart-meta-col">
+              <textarea name="note" class="cart-instructions" id="CartSpecialInstructions"
+                placeholder="Leave a note"></textarea>
+            </div>
+            <div class="cart-meta-col">
+              <button type="submit" class="btn" name="update">Update Cart</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col subtotal">
-        <span class="total">
-          $250.00
-        </span>
-        <span class="label">
-          Subtotal
-        </span>
-        <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
-        <a href="/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>
-        <span class="disclaimer">
-          Shipping & taxes calculated at checkout for delivery items.
-        </span>
-      </div>
+        <div class="col subtotal">
+          <span class="total">
+            {{ cart.total_price | money }}
+          </span>
+          <span class="label">
+            Subtotal
+          </span>
+          <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
+          <a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>
+          <span class="disclaimer">
+            Shipping & taxes calculated at checkout for delivery items.
+          </span>
+        </div>
 
-    </form>
+      </form>
 
-    {% else %}
+    </section>
+  </section>
 
+{% else %}
+  {% comment %}
+    The cart is empty
+  {% endcomment %}
+
+  <section class="cart empty-cart padding-bottom-none">
     <h1>
       Your cart is empty.
     </h1>
     <p>
       But it's never been so ready to be full of joy.
     </p>
-    <a href="/" class="btn btn-clr-black btn-arrow">Keep shopping</a>
-    {% endif %}
-
+    <a href="/collections/" class="btn btn-clr-black btn-arrow">Start shopping</a>
   </section>
-</section>
 
+{% endif %}
 
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Keep shopping', 
-  slug: '/collections/parts-and-components' 
-%}
+  {% include 'collection-listings-slider' 
+    collectionTitle: 'Keep Shopping', 
+    slug: '/collections/parts-and-components' 
+  %}
 
 {% section 'block-row' %}
 
