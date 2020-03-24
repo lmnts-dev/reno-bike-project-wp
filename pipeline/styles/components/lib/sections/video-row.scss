@@ -148,9 +148,8 @@
     bottom: 0;
   }
 
-
   // Block Alignment
-  &+.event-listings {
+  & + .event-listings {
     margin-top: calc(#{$Base} * 2);
   }
 }

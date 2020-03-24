@@ -73,12 +73,12 @@ $SmallContentOffset: $Base;
             top: 0;
             right: 0;
             bottom: 0;
-            width: 80vw;
-            max-width: $Base * 25;
+            width: 80%;
+            // max-width: $Base * 25;
             display: flex;
 
             @media (max-width: $BaseMediaMd) {
-              width: 77vw;
+              width: 77%;
             }
 
             @media (max-width: $BaseMediaSm) {
