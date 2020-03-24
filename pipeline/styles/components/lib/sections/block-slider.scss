@@ -45,14 +45,16 @@ $SmallContentOffset: $Base;
             width: 35vw;
 
             @media (max-width: $BaseMediaMd) {
-              width: 40vw;
+              min-width: 40vw;
+              width: 100%;
+              max-width: 60vw;
               padding: calc(#{$Base} * 1.5) $Base calc(#{$Base} * 1.5) 0;
             }
 
             @media (max-width: $BaseMediaSm) {
               position: absolute;
-              bottom: calc( #{$SmallContentOffset} * -1);
-              left: $Base * 1.5;
+              top: calc(#{$Base} * 2);
+              left: 0;
               padding: calc(#{$Base} / 2);
             }
 
@@ -61,7 +63,7 @@ $SmallContentOffset: $Base;
               font-size: 5vw;
 
               @media (max-width: $BaseMediaSm) {
-                font-size: 24px;
+                font-size: 8vw;
               }
             }
           }
@@ -71,12 +73,12 @@ $SmallContentOffset: $Base;
             top: 0;
             right: 0;
             bottom: 0;
-            width: 80vw;
-            max-width: $Base * 25;
+            width: 80%;
+            // max-width: $Base * 25;
             display: flex;
 
             @media (max-width: $BaseMediaMd) {
-              width: 77vw;
+              width: 77%;
             }
 
             @media (max-width: $BaseMediaSm) {

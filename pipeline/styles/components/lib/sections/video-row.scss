@@ -147,4 +147,9 @@
     top: 0;
     bottom: 0;
   }
+
+  // Block Alignment
+  & + .event-listings {
+    margin-top: calc(#{$Base} * 2);
+  }
 }
