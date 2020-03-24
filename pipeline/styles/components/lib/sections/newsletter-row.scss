@@ -11,6 +11,11 @@
   background: $clrBlack;
   color: $clrWhite;
 
+  @media (max-width: $BaseMediaMd) {
+    padding-top: $Base * 2;
+    padding-bottom: $Base * 1.5;
+  }
+
   .section-header {
     align-items: flex-start;
 
@@ -43,7 +48,8 @@
         width: 25%;
 
         @media (max-width: $BaseMediaMd) {
-          &.col-fname, &.col-lname {
+          &.col-fname,
+          &.col-lname {
             flex: 1;
           }
 

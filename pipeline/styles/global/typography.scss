@@ -103,10 +103,10 @@ h3,
 .h3 {
   font-size: 2.7rem;
   @media (max-width: $BaseMediaMd) {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
   @media (max-width: $BaseMediaSm) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -117,7 +117,7 @@ h4,
     font-size: 1.6rem;
   }
   @media (max-width: $BaseMediaSm) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
