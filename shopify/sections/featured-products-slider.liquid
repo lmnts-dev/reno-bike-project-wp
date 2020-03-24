@@ -1,0 +1,71 @@
+{% comment %}
+
+Featured Products Slider:
+A slider section containing featured products.
+
+@author Peter Laxalt
+@since 2/2020
+@stylesheet: featured-products-slider.scss
+
+{% endcomment %}
+
+{% assign products = '' %}
+{% for i in (1..100 ) %}
+    {% assign product-id = 'product-' | append: i %}
+    {% assign productHandle = section.settings[product-id] %}
+    {% unless all_products[productHandle] == empty %}
+        {% assign products = products | append: ' ' | append: productHandle %}
+    {% endunless %}
+{% endfor %}
+
+{% include 'featured-products-slider' with featuredProducts: products %}
+
+{% schema %}
+  {
+    "name": "Featured Products Slider",
+    "settings": [
+      {
+        "type":      "product",
+        "id":        "product-1",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      },
+      {
+        "type":      "product",
+        "id":        "product-2",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      },
+      {
+        "type":      "product",
+        "id":        "product-3",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      },
+      {
+        "type":      "product",
+        "id":        "product-4",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      },
+      {
+        "type":      "product",
+        "id":        "product-5",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      },
+      {
+        "type":      "product",
+        "id":        "product-6",
+        "label":     "Featured Product",
+        "info":      "Please select a product to feature"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Products Slider",
+        "category": "Sliders"
+      }
+    ]
+  }
+{% endschema %}

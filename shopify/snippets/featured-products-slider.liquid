@@ -1,63 +1,49 @@
 {% comment %}
 
 Featured Products Slider:
-A slider section containing featured products.
+A slider displaying featured products
 
-@author Peter Laxalt
+@author Peter Laxalt and Alisha
 @since 2/2020
-@stylesheet: featured-products-slider.scss
 
-@todo
-Convert to section.
+@params
+{{ featuredProducts }}: String of product handles seperated by a space
 
 {% endcomment %}
 
-<section class="featured-products-slider">
-  <div class="featured-products-slider-inner">
-    <div class="featured-products-slider-el featured-products-slider-1" itemscope
-      itemtype="http://schema.org/ItemList">
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?yellow',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+{% assign productsArray = featuredProducts | split: ' ' %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?pink',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+{% comment %} Get the amount of products to be used for slider {% endcomment %}
+{% assign featuredProductsLength = productsArray | size %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?purple',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+{% comment %} Make sure there's atleast three products to display the slider {% endcomment %}
+{% if featuredProductsLength > 2 %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?teal',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+    <section class="featured-products-slider">
+        <div class="featured-products-slider-inner">
+            <div class="featured-products-slider-el featured-products-slider-1" itemscope
+            itemtype="http://schema.org/ItemList">
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?blue',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+                {% for product in productsArray %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?purple',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
-    </div>
-  </div>
-</section>
+                    {% unless all_products[product] == empty %}
+                    
+                        {% assign title = all_products[product].title %}
+                        {% assign link = all_products[product].url %}
+                        {% assign cover = all_products[product].featured_image | img_url: 'large' %}
+                        {% assign price = all_products[product].price | money %}
+
+                        {% include 'product-card' 
+                            title: title
+                            cover: cover,
+                            price: price,
+                            slug: link
+                        %}
+                    {% endunless %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endif %}

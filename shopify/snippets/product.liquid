@@ -34,7 +34,7 @@ Begin product page component
         <div class="featured-images">
           {% for image in product.images %}
             <div class="img-wrapper">
-              <img itemprop="image" data-src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" class="lazy" />
+              <img itemprop="image" data-src="{{ image | img_url: '1000x' }}" alt="{{ image.alt | escape }}" class="lazy" />
             </div>
           {% endfor %}
         </div>

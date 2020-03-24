@@ -16,7 +16,9 @@ headline: collection.title,
 cover: 'https://source.unsplash.com/1600x900/?bike' 
 %}
 
-{% include 'featured-products-slider' %}
+{% assign products = collection.metafields.custom_fields['featured_products'] %}
+
+{% include 'featured-products-slider' with featuredProducts: products %}
 
 {% section 'product-listings' %}
 

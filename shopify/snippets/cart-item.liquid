@@ -21,7 +21,7 @@ The Cart Item template.
       <span href="{{ item.url | within: collections.all }}">
         {{ item.product.title }}
         {% unless item.variant.title contains 'Default' %}
-          - { item.variant.title }}
+          - {{ item.variant.title }}
         {% endunless %}
       </span>
       <p>

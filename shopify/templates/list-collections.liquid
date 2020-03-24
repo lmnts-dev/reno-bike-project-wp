@@ -11,6 +11,19 @@ Link into Shopify data.
 
 {% endcomment %}
 
+{% include 'fullwidth-hero' 
+headline: collection.title, 
+cover: 'https://source.unsplash.com/1600x900/?bike' 
+%}
+
+{% section 'featured-products-slider' %}
+
+{% section 'product-listings' %}
+
+{% section 'block-row' %}
+
+
+<!--
 {% for collection in collections %}
   {% unless collection.handle == 'frontpage' %}
     {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
@@ -28,3 +41,4 @@ Link into Shopify data.
     {% endfor %}
   {% endunless %}
 {% endfor %}
+-->
