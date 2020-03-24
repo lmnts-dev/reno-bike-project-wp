@@ -37,13 +37,13 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
 
     <div class="section-header">
       <h3>
-      <div class="squiggle-svg squiggle-orange squiggle-short squiggle-centered squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+        <div class="squiggle-svg squiggle-orange squiggle-short squiggle-centered squiggle-vertical"><?php require(get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
         <span>Upcoming Events</span>
       </h3>
     </div>
 
     <?php foreach ($eventRows as $listing) { ?>
-      <section class="event-row <?php echo get_sub_field('layout') ?> event-row-<?php echo $idx ?>">
+      <a href="/" class="event-row <?php echo get_sub_field('layout') ?> event-row-<?php echo $idx ?>">
         <div class="event-row-inner">
           <div class="col content-col">
             <div class="content-col-inner">
@@ -55,9 +55,9 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
                 We’ll grow our Commuter Membership partners, so we can continue to make sure everyone in Reno and Sparks has access to bikes. At the end of each leg of the ride, there will be pizza!
               </p>
 
-              <a href="/" class="btn btn-arrow" />
+              <span class="btn btn-arrow" />
               Event Info
-              </a>
+              </span>
             </div>
           </div>
 
@@ -67,7 +67,7 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
             </div>
           </div>
         </div>
-      </section>
+      </a>
     <?php } ?>
   </section>
 
