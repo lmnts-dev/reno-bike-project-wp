@@ -1,0 +1,39 @@
+{% comment %}
+
+Collection Listings Slider:
+A slider section containing products.
+
+@author Peter Laxalt and Alisha Garric
+@since 2/2020
+
+@params
+{{ section.settins.collection-type }}: Collection 
+
+{% endcomment %}
+
+{% assign collectionHandle = section.settings.collection-type %}
+{% assign title = collections[collectionHandle].title %}
+{% assign link = collections[collectionHandle].url %}
+{% assign products = collections[collectionHandle].products %}
+
+{% include 'collection-listings-slider' %}
+
+
+{% schema %}
+  {
+    "name": "Collection Slider",
+    "settings": [
+      {
+        "id": "collection-type",
+        "type": "collection",
+        "label": "Featured ollection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Slider",
+        "category": "Sliders"
+      }
+    ]
+  }
+{% endschema %}

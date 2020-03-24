@@ -13,15 +13,9 @@ Link into Shopify data.
 
 {% include 'product' %}
 
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Related Accessories', 
-  slug: '/collections/parts-and-components' 
-%}
+{% include 'collection-listings-slider' title: "Related Accessories", link: "/collections/parts-and-components", products: collections.essentials.products %}
 
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Similar Products', 
-  slug: '/collections/parts-and-components' 
-%}
+{% include 'collection-listings-slider' title: "Similar Products", link: "/collections/parts-and-components", products: collections.essentials.products %}
 
 {% section 'block-row' %}
 

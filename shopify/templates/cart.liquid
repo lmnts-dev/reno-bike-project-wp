@@ -71,10 +71,8 @@ The cart template.
 
 {% endif %}
 
-  {% include 'collection-listings-slider' 
-    collectionTitle: 'Keep Shopping', 
-    slug: '/collections/parts-and-components' 
-  %}
+  {% include 'collection-listings-slider' title: "Keep Shopping", link: "/collections/parts-and-components", products: collections.essentials.products %}
+
 
 {% section 'block-row' %}
 

@@ -9,22 +9,7 @@ Site home page
 {% endcomment %}
 
 {% section 'block-slider' %}
-
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Used Bikes', 
-  slug: '/collections/parts-and-components' 
-%}
-
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Parts & Components', 
-  slug: '/collections/parts-and-components' 
-%}
-
-{% include 'collection-listings-slider' 
-  collectionTitle: 'Accessories', 
-  slug: '/collections/parts-and-components' 
-%}
-
+  {{ content_for_index }}
 {% section 'block-row' %}
 
 <!-- {% for product in collections.frontpage.products limit:4 %}

@@ -1,17 +1,15 @@
 {% comment %}
 
 Collection Listings Slider:
-A slider section containing products.
+A slider section containing products used as an include or by a snippet
 
-@author Peter Laxalt
+@author Peter Laxalt and Alisha
 @since 2/2020
 
 @params
-{{ collectionTitle }}: Collection Title
-{{ slug }}: Collection URL
-
-@todo
-Convert to section.
+{{ title }}: Collection Title
+{{ link }}: Collection Link
+{{ products }}: Collection Products
 
 {% endcomment %}
 
@@ -19,13 +17,13 @@ Convert to section.
   <div class="collection-listings-slider-inner">
     <div class="slider-header">
       <h3>
-        {{ collectionTitle }}
+        {{ title }}
       </h3>
     </div>
     <div class="collection-listings-slider-el collection-listings-slider-1" itemscope
       itemtype="http://schema.org/ItemList">
 
-      <a href="{{ slug }}" class="view-all-card">
+      <a href="{{ link }}" class="view-all-card">
         <div class="view-all-card-inner">
           <span>
             View All
@@ -33,33 +31,19 @@ Convert to section.
         </div>
       </a>
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?bike',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+      {% for product in products limit: 10 %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?tool',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+        {% assign cover = product.featured_image | img_url: 'medium' %}
+        {% assign price = product.price | money %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?wheel',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+        {% include 'product-card' 
+          title: product.title,
+          cover: cover,
+          price: price,
+          slug: product.url
+        %}
 
-      {% include 'product-card' 
-        title: 'Product One',
-        cover: 'https://source.unsplash.com/1600x900/?spokes',
-        price: '$10.99',
-        slug: '/products/vintage-team-fuji-road-bike' 
-      %}
+      {% endfor %}
 
     </div>
   </div>
