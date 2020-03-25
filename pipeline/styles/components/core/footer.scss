@@ -236,6 +236,10 @@ footer {
         top: -10px;
         width: 80%;
 
+        svg * {
+          fill: $clrPrimary;
+        }
+
         @media (max-width: $BaseMediaMd) {
           width: 100%;
           max-width: $Base * 9;
@@ -243,7 +247,7 @@ footer {
           margin-right: auto;
         }
 
-        .ico {
+        .ico:not(svg) {
           width: $Base * 0.7;
           height: $Base * 0.7;
           border: 2px solid $clrPrimary;

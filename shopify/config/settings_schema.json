@@ -13,7 +13,21 @@
       {
         "type": "url",
         "id": "marketing-site-url",
-        "label": "Marketing Site Url"
+        "label": "Marketing Site Link"
+      },
+      {
+        "type": "text",
+        "id": "site-phone-number",
+        "label": "Contact Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "site-email",
+        "label": "Contact Email"
+      },
+      {
+        "type": "header",
+        "content": "Logos"
       },
       {
         "type": "image_picker",
@@ -24,6 +38,82 @@
         "type": "image_picker",
         "id": "site-logo-dark",
         "label": "Site Logo Dark"
+      },
+      {
+        "type": "header",
+        "content": "Socials"
+      },
+      {
+        "type": "url",
+        "id": "social-fb",
+        "label": "Facebook Link"
+      },
+      {
+        "type": "url",
+        "id": "social-insta",
+        "label": "Instagram Link"
+      },
+      {
+        "type": "url",
+        "id": "social-twitter",
+        "label": "Twitter Link"
+      },
+      {
+        "type": "header",
+        "content": "Location 1"
+      },
+      {
+        "type": "text",
+        "id": "location-1-label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "location-1-addy",
+        "label": "Address"
+      },
+      {
+        "type": "url",
+        "id": "location-1-maps",
+        "label": "Google Maps Link"
+      },
+      {
+        "type": "header",
+        "content": "Location 2"
+      },
+      {
+        "type": "text",
+        "id": "location-2-label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "location-2-addy",
+        "label": "Address"
+      },
+      {
+        "type": "url",
+        "id": "location-2-maps",
+        "label": "Google Maps Link"
+      },
+      {
+        "type": "header",
+        "content": "Location 3"
+      },
+      {
+        "type": "text",
+        "id": "location-3-label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "location-3-addy",
+        "label": "Address"
+      },
+      {
+        "type": "url",
+        "id": "location-3-maps",
+        "label": "Google Maps Link"
       }
     ]
   },

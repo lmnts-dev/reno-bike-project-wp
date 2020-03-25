@@ -7,11 +7,20 @@ Website Footer
 
 {% endcomment %}
 
-{% assign phoneNumber = '+1 775 323 4488' %}
-{% assign emailAddress = 'info@renobikeproject.com' %}
-{% assign facebook = 'https://www.facebook.com/renobikeproject' %}
-{% assign instagram = 'https://www.instagram.com/renobikeproject/' %}
-{% assign twitter = 'https://twitter.com/renobikeproject' %}
+{% assign phoneNumber =  settings.site-phone-number %}
+{% assign emailAddress = settings.site-email %}
+{% assign facebook = settings.social-fb %}
+{% assign instagram = settings.social-insta %}
+{% assign twitter = settings.social-twitter %}
+{% assign location1Label = settings.location-1-label %}
+{% assign location1Addy = settings.location-1-addy %}
+{% assign location1Maps = settings.location-1-maps %}
+{% assign location2Label = settings.location-2-label %}
+{% assign location2Addy = settings.location-2-addy %}
+{% assign location2Maps = settings.location-2-maps %}
+{% assign location3Label = settings.location-3-label %}
+{% assign location3Addy = settings.location-3-addy %}
+{% assign location3Maps = settings.location-3-maps %}
 
 </div>
 </main>
@@ -22,12 +31,11 @@ Website Footer
         &copy; {{ 'now' | date: "%Y" }} Reno Bike Project
       </div>
       <div class="legal-stuff">
-        <a href="/">
-          Privacy
-        </a>
-        <a href="/">
-          Legal
-        </a>
+        {% for link in linklists.legal-menu.links %}
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        {% endfor %}
       </div>
       <div class="social">
         <ul>
@@ -72,15 +80,29 @@ Website Footer
       <div class="footer-header">
         Find Us
       </div>
-      <div class="footer-info-row">
-        <span>{{ location->name }}:</span>
-        <a href="{{ location->googleMapsUrl }}" title="{{ location->name }}" target="_blank">{{ location->address }}</a>
-      </div>
+      {% if location1Addy != '' and location1Label != '' %}
+        <div class="footer-info-row">
+          <span>{{ location1Label }}:</span>
+          <a href="{{ location1Maps }}" title="{{ location1Label }}" target="_blank">{{ location1Addy }}</a>
+        </div>
+      {% endif %}
+      {% if location2Addy != '' and location2Label != '' %}
+        <div class="footer-info-row">
+          <span>{{ location2Label }}:</span>
+          <a href="{{ location2Maps }}" title="{{ location2Label }}" target="_blank">{{ location2Addy }}</a>
+        </div>
+      {% endif %}
+      {% if location3Addy != '' and location3Label != '' %}
+        <div class="footer-info-row">
+          <span>{{ location3Label }}:</span>
+          <a href="{{ location3Maps }}" title="{{ location3Label }}" target="_blank">{{ location3Addy }}</a>
+        </div>
+      {% endif %}
 
     </div>
     <div class="footer-col">
       <div class="footer-search">
-        <span class="ico"></span>
+        {% include 'svg-icon-search' %}
         <form>
           <input placeholder="Search">
         </form>
