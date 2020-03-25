@@ -5,6 +5,7 @@ Newsletter Overlay
 @author Peter Laxalt
 @since 2/2020
 
+@todo: hookup settings.newsletter-submit-destination to the form submit
 {% endcomment %}
 
 <div class="newsletter-overlay">
@@ -17,14 +18,11 @@ Newsletter Overlay
       <div class="col">
         <h3>
           <span class="squiggle"></span>
-          <span>Subscribe to our Newsletter</span>
+          <span>{{ settings.newsletter-headline }}</span>
         </h3>
       </div>
       <div class="col">
-        <p>
-          Please enter your information below to sign up for our mailing list. We’ll keep you in the loop on the latest
-          programs, news, events, and activities we got going on.
-        </p>
+        <p>{{ settings.newsletter-description }}</p>
       </div>
     </div>
     <div class="bottom">

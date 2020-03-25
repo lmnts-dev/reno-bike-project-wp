@@ -8,7 +8,7 @@
     "theme_support_url": "https://github.com/Shopify/themekit/issues"
   },
   {
-    "name": "Block Row 👉🏼",
+    "name": "👉🏼 Block Row",
     "settings": [
       {
         "type": "header",
@@ -79,6 +79,32 @@
         "type": "url",
         "id": "block-4-url",
         "label": "Link"
+      }
+    ]
+  },
+  {
+    "name": "🗞️ Newsletter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "For the newsletter sign up form"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-headline",
+        "label": "Headline",
+        "default": "Subscribe to our Newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-description",
+        "label": "Description",
+        "default": "Please enter your information below to sign up for our mailing list. We’ll keep you in the loop on the latest programs, news, events, and activities we got going on."
+      },
+      {
+        "type": "url",
+        "id": "newsletter-submit-destination",
+        "label": "Submit Destination"
       }
     ]
   }
