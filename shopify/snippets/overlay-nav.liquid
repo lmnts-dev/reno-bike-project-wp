@@ -5,10 +5,7 @@ Overlay Site Navigation
 
 @author Alisha Garric
 @since 3/2020
-
-$cta = get_field('navigation_bar', 'option')['call_to_action'];
-$nav = wp_nav_menu(array('menu' => 'primary', 'echo' => false ));
-$nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="sub-menu">', $nav );
+@stylesheet overlay-nav.scss
 
 {% endcomment %}
 

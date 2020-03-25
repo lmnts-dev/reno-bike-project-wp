@@ -6,37 +6,14 @@ The collection default template.
 @author Peter Laxalt
 @since 3/2020
 
-@todo
-Link into Shopify data.
-
 {% endcomment %}
 
 {% assign cover = collection.image | img_url: '2000x' %}
 {% include 'fullwidth-hero' headline: collection.title, cover: cover %}
 
 {% assign products = collection.metafields.custom_fields['featured_products'] %}
-
 {% include 'featured-products-slider' with featuredProducts: products %}
 
-{% section 'product-listings' %}
+{% include 'product-listings' %}
 
-{% section 'block-row' %}
-
-<!-- {% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {{ product.price | money }}
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-    </div>
-  {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}
-    {{ paginate | default_pagination }}
-  {% endif %}
-{% endpaginate %} -->
+{% include 'block-row' %}
