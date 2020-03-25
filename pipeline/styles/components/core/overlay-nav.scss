@@ -131,9 +131,9 @@ $overlayNavWidth: 450px;
       }
 
       .branding img {
-        height: $Base * 0.75;
+        height: $Base * 1.25;
         @media (max-width: $BaseMediaSm) {
-          height: $Base / 2;
+          height: $Base * 0.75;
         }
       }
 

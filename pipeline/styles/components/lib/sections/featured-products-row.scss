@@ -1,0 +1,48 @@
+////////////////////////////////////////
+//
+// Featured Products Row Component
+//
+// @author Alisha Garric
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.featured-products-row {
+    @extend .product-listings;
+    padding-top: $BasePadding;
+    padding-bottom: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+        padding-top: $BasePaddingSm;
+        padding-bottom: $BasePaddingSm;
+    }
+
+    .featured-products-row-inner {
+        @extend .product-listings-inner;
+        padding-bottom: 0;
+
+        .product-card {
+            @media (max-width: $BaseMediaMd) {
+                width: 33%;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+                width: 100%;
+                max-width: $Base * 8;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+
+        .section-header {
+            min-width: 100%;
+
+            h3 {
+                width: 100%;
+                text-align: left;
+                max-width: none;
+            }
+        }
+    }
+}

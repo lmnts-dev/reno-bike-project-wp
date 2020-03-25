@@ -3,7 +3,7 @@
 Product Template:
 The default Product template.
 
-@author Peter Laxalt
+@author Peter Laxalt and Alisha Garric
 @since 3/2020
 
 @todo
@@ -13,9 +13,9 @@ Link into Shopify data.
 
 {% include 'product' %}
 
-{% include 'collection-listings-slider' title: "Related Accessories", link: "/collections/parts-and-components", products: collections.essentials.products %}
+{% section 'specific-featured-products-row' %}
 
-{% include 'collection-listings-slider' title: "Similar Products", link: "/collections/parts-and-components", products: collections.essentials.products %}
+{% section 'related-featured-products-row' %}
 
 {% section 'block-row' %}
 

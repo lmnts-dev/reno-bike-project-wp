@@ -1,0 +1,74 @@
+{% comment %}
+
+Specific Featured Products Row:
+A row showing three product cards.
+
+@author Alisha Garric
+@since 3/2020
+@stylesheet: featured-products-row.scss
+
+{% endcomment %}
+
+<section class="featured-products-row">
+  <div class="featured-products-row-inner">
+    {% if section.settings.headline != '' %}
+        <div class="section-header">
+            <h3>
+                {{ section.settings.headline }}
+            </h3>
+        </div>
+    {% endif %}
+
+    {% for i in (1..3) %}
+        {% assign productID = 'product-' | append: forloop.index %}
+        {% assign productHandle = section.settings[productID] %}
+        {% assign product = all_products[productHandle] %}
+        {% assign cover = product.featured_image | img_url: 'large' %}
+        {% assign price = product.price | money %}
+
+        {% include 'product-card' 
+            title: product.title,
+            cover: cover,
+            price: price,
+            slug: product.url
+            %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured Products Row",
+    "settings": [
+        {
+            "type":      "text",
+            "id":        "headline",
+            "label":     "Headline"
+        },
+        {
+            "type":      "product",
+            "id":        "product-1",
+            "label":     "Featured Product",
+            "info":      "Please select a product to feature if you chose 'Specific Products' above"
+        },
+        {
+            "type":      "product",
+            "id":        "product-2",
+            "label":     "Featured Product",
+            "info":      "Please select a product to feature if you chose 'Specific Products' above"
+        },
+        {
+            "type":      "product",
+            "id":        "product-3",
+            "label":     "Featured Product",
+            "info":      "Please select a product to feature if you chose 'Specific Products' above"
+        }
+    ],
+    "presets": [
+      {
+        "name": "Featured Products Row",
+        "category": "Sections"
+      }
+    ]
+  }
+{% endschema %}

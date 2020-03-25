@@ -299,7 +299,7 @@
         .img-wrapper {
           width: 100%;
           position: relative;
-          padding-bottom: 70%;
+        //  padding-bottom: 70%;
           margin-bottom: calc(#{$Base} / 4);
           background: $clrPlaceholder;
 
@@ -311,7 +311,7 @@
           }
 
           img {
-            @include objectFit();
+          //  @include objectFit();
             max-width: 100%;
             width: 100%;
           }

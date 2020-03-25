@@ -1,0 +1,76 @@
+{% comment %}
+
+Related Featured Products Row:
+A row showing three product cards within the same collection.
+
+@author Alisha Garric
+@since 3/2020
+@stylesheet: featured-products-row.scss
+
+{% endcomment %}
+
+{% assign currentCollection = product.collections | first %}
+{% assign currentCollectionSize = currentCollection.products | size %}
+{% comment %} set bool to false so we make sure not to list current product {% endcomment %}
+{% assign thisProduct = false %}
+
+{% if currentCollectionSize > 1 %}
+    <section class="featured-products-row">
+        <div class="featured-products-row-inner">
+            {% if section.settings.headline != '' %}
+                <div class="section-header">
+                    <h3>
+                        {{ section.settings.headline }}
+                    </h3>
+                </div>
+            {% endif %}
+
+            {% for item in currentCollection.products limit: 4 %}
+                {% comment %} if product is not current product {% endcomment %}
+                {% if item.handle != product.handle %}
+                    {% comment %} 
+                        if we're on the fourth iteration of this loop 
+                        and there hasn't been the current product in this loop
+                        don't display a 4th item (that way we only ever have three) 
+                    {% endcomment %}
+                    {% if forloop.index == 4 and thisProduct == true %}
+                        {% assign lastIterationAndNeedThirdProduct = true %}
+                    {% endif %}
+                    {% if lastIterationAndNeedThirdProduct or forloop.index < 4 %}
+                        {% assign cover = item.featured_image | img_url: 'large' %}
+                        {% assign price = item.price | money %}
+
+                        {% include 'product-card' 
+                            title: item.title,
+                            cover: cover,
+                            price: price,
+                            slug: item.url
+                            %}
+                    {% endif %}
+                {% else %}
+                    {% comment %} mark that the current product is in this loop {% endcomment %}
+                    {% assign thisProduct = true %} 
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Related Products Row",
+    "settings": [
+        {
+            "type":      "text",
+            "id":        "headline",
+            "label":     "Headline"
+        }
+    ],
+    "presets": [
+      {
+        "name": "Related Products Row",
+        "category": "Sections"
+      }
+    ]
+  }
+{% endschema %}
