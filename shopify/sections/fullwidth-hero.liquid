@@ -1,0 +1,32 @@
+{% comment %}
+
+Fullwidth hero:
+A hero displaying a headline.
+
+@author Alisha Garric
+@since 3/2020
+@stylesheet: fullwidth-hero.scss
+
+{% endcomment %}
+
+{% assign headline = section.settings.hero-headline %}
+{% assign cover = section.settings.hero-img | img_url: '2000x' %}
+{% include 'fullwidth-hero' %}
+
+{% schema %}
+  {
+    "name": "Fullwidth Hero",
+    "settings": [
+      {
+        "type":      "image_picker",
+        "id":        "hero-img",
+        "label":     "Background Image"
+      },
+      {
+        "type":      "text",
+        "id":        "hero-headline",
+        "label":     "Headline"
+      }
+    ]
+  }
+{% endschema %}

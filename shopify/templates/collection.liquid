@@ -11,10 +11,8 @@ Link into Shopify data.
 
 {% endcomment %}
 
-{% include 'fullwidth-hero' 
-headline: collection.title, 
-cover: 'https://source.unsplash.com/1600x900/?bike' 
-%}
+{% assign cover = collection.image | img_url: '2000x' %}
+{% include 'fullwidth-hero' headline: collection.title, cover: cover %}
 
 {% assign products = collection.metafields.custom_fields['featured_products'] %}
 

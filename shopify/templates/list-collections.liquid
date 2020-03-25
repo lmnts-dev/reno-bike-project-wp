@@ -11,14 +11,19 @@ Link into Shopify data.
 
 {% endcomment %}
 
-{% include 'fullwidth-hero' 
-headline: collection.title, 
-cover: 'https://source.unsplash.com/1600x900/?bike' 
-%}
+{% section 'fullwidth-hero' %}
 
 {% section 'featured-products-slider' %}
 
-{% section 'product-listings' %}
+{% for collection in collections %}
+    {% assign title = collection.title %}
+    {% assign link = collection.url %}
+    {% assign products = collection.products %}
+
+    {% include 'collection-listings-slider' %}
+{% endfor %}
+
+
 
 {% section 'block-row' %}
 

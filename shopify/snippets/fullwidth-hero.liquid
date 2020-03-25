@@ -19,8 +19,8 @@ Link into Shopify data.
   <div class="fullwidth-hero-inner">
     <h1>{{ headline }}</h1>
     
-    {% if collection.image %}
-      <img data-src="{{ collection.image | collection_img_url: '1400x800' }}" alt="{{ title }}" class="lazy" />
+    {% if cover %}
+      <img data-src="{{ cover }}" alt="{{ title }}" class="lazy" />
     {% endif %}
   </div>
 </section>
