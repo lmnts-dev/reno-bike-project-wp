@@ -6,5 +6,80 @@
     "theme_author": "Shopify",
     "theme_documentation_url": "https://github.com/Shopify/themekit",
     "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name": "Block Row 👉🏼",
+    "settings": [
+      {
+        "type": "header",
+        "content": "4 blocks that link out to pages found above the footer on each page."
+      },
+      {
+        "type": "header",
+        "content": "Block 1"
+      },
+      {
+        "type": "text",
+        "id": "block-1-text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "block-1-url",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Block 2"
+      },
+      {
+        "type": "text",
+        "id": "block-2-text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "block-2-url",
+        "label": "Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "block-2-img",
+        "label": "Background Image"
+      },
+      {
+        "type": "header",
+        "content": "Block 3"
+      },
+      {
+        "type": "text",
+        "id": "block-3-text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "block-3-url",
+        "label": "Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "block-3-img",
+        "label": "Background Image"
+      },
+      {
+        "type": "header",
+        "content": "Block 4"
+      },
+      {
+        "type": "text",
+        "id": "block-4-text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "block-4-url",
+        "label": "Link"
+      }
+    ]
   }
 ]

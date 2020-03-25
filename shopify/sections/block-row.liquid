@@ -7,86 +7,84 @@ Block Row Component
 
 {% endcomment %}
 
-<section class="block-row block-row-1">
+{% if settings.block-1-url != null and settings.block-1-text != '' and settings.block-2-url != null and settings.block-2-text != '' %}
+  <section class="block-row block-row-1">
 
-  <!-- <div class="section-header split">
-    <h3>
-      <span class="squiggle"></span>
-      <span>Community Programs</span>
-    </h3>
-    <p>
-      We’re committed to creating a nationally recognized, cycling-friendly community. Outside of our community bike
-      shop, RBP engages people in the Truckee Meadows in three key ways: Outreach/Advocacy, Education, and Events.
-    </p>
-  </div> -->
+    <!-- <div class="section-header split">
+      <h3>
+        <span class="squiggle"></span>
+        <span>Community Programs</span>
+      </h3>
+      <p>
+        We’re committed to creating a nationally recognized, cycling-friendly community. Outside of our community bike
+        shop, RBP engages people in the Truckee Meadows in three key ways: Outreach/Advocacy, Education, and Events.
+      </p>
+    </div> -->
 
-  <div class="block-row-inner">
+    <div class="block-row-inner">
 
-    <div class="block-item">
-      <a href="/">
-        <div class="block-item-inner">
-          <div class="block-item-cover block-item-cover-solid bg-clr-orange">
-            <span class="txt-clr-white">
-              After Hours Workshops
-            </span>
+      <div class="block-item">
+        <a href="{{ settings.block-1-url }}">
+          <div class="block-item-inner">
+            <div class="block-item-cover block-item-cover-solid bg-clr-orange">
+              <span class="txt-clr-white">
+                {{ settings.block-1-text }}
+              </span>
+            </div>
           </div>
-          <div class="block-item-image">
-            <img data-src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" class="lazy" />
+        </a>
+      </div>
+
+      <div class="block-item">
+        <a href="{{ settings.block-2-url }}">
+          <div class="block-item-inner">
+            <div class="block-item-cover bg-clr-tint">
+              <span class="txt-clr-white">
+                {{ settings.block-2-text }}
+              </span>
+            </div>
+            <div class="block-item-image">
+              <img data-src="{{ settings.block-2-img | img_url: 'large' }}" alt="Block Item" class="lazy" />
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+
     </div>
+  </section>
+{% endif %}
 
-    <div class="block-item">
-      <a href="/">
-        <div class="block-item-inner">
-          <div class="block-item-cover bg-clr-tint">
-            <span class="txt-clr-white">
-              Major Taylor Ride Club
-            </span>
+{% if settings.block-3-url != null and settings.block-3-text != '' and settings.block-4-url != null and settings.block-4-text != '' %}
+  <section class="block-row">
+    <div class="block-row-inner block-row-reverse">
+
+      <div class="block-item">
+        <a href="{{ settings.block-3-url }}">
+          <div class="block-item-inner">
+            <div class="block-item-cover block-item-cover-solid bg-clr-mustard">
+              <span class="txt-clr-white">
+                {{ settings.block-3-text }}
+              </span>
+            </div>
           </div>
-          <div class="block-item-image">
-            <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" class="lazy" />
+        </a>
+      </div>
+
+      <div class="block-item">
+        <a href="{{ settings.block-4-url }}">
+          <div class="block-item-inner">
+            <div class="block-item-cover bg-clr-tint">
+              <span class="txt-clr-white">
+                {{ settings.block-4-text }}
+              </span>
+            </div>
+            <div class="block-item-image">
+              <img data-src="{{ settings.block-3-img | img_url: 'large' }}" alt="Block Item" class="lazy" />
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+
     </div>
-
-  </div>
-</section>
-
-<section class="block-row">
-  <div class="block-row-inner block-row-reverse">
-
-    <div class="block-item">
-      <a href="/">
-        <div class="block-item-inner">
-          <div class="block-item-cover block-item-cover-solid bg-clr-mustard">
-            <span class="txt-clr-white">
-              Community Outreach
-            </span>
-          </div>
-          <div class="block-item-image">
-            <img data-src="https://source.unsplash.com/1600x900/?tools" alt="Block Item" class="lazy" />
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="block-item">
-      <a href="/">
-        <div class="block-item-inner">
-          <div class="block-item-cover bg-clr-tint">
-            <span class="txt-clr-white">
-              FutureCycle
-            </span>
-          </div>
-          <div class="block-item-image">
-            <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="Block Item" class="lazy" />
-          </div>
-        </div>
-      </a>
-    </div>
-
-  </div>
-</section>
+  </section>
+{% endif %}
