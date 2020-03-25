@@ -18,7 +18,7 @@ $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="
     <div class="left">
         <div class="top">
             <a href="/" class="branding">
-                {% comment %}<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo"> {% endcomment %}
+               <img src="{{ settings.site-logo-dark | img_url: 'small' }}" alt="{{ shop.name }}">
             </a>
             <div class="exit nav-overlay-toggle" id="overlay-exit"></div>
         </div>

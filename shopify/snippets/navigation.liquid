@@ -17,16 +17,14 @@ Site Navigation
   <div class="nav-inner nav-shop">
     <div class="nav-col nav-col-1">
       <div class="nav-branding nav-shop">
-        <!-- <a href="http://reno-bike-project.lndo.site/"> -->
-        <a href="/">
-          <span></span>
+        <a href="{{ settings.marketing-site-url }}">
+          <img src="{{ settings.site-logo | img_url: 'small' }}" alt="{{ shop.name }}">
         </a>
       </div>
       <nav class="nav-switch">
         <ul>
           <li class="inactive">
-            <!-- <a href="http://reno-bike-project.lndo.site/"> -->
-            <a href="http://2020-reno-bike-project.pantheonsite.io/">
+            <a href="{{ settings.marketing-site-url }}">
               Community
             </a>
           </li>
@@ -75,7 +73,7 @@ Site Navigation
         <a href="/cart">
           <span>Cart</span>
           {% include 'shopping-cart' %}
-          <span class="count">5</span>
+          <span class="count">{{ cart.item_count }}</span>
         </a>
       </div>
     </div>

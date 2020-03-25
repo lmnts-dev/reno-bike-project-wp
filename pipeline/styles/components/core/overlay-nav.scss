@@ -93,8 +93,7 @@ $overlayNavWidth: 450px;
   transition-duration: 0.25s;
 
   &.dark-theme {
-    .overlay-nav-cta a,
-    .left .top .branding {
+    .overlay-nav-cta a {
       background-color: $clrBlack;
     }
     .left .top .exit:before,
@@ -142,7 +141,7 @@ $overlayNavWidth: 450px;
       .branding {
         width: $Base;
         height: $Base;
-        background-color: $clrPrimary;
+       // background-color: $clrPrimary;
         border-radius: 50%;
       }
 

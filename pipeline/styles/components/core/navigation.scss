@@ -302,6 +302,15 @@ header {
               border-radius: 50%;
               background: $clrWhite;
             }
+            
+            img {
+              height: 40px;
+              width: auto;
+
+              @media (max-width: $BaseMediaSm) {
+                height: 30px;
+              }
+            }
           }
         }
       }
