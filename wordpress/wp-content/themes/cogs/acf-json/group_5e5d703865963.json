@@ -386,7 +386,46 @@
                     "name": "news_listings",
                     "label": "News Listings",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_5e7bd4fa70cc0",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e7bd50f70cc1",
+                            "label": "View All Posts Button Text",
+                            "name": "view_all_posts_button_text",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -786,7 +825,27 @@
                     "name": "press_listings",
                     "label": "Press Listings",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_5e7bd08067afb",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -795,7 +854,46 @@
                     "name": "member_row",
                     "label": "Member Row",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_5e7bcd182b708",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e7bd08e67afc",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": ""
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -1319,5 +1417,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584996046
+    "modified": 1585173846
 }

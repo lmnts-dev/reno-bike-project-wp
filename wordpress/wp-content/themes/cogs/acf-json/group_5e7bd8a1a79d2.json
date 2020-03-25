@@ -1,0 +1,77 @@
+{
+    "key": "group_5e7bd8a1a79d2",
+    "title": "Event Post",
+    "fields": [
+        {
+            "key": "field_5e7bd8a7cd606",
+            "label": "Start Date",
+            "name": "start_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5e7bd8d5cd607",
+            "label": "End Date",
+            "name": "end_date",
+            "type": "date_picker",
+            "instructions": "Leave blank if its a one day event",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5e7bd8e6cd608",
+            "label": "Time",
+            "name": "time",
+            "type": "text",
+            "instructions": "Write the time if there's an exact start and\/or end time (ex. 11:30am - 3pm), or write a small phrase if there's a general start and end time (ex. All Day)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1585175031
+}

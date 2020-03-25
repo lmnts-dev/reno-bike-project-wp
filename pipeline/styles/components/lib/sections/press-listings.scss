@@ -79,6 +79,11 @@
             text-overflow: ellipsis;
             min-width: 60px;
 
+            &.date {
+              white-space: nowrap;
+              text-overflow: clip;
+            }
+
 
             &.publisher {
               background: $clrPrimary;
