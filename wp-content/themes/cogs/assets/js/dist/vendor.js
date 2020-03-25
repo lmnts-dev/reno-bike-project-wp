@@ -1339,12 +1339,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 // basic default transition (with no rules and minimal hooks)
 barba.init({
   transitions: [{
-    leave: function leave(_ref) {// do something with `current.container` for your leave transition
-      // then return a promise or use `this.async()`
-
+    leave: function leave(_ref) {
       var current = _ref.current,
           next = _ref.next,
           trigger = _ref.trigger;
+      // do something with `current.container` for your leave transition
+      // then return a promise or use `this.async()`
+      hideNavOverlay();
+      initNavOverlay();
     },
     beforeEnter: function beforeEnter(_ref2) {
       var current = _ref2.current,
@@ -1361,7 +1363,9 @@ barba.init({
 
       initSocialOverlay(); // Re-init our video overlays
 
-      initVideoOverlay();
+      initVideoOverlay(); // Re-init the nav script
+
+      initNavOverlay();
     }
   }]
 }); // // dummy example to illustrate rules and hooks
