@@ -71,7 +71,8 @@ The cart template.
 
 {% endif %}
 
-  {% include 'collection-listings-slider' title: "Keep Shopping", link: "/collections/parts-and-components", products: collections.essentials.products %}
+{% assign featuredCollection = collections | first %}
+{% include 'collection-listings-slider' title: "Keep Shopping", link: "/collections/", products: featuredCollection.products %}
 
 
 {% section 'block-row' %}
