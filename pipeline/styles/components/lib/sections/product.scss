@@ -152,12 +152,23 @@
               display: none;
             }
 
+            &:hover {
+              &:after {
+                transform: translate(-10px, 20%);
+                border-top: calc(#{$Base} * 0.15) solid $clrPrimary;
+              }
+
+              select.selecter {
+                color: $clrPrimary;
+              }
+            }
+
             &:after {
               content: "";
               position: absolute;
               right: $Base / 4;
               top: 50%;
-              transition: all 0.25s ease;
+              transition: transform 0.25s ease;
               transform: translate(-10px, -50%);
               width: 0;
               height: 0;

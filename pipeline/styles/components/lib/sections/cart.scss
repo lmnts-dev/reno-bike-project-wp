@@ -141,6 +141,38 @@ section.cart {
               font-size: 1.5rem;
             }
           }
+
+          .cart-meta {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 2px solid $clrBlack;
+            border-top: 2px solid $clrBlack;
+            align-items: center;
+
+            .btn {
+              color: $clrPrimary;
+              margin-right: $Base / 8;
+            }
+
+            textarea {
+              margin: $Base / 1.5;
+              flex: 10;
+              font-weight: 600;
+              color: $clrChrome;
+              line-height: 1;
+              height: $Base;
+              
+
+              @media (max-width: $BaseMediaSm ){
+                margin: $Base / 2 $Base / 2 $Base / 2 0;
+                font-size: 14px;
+                height: $Base * .85;
+
+              }
+            }
+          }
         }
       }
     }
@@ -154,10 +186,6 @@ section.cart {
   display: block;
   color: $clrBlack;
   border-top: 2px solid $clrBlack;
-
-  &:last-child {
-    border-bottom: 2px solid $clrBlack;
-  }
 
   .cart-item-inner {
     display: flex;
