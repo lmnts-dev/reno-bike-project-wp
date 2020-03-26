@@ -162,9 +162,6 @@ footer {
               display: flex;
               align-items: center;
               justify-content: center;
-              background: $clrPrimary;
-              font-weight: bold;
-              font-size: 10px;
               margin: $Base/2 $Base/4 0 0;
 
               &:visited,
@@ -173,22 +170,12 @@ footer {
               }
 
               &:hover {
-                background: lighten($clrPrimary, 5%);
+                background: lighten($clrPrimary, 50%);
+                opacity: 0.8;
               }
 
               &:active {
                 background: darken($clrPrimary, 5%);
-              }
-
-              // @todo Replace for image
-              span {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background: $clrWhite;
               }
             }
           }

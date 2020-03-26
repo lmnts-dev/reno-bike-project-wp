@@ -1,7 +1,7 @@
 {% comment %}
 
 Article Template:
-The article template, which will NOT BE USED, because article are handled
+The article template, which will NOT BE USED, because articles are handled
 on the wordpress site.
 
 @author Peter Laxalt
@@ -10,6 +10,11 @@ on the wordpress site.
 
 {% endcomment %}
 
+<script type="text/javascript">
+    window.location = "/";
+</script>
+
+<!--
 {% assign number_of_comments = article.comments_count %}
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count %}
@@ -51,3 +56,4 @@ on the wordpress site.
     {% endform %}
   </div>
 {% endif %}
+-->

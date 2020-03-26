@@ -430,6 +430,21 @@ header {
         }
 
         &.nav-shop {
+
+          @media (max-width: $BaseNavShopifyBreak) {
+            .nav-col-2 {
+              display: none;
+            }
+
+            .nav-col-4 {
+              display: flex;
+            }
+          }
+
+          
+
+
+
           .nav-cart {
             svg {
               fill: $clrBlack;

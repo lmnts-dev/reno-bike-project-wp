@@ -6,10 +6,20 @@ The 404 template.
 @author Peter Laxalt
 @since 3/2020
 
-@todo
-Link into Shopify data.
-
 {% endcomment %}
 
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+<section class="four-oh-four">
+  <div class="four-oh-four-inner">
+    <h1 class="glitch" data-text="Flat Tire">Flat Tire.</h1>
+    <p>Sorry about that.</p>
+    <p>That page doesn't exist.</p>
+    <a href="/" class="btn btn-arrow btn-clr-black">
+      Go back home
+    </a>
+  </div>
+</section>
+
+{% assign featuredCollection = collections | first %}
+{% include 'collection-listings-slider' title: "Keep Shopping", link: "/collections/", products: featuredCollection.products %}
+
+{% include 'block-row' %}
