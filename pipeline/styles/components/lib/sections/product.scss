@@ -24,7 +24,7 @@
     @media (max-width: $BaseMediaSm) {
       display: block;
       margin-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
-      padding-bottom: $Base * 1.5;
+      padding-bottom: 0;
     }
 
     .col {
@@ -190,6 +190,10 @@
           flex-direction: column;
           font-weight: 600;
 
+          @media (max-width: $BaseMediaSm) {
+            padding-top: calc(#{$Base});
+          }
+
           span {
             display: block;
             margin-bottom: $detailsVerticalSpacing;
@@ -205,7 +209,7 @@
 
         .specifics-outer.mobile-visible {
           display: none;
-          padding-bottom: $Base * 1.5;
+          padding-bottom: $Base / 2;
           padding-top: $Base / 2;
 
           @media (max-width: $BaseMediaSm) {
@@ -261,6 +265,10 @@
               -webkit-scroll-snap-points-x: repeat(100%);
               font-size: 0;
             /** **/
+
+            .image-wrapper img {
+              @include objectFit();
+            }
           }
 
           /** Chrome Scroll Wheel **/

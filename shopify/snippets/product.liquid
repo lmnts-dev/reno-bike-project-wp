@@ -133,13 +133,13 @@ Begin product page component
     {% if details or pickUpInstructions or shipping %}
       <div class="specifics-outer mobile-visible"> 
         {% if details %}
-          {% include 'accordion-row' id:1, headline: 'Details', content: details %}
+          {% include 'accordion-row' id:4, headline: 'Details', content: details %}
         {% endif %}
         {% if pickUpInstructions %}
-          {% include 'accordion-row' id:2, headline: 'Pick Up Instructions', content: pickUpInstructions %}
+          {% include 'accordion-row' id:5, headline: 'Pick Up Instructions', content: pickUpInstructions %}
         {% endif %}
         {% if shipping %}
-          {% include 'accordion-row' id:3, headline: 'Shipping', content: shipping %}
+          {% include 'accordion-row' id:6, headline: 'Shipping', content: shipping %}
         {% endif %}
       </div>
     {% endif %}
