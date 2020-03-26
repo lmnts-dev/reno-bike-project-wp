@@ -43,7 +43,7 @@ Website Footer
           {% if twitter != '') %}
           <li>
             <a href="{{ twitter }}" title="Find us on Twitter" target="_blank">
-              <span class="ico">{% include 'svg-icon-twitter' %}</span>
+              {% include 'svg-icon-twitter' %}
             </a>
           </li>
           {% endif %}
@@ -51,7 +51,7 @@ Website Footer
           {% if instagram != '') %}
           <li>
             <a href="{{ instagram }}" title="Find us on Instagram" target="_blank">
-              <span class="ico">{% include 'svg-icon-insta' %}</span>
+              {% include 'svg-icon-insta' %}
             </a>
           </li>
           {% endif %}
@@ -59,7 +59,7 @@ Website Footer
           {% if facebook != '') %}
           <li>
             <a href="{{ facebook }}" title="Find us on Facebook" target="_blank">
-              <span class="ico">{% include 'svg-icon-fb' %}</span>
+              {% include 'svg-icon-fb' %}
             </a>
           </li>
           {% endif %}

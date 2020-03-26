@@ -93,6 +93,12 @@ $overlayNavWidth: 450px;
   transition-duration: 0.25s;
 
   &.dark-theme {
+    display: flex;
+    
+    @media (min-width: $BaseNavShopifyBreak) {
+      display: none;
+    }
+
     .overlay-nav-cta a {
       background-color: $clrBlack;
     }
@@ -107,6 +113,7 @@ $overlayNavWidth: 450px;
     pointer-events: all;
     z-index: 999;
   }
+
   @media (min-width: $BaseNavBreak) {
     display: none;
   }
