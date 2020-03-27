@@ -18,17 +18,18 @@ The Cart Item template.
       </div>
     </a>
 
-    <a href="{{ item.url | within: collections.all }}" class="cart-item-col title">
-      <span href="{{ item.url | within: collections.all }}">
+    <div class="cart-item-col title">
+      <a href="{{ item.url | within: collections.all }}"><span>
         {{ item.product.title }}
         {% unless item.variant.title contains 'Default' %}
           - {{ item.variant.title }}
         {% endunless %}
-      </span>
+      </span></a>
       <p>
         {{ item.product.description | strip_html | truncate: 75, "..." }}
       </p>
-    </a>
+      <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="btn remove-item" rel="{{ item.id }}">Remove Item</a>
+    </div>
 
     <div class="cart-item-col quantity">
       <input type="number" name="updates[]" id="updates_{{ item.key }}" data-id="{{ item.key }}" value="{{ item.quantity }}" min="0">
@@ -39,6 +40,8 @@ The Cart Item template.
         {{ item.line_price | money }}
       </span>
     </div>
+
+    <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="btn remove-item mobile-remove-item" rel="{{ item.id }}">Remove Item</a>
 
 
   </div>
