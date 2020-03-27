@@ -28,6 +28,10 @@ barba.init({
         // Re-init our bicycle wheel script.
         initBikeWheel();
 
+
+        // Re-init our number input value listener
+        initInputNumberIcons();
+
         // Re-init our sliders
         initSliders();
 

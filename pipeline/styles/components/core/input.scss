@@ -36,3 +36,40 @@ input:-moz-placeholder {
 form {
   margin: 0;
 }
+
+
+.input-number-decrement ~ input[type="number"] {
+  vertical-align: top;
+  padding: 0;
+  outline: none;
+  min-width: calc(#{$Base} / 1.5);
+}
+
+.quantity {
+  border: 1px solid $clrBlack;
+  display: flex;
+  align-items: center;
+
+  #spin {
+    display: none;
+  }
+
+  .input-number-decrement ~ input[type="number"],
+  .input-number-decrement,
+  .input-number-increment {
+    user-select: none;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+  }
+
+  .input-number-decrement,
+  .input-number-increment {
+    display: inline-block;
+    min-width: calc(#{$Base} / 1.5);
+    color: $clrPrimary;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

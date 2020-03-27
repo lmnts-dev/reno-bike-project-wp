@@ -190,6 +190,7 @@ section.cart {
   .cart-item-inner {
     display: flex;
     flex-wrap: nowrap;
+    align-items: flex-start;
     justify-content: space-between;
     padding: calc(#{$Base}) 0;
     position: relative;
@@ -291,9 +292,9 @@ section.cart {
         width: 100px;
         position: relative;
         top: -5px;
+        height: $Base;
 
         input {
-          border: 1px solid $clrBlack;
           text-align: center;
         }
       }

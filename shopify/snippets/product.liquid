@@ -88,7 +88,7 @@ Begin product page component
           <div class="quantity-and-purchase">
             {% if product.available %}
               <div class="quantity">
-                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                <span class="input-number-decrement">-</span><input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector"><span class="input-number-increment">+</span>
               </div>
             {% endif %}
             <div class="purchase">
