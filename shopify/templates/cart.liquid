@@ -9,6 +9,8 @@ The cart template.
 
 {% endcomment %}
 
+{% assign pickUpProductID = 4549493915757 %}
+
 
 {% if cart.item_count > 0 %}
 
@@ -22,7 +24,9 @@ The cart template.
           <h1>Your Cart</h1>
 
           {% for item in cart.items %}
-            {% include 'cart-item' %}
+            {% if item.product_id != pickUpProductID %}
+              {% include 'cart-item' %}
+            {% endif %}
           {% endfor %}
 
           <div class="cart-meta">
