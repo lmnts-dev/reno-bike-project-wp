@@ -9,7 +9,10 @@ The Cart Item template.
 
 {% endcomment %}
 
-<div class="cart-item">
+{% comment %} from pick up app {% endcomment %}
+{% assign pickUpProductID = 4549493915757 %}
+
+<div class="cart-item {% if item.product_id == pickUpProductID %} hide-item {% endif %}">
   <div class="cart-item-inner">
 
     <a href="{{ item.url | within: collections.all }}" class="cart-item-col cover">

@@ -11,14 +11,15 @@ Houses our theme header & wrapper.
 <!DOCTYPE html>
 
 <html lang="en">
+{% include 'item-count' %}
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width" />
   <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> -->
   <title>
-    {% if cart.item_count > 0 %}
-    ({{ cart.item_count }})
+    {% if itemCount > 0 %}
+    ({{ itemCount }})
     {% endif %}
     {% if template contains 'index' %}
     {{ shop.name }}

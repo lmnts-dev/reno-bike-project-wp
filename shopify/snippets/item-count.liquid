@@ -1,0 +1,9 @@
+{% comment %} Get cart count numbering excluding the pick up product from
+the pick up app we're using, if it exists {% endcomment %}
+{% assign pickUpProductID = 4549493915757 %}
+{% assign itemCount = cart.item_count %}
+{% for item in cart.items %}
+  {% if item.product_id == pickUpProductID %}
+    {% assign itemCount = itemCount | minus: 1 %}
+  {% endif %}
+{% endfor %}

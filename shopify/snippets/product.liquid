@@ -14,6 +14,15 @@ The product page component.
 {% endcomment %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 
+{% comment %} See if its in the pick up only collection so we can tag it correctly {% endcomment %}
+{% assign pickUpOnlyProduct = false %}
+{% for tag in product.tags %}
+  {{ collection.title }}
+  {% if tag == "Pick Up Only" %}
+    {% assign pickUpOnlyProduct = true %}
+  {% endif %}
+{% endfor %}
+
 {% comment %} Get metafeild variables {% endcomment %}
 {% assign details = product.metafields.custom_fields['details'] %}
 {% assign shipping = product.metafields.custom_fields['shipping_description'] %}
@@ -58,6 +67,10 @@ Begin product page component
           ID addToCartForm is a selector for the ajax cart plugin
         {% endcomment %}
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+          {% if pickUpOnlyProduct == true or settings.delivery-bool == false %}
+            <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+          {% endif %}
 
           <div class="title-and-price">
             <div class="title">
