@@ -16,12 +16,6 @@
         "label": "Marketing Site Link"
       },
       {
-        "type":      "checkbox",
-        "id":        "delivery-bool",
-        "label":     "We offer delivery for some/all of our products?",
-        "default":   false
-      },
-      {
         "type": "text",
         "id": "site-phone-number",
         "label": "Contact Phone Number"

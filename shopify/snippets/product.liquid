@@ -14,14 +14,7 @@ The product page component.
 {% endcomment %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 
-{% comment %} See if its in the pick up only collection so we can tag it correctly {% endcomment %}
-{% assign pickUpOnlyProduct = false %}
-{% for tag in product.tags %}
-  {{ collection.title }}
-  {% if tag == "Pick Up Only" %}
-    {% assign pickUpOnlyProduct = true %}
-  {% endif %}
-{% endfor %}
+{% include 'pickup-only-product' %}
 
 {% comment %} Get metafeild variables {% endcomment %}
 {% assign details = product.metafields.custom_fields['details'] %}

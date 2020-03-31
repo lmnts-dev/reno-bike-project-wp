@@ -8,12 +8,27 @@ The cart template.
 @stylesheet: cart.scss
 
 {% endcomment %}
+{% comment %} from pick up app {% endcomment %}
+{% assign pickUpProductID = 4549493915757 %}
 
 {% include 'item-count' %}
 
+{% comment %} figure out if theres pick up only items in the cart so we can hide the shipping option {% endcomment %}
+{% assign pickUpOnlyItemCount = 0 %}
+{% for item in cart.items %}
+    {% assign product = item.product %}
+    {% include 'pickup-only-product' %}
+    {% if pickUpOnlyProduct == true and product.id != pickUpProductID %}
+      {% assign pickUpOnlyItemCount = pickUpOnlyItemCount | plus: 1 %}
+      {% break %}
+    {% endif %}
+{% endfor %}
+
+HERE
+{{pickUpOnlyItemCount}}
 {% if itemCount > 0 %}
 
-  <section class="cart padding-top-none">
+  <section class="cart padding-top-none {% if pickUpOnlyItemCount > 0 %}hide-shipping-option{% endif %}">
     <section class="cart-inner padding-top-none">
 
       <form action="/cart" method="post" novalidate>
@@ -41,17 +56,15 @@ The cart template.
           <span class="label">
             Subtotal
           </span>
-          <div class="select-container">
+
+          <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
+            <!--<a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>-->
+          <!--<div class="select-container">
             <select>
               <option>Pick up in-store</option>
               <option>Deliver item(s) to me</option>
             </select>
-          </div>
-
-          <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
-          <!--{% if settings.delivery-bool == false %}-->
-            <!--<a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>-->
-          <!--{% endif %}-->
+          </div>-->
           <span class="disclaimer">
             Shipping & taxes calculated at checkout for delivery items.
           </span>

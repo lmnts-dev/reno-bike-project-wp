@@ -17,8 +17,9 @@
     background-color: $clrAsphalt;
     color: $clrWhite;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
     padding: $BaseGutter;
     margin-top: $BaseNavSizeLg;
     margin-bottom: calc(#{$Base} * .5);
@@ -38,6 +39,12 @@
 
     h1 {
       z-index: 3;
+    }
+
+    svg {
+      z-index: 4;
+      position: relative;
+      margin-bottom: 0;
     }
 
     img {

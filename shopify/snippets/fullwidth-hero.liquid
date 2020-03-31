@@ -16,7 +16,7 @@ A fullwidth hero component.
 <section class="fullwidth-hero">
   <div class="fullwidth-hero-inner">
     <h1>{{ headline }}</h1>
-    
+    {% include 'squiggle-horizontal' with size: "large" %}
     {% if cover %}
       <img data-src="{{ cover }}" alt="{{ headline }}" class="lazy" />
     {% endif %}

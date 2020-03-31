@@ -9,8 +9,9 @@ The Cart Item template.
 
 {% endcomment %}
 
-{% comment %} from pick up app {% endcomment %}
-{% assign pickUpProductID = 4549493915757 %}
+
+{% assign product = item.product %}
+{% include 'pickup-only-product' %}
 
 <div class="cart-item {% if item.product_id == pickUpProductID %} hide-item {% endif %}">
   <div class="cart-item-inner">
@@ -21,7 +22,12 @@ The Cart Item template.
       </div>
     </a>
 
+
+
     <div class="cart-item-col title">
+      {% if pickUpOnlyProduct == true %}
+        <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+      {% endif %}
       <a href="{{ item.url | within: collections.all }}"><span>
         {{ item.product.title }}
         {% unless item.variant.title contains 'Default' %}
