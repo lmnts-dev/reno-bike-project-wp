@@ -111,12 +111,12 @@ function initInputNumberIcons() {
   var inputIncrementClass = "input-number-increment";
 
   var changeInputValue = function changeInputValue(e) {
-    var inputTag = document.getElementsByClassName(inputDecrementClass)[0].nextSibling;
-
     if (event.target.classList.contains(inputDecrementClass)) {
+      var inputTag = event.target.nextSibling;
       decrement(inputTag);
     } else {
-      increment(inputTag);
+      var _inputTag = event.target.previousSibling;
+      increment(_inputTag);
     }
 
     return;

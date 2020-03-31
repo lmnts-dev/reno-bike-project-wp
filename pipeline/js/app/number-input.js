@@ -8,12 +8,12 @@ function initInputNumberIcons() {
     let inputIncrementClass = "input-number-increment";
   
     const changeInputValue = e => {
-      let inputTag = document.getElementsByClassName(
-        inputDecrementClass)[0].nextSibling;
-  
+
       if (event.target.classList.contains(inputDecrementClass)) {
+        let inputTag = event.target.nextSibling;
         decrement( inputTag);
       } else {
+        let inputTag = event.target.previousSibling;
         increment( inputTag);
       }
   
