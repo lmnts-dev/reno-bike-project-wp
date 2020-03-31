@@ -162,6 +162,8 @@ section.cart {
 
             textarea {
               margin: $Base / 1.5;
+              margin-left: 0;
+              padding-left: 0;
               flex: 10;
               font-weight: 600;
               color: $clrChrome;
@@ -170,10 +172,9 @@ section.cart {
               
 
               @media (max-width: $BaseMediaSm ){
-                margin: $Base / 2 $Base / 2 $Base / 2 0;
+                margin: $Base / 2 $Base / 2 0 0;
                 font-size: 14px;
                 height: $Base * .85;
-
               }
             }
           }
