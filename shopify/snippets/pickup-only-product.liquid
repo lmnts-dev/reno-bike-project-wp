@@ -1,7 +1,6 @@
 {% comment %} See if its in the pick up only collection so we can tag it correctly {% endcomment %}
 {% assign pickUpOnlyProduct = false %}
 {% for tag in product.tags %}
-  {{ collection.title }}
   {% if tag == "Pick Up Only" %}
     {% assign pickUpOnlyProduct = true %}
   {% endif %}

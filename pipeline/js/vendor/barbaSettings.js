@@ -6,6 +6,7 @@
  *
  */
 
+
 // basic default transition (with no rules and minimal hooks)
 barba.init({
   transitions: [
@@ -13,7 +14,6 @@ barba.init({
       leave({ current, next, trigger }) {
         // do something with `current.container` for your leave transition
         // then return a promise or use `this.async()`
-
         hideNavOverlay();
 
         initNavOverlay();

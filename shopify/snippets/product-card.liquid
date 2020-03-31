@@ -17,12 +17,17 @@ The product card component.
 
 {% endcomment %}
 
+{% include 'pickup-only-product' %}
+
 <a href="{{ slug }}" class="product-card" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
   <div class="product-card-inner">
     <div class="product-cover">
       <img data-src="{{ cover }}" class="lazy" alt="{{ title }}" itemprop="image" />
     </div>
     <div class="product-details">
+      {% if pickUpOnlyProduct == true %}
+        <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+      {% endif %}
       <div class="title">
         <span itemprop="name">
           {{ title }}

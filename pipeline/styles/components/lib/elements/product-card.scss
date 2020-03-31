@@ -12,6 +12,7 @@
   flex-direction: column;
   padding: $BaseCardPadding;
   color: $clrBlack;
+  position: relative;
 
   @media (max-width: $BaseMediaSm ){
     padding: $BaseGutterLeftSm / 2;
@@ -24,6 +25,12 @@
 
   &:active {
     background: rgba(0, 0, 0, 0.08);
+  }
+
+  .notification-tag {
+    position: absolute;
+    top: $Base / 4;
+    right: $Base / 4;
   }
 
   .product-card-inner {
