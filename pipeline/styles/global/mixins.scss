@@ -6,7 +6,7 @@
 //
 ////////////////////////////////////////
 
-@mixin objectFit() {
+@mixin objectFit( $property: cover ) {
   position: absolute;
   left: 0;
   right: 0;
@@ -14,7 +14,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: $property;
   object-position: center;
   max-width: 100%;
   width: 100%;
