@@ -133,22 +133,3 @@ $BaseAnchorOffsetSm: 80px;
     top: (0- ($BaseNavSizeSm + $BaseAnchorOffsetSm));
   }
 }
-
-
-
-.squiggle-horizontal, .squiggle-vertical {
-  margin-bottom: $Base / 2;
-
-  @media (max-width: $BaseMediaSm) {
-    transform: scale( 0.6 );
-    margin-bottom: $Base / 3;
-  }
-}
-
-.squiggle-horizontal {
-  transform-origin: left center;
-}
-
-.squiggle-vertical {
-  transform-origin: left bottom;
-}

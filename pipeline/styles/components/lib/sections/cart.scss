@@ -382,13 +382,15 @@ section.cart {
       }
 
       &.selected {
-        background: rgba($clrBlack, 0.07);
+        background: $clrPrimary;
         border-color: $clrPrimary;
+        color: $clrWhite;
       }
 
       &:hover {
-        background: rgba($clrBlack, 0.07);
-        color: $clrBlack;
+        background: $clrPrimary;
+        border-color: $clrPrimary;
+        color: $clrWhite;
         box-shadow: none;
       }
 
