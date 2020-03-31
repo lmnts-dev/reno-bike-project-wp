@@ -195,103 +195,106 @@
 
         @media (max-width: $BaseMediaSm) {
           margin-bottom: $Base;
-          position: relative;
-
-          &:before, &:after {
-            content: "";
-            width: 0;
-            pointer-events: none;
-            position: absolute;
-            bottom: $Base / 8;
-            height: 0;
-            border-top: calc(#{$Base} * 0.3) solid transparent;
-            border-bottom: calc(#{$Base} * 0.3) solid transparent;
-            border-left: calc(#{$Base} * 0.3) solid $clrPrimary;
-            z-index: 999;
-          }
-
-          &:before {
-            left: $Base / 4;
-            transform: scaleX(-1);
-          } 
-          &:after {
-            right: $Base / 4;
-          }
-
-          .featured-images {
-            display: block;
+          
+          &:not(.no-mobile-scroller){
             position: relative;
-            width: 100%;
-            min-height: $Base * 5;
-            height: 50vh;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            /** Thank you Sergey! http://blog.gospodarets.com/css-scroll-snap/ **/
-              scroll-snap-points-x: repeat(100%);
-              scroll-behavior: smooth;
-              scroll-snap-type: mandatory;
-              -webkit-scroll-snap-type: mandatory;
-              -webkit-scroll-snap-points-x: repeat(100%);
-              font-size: 0;
-            /** **/
 
-            .image-wrapper img {
-              @include objectFit();
+            &:before, &:after {
+              content: "";
+              width: 0;
+              pointer-events: none;
+              position: absolute;
+              bottom: $Base / 8;
+              height: 0;
+              border-top: calc(#{$Base} * 0.3) solid transparent;
+              border-bottom: calc(#{$Base} * 0.3) solid transparent;
+              border-left: calc(#{$Base} * 0.3) solid $clrPrimary;
+              z-index: 999;
+            }
+
+            &:before {
+              left: $Base / 4;
+              transform: scaleX(-1);
+            } 
+            &:after {
+              right: $Base / 4;
+            }
+
+            .featured-images {
+              display: block;
+              position: relative;
+              width: 100%;
+              min-height: $Base * 5;
+              height: 50vh;
+              overflow-x: auto;
+              overflow-y: hidden;
+              white-space: nowrap;
+              /** Thank you Sergey! http://blog.gospodarets.com/css-scroll-snap/ **/
+                scroll-snap-points-x: repeat(100%);
+                scroll-behavior: smooth;
+                scroll-snap-type: mandatory;
+                -webkit-scroll-snap-type: mandatory;
+                -webkit-scroll-snap-points-x: repeat(100%);
+                font-size: 0;
+              /** **/
+
+              .image-wrapper img {
+                @include objectFit();
+              }
+            }
+
+            /** Chrome Scroll Wheel **/
+
+            ::-webkit-scrollbar {
+              height: 34px;
+            }
+            ::-webkit-scrollbar-track {
+              background: $clrSteel;
+            }
+            ::-webkit-scrollbar-thumb {
+              background: rgba($clrChrome, .5) url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42863/grab.png) center no-repeat;
+              background-size: 24px;
+            }
+            ::-webkit-scrollbar-button:start:decrement,
+            ::-webkit-scrollbar-button:end:increment {
+              position: absolute;
+              top: 0;
+              display: block;
+              height: 34px;
+              width: 34px;
+              background: $clrSteel;
+              background-size: 100%;
+            }
+            ::-webkit-scrollbar-button:end:increment {
+
             }
           }
 
-          /** Chrome Scroll Wheel **/
-
-          ::-webkit-scrollbar {
-            height: 34px;
-          }
-          ::-webkit-scrollbar-track {
-            background: $clrSteel;
-          }
-          ::-webkit-scrollbar-thumb {
-            background: rgba($clrChrome, .5) url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42863/grab.png) center no-repeat;
-            background-size: 24px;
-          }
-          ::-webkit-scrollbar-button:start:decrement,
-          ::-webkit-scrollbar-button:end:increment {
-            position: absolute;
-            top: 0;
-            display: block;
-            height: 34px;
-            width: 34px;
-            background: $clrSteel;
-            background-size: 100%;
-          }
-          ::-webkit-scrollbar-button:end:increment {
-
-          }
-        }
-
-        .specifics-outer {
-          @media (max-width: $BaseMediaSm) {
-            display: none;
-          }
-        }
-
-        .img-wrapper {
-          width: 100%;
-          position: relative;
-        //  padding-bottom: 70%;
-          margin-bottom: calc(#{$Base} / 4);
-          background: $clrPlaceholder;
-
-          @media (max-width: $BaseMediaSm) {
-            display: inline-block;
-            height: 100%;
-            padding-bottom: 0;
-            margin-bottom: 0;
+          .specifics-outer {
+            @media (max-width: $BaseMediaSm) {
+              display: none;
+            }
           }
 
-          img {
-          //  @include objectFit();
-            max-width: 100%;
+          .img-wrapper {
             width: 100%;
+            position: relative;
+          //  padding-bottom: 70%;
+            margin-bottom: calc(#{$Base} / 4);
+            background: $clrPlaceholder;
+
+            @media (max-width: $BaseMediaSm) {
+              display: inline-block;
+              height: 100%;
+              padding-bottom: 0;
+              margin-bottom: 0;
+            }
+
+            img {
+            //  @include objectFit();
+              max-width: 100%;
+              width: 100%;
+            }
           }
         }
       }

@@ -27,7 +27,7 @@ Begin product page component
 
 <section class="product padding-top-none" itemscope itemtype="http://schema.org/Product">
   <div class="product-inner">
-    <div class="col image-col">
+    <div class="col image-col {% if product.images.size == 1 %} no-mobile-scroller {% endif %}">
       {% if product.images.size > 0 %}
         <div class="featured-images">
           {% for image in product.images %}
