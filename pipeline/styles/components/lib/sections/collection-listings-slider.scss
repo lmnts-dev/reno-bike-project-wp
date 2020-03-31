@@ -101,6 +101,9 @@
 
           &.next {
             right: $buttonBorder;
+            @media (max-width: $BaseMaxWidth ){
+              right: calc( #{$buttonBorder} + #{$Base});
+            }
 
             &:before {
               content: "";
@@ -115,6 +118,11 @@
           &.previous {
             left: unset;
             right: calc(#{$buttonSize + $buttonBorder} + #{$buttonSize / 2});
+
+            @media (max-width: $BaseMaxWidth ){
+              right: calc(#{$buttonSize + $buttonBorder} + #{$buttonSize / 2} + #{$Base});
+            }
+
 
             &:before {
               content: "";
