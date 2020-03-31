@@ -108,6 +108,10 @@ section.cart {
             }
           }
 
+          .select-container {
+            margin-bottom: $Base / 4;
+          }
+
           .btn {
             margin-bottom: calc(#{$Base} / 4);
             text-align: left;
@@ -329,6 +333,32 @@ section.cart {
       .remove-item.mobile-remove-item {
         @media (max-width: $BaseMediaMd ){
           display: inline-flex;
+        }
+      }
+    }
+  }
+}
+
+
+section.cart {
+  #pickup-container {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    
+    #pickup-details {
+
+      label {
+        display: none;
+      }
+
+      input {
+        @extend .btn;
+        @extend .btn-border-black;
+
+        &:hover {
+          background-color: transparent;
+          box-shadow: none;
+          color: $clrBlack;
         }
       }
     }

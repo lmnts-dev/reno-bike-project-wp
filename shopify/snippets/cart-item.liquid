@@ -31,7 +31,7 @@ The Cart Item template.
       <p>
         {{ item.product.description | strip_html | truncate: 75, "..." }}
       </p>
-      <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="btn remove-item" rel="{{ item.id }}">Remove Item</a>
+      <a data-item="{{ forloop.index }}" class="remove-item btn">Remove Item</a>
     </div>
 
     <div class="cart-item-col quantity">
@@ -44,7 +44,7 @@ The Cart Item template.
       </span>
     </div>
 
-    <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="btn remove-item mobile-remove-item" rel="{{ item.id }}">Remove Item</a>
+    <a data-item="{{ forloop.index }}" class="btn remove-item mobile-remove-item">Remove Item</a>
 
 
   </div>

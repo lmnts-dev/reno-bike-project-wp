@@ -41,8 +41,17 @@ The cart template.
           <span class="label">
             Subtotal
           </span>
+          <div class="select-container">
+            <select>
+              <option>Pick up in-store</option>
+              <option>Deliver item(s) to me</option>
+            </select>
+          </div>
+
           <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
-          <a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>
+          <!--{% if settings.delivery-bool == false %}-->
+            <!--<a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>-->
+          <!--{% endif %}-->
           <span class="disclaimer">
             Shipping & taxes calculated at checkout for delivery items.
           </span>

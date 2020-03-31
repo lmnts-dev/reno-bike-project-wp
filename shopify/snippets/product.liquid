@@ -68,7 +68,7 @@ Begin product page component
         {% endcomment %}
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
-          {% if pickUpOnlyProduct == true or settings.delivery-bool == false %}
+          {% if pickUpOnlyProduct == true %}
             <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
           {% endif %}
 
@@ -115,7 +115,7 @@ Begin product page component
 
           {% assign variantSize = product.variants | size %}
           
-          <div class="variant-selector {% if variantSize > 1 and product.available %}{% else %}visually-hidden{% endif %}">
+          <div class="variant-selector select-container {% if variantSize > 1 and product.available %}{% else %}visually-hidden{% endif %}">
             <select name="id" id="productSelect" class="selecter">
               {% for variant in product.variants %}
                 {% if variant.available %}
