@@ -6,6 +6,8 @@
 // @since 3/2020
 //
 ////////////////////////////////////////
+$buttonSize: $Base;
+$buttonBorder: 6px;
 
 .collection-listings-slider {
   position: relative;
@@ -15,6 +17,12 @@
   .collection-listings-slider-inner {
     width: 100%;
     position: relative;
+
+    .slider-header {
+      @media (max-width: $BaseMediaSm ){
+        max-width: calc(100% - #{$buttonSize * 2} - #{$buttonBorder * 4} - #{$Base / 2});
+      }
+    }
 
     // The Slider Element Itself
     .collection-listings-slider-el {
@@ -80,8 +88,7 @@
       }
 
       .flickity-button {
-        $buttonSize: $Base;
-        $buttonBorder: 6px;
+
 
         position: absolute;
         top: calc(#{$buttonSize} * -1);
@@ -105,6 +112,10 @@
               right: calc( #{$buttonBorder} + #{$Base});
             }
 
+            @media (max-width: $BaseMediaSm ){
+              right: calc( #{$buttonBorder} + #{$Base / 2});
+            }
+
             &:before {
               content: "";
               width: 0;
@@ -121,6 +132,10 @@
 
             @media (max-width: $BaseMaxWidth ){
               right: calc(#{$buttonSize + $buttonBorder} + #{$buttonSize / 2} + #{$Base});
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              right: calc(#{$buttonSize + $buttonBorder} + #{$buttonSize / 2} + #{$Base / 2});
             }
 
 

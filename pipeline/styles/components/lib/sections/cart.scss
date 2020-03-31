@@ -174,7 +174,7 @@ section.cart {
               
 
               @media (max-width: $BaseMediaSm ){
-                margin: $Base / 2 $Base / 2 0 0;
+                margin: $Base / 2 $Base / 2 $Base / 2 0;
                 font-size: 14px;
                 height: $Base * .85;
               }
@@ -244,7 +244,12 @@ section.cart {
       margin-right: $colSpacing;
 
       @media (max-width: $BaseMediaMd ){
-        display: inline-block;
+        &:not(.quantity){
+          display: inline-block;
+        }
+        &.quantity {
+          display: inline-flex;
+        }
       }
 
       &:last-child {
@@ -277,7 +282,7 @@ section.cart {
         @media (max-width: $BaseMediaMd ){
           width: 100%;
           margin-right: 0;
-          padding: $Base / 4 0;
+          padding: $Base / 2 0;
         }
 
         span {
