@@ -8,6 +8,12 @@ The collection default template.
 
 {% endcomment %}
 
+<script type="text/javascript">
+    if (window.location.href.includes('/collections/all')){
+        window.location = "/collections/";
+    }
+</script>
+
 {% assign cover = collection.image | img_url: '2000x' %}
 {% include 'fullwidth-hero' headline: collection.title, cover: cover %}
 
