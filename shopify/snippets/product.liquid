@@ -53,7 +53,7 @@ Begin product page component
       {% endif %}
     </div>
 
-    <div class="col details">
+    <div class="col details {% if product.images.size == 1 %} one-image {% endif %}">
       <div class="details-top">
 
         {% comment %}
