@@ -18,10 +18,10 @@
   .product-listings-inner {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 
     .product-card {
-      width: 33%;
+      width: 33.33%;
       margin-bottom: $Base;
 
       @media (max-width: $BaseMediaMd ){
@@ -34,12 +34,6 @@
         &:nth-of-type(odd):last-of-type {
           width: 100%;
         }
-      }
-
-      &:last-child {
-       // justify-self: center;
-       // align-self: center;
-        margin: 0 auto;
       }
     }
   }
