@@ -14,9 +14,6 @@ barba.init({
       leave({ current, next, trigger }) {
         // do something with `current.container` for your leave transition
         // then return a promise or use `this.async()`
-        hideNavOverlay();
-
-        initNavOverlay();
       },
       beforeEnter({ current, next, trigger }) {
         // Scroll to top of page
@@ -24,9 +21,6 @@ barba.init({
 
         // Re-init our Lazy Loading
         initLazyLoad();
-
-        // Re-init our Search Overlay
-        initSearchOverlay();
 
         // Re-init our bicycle wheel script.
         initBikeWheel();
@@ -45,9 +39,6 @@ barba.init({
 
         // Re-init our video overlays
         initVideoOverlay();
-
-        // Re-init the nav script
-        initNavOverlay();
       }
     }
   ]

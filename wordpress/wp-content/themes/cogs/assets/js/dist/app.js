@@ -29,14 +29,6 @@ var navigationBtnClass = "nav-overlay-toggle";
 var navigationOverlayClass = "overlay-nav-container";
 var navigationOverlay = document.getElementsByClassName(navigationOverlayClass)[0];
 
-function hideNavOverlay() {
-  if (navigationOverlay.classList.contains("visible")) {
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  }
-}
-
 function toggleNavOverlay(e) {
   if (navigationOverlay.classList.contains("visible")) {
     // console.log("CLOSE!");
@@ -52,6 +44,7 @@ function toggleNavOverlay(e) {
 }
 
 function initNavOverlay() {
+  console.log("init");
   document.addEventListener("click", function (event) {
     // If the clicked element doesn't have the right selector, bail
     if (!event.target.classList.contains(navigationBtnClass)) {
@@ -65,6 +58,8 @@ function initNavOverlay() {
     }
   }, false);
 }
+
+initNavOverlay();
 "use strict";
 
 /*
@@ -149,6 +144,33 @@ function increment(input) {
 "use strict";
 
 /*
+ ** @author: Alisha Garric
+ ** @description: Remove items from cart
+ */
+function initRemoveItem() {
+  var removeItem = function removeItem(e) {
+    var itemIndex = e.target.dataset.item;
+    var state = {};
+    var title = 'Update Cart';
+    var url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
+    window.location.href = url;
+    return;
+  };
+
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.classList.contains("remove-item")) return; // Don't follow the link
+
+    event.preventDefault(); // Log the clicked element in the console
+
+    removeItem(event);
+  }, false);
+}
+
+initRemoveItem();
+"use strict";
+
+/*
  ** @author: Peter Laxalt
  ** @description: Super simple script for the Bike Wheel SVG to
  ** follow the mouse position.
@@ -183,12 +205,10 @@ initBikeWheel();
  ** @description: Functions to show/hide the newsletter overlay.
  */
 function initSearchOverlay() {
-  console.log("boo");
   var searchToggleClass = "search-toggle";
   var newsletterOverlayClass = "search-overlay";
 
   var toggleNavOverlay = function toggleNavOverlay(e) {
-    console.log("ahhhh");
     var newsletterOverlay = document.getElementsByClassName(newsletterOverlayClass)[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
@@ -276,30 +296,3 @@ function initVideoOverlay() {
 }
 
 initVideoOverlay();
-"use strict";
-
-/*
- ** @author: Alisha Garric
- ** @description: Remove items from cart
- */
-function initRemoveItem() {
-  var removeItem = function removeItem(e) {
-    var itemIndex = e.target.dataset.item;
-    var state = {};
-    var title = 'Update Cart';
-    var url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
-    window.location.href = url;
-    return;
-  };
-
-  document.addEventListener("click", function (event) {
-    // If the clicked element doesn't have the right selector, bail
-    if (!event.target.classList.contains("remove-item")) return; // Don't follow the link
-
-    event.preventDefault(); // Log the clicked element in the console
-
-    removeItem(event);
-  }, false);
-}
-
-initRemoveItem();

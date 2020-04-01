@@ -6,12 +6,12 @@
  */
 
 function initSearchOverlay() {
-  console.log("boo");
+
   let searchToggleClass = "search-toggle";
   let newsletterOverlayClass = "search-overlay";
 
   const toggleNavOverlay = e => {
-    console.log("ahhhh");
+    
     let newsletterOverlay = document.getElementsByClassName(
       newsletterOverlayClass
     )[0];
@@ -32,7 +32,7 @@ function initSearchOverlay() {
     function(event) {
       // If the clicked element doesn't have the right selector, bail
       if (!event.target.classList.contains(searchToggleClass)) return;
-
+      
       // Don't follow the link
       event.preventDefault();
 

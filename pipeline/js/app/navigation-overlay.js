@@ -9,13 +9,6 @@ const navigationOverlay = document.getElementsByClassName(
   navigationOverlayClass
 )[0];
 
-function hideNavOverlay() {
-  if (navigationOverlay.classList.contains("visible")) {
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  }
-}
 
 function toggleNavOverlay(e) {
   if (navigationOverlay.classList.contains("visible")) {
@@ -32,6 +25,7 @@ function toggleNavOverlay(e) {
 }
 
 function initNavOverlay() {
+  console.log("init");
   document.addEventListener(
     "click",
     function(event) {
@@ -50,3 +44,5 @@ function initNavOverlay() {
     false
   );
 }
+
+initNavOverlay();
