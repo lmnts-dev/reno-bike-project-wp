@@ -57,11 +57,7 @@ Houses our theme header & wrapper.
     {% endif %}
   </title>
   <meta name="description" content="{{ page_description | escape }}" />
-  <meta property="og:title" content="{{ shop.name }}">
-  <meta property="og:description" content="{{ page_description | escape }}">
-  <meta property="og:image" content="">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="{{ shop.name }}" />
+  {% include 'opengraph-meta' %}
   <meta name="twitter:title" content={{ shop.name }}">
   <meta name="twitter:description" content="{{ page_description | escape }}">
   <meta name="twitter:image" content="">
