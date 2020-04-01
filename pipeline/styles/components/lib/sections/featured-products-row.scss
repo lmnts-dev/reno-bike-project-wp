@@ -37,6 +37,10 @@
         .section-header {
             min-width: 100%;
 
+            svg {
+                align-self: flex-start;
+            }
+
             h3 {
                 width: 100%;
                 text-align: left;

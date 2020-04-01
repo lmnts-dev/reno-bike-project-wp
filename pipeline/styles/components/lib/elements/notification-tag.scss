@@ -9,4 +9,10 @@
     font-size: 0.8rem;
     margin-bottom: $Base / 6;
     line-height: 1;
+
+    @media (max-width: $BaseMediaSm) {
+        font-size: 0.6rem;  
+        letter-spacing: 1.1px;
+        padding: $Base / 9 $Base / 3.5;
+    }
 }

@@ -42,7 +42,7 @@ form {
   vertical-align: top;
   padding: 0;
   outline: none;
-  min-width: calc(#{$Base} / 1.5);
+  min-width: 22px;
 }
 
 .quantity {
@@ -66,7 +66,7 @@ form {
   .input-number-decrement,
   .input-number-increment {
     display: inline-block;
-    min-width: calc(#{$Base} / 1.5);
+    min-width: 22px;
     color: $clrPrimary;
     text-align: center;
     font-weight: bold;

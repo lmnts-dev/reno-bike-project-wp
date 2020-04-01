@@ -12,8 +12,8 @@ A row showing three product cards.
 <section class="featured-products-row">
   <div class="featured-products-row-inner">
     {% if section.settings.headline != '' %}
-        {% include 'squiggle-horizontal' with size: "large" %}
         <div class="section-header">
+            {% include 'squiggle-horizontal' with size: "large" %}
             <h3>
                 {{ section.settings.headline }}
             </h3>

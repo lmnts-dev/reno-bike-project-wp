@@ -21,6 +21,10 @@ $buttonBorder: 6px;
     .slider-header {
       @media (max-width: $BaseMediaSm ){
         max-width: calc(100% - #{$buttonSize * 2} - #{$buttonBorder * 4} - #{$Base / 2});
+
+        h3 {
+          font-size: 26px;
+        }
       }
     }
 
@@ -38,7 +42,7 @@ $buttonBorder: 6px;
         }
 
         @media (max-width: $BaseMediaSm ){
-          width: 40%;
+          width: 55%;
         }
       }
 
@@ -94,7 +98,7 @@ $buttonBorder: 6px;
         top: calc(#{$buttonSize} * -1);
 
         @media (max-width: $BaseMediaMd ){
-          top: calc(#{$buttonSize} / -1.5);
+          top: calc(#{$buttonSize} / -1.3);
         }
 
         &.flickity-prev-next-button {

@@ -129,6 +129,14 @@ $SmallContentOffset: $Base;
     padding-top: 0;
     margin-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
 
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$BaseGutterLeftMd} + #{$BaseNavSizeLg});
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: calc(#{$BaseGutterLeftSm} + #{$BaseNavSizeSm});
+    }
+
     .block-slider-inner {
       .block-slider-el {
         .block-slide-inner {

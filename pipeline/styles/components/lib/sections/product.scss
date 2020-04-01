@@ -113,6 +113,9 @@
                   display: block;
                   min-width: 100%;
                   color: $clrGunmetal;
+                  @media (max-width: $BaseMediaSm) {
+                    text-align: left;
+                  }
                 }
 
                 @media (max-width: $BaseMediaSm) {

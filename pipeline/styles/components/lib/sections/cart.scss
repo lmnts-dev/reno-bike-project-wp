@@ -64,7 +64,6 @@ section.cart {
           height: calc(100vh - #{$offsetTop});
           min-height: 750px;
           padding-left: calc(#{$Base});
-          padding-bottom: $BaseGutter;
           position: sticky;
           top: 0;
           display: flex;
