@@ -8,12 +8,12 @@
 function initSearchOverlay() {
 
   let searchToggleClass = "search-toggle";
-  let newsletterOverlayClass = "search-overlay";
+  let searchOverlayClass = "search-overlay";
 
-  const toggleNavOverlay = e => {
+  const toggleSearchOverlay = e => {
     
     let newsletterOverlay = document.getElementsByClassName(
-      newsletterOverlayClass
+      searchOverlayClass
     )[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
@@ -37,7 +37,7 @@ function initSearchOverlay() {
       event.preventDefault();
 
       // Log the clicked element in the console
-      toggleNavOverlay(event);
+      toggleSearchOverlay(event);
     },
     false
   );

@@ -25,7 +25,6 @@ function toggleNavOverlay(e) {
 }
 
 function initNavOverlay() {
-  console.log("init");
   document.addEventListener(
     "click",
     function(event) {

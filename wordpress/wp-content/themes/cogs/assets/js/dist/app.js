@@ -44,7 +44,6 @@ function toggleNavOverlay(e) {
 }
 
 function initNavOverlay() {
-  console.log("init");
   document.addEventListener("click", function (event) {
     // If the clicked element doesn't have the right selector, bail
     if (!event.target.classList.contains(navigationBtnClass)) {
@@ -206,10 +205,10 @@ initBikeWheel();
  */
 function initSearchOverlay() {
   var searchToggleClass = "search-toggle";
-  var newsletterOverlayClass = "search-overlay";
+  var searchOverlayClass = "search-overlay";
 
-  var toggleNavOverlay = function toggleNavOverlay(e) {
-    var newsletterOverlay = document.getElementsByClassName(newsletterOverlayClass)[0];
+  var toggleSearchOverlay = function toggleSearchOverlay(e) {
+    var newsletterOverlay = document.getElementsByClassName(searchOverlayClass)[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
       document.body.classList.remove("scroll-lock");
@@ -228,7 +227,7 @@ function initSearchOverlay() {
 
     event.preventDefault(); // Log the clicked element in the console
 
-    toggleNavOverlay(event);
+    toggleSearchOverlay(event);
   }, false);
 }
 

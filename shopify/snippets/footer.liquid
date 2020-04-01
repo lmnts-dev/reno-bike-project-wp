@@ -104,8 +104,8 @@ Website Footer
     <div class="footer-col">
       <div class="footer-search">
         {% include 'svg-icon-search' %}
-        <form>
-          <input placeholder="Search">
+        <form action="/search" method="get" role="search">
+          <input type="search" name="q" placeholder="Search">
         </form>
       </div>
     </div>
