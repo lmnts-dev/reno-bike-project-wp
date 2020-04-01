@@ -118,6 +118,7 @@
 
             .quantity {
               display: flex;
+              flex: 1;
               justify-content: flex-start;
               align-items: center;
               border: 1px solid $clrBlack;
@@ -129,9 +130,7 @@
             }
 
             .purchase {
-              width: 80%;
-              flex-shrink: 0;
-              background: yellow;
+              flex: 10;
 
               button {
                 width: 100%;
@@ -190,8 +189,13 @@
 
       &.image-col {
         flex: 1;
+        min-width: 50%;
         display: flex;
         flex-direction: column;
+
+        img {
+          width: 100%;
+        }
 
         @media (max-width: $BaseMediaSm) {
           margin-bottom: $Base;
@@ -291,7 +295,7 @@
             }
 
             img {
-            //  @include objectFit();
+              @include objectFit(contain);
               max-width: 100%;
               width: 100%;
             }
