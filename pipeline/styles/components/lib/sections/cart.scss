@@ -13,6 +13,7 @@ section.cart {
   &.empty-cart {
     padding-top: $offsetTop;
     text-align: center;
+    padding-bottom: $Base * 2;
   }
 
   .cart-inner {
@@ -79,6 +80,7 @@ section.cart {
             padding-left: 0;
             min-height: 1px;
             height: auto;
+            padding-bottom: calc(#{$Base} * 2);
           }
 
 
@@ -416,8 +418,12 @@ section.cart {
       input {
         @extend .btn;
         @extend .btn-border-black;
+        border-radius: 0;
         position: relative;
         margin-top: $Base / 4;
+        -webkit-appearance: none;
+        -webkit-border-radius:0px;
+        line-height: 1;
 
         &:hover {
           background-color: transparent;

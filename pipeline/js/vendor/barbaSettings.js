@@ -25,6 +25,9 @@ barba.init({
         // Re-init our Lazy Loading
         initLazyLoad();
 
+        // Re-init our Search Overlay
+        initSearchOverlay();
+
         // Re-init our bicycle wheel script.
         initBikeWheel();
 

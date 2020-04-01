@@ -6,10 +6,12 @@
  */
 
 function initSearchOverlay() {
+  console.log("boo");
   let searchToggleClass = "search-toggle";
   let newsletterOverlayClass = "search-overlay";
 
   const toggleNavOverlay = e => {
+    console.log("ahhhh");
     let newsletterOverlay = document.getElementsByClassName(
       newsletterOverlayClass
     )[0];
