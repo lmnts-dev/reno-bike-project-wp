@@ -41,8 +41,9 @@ section.cart {
     form {
       display: flex;
       flex-wrap: nowrap;
+      align-items: flex-start;
 
-      @media (max-width: $BaseMediaSm ){
+      @media (max-width: $BaseMediaSm * 1.2 ){
         display: block;
       }
 
@@ -61,8 +62,6 @@ section.cart {
           flex: 1;
           max-width: $BaseSidebarWidth;
           min-width: 250px;
-          height: calc(100vh - #{$offsetTop});
-          min-height: 750px;
           padding-left: calc(#{$Base});
           position: sticky;
           top: 0;
@@ -71,7 +70,11 @@ section.cart {
           justify-content: flex-start;
           align-items: stretch;
 
-          @media (max-width: $BaseMediaSm ){
+          @media (max-width: $BaseMediaMd ){
+            padding-left: calc(#{$Base} / 2);
+          }
+
+          @media (max-width: $BaseMediaSm * 1.2 ){
             padding-top: $Base;
             padding-left: 0;
             min-height: 1px;
@@ -89,7 +92,7 @@ section.cart {
               font-size: 4vw;
             }
 
-            @media (max-width: $BaseMediaSm ){
+            @media (max-width: $BaseMediaSm * 1.2 ){
               font-size: 2rem;
             }
           }
@@ -103,7 +106,7 @@ section.cart {
             @media (max-width: $BaseMediaLg ){
               font-size: 3vw;
             }
-            @media (max-width: $BaseMediaSm ){
+            @media (max-width: $BaseMediaSm * 1.2 ){
               font-size: 1.5rem;
             }
           }
@@ -123,6 +126,11 @@ section.cart {
             max-width: 80%;
             margin: 0 auto;
             text-align: center;
+            @media (max-width: $BaseMediaSm * 1.2 ){
+              max-width: 100%;
+              text-align: left;
+              margin: 0;
+            }
           }
         }
 
@@ -141,7 +149,7 @@ section.cart {
               font-size: 4vw;
             }
 
-            @media (max-width: $BaseMediaSm ){
+            @media (max-width: $BaseMediaSm * 1.2 ){
               margin-bottom: $Base / 4;
               font-size: 1.5rem;
             }
@@ -172,7 +180,7 @@ section.cart {
               height: $Base;
               
 
-              @media (max-width: $BaseMediaSm ){
+              @media (max-width: $BaseMediaSm * 1.2 ){
                 margin: $Base / 2 $Base / 2 $Base / 2 0;
                 font-size: 14px;
                 height: $Base * .85;
@@ -205,14 +213,6 @@ section.cart {
     padding: calc(#{$Base}) 0;
     position: relative;
 
-    @media (max-width: $BaseMediaMd ){
-      display: block;
-    }
-
-    @media (max-width: $BaseMediaSm ){
-      padding-bottom: calc(#{$Base} * 2);
-    }
-
     .remove-item {
       position: absolute;
       bottom: $Base * -1;
@@ -220,36 +220,19 @@ section.cart {
       padding: 0;
       display: none;
 
+      @media (max-width: $BaseMediaSm ){
+        font-size: 0.6rem;
+        display: inline-flex;
+      }
+
       &:hover {
         box-shadow: none;
         color: $clrPrimary;
       }
     }
 
-    .remove-item.mobile-remove-item {
-      display: none;
-
-      @media (max-width: $BaseMediaMd ){
-        bottom: 0;
-      }
-
-      @media (max-width: $BaseMediaSm ){
-        display: inline-flex;
-        bottom: calc(#{$Base} / 1.5 );
-      }
-    }
-
     .cart-item-col {
       margin-right: $colSpacing;
-
-      @media (max-width: $BaseMediaMd ){
-        &:not(.quantity){
-          display: inline-block;
-        }
-        &.quantity {
-          display: inline-flex;
-        }
-      }
 
       &:last-child {
         margin-right: 0;
@@ -257,16 +240,17 @@ section.cart {
 
       &.cover {
         width: $cartThumbSize;
-
-        @media (max-width: $BaseMediaMd ){
-          margin-right: 0;
+        @media (max-width: $BaseMediaSm ){
+          width: $Base * 3;
+          margin-right: $Base / 4;
         }
 
         .cart-item-img {
           background: $clrPlaceholder;
           position: relative;
           width: 100%;
-          padding-bottom: 56.25%;
+          padding-bottom: 80%;
+          border: 1px solid $clrPlaceholder;
 
           img {
             @include objectFit();
@@ -274,14 +258,31 @@ section.cart {
         }
       }
 
-      &.title {
-        padding-right: $Base;
-        position: relative;
+      &.quantity-and-price {
+        display: flex;
+        margin-right: 0;
 
         @media (max-width: $BaseMediaMd ){
-          width: 100%;
-          margin-right: 0;
-          padding: $Base / 2 0;
+          flex-direction: column-reverse;
+
+          .quantity {
+            margin-top: $Base / 4;
+            margin-right: 0;
+
+            @media (max-width: $BaseMediaSm ){
+              height: $Base / 1.5;
+              font-size: .8rem;
+              margin-top: $Base / 3;
+            }
+          }
+        }
+      }
+
+      &.title {
+        position: relative;
+
+        @media (max-width: $BaseMediaSm ){
+          margin-right: $Base / 4;
         }
 
         span {
@@ -290,6 +291,10 @@ section.cart {
           font-size: 1.6rem;
           margin-bottom: calc(#{$Base} / 4);
           display: block;
+
+          @media (max-width: $BaseMediaSm ){
+            font-size: 1.2rem;
+          }
 
           &:hover {
             color: $clrPrimary;
@@ -300,6 +305,10 @@ section.cart {
           font-size: 1.1rem;
           color: $clrBlack;
           margin-bottom: 0;
+
+          @media (max-width: $BaseMediaSm ){
+            font-size: .9rem;
+          }
         }
       }
 
@@ -308,6 +317,11 @@ section.cart {
         position: relative;
         top: -5px;
         height: $Base;
+
+        @media (max-width: $BaseMediaSm ){
+          font-size: 1.2rem;
+          width: 80px;
+        }
 
         input {
           text-align: center;
@@ -320,6 +334,10 @@ section.cart {
         font-size: 1.6rem;
         text-align: right;
 
+        @media (max-width: $BaseMediaSm ){
+          font-size: 1.2rem;
+        }
+
         span {
           text-align: right;
         }
@@ -329,18 +347,8 @@ section.cart {
 
   &:hover {
     .cart-item-inner {
-      .title .remove-item:not(.mobile-remove-item) {
+      .title .remove-item {
         display: inline-flex;
-
-        @media (max-width: $BaseMediaMd ){
-          display: none;
-        }
-      }
-
-      .remove-item.mobile-remove-item {
-        @media (max-width: $BaseMediaMd ){
-          display: inline-flex;
-        }
       }
     }
   }
