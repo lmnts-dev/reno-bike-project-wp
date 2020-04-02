@@ -143,14 +143,6 @@ $overlayNavWidth: 450px;
         }
       }
 
-      //temp
-      .branding {
-        width: $Base;
-        height: $Base;
-       // background-color: $clrPrimary;
-        border-radius: 50%;
-      }
-
       .exit {
         position: relative;
         height: $Base * 0.75;
@@ -174,7 +166,7 @@ $overlayNavWidth: 450px;
           border: none;
           position: absolute;
           top: calc(50% - 20px);
-          right: 30px;
+          right: 50%;
           height: 40px;
           width: 3px;
           margin: 0;
