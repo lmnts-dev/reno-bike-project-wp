@@ -9,6 +9,7 @@
 
 // basic default transition (with no rules and minimal hooks)
 barba.init({
+  prevent: ({ el }) => el.classList && el.classList.contains('barba-prevent'),
   transitions: [
     {
       leave({ current, next, trigger }) {
