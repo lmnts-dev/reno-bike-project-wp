@@ -28,9 +28,6 @@ barba.init({
         // Re-init remove item from cart
         initRemoveItem();
 
-        // Re-init our number input value listener
-        initInputNumberIcons();
-
         // Re-init our sliders
         initSliders();
 
