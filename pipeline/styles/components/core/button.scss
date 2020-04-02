@@ -145,6 +145,7 @@ button,
 
       &:after {
         color: $clrWhite;
+        border-left: calc(#{$Base} * 0.15) solid $clrWhite;
       }
     }
     &:active {
