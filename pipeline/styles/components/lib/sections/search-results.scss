@@ -38,6 +38,10 @@ section.search-results {
       margin: 0;
       padding: 0;
 
+      .query {
+        color: $clrBlack;
+      }
+
       &:first-of-type {
         color: $clrPrimary;
       }
@@ -107,6 +111,7 @@ section.search-results {
           .news-listing-card-inner {
             display: flex;
             align-items: flex-start;
+            flex-direction: row;
             width: 100%;
             position: relative;
 
@@ -230,7 +235,7 @@ section.search-results {
               }
 
               &.dots {
-                opacity: .6;
+                opacity: 0.6;
 
                 &:hover {
                   background: none;
@@ -242,6 +247,18 @@ section.search-results {
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .news-listings {
+    &.news-listings-search-results {
+      padding: 0;
+
+      .news-listings-inner {
+        .news-listing-card {
+          width: 33.33333%;
         }
       }
     }
