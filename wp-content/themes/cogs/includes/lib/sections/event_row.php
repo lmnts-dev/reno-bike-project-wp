@@ -9,26 +9,21 @@
  * @author Alisha Garric
  * @since 3/2020
  * @stylesheet event-row.scss
- * 
- */
+ * TODO: stlying got messed up after content linking
+ */ 
 
 /*************************************/
 /** Variables */
 /*************************************/
 
-class EventRow
-{
-  public $title;
-  public $excerpt;
-  public $slug;
-  public $date;
-  public $cover;
-}
+$args = array(
+  'numberposts' => -1,
+  'post_type'   => 'event'
+);
 
-$eventRow = new EventRow();
-
-//TODO: hookup data to wordpress
-$eventRows = array($eventRow, $eventRow, $eventRow, $eventRow, $eventRow, $eventRow);
+$events = get_posts( $args );
+//$headline = get_sub_field('headline');
+//$description = get_sub_field('description');
 
 if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
 
@@ -42,32 +37,46 @@ if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
       </h3>
     </div>
 
-    <?php foreach ($eventRows as $listing) { ?>
-      <a href="/" class="event-row <?php echo get_sub_field('layout') ?> event-row-<?php echo $idx ?>">
-        <div class="event-row-inner">
-          <div class="col content-col">
-            <div class="content-col-inner">
-              <p class="txt-clr-gunmetal">January 25, 11:30am - 3pm</p>
-              <h4>
-                Tour de Pizza: New Member Drive
-              </h4>
-              <p>
-                We’ll grow our Commuter Membership partners, so we can continue to make sure everyone in Reno and Sparks has access to bikes. At the end of each leg of the ride, there will be pizza!
-              </p>
+    <?php foreach ($events as $event) { ?>
+      <?php 
+        $todaysDate = new DateTime(); //get todays date
+        $date = DateTime::createFromFormat('Ymd', $event->start_date); //get start date
+        $passedDate = $todaysDate > $date ? true : false;
+        $date = $startDate = $date->format('F j');
+        $endDate = DateTime::createFromFormat('Ymd', $event->end_date);
+        $endDate = $endDate ? $endDate->format('F j') : false;
+        $time = $event->time;
+        $date = $endDate ?  $date . ' - ' . $endDate : $date;
+        $date = $time ? $date . ', ' . $time : $date;
+      ?>
+      <?php if ( !$passedDate ) { ?>
 
-              <span class="btn btn-arrow" />
-              Event Info
-              </span>
+        <a href="/" class="event-row <?php echo get_sub_field('layout') ?> event-row-<?php echo $idx ?>">
+          <div class="event-row-inner">
+            <div class="col content-col">
+              <div class="content-col-inner">
+                <p class="txt-clr-gunmetal"><?php echo $date ?></p>
+                <h4>
+                  <?php echo $event->post_title ?>
+                </h4>
+                <p>
+                  <?php echo $event->post_excerpt ?>
+                </p>
+
+                <span class="btn btn-arrow">
+                  Event Info
+                </span>
+              </div>
+            </div>
+
+            <div class="col img-col <?php echo $imgColClass ?>">
+              <div class="event-row-img">
+                <img data-src="<?php echo get_the_post_thumbnail_url( $event ) ?>" alt="<?php echo $event->post_title ?>" class="lazy" />
+              </div>
             </div>
           </div>
-
-          <div class="col img-col <?php echo $imgColClass ?>">
-            <div class="event-row-img">
-              <img data-src="https://source.unsplash.com/1600x900/?event" alt="Tour de Pizza: New Member Drive" class="lazy" />
-            </div>
-          </div>
-        </div>
-      </a>
+        </a>
+      <?php } ?>
     <?php } ?>
   </section>
 

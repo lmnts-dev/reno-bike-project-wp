@@ -23,6 +23,46 @@ initCursor();
 
 /*
  ** @author: Peter Laxalt
+ ** @description: Functions to show/hide the navigation overlay.
+ */
+var navigationBtnClass = "nav-overlay-toggle";
+var navigationOverlayClass = "overlay-nav-container";
+var navigationOverlay = document.getElementsByClassName(navigationOverlayClass)[0];
+
+function toggleNavOverlay(e) {
+  if (navigationOverlay.classList.contains("visible")) {
+    // console.log("CLOSE!");
+    document.body.classList.remove("scroll-lock");
+    navigationOverlay.classList.remove("visible");
+    document.getElementsByTagName("header")[0].classList.remove("hidden");
+  } else {
+    // console.log("SHOW!");
+    document.body.classList.add("scroll-lock");
+    navigationOverlay.classList.add("visible");
+    document.getElementsByTagName("header")[0].classList.add("hidden");
+  }
+}
+
+function initNavOverlay() {
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.classList.contains(navigationBtnClass)) {
+      // console.log("WRONG TARGET");
+      return;
+    } else {
+      // Don't follow the link
+      event.preventDefault(); // Log the clicked element in the console
+
+      toggleNavOverlay(event);
+    }
+  }, false);
+}
+
+initNavOverlay();
+"use strict";
+
+/*
+ ** @author: Peter Laxalt
  ** @description: Functions to show/hide the newsletter overlay.
  */
 function initNewsletter() {
@@ -56,18 +96,77 @@ function initNewsletter() {
 initNewsletter();
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("mobile-nav-icon").addEventListener('click', function () {
-    document.getElementById("overlay-nav").classList.add("visible");
-    document.getElementsByTagName("header")[0].classList.add("hidden");
-    document.getElementsByTagName("body")[0].classList.add("overlay-lock");
-  });
-  document.getElementById("overlay-exit").addEventListener('click', function () {
-    document.getElementById("overlay-nav").classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-    document.getElementsByTagName("body")[0].classList.remove("overlay-lock");
-  });
-});
+/*
+ ** @author: Alisha Garric
+ ** @description: Functions to change number input's values
+ */
+function initInputNumberIcons() {
+  var inputDecrementClass = "input-number-decrement";
+  var inputIncrementClass = "input-number-increment";
+
+  var changeInputValue = function changeInputValue(e) {
+    if (event.target.classList.contains(inputDecrementClass)) {
+      var inputTag = event.target.nextSibling;
+      decrement(inputTag);
+    } else {
+      var _inputTag = event.target.previousSibling;
+      increment(_inputTag);
+    }
+
+    return;
+  };
+
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!(event.target.classList.contains(inputDecrementClass) || event.target.classList.contains(inputIncrementClass))) return;
+    changeInputValue(event);
+  }, false);
+}
+
+initInputNumberIcons();
+
+function decrement(input) {
+  var value = input.value;
+  var min = 0;
+  value--;
+
+  if (value >= min) {
+    input.value = value;
+  }
+}
+
+function increment(input) {
+  var value = input.value;
+  value++;
+  input.value = value++;
+}
+"use strict";
+
+/*
+ ** @author: Alisha Garric
+ ** @description: Remove items from cart
+ */
+function initRemoveItem() {
+  var removeItem = function removeItem(e) {
+    var itemIndex = e.target.dataset.item;
+    var state = {};
+    var title = 'Update Cart';
+    var url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
+    window.location.href = url;
+    return;
+  };
+
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.classList.contains("remove-item")) return; // Don't follow the link
+
+    event.preventDefault(); // Log the clicked element in the console
+
+    removeItem(event);
+  }, false);
+}
+
+initRemoveItem();
 "use strict";
 
 /*
@@ -106,10 +205,10 @@ initBikeWheel();
  */
 function initSearchOverlay() {
   var searchToggleClass = "search-toggle";
-  var newsletterOverlayClass = "search-overlay";
+  var searchOverlayClass = "search-overlay";
 
-  var toggleNavOverlay = function toggleNavOverlay(e) {
-    var newsletterOverlay = document.getElementsByClassName(newsletterOverlayClass)[0];
+  var toggleSearchOverlay = function toggleSearchOverlay(e) {
+    var newsletterOverlay = document.getElementsByClassName(searchOverlayClass)[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
       document.body.classList.remove("scroll-lock");
@@ -128,7 +227,7 @@ function initSearchOverlay() {
 
     event.preventDefault(); // Log the clicked element in the console
 
-    toggleNavOverlay(event);
+    toggleSearchOverlay(event);
   }, false);
 }
 
@@ -196,49 +295,3 @@ function initVideoOverlay() {
 }
 
 initVideoOverlay();
-"use strict";
-
-/*
- ** @author: Peter Laxalt
- ** @description: Functions to show/hide the navigation overlay.
- */
-var navigationBtnClass = "nav-overlay-toggle";
-var navigationOverlayClass = "overlay-nav-container";
-var navigationOverlay = document.getElementsByClassName(navigationOverlayClass)[0];
-
-function hideNavOverlay() {
-  if (navigationOverlay.classList.contains("visible")) {
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  }
-}
-
-function toggleNavOverlay(e) {
-  if (navigationOverlay.classList.contains("visible")) {
-    // console.log("CLOSE!");
-    document.body.classList.remove("scroll-lock");
-    navigationOverlay.classList.remove("visible");
-    document.getElementsByTagName("header")[0].classList.remove("hidden");
-  } else {
-    // console.log("SHOW!");
-    document.body.classList.add("scroll-lock");
-    navigationOverlay.classList.add("visible");
-    document.getElementsByTagName("header")[0].classList.add("hidden");
-  }
-}
-
-function initNavOverlay() {
-  document.addEventListener("click", function (event) {
-    // If the clicked element doesn't have the right selector, bail
-    if (!event.target.classList.contains(navigationBtnClass)) {
-      // console.log("WRONG TARGET");
-      return;
-    } else {
-      // Don't follow the link
-      event.preventDefault(); // Log the clicked element in the console
-
-      toggleNavOverlay(event);
-    }
-  }, false);
-}
