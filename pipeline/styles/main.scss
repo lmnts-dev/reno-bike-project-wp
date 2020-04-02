@@ -41,6 +41,7 @@
 @import "components/core/cursor";
 @import "components/core/overlay-nav";
 
+
 ////////////////////////////////////////////////////////////////////////
 // Components: Elements
 
@@ -107,6 +108,7 @@
 
 //----- Search
 @import "components/lib/sections/search-overlay";
+@import "components/lib/sections/search-results";
 
 //----- Articles
 @import "components/lib/sections/article";

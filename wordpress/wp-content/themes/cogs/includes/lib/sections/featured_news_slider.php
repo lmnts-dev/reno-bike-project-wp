@@ -54,7 +54,7 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
   <section class="featured-news-slider featured-news-slider-<?php echo $idx ?>">
 
     <div class="featured-news-slider-header">
-    <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+      <div class="squiggle-svg squiggle-orange"><?php include get_template_directory() . "/assets/images/squiggle.svg";  ?></div>
       <h1>
         Latest News
       </h1>
