@@ -43,21 +43,23 @@ Link into Shopify data.
                   {% endif %}
 
                   <div class="info">
+                    {% assign product = item %}
+                    {% include 'pickup-only-product' %}
+                    {% if pickUpOnlyProduct == true %}
+                      <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+                    {% endif %}
                     <span class="title">{{ item.title }}</span>
                     <p class="excerpt">{{ item.content | strip_html | truncatewords: 50 }}</p>
                   </div>
 
                   <div class="actions">
-                    {% if item.price or !item.available %}
+                    {% if item.price %}
                       <div class="col">
-                        {% if !item.available %}
-                          Sold Out
-                        {% else %}
                           {{ item.price | money }}
-                          <strike>
-                            {{ item.compare_at_price | money }}
-                          </strike>
-                        {% endif %}
+                          {% if item.compare_at_price < item.price %}<strike>{{ item.compare_at_price | money }}</strike>{% endif %}
+                          {% unless item.available == true %}
+                            Sold Out
+                          {% endunless %}
                       </div>
                     {% endif %}
 
