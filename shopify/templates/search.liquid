@@ -48,12 +48,16 @@ Link into Shopify data.
                   </div>
 
                   <div class="actions">
-                    {% if item.price %}
+                    {% if item.price or !item.available %}
                       <div class="col">
-                        {{ item.price | money }}
-                        <strike>
-                          {{ current_variant.compare_at_price | money }}
-                        </strike>
+                        {% if !item.available %}
+                          Sold Out
+                        {% else %}
+                          {{ item.price | money }}
+                          <strike>
+                            {{ item.compare_at_price | money }}
+                          </strike>
+                        {% endif %}
                       </div>
                     {% endif %}
 
