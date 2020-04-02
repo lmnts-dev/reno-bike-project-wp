@@ -26,9 +26,6 @@ barba.init({
         // Re-init our bicycle wheel script.
         initBikeWheel();
 
-        // Re-init remove item from cart
-        initRemoveItem();
-
         // Re-init our sliders
         initSliders();
 

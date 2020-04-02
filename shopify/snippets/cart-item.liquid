@@ -40,7 +40,8 @@ SETTINGS PAGE SO THAT LOGIC INJECTS INTO UPDATED CART TEMPLATE
       <p>
         {{ item.product.description | strip_html | truncate: 75, "..." }}
       </p>
-      <a data-item="{{ forloop.index }}" class="remove-item btn">Remove Item</a>
+      {% assign remove-link = "/cart/change?line=" | append: forloop.index | append: "&quantity=0" %}
+      <a href="{{ remove-link }}" rel="{{ item.id }}" class=" remove-item btn">Remove Item</a>
     </div>
 
     <div class="cart-item-col quantity-and-price">

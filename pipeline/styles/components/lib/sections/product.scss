@@ -152,6 +152,15 @@
 
                 &.sold-out-btn {
                   padding-right: $Base / 4;
+                  background-color: $clrChrome;
+                  color: $clrAsphalt;
+                  pointer-events: none;
+                  
+                  &:hover {
+                    box-shadow: none;
+                    background-color: $clrChrome;
+                    color: $clrAsphalt;
+                  }
                 }
               }
             }

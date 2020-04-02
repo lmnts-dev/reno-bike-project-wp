@@ -12,6 +12,7 @@ The product card component.
 {{ price }}: Button url
 {{ slug }}: Product url
 {{ cover }}: Product image
+{{ handle }}: Product handle
 
 /*************************************/
 
@@ -34,9 +35,16 @@ The product card component.
         </span>
       </div>
       <div class="price">
-        <span itemprop="itemListElement" itemtype="http://schema.org/Product">
-          {{ price }}
-        </span>
+        {% if all_products[handle].available == true %}
+          <span itemprop="itemListElement" itemtype="http://schema.org/Product">{{ all_products[handle].price | money }}</span></br>
+          {% if all_products[handle].compare_at_price > all_products[handle].price %}
+            <span class="txt-clr-gunmetal">
+              <strike>{{ all_products[handle].compare_at_price | money }}</strike>
+            </span>
+          {% endif %}
+        {% else %}
+          <span class="txt-clr-gunmetal">Sold Out</span>
+        {% endif %}
       </div>
     </div>
   </div>

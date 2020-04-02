@@ -34,12 +34,14 @@ A slider displaying featured products
                         {% assign link = all_products[product].url %}
                         {% assign cover = all_products[product].featured_image | img_url: 'large' %}
                         {% assign price = all_products[product].price | money %}
+                        {% assign handle = product %}
 
                         {% include 'product-card' 
                             title: title
                             cover: cover,
                             price: price,
-                            slug: link
+                            slug: link,
+                            handle: handle
                         %}
                     {% endunless %}
                 {% endfor %}
