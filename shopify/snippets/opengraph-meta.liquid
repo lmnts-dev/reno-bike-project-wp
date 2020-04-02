@@ -1,0 +1,71 @@
+
+{% unless template contains 'product' %}
+      <meta property="og:type" content="website" />
+{% endunless %}
+
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="
+    {% if template contains 'index' %}
+        {{ shop.name }}
+    {% endif %}
+    {% if template contains 'article' %}
+        {{ shop.name }} | {{ article.title }}
+    {% endif %}
+    {% if template contains 'page' %}
+        {{ shop.name }} | {{ page.title }}
+    {% endif %}
+    {% if template contains 'product' %}
+        {{ shop.name }} | {{ product.title }}
+    {% endif %}
+    {% if template contains 'cart' %}
+        {{ shop.name }} | Your Cart
+    {% endif %}
+    {% if template contains 'collection' %}
+        {{ shop.name }} | Shop
+    {% endif %}
+" />
+<meta property="og:description" content="{{ page_description }}" />
+
+{% if page_og_img != blank %}
+    <meta property="og:image" content="{{ page_og_img }}" />
+    {% assign secure_page_og_img = page_og_img | split: ':' %}
+    {% if secure_page_og_img contains 'https' %}
+        <meta property="og:image:secure_url" content="{{ page_og_img }}" />
+    {% endif %}
+{% else %}
+    {% unless template contains 'product' %}
+        <meta property="og:image" content="{{ settings.lmnt-global-og-img }}" />
+        <meta property="og:image:secure_url" content="{{ settings.lmnt-global-og-img }}" />
+    {% endunless %}
+{% endif %}
+
+<meta property="og:image:width" content="600" />
+<meta property="og:image:height" content="367" />
+<meta property="og:site_name" content="{{ shop.name }}" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:domain" value="{{ site.url }}" />
+<meta name="twitter:title" value="{% if cart.item_count > 0 %}({{ cart.item_count }}) {% endif %}{% if template contains 'index' %}{{ shop.name }}{% endif %}{% if template contains 'article' %}{{ shop.name }} | {{ article.title }}{% endif %}{% if template contains 'page' %}{{ shop.name }} | {{ page.title | remove: 'Coffeebar ' }}{% endif %}{% if template contains 'product' %}{{ shop.name }} | {{ product.title | remove: 'Coffeebar ' }}{% endif %}{% if template contains 'blog' %}{% if blog.handle contains 'read' %}{{ blog.title }} {% endif %}{{ shop.name }} {% unless blog.handle contains 'read' %}{{ blog.title }}{% endunless %} {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}| {% if blog.handle contains 'radio' %}Playing in{% endif %} {{ meta_tags | capitalize }}{% endif %}{% endif %}{% if template contains 'cart' %}{{ shop.name }} | Your Cart{% endif %}{% if template contains 'collection' %}{{ shop.name }} | Shop{% endif %}" />
+<meta name="twitter:description" value="{{ page_description }}" />
+
+{% if page_og_img %}
+    <meta property="twitter:image" content="{{ page_og_img }}" />
+{% else %}
+    {% unless template contains 'product' %}
+        <meta property="twitter:image" content="{{ settings.lmnt-global-og-img }}" />
+    {% endunless %}
+{% endif %}
+
+<meta name="twitter:url" value="{{ canonical_url }}" />
+<meta name="twitter:site" content="@{{ settings.social_twitter_link | split: 'twitter.com/' | last }}">
+<meta name="theme-color" content="#DF6B1F">
+
+{% if template contains 'product' %}
+    <meta property="og:type" content="product">
+    {% for image in product.images limit:3 %}
+        <meta property="og:image" content="http:{{ image | img_url: 'grande' }}">
+        <meta property="og:image:secure_url" content="https:{{ image | img_url: 'grande' }}">
+    {% endfor %}
+    <meta property="og:description" content="{{ product.description | strip_html | escape }}">
+    <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
+    <meta property="og:price:currency" content="{{ shop.currency }}">
+{% endif %}
