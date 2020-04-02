@@ -150,8 +150,8 @@ $overlayNavWidth: 450px;
         transition-duration: 0.25s;
 
         @media (max-width: $BaseMediaSm) {
-          height: $Base / 2;
-          width: $Base / 2;
+          height: $Base * 0.65;
+          width: $Base * 0.65;
         }
 
         &:active {
@@ -174,7 +174,8 @@ $overlayNavWidth: 450px;
           pointer-events: all;
           @media (max-width: $BaseMediaSm) {
             height: 30px;
-            right: 15px;
+            right: 50%;
+            top: 0;
           }
         }
 
