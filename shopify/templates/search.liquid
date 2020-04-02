@@ -14,7 +14,8 @@ Link into Shopify data.
 <section class="search-results">
   {% paginate search.results by 10 %}
 
-    {% if search.performed %}
+    {% if search.performed and search.results_count > 0 %}
+    {% comment %} Search results exist {% endcomment %}
 
       <div class='search-results-header'>
         {% include 'squiggle-horizontal' size: 'large' %}
@@ -32,22 +33,75 @@ Link into Shopify data.
         <ul>
           {% for item in search.results %}
             <li>
-              {% if item.featured_image %}
-                <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-                  {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-                </a>
-              {% endif %}
-              <h5>{{ item.title | link_to: item.url }}</h5>
-              <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+              <a href="{{ item.url | within: collection }}" class="news-listing-card" title="{{ item.title | escape }}">
+                <div class="news-listing-card-inner">
+                  
+                  {% if item.featured_image %}
+                    <div class="cover">
+                      <img data-src="{{ item.featured_image.src | img_url: 'medium' }}" alt="{{ item.title | escape }}" class="lazy" />
+                    </div>
+                  {% endif %}
+
+                  <div class="info">
+                    <span class="title">{{ item.title }}</span>
+                    <p class="excerpt">{{ item.content | strip_html | truncatewords: 50 }}</p>
+                  </div>
+
+                  <div class="actions">
+                    {% if item.price %}
+                      <div class="col">
+                        {{ item.price | money }}
+                        <strike>
+                          {{ current_variant.compare_at_price | money }}
+                        </strike>
+                      </div>
+                    {% endif %}
+
+                    <div class="col">
+                      <span class="btn btn-arrow">
+                        More
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
             </li>
           {% endfor %}
+
+          {% if paginate.pages > 1 %}
+            <li class="pagination">
+              <nav>
+                <div class="nav-links">
+                  {{ paginate | default_pagination | replace: "page", "page-numbers" | replace: "deco", "deco page-numbers dots" | replace: "next", "next page-numbers" | replace: "page-numbers", "page-numbers barba-prevent" }}
+                </div>
+              </nav>
+            </li>
+          {% endif %}
+  
         </ul>
       </div>
 
     {% else %}
-        no results
+    {% comment %} Search results do not exist {% endcomment %}
+
+      <div class='search-results-header'>
+        {% include 'squiggle-horizontal' size: 'large' %}
+        <h1>No results for <span class="query">{{ search.terms }}</span> :(</h1>
+        <h1>Try something else.</h1>
+        <div class="search-results-input">
+          {% include 'svg-icon-search' %}
+          <form action="/search" method="get" role="search">
+            <input type="search" name="q" placeholder="Search">
+          </form>
+        </div>
+      </div>
+
+   
+      {% assign featuredCollection = collections | first %}
+      {% include 'collection-listings-slider' title: "Keep Shopping", link: "/collections/", products: featuredCollection.products %}
+
     {% endif %}
 
-    {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
   {% endpaginate %}
 </section>
