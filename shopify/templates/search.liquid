@@ -11,25 +11,43 @@ Link into Shopify data.
 
 {% endcomment %}
 
-{% paginate search.results by 10 %}
-  <form action="/search" method="get" role="search">
-    <input type="search" name="q" value="{{ search.terms | escape }}">
-    <button type="submit">search</button>
-  </form>
+<section class="search-results">
+  {% paginate search.results by 10 %}
 
-  {% if search.performed %}
-    {% for item in search.results %}
-      {% if item.featured_image %}
-        <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-          {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-        </a>
-      {% endif %}
-      <h5>{{ item.title | link_to: item.url }}</h5>
-      <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+    {% if search.performed %}
+
+      <div class='search-results-header'>
+        {% include 'squiggle-horizontal' size: 'large' %}
+        <h1>{{ search.results_count }} results for </h1>
+        <h1 class='query'>{{ search.terms }}</h1>
+        <div class="search-results-input">
+          {% include 'svg-icon-search' %}
+          <form action="/search" method="get" role="search">
+            <input type="search" name="q" placeholder="Search">
+          </form>
+        </div>
+      </div>
+
+      <div class="search-results-listings">
+        <ul>
+          {% for item in search.results %}
+            <li>
+              {% if item.featured_image %}
+                <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+                  {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
+                </a>
+              {% endif %}
+              <h5>{{ item.title | link_to: item.url }}</h5>
+              <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
     {% else %}
-      no results
-    {% endfor %}
-  {% endif %}
+        no results
+    {% endif %}
 
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+    {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+  {% endpaginate %}
+</section>
