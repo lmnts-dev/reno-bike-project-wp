@@ -73,7 +73,14 @@ Link into Shopify data.
             <li class="pagination">
               <nav>
                 <div class="nav-links">
-                  {{ paginate | default_pagination | replace: "page", "page-numbers" | replace: "deco", "deco page-numbers dots" | replace: "next", "next page-numbers" | replace: "page-numbers", "page-numbers barba-prevent" }}
+                  {% comment %} All these replacements so structure/classes match wp verision of pagination {% endcomment %}
+                  {{ paginate 
+                    | default_pagination 
+                    | replace: "deco", "deco page-numbers dots" 
+                    | replace: "next", "next page-numbers" 
+                    | replace: "prev", "prev page-numbers" 
+                    | replace: "href", "class='barba-prevent' href"
+                  }}
                 </div>
               </nav>
             </li>
