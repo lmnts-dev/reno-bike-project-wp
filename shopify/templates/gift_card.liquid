@@ -3,38 +3,144 @@
 Gift Card Page:
 The Gift Card template.
 
-@author Peter Laxalt
+@author Alisha Garric
 @since 3/2020
-
-@todo
-Link into Shopify data.
 
 {% endcomment %}
 
-{% layout none %}
-<!doctype html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="format-detection" content="telephone=no">
-  {{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
-</head>
-<body>
-  <div id="qr-code"></div>
-  <script>
-    new QRCode(document.getElementById("qr-code"), {
-      text: "{{ gift_card.qr_identifier }}",
-      width: 120,
-      height: 120
-    });
-  </script>
-  <footer>
-    {% if gift_card.pass_url %}
-    <a href="{{ gift_card.pass_url }}">
-      <img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add To Apple Wallet">
-    </a>
-    {% endif %}
-  </footer>
-</body>
+
+<!DOCTYPE html>
+
+<html lang="en">
+  {% include 'item-count' %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+    <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+    <link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> -->
+    <title>{{ shop.name }} | Gift Card</title>
+    <meta name="description" content="{{ page_description | escape }}" />
+    {% include 'opengraph-meta' %}
+    <meta name="twitter:title" content={{ shop.name }}">
+    <meta name="twitter:description" content="{{ page_description | escape }}">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:card" content="summary">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/assets/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="theme-color" content="#000000">
+
+    {% comment %}
+    Header hook for plugins
+    {% endcomment %}
+    {{ content_for_header }}
+    {{ 'main.min.css' | asset_url | stylesheet_tag }}
+    {{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
+  </head>
+
+
+  <body data-barba="wrapper">
+
+    <span class="cursor"></span>
+    <span class="cursor-outline"></span>
+
+    {% include 'navigation' %}
+
+    <main role="main" data-barba="container" data-barba-namespace="home">
+      <div class="wrapper shop-wrapper gift-card" style="min-height: 80vh;">
+        <section class="gift-card-inner">
+          <div class="container">
+            {% if gift_card.enabled and gift_card.expired == false %}
+              {% comment %} They have a valid gift card {% endcomment %}
+            
+              <div class='gift-card-header'>
+                {% include 'squiggle-horizontal' size: 'large' %}
+                {% if gift_card.customer.first_name  %}
+                  <h1>{{ gift_card.customer.first_name }}, here's your {{ gift_card.initial_value | money }} gift card</h1>
+                {% else %}
+                  Here's your {{ gift_card.initial_value | money }} gift card
+                {% endif %}
+                
+                {% if gift_card.initial_value > gift_card.balance %}
+                  <div class="h2">You have {{ gift_card.balance | money }} remaining</div>
+                {% endif %}
+                
+                <p class="code-explanation">Use this code at checkout to redeem</p>
+                <div class="code">{{ gift_card.code }}</div>
+                <p>Expires on {{ gift_card.expires_on | date: "%b %d, %Y" }}</p>
+                <div id="qr-code"></div>
+      
+                {% if gift_card.pass_url %}
+                  <a href="{{ gift_card.pass_url }}">
+                    <img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add To Apple Wallet">
+                  </a>
+                {% endif %}
+
+              </div>
+              <script>
+                new QRCode(document.getElementById("qr-code"), {
+                  text: "{{ gift_card.qr_identifier }}",
+                  width: 120,
+                  height: 120
+                });
+              </script>
+              
+            
+            {% else if gift_card.enabled and gift_card.expired %}
+              {% comment %} They have an expired gift card {% endcomment %}
+
+              <div class='gift-card-header'>
+                {% include 'squiggle-horizontal' size: 'large' %}
+                <h1>Sorry your gift card expired on </br><span class="txt-clr-primary">{{ gift_card.expires_on | date: "%b %d, %Y" }}</span></h1>
+                <div class="search-results-input">
+                  <p> Contact us if you have any questions </p>
+                  <a href="tel:{{ settings.site-phone-number }}" target="_blank" class="btn btn-clr-black btn-arrow">Contact Us</a>
+                </div>
+              </div>
+
+            {% else %}
+              {% comment %} They have a disabled gift card {% endcomment %}
+
+              <div class='gift-card-header'>
+                {% include 'squiggle-horizontal' size: 'large' %}
+                <h1>Sorry your gift card has been disabled</h1>
+                <div class="search-results-input">
+                  <p> Contact us if you have any questions </p>
+                  <a href="tel:{{ settings.site-phone-number }}" target="_blank" class="btn btn-clr-black btn-arrow">Contact Us</a>
+                </div>
+              </div>
+
+            {% endif %}
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </body>
+
 </html>
