@@ -35,14 +35,14 @@ A slider section containing products used as an include or by a snippet
       {% for product in products limit: 10 %}
 
         {% assign cover = product.featured_image | img_url: 'large' %}
-        {% assign price = product.price | money %}
 
         {% include 'product-card' 
           title: product.title,
           cover: cover,
-          price: price,
           slug: product.url,
-          handle: product.handle
+          price: product.price,
+          compare-price: product.compare_at_price,
+          available: product.available
         %}
 
       {% endfor %}

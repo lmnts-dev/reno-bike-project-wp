@@ -9,6 +9,7 @@
 
 section.cart {
   $offsetTop: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+  z-index: 2;
 
   &.empty-cart {
     padding-top: $offsetTop;
@@ -124,15 +125,20 @@ section.cart {
             display: inline-flex !important;
           }
 
-          .disclaimer {
+          .disclaimer, .hours {
             max-width: 80%;
             margin: 0 auto;
             text-align: center;
             @media (max-width: $BaseMediaSm * 1.2 ){
               max-width: 100%;
               text-align: left;
-              margin: 0;
+              margin-left: 0;
+              margin-right: 0;
             }
+          }
+
+          .hours {
+            margin-top: $Base / 4;
           }
         }
 
@@ -362,6 +368,12 @@ section.cart {
   &.hide-shipping-option .cr-delivery-methods {
     display: none;
   } 
+
+  .picker__frame {
+    &:after {
+     /// content: var(--hours);
+    }
+  }
 
   #pickup-container {
     margin-bottom: 0 !important;

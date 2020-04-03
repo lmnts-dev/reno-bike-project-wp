@@ -22,6 +22,7 @@ Website Footer
 {% assign location3Label = settings.location-3-label %}
 {% assign location3Addy = settings.location-3-addy %}
 {% assign location3Maps = settings.location-3-maps %}
+{% assign hours = settings.store-hours %}
 
 </div>
 </main>
@@ -99,6 +100,10 @@ Website Footer
           <a href="{{ location3Maps }}" title="{{ location3Label }}" target="_blank">{{ location3Addy }}</a>
         </div>
       {% endif %}
+      <div class="footer-info-row hours-row">
+        <span>Hours:</span>
+        {{ hours | newline_to_br }}
+      </div>
 
     </div>
     <div class="footer-col">

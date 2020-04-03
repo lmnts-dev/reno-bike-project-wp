@@ -53,7 +53,7 @@ VISUALLY HIDDEN PICK UP PRODUCT FROM CART
           </div>
         </div>
 
-        <div class="col subtotal">
+        <div class="col subtotal" >
           <span class="total">
             {{ cart.total_price | money }}
           </span>
@@ -62,16 +62,14 @@ VISUALLY HIDDEN PICK UP PRODUCT FROM CART
           </span>
 
           <button type="submit" class="btn btn-arrow btn-clr-black" name="checkout">Checkout</button>
-            <!--<a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>-->
-          <!--<div class="select-container">
-            <select>
-              <option>Pick up in-store</option>
-              <option>Deliver item(s) to me</option>
-            </select>
-          </div>-->
+          <!--<a href="/collections/" class="btn btn-clr-snow btn-arrow">Keep Shopping</a>-->
           <span class="disclaimer">
             Shipping & taxes calculated at checkout for delivery items.
           </span>
+          <span class="hours">
+            <b>Pick Up Hours:</b></br>
+            {{ settings.store-hours | newline_to_br }}
+            </span>
         </div>
 
       </form>

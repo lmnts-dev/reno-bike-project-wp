@@ -114,6 +114,11 @@
         "type": "url",
         "id": "location-3-maps",
         "label": "Google Maps Link"
+      },
+      {
+        "type": "textarea",
+        "id": "store-hours",
+        "label": "Store Hours"
       }
     ]
   },

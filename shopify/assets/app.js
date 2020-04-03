@@ -148,15 +148,11 @@ function increment(input) {
  */
 function initRemoveItem() {
   var removeItem = function removeItem(e) {
-    /*
     var itemIndex = e.target.dataset.item;
-    
-    const state = {};
-    const title = 'Update Cart';
-    const url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
-    
+    var state = {};
+    var title = 'Update Cart';
+    var url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
     window.location.href = url;
-    */
     return;
   };
 

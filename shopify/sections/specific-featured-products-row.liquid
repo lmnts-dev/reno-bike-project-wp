@@ -22,17 +22,17 @@ A row showing three product cards.
 
     {% for i in (1..3) %}
         {% assign productID = 'product-' | append: forloop.index %}
-        {% assign productHandle = section.settings[productID] %}
         {% assign product = all_products[productHandle] %}
         {% assign cover = product.featured_image | img_url: 'large' %}
-        {% assign price = product.price | money %}
 
         {% include 'product-card' 
             title: product.title,
             cover: cover,
             price: price,
             slug: product.url,
-            handle: product.handle
+            price: product.price,
+            compare-price: product.compare_at_price,
+            available: product.available
             %}
     {% endfor %}
   </div>

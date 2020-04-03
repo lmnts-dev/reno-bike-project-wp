@@ -14,14 +14,14 @@ Product Listings Component
 
     {% for product in collection.products %}
       {% assign cover = product.featured_image | img_url: 'large' %}
-      {% assign price = product.price | money %}
 
       {% include 'product-card' 
           title: product.title,
           cover: cover,
-          price: price,
+          price: product.price,
           slug: product.url,
-          handle: product.handle
+          compare-price: product.compare_at_price,
+          available: product.available
         %}
     {% endfor %}
   </div>

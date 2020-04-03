@@ -196,6 +196,10 @@ footer {
         line-height: 1.6;
         display: flex;
 
+        &.hours-row {
+          display: block;
+        }
+
         span {
           font-weight: 600;
           margin-right: $Base/4;

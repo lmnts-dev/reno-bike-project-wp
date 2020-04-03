@@ -39,14 +39,14 @@ A row showing three product cards within the same collection.
                     {% endif %}
                     {% if lastIterationAndNeedThirdProduct or forloop.index < 4 %}
                         {% assign cover = item.featured_image | img_url: 'large' %}
-                        {% assign price = item.price | money %}
 
                         {% include 'product-card' 
                             title: item.title,
                             cover: cover,
-                            price: price,
                             slug: item.url,
-                            handle: item.handle
+                            price: item.price,
+                            compare-price: item.compare_at_price,
+                            available: item.available
                             %}
                     {% endif %}
                 {% else %}
