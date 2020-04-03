@@ -11,11 +11,22 @@ section.search-results {
   --searchResultImgSize: calc(#{$Base} * 5);
   $searchResultImgSize: var(--searchResultImgSize);
 
+  --searchResultImgSizeSm: calc(#{$Base} * 2.5);
+  $searchResultImgSizeSm: var(--searchResultImgSizeSm);
+
   position: relative;
   padding-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
   max-width: calc(#{$BaseMaxWidth} * 0.7);
   width: 100%;
   margin: 0;
+
+  @media (max-width: $BaseMediaMd) {
+    padding-top: calc(#{$BaseGutterLeftMd} + #{$BaseNavSizeLg});
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding-top: calc(#{$BaseGutterLeftSm} + #{$BaseNavSizeSm});
+  }
 
   .search-results-header {
     padding-top: $Base;
@@ -23,6 +34,9 @@ section.search-results {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    @media (max-width: $BaseMediaMd) {
+      padding-top: $Base / 2;
+    }
 
     .squiggle {
       display: block;
@@ -94,6 +108,14 @@ section.search-results {
   .search-results-listings {
     margin-bottom: calc(#{$Base} * 4);
 
+    @media (max-width: $BaseMediaMd) {
+      margin-bottom: calc(#{$Base} * 2);
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-bottom: calc(#{$Base});
+    }
+
     ul {
       width: 100%;
       display: flex;
@@ -108,6 +130,11 @@ section.search-results {
           border-bottom: 2px solid $clrBlack;
           margin-bottom: 0;
 
+          @media (max-width: $BaseMediaSm) {
+            padding-left: $Base / 8;
+            padding-right: $Base / 8;
+          }
+
           .news-listing-card-inner {
             display: flex;
             align-items: flex-start;
@@ -117,10 +144,15 @@ section.search-results {
 
             .cover {
               width: $searchResultImgSize;
-              height: calc(#{$searchResultImgSize} * 0.7);
+              height: calc(#{$searchResultImgSize} * 0.8);
               padding-bottom: unset;
               flex-shrink: 0;
               margin-right: calc(#{$Base} * 0.5);
+
+              @media (max-width: $BaseMediaSm) {
+                width: $searchResultImgSizeSm;
+                height: calc(#{$searchResultImgSizeSm} * 0.8);
+              }
             }
 
             .info {
@@ -135,8 +167,27 @@ section.search-results {
               align-items: flex-start;
 
               .title {
-                .notification-tag {
-                  display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                
+                @media (max-width: $BaseMediaSm) {
+                  font-size: 20px;
+                  margin-bottom: $Base / 8;
+                }
+              }
+
+              .notification-tag {
+                display: inline-block;
+                
+                @media (max-width: $BaseMediaSm) {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: $searchResultImgSizeSm;
+                  padding-left: 0;
+                  padding-right: 0;
+                  text-align: center;
                 }
               }
 
@@ -158,6 +209,14 @@ section.search-results {
               bottom: 0;
               background: $clrWhite;
               width: unset;
+
+              @media (max-width: $BaseMediaSm) {
+                left: calc(#{$searchResultImgSizeSm} + (#{$Base} * 0.5));
+
+                .btn {
+                  display: none;
+                }
+              }
             }
           }
 
