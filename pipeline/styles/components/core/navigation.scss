@@ -466,10 +466,10 @@ header {
           height: 100%;
           padding: 0 $Base/2;
           position: relative;
+          background: transparent;
 
           @media (max-width: $BaseMediaSm) {
             padding: $Base / 6;
-            background: transparent;
           }
 
           &:hover {
