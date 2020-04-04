@@ -105,6 +105,17 @@ section.search-results {
     }
   }
 
+  .search-other-site-header {
+    @extend .search-results-header;
+    max-width: $Base * 15;
+    align-items: flex-start;
+
+    .btn {
+      margin-top: $Base / 2;
+    }
+
+  }
+
   .search-results-listings {
     margin-bottom: calc(#{$Base} * 4);
 

@@ -96,6 +96,13 @@ Link into Shopify data.
         </ul>
       </div>
 
+      <div class='search-other-site-header'>
+        {% include 'squiggle-horizontal' size: 'large' %}
+        <div class="h3">Not what you're looking for?</div>
+        <div class="h3">Search <span class="txt-clr-primary">{{ search.terms }}</span> on our marketing site instead.</div>
+        <a class="btn btn-clr-black btn-arrow" href="{{ settings.marketing-site-url }}/s?{{ search.terms }}">Search {{ search.terms }}</a>
+      </div>
+
     {% else %}
     {% comment %} Search results do not exist {% endcomment %}
 
