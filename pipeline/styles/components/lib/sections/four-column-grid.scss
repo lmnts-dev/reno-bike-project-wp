@@ -76,6 +76,7 @@ $gridSpacing: calc(#{$Base} / 3);
       .grid-item-img {
         padding-top: 75%;
         position: relative;
+        background: $clrPlaceholder;
 
         img {
           position: absolute;
@@ -85,7 +86,6 @@ $gridSpacing: calc(#{$Base} / 3);
           height: 100%;
           object-fit: cover;
           object-position: 50% 50%;
-          background: $clrPlaceholder;
         }
       }
 

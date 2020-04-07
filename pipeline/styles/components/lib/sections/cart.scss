@@ -126,12 +126,9 @@ section.cart {
           }
 
           .disclaimer, .hours {
-            max-width: 80%;
-            margin: 0 auto;
-            text-align: center;
+            text-align: left;
             @media (max-width: $BaseMediaSm * 1.2 ){
               max-width: 100%;
-              text-align: left;
               margin-left: 0;
               margin-right: 0;
             }
@@ -139,6 +136,10 @@ section.cart {
 
           .hours {
             margin-top: $Base / 4;
+
+            b {
+              color: rgba($clrBlack, 0.3);
+            }
           }
         }
 
@@ -369,12 +370,6 @@ section.cart {
   &.hide-shipping-option .cr-delivery-methods {
     display: none;
   } 
-
-  .picker__frame {
-    &:after {
-     /// content: var(--hours);
-    }
-  }
 
   #pickup-container {
     margin-bottom: 0 !important;

@@ -11,37 +11,27 @@
 /** Variables */
 /*************************************/
 
-class SideLabeledList
-{
-  public $label;
-  public $list;
-}
-
-$exampleList = new SideLabeledList();
-
-
-$exampleList->label = 'Example';
-$exampleList->list = array('Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum');
-
-$sideLabeledLists = array($exampleList, $exampleList, $exampleList);
-
 if (get_row_layout() == 'side_labeled_lists' || $rowLayout == 'side_labeled_lists') {
+
+  $lists = get_sub_field('list');
 ?>
 
   <section class="side-labeled-lists padding-top-none padding-bottom-none side-labeled-list-<?php echo $idx ?>">
     <div class="side-labeled-lists-inner">
 
-      <?php foreach ($sideLabeledLists as $listRow) { ?>
-        <div class="side-labeled-lists-row">
-          <div class="label">
-            <h6 class="h4"><?php echo $listRow->label ?><h6>
+      <?php if ( $lists ){ ?>
+        <?php foreach ($lists as $list) { ?>
+          <div class="side-labeled-lists-row">
+            <div class="label">
+              <h6 class="h4"><?php echo $list['label'] ?><h6>
+            </div>
+            <div class="items">
+              <?php foreach ($list['list_items'] as $item) { ?>
+                <p class="item"><?php echo implode($item) ?></p>
+              <?php } ?>
+            </div>
           </div>
-          <div class="items">
-            <?php foreach ($listRow->list as $item) { ?>
-              <p class="item"><?php echo $item ?></p>
-            <?php } ?>
-          </div>
-        </div>
+        <?php } ?>
       <?php } ?>
 
     </div>
