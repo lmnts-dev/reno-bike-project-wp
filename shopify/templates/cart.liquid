@@ -53,7 +53,15 @@ VISUALLY HIDDEN PICK UP PRODUCT FROM CART
           </div>
         </div>
 
-        <div class="col subtotal" >
+        <div class="col subtotal 
+          {% if settings.sundays-toggle %} sundays-toggle {% endif %}
+          {% if settings.saturdays-toggle %} saturdays-toggle {% endif %}
+          {% if settings.mondays-toggle %} mondays-toggle {% endif %}
+          {% if settings.tuesdays-toggle %} tuesdays-toggle {% endif %}
+          {% if settings.wednesdays-toggle %} wednesdays-toggle {% endif %}
+          {% if settings.thursdays-toggle %} thursdays-toggle {% endif %}
+          {% if settings.fridays-toggle %} fridays-toggle {% endif %}
+        ">
           <span class="total">
             {{ cart.total_price | money }}
           </span>

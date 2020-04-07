@@ -116,9 +116,55 @@
         "label": "Google Maps Link"
       },
       {
+        "type": "header",
+        "content": "Extra Store Hours Information"
+      },
+      {
         "type": "textarea",
         "id": "store-hours",
         "label": "Store Hours"
+      },
+      {
+        "type":      "checkbox",
+        "id":        "sundays-toggle",
+        "label":     "Remove Sunday from available pick up days?",
+        "default":   false
+     },
+     {
+        "type":      "checkbox",
+        "id":        "saturdays-toggle",
+        "label":     "Remove Saturday from available pick up days?",
+        "default":   false
+      },
+      {
+        "type":      "checkbox",
+        "id":        "mondays-toggle",
+        "label":     "Remove Monday from available pick up days?",
+        "default":   false
+      },
+      {
+        "type":      "checkbox",
+        "id":        "tuesdays-toggle",
+        "label":     "Remove Tuesday from available pick up days?",
+        "default":   false
+      },
+      {
+        "type":      "checkbox",
+        "id":        "wednesdays-toggle",
+        "label":     "Remove Wednesday from available pick up days?",
+        "default":   false
+      },
+      {
+        "type":      "checkbox",
+        "id":        "thursdays-toggle",
+        "label":     "Remove Thursday from available pick up days?",
+        "default":   false
+      },
+      {
+        "type":      "checkbox",
+        "id":        "fridays-toggle",
+        "label":     "Remove Friday from available pick up days?",
+        "default":   false
       }
     ]
   },
