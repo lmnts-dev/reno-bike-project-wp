@@ -366,6 +366,7 @@ p {
     background-color: transparent;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
+    -moz-appearance: none;
 
     &:focus {
       outline-width: 0;

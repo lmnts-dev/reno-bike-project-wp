@@ -23,8 +23,18 @@ Overlay Site Navigation
             <div>
                 <ul class="menu">
                     {% for link in linklists.main-navigation.links %}
-                        <li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1{{ forloop.index }} {% if link.links != blank %} menu-item-has-children {% endif %}">
                             <a class="nav-overlay-toggle" href="{{link.url}}">{{ link.title }}</a>
+                            {% if link.links != blank %}
+                                <input type="checkbox"></input>
+                                <ul class="sub-menu">
+                                {% for sub-link in link.links %}
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-program menu-item-2{{ forloop.index }}">
+                                        <a class="nav-overlay-toggle" href="{{ sub-link.url }}">{{ sub-link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
                         </li>
                     {% endfor %}
                 </ul>
