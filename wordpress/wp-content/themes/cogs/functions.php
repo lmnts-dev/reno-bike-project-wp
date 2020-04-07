@@ -772,3 +772,7 @@ function custom_image_size() {
 
 }
 add_action('after_setup_theme', 'custom_image_size');
+
+function sortDates($a, $b) {
+	return strtotime($a->date) - strtotime($b->date);
+}

@@ -22,13 +22,13 @@ $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="
 <div class="overlay-nav-container" id="overlay-nav">
     <div class="left">
         <div class="top">
-            <a href="/" class="branding">
+            <a href="/" class="branding nav-overlay-toggle">
                 <?php // echo '<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo">'; ?>
             </a>
             <div class="exit nav-overlay-toggle" id="overlay-exit"></div>
         </div>
         <nav class="overlay-nav">
-            <?php  echo $nav ?>
+            <?php echo $nav ?>
         </nav>
         <div class="overlay-nav-cta">
           <a href="<?php echo $cta['button_url'] ?>">
