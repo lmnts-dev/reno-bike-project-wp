@@ -1273,7 +1273,27 @@
                     "name": "membership_listings",
                     "label": "Membership Listings",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_5e8dfd32f029d",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 },
@@ -2368,5 +2388,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586308667
+    "modified": 1586363709
 }

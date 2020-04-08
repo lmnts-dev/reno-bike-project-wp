@@ -67,7 +67,7 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 
   echo count( $qualifyingEvents );
 
-  // if we have less than 3 upcoming events and past events until we have three
+  // if we have less than 3 upcoming events add past events until we have three
   if ( count( $qualifyingEvents ) < 3 ){
 
     usort( $pastEvents, 'sortDates');
