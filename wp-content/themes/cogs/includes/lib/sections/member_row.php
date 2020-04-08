@@ -29,7 +29,8 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
     <?php if ( $headline ) { ?>
       <div class="section-header split">
         <h2>
-        <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'pink' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
           <span>
             <?php echo $headline ?>
           </span>
