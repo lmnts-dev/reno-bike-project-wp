@@ -31,9 +31,11 @@ $qualifyingEvents = [];
  //loop through events to create an array of past, upcoming or all events
  foreach ($events as $event) { 
    
-    $todaysDate = new DateTime('today'); //get todays date at 12:00am
-    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); //get start date
-    $passedDate = $todaysDate >= $startDate ? true : false;
+    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); //get todays date at 12:00am
+    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); 
+    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
+    $startDate = $startDate->modify('midnight'); //get start date
+    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
     $formattedStartDate = $startDate->format('F j');
     $endDate = DateTime::createFromFormat('Ymd', $event->end_date);
     $formattedEndDate = $endDate ? $endDate->format('F j') : false;
@@ -47,7 +49,7 @@ $qualifyingEvents = [];
       $eventObject->title = $event->post_title;
       $eventObject->excerpt = $event->post_excerpt;
       $eventObject->date = $startDate->format('Y-m-d H:i:s');
-      $eventObject->link = get_post_permalink( $event ); //TODO
+      $eventObject->link = get_post_permalink( $event );
       $eventObject->image = get_the_post_thumbnail_url( $event );
       $eventObject->displayDate = $dateString;
 
@@ -111,7 +113,7 @@ $qualifyingEvents = [];
           <div class="h4">Sorry, there's no events to show.</div>
       </section>
     <?php } ?>
-    
+
   </section>
 
 <?php } ?>

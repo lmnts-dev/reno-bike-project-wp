@@ -3,92 +3,126 @@
 /** 
  * Event Listings
  * 
- * @author Peter Laxalt
+ * @author Peter Laxalt and Alisha Garric
  * @since 2/2020
  */
+
+//TODO: Icon
 
 /*************************************/
 /** Variables */
 /*************************************/
 
-/**
- * @todo: Link to Wordpress Article Loop
- */
-class EventListing
-{
-  public $title;
-  public $slug;
-  public $date;
-  public $cover;
-}
-
-$eventOne = new EventListing();
-$eventOne->title = 'Lorem Ipsum Solor Sit';
-$eventOne->slug = '/';
-$eventOne->date = 'February 10th, 2020';
-$eventOne->cover = 'https://source.unsplash.com/1600x900/?bike';
-
-$eventTwo = new EventListing();
-$eventTwo->title = 'Lorem Ipsum Solor Sit';
-$eventTwo->slug = '/';
-$eventTwo->date = 'February 10th, 2020';
-$eventTwo->cover = 'https://source.unsplash.com/1600x900/?smile';
-
-$eventThree = new EventListing();
-$eventThree->title = 'Lorem Ipsum Solor Sit';
-$eventThree->slug = '/';
-$eventThree->date = 'February 10th, 2020';
-$eventThree->cover = 'https://source.unsplash.com/1600x900/?community';
-
-$eventListings = array($eventOne, $eventTwo, $eventThree);
-
-
 if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
+
+  $args = array(
+    'numberposts' => -1,
+    'post_type'   => 'event'
+  );
+
+  $events = get_posts( $args );
+  $headline = get_sub_field('headline');
+  $description = get_sub_field('description');
+  $viewAllLink = get_sub_field('view_all_link');
+  $pastEvents = [];
+  $upcomingEvents = [];
+  $qualifyingEvents = [];
+
+ //loop through events to create an array of upcoming events and past events
+ foreach ($events as $event) { 
+   
+    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); 
+    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
+    $startDate = $startDate->modify('midnight'); //get start date
+    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
+    $formattedStartDate = $startDate->format('F j');
+    $endDate = DateTime::createFromFormat('Ymd', $event->end_date);
+    $formattedEndDate = $endDate ? $endDate->format('F j') : false;
+    $time = $event->time;
+    $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
+    $dateString = $time ? $dateString . ', ' . $time : $dateString;
+
+
+    // create event object
+    $eventObject = new stdClass();
+    $eventObject->title = $event->post_title;
+    $eventObject->excerpt = $event->post_excerpt;
+    $eventObject->date = $startDate->format('Y-m-d H:i:s');
+    $eventObject->link = get_post_permalink( $event ); 
+    $eventObject->image = get_the_post_thumbnail_url( $event );
+    $eventObject->displayDate = $dateString;
+
+    // if event hasn't passed, add to upcoming events array else to past events
+    if ( !$passedDate ) { 
+      array_push( $upcomingEvents, $eventObject );
+    } 
+    else {
+      array_push( $pastEvents, $eventObject );
+    }
+  }
+  
+  //sort chronologically
+  usort( $upcomingEvents, 'sortDates');
+  $qualifyingEvents = $upcomingEvents;
+
+  echo count( $qualifyingEvents );
+
+  // if we have less than 3 upcoming events and past events until we have three
+  if ( count( $qualifyingEvents ) < 3 ){
+
+    usort( $pastEvents, 'sortDates');
+    while ( count( $qualifyingEvents ) < 3){
+      $event = array_pop($pastEvents);
+      array_push( $qualifyingEvents, $event );
+    }
+  }
+
 ?>
 
   <section class="event-listings padding-top-half event-listings-<?php echo $idx ?>">
 
-    <div class="section-header">
-      <span class="icon bg-clr-mustard"></span>
-      <h3>
-        Meet up, hang out
-      </h3>
-      <p>
-        Whether you are looking to volunteer or just want to come and enjoy the festivities, attending RBP events is a great way to get involved and meet other bike loving folks.
-      </p>
-    </div>
+    <?php if ( $headline ) { ?>
+      <div class="section-header">
+        <span class="icon bg-clr-mustard"></span>
+        <h3>
+          <?php echo $headline ?>
+        </h3>
+        <p>
+        <?php echo $description ?>
+        </p>
+      </div>
+    <?php } ?>
 
     <div class="event-listings-inner">
 
-      <?php foreach ($eventListings as $listing) { ?>
+      <?php foreach ($qualifyingEvents as $index=>$event) { ?>
+        <?php if ( $index == 3 ) { break; } ?>
 
-        <div class="event-listing-card">
+        <a href="<?php echo $event->link?>" class="event-listing-card">
           <div class="event-listing-card-inner">
             <div class="cover">
-              <img data-src="<?php echo $listing->cover ?>" alt="<?php echo $listing->title ?>" class="lazy" />
+              <img data-src="<?php echo $event->image ?>" alt="<?php echo $event->title ?>" class="lazy" />
             </div>
             <div class="info">
               <span class="date">
-                <?php echo $listing->date ?>
+                <?php echo $event->displayDate ?>
               </span>
               <span class="title">
-                <?php echo $listing->title ?>
+                <?php echo $event->title ?>
               </span>
             </div>
           </div>
-        </div>
+        </a>
 
-      <?php
-        #/forEach 
-      } ?>
+      <?php } ?>
 
-      <div class="event-listing-card view-all">
+      <a href="<?php echo $viewAllLink ?>" class="event-listing-card view-all">
         <div class="event-listing-card-inner">
           <span class="title">
             See all events
           </span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
