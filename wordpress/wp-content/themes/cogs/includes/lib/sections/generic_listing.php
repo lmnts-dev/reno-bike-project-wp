@@ -15,21 +15,28 @@
 /** Variables */
 /*************************************/
 
-$listings = get_sub_field('listing');
+
 
 if (get_row_layout() == 'generic_listing' || $rowLayout == 'generic_listing') {
-
+  $headline = get_sub_field('headline');
+  $description = get_sub_field('description');
+  $listings = get_sub_field('listing');
 ?>
   <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">
-  <div class="section-header split">
-      <h3>
-        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-        <span>Our Partners</span>
-      </h3>
-      <p>
-        We work with other organizations in the Reno-Sparks area to provide underserved youth with an opportunity to enter the world of cycling. Here are some of the organizations that we partner with:
-      </p>
-    </div>
+    <?php if ( $headline ) { ?>
+      <div class="section-header split">
+        <h3>
+          <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <span><?php echo $headline ?></span>
+        </h3>
+        <?php if ( $description ) { ?>
+          <p>
+            <?php echo $description ?>
+          </p>
+        <?php } ?>
+      </div>
+    <?php } ?>
+
     <div class="generic-listing-inner">
         <?php foreach ($listings as $listing) { ?>
             <div class="generic-listing-row">
