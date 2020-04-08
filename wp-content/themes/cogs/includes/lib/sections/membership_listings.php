@@ -3,61 +3,53 @@
 /** 
  * Membership Listings
  * 
- * @author Peter Laxalt
+ * @author Peter Laxalt and Alisha Garric
  * @since 2/2020
  */
 
+ //TODO: Icon
 /*************************************/
 /** Variables */
 /*************************************/
 
-/**
- * @todo: Link to Wordpress Article Loop
- */
-class MembershipListing
-{
-  public $name;
-  public $description;
-  public $price;
-  public $icon;
-  public $benefits;
-  public $joinLink;
-  public $giftLink;
-}
-
-$exampleListing = new MembershipListing();
-$exampleListing->name = 'Example';
-$exampleListing->description = 'Dues from this tier will provide materials to refurbish 5 kid’s bikes through our Free Wheels for Kids program.';
-$exampleListing->price = '$50/yr';
-$exampleListing->icon = 'sample';
-$exampleListing->benefits = '';
-$exampleListing->joinLink = '/';
-$exampleListing->giftLink = '/';
-
-$membershipListings = array($exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing, $exampleListing);
 
 if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listings') {
+
+  $args = array(
+    'numberposts' => -1,
+    'post_type'   => 'membership'
+  );
+
+  $membershipListings = get_posts( $args );
+  $headline = get_sub_field('headline');
+
 ?>
 
   <section class="membership-listings padding-top-half membership-listings-<?php echo $idx ?>">
 
-    <div class="section-header">
-    <div class="squiggle-svg squiggle-pink squiggle-short squiggle-centered squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-      <h2>
-        Memberships
-      </h2>
-    </div>
+    <?php if ( $headline ) { ?>
+      <div class="section-header">
+        <?php $squiggle['color'] = 'primary' ?>
+        <?php $squiggle['align'] = 'center' ?>
+        <?php $squiggle['size'] = 'short' ?>
+        <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
+        <h2>
+          <?php echo $headline ?>
+        </h2>
+      </div>
+    <?php } ?>
 
     <div class="membership-listings-inner">
 
       <?php foreach ($membershipListings as $membership) { ?>
+        <?php $includes = get_field( 'includes', $membership->ID); ?>
 
         <div class="membership-listing-card">
           <div class="membership-listing-card-inner">
             <div class="card-top">
               <div class="title">
                 <span class="icon <?php echo $membership->icon ?>"></span>
-                <span class="name"><?php echo $membership->name ?></span>
+                <span class="name"><?php echo get_the_title( $membership ) ?></span>
               </div>
               <p>
                 <?php echo $membership->description ?>
@@ -67,47 +59,34 @@ if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listi
               </span>
             </div>
             <div class="card-bottom">
-              <span class="caption">
-                This Tier Will Receive
-              </span>
+              <?php if ( count($includes) > 0 ) { ?>
+                <span class="caption">
+                  This Tier Will Receive
+                </span>
+              <?php } ?>
 
               <div class="content">
-                <ul>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                  <li>
-                    Benefit
-                  </li>
-                </ul>
-                <p>
-                  Dues from this membership tier is also renewable at half price with 40 volunteer hours in the shop or at events.
-                </p>
+                <?php if ( count($includes) > 0 ) { ?>
+                  <ul>
+                    <?php foreach ($includes as $include) { ?>
+                      <li>
+                        <?php echo $include['item'] ?>
+                      </li>
+                    <?php } ?>
+                  </ul>
+                <?php } ?>
+                <?php if ( $membership->extra_information ) { ?>
+                  <p>
+                      <?php echo $membership->extra_information ?>
+                  </p>
+                <?php } ?>
               </div>
 
               <div class="actions">
-                <a href="<?php echo $membership->joinLink ?>" class="btn btn-clr-black btn-arrow">
+                <a href="<?php echo $membership->join_link['url'] ?>" class="btn btn-clr-black btn-arrow">
                   Join
                 </a>
-                <a href="<?php echo $membership->giftLink ?>" class="btn btn-border-white btn-arrow">
+                <a href="<?php echo $membership->gift_link['url'] ?>" class="btn btn-border-white btn-arrow">
                   Gift
                 </a>
               </div>

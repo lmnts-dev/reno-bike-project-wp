@@ -13,20 +13,24 @@
 /** Variables */
 /*************************************/
 
-$args = array(
-  'numberposts' => 6,
-);
 
-$articles = get_posts( $args );
-$headline = get_sub_field('headline');
-$btnText = get_sub_field('view_all_posts_button_text');
 
 if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
+  $args = array(
+    'numberposts' => 6,
+  );
+  
+  $articles = get_posts( $args );
+  $headline = get_sub_field('headline');
+  $btnText = get_sub_field('view_all_posts_button_text');
 ?>
 
   <section class="news-listings padding-top-half news-listings-<?php echo $idx ?>">
     <?php if ( $headline ) { ?>
-      <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+      <?php $squiggle['color'] = 'orange' ?>
+      <?php $squiggle['align'] = 'center' ?>
+      <?php $squiggle['size'] = 'short' ?>
+      <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
       <div class="news-listings-header">
         <h3>
           <?php echo $headline ?>
@@ -87,59 +91,5 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
     </div>
   </section>
 
-
-<?php } else { ?>
-
-
-  <section class="news-listings news-listings-<?php echo $idx ?>">
-    <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-
-    <div class="news-listings-header">
-      <h3>
-        Latest News
-      </h3>
-      <a href="/news-and-press" class="btn btn-border-black">
-        All Latest Posts
-      </a>
-    </div>
-    <div class="news-listings-inner">
-
-      <?php foreach ($newsListings as $listing) { ?>
-
-        <a href="<?php echo $listing->slug ?>" class="news-listing-card">
-          <div class="news-listing-card-inner">
-            <div class="cover">
-              <img data-src="<?php echo $listing->cover ?>" alt="<?php echo $listing->title ?>" class="lazy" />
-            </div>
-
-            <div class="info">
-              <span class="title">
-                <?php echo $listing->title ?>
-              </span>
-              <p class="excerpt">
-                <?php echo $listing->excerpt ?>
-              </p>
-            </div>
-
-            <div class="actions">
-              <div class="col">
-                <?php echo $listing->date ?>
-              </div>
-
-              <div class="col">
-                <span class="btn btn-arrow">
-                  More
-                </span>
-              </div>
-            </div>
-
-          </div>
-        </a>
-      <?php
-        #/forEach 
-      } ?>
-
-    </div>
-  </section>
 
 <?php } ?>

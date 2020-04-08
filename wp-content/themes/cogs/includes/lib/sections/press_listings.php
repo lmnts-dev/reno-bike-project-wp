@@ -30,7 +30,8 @@ if (get_row_layout() == 'press_listings' || $rowLayout == 'press_listings') {
       <?php if ( $headline ) { ?>
         <div class="section-header split">
           <h3>
-          <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+            <?php $squiggle['color'] = 'primary' ?>
+            <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
             <span><?php echo $headline ?></span>
           </h3>
           <?php if ( $description ) { ?>

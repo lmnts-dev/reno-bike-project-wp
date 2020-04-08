@@ -15,45 +15,34 @@
 /*************************************/
 
 if (get_row_layout() == 'accordion_row' || $rowLayout == 'accordion_row') {
+
+  $headline = get_sub_field('headline');
+  $accordions = get_sub_field('accordions');
 ?>
 
   <section class="accordion-row <?php echo get_sub_field('layout'); ?> accordion-row-<?php echo $idx ?>">
-    <div class="section-header split">
-      <h3 class="h1">
-        <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-        <span>
-          Reports & Financials
-        </span>
-      </h3>
-    </div>
+
+    <?php if ( $headline ) { ?>
+      <div class="section-header split">
+        <h3 class="h1">
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+          <span>
+            <?php echo $headline ?>
+          </span>
+        </h3>
+      </div>
+    <?php } ?>
+
     <div class="accordion-row-inner">
 
-      <?php for ($x = 0; $x < 5; $x++) { ?>
+      <?php foreach ($accordions as $index=>$accordion) { ?>
         <div class="accordion">
           <div class="accordion-row">
-            <input type="checkbox" id="item-<?php echo $x ?>">
-            <label class="row-label" for="item-<?php echo $x ?>">Accordion Row</label>
+            <input type="checkbox" id="item-<?php echo $index ?>">
+            <label class="row-label" for="item-<?php echo $index ?>"><?php echo $accordion['label'] ?></label>
             <div class="row-content content">
-              <ul>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-                <li>
-                  <a href="/">Thing <?php echo $x ?></a>
-                </li>
-              </ul>
+            <?php echo $accordion['content'] ?>
             </div>
           </div>
         </div>

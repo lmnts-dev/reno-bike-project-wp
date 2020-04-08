@@ -27,7 +27,16 @@ if (get_row_layout() == 'basic_section' || $rowLayout == 'basic_section') {
     <div class="basic-section-inner">
         <div class="section-header">
             <h3 class="<?php echo $headerSize ?>">
-                <div class="squiggle-svg <?php echo $alignment == "center" ? "squiggle-vertical squiggle-centered squiggle-orange" : "squiggle-pink" ?>"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+
+                <?php if ( $alignment == "center" ) { ?>
+                    <?php $squiggle['color'] = 'orange' ?>
+                    <?php $squiggle['align'] = 'center' ?>
+                    <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
+                <?php } else { ?>
+                    <?php $squiggle['color'] = 'primary' ?>
+                    <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+                <?php } ?>
+
                 <span><?php echo $headerText ?></span>
             </h3>
         </div>

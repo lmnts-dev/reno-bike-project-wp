@@ -1338,20 +1338,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
  */
 // basic default transition (with no rules and minimal hooks)
 barba.init({
+  prevent: function prevent(_ref) {
+    var el = _ref.el;
+    return el.classList && el.classList.contains('barba-prevent');
+  },
   transitions: [{
-    leave: function leave(_ref) {
-      var current = _ref.current,
-          next = _ref.next,
-          trigger = _ref.trigger;
-      // do something with `current.container` for your leave transition
+    leave: function leave(_ref2) {// do something with `current.container` for your leave transition
       // then return a promise or use `this.async()`
-      hideNavOverlay();
-      initNavOverlay();
-    },
-    beforeEnter: function beforeEnter(_ref2) {
+
       var current = _ref2.current,
           next = _ref2.next,
           trigger = _ref2.trigger;
+    },
+    beforeEnter: function beforeEnter(_ref3) {
+      var current = _ref3.current,
+          next = _ref3.next,
+          trigger = _ref3.trigger;
       // Scroll to top of page
       window.scrollTo(0, 0); // Re-init our Lazy Loading
 
@@ -1363,9 +1365,7 @@ barba.init({
 
       initSocialOverlay(); // Re-init our video overlays
 
-      initVideoOverlay(); // Re-init the nav script
-
-      initNavOverlay();
+      initVideoOverlay();
     }
   }]
 }); // // dummy example to illustrate rules and hooks

@@ -13,52 +13,29 @@
 /** Variables */
 /*************************************/
 
-/**
- * @todo: Link to Wordpress Article Loop
- */
-class FeaturedNewsListing
-{
-  public $title;
-  public $excerpt;
-  public $slug;
-  public $date;
-  public $cover;
-}
-
-$featuredNewsOne = new FeaturedNewsListing();
-$featuredNewsOne->title = 'Lorem Ipsum Solor Sit';
-$featuredNewsOne->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsOne->slug = '/sample-post';
-$featuredNewsOne->date = 'February 10th, 2020';
-$featuredNewsOne->cover = 'https://source.unsplash.com/1600x900/?bike';
-
-$featuredNewsTwo = new FeaturedNewsListing();
-$featuredNewsTwo->title = 'Lorem Ipsum Solor Sit';
-$featuredNewsTwo->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsTwo->slug = '/sample-post';
-$featuredNewsTwo->date = 'February 10th, 2020';
-$featuredNewsTwo->cover = 'https://source.unsplash.com/1600x900/?smile';
-
-$featuredNewsThree = new FeaturedNewsListing();
-$featuredNewsThree->title = 'Lorem Ipsum Solor Sit';
-$featuredNewsThree->excerpt = 'Lorem ipsum dolor sit amet, an nam tibique mandamus partiendo, vix tota fuisset constituam cu. Reque labores vix no, pro cetero recusabo ea, ut omnesque adipisci intellegam mea. An ius elitr aeterno oportere, mel affert verterem consequat in, eu per elitr animal disputando';
-$featuredNewsThree->slug = '/sample-post';
-$featuredNewsThree->date = 'February 10th, 2020';
-$featuredNewsThree->cover = 'https://source.unsplash.com/1600x900/?community';
-
-$featuredNewsListings = array($featuredNewsOne, $featuredNewsTwo, $featuredNewsThree, $featuredNewsOne, $featuredNewsTwo, $featuredNewsThree);
 
 if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_slider') {
+
+  $args = array(
+    'numberposts' => 6,
+  );
+  
+  $featuredNewsListings = get_posts( $args );
+
 ?>
 
   <section class="featured-news-slider featured-news-slider-<?php echo $idx ?>">
 
-    <div class="featured-news-slider-header">
-    <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-      <h1>
-        Latest News
-      </h1>
-    </div>
+    <?php if ( $headline ) { ?>
+      <div class="featured-news-slider-header">
+        <?php $squiggle['color'] = 'orange' ?>
+        <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+        <h1>
+          <?php echo $headline ?>
+        </h1>
+      </div>
+    <?php } ?>
+
     <div class="featured-news-slider-inner">
       <div class="featured-news-slider-el featured-news-slider-<?php echo $idx; ?>">
 
@@ -70,20 +47,20 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
                 <div class="news-listing-card-inner">
                   <div class="info">
                     <span class="title">
-                      <?php echo $listing->title ?>
+                      <?php echo $listing->post_title ?>
                     </span>
                     <p class="excerpt">
-                      <?php echo $listing->excerpt ?>
+                      <?php echo $listing->post_excerpt ?>
                     </p>
                   </div>
 
                   <div class="actions">
                     <div class="col">
-                      <?php echo $listing->date ?>
+                    <?php echo date('F j, Y', strtotime($listing->post_date)) ?>
                     </div>
 
                     <div class="col">
-                      <a href="<?php echo $listing->slug ?>" class="btn btn-arrow">
+                      <a href="<?php echo get_post_permalink($listing) ?>" class="btn btn-arrow">
                         More
                       </a>
                     </div>
@@ -93,7 +70,7 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
 
               <div class="featured-news-slide-cover">
                 <div class="featured-news-slide-cover-inner">
-                  <img data-src="<?php echo $listing->cover ?>" class="lazy" alt="<?php echo $listing->title ?>" />
+                  <img data-src="<?php echo get_the_post_thumbnail_url( $listing ) ?>" class="lazy" alt="<?php echo $listing->post_title ?>" />
                 </div>
               </div>
             </div>
@@ -106,6 +83,5 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
       </div>
     </div>
   </section>
-
 
 <?php } ?>
