@@ -23,7 +23,7 @@ if (get_row_layout() == 'video_row') {
         <span></span>
       </span>
       <iframe src="<?php echo 'https://player.vimeo.com/video/' . $videoID . '?background=1&autoplay=1&loop=1&byline=0&title=0'?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      <img data-src="https://source.unsplash.com/1600x900/?cyan" class="cover lazy" alt="<?php echo $altText ?>" />
+      <img data-src="<?php echo $coverImage ?>" class="cover lazy" alt="<?php echo $altText ?>" />
 
     </div>
   </section>
