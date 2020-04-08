@@ -9,62 +9,7 @@ $longTranslateSm: $longHeightSm * 0.73;
 $shortTranslateSm: $shortHeightSm * 0.93;
 
 .squiggle-svg {
-  margin-bottom: calc(#{$Base} * 0.75);
-  width: $longHeight;
-  pointer-events: none;
-  display: flex;
-  flex-direction: row;
 
-  @media (max-width: $BaseMediaSm) {
-    width: $longHeightSm;
-    margin-bottom: calc(#{$Base} / 2);
-
-    .short-squiggle-line {
-      width: $shortHeightSm;
-    }
-
-    .addon-squiggle-line {
-      width: $longHeightSm - $shortHeightSm - 8px;
-    }
-
-    svg:nth-of-type(2) {
-      transform: translateX(-2px);
-    }
-  }
-
-  svg:nth-of-type(2) {
-      transform: translateX(-2px);
-  }
-
-  &.squiggle-orange path {
-    stroke: $clrOrange;
-  }
-
-  &.squiggle-pink path {
-    stroke: $clrPrimary;
-  }
-
-  &.squiggle-short {
-    svg:first-of-type {
-      display: none;
-    }
-
-    svg:nth-of-type(2) {
-      transform: none;
-    }
-
-    &.squiggle-vertical {
-      height: $shortHeight;
-      width: $shortHeight;
-      transform: rotate(90deg) translateY(#{$shortTranslate});
-    }
-  }
-
-  &.squiggle-vertical {
-    transform: rotate(90deg) translateY(#{$longTranslate});
-    height: $longHeight;
-    margin-bottom: 0;
-  }
 
   &.squiggle-centered {
     margin: 0 auto;
@@ -93,6 +38,20 @@ $shortTranslateSm: $shortHeightSm * 0.93;
 
 .squiggle-horizontal, .squiggle-vertical {
   margin-bottom: $Base / 2;
+  pointer-events: none;
+  display: block;
+
+  &.clr-primary path {
+    stroke: $clrPrimary;
+  }
+
+  &.clr-yellow path {
+    stroke: $clrMustard;
+  }
+
+  &.clr-orange path {
+    stroke: $clrOrange;
+  }
 
   @media (max-width: $BaseMediaSm) {
     transform: scale( 0.6 );

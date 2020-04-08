@@ -24,7 +24,10 @@ if (get_row_layout() == 'icon_block' || $rowLayout == 'icon_block') {
 
     <?php if ( $headline ){ ?>
       <div class="section-header">
-      <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+      <?php $squiggle['color'] = 'orange' ?>
+      <?php $squiggle['align'] = 'center' ?>
+      <?php $squiggle['size'] = 'short' ?>
+      <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
         <h3>
           <span>
             <?php echo $headline ?>

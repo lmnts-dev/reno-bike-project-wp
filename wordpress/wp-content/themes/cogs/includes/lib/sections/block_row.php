@@ -32,8 +32,9 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
     <?php if ( $data['headline'] ) { ?>
       <div class="section-header split">
         <h3>
-          
-          <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+
           <span><?php echo $data['headline'] ?></span>
         </h3>
         <?php if ( $data['description'] ) { ?>

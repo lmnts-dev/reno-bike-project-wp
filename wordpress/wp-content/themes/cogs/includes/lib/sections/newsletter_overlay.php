@@ -25,7 +25,8 @@ $submitDestination = $fields['submit_destination'];
     <div class="top">
       <div class="col">
         <h3>
-        <div class="squiggle-svg squiggle-pink"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'primary' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
           <span><?php echo $headline ?></span>
         </h3>
       </div>

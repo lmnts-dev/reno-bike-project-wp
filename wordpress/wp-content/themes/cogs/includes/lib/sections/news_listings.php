@@ -27,7 +27,10 @@ if (get_row_layout() == 'news_listings' || $rowLayout == 'news_listings') {
 
   <section class="news-listings padding-top-half news-listings-<?php echo $idx ?>">
     <?php if ( $headline ) { ?>
-      <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+      <?php $squiggle['color'] = 'orange' ?>
+      <?php $squiggle['align'] = 'center' ?>
+      <?php $squiggle['size'] = 'short' ?>
+      <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
       <div class="news-listings-header">
         <h3>
           <?php echo $headline ?>

@@ -28,7 +28,8 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
 
     <?php if ( $headline ) { ?>
       <div class="featured-news-slider-header">
-        <div class="squiggle-svg squiggle-orange"><?php include get_template_directory() . "/assets/images/squiggle.svg";  ?></div>
+        <?php $squiggle['color'] = 'orange' ?>
+        <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
         <h1>
           <?php echo $headline ?>
         </h1>

@@ -25,7 +25,8 @@ if (get_row_layout() == 'accordion_row' || $rowLayout == 'accordion_row') {
     <?php if ( $headline ) { ?>
       <div class="section-header split">
         <h3 class="h1">
-          <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
           <span>
             <?php echo $headline ?>
           </span>

@@ -106,9 +106,8 @@ function custom_pagination() {
     if ($the_query->have_posts()) { ?>
 
       <div class='search-results-header'>
-        <div class='squiggle-svg squiggle-orange'>
-          <?php include get_template_directory() . "/assets/images/squiggle.svg" ?>
-        </div>
+        <?php $squiggle['color'] = 'orange' ?>
+        <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
         <h1><?php echo $wp_query->found_posts ?> results for </h1>
         <h1 class='query'><?php echo get_query_var('s') ?></h1>
         <div class="search-results-input">
@@ -175,181 +174,40 @@ function custom_pagination() {
             <!-- <a href="/" class="no-barba" data-barba-prevent>TEST</a> -->
 
           </ul>
-          <?php
-        } else {
-
-          $args = array(
-            'numberposts' => 30,
-          );
-          
-          $articles = get_posts( $args );
-          $headline = get_sub_field('headline');
-          $btnText = get_sub_field('view_all_posts_button_text');
-
-          ?>
-          <div class='search-results-header'>
-            <div class='squiggle-svg squiggle-orange'>
-              <?php include get_template_directory() . "/assets/images/squiggle.svg" ?>
-            </div>
-            <h1>No results for <span class="query"><?php echo get_query_var('s') ?></span> :(</h1>
-            <h1>Try something else.</h1>
-            <div class="search-results-input">
-              <span class="ico"></span>
-              <?php get_search_form(); ?>
-            </div>
-          </div>
-
-          <!-- Listings -->
-          <div class="news-listings padding-top-half news-listings-search-results">
-            <?php if ( $headline ) { ?>
-              <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-              <div class="news-listings-header">
-                <h3>
-                  <?php echo $headline ?>
-                </h3>
-                <?php if ( $btnText ) { ?>
-                  <a href="/news-and-press" class="btn btn-border-black">
-                    <?php echo $btnText ?>
-                  </a>
-                <?php } ?>
+          <?php } else { ?>
+            <div class='search-results-header'>
+              <?php $squiggle['color'] = 'orange' ?>
+              <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+              <h1>No results for <span class="query"><?php echo get_query_var('s') ?></span> :(</h1>
+              <h1>Try something else.</h1>
+              <div class="search-results-input">
+                <span class="ico"></span>
+                <?php get_search_form(); ?>
               </div>
-            <?php } ?>
-
-            <div class="news-listings-inner">
-
-              <?php foreach ($articles as $article) { ?>
-
-                <a href="<?php echo get_post_permalink($article) ?>" class="news-listing-card">
-                  <div class="news-listing-card-inner">
-                    <div class="cover">
-                      <img data-src="<?php echo get_the_post_thumbnail_url( $article ) ?>" alt="<?php echo $article->post_title ?>" class="lazy" />
-                    </div>
-
-                    <div class="info">
-                      <span class="title">
-                        <?php echo $article->post_title ?>
-                      </span>
-                      <p class="excerpt">
-                        <?php echo $article->post_excerpt ?>
-                      </p>
-                    </div>
-
-                    <div class="actions">
-                      <div class="col">
-                        <?php echo date('F j, Y', strtotime($article->post_date)) ?>
-                      </div>
-
-                      <div class="col">
-                        <span class="btn btn-arrow">
-                          More
-                        </span>
-                      </div>
-                    </div>
-
-                  </div>
-                </a>
-              <?php
-                #/forEach 
-              } ?>
-
-              <?php if ( $btnText ) { ?>
-                <div class="mobile-btn">
-                  <a href="/news-and-press" class="btn btn-border-black">
-                    <?php echo $btnText ?>
-                  </a>
-                </div>
-              <?php } ?>
-
             </div>
-          </div>
+
+            <?php // $headline = get_sub_field('headline'); ?>
+            <?php //$btnText = get_sub_field('view_all_posts_button_text'); ?>
+            <?php addComponent("news_listings") ?>
+          
         <?php } ?>
       </div>
 
-      <?php } else { 
-        $args = array(
-          'numberposts' => 30,
-        );
-        
-        $articles = get_posts( $args );
-        $headline = get_sub_field('headline');
-        $btnText = get_sub_field('view_all_posts_button_text');
-
-        ?>
+      <?php } else { ?>
         <div class='search-results-header'>
-            <div class='squiggle-svg squiggle-orange'>
-              <?php include get_template_directory() . "/assets/images/squiggle.svg" ?>
-            </div>
-            <h1>No results for <span class="query"><?php echo get_query_var('s') ?></span> :(</h1>
-            <h1>Try something else.</h1>
-            <div class="search-results-input">
-              <span class="ico"></span>
-              <?php get_search_form(); ?>
-            </div>
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+          <h1>No results for <span class="query"><?php echo get_query_var('s') ?></span> :(</h1>
+          <h1>Try something else.</h1>
+          <div class="search-results-input">
+            <span class="ico"></span>
+            <?php get_search_form(); ?>
           </div>
+        </div>
 
-          <!-- Listings -->
-          <div class="news-listings padding-top-half news-listings-search-results">
-            <?php if ( $headline ) { ?>
-              <div class="squiggle-svg squiggle-orange squiggle-centered squiggle-short squiggle-vertical"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
-              <div class="news-listings-header">
-                <h3>
-                  <?php echo $headline ?>
-                </h3>
-                <?php if ( $btnText ) { ?>
-                  <a href="/news-and-press" class="btn btn-border-black">
-                    <?php echo $btnText ?>
-                  </a>
-                <?php } ?>
-              </div>
-            <?php } ?>
-
-            <div class="news-listings-inner">
-
-              <?php foreach ($articles as $article) { ?>
-
-                <a href="<?php echo get_post_permalink($article) ?>" class="news-listing-card">
-                  <div class="news-listing-card-inner">
-                    <div class="cover">
-                      <img data-src="<?php echo get_the_post_thumbnail_url( $article ) ?>" alt="<?php echo $article->post_title ?>" class="lazy" />
-                    </div>
-
-                    <div class="info">
-                      <span class="title">
-                        <?php echo $article->post_title ?>
-                      </span>
-                      <p class="excerpt">
-                        <?php echo $article->post_excerpt ?>
-                      </p>
-                    </div>
-
-                    <div class="actions">
-                      <div class="col">
-                        <?php echo date('F j, Y', strtotime($article->post_date)) ?>
-                      </div>
-
-                      <div class="col">
-                        <span class="btn btn-arrow">
-                          More
-                        </span>
-                      </div>
-                    </div>
-
-                  </div>
-                </a>
-              <?php
-                #/forEach 
-              } ?>
-
-              <?php if ( $btnText ) { ?>
-                <div class="mobile-btn">
-                  <a href="/news-and-press" class="btn btn-border-black">
-                    <?php echo $btnText ?>
-                  </a>
-                </div>
-              <?php } ?>
-
-            </div>
-          </div>
+        <?php // $headline = get_sub_field('headline'); ?>
+        <?php //$btnText = get_sub_field('view_all_posts_button_text'); ?>
+        <?php addComponent("news_listings") ?>
       <?php } ?>
 
 </section>

@@ -24,7 +24,8 @@ if (get_row_layout() == 'four_column_grid_section' || $rowLayout == 'four_column
     <?php if ( $headline ) { ?>
       <div class="section-header split">
         <h2>
-        <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
           <span>
             <?php echo $headline ?>
           </span>

@@ -71,7 +71,10 @@ $qualifyingEvents = [];
     <?php if ( $headline ) { ?>
       <div class="section-header">
         <h3>
-          <div class="squiggle-svg squiggle-orange squiggle-short squiggle-centered squiggle-vertical"><?php require(get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'orange' ?>
+          <?php $squiggle['align'] = 'center' ?>
+          <?php $squiggle['size'] = 'short' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
           <span><?php echo $headline ?></span>
         </h3>
       </div>
