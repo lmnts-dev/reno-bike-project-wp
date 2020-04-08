@@ -1,0 +1,50 @@
+////////////////////////////////////////
+//
+// Instagram Row
+//
+// @author Alisha Garric
+// @since 4/2020
+//
+////////////////////////////////////////
+
+.instagram-row {
+    @extend .news-listings;
+
+    .instagram-row-header {
+        @extend .news-listings-header;
+
+        a {
+          //  display: block;
+            color: $clrBlack;
+        }
+    }
+
+    .instagram-row-inner {
+        @extend .news-listings-inner;
+
+        .post-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            flex-wrap: wrap;
+
+            .cover {
+                flex: 1;
+                min-width: 26%;
+                padding-top: calc(33.33% - #{$Base / 3});
+                position: relative;
+                background: $clrPlaceholder;
+                margin-bottom: $Base / 2;
+
+                img {
+                    @include objectFit();
+                }
+
+                &:nth-of-type(3n-1){
+                    margin: 0 $Base / 2 $Base / 2 $Base / 2;
+                }
+            }
+        }
+
+    }
+}

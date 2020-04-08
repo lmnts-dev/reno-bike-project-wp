@@ -32,7 +32,6 @@
 ?>
 
 <?php addComponent("block_row"); ?>
-
-<?php include 'includes/lib/sections/newsletter_row.php'; ?>
+<?php addComponent("newsletter_row"); ?>
 
 <?php include 'includes/core/footer.php'; ?>

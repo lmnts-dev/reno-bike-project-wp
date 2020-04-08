@@ -26,16 +26,19 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
 
 ?>
   <section class="member-row <?php echo get_sub_field('layout'); ?> member-row-<?php echo $idx ?>">
+  
     <?php if ( $headline ) { ?>
       <div class="section-header split">
         <h2>
-        <div class="squiggle-svg squiggle-orange"><?php require ( get_template_directory() . "/assets/images/squiggle.svg");  ?></div>
+          <?php $squiggle['color'] = 'pink' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
           <span>
             <?php echo $headline ?>
           </span>
         </h2>
-    </div>
+      </div>
     <?php } ?>
+
     <?php foreach ($staffMembers as $member ) { ?>
       <div class="member-row-item">
         <div class="col img-col">

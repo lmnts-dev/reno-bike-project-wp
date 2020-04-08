@@ -15,6 +15,7 @@
 $cta = get_field('navigation_bar', 'option')['call_to_action'];
 $nav = wp_nav_menu(array('menu' => 'primary', 'echo' => false ));
 $nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="sub-menu">', $nav );
+$nav = str_replace( '<a href', '<a class="nav-overlay-toggle" href', $nav );
 
 ?>
 

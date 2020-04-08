@@ -1,41 +1,3 @@
-$longHeight: 190px;
-$shortHeight: 105px;
-$longTranslate: $longHeight * 0.73;
-$shortTranslate: $shortHeight * 0.57;
-
-$longHeightSm: 150px;
-$shortHeightSm: 83px;
-$longTranslateSm: $longHeightSm * 0.73;
-$shortTranslateSm: $shortHeightSm * 0.93;
-
-.squiggle-svg {
-
-
-  &.squiggle-centered {
-    margin: 0 auto;
-    transform: rotate(90deg) translateY(#{$shortTranslate});
-
-    @media (max-width: $BaseMediaSm) {
-      transform: rotate(90deg) translateY(#{$shortTranslateSm});
-    }
-
-    &.squiggle-vertical {
-      margin: 0 auto;
-    }
-
-    &.squiggle-short {
-      transform: rotate(90deg) translateY(#{$shortTranslate / 1.5});
-
-      @media (max-width: $BaseMediaSm) {
-        transform: rotate(90deg) translateY(#{$shortTranslateSm / 1.5});
-      }
-    }
-  }
-}
-
-
-
-
 .squiggle-horizontal, .squiggle-vertical {
   margin-bottom: $Base / 2;
   pointer-events: none;
@@ -51,6 +13,10 @@ $shortTranslateSm: $shortHeightSm * 0.93;
 
   &.clr-orange path {
     stroke: $clrOrange;
+  }
+
+  &.align-center {
+    margin: 0 auto;
   }
 
   @media (max-width: $BaseMediaSm) {
