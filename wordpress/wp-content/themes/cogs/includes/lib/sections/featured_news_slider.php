@@ -49,6 +49,14 @@ $featuredNewsThree->cover = 'https://source.unsplash.com/1600x900/?community';
 $featuredNewsListings = array($featuredNewsOne, $featuredNewsTwo, $featuredNewsThree, $featuredNewsOne, $featuredNewsTwo, $featuredNewsThree);
 
 if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_slider') {
+
+  /*$args = array(
+    'numberposts' => -1,
+    'post_type'   => 'post'
+  );
+
+  $events = get_posts( $args );*/
+
 ?>
 
   <section class="featured-news-slider featured-news-slider-<?php echo $idx ?>">

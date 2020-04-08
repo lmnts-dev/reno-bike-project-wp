@@ -87,9 +87,11 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
         <h3>
           <?php echo $headline ?>
         </h3>
-        <p>
-        <?php echo $description ?>
-        </p>
+        <?php if ( $description ) { ?>
+          <p>
+            <?php echo $description ?>
+          </p>
+        <?php } ?>
       </div>
     <?php } ?>
 
