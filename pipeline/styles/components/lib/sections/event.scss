@@ -8,6 +8,9 @@
 ////////////////////////////////////////
 
 article.event-article {
+    max-width: $BaseMaxWidth;
+    padding-bottom: $Base * 2;
+
     .details-box {
         .text-container, .box-container {
             display: flex;
@@ -17,15 +20,23 @@ article.event-article {
 
         .text-container {
             color: $clrChrome;
-            font-size: 1.5rem;
-            padding-bottom: $Base;
+            font-size: 1.25rem;
+            padding: $Base 0 $Base / 2 0;
 
             > div {
                 padding-right: $Base / 2;
+                flex: 1;
+
+                &:nth-of-type(2){
+                    text-align: center;
+                }
 
                 &:last-of-type {
                     padding-right: 0;
+                    display: flex;
+                    justify-content: flex-end;
                 }
+
             }
 
             .social-icons span {
@@ -97,6 +108,108 @@ article.event-article {
 
             .more {
                 padding-top: $Base / 2;
+            }
+        }
+    }
+}
+
+section.article-details {
+    &.google-maps {
+        width: 100%;
+        padding-top: 25%;
+        background-color: $clrPlaceholder;
+        padding-left: 0;
+        padding-right: 0;
+
+        .acf-map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &.article-body {
+        max-width: $BaseArticleWidth;
+    }
+
+    &.article-footer {
+        padding: $Base / 1.5 0;
+
+        .event-post-nav {
+            display: flex;
+            align-items: stretch;
+            
+            a {
+                padding: $Base;
+                flex: 1;
+                color: white;
+                
+                &.prev-post {
+                    margin-right: $Base / 1.5;
+                    background-color: $clrBlack;
+
+                    .arrow {
+                        padding-right: 0;
+                        padding-left: $Base / 2;
+
+                        &:after {
+                            border-left: calc(#{$Base} * 0.15) solid transparent;
+                            border-right: calc(#{$Base} * 0.15) solid $clrPrimary;
+                            left: 0;
+                            
+                        }
+
+                        &:hover {
+                            &:after {
+                                transform: translate(-20px, -50%);
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $clrGunmetal;
+                      
+                        .arrow:after {
+                            transform: translate(-20px, -50%);
+                        }
+                    }
+                }
+
+                &.next-post {
+                    background-color: $clrGunmetal;
+                    text-align: right;
+
+                    .arrow {
+                        padding-left: 0;
+                        padding-right: $Base / 2;
+
+                        &:after {
+                            right: $Base / -4;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $clrBlack;
+
+                        .arrow:after {
+                            transform: translate(0px, -50%);
+                        }
+                    }
+                }
+
+                .arrow {
+                    @extend .btn;
+                    @extend .btn-clr-black;
+                    @extend .btn-arrow;
+                    background-color: transparent;
+                    margin-bottom: $Base * 1.5;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
             }
         }
     }

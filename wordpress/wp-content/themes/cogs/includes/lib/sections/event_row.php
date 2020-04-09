@@ -30,29 +30,11 @@ $qualifyingEvents = [];
 
  //loop through events to create an array of past, upcoming or all events
  foreach ($events as $event) { 
-   
-    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); //get todays date at 12:00am
-    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); 
-    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
-    $startDate = $startDate->modify('midnight'); //get start date
-    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
-    $formattedStartDate = $startDate->format('F j');
-    $endDate = DateTime::createFromFormat('Ymd', $event->end_date);
-    $formattedEndDate = $endDate ? $endDate->format('F j') : false;
-    $time = $event->time;
-    $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
-    $dateString = $time ? $dateString . ', ' . $time : $dateString;
+
+    $eventObject = createEventObject( $event );
 
     // depending on which events the user wants to show, either show past, upcoming or all events 
-    if ( (!$passedDate && $whichEvents == 'upcoming') || ($passedDate && $whichEvents == 'past') || $whichEvents == 'all' ) { 
-      $eventObject = new stdClass();
-      $eventObject->title = $event->post_title;
-      $eventObject->excerpt = $event->post_excerpt;
-      $eventObject->date = $startDate->format('Y-m-d H:i:s');
-      $eventObject->link = get_post_permalink( $event );
-      $eventObject->image = get_the_post_thumbnail_url( $event );
-      $eventObject->displayDate = $dateString;
-
+    if ( (!$eventObject->passedDate && $whichEvents == 'upcoming') || ($eventObject->passedDate && $whichEvents == 'past') || $whichEvents == 'all' ) { 
       array_push( $qualifyingEvents, $eventObject );
     } 
   }
