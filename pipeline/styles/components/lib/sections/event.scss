@@ -1,0 +1,103 @@
+////////////////////////////////////////
+//
+// Event Article Component
+//
+// @author Alisha Garric
+// @since 3/2020
+//
+////////////////////////////////////////
+
+article.event-article {
+    .details-box {
+        .text-container, .box-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .text-container {
+            color: $clrChrome;
+            font-size: 1.5rem;
+            padding-bottom: $Base;
+
+            > div {
+                padding-right: $Base / 2;
+
+                &:last-of-type {
+                    padding-right: 0;
+                }
+            }
+
+            .social-icons span {
+                height: $Base / 1.5;
+                width: $Base / 1.5;
+                font-size: 1rem;
+            }
+        }
+
+        .box-container {
+            background-color: $clrSteel;
+            padding: $Base / 2 $Base / 1.5;
+
+            .item {
+                padding-right: $Base / 2;
+
+                a {
+                    color: $clrPrimary;
+                }
+
+                &:last-of-type {
+                    padding-right: 0;
+                }
+
+                .label {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                    padding-bottom: $Base / 3;
+                }
+
+                .text, .text p {
+                    font-size: 1rem;
+
+                    p {
+                        margin-bottom: $Base / 10;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .description-block {
+        display: flex;
+        flex-direction: row;
+
+        .image {
+            width: 50%;
+            flex: 1;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .description {
+            width: 50%;
+            flex: 1;
+            padding-right: $Base;
+            font-size: 1.5rem;
+
+            .more, .more p {
+                font-size: 1rem;
+
+                p {
+                    margin-bottom: $Base / 6;
+                }
+            }
+
+            .more {
+                padding-top: $Base / 2;
+            }
+        }
+    }
+}

@@ -13,20 +13,60 @@
     .instagram-row-header {
         @extend .news-listings-header;
 
+        @media (max-width: $BaseMediaMd) {
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+
         a {
-          //  display: block;
             color: $clrBlack;
+
+            @media (max-width: $BaseMediaMd) {
+                position: relative;
+                transform: none;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+                display: inline-flex;
+            }
+        }
+
+        h3 {
+            @media (max-width: $BaseMediaMd) {
+                margin-bottom: $Base / 2;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+                margin-bottom: $Base / 2;
+            }
+        }
+
+        h3 a {
+            position: relative;
+
+            &:hover {
+                color: $clrPrimary;
+            }
         }
     }
 
     .instagram-row-inner {
         @extend .news-listings-inner;
 
+        @media (max-width: $BaseMediaSm) {
+            padding-left: $BaseGutterLeftSm;
+            padding-right: $BaseGutterRightSm;
+        }
+
         .post-container {
             display: flex;
             flex-direction: row;
             width: 100%;
             flex-wrap: wrap;
+            @media (max-width: $BaseMediaMd) {
+                padding-top: $Base;
+            }
 
             .cover {
                 flex: 1;
@@ -36,13 +76,34 @@
                 background: $clrPlaceholder;
                 margin-bottom: $Base / 2;
 
+                @media (max-width: $BaseMediaSm) {
+                    min-width: 34%;
+                    padding-top: calc(50% - #{$Base / 4});
+                }
+
+                &:hover {
+                    box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
+                }
+
                 img {
                     @include objectFit();
                 }
 
                 &:nth-of-type(3n-1){
                     margin: 0 $Base / 2 $Base / 2 $Base / 2;
+
+                    @media (max-width: $BaseMediaSm) {
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
                 }
+
+                &:nth-of-type(2n){
+                    @media (max-width: $BaseMediaSm) {
+                        margin-left: $Base / 2;
+                    }
+                }
+
             }
         }
 

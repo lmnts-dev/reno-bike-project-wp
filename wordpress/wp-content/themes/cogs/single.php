@@ -13,8 +13,6 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php include 'includes/lib/sections/page_hero.php'; ?>
-
 <?php get_template_part('content', get_post_format()); ?>
 
 <?php

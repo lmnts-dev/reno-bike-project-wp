@@ -6,10 +6,19 @@
 //
 ////////////////////////////////////////
 
-.newsletter-row {
+section.newsletter-row {
   position: relative;
   background: $clrBlack;
   color: $clrWhite;
+
+  ~ section {
+    margin-top: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: $BasePaddingSm;
+    }
+    
+  }
 
   @media (max-width: $BaseMediaMd) {
     padding-top: $Base * 2;

@@ -41,24 +41,24 @@ if (get_row_layout() == 'instagram_row' || $rowLayout == 'instagram_row') {
         <div class="instagram-row-inner">
 
             <div class="post-container">
-                <div class="cover">
+                <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?bike" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
-                <div class="cover">
+                </a>
+                <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?pink" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
-                <div class="cover">
-                    <img data-src="https://source.unsplash.com/1600x900/?helmet" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
-                <div class="cover">
-                    <img data-src="https://source.unsplash.com/1600x900/?helmet" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
-                <div class="cover">
+                </a>
+                <a href="<?php echo $instaLink ?>" class="cover">
+                    <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
+                </a>
+                <a href="<?php echo $instaLink ?>" class="cover">
+                    <img data-src="https://source.unsplash.com/1600x900/?bikes" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
+                </a>
+                <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?bike" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
-                <div class="cover">
+                </a>
+                <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?pink" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
-                </div>
+                </a>
             </div>
 
         </div>

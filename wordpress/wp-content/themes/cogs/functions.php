@@ -776,3 +776,12 @@ add_action('after_setup_theme', 'custom_image_size');
 function sortDates($a, $b) {
 	return strtotime($a->date) - strtotime($b->date);
 }
+
+
+//add google maps api key for acf google maps 
+function my_acf_google_map_api( $api ){
+	$apis = get_field('api_keys', 'options');
+    $api['key'] = $apis['google_maps'];
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
