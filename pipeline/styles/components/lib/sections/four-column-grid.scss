@@ -10,6 +10,11 @@ $gridSpacing: calc(#{$Base} / 3);
 
 .four-column-grid-section {
 
+  h2 {
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+  }
+
   .four-column-grid-section-inner {
     display: flex;
     flex-direction: row;
@@ -77,6 +82,13 @@ $gridSpacing: calc(#{$Base} / 3);
         padding-top: 75%;
         position: relative;
         background: $clrPlaceholder;
+
+        &.image-type-logos {
+          img {
+            object-fit: contain;
+            background-color: $clrWhite;
+          }
+        }
 
         img {
           position: absolute;

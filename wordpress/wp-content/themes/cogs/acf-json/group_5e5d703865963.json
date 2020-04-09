@@ -1633,6 +1633,31 @@
                             "maxlength": ""
                         },
                         {
+                            "key": "field_5e8f88b5b20c3",
+                            "label": "Headline Size",
+                            "name": "headline_size",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "h4": "Small",
+                                "h3": "Medium",
+                                "h2": "Large"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "h3",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
+                        {
                             "key": "field_5e8cd38256758",
                             "label": "Grid Items",
                             "name": "grid_items",
@@ -1695,6 +1720,30 @@
                                     "mime_types": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_5e8f8856b20c2",
+                            "label": "What type of images did you upload?",
+                            "name": "image_type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "logos": "Logos",
+                                "images": "Photographs"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "images",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -2718,5 +2767,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586387697
+    "modified": 1586465324
 }
