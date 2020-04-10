@@ -314,12 +314,15 @@ header {
 
   //to hide for overlay nav
   &.hidden .nav-inner.nav-shop {
-    opacity: 0;
+    @media (max-width: $BaseNavBreak) {
+      opacity: 0;
+    }
 
     @media (min-width: $BaseNavShopifyBreak) {
       opacity: 1;
     }
   }
+  
   .nav-inner.nav-shop {
 
     nav ul li.active {
@@ -348,6 +351,10 @@ header {
 
     /////////// COL 2: Main Links ////////////
     .nav-col-2 { 
+      @media (max-width: $BaseNavBreak) {
+        display: flex;
+      }
+
       @media (max-width: $BaseNavShopifyBreak) {
         display: none;
       }
@@ -355,12 +362,13 @@ header {
 
     /////////// COL 3: CTA Column ////////////
     .nav-col-3 {
-
-      @media (max-width: $BaseNavShopifyBreak) {
-        flex: 10;
-      }
+      flex: 10;
+      justify-content: flex-end;
 
       .nav-cta {
+        @media (max-width: $BaseNavBreak) {
+          margin-left: 0;
+        }
 
         @media (max-width: $BaseNavShopifyBreak) {
           margin-left: auto;
@@ -441,6 +449,10 @@ header {
         height: 100%;
         align-items: center;
 
+        @media (max-width: $BaseNavBreak) {
+          margin-left: 0;
+        }
+
         @media (max-width: $BaseNavShopifyBreak) {
           margin-left: auto;
 
@@ -499,6 +511,9 @@ header {
 
     /////////// COL 4: Grid Icon Column ////////////
     .nav-col-4 {
+      @media (max-width: $BaseNavBreak) {
+        display: none;
+      }
 
       @media (max-width: $BaseNavShopifyBreak) {
         display: flex;

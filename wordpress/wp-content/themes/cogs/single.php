@@ -3,7 +3,7 @@
 /** 
  * Default Article Template
  * 
- * @author Peter Laxalt
+ * @author Peter Laxalt and Alisha Garric
  * @since 2/2020
  */
 
@@ -35,12 +35,12 @@ while (have_posts()) : the_post();
         <div class="tags">
           <ul itemprop="keywords">
             <li>
-              <a href="/news-and-press">
+              <a href="<?php echo get_post_type_archive_link( 'post' ) ?>">
                 Latest News
               </a>
             </li>
             <?php
-            the_tags('<li>', '</li><li>', '</li>');
+              the_tags('<li>', '</li><li>', '</li>');
             ?>
           </ul>
         </div>
@@ -79,9 +79,7 @@ while (have_posts()) : the_post();
       <?php } ?>
 
       <div class="article-body" itemprop="articleBody">
-        <?php
-        the_content();
-        ?>
+        <?php the_content(); ?>
       </div>
 
       <div class="article-footer">

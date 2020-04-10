@@ -8,8 +8,8 @@
 ////////////////////////////////////////
 
 .featured-products-slider {
-  $cardSize: 38%;
-  $cardSizeSm: 60%;
+  $cardSize: 29%;
+  $cardSizeSm: 45%;
 
   position: relative;
   overflow: visible;
@@ -41,6 +41,17 @@
 
     @media (max-width: $BaseMediaSm ){
       padding: $Base 0 $Base / 2 0;
+    }
+
+    .product-card .product-details {
+      @media (max-width: $BaseMediaMd ){
+        display: block;
+
+        div {
+          width: 100%;
+          text-align: left;
+        }
+      }
     }
 
     &:before {
