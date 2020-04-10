@@ -29,4 +29,5 @@ if (have_rows('sections')) {
 };
 ?>
 
+
 <?php include 'includes/core/footer.php'; ?>

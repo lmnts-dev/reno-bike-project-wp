@@ -26,6 +26,7 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
 
 ?>
   <section class="member-row <?php echo get_sub_field('layout'); ?> member-row-<?php echo $idx ?>">
+  
     <?php if ( $headline ) { ?>
       <div class="section-header split">
         <h2>
@@ -35,8 +36,9 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
             <?php echo $headline ?>
           </span>
         </h2>
-    </div>
+      </div>
     <?php } ?>
+
     <?php foreach ($staffMembers as $member ) { ?>
       <div class="member-row-item">
         <div class="col img-col">

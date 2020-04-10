@@ -30,27 +30,8 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 
  //loop through events to create an array of upcoming events and past events
  foreach ($events as $event) { 
-   
-    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles')); 
-    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
-    $startDate = $startDate->modify('midnight'); //get start date
-    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
-    $formattedStartDate = $startDate->format('F j');
-    $endDate = DateTime::createFromFormat('Ymd', $event->end_date);
-    $formattedEndDate = $endDate ? $endDate->format('F j') : false;
-    $time = $event->time;
-    $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
-    $dateString = $time ? $dateString . ', ' . $time : $dateString;
 
-
-    // create event object
-    $eventObject = new stdClass();
-    $eventObject->title = $event->post_title;
-    $eventObject->excerpt = $event->post_excerpt;
-    $eventObject->date = $startDate->format('Y-m-d H:i:s');
-    $eventObject->link = get_post_permalink( $event ); 
-    $eventObject->image = get_the_post_thumbnail_url( $event );
-    $eventObject->displayDate = $dateString;
+    $eventObject = createEventObject( $event );
 
     // if event hasn't passed, add to upcoming events array else to past events
     if ( !$passedDate ) { 

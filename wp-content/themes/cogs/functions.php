@@ -776,3 +776,43 @@ add_action('after_setup_theme', 'custom_image_size');
 function sortDates($a, $b) {
 	return strtotime($a->date) - strtotime($b->date);
 }
+
+
+//add google maps api key for acf google maps 
+function my_acf_google_map_api( $api ){
+	$apis = get_field('api_keys', 'options');
+    $api['key'] = $apis['google_maps'];
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+//create event object, doing logic with its start and end dates
+function createEventObject( $event ){
+
+	//get todays date (12:00am), start date (12:00am) and end date, and decide if start date has passed
+    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles'));
+    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
+	$startDate = $startDate->modify('midnight');
+	$endDate = DateTime::createFromFormat('Ymd', $event->end_date); 
+    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
+	
+	//format dates
+	$formattedStartDate = $startDate->format('F j'); 
+	$formattedEndDate = $endDate ? $endDate->format('F j') : false;
+	
+	//create string of start date, end date and time
+    $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
+	$dateString = $event->time ? $dateString . ', ' . $event->time : $dateString;
+
+	$eventObject = new stdClass();
+	$eventObject->title = $event->post_title;
+	$eventObject->excerpt = $event->post_excerpt;
+	$eventObject->date = $startDate->format('Y-m-d H:i:s');
+	$eventObject->link = get_post_permalink( $event );
+	$eventObject->image = get_the_post_thumbnail_url( $event );
+	$eventObject->displayDate = $dateString;
+	$eventObject->passedDate = $passedDate;
+	
+	return $eventObject;
+} 

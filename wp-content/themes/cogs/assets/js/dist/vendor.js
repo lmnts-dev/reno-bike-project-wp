@@ -1359,9 +1359,7 @@ barba.init({
 
       initLazyLoad(); // Re-init our bicycle wheel script.
 
-      initBikeWheel(); // Re-init remove item from cart
-
-      initRemoveItem(); // Re-init our sliders
+      initBikeWheel(); // Re-init our sliders
 
       initSliders(); // Re-init social share buttons
 
