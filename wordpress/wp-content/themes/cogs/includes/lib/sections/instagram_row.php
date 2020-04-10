@@ -39,8 +39,9 @@ if (get_row_layout() == 'instagram_row' || $rowLayout == 'instagram_row') {
         </div>
 
         <div class="instagram-row-inner">
+            <?php echo do_shortcode('[instagram-feed]') ?>
 
-            <div class="post-container">
+            <!--<div class="post-container">
                 <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?bike" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
                 </a>
@@ -59,7 +60,7 @@ if (get_row_layout() == 'instagram_row' || $rowLayout == 'instagram_row') {
                 <a href="<?php echo $instaLink ?>" class="cover">
                     <img data-src="https://source.unsplash.com/1600x900/?pink" alt="<?php echo '@' . $instaHandle ?>" class="lazy" />
                 </a>
-            </div>
+            </div>-->
 
         </div>
     </section>

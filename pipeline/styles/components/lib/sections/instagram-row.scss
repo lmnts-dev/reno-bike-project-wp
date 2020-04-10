@@ -9,6 +9,18 @@
 
 .instagram-row {
     @extend .news-listings;
+    padding-left: $BaseGutterLeft;
+    padding-right: $BaseGutterRight;
+
+    @media (max-width: $BaseMediaMd) {
+        padding-right: $BaseGutterRightMd;
+        padding-left: $BaseGutterLeftMd;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+        padding-left: $BaseGutterLeftSm;
+        padding-right: $BaseGutterRightSm;
+    }
 
     .instagram-row-header {
         @extend .news-listings-header;
@@ -54,56 +66,62 @@
     .instagram-row-inner {
         @extend .news-listings-inner;
 
-        @media (max-width: $BaseMediaSm) {
-            padding-left: $BaseGutterLeftSm;
-            padding-right: $BaseGutterRightSm;
+        //hide things from plugin
+        .sb_instagram_header, #sbi_load {
+            display: none;
         }
 
-        .post-container {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            flex-wrap: wrap;
-            @media (max-width: $BaseMediaMd) {
-                padding-top: $Base;
-            }
+        //override plugin styles
+        #sb_instagram {
+            padding: 0 !important;
 
-            .cover {
-                flex: 1;
-                min-width: 26%;
-                padding-top: calc(33.33% - #{$Base / 3});
-                position: relative;
-                background: $clrPlaceholder;
-                margin-bottom: $Base / 2;
+            #sbi_images {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                flex-wrap: wrap;
+                padding: 0 !important;
 
-                @media (max-width: $BaseMediaSm) {
-                    min-width: 34%;
-                    padding-top: calc(50% - #{$Base / 4});
+                @media (max-width: $BaseMediaMd) {
+                    margin-top: $Base !important;
                 }
 
-                &:hover {
-                    box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
-                }
-
-                img {
-                    @include objectFit();
-                }
-
-                &:nth-of-type(3n-1){
-                    margin: 0 $Base / 2 $Base / 2 $Base / 2;
+                .sbi_item {
+                    flex: 1;
+                    min-width: 26%;
+                    padding-top: calc(33.33% - #{$Base / 3});
+                    position: relative;
+                    background: $clrPlaceholder;
+                    margin-bottom: $Base / 2 !important;
 
                     @media (max-width: $BaseMediaSm) {
-                        margin-left: 0;
-                        margin-right: 0;
+                        min-width: 34%;
+                        padding-top: calc(50% - #{$Base / 4});
+                    }
+
+                    &:hover {
+                        box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
+                    }
+
+                    img {
+                        @include objectFit();
+                    }
+
+                    &:nth-of-type(3n-1){
+                        margin: 0 $Base / 2 $Base / 2 $Base / 2 !important;;
+
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: 0 !important;;
+                            margin-right: 0 !important;;
+                        }
+                    }
+
+                    &:nth-of-type(2n){
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: $Base / 2 !important;;
+                        }
                     }
                 }
-
-                &:nth-of-type(2n){
-                    @media (max-width: $BaseMediaSm) {
-                        margin-left: $Base / 2;
-                    }
-                }
-
             }
         }
 
