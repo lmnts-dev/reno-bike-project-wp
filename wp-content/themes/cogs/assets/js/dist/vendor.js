@@ -1,5 +1,31 @@
 "use strict";
 
+var mapSections = document.querySelectorAll(".map-el");
+
+function initMap(id, zoom, lat, lng) {
+  var mapCenter = {
+    lat: lat,
+    lng: lng
+  };
+  var map = new google.maps.Map(document.querySelector(id), {
+    zoom: zoom,
+    center: mapCenter
+  });
+  var marker = new google.maps.Marker({
+    position: mapCenter,
+    map: map
+  });
+}
+
+for (var i = 0; i < mapSections.length; i++) {
+  var sectionId = mapSections[i].id;
+  var sectionZoom = mapSections[i].getAttribute('data-zoom');
+  var sectionLat = mapSections[i].getAttribute('data-lat');
+  var sectionLng = mapSections[i].getAttribute('data-lng');
+  initMap(sectionId, sectionZoom, sectionLat, sectionLng);
+}
+"use strict";
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 !function (t, n) {

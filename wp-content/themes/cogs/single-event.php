@@ -15,6 +15,8 @@
 
 <?php get_template_part('content', get_post_format()); ?>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api['key'] ?>"></script>
+
 <?php
     // Start the loop.
     while (have_posts()) : the_post();
@@ -24,6 +26,8 @@
     $twitterShareUrl = "https://twitter.com/intent/tweet?url=" . get_the_permalink() . "&text=" . get_the_title() . "&via=renobikeproject&hashtags=bikes,diy,community,reno,nevada" . get_the_tags();
     $fields = get_fields();
     $eventObject = createEventObject( $post );
+    $apis = get_field('api_keys', 'options');
+    $api['key'] = $apis['google_maps'];
 
     // Deprecated
     // $linkedInShareUrl = "https://www.linkedin.com/shareArticle?mini=true&url=" . get_the_permalink() . "&title=" . get_the_title() . "&summary=" . get_the_excerpt();
@@ -104,14 +108,11 @@
     </div>
 </article>
 
-
-<section class="article-details google-maps"> <!-- to swap with line below when gm is working -->
-    <?php if( $fields['google_maps_location'] ): ?>
-        <div class="acf-map" data-zoom="16">
-            <div class="marker" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>"></div>
-        </div>
-    <?php endif; ?>
-</div>
+<?php if( $fields['google_maps_location'] ): ?>
+    <section class="article-details google-maps">
+        <div class="acf-map map-el" id="map-<?php echo $idx ?>" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>" data-zoom="4"></div>
+    </div>
+<?php endif; ?>
 
 <?php if( '' !== $post->post_content ) { ?>
     <section class="article-details article-body">
@@ -158,3 +159,7 @@ endwhile;
 <?php addComponent("newsletter_row"); ?>
 
 <?php include 'includes/core/footer.php'; ?>
+
+
+
+
