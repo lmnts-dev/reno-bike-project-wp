@@ -15,11 +15,6 @@
 
 <?php include 'includes/lib/sections/page_hero.php'; ?>
 
-
-<section>
-    <h1>Page Template</h1>
-</section>
-
 <?php
 
 if (have_rows('sections')) {

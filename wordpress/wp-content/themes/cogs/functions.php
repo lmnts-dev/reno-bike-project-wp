@@ -178,7 +178,7 @@ function create_events_cpt()
 		'show_in_admin_bar' => true,
 		'show_in_nav_menus' => true,
 		'can_export' => true,
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'exclude_from_search' => false,
 		'show_in_rest' => true,
@@ -233,7 +233,7 @@ function create_membership_cpt()
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'rewrite' => false,
-		'menu_position' => 8,
+		'menu_position' => 4,
 		'show_in_admin_bar' => true,
 		'show_in_nav_menus' => false,
 		'can_export' => true,
@@ -241,7 +241,7 @@ function create_membership_cpt()
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -350,7 +350,7 @@ function create_press_cpt()
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'rewrite' => false,
-		'menu_position' => 8,
+		'menu_position' => 4,
 		'show_in_admin_bar' => true,
 		'show_in_nav_menus' => false,
 		'can_export' => true,
@@ -358,7 +358,7 @@ function create_press_cpt()
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -418,7 +418,7 @@ function create_staff_cpt()
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -819,3 +819,80 @@ function createEventObject( $event ){
 	
 	return $eventObject;
 } 
+
+
+
+// Custom Pagination
+function custom_pagination() {
+	global $wp_query;
+	$big = 999999999; // need an unlikely integer
+	$pages = paginate_links( array(
+		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format' => '?paged=%#%',
+		'current' => max( 1, get_query_var('paged') ),
+		'total' => $wp_query->max_num_pages,
+		'prev_next' => false,
+		'type'  => 'array',
+		'prev_next'   => true,
+		'prev_text'    => __( '«', 'text-domain' ),
+		'next_text'    => __( '»', 'text-domain'),
+	) );
+	$output = '';
+  
+	if ( is_array( $pages ) ) {
+		$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var( 'paged' );
+  
+		$output .=  '';
+		foreach ( $pages as $page ) {
+			$output .= "$page";
+		}
+		$output .= '';
+  
+		// Create an instance of DOMDocument 
+		$dom = new \DOMDocument();
+  
+		// Populate $dom with $output, making sure to handle UTF-8, otherwise
+		// problems will occur with UTF-8 characters.
+		$dom->loadHTML( mb_convert_encoding( $output, 'HTML-ENTITIES', 'UTF-8' ) );
+  
+		// Create an instance of DOMXpath and all elements with the class 'page-numbers' 
+		$xpath = new \DOMXpath( $dom );
+  
+		// http://stackoverflow.com/a/26126336/3059883
+		$page_numbers = $xpath->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' page-numbers ')]" );
+  
+		// Iterate over the $page_numbers node...
+		foreach ( $page_numbers as $page_numbers_item ) {
+  
+			// Add class="mynewclass" to the <li> when its child contains the current item.
+			$page_numbers_item_classes = explode( ' ', $page_numbers_item->attributes->item(0)->value );
+			if ( in_array( 'current', $page_numbers_item_classes ) ) {          
+				$list_item_attr_class = $dom->createAttribute( 'class' );
+				$list_item_attr_class->value = 'newClass';
+				$page_numbers_item->parentNode->appendChild( $list_item_attr_class );
+  
+				// Add data-barba-prevent
+				$list_item_attr_prevent = $dom->createAttribute( 'data-barba-prevent' );
+				$list_item_attr_prevent->value = 'preventBarba';
+				$page_numbers_item->parentNode->appendChild( $list_item_attr_prevent );
+			}
+  
+			// Replace the class 'current' with 'active'
+			$page_numbers_item->attributes->item(0)->value = str_replace( 
+							'current',
+							'active',
+							$page_numbers_item->attributes->item(0)->value );
+  
+			// Replace the class 'page-numbers' with 'page-link'
+			$page_numbers_item->attributes->item(0)->value = str_replace( 
+							'page-numbers',
+							'page-numbers barba-prevent',
+							$page_numbers_item->attributes->item(0)->value );
+		}
+		
+		// Save the updated HTML and output it.
+		$output = $dom->saveHTML();
+	}
+  
+	return $output;
+}

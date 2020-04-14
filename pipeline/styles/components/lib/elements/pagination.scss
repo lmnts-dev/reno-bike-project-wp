@@ -1,0 +1,87 @@
+////////////////////////////////////////
+//
+// Pagination Element
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.pagination {
+    padding: calc(#{$Base} / 4) 0;
+    margin: 0 auto;
+    min-width: 100%;
+
+    nav {
+      width: 100%;
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+      }
+
+      .page-numbers, .page {
+        font-weight: 700;
+        height: $Base;
+        width: $Base;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &:hover {
+          background: $clrSnow;
+        }
+
+        &:active {
+          background: darken($clrSnow, 5%);
+        }
+
+        &.next,
+        &.prev {
+          position: relative;
+          color: rgba($clrWhite, 0);
+
+          a {
+            color: rgba($clrWhite, 0);
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transition: all 0.25s ease;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-top: calc(#{$Base} * 0.15) solid transparent;
+            border-bottom: calc(#{$Base} * 0.15) solid transparent;
+            border-left: calc(#{$Base} * 0.15) solid $clrPrimary;
+          }
+        }
+
+        &.prev {
+          transform: rotate(180deg);
+        }
+
+        &.current {
+          background: $clrPrimary;
+          color: $clrWhite;
+        }
+
+        &.dots {
+          opacity: 0.6;
+
+          &:hover {
+            background: none;
+          }
+
+          &:active {
+            background: none;
+          }
+        }
+      }
+    }
+  }

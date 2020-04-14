@@ -6,7 +6,7 @@
 //
 ////////////////////////////////////////
 
-.news-listings {
+section.news-listings {
   position: relative;
   z-index: 5;
   padding-left: $BaseCardGutters;
@@ -15,6 +15,27 @@
   @media (max-width: $BaseMediaSm) {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  &.margin-top {
+    margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeft});
+    padding-top: 0;
+
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeftMd});
+      padding-top: 0;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
+      padding-top: 0;
+    }
+  }
+
+  .page-count {
+    @extend p;
+    padding-left: calc(#{$BaseCardPadding});
+    padding-right: calc(#{$BaseCardPadding});
   }
 
   .news-listings-header {
@@ -81,5 +102,9 @@
         display: block;
       }
     }
+  }
+
+  .pagination {
+    margin-bottom: $Base * 2;
   }
 }

@@ -42,9 +42,10 @@ $qualifyingEvents = [];
   //sort qualifying events array by date
   usort( $qualifyingEvents, 'sortDates');
 
-  //if user wants to show past events make qualifying events array reverse-chronological
+  //if user wants to show past events make qualifying events array reverse-chronological limited to 50 events
   if ( $whichEvents == 'past' ){
     $qualifyingEvents = array_reverse( $qualifyingEvents );
+    $qualifyingEvents = array_slice( $qualifyingEvents, 0, -50 );
   }
 
 ?>
