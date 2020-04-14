@@ -110,8 +110,27 @@
 </article>
 
 <?php if( $fields['google_maps_location'] ): ?>
-    <section class="article-details google-maps">
-        <div class="acf-map map-el" id="map-<?php echo $idx ?>" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>" data-zoom="10"></div>
+    <?php
+        // Loop over segments and construct HTML.
+        $address = '';
+        foreach( array('street_number', 'street_name', 'city', 'state', 'post_code') as $i => $k ) {
+            if ( $k == 'city' ) {
+                $seperator = ', ';
+            } else if ( $k == 'street_number' || $k == 'state' ) {
+                $seperator = ' ';
+            }
+            else {
+                $seperator = '.'; 
+            }
+            if( isset( $fields['google_maps_location'][ $k ] ) ) {
+                $address = $address . $fields['google_maps_location'][ $k ] . $seperator;
+            }
+        }
+
+        $idx = 'static';
+    ?>
+    <section class="article-details google-maps padding-top-none padding-bottom-none">
+        <div class="acf-map map-el" id="map-<?php echo $idx ?>" data-address="<?php echo $address ?>" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>" data-zoom="10"></div>
     </div>
 <?php endif; ?>
 
