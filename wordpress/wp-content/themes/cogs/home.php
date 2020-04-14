@@ -13,32 +13,16 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php 
-    //if on first page of pagination or there's no results
+<?php include 'includes/lib/sections/page_hero.php'; ?>
 
-    if (get_query_var( 'paged' ) == 0 || !have_posts() ){
-        //set global post as the page chosen as 'posts page' so data can be used in the page hero
-        global $post;
-        $post = get_post( get_option( 'page_for_posts' ));
-
-        //set up dynamic and static data for page hero
-        setup_postdata( $post );
-        $schema = array(
-            "layout" => "3",
-        );
-
-        //add page hero
-        addComponent("page_hero", $schema );
-
-        //reset posts query to original query
-        wp_reset_postdata(); 
-    }
-?>
+<?php (get_query_var( 'paged' ) == 0 || !have_posts() ) ? addComponent( "featured_news_slider" ) : null; ?>
 
 <section class="news-listings padding-top-half news-listings-archive <?php echo get_query_var( 'paged' ) > 0 ? 'margin-top' : ''; ?>">
+
     <?php if ( get_query_var( 'paged' ) > 0 ) { ?>
         <div class="page-count"> <?php echo get_query_var( 'paged' ) . ' / ' . $wp_query->max_num_pages . ' pages' ?></div>
     <?php }?>
+
     <div class="news-listings-inner">
         <?php if (have_posts()) { ?>
 
@@ -92,6 +76,25 @@
     </div>
 </section>
 
-<?php addComponent("newsletter_row"); ?>
+<?php
+    //set global post as the page chosen as 'posts page' so data can be used for the sections
+    global $post;
+    $post = get_post( get_option( 'page_for_posts' ));
+
+    if (have_rows('sections', $post )) {
+        $idx = 0; // Establish our index.
+
+        while (have_rows('sections')) {
+            the_row();
+
+            addComponent(get_row_layout());
+
+            $idx++; // Increment our index.
+        }
+    } 
+
+    //reset posts query to original query
+    wp_reset_postdata(); 
+?>
 
 <?php include 'includes/core/footer.php'; ?>
