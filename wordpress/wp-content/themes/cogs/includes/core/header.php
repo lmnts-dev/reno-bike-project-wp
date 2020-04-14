@@ -108,8 +108,10 @@ if ($featured_image == false) {
 
 <body data-barba="wrapper">
 
-    <span class="cursor"></span>
-    <span class="cursor-outline"></span>
+    <?php if (!$detect_device->isMobile() && !$detect_device->isTablet()) { ?>
+        <span class="cursor"></span>
+        <span class="cursor-outline"></span>
+    <?php } ?>
     <?php include 'navigation.php' ?>
 
     <main role="main" data-barba="container" data-barba-namespace="home">

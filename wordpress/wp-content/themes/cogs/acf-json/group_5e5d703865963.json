@@ -1394,6 +1394,46 @@
                             "layout": "vertical",
                             "return_format": "value",
                             "save_other_choice": 0
+                        },
+                        {
+                            "key": "field_5e95feacd8411",
+                            "label": "Tags To Filter Events By",
+                            "name": "tag_filter",
+                            "type": "repeater",
+                            "instructions": "Optional",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "Add Tag",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5e95ff77d8412",
+                                    "label": "Tag",
+                                    "name": "tag",
+                                    "type": "text",
+                                    "instructions": "Please write the exact tag you're filtering by. Spaces and capitalization matter.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
                         }
                     ],
                     "min": "",
@@ -2767,5 +2807,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586465324
+    "modified": 1586888857
 }

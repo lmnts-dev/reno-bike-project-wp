@@ -26,6 +26,7 @@ $args = array(
 $events = get_posts( $args );
 $headline = get_sub_field('headline');
 $whichEvents = get_sub_field('which_events');
+$tagFilters = get_sub_field('tag_filter');
 $qualifyingEvents = [];
 
  //loop through events to create an array of past, upcoming or all events
@@ -38,6 +39,27 @@ $qualifyingEvents = [];
       array_push( $qualifyingEvents, $eventObject );
     } 
   }
+
+
+  //if there are tags to filter by, loop through events, check for tags and remove event if it doesn't have any tag
+  if ( $tagFilters && count($tagFilters) > 0 ){
+
+    foreach ($qualifyingEvents as $key=>$event) { 
+
+      $containsTags = false;
+      if ( $event->tags != null ) {
+        foreach ( $tagFilters as $filter ){
+          if ( in_array( implode($filter), $event->tags ) ){
+            $containsTags = true;
+          }
+        }
+      }
+
+      if ( !$containsTags ){
+        unset( $qualifyingEvents[$key] );
+      }
+    }
+  } 
 
   //sort qualifying events array by date
   usort( $qualifyingEvents, 'sortDates');

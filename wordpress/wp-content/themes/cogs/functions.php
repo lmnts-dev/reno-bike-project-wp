@@ -808,6 +808,15 @@ function createEventObject( $event ){
     $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
 	$dateString = $event->time ? $dateString . ', ' . $event->time : $dateString;
 
+	//turn array of tag objects into array of tag strings
+	$tags = get_the_tags( $event );
+	if ( !is_wp_error( $tags ) && false !== $tags ) {
+		foreach ( $tags as $key=>$tag ) {
+			$replacement = array($key => $tag->name);
+			$tags = array_replace( $tags, $replacement);
+		}
+	}
+
 	$eventObject = new stdClass();
 	$eventObject->title = $event->post_title;
 	$eventObject->excerpt = $event->post_excerpt;
@@ -816,6 +825,8 @@ function createEventObject( $event ){
 	$eventObject->image = get_the_post_thumbnail_url( $event );
 	$eventObject->displayDate = $dateString;
 	$eventObject->passedDate = $passedDate;
+	$eventObject->tags = $tags;
+	
 	
 	return $eventObject;
 } 
