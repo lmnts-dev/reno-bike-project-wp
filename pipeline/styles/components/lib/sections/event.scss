@@ -235,10 +235,12 @@ section.article-details {
                 padding: $Base;
                 flex: 1;
                 color: white;
+                max-width: 50%;
 
                 @media (max-width: $BaseMediaSm) {
                     margin-top: $BaseGutterLeftSm;
                     padding: $Base $BaseGutterLeftSm;
+                    max-width: 100%;
                 }
                 
                 &.prev-post {
@@ -298,6 +300,13 @@ section.article-details {
 
                         .arrow:after {
                             transform: translate(0px, -50%);
+                        }
+                    }
+
+                    &:first-of-type {
+                        margin-left: 50%;
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: 0;
                         }
                     }
                 }
