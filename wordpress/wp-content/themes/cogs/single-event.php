@@ -15,7 +15,8 @@
 
 <?php get_template_part('content', get_post_format()); ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api['key'] ?>"></script>
+<?php $apis = get_field('api_keys', 'options');?>
+<script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
 
 <?php
     // Start the loop.
@@ -110,7 +111,7 @@
 
 <?php if( $fields['google_maps_location'] ): ?>
     <section class="article-details google-maps">
-        <div class="acf-map map-el" id="map-<?php echo $idx ?>" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>" data-zoom="4"></div>
+        <div class="acf-map map-el" id="map-<?php echo $idx ?>" data-lat="<?php echo esc_attr($fields['google_maps_location']['lat']); ?>" data-lng="<?php echo esc_attr($fields['google_maps_location']['lng']); ?>" data-zoom="10"></div>
     </div>
 <?php endif; ?>
 
