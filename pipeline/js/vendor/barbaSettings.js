@@ -39,6 +39,11 @@ barba.init({
   ]
 });
 
+barba.hooks.after(() => {
+  ga('set', 'page', window.location.pathname);
+  ga('send', 'pageview');
+});
+
 // // dummy example to illustrate rules and hooks
 // barba.init({
 //   transitions: [{

@@ -41,6 +41,15 @@
       },
       {
         "type": "header",
+        "content": "Analytics"
+      },
+      {
+        "type": "text",
+        "id": "google-analytics-id",
+        "label": "Google Analytics ID"
+      },
+      {
+        "type": "header",
         "content": "Socials"
       },
       {

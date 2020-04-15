@@ -14,16 +14,26 @@
 /** Variables */
 /*************************************/
 
-$headerText = get_sub_field('header_text');
-$headerSize = get_sub_field('header_size');
-$paragraphText = get_sub_field('paragraph_text');
-$buttons = get_sub_field('buttons');
-$alignment = get_sub_field('alignment');
+
 
 if (get_row_layout() == 'basic_section' || $rowLayout == 'basic_section') {
+    if ( get_row_layout() ){
+        $headerText = get_sub_field('header_text');
+        $headerSize = get_sub_field('header_size');
+        $paragraphText = get_sub_field('paragraph_text');
+        $buttons = get_sub_field('buttons');
+        $alignment = get_sub_field('alignment');
+    }
+    else {
+        $headerText = $headerText ? $headerText : get_the_title();
+        $headerSize = $headerSize ? $headerSize : 'h3';
+        $paragraphText = $paragraphText ? $paragraphText : '<p>' . get_the_excerpt() . '</p>';
+        $buttons = $buttons ? $buttons : false;
+        $alignment = $alignment ? $alignment : 'left';
+    }
 
 ?>
-  <section class="basic-section padding-top-half <?php echo get_sub_field('layout') . 'align-' . $alignment; ?> basic-section-<?php echo $idx ?>"> 
+  <section class="basic-section <?php echo get_sub_field('layout') . 'align-' . $alignment; ?> basic-section-<?php echo $idx ?>"> 
     <div class="basic-section-inner">
         <div class="section-header">
             <h3 class="<?php echo $headerSize ?>">
