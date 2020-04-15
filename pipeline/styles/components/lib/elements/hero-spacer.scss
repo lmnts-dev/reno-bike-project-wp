@@ -1,0 +1,18 @@
+////////////////////////////////////////
+//
+// Hero Spacer Component
+// To add above hero-like elements to bump it away from the nav
+//
+// @author Alisha Garric
+// @since 4/2020
+//
+////////////////////////////////////////
+
+.hero-spacer {
+    width: 100%;
+    padding-top: $BaseNavSizeLg;
+  
+    @media (max-width: $BaseMediaSm) {
+      padding-top: $BaseNavSizeSm;
+    }
+  }

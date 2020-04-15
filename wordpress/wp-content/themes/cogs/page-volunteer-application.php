@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * Default Page Template
+ * Volunteer Application Page Template
  * 
  * @author Peter Laxalt
  * @since 2/2020
