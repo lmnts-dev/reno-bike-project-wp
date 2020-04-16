@@ -14,12 +14,19 @@
     padding-right: calc(#{$Base} / 2);
   }
 
+
   .editorial-row-inner {
     display: flex;
     flex-wrap: nowrap;
 
     @media (max-width: $BaseMediaSm) {
       display: block;
+    }
+
+    &.ratio-equal {
+      .col.content-col, .col.img-col {
+        width: 50%;
+      }
     }
 
     img {
@@ -48,13 +55,23 @@
           width: 100%;
           max-width: 450px;
 
-          .squiggle {
-            display: block;
-            line-height: 0;
-            width: 100px;
-            height: 2px;
-            margin-bottom: $Base / 2;
-            background: $clrGold;
+          &.squiggle-pos-2 .squiggle-horizontal {
+            transform: translateX(-80%);
+
+            @media (max-width: $BaseMediaMd) {
+              transform: translateX(-50%);
+            }
+          }
+
+          &.squiggle-pos-3 {
+            position: relative;
+
+            .squiggle-vertical {
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: translateY(-100%);
+            }
           }
 
           h4 {
@@ -82,8 +99,28 @@
           background: $clrPlaceholder;
           position: relative;
 
-          img {
+          &.img-bump {
+            margin-right: $BaseGutterRight;
+
+            @media (max-width: $BaseMediaMd) {
+              margin-right: $BaseGutterRightMd;
+            }
+    
+            @media (max-width: $BaseMediaSm) {
+              margin-right: 0;
+            }
+          }
+
+          img:not(.img-contain) {
             @include objectFit();
+          }
+
+          img.img-contain {
+            @include objectFit(contain);
+
+            &.loaded {
+              background: $clrWhite;
+            }
           }
         }
 
@@ -155,6 +192,20 @@
 
           &.img-col-alt {
             justify-content: space-between;
+          }
+
+          .editorial-row-img.img-bump {
+            margin-right: 0;
+            margin-left: $BaseGutterLeft;
+
+            @media (max-width: $BaseMediaMd) {
+              margin-right: 0;
+              margin-left: $BaseGutterLeftMd;
+            }
+    
+            @media (max-width: $BaseMediaSm) {
+              margin-left: 0;
+            }
           }
         }
       }
