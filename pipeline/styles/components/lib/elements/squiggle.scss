@@ -31,4 +31,9 @@
 
 .squiggle-vertical {
   transform-origin: left bottom;
+  margin-bottom: $Base;
+
+  @media (max-width: $BaseMediaSm) {
+    margin-bottom: $Base / 2;
+  }
 }

@@ -19,6 +19,13 @@ section.block-row {
     }
   }
 
+  //change up the colors if there's three block rows in a row
+  + .block-row + .block-row {
+    .block-row-inner .block-item:first-of-type .block-item-cover {
+      background-color: $clrPrimary;
+    }
+  }
+
   &:last-of-type {
     padding-bottom: $BasePadding;
     @media (max-width: $BaseMediaSm) {

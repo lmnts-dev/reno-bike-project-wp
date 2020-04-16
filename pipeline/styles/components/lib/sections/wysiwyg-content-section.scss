@@ -11,6 +11,21 @@
     margin-top: 0 !important;
     margin-bottom: 0;
     padding-bottom: $BaseGutter !important;
+    
+    .wysiwyg-content-section-inner {
+        position: relative;
+    }
+
+    .squiggle-vertical {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(calc(-100% - #{$Base}));
+
+        @media (max-width: $BaseMediaSm) {
+            display: none;
+        }
+    }
 
     img {
         width: 100%;

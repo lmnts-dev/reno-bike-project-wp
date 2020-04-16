@@ -2132,6 +2132,58 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_5e9894cd227f2",
+                            "label": "Lead Content with a squiggle?",
+                            "name": "lead_content_with_a_squiggle",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5e9894ee227f3",
+                            "label": "Squiggle Color",
+                            "name": "squiggle_color",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5e9894cd227f2",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "primary": "Pink",
+                                "yellow": "Yellow",
+                                "orange": "Orange"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "primary",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -2807,5 +2859,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586888857
+    "modified": 1587058342
 }
