@@ -14,7 +14,7 @@
 <?php include 'includes/core/header.php'; ?>
 
 <section>
-    <h1>Archive Template</h1>
+    <h1>Archive Template 1</h1>
 </section>
 
 <?php addComponent("newsletter_row"); ?>

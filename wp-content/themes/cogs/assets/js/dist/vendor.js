@@ -2,27 +2,40 @@
 
 var mapSections = document.querySelectorAll(".map-el");
 
-function initMap(id, zoom, lat, lng) {
-  var mapCenter = {
-    lat: lat,
-    lng: lng
-  };
-  var map = new google.maps.Map(document.querySelector(id), {
+function initMap(id, zoom, lat, lng, addy) {
+  var map = new google.maps.Map(document.getElementById(id), {
     zoom: zoom,
-    center: mapCenter
+    center: {
+      lat: lat,
+      lng: lng
+    }
   });
   var marker = new google.maps.Marker({
-    position: mapCenter,
+    position: {
+      lat: lat,
+      lng: lng
+    },
     map: map
+  }); // Create info window.
+
+  var infowindow = new google.maps.InfoWindow({
+    content: addy
+  }); // Show info window when marker is clicked.
+
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.open(map, marker);
   });
 }
 
 for (var i = 0; i < mapSections.length; i++) {
   var sectionId = mapSections[i].id;
-  var sectionZoom = mapSections[i].getAttribute('data-zoom');
-  var sectionLat = mapSections[i].getAttribute('data-lat');
-  var sectionLng = mapSections[i].getAttribute('data-lng');
-  initMap(sectionId, sectionZoom, sectionLat, sectionLng);
+  var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
+  var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
+  var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
+  var sectionAddress = mapSections[i].getAttribute('data-address');
+  var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
+  var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
+  initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
 }
 "use strict";
 
@@ -1394,6 +1407,10 @@ barba.init({
       initVideoOverlay();
     }
   }]
+});
+barba.hooks.after(function () {
+  ga('set', 'page', window.location.pathname);
+  ga('send', 'pageview');
 }); // // dummy example to illustrate rules and hooks
 // barba.init({
 //   transitions: [{
