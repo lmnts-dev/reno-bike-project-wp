@@ -13,9 +13,7 @@
 /************************************/
 
 $cta = get_field('navigation_bar', 'option')['call_to_action'];
-$nav = wp_nav_menu(array('menu' => 'primary', 'echo' => false ));
-$nav = str_replace( '<ul class="sub-menu">', '<input type="checkbox"><ul class="sub-menu">', $nav );
-$nav = str_replace( '<a href', '<a class="nav-overlay-toggle" href', $nav );
+$navItems = wp_get_nav_menu_items('Primary Navigation');
 
 ?>
 
@@ -29,7 +27,42 @@ $nav = str_replace( '<a href', '<a class="nav-overlay-toggle" href', $nav );
             <div class="exit nav-overlay-toggle" id="overlay-exit"></div>
         </div>
         <nav class="overlay-nav">
-            <?php echo $nav ?>
+        <div class="menu-primary-navigation-container">
+            <ul class="menu" id="menu-primary-navigation-1">
+                <?php foreach ( $navItems as $item ){ ?>
+                    <?php 
+                        $parent = false;
+                        foreach ( $navItems as $tempItem ){
+                            if (  $tempItem->menu_item_parent == $item->ID ){
+                                $parent = true;
+                                break;
+                            }
+                        }
+                    ?>
+                    <?php if ( $item->menu_item_parent == 0 ){ ?>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page <?php echo $parent ? 'menu-item-has-children' : '' ?> menu-item-<?php echo $item->ID ?>">
+                            <a href="<?php echo $item->url ?>" class="nav-overlay-toggle">
+                                <?php echo $item->title ?>
+                            </a>
+                            <?php if ($parent) {?>
+                                <input type="checkbox" id="toggle-<?php echo $item->ID ?>" name="toggle"/>
+                                <label for="toggle-<?php echo $item->ID ?>"></label>
+                                <ul class="sub-menu">
+                                    <?php foreach ( $navItems as $subItem ){ ?>
+                                        <?php if ( $subItem->menu_item_parent == $item->ID ){ ?>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-<?php echo $subItem->ID ?>">
+                                                <a href="<?php echo $subItem->url ?>" class="nav-overlay-toggle">
+                                                    <?php echo $subItem->title ?>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </ul>
+                            <?php }?>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
         </nav>
         <div class="overlay-nav-cta">
           <a href="<?php echo $cta['button_url'] ?>">

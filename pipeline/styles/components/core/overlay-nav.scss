@@ -6,6 +6,7 @@
 // }
 
 $overlayNavWidth: 450px;
+$linkHeight: 67px;
 
 .nav-item-styles {
   color: $clrBlack;
@@ -223,18 +224,45 @@ $overlayNavWidth: 450px;
             border-top: 1px solid rgba($clrChrome, 0.2);
             position: relative;
 
+            &.menu-item-has-children > a::before {
+              content: '';
+              position: absolute;
+              right: $Base * 2.25;
+              width: 1px;
+              top: 0;
+              background-color: rgba($clrChrome, 0.2);
+              height: 100%;
+            }
+
             input[type="checkbox"] {
+              display: none;
+
+              &:checked + label {
+                &:before {
+                  transform: rotate(45deg);
+                }
+
+                &:after {
+                  transform: rotate(135deg);
+                }
+
+                ~ .sub-menu {
+                  max-height: $Base * 100;
+                }
+              }
+            }
+
+            label {
               display: block;
               background-color: transparent;
               position: absolute;
-              right: $Base / 2;
-              top: $Base / 2;
-              height: $Base;
-              width: $Base;
+              right: 0;
+              top: 0;
+              height: $linkHeight;
+              width: $Base * 2.25;
+              cursor: pointer;
 
               @media (max-width: $BaseMediaSm) {
-                // height: $Base / 1.5;
-                // width: $Base / 1.5;
                 right: $Base / 4;
               }
 
@@ -249,13 +277,13 @@ $overlayNavWidth: 450px;
                 );
                 border: none;
                 position: absolute;
-                top: 0;
+                top: calc(50% - #{$Base} / 3);
                 height: calc(#{$Base} / 1.5);
                 width: calc(#{$Base} / 1.5);
                 margin: 0;
                 transition-duration: 0.25s;
-                left: auto;
-                cursor: pointer;
+                left: calc(50% - #{$Base} / 3);
+                
 
                 @media (max-width: $BaseMediaSm) {
                   height: $Base / 1.5;
@@ -276,20 +304,6 @@ $overlayNavWidth: 450px;
                   $clrBlack calc(50% + 1.5px),
                   transparent calc(50% + 1.5px)
                 );
-              }
-
-              &:checked {
-                &:before {
-                  transform: rotate(45deg);
-                }
-
-                &:after {
-                  transform: rotate(135deg);
-                }
-
-                ~ .sub-menu {
-                  max-height: $Base * 100;
-                }
               }
             }
 
