@@ -12,8 +12,18 @@
 ?>
 
 <?php include 'includes/core/header.php'; ?>
+<?php
+    if ( get_query_var( 'paged' ) == 0 || !have_posts() ) {
+        $schema = array(
+            'headline' => get_the_archive_title(),
+            'excerpt' => ' ',
+            'image' => get_the_post_thumbnail_url()
+        );
+        addComponent( "page_hero", $schema );
+    }
+?>
 
-<?php (get_query_var( 'paged' ) == 0 || !have_posts() ) ? addComponent( "page_hero" ) : null; ?>
+
 
 <section class="news-listings padding-top-half news-listings-archive <?php echo get_query_var( 'paged' ) > 0 ? 'margin-top' : ''; ?>">
 
@@ -39,9 +49,11 @@
                         <span class="title">
                         <?php echo $article->post_title ?>
                         </span>
-                        <p class="excerpt">
-                        <?php echo $article->post_excerpt ?>
-                        </p>
+                        <?php if ( $article->post_excerpt ) { ?>
+                            <p class="excerpt">
+                                <?php echo $article->post_excerpt ?>
+                            </p>
+                        <?php } ?>
                     </div>
 
                     <div class="actions">

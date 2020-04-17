@@ -39,9 +39,11 @@
                         <span class="title">
                         <?php echo $article->post_title ?>
                         </span>
-                        <p class="excerpt">
-                        <?php echo $article->post_excerpt ?>
-                        </p>
+                        <?php if ( $article->post_excerpt ) { ?>
+                            <p class="excerpt">
+                                <?php echo $article->post_excerpt ?>
+                            </p>
+                        <?php } ?>
                     </div>
 
                     <div class="actions">

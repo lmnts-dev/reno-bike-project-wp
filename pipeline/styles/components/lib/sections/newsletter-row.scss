@@ -135,6 +135,7 @@ section.newsletter-row {
             background: none;
             border-bottom: $clrWhite 1px solid;
             color: $clrWhite;
+            border-radius: 0;
 
             @media (max-width: $BaseMediaSm) {
               font-size: 1rem;

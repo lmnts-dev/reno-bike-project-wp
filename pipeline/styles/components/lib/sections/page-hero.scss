@@ -304,6 +304,8 @@ section.page-hero {
             margin-bottom: calc(#{$Base} / 2);
             -webkit-text-stroke: none;
             -webkit-text-fill-color: $clrBlack;
+            max-width: 650px;
+            
 
             @media (max-width: $BaseMediaMd) {
               margin-bottom: 0;
@@ -311,6 +313,14 @@ section.page-hero {
 
             @media (max-width: $BaseMediaSm) {
               margin-top: 0;
+            }
+          }
+
+          h1, p {
+            margin-right: $Base * 2;
+
+            @media (max-width: $BaseMediaSm) {
+              margin-right: 0;
             }
           }
         }

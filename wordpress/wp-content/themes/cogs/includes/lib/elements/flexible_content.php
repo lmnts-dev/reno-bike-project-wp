@@ -1,5 +1,5 @@
 <?php if ( get_row_layout() == "paragraph_text") { ?>
-        <p><?php echo get_sub_field('text')?></p>
+    <?php echo get_sub_field('text')?>
 
 
 <?php } else if ( get_row_layout() == "header_text") { ?>

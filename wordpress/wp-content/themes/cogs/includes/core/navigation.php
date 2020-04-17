@@ -26,7 +26,7 @@ $logos = get_field('logos', 'option');
   <div class="nav-inner">
     <div class="nav-col nav-col-1">
       <div class="nav-branding">
-        <a href="/">
+        <a href="/" class="nav-overlay-toggle">
           <img src="<?php echo $logos['logo_light'] ?>" alt="{{ shop.name }}">
         </a>
       </div>

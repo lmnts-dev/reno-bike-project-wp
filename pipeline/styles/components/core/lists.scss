@@ -1,6 +1,6 @@
 // Lists Component
 
-$SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .focus, article";
+$SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .focus, article, .text-content";
 
 // Default Styles
 
@@ -27,6 +27,7 @@ $SupportedClasses: ".split-focus-icon-wrapper, .split-focus-advanced-wrapper, .f
     li {
       position: relative;
       padding-left: $Base/3;
+      padding-bottom: $Base/3;
       // font-family: $FntBodyMedium;
 
       &:before {

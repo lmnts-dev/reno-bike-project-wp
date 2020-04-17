@@ -26,6 +26,9 @@
     &.ratio-equal {
       .col.content-col, .col.img-col {
         width: 50%;
+        @media (max-width: $BaseMediaSm) {
+          width: 100%;
+        }
       }
     }
 

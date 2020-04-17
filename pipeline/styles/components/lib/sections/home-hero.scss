@@ -57,9 +57,19 @@ section.home-hero {
           position: absolute;
           top: calc(#{$Base} / 2.3);
           right: 0;
-          width: calc(100vw - (#{$mobileBikeWheelSize} + (#{$Base} * 2)));
+          width: calc(100vw - (#{$mobileBikeWheelSize} + (#{$Base} * 1)));
           background: $clrBlack;
           color: $clrWhite;
+
+          //for smaller than iphone 6
+          @media (max-width: 374px ) {
+            text-overflow: clip;
+            overflow: hidden;
+            white-space: nowrap;
+            justify-content: flex-start;
+            padding-right: 0;
+            font-size: 11px;
+          }
 
           &:hover {
             border-color: $clrBlack;
