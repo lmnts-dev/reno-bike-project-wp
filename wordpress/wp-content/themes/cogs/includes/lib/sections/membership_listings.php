@@ -7,7 +7,6 @@
  * @since 2/2020
  */
 
- //TODO: Icon
 /*************************************/
 /** Variables */
 /*************************************/
@@ -48,7 +47,7 @@ if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listi
           <div class="membership-listing-card-inner">
             <div class="card-top">
               <div class="title">
-                <span class="icon <?php echo $membership->icon ?>"></span>
+                <span class='icon fas fa-<?php echo get_field('icon_id', $membership->ID ) ?> txt-clr-primary'></span>
                 <span class="name"><?php echo get_the_title( $membership ) ?></span>
               </div>
               <p>

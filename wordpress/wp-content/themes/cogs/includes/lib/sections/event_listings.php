@@ -7,8 +7,6 @@
  * @since 2/2020
  */
 
-//TODO: Icon
-
 /*************************************/
 /** Variables */
 /*************************************/
@@ -62,7 +60,7 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 
     <?php if ( $headline ) { ?>
       <div class="section-header">
-        <span class="icon bg-clr-mustard"></span>
+        <span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span>
         <h3>
           <?php echo $headline ?>
         </h3>

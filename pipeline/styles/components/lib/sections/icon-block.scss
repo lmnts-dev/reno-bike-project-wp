@@ -44,8 +44,7 @@
       display: block;
       height: calc(#{$Base} * 1.5);
       width: calc(#{$Base} * 1.5);
-      background-color: $clrPrimary;
-      border-radius: 50%;
+      font-size: calc(#{$Base} * 1.5);
       margin: 0 auto;
       margin-bottom: calc(#{$Base} / 2);
     }

@@ -31,6 +31,7 @@ if (get_row_layout() == 'instagram_row' || $rowLayout == 'instagram_row') {
 
         <div class="instagram-row-header">
             <h3>
+                <?php include get_template_directory() . '/includes/lib/svg/instagram.php' ?>
                 <a href="<?php echo $instaLink ?>">@<?php echo $instaHandle ?></a>
             </h3>
             <a href="<?php echo $instaLink ?>" class="btn btn-border-black">

@@ -316,6 +316,53 @@
                                     "mime_types": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_5e99e845838ed",
+                            "label": "Icon ID",
+                            "name": "icon_id",
+                            "type": "text",
+                            "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "hand-peace",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e99e893838ee",
+                            "label": "Icon Color",
+                            "name": "icon_color",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "primary": "Pink",
+                                "mustard": "Mustard",
+                                "orange": "Orange",
+                                "black": "Black",
+                                "white": "White",
+                                "gunmetal": "Grey"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "primary",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -669,6 +716,89 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_5e989c7ef3ca8",
+                            "label": "Buttons",
+                            "name": "buttons",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 2,
+                            "layout": "table",
+                            "button_label": "Add Button",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5e989cbdf3ca9",
+                                    "label": "Call to Action Label",
+                                    "name": "call_to_action_",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5e989cd3f3caa",
+                                    "label": "Call to Action URL",
+                                    "name": "call_to_action_url",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5e989cf3f3cab",
+                                    "label": "Button Style",
+                                    "name": "button_style",
+                                    "type": "radio",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "default": "Default",
+                                        "file": "Download File"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "default_value": "",
+                                    "layout": "vertical",
+                                    "return_format": "value",
+                                    "save_other_choice": 0
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_5e5dcef1aa4b3",
                             "label": "Image 1",
                             "name": "image_1",
@@ -813,13 +943,46 @@
                             "save_other_choice": 0
                         },
                         {
+                            "key": "field_5e99e8f2524ad",
+                            "label": "Decor Type",
+                            "name": "decor_type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "squiggle": "Squiggle",
+                                "icon": "Icon",
+                                "none": "None"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "squiggle",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
+                        {
                             "key": "field_5e989af159558",
                             "label": "Squiggle Color",
                             "name": "squiggle_color",
                             "type": "radio",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5e99e8f2524ad",
+                                        "operator": "==",
+                                        "value": "squiggle"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -844,7 +1007,15 @@
                             "type": "radio",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5e99e8f2524ad",
+                                        "operator": "==",
+                                        "value": "squiggle"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -863,87 +1034,67 @@
                             "save_other_choice": 0
                         },
                         {
-                            "key": "field_5e989c7ef3ca8",
-                            "label": "Buttons",
-                            "name": "buttons",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
+                            "key": "field_5e99e959524ae",
+                            "label": "Icon ID",
+                            "name": "icon_id",
+                            "type": "text",
+                            "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                            "required": 1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5e99e8f2524ad",
+                                        "operator": "==",
+                                        "value": "icon"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "collapsed": "",
-                            "min": 0,
-                            "max": 2,
-                            "layout": "table",
-                            "button_label": "Add Button",
-                            "sub_fields": [
-                                {
-                                    "key": "field_5e989cbdf3ca9",
-                                    "label": "Call to Action Label",
-                                    "name": "call_to_action_",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
-                                },
-                                {
-                                    "key": "field_5e989cd3f3caa",
-                                    "label": "Call to Action URL",
-                                    "name": "call_to_action_url",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
-                                },
-                                {
-                                    "key": "field_5e989cf3f3cab",
-                                    "label": "Button Style",
-                                    "name": "button_style",
-                                    "type": "radio",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "choices": {
-                                        "default": "Default",
-                                        "file": "Download File"
-                                    },
-                                    "allow_null": 0,
-                                    "other_choice": 0,
-                                    "default_value": "",
-                                    "layout": "vertical",
-                                    "return_format": "value",
-                                    "save_other_choice": 0
-                                }
-                            ]
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e99e974524af",
+                            "label": "Icon Color",
+                            "name": "icon_color",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5e99e8f2524ad",
+                                        "operator": "==",
+                                        "value": "icon"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "primary": "Pink",
+                                "mustard": "Mustard",
+                                "orange": "Orange",
+                                "black": "Black",
+                                "white": "White",
+                                "gunmetal": "Grey"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "mustard",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -1500,6 +1651,53 @@
                                 "id": ""
                             },
                             "return_format": "url"
+                        },
+                        {
+                            "key": "field_5e99e6f672339",
+                            "label": "Icon ID",
+                            "name": "icon_id",
+                            "type": "text",
+                            "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "thumbs-up",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e99e70f7233a",
+                            "label": "Icon Color",
+                            "name": "icon_color",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "primary": "Pink",
+                                "mustard": "Mustard",
+                                "orange": "Orange",
+                                "black": "Black",
+                                "white": "White",
+                                "gunmetal": "Grey"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "orange",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -1712,9 +1910,28 @@
                                 },
                                 {
                                     "key": "field_5e6a6dee502a6",
-                                    "label": "Icon",
-                                    "name": "icon",
-                                    "type": "image",
+                                    "label": "Icon ID",
+                                    "name": "icon_id",
+                                    "type": "text",
+                                    "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "question-circle",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5e99e4ade3bdb",
+                                    "label": "Icon Color",
+                                    "name": "icon_color",
+                                    "type": "radio",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -1723,16 +1940,20 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "return_format": "array",
-                                    "preview_size": "medium",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": ""
+                                    "choices": {
+                                        "primary": "Pink",
+                                        "mustard": "Mustard",
+                                        "orange": "Orange",
+                                        "black": "Black",
+                                        "white": "White",
+                                        "gunmetal": "Grey"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "default_value": "primary",
+                                    "layout": "vertical",
+                                    "return_format": "value",
+                                    "save_other_choice": 0
                                 }
                             ]
                         }
@@ -2150,70 +2371,15 @@
                                     "min": "",
                                     "max": ""
                                 },
-                                "layout_5e6ad65dfe72c": {
-                                    "key": "layout_5e6ad65dfe72c",
-                                    "name": "icon",
-                                    "label": "Icon",
-                                    "display": "block",
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_5e6ad664fe72d",
-                                            "label": "Image",
-                                            "name": "image",
-                                            "type": "image",
-                                            "instructions": "",
-                                            "required": 1,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "return_format": "array",
-                                            "preview_size": "medium",
-                                            "library": "all",
-                                            "min_width": "",
-                                            "min_height": "",
-                                            "min_size": "",
-                                            "max_width": "",
-                                            "max_height": "",
-                                            "max_size": "",
-                                            "mime_types": ""
-                                        },
-                                        {
-                                            "key": "field_5e6ad699fe72e",
-                                            "label": "Width",
-                                            "name": "width",
-                                            "type": "number",
-                                            "instructions": "Width in pixels on desktop",
-                                            "required": 1,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": 50,
-                                            "placeholder": "",
-                                            "prepend": "",
-                                            "append": "",
-                                            "min": "",
-                                            "max": "",
-                                            "step": ""
-                                        }
-                                    ],
-                                    "min": "",
-                                    "max": ""
-                                },
                                 "layout_5e6ad7a8a93d9": {
                                     "key": "layout_5e6ad7a8a93d9",
                                     "name": "squiggly",
-                                    "label": "Squiggly",
+                                    "label": "Squiggle",
                                     "display": "block",
                                     "sub_fields": [
                                         {
                                             "key": "field_5e6ad7b8a93da",
-                                            "label": "Squiggly Color",
+                                            "label": "Squiggle Color",
                                             "name": "squiggly_color",
                                             "type": "radio",
                                             "instructions": "",
@@ -2232,6 +2398,63 @@
                                             "allow_null": 0,
                                             "other_choice": 0,
                                             "default_value": "",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
+                                "layout_5e99ee612e6f6": {
+                                    "key": "layout_5e99ee612e6f6",
+                                    "name": "icon",
+                                    "label": "Icon",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5e99ee772e6f7",
+                                            "label": "Icon ID",
+                                            "name": "icon_id",
+                                            "type": "text",
+                                            "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_5e99ee872e6f8",
+                                            "label": "Icon Color",
+                                            "name": "icon_color",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "primary": "Pink",
+                                                "mustard": "Mustard",
+                                                "orange": "Orange",
+                                                "black": "Black",
+                                                "white": "White",
+                                                "gunmetal": "Grey"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "mustard",
                                             "layout": "vertical",
                                             "return_format": "value",
                                             "save_other_choice": 0
@@ -3048,5 +3271,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587060902
+    "modified": 1587146523
 }

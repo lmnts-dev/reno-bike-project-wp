@@ -31,6 +31,22 @@
             justify-content: center;
         }
 
+        svg {
+            height: $Base * 1.5;
+            width: $Base * 1.5;
+            font-size: $Base * 1.5;
+            width: 100%;
+
+            path {
+                fill: $clrPrimary;
+            }
+        }
+
+        .btn {
+            bottom: 0;
+            transform: none;
+        }
+
         a {
             color: $clrBlack;
 

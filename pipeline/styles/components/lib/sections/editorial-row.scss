@@ -55,6 +55,13 @@
           width: 100%;
           max-width: 450px;
 
+          .icon {
+            height: 60px;
+            width: 60px;
+            font-size: 60px;
+            margin-bottom: $Base / 2;
+          }
+
           &.squiggle-pos-2 .squiggle-horizontal {
             transform: translateX(-80%);
 

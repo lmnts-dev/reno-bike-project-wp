@@ -148,6 +148,62 @@
                     "toolbar": "basic",
                     "media_upload": 0,
                     "delay": 0
+                },
+                {
+                    "key": "field_5e99f13b9dfaa",
+                    "label": "Icon with Link",
+                    "name": "icon_with_link",
+                    "type": "repeater",
+                    "instructions": "Ex. an RSVP link to facebook",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e99f17f9dfab",
+                            "label": "Icon ID",
+                            "name": "icon_id",
+                            "type": "text",
+                            "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e99f18f9dfac",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -188,5 +244,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586453336
+    "modified": 1587147212
 }
