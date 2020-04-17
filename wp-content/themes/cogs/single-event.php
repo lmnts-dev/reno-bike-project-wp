@@ -66,14 +66,10 @@
                     </div>  
                     <div class="social-icons">
                         <div>
-                            <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share">
-                                F
-                            </span>
+                            <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share fab fa-facebook-f"></span>
                         </div>
                         <div>
-                            <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share">
-                                T
-                            </span>
+                            <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share fab fa-twitter"></span>
                         </div>
                     </div>
                 </div>
@@ -81,8 +77,17 @@
                 <?php if ( $fields['detail_items'] ){ ?>
                     <div class="box-container">
                         <?php foreach ( $fields['detail_items'] as $item ){ ?>
-                            <div class="item"><div class="label"><?php echo $item['label']; ?></div>
-                            <div class="text"><?php echo $item['text']; ?></div></div>
+                            <div class="item">
+                                <div class="label"><?php echo $item['label']; ?></div>
+                                <div class="text"><?php echo $item['text']; ?></div>
+                                <?php if ( $item['icon_with_link'] ) { ?>
+                                    <?php foreach ( $item['icon_with_link'] as $icon ){ ?>
+                                        <a href="<?php echo $icon['link'] ?>" target="_blank">
+                                            <span class='icon fab fa-<?php echo $icon['icon_id'] ?> txt-clr-primary'></span>
+                                        </a>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
                         <?php } ?>
                     </div>
                 <?php } ?>

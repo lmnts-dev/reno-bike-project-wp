@@ -1,5 +1,5 @@
 <?php if ( get_row_layout() == "paragraph_text") { ?>
-        <p><?php echo get_sub_field('text')?></p>
+    <?php echo get_sub_field('text')?>
 
 
 <?php } else if ( get_row_layout() == "header_text") { ?>
@@ -13,10 +13,9 @@
 
 
 <?php } else if ( get_row_layout() == "icon") { ?>
-    <?php $image = get_sub_field('image'); ?>
-    <div class="flexible-content-icon" style="--width:<?php echo get_sub_field('width') . 'px' ?>">
-        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-    </div>
+    <?php $image = get_sub_field('icon_id'); ?>
+    <?php $color = get_sub_field('icon_color'); ?>
+    <span class='icon fas fa-<?php echo $image ?> txt-clr-<?php echo $color ?>'></span>
 
 
 <?php } else if ( get_row_layout() == "button") { ?>

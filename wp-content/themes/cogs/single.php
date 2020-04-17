@@ -57,14 +57,10 @@ while (have_posts()) : the_post();
 
           <div class="social-icons">
             <div>
-              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share">
-                F
-              </span>
+              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share fab fa-facebook-f"></span>
             </div>
             <div>
-              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share">
-                T
-              </span>
+              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share fab fa-twitter"></span>
             </div>
           </div>
         </div>
@@ -89,14 +85,10 @@ while (have_posts()) : the_post();
           </div>
           <div class="social-icons">
             <div>
-              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share">
-                F
-              </span>
+              <span aria-role="button" data-href="<?php echo $facebookShareUrl ?>" class="social-share fab fa-facebook-f"></span>
             </div>
             <div>
-              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share">
-                T
-              </span>
+              <span aria-role="button" data-href="<?php echo $twitterShareUrl ?>" class="social-share fab fa-twitter"></span>
             </div>
           </div>
         </div>

@@ -27,13 +27,18 @@ if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
         <div class="content-col-inner <?php echo 'squiggle-' . get_sub_field('squiggle_position'); ?> <?php echo get_sub_field('image_2') ? 'pos-alt' : '' ?>">
 
           <?php 
-            $squiggle['color'] = get_sub_field('squiggle_color');
-            if ( get_sub_field('squiggle_position') == 'pos-3' ){ 
-              $squiggle['size'] = 'small';
-              require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  
-            } else {
-              require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");
-            } 
+            if ( get_sub_field('decor_type') == "squiggle" ) {
+              $squiggle['color'] = get_sub_field('squiggle_color');
+              if ( get_sub_field('squiggle_position') == 'pos-3' ){ 
+                $squiggle['size'] = 'small';
+                require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  
+              } else {
+                require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");
+              } 
+            }
+            else if ( get_sub_field('decor_type') == "icon" ) {
+              ?><span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span><?php
+            }
           ?>
 
           <h4 class="<?php echo get_sub_field('headline_size') ?>">

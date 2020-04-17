@@ -49,9 +49,11 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
                     <span class="title">
                       <?php echo $listing->post_title ?>
                     </span>
-                    <p class="excerpt">
-                      <?php echo $listing->post_excerpt ?>
-                    </p>
+                    <?php if ( $listing->post_excerpt ) { ?>
+                      <p class="excerpt">
+                          <?php echo $listing->post_excerpt ?>
+                      </p>
+                    <?php } ?>
                   </div>
 
                   <div class="actions">

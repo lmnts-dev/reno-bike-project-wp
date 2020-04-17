@@ -169,6 +169,25 @@
                     },
                     "default_value": "https:\/\/www.facebook.com\/renobikeproject",
                     "placeholder": "https:\/\/www.facebook.com\/renobikeproject"
+                },
+                {
+                    "key": "field_5e99fb5e176a1",
+                    "label": "Icon ID",
+                    "name": "icon_id",
+                    "type": "text",
+                    "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -865,6 +884,71 @@
             "min_size": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5e99f707e6142",
+            "label": "Logos",
+            "name": "logos",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e99f71fe6143",
+                    "label": "Logo Light",
+                    "name": "logo_light",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5e99f72ce6144",
+                    "label": "Logo Dark",
+                    "name": "logo_dark",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -884,5 +968,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586991347
+    "modified": 1587149675
 }

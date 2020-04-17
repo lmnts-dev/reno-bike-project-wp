@@ -57,9 +57,11 @@
                     <span class="title">
                       <?php the_title(); ?>
                     </span>
-                    <p class="excerpt">
-                      <?php the_excerpt(); ?>
-                    </p>
+                    <?php if ( get_the_excerpt() ) { ?>
+                      <p class="excerpt">
+                        <?php the_excerpt(); ?>
+                      </p>
+                    <?php } ?>
                   </div>
 
                   <div class="actions">

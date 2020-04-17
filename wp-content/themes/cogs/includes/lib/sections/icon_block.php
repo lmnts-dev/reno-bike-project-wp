@@ -9,7 +9,7 @@
  * @stylesheet icon-block.scss
  * 
  */
-//TODO: icons
+
 /*************************************/
 /** Variables */
 /*************************************/
@@ -39,7 +39,7 @@ if (get_row_layout() == 'icon_block' || $rowLayout == 'icon_block') {
     <div class="icon-block-inner">
       <?php foreach ($blocks as $block) { ?>
         <div class="icon-block">
-          <span class='icon'></span>
+          <span class='icon fas fa-<?php echo $block['icon_id'] ?> txt-clr-<?php echo $block['icon_color'] ?>'></span>
           <h6 class='h5'><?php echo $block['header_text'] ?></h6>
           <p><?php echo $block['paragraph_text'] ?></p>
         </div>

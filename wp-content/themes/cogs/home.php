@@ -13,8 +13,6 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php include 'includes/lib/sections/page_hero.php'; ?>
-
 <?php (get_query_var( 'paged' ) == 0 || !have_posts() ) ? addComponent( "featured_news_slider" ) : null; ?>
 
 <section class="news-listings padding-top-half news-listings-archive <?php echo get_query_var( 'paged' ) > 0 ? 'margin-top' : ''; ?>">
@@ -41,9 +39,11 @@
                         <span class="title">
                         <?php echo $article->post_title ?>
                         </span>
-                        <p class="excerpt">
-                        <?php echo $article->post_excerpt ?>
-                        </p>
+                        <?php if ( $article->post_excerpt ) { ?>
+                            <p class="excerpt">
+                                <?php echo $article->post_excerpt ?>
+                            </p>
+                        <?php } ?>
                     </div>
 
                     <div class="actions">
