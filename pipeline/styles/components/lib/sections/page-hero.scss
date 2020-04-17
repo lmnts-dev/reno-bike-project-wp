@@ -76,7 +76,6 @@ section.page-hero {
         right: calc(#{$BaseGutterRight} * -1);
         width: 70vw;
         object-fit: cover;
-        background-color: $clrPlaceholder;
 
         @media (max-width: $BaseMediaMd) {
           width: 85vw;
@@ -129,14 +128,26 @@ section.page-hero {
       .col {
         &.content {
           padding-left: calc(#{$Base} * 3);
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base});
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
         }
         &.image {
           justify-content: flex-end;
           right: unset;
           left: $gutterOffset;
 
-          @media (max-width: $BaseMediaMd) {
-            left: $gutterOffset / 2;
+          @media (max-width: $BaseMediaSm) {
+            width: 100vw;
+
+            .image-wrapper {
+              width: 100vw;
+            }
           }
         }
       }
@@ -146,6 +157,11 @@ section.page-hero {
       .col {
         &.content {
           width: $baseWidth;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc((#{$baseHeight} / 2) - (#{$baseFontSize} / 2));
+            width: 100%;
+          }
         }
 
         &.image {
@@ -156,6 +172,25 @@ section.page-hero {
           left: unset;
           width: calc(100% - #{$baseWidth});
           height: $baseHeight;
+
+          @media (max-width: $BaseMediaMd) {
+            width: 60%;
+            position: absolute;
+            height: calc( #{$baseHeight} / 1.5);
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 1.5);
+            }
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            width: 100%;
+            height: calc( #{$baseHeight} / 2);
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 2);
+            }
+          }
 
           .image-wrapper {
             position: absolute;
@@ -177,9 +212,17 @@ section.page-hero {
         &.content {
           width: $baseWidth;
 
+          @media (max-width: $BaseMediaSm) {
+            width: calc(100% - #{$Base});
+          }
+
           h1 {
             position: relative;
             left: calc((#{$baseMaxWidth} / 4) * -1);
+
+            @media (max-width: $BaseMediaSm) {
+              left: calc(#{$Base} * -1);
+            }
           }
         }
 
@@ -191,6 +234,16 @@ section.page-hero {
           right: unset;
           width: calc(100% - #{$baseWidth});
           height: $baseHeight;
+
+          @media (max-width: $BaseMediaSm) {
+            position: absolute;
+            height: calc( #{$baseHeight} / 2);
+            width: 100%;
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 2);
+            }
+          }
 
           .image-wrapper {
             position: absolute;

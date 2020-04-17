@@ -13,8 +13,6 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php include 'includes/lib/sections/page_hero.php'; ?>
-
 <div class="hero-spacer"></div>
 
 <?php 

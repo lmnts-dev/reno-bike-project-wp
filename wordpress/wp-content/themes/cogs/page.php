@@ -13,21 +13,19 @@
 
 <?php include 'includes/core/header.php'; ?>
 
-<?php include 'includes/lib/sections/page_hero.php'; ?>
-
 <?php
 
-if (have_rows('sections')) {
-    $idx = 0; // Establish our index.
+    if (have_rows('sections')) {
+        $idx = 0; // Establish our index.
 
-    while (have_rows('sections')) {
-        the_row();
+        while (have_rows('sections')) {
+            the_row();
 
-        addComponent(get_row_layout());
+            addComponent(get_row_layout());
 
-        $idx++; // Increment our index.
-    }
-};
+            $idx++; // Increment our index.
+        }
+    };
 ?>
 
 
