@@ -7,6 +7,7 @@
 
 $overlayNavWidth: 450px;
 $linkHeight: 67px;
+$linkHeightSm: 70px;
 
 .nav-item-styles {
   color: $clrBlack;
@@ -232,6 +233,10 @@ $linkHeight: 67px;
               top: 0;
               background-color: rgba($clrChrome, 0.2);
               height: 100%;
+
+              @media (max-width: $BaseMediaSm) {
+                right: $Base * 1.75;
+              }
             }
 
             input[type="checkbox"] {
@@ -263,7 +268,8 @@ $linkHeight: 67px;
               cursor: pointer;
 
               @media (max-width: $BaseMediaSm) {
-                right: $Base / 4;
+                height: $linkHeightSm;
+                width: $Base * 1.75;
               }
 
               &:after,
@@ -288,7 +294,6 @@ $linkHeight: 67px;
                 @media (max-width: $BaseMediaSm) {
                   height: $Base / 1.5;
                   width: $Base / 1.5;
-                  top: 0;
                 }
               }
 
@@ -319,8 +324,17 @@ $linkHeight: 67px;
               padding: $Base / 2;
               display: block;
 
-              @media (min-width: $BaseMediaMd) {
+              
+              &:hover {
+                color: $clrPrimary;
+              }
+              
+
+              @media (max-width: $BaseMediaSm) {
                 &:hover {
+                  color: $clrBlack;
+                }
+                &:active{
                   color: $clrPrimary;
                 }
               }
@@ -338,6 +352,12 @@ $linkHeight: 67px;
             a {
               color: $clrChrome;
               padding-left: $Base / 2;
+
+              @media (max-width: $BaseMediaSm) {
+                &:hover {
+                  color: $clrChrome;
+                }
+              }
             }
           }
         }
