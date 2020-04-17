@@ -21,8 +21,8 @@ $navItems = wp_get_nav_menu_items('Primary Navigation');
 <div class="overlay-nav-container" id="overlay-nav">
     <div class="left">
         <div class="top">
-            <a href="/" class="branding nav-overlay-toggle">
-                <?php // echo '<img src="' . esc_url( $logo_dark[0] ) . '" alt="VCC Logo">'; ?>
+            <a href="/" class="branding">
+               <img src="<?php echo $logos['logo_dark'] ?>" alt="{{ shop.name }}">
             </a>
             <div class="exit nav-overlay-toggle" id="overlay-exit"></div>
         </div>

@@ -14,6 +14,7 @@
 
 $cta = get_field('navigation_bar', 'option')['call_to_action'];
 $ecommerce = get_field('ecommerce', 'option');
+$logos = get_field('logos', 'option');
 
 ?>
 
@@ -26,7 +27,7 @@ $ecommerce = get_field('ecommerce', 'option');
     <div class="nav-col nav-col-1">
       <div class="nav-branding">
         <a href="/">
-          <span itemprop="logo"></span>
+          <img src="<?php echo $logos['logo_light'] ?>" alt="{{ shop.name }}">
         </a>
       </div>
       <nav class="nav-switch">

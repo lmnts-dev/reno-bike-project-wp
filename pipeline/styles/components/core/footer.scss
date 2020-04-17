@@ -237,13 +237,14 @@ footer {
         .ico:not(svg) {
           width: $Base * 0.7;
           height: $Base * 0.7;
-          border: 2px solid $clrPrimary;
-          border-radius: 50%;
+          font-size: $Base * 0.7;
+          color: $clrPrimary;
           display: block;
 
           @media (max-width: $BaseMediaSm) {
             width: $Base / 2;
             height: $Base / 2;
+            font-size: $Base / 2;
           }
         }
 
