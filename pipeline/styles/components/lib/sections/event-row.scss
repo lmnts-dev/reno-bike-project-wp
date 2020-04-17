@@ -11,7 +11,17 @@
   padding-right: 0;
 
   .section-header {
-    margin-bottom: calc(#{$Base});
+    padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+  
+    @media (max-width: $BaseMediaMd) {
+      padding-right: $BaseGutterRightMd;
+      padding-left: $BaseGutterLeftMd;
+    }
+  
+    @media (max-width: $BaseMediaSm) {
+      padding-right: $BaseGutterRightSm;
+      padding-left: $BaseGutterLeftSm;
+    }
   }
 
   .event-row {

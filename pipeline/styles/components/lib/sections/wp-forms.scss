@@ -22,18 +22,48 @@ section.form {
           > div {
             padding-left: $Base * 3;
             padding-right: $Base * 3;
+
+            @media (max-width: $BaseMediaMd) {
+              padding-left: $Base;
+              padding-right: $Base;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              padding-left: $BaseGutterLeftSm;
+              padding-right: $BaseGutterRightSm;
+            }
   
             &.wpforms-one-half.wpforms-first {
               padding-right: 0;
+
+              @media (max-width: $BaseMediaSm) {
+                padding-right: $BaseGutterRightSm;
+              }
             }
   
             &.wpforms-one-half:not(.wpforms-first) {
               padding-left: 0;
+
+              @media (max-width: $BaseMediaSm) {
+                padding-left: $BaseGutterLeftSm;
+              }
             }
           }
   
           .wpforms-one-half + .wpforms-one-half + .wpforms-one-half {
             padding-bottom: $Base * 1.5;
+
+            @media (max-width: $BaseMediaSm) {
+              padding-bottom: $Base / 4;
+            }
+          }
+
+          .wpforms-one-half {
+            @media (max-width: $BaseMediaSm) {
+              margin-left: 0;
+              margin-right: 0;
+              width: 100%;
+            }
           }
   
           .label.wpforms-field-label { 
@@ -143,13 +173,26 @@ section.form {
       }
   
       .wpforms-submit-container {
-        padding-left: $Base * 3;
-        padding-right: $Base * 3;
+        padding-left: $Base * 3 !important;
+        padding-right: $Base * 3 !important;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-left: $Base !important;
+          padding-right: $Base !important;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          padding-left: $BaseGutterLeftSm !important;
+          padding-right: $BaseGutterRightSm !important;
+        }
   
         button {
           @extend .btn;
           @extend .btn-clr-black;
           @extend .btn-arrow;
+          background: $clrBlack !important;
+          color: $clrWhite !important;
+          border: none !important;
           padding-right: $Base !important;
         }
       }
