@@ -8,6 +8,14 @@
 
 .basic-section {
 
+    &:first-of-type {
+        margin-top: $BaseNavSizeLg;
+  
+        @media (max-width: $BaseMediaSm) {
+          margin-top: $BaseNavSizeSm;
+        }
+    }
+
     .basic-section-inner {
         max-width: $Base * 24;
 

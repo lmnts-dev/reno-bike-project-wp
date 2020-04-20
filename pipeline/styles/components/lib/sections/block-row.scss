@@ -10,26 +10,31 @@
 section.block-row {
     padding-bottom: 0;
 
-  ~ .block-row {
-    padding-top: 0;
-    padding-bottom: $BasePadding;
-
-    @media (max-width: $BaseMediaSm) {
-      padding-bottom: $BasePaddingSm;
+    ~ .block-row {
+      padding-top: 0;
     }
-  }
 
   //change up the colors if there's three block rows in a row
-  + .block-row + .block-row {
+  + .block-row {
     .block-row-inner .block-item:first-of-type .block-item-cover {
       background-color: $clrPrimary;
     }
   }
 
+  //if its not the last section in the page add a margin to the following sibling section
+  + section:not(.block-row) {
+    margin-top: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: $BasePaddingSm;
+    }
+  }
+
+  //if its the last section in the page add padding on the bottom
   &:last-of-type {
     padding-bottom: $BasePadding;
     @media (max-width: $BaseMediaSm) {
-      padding-bottom: $BasePaddingSm;
+      margin-top: $BasePaddingSm;
     }
   }
 
@@ -175,6 +180,6 @@ section.block-row {
 
   // For repeating block rows
   & + .block-row {
-    padding-bottom: $Base;
+  //  padding-bottom: $Base;
   }
 }

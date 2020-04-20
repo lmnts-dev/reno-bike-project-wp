@@ -77,14 +77,12 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
       
       </div>
     <?php }?>
-  </section>
 
   <?php if ( $data['block_4']['link'] && $data['block_4']['text'] && $data['block_2']['link'] && $data['block_3']['link'] && $data['block_3']['image'] && $data['block_3']['text'] ) { ?>
-    <section class="block-row">
       <div class="block-row-inner block-row-reverse">
 
         <div class="block-item">
-          <a href="<?php echo $data['block_3']['link'] ?>">
+          <a href="<?php echo $data['block_4']['link'] ?>">
             <div class="block-item-inner">
               <div class="block-item-cover block-item-cover-solid bg-clr-mustard">
                 <span class="txt-clr-white">
@@ -111,7 +109,8 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
         </div>
 
       </div>
-    </section>
   <?php }?>
+
+  </section>
 
 <?php } ?>

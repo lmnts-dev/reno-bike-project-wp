@@ -1,0 +1,105 @@
+////////////////////////////////////////
+//
+// Donate Row
+//
+// @author Alisha Garric
+// @since 4/2020
+//
+////////////////////////////////////////
+
+.donate-row {
+    .donate-row-inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        @media (max-width: $BaseMediaMd) {
+            flex-direction: column-reverse;
+            text-align: center;
+            align-items: center;
+
+            svg {
+                margin-left: auto;
+                margin-right: auto;
+                transform-origin: center center;
+            }
+        }
+
+        .col {
+            flex: 1;
+
+            &.description {
+                img {
+                    width: 80%;
+                    max-width: $Base * 5;
+                    height: auto;
+                    margin-top: $Base;
+
+                    @media (max-width: $BaseMediaMd) {
+                        margin-top: 0;
+                        margin-bottom: $Base;
+                    }
+                }
+
+                p {
+                    max-width: $Base * 14;
+                }
+            }
+
+            &.buttons {
+                padding-right: $BaseGutter;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                @media (max-width: $BaseMediaMd) {
+                    padding-right: 0;
+                }
+
+                form {
+                    flex: 1;
+                    max-width: $Base * 10;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: stretch;
+
+                    input[type="image"] {
+                        display: none;
+                    }
+
+                    table {
+                        @extend .select-container;
+                        border-collapse: collapse;
+                        width:170px;
+
+                        select {
+                            height: $BaseBtnHeight + 1px;
+                        }
+
+                        td {
+                            padding: 0;
+                        }
+
+                        tr:first-of-type {
+                            display: none;
+                        }
+                    }
+
+                    label {
+                        @extend .btn;
+                        @extend .btn-arrow;
+                        @extend .btn-clr-black;
+                        width: 100%;
+                        margin-bottom: $Base / 2;
+                    }
+
+                    &:last-of-type label {
+                        margin-bottom: 0;
+                    }
+
+                }
+            }
+        }
+    }
+}

@@ -59,6 +59,13 @@ section.featured-news-slider {
           justify-content: flex-end;
           align-items: center;
 
+          &:hover {
+            .title, .col, .excerpt {
+                color: $clrPrimary;
+              
+            }
+          }
+
           @media (max-width: $BaseMediaSm) {
             height: calc(
               100vh -

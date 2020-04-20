@@ -221,6 +221,10 @@ $linkHeightSm: 70px;
         &.menu {
           padding-bottom: $Base * 2;
 
+          @media (max-width: $BaseMediaMd) {
+            padding-bottom: $Base * 4;
+          }
+
           > li {
             border-top: 1px solid rgba($clrChrome, 0.2);
             position: relative;

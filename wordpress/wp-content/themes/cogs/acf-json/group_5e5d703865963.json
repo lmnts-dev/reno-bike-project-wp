@@ -1257,7 +1257,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         }
                                     ]
                                 },
@@ -1316,7 +1316,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         },
                                         {
                                             "key": "field_5e8ced1e8d690",
@@ -1399,7 +1399,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         },
                                         {
                                             "key": "field_5e8ced2f8d691",
@@ -3233,6 +3233,214 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_5e9df26428bd6": {
+                    "key": "layout_5e9df26428bd6",
+                    "name": "custom_html",
+                    "label": "Custom HTML",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e9df27128bd7",
+                            "label": "HTML",
+                            "name": "html",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "text",
+                            "media_upload": 0,
+                            "toolbar": "full",
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5e9df2b928bd8": {
+                    "key": "layout_5e9df2b928bd8",
+                    "name": "shortcode",
+                    "label": "Shortcode",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e9df2c128bd9",
+                            "label": "Shortcode",
+                            "name": "shortcode",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e9df3fb383a1",
+                            "label": "Is the shortcode a form?",
+                            "name": "is_the_shortcode_a_form",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5e9e011a9a055": {
+                    "key": "layout_5e9e011a9a055",
+                    "name": "donate_row",
+                    "label": "Donate Row",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e9e011f9a056",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e9e01259a057",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": "wpautop"
+                        },
+                        {
+                            "key": "field_5e9e013f9a058",
+                            "label": "Security Image",
+                            "name": "security_image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_5e9e01529a059",
+                            "label": "Buttons",
+                            "name": "buttons",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 1,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5e9e01629a05a",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5e9e1d2beb84c",
+                                    "label": "PayPal Generated Button Code",
+                                    "name": "paypal_generated_button_code",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": 10,
+                                    "new_lines": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "+ Add Section",
@@ -3271,5 +3479,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587146523
+    "modified": 1587420489
 }

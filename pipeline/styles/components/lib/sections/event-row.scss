@@ -5,13 +5,13 @@
 // @author Alisha Garric
 //
 ////////////////////////////////////////
-
 .event-row-listing {
   padding-left: 0;
   padding-right: 0;
 
   .section-header {
-    padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+    padding-left: $BaseGutterRight;
+    padding-right: $BaseGutterLeft;
   
     @media (max-width: $BaseMediaMd) {
       padding-right: $BaseGutterRightMd;
@@ -21,21 +21,70 @@
     @media (max-width: $BaseMediaSm) {
       padding-right: $BaseGutterRightSm;
       padding-left: $BaseGutterLeftSm;
+      padding-bottom: $Base;
     }
   }
 
   .event-row {
-    @extend .editorial-row;
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    color: $clrBlack;
-    display: block;
+    .event-row-inner {
+      display: flex;
+      flex-direction: row;
+      max-width: $BaseMaxWidth;
 
-    @media (max-width: $BaseMediaSm) {
-      margin-bottom: calc(#{$Base});
-      padding-top: calc(#{$Base} * 0.5);
-      padding-right: 0;
+      @media (max-width: $BaseMediaSm) {
+        flex-direction: column-reverse;
+      }
+
+      .col {
+        flex: 1;
+        padding: calc(#{$Base} * 2) calc(#{$Base});
+
+        @media (max-width: $BaseMediaSm) {
+          padding: calc(#{$Base}) $BaseGutterLeftSm;
+        }
+      }
+
+      .col.img-col {
+        padding-bottom: 30%;
+        position: relative;
+
+        @media (max-width: $BaseMediaSm) {
+          padding-bottom: 60%;
+        }
+
+        .event-row-img {
+          width: 100%;
+          position: absolute;
+          height: 100%;
+          background: $clrPlaceholder;
+          top: 0;
+          left: 0;
+
+          img {
+            @include objectFit();
+          }
+        }
+      }
+
+      .col.content-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .content-col-inner {
+          max-width: calc(#{$Base} * 13);
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      .event-row-inner {
+        flex-direction: row-reverse;
+
+        @media (max-width: $BaseMediaSm) {
+          flex-direction: column-reverse;
+        }
+      }
     }
 
     &:hover {
@@ -44,73 +93,6 @@
       .col.content-col {
         color: $clrPrimary;
         background-color: $clrSnow;
-      }
-    }
-
-    &:nth-child(odd) {
-      @extend .reverse;
-
-      @media (max-width: $BaseMediaSm) {
-        padding-right: 0;
-        
-        .event-row-inner {
-          display: flex;
-          padding-left: $BaseGutterLeftSm;
-          padding-right: $BaseGutterLeftSm;
-          flex-direction: column-reverse;
-
-          .col {
-            &.content-col {
-              padding-top: calc(#{$Base} * 0.5);
-              padding-left: 0;
-            }
-          }
-        }
-      }
-    }
-
-    .event-row-inner {
-      @extend .editorial-row-inner;
-      align-items: stretch;
-      min-height: calc(#{$Base} * 9);
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-
-      .col.content-col {
-        padding-top: calc(#{$Base} * 2);
-        padding-bottom: calc(#{$Base} * 2);
-        width: 50%;
-
-        @media (max-width: $BaseMediaSm) {
-          padding-top: calc(#{$Base} * 0.5);
-        }
-
-        .content-col-inner {
-          max-width: calc(#{$Base} * 13);
-        }
-      }
-
-      .col.img-col {
-        position: relative;
-        width: 50%;
-        background: $clrPlaceholder;
-
-        @media (max-width: $BaseMediaSm) {
-          height: 35vw;
-          width: 100%;
-        }
-
-        img {
-          @include objectFit();
-        }
-      }
-
-      @media (max-width: $BaseMediaSm) {
-        display: flex;
-        padding-left: $BaseGutterLeftSm;
-        padding-right: $BaseGutterLeftSm;
-        flex-direction: column-reverse;
       }
     }
   }
