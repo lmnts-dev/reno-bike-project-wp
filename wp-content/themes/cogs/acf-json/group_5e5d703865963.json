@@ -1257,7 +1257,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         }
                                     ]
                                 },
@@ -1316,7 +1316,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         },
                                         {
                                             "key": "field_5e8ced1e8d690",
@@ -1399,7 +1399,7 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": ""
+                                            "return_format": "url"
                                         },
                                         {
                                             "key": "field_5e8ced2f8d691",
@@ -3271,5 +3271,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587146523
+    "modified": 1587406590
 }

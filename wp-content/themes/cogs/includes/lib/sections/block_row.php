@@ -82,7 +82,7 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
       <div class="block-row-inner block-row-reverse">
 
         <div class="block-item">
-          <a href="<?php echo $data['block_3']['link'] ?>">
+          <a href="<?php echo $data['block_4']['link'] ?>">
             <div class="block-item-inner">
               <div class="block-item-cover block-item-cover-solid bg-clr-mustard">
                 <span class="txt-clr-white">
