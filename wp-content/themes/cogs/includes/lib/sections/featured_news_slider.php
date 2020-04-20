@@ -43,9 +43,9 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
         ?>
           <div class="featured-news-slide">
             <div class="featured-news-slide-inner">
-              <div class="news-listing-card">
-                <div class="news-listing-card-inner">
-                  <div class="info">
+              <a href="<?php echo get_post_permalink($listing) ?>" class="news-listing-card">
+                <span class="news-listing-card-inner">
+                  <span class="info">
                     <span class="title">
                       <?php echo $listing->post_title ?>
                     </span>
@@ -54,27 +54,27 @@ if (get_row_layout() == 'featured_news_slider' || $rowLayout == 'featured_news_s
                           <?php echo $listing->post_excerpt ?>
                       </p>
                     <?php } ?>
-                  </div>
+                  </span>
 
-                  <div class="actions">
-                    <div class="col">
-                    <?php echo date('F j, Y', strtotime($listing->post_date)) ?>
-                    </div>
+                  <span class="actions">
+                    <span class="col">
+                      <?php echo date('F j, Y', strtotime($listing->post_date)) ?>
+                    </span>
 
-                    <div class="col">
-                      <a href="<?php echo get_post_permalink($listing) ?>" class="btn btn-arrow">
+                    <span class="col">
+                      <span class="btn btn-arrow">
                         More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
 
-              <div class="featured-news-slide-cover">
-                <div class="featured-news-slide-cover-inner">
+              <a href="<?php echo get_post_permalink($listing) ?>" class="featured-news-slide-cover">
+                <span class="featured-news-slide-cover-inner">
                   <img data-src="<?php echo get_the_post_thumbnail_url( $listing ) ?>" class="lazy" alt="<?php echo $listing->post_title ?>" />
-                </div>
-              </div>
+                </span>
+              </a>
             </div>
           </div>
         <?php

@@ -77,10 +77,8 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
       
       </div>
     <?php }?>
-  </section>
 
   <?php if ( $data['block_4']['link'] && $data['block_4']['text'] && $data['block_2']['link'] && $data['block_3']['link'] && $data['block_3']['image'] && $data['block_3']['text'] ) { ?>
-    <section class="block-row">
       <div class="block-row-inner block-row-reverse">
 
         <div class="block-item">
@@ -111,7 +109,8 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
         </div>
 
       </div>
-    </section>
   <?php }?>
+
+  </section>
 
 <?php } ?>
