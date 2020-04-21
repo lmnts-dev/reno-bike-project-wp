@@ -1,14 +1,14 @@
 <?php
 
 /** 
- * Event Row
+ * Events Listings
  * A row with image left / right, text left / right blocks where the text displays an 
  * event date, time, title, description and link, and the image displays the 
  * events featured image.
  * 
  * @author Alisha Garric
  * @since 3/2020
- * @stylesheet event-row.scss
+ * @stylesheet events-listings.scss
  * TODO: stlying got messed up after content linking
  */ 
 
@@ -16,7 +16,7 @@
 /** Variables */
 /*************************************/
 
-if (get_row_layout() == 'event_row' || $rowLayout == 'event_row') {
+if (get_row_layout() == 'events_listings' || $listingsLayout == 'events_listings') {
 
 $args = array(
   'numberposts' => -1,
@@ -72,7 +72,7 @@ $qualifyingEvents = [];
   }
 
 ?>
-  <section class="event-row-listing padding-top-half event-row-<?php echo $idx ?>">
+  <section class="events-listings padding-top-half events-listings-<?php echo $idx ?>">
 
     <?php if ( $headline ) { ?>
       <div class="section-header">

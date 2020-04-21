@@ -1,12 +1,12 @@
 <?php
 
 /** 
- * Member Row
+ * Staff Listings
  * for displaying a person's photo, name, title and description
  * 
  * @author Alisha Garric
  * @since 3/2020
- * @stylesheet member-row.scss
+ * @stylesheet staff-listings.scss
  * 
  */
 
@@ -22,10 +22,10 @@ $args = array(
 $staffMembers = get_posts( $args );
 $headline = get_sub_field('headline');
 
-if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
+if (get_row_layout() == 'staff_listings' || $rowLayout == 'staff_listings') {
 
 ?>
-  <section class="member-row <?php echo get_sub_field('layout'); ?> member-row-<?php echo $idx ?>">
+  <section class="staff-listings <?php echo get_sub_field('layout'); ?> staff-listings-<?php echo $idx ?>">
   
     <?php if ( $headline ) { ?>
       <div class="section-header split">
@@ -40,9 +40,9 @@ if (get_row_layout() == 'member_row' || $rowLayout == 'member_row') {
     <?php } ?>
 
     <?php foreach ($staffMembers as $member ) { ?>
-      <div class="member-row-item">
+      <div class="staff-listings-item">
         <div class="col img-col">
-          <div class="member-row-img">
+          <div class="staff-listings-img">
             <img data-src="<?php echo get_the_post_thumbnail_url( $member ) ?>" alt="<?php echo $member->post_title ?>" class="lazy" />
           </div>
         </div>

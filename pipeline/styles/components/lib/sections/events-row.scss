@@ -1,12 +1,12 @@
 ////////////////////////////////////////
 //
-// Event Listings Component
+// Events Row Component
 //
 // @author Peter Laxalt and Alisha Garric (for responsive)
 //
 ////////////////////////////////////////
 
-.event-listings {
+.events-row {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
     padding-right: $Base / 4;
   }
 
-  .event-listings-inner {
+  .events-row-inner {
     display: flex;
     width: 100%;
 
@@ -31,7 +31,7 @@
       max-width: 100%;
     }
 
-    .event-listing-card {
+    .events-row-card {
       flex: 1;
       margin-right: $Base/4;
 
@@ -54,7 +54,7 @@
   }
 }
 
-.event-listing-card {
+.events-row-card {
   padding: $Base/4;
   display: flex;
 
@@ -63,7 +63,7 @@
   }
 
   &.view-all {
-    .event-listing-card-inner {
+    .events-row-card-inner {
       background: $clrBlack;
       padding: $Base/2;
 
@@ -80,7 +80,7 @@
     }
   }
 
-  .event-listing-card-inner {
+  .events-row-card-inner {
     display: flex;
     flex-direction: column;
     height: 100%;

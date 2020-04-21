@@ -1,15 +1,15 @@
 ////////////////////////////////////////
 //
-// Member Row Component
+// Staff Listings Component
 //
 // @author Alisha Garric
 //
 ////////////////////////////////////////
 
-.member-row {
+.staff-listings {
   max-width: $BaseIndentMaxWidth;
 
-  .member-row-item {
+  .staff-listings-item {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -61,7 +61,7 @@
         padding-bottom: calc(#{$Base} / 1.5);
       }
 
-      .member-row-img {
+      .staff-listings-img {
         width: 100%;
         padding-top: 116%;
         height: 0;

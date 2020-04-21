@@ -8,13 +8,13 @@
 
 
 .generic-listing {
-    @extend .member-row;
+    @extend .staff-listings;
     max-width: $BaseMaxWidth;
 
     .generic-listing-inner {
 
         .generic-listing-row {
-            @extend .member-row-item;
+            @extend .staff-listings-item;
 
             &:nth-of-type(even) {
                 flex-direction: row;
@@ -34,7 +34,7 @@
 
             .col.img-col {
                 .generic-listing-img {
-                    @extend .member-row-img;
+                    @extend .staff-listings-img;
                     padding-top: 54%;
 
                 }
