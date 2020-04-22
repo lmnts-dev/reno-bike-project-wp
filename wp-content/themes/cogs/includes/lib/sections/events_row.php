@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * Event Listings
+ * Events Row
  * 
  * @author Peter Laxalt and Alisha Garric
  * @since 2/2020
@@ -11,7 +11,7 @@
 /** Variables */
 /*************************************/
 
-if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
+if (get_row_layout() == 'events_row' || $rowLayout == 'events_row') {
 
   $args = array(
     'numberposts' => -1,
@@ -56,11 +56,11 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 
 ?>
 
-  <section class="event-listings padding-top-half event-listings-<?php echo $idx ?>">
+  <section class="events-row padding-top-half events-row-<?php echo $idx ?>">
 
     <?php if ( $headline ) { ?>
       <div class="section-header">
-        <span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span>
+      <?php if ( get_sub_field('icon_id') ) { ?><span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span><?php } ?>
         <h3>
           <?php echo $headline ?>
         </h3>
@@ -72,13 +72,13 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
       </div>
     <?php } ?>
 
-    <div class="event-listings-inner">
+    <div class="events-row-inner">
 
       <?php foreach ($qualifyingEvents as $index=>$event) { ?>
         <?php if ( $index == 3 ) { break; } ?>
 
-        <a href="<?php echo $event->link?>" class="event-listing-card">
-          <div class="event-listing-card-inner">
+        <a href="<?php echo $event->link?>" class="events-row-card">
+          <div class="events-row-card-inner">
             <div class="cover">
               <img data-src="<?php echo $event->image ?>" alt="<?php echo $event->title ?>" class="lazy" />
             </div>
@@ -95,8 +95,8 @@ if (get_row_layout() == 'event_listings' || $rowLayout == 'event_listings') {
 
       <?php } ?>
 
-      <a href="<?php echo $viewAllLink ?>" class="event-listing-card view-all">
-        <div class="event-listing-card-inner">
+      <a href="<?php echo $viewAllLink ?>" class="events-row-card view-all">
+        <div class="events-row-card-inner">
           <span class="title">
             See all events
           </span>
