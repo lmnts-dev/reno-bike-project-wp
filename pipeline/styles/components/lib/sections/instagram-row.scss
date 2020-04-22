@@ -23,13 +23,12 @@
     }
 
     .instagram-row-header {
-        @extend .news-listings-header;
-
-        @media (max-width: $BaseMediaMd) {
-            flex-direction: column;
-            text-align: center;
-            justify-content: center;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: $Base / 2;
 
         svg {
             height: $Base * 1.5;
@@ -42,39 +41,26 @@
             }
         }
 
-        .btn {
+        > a {
+            position: absolute;
+            right: 0;
             bottom: 0;
-            transform: none;
-        }
-
-        a {
             color: $clrBlack;
 
             @media (max-width: $BaseMediaMd) {
                 position: relative;
-                transform: none;
-            }
-
-            @media (max-width: $BaseMediaSm) {
-                display: inline-flex;
+                margin-top: $Base / 2;
             }
         }
 
         h3 {
-            @media (max-width: $BaseMediaMd) {
-                margin-bottom: $Base / 2;
-            }
+            text-align: center;
 
-            @media (max-width: $BaseMediaSm) {
-                margin-bottom: $Base / 2;
-            }
-        }
-
-        h3 a {
-            position: relative;
-
-            &:hover {
-                color: $clrPrimary;
+            a {
+                color: $clrBlack;
+                &:hover {
+                    color: $clrPrimary;
+                }
             }
         }
     }

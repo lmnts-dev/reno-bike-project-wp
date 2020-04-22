@@ -12,6 +12,11 @@
 ?>
 
 <style>
+
+    #adminmenuwrap {
+        position: fixed !important;
+    }
+
     section.lmnt-help-page {
         padding: 20px;
     }
