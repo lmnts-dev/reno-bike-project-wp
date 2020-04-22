@@ -72,19 +72,11 @@
 @import "components/lib/sections/outlined-list";
 @import "components/lib/sections/fullwidth-hero";
 
-//----- Listings
-@import "components/lib/sections/news-listings";
-@import "components/lib/sections/events-row";
-@import "components/lib/sections/membership-listings";
-@import "components/lib/sections/product-listings";
-@import "components/lib/sections/press-listings";
-
 //----- Content
 @import "components/lib/sections/grid-section";
 @import "components/lib/sections/editorial-row";
-@import "components/lib/sections/events-listings";
+@import "components/lib/sections/events-row";
 @import "components/lib/sections/icon-block";
-@import "components/lib/sections/staff-listings";
 @import "components/lib/sections/side-labeled-lists";
 @import "components/lib/sections/four-column-grid";
 @import "components/lib/sections/video-row";
@@ -93,10 +85,18 @@
 @import "components/lib/sections/basic-section";
 @import "components/lib/sections/wysiwyg-content-section";
 @import "components/lib/sections/four-oh-four";
-@import "components/lib/sections/generic-listing";
 @import "components/lib/sections/instagram-row";
 @import "components/lib/sections/wp-forms";
 @import "components/lib/sections/donate-row";
+
+//----- Listings
+@import "components/lib/sections/news-listings";
+@import "components/lib/sections/membership-listings";
+@import "components/lib/sections/product-listings";
+@import "components/lib/sections/press-listings";
+@import "components/lib/sections/events-listings";
+@import "components/lib/sections/staff-listings";
+@import "components/lib/sections/generic-listing";
 
 
 //----- Sliders

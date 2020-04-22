@@ -7,7 +7,7 @@
             "label": "Sections",
             "name": "sections",
             "type": "flexible_content",
-            "instructions": "Select your page sections to be displayed. <br \/><a href=\"\/\"><strong>Take a look at the reference library here.<\/strong><\/a><br \/><br \/>",
+            "instructions": "Select your page sections to be displayed. <br \/><strong>Click on the Sections Builder dropdown in the Help tab to view library of sections.<\/strong><br \/><br \/>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -323,7 +323,7 @@
                             "name": "icon_id",
                             "type": "text",
                             "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -1658,7 +1658,7 @@
                             "name": "icon_id",
                             "type": "text",
                             "instructions": "<a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\" rel=\"nofollow noreferrer\">Select an icon ID here.<\/a>",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -3479,5 +3479,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587507108
+    "modified": 1587517757
 }

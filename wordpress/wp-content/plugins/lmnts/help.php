@@ -12,7 +12,11 @@
 ?>
 
 <style>
-    section.lmnt-help-page, img {
+    section.lmnt-help-page {
+        padding: 20px;
+    }
+
+    section.lmnt-help-page, .lmnt-help-page img {
         max-width: 600px;
         height: auto;
     }
@@ -50,7 +54,12 @@
 <section class="lmnt-help-page">
     <h1> Help </h1>
     <p>
-        This site uses posts created under your custom post types (Events, Memberships, Staff, Press, Blog Posts and Programs), pages built using the <i>Sections Builder</i> and fields set under the Options Tab to build its content.
+        This site uses three things to build its content:
+        <ul>
+            <li>Posts created under your custom post types (Events, Memberships, Staff, Press, Blog Posts and Programs)</li>
+            <li>Pages built using the <i>Sections Builder</i></li>
+            <li>Fields set under the Options Tab</li>
+        </ul>
     </p>
     <p>
         Get familiar with the <i>Sections Builder</i>, you’ll be using it a lot! Then go through the Options Tab to make sure your site-wide settings are accurate. Lastly add/edit pages and posts.
@@ -58,8 +67,244 @@
 
     <details>
         <summary>🔧 <i>Sections Builder</i></summary>
-        <p> We use the <i>Sections Builder</i> to add content to your site. In posts and pages where it is available, you’ll see the “Add Section” button (shown in screenshot below). After pressing this, you’ll get a list of sections you can add to your page. The sections and their descriptions are listed below. After adding sections, you can drag and drop to rearrange them.</p>
+        <p> We use the <i>Sections Builder</i> to add content to your site. In posts and pages where it is available, you’ll see the “Add Section” button (shown in screenshot below). After pressing this, you’ll get a list of sections you can add to your page.</p>
+        <p>The sections and their characteristics are listed below. After adding sections, you can drag and drop to rearrange them.</p>
         <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/add-section.png' ?>" alt="add section">
+
+        <details>
+            <summary>
+                <span>Block Slider</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/block-slider.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Instagram Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/instagram-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields and the primary listed account within the Instagram Feed tab</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Grid Section </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/grid-section.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline, description and/or icon)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Newsletter Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/newsletter-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Newsletter Row fields found on the Options tab</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Home Hero </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/home-hero.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>News Listings </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/news-listings.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields and most recently published blog posts</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Editorial Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/editorial-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Block Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/block-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Block Row fields found on the Options tab, unless overridden by associated fields</p>
+            <p>Optional Header (header includes headline and description)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Page Hero </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/page-hero.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Events Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/events-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline, icon and/or description)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Membership Listings </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/membership-listings.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Membership posts</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Events Listings </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/events-listings.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Event posts, filtered by your selection of past, upcoming or all events</p>
+            <p>You can further filter events by tags</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Icon Block </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/icon-block.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Press Listings </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/press-listings.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Press posts</p>
+            <p>Optional Header (header includes headline and/or description)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Staff Listings </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/staff-listings.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from Staff posts</p>
+            <p>Optional Header (header includes headline and/or description)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Four Column Grid Section </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/four-column-grid-section.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Sticky Section </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/sticky-section.png' ?>" alt="add section">
+            </summary>
+            <p>Section where the text stays still in one column and images scroll in another column, until you've finished scrolling through the images </p>
+            <p>Data comes from associated fields</p>
+            <p>Don't add too much text or else, since it stays still, if its longer than the browser height, it will be a bad user experience</p>
+            <p>Try to add 3 or more images</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>WYSIWYG Content Section </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/wysiwyg-content-section.png' ?>" alt="add section">
+            </summary>
+            <p>Great for lots of text</p>
+            <p>Data comes from associated fields</p>
+            <p>Optional decorative squiggle that shows on the top left of the section</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Generic Listing </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/generic-listing.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline and/or description)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Video Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/video-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Side Labeled Lists </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/side-labeled-lists.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Featured News Slider </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/featured-news-slider.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from recently published blog posts</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Accordion Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/accordion-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+            <p>Optional Header (header includes headline)</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Basic Section </span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/basic-section.png' ?>" alt="add section">
+            </summary>
+            <p>Basically a fancy text block for some combination of headline, description and buttons </p>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Donate Row</span>
+                <img src=" <?php echo plugins_url(basename(plugin_dir_path(__FILE__))) . '/images/donate-row.png' ?>" alt="add section">
+            </summary>
+            <p>Data comes from associated fields</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Custom HTML </span>
+            </summary>
+            <p>For any case where you might need to paste custom HTML in the future</p>
+        </details>
+
+        <details>
+            <summary>
+                <span>Shortcode </span>
+            </summary>
+            <p>For any case where you might need to use a shortcode, like a form</p>
+        </details>
+
     </details>
 
     <details>
@@ -68,10 +313,10 @@
 
         <details>
             <summary>Options Tab</summary>
-            <ul>
-                <li> These fields are pretty intuitive and are used throughout the whole site</li>
+            <ul>  
+                <li>These fields are pretty intuitive and are used throughout the whole site</li>
                 <li> The Newsletter Row fields are applied to the Newsletter Row section which is automatically included in many templates (as listed under Templates) and any additional page you add it to using the <i>Sections Builder</i></li>
-                <li> The Block Row fields are applied to the Block Row section which is automatically included in many templates (as listed under Templates), and any additional page you add it tp using the <i>Sections Builder</i> (unless you override these fields on the page level)</li>
+                <li> The Block Row fields are applied to the Block Row section which is automatically included in many templates (as listed under Templates), and any additional page you add it to using the <i>Sections Builder</i> (unless you override these fields on the page level)</li>
                 <li> The Google maps API key needs to be changed to your own key before launch and is used to generate the maps on the Event posts</li>
                 <li> You shouldn’t have to change the Google Analytics ID unless your Google Analytics account changes</li>
             </ul>
@@ -191,7 +436,8 @@
 
     <details>
         <summary>📄 Templates</summary>
-        <p>If you’re ever wondering why content exists on any page, where the data for it is coming from and if you can edit the data, look at the appropriate template below. Each template lists its content in order. Each content item cannot be removed from the template and is automatically included. Unless the data comes from the <i>Sections Builder</i>, options settings, post fields or post body, it is not directly editable.</p>
+        <p>If you’re ever wondering why content exists on any page, where the data for it is coming from and if you can edit the data, look at the appropriate template below. Each template lists its content in order.</p>
+        <p>Each content item cannot be removed from the template and is automatically included. Unless the data comes from the <i>Sections Builder</i>, options settings, post fields or post body, it is not directly editable.</p>
 
         <details>
             <summary>Standard Page</summary>
@@ -248,7 +494,9 @@
 
     <details>
         <summary>📷 Image Sizes</summary>
-        TODO
+        <p>Before adding an image to a section or a featured image to a page, reference the section or similar page to see how the image appears within it.</p>
+        <p>If it appears horizontal, upload a horizontal image. If it appears vertical, upload a vertical image. The code will automatically crop the extra area from each side, or from the top and bottom.
+        <p>If it appears a fullwidth photo, upload an image that is atleast 2400px wide. If it appears a halfwidth photo, upload an image that is atleast 1200px wide. All other images should be atleast 600px wide.</p>
     </details>
 
     <details>

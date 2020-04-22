@@ -22,7 +22,7 @@ if (get_row_layout() == 'grid_section' || $rowLayout == 'grid_section') {
 
     <?php if ( $headline ) { ?>
       <div class="section-header">
-        <span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span>
+        <?php if ( get_sub_field('icon_id') ) { ?><span class='icon fas fa-<?php echo get_sub_field('icon_id') ?> txt-clr-<?php echo get_sub_field('icon_color') ?>'></span><?php } ?>
         <h3>
           <?php echo $headline ?>
         </h3>

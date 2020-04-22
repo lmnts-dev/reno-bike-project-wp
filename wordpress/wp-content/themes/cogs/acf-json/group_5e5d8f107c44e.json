@@ -867,25 +867,6 @@
             ]
         },
         {
-            "key": "field_5e9790cff0fc4",
-            "label": "Volunteer Form PDF",
-            "name": "volunteer_form_pdf",
-            "type": "file",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_size": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_5e99f707e6142",
             "label": "Logos",
             "name": "logos",
@@ -968,5 +949,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587149675
+    "modified": 1587508092
 }
