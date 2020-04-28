@@ -80,13 +80,15 @@ Site Navigation
           {% include 'svg-icon-search' className: 'search-toggle' %}
         </button>
       </div>
-      <div class="nav-cta items-added">
-        <a href="/cart">
-          <span>Cart</span>
-          {% include 'shopping-cart' %}
-          <span class="count">{{ itemCount }}</span>
-        </a>
-      </div>
+      {% if settings.enable-purchasing == true %}
+        <div class="nav-cta items-added">
+          <a href="/cart">
+            <span>Cart</span>
+            {% include 'shopping-cart' %}
+            <span class="count">{{ itemCount }}</span>
+          </a>
+        </div>
+      {% endif %}
     </div>
     {% comment %}
     /** /CTA Navigation */

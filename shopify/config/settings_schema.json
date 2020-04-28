@@ -11,6 +11,12 @@
     "name": "🚴 General",
     "settings": [
       {
+        "type":      "checkbox",
+        "id":        "enable-purchasing",
+        "label":     "Enable Purchasing",
+        "default":   false
+      },
+      {
         "type": "url",
         "id": "marketing-site-url",
         "label": "Marketing Site Link"

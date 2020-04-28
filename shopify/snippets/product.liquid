@@ -61,8 +61,12 @@ Begin product page component
         {% endcomment %}
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
-          {% if pickUpOnlyProduct == true %}
-            <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+          {% if settings.enable-purchasing == true %}
+            {% if pickUpOnlyProduct == true %}
+              <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+            {% endif %}
+          {% else %}
+            <div class="notification-tag p txt-clr-primary">In-store Item</div>
           {% endif %}
 
           <div class="title-and-price">
@@ -91,20 +95,22 @@ Begin product page component
             </span>
           </div>
 
-          <div class="quantity-and-purchase">
-            {% if product.available %}
-              <div class="quantity">
-                <span class="input-number-decrement">-</span><input type="text" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector"><span class="input-number-increment">+</span>
-              </div>
-            {% endif %}
-            <div class="purchase">
+          {% if settings.enable-purchasing == true %}
+            <div class="quantity-and-purchase">
               {% if product.available %}
-                <button type="submit" name="add" id="AddToCart" class="btn btn-clr-black btn-arrow">Add to basket</button>
-              {% else %}
-                <button class="btn btn-clr-black sold-out-btn">Sold Out</button>
+                <div class="quantity">
+                  <span class="input-number-decrement">-</span><input type="text" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector"><span class="input-number-increment">+</span>
+                </div>
               {% endif %}
+              <div class="purchase">
+                {% if product.available %}
+                  <button type="submit" name="add" id="AddToCart" class="btn btn-clr-black btn-arrow">Add to basket</button>
+                {% else %}
+                  <button class="btn btn-clr-black sold-out-btn">Sold Out</button>
+                {% endif %}
+              </div>
             </div>
-          </div>
+          {% endif %}
 
           {% assign variantSize = product.variants | size %}
           

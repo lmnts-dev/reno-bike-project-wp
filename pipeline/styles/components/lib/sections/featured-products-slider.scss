@@ -47,7 +47,7 @@
       @media (max-width: $BaseMediaMd ){
         display: block;
 
-        div {
+        div:not(.notification-tag) {
           width: 100%;
           text-align: left;
         }

@@ -28,8 +28,12 @@ SETTINGS PAGE SO THAT LOGIC INJECTS INTO UPDATED CART TEMPLATE
 
 
     <div class="cart-item-col title">
-      {% if pickUpOnlyProduct == true %}
-        <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+      {% if settings.enable-purchasing == true %}
+        {% if pickUpOnlyProduct == true %}
+          <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+        {% endif %}
+      {% else %}
+        <div class="notification-tag p txt-clr-primary">In-store Item</div>
       {% endif %}
       <a href="{{ item.url | within: collections.all }}"><span>
         {{ item.product.title }}

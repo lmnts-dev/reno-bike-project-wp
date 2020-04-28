@@ -41,11 +41,13 @@ Overlay Site Navigation
                 </ul>
             </div>
         </nav>
-        <div class="overlay-nav-cta">
-            <a href="/cart">
-                <span>Cart</span>
-            </a>
-        </div>
+        {% if settings.enable-purchasing == true %}
+            <div class="overlay-nav-cta">
+                <a href="/cart">
+                    <span>Cart</span>
+                </a>
+            </div>
+        {% endif %}
     </div>
     <div class="right"></div>
 </div>

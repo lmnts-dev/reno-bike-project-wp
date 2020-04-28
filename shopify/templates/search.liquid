@@ -44,8 +44,12 @@ Link into Shopify data.
                   <div class="info">
                     {% assign product = item %}
                     {% include 'pickup-only-product' %}
-                    {% if pickUpOnlyProduct == true %}
-                      <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+                    {% if settings.enable-purchasing == true %}
+                      {% if pickUpOnlyProduct == true %}
+                        <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+                      {% endif %}
+                    {% else %}
+                      <div class="notification-tag p txt-clr-primary">In-store Item</div>
                     {% endif %}
                     <span class="title">{{ item.title }}</span>
                     <p class="excerpt">{{ item.content | strip_html | truncatewords: 50 }}</p>

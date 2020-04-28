@@ -14,6 +14,11 @@ VISUALLY HIDDEN PICK UP PRODUCT FROM CART
 @stylesheet: cart.scss
 
 {% endcomment %}
+
+{% unless settings.enable-purchasing == true %}
+  <script>window.location.href = "/";</script>
+{% endunless %}
+
 {% comment %} from pick up app {% endcomment %}
 {% assign pickUpProductID = 4549493915757 %}
 
