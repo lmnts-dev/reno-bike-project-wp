@@ -20,12 +20,11 @@
 
 <?php } else if ( get_row_layout() == "button") { ?>
     <?php 
-        $button = get_sub_field('button_link'); 
-        $buttonTarget = $button['target'] ? $button['target'] : '_self';
-        $buttonText = $button['title'];
-        $buttonLink = $button['url'];
+        $buttonTarget = get_sub_field('link_type') == 'external' ? 'target="_blank"' : ( get_sub_field('link_type') == 'download' ? ' download ' : '' );
+        $buttonText = get_sub_field('label'); 
+        $buttonLink = get_sub_field('link'); 
     ?>
-    <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn btn-arrow" target="<?php echo esc_attr( $buttonTarget ); ?>">
+    <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn btn-arrow" <?php echo $buttonTarget ?>>
         <?php echo esc_html( $buttonText ); ?>
     </a>
 

@@ -135,6 +135,31 @@
                                             "placeholder": "\/"
                                         }
                                     ]
+                                },
+                                {
+                                    "key": "field_5ec2b7da95d70",
+                                    "label": "Link Type",
+                                    "name": "link_type",
+                                    "type": "radio",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "internal": "Internal",
+                                        "external": "External",
+                                        "download": "Download"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "default_value": "internal",
+                                    "layout": "vertical",
+                                    "return_format": "value",
+                                    "save_other_choice": 0
                                 }
                             ]
                         }
@@ -470,6 +495,31 @@
                                     },
                                     "default_value": "\/",
                                     "placeholder": "\/"
+                                },
+                                {
+                                    "key": "field_5ec2b83f95d71",
+                                    "label": "Link Type",
+                                    "name": "link_type",
+                                    "type": "radio",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "internal": "Internal",
+                                        "external": "External",
+                                        "download": "Download"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "default_value": "internal",
+                                    "layout": "vertical",
+                                    "return_format": "value",
+                                    "save_other_choice": 0
                                 }
                             ]
                         },
@@ -574,23 +624,29 @@
                                     "mime_types": ""
                                 },
                                 {
-                                    "key": "field_5e5d98bb54a34",
-                                    "label": "Open link in new tab?",
-                                    "name": "open_link_in_new_tab",
-                                    "type": "true_false",
-                                    "instructions": "Open this link in a new tab. Ideal for external links.",
-                                    "required": 1,
+                                    "key": "field_5ec2b87495d72",
+                                    "label": "Link Type",
+                                    "name": "link_type",
+                                    "type": "radio",
+                                    "instructions": "",
+                                    "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "message": "",
-                                    "default_value": 1,
-                                    "ui": 1,
-                                    "ui_on_text": "",
-                                    "ui_off_text": ""
+                                    "choices": {
+                                        "internal": "Internal",
+                                        "external": "External",
+                                        "download": "Download"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "default_value": "internal",
+                                    "layout": "vertical",
+                                    "return_format": "value",
+                                    "save_other_choice": 0
                                 }
                             ]
                         }
@@ -773,9 +829,9 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_5e989cf3f3cab",
-                                    "label": "Button Style",
-                                    "name": "button_style",
+                                    "key": "field_5ec2b9b90a3d7",
+                                    "label": "Link Type",
+                                    "name": "link_type",
                                     "type": "radio",
                                     "instructions": "",
                                     "required": 0,
@@ -786,12 +842,13 @@
                                         "id": ""
                                     },
                                     "choices": {
-                                        "default": "Default",
-                                        "file": "Download File"
+                                        "internal": "Internal",
+                                        "external": "External",
+                                        "download": "Download"
                                     },
                                     "allow_null": 0,
                                     "other_choice": 0,
-                                    "default_value": "",
+                                    "default_value": "internal",
                                     "layout": "vertical",
                                     "return_format": "value",
                                     "save_other_choice": 0
@@ -1258,6 +1315,31 @@
                                                 "id": ""
                                             },
                                             "return_format": "url"
+                                        },
+                                        {
+                                            "key": "field_5ec2bb74d0acc",
+                                            "label": "Link Type",
+                                            "name": "link_type",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Internal",
+                                                "external": "External",
+                                                "download": "Download"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "internal",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
                                         }
                                     ]
                                 },
@@ -1341,6 +1423,31 @@
                                             "max_height": "",
                                             "max_size": "",
                                             "mime_types": ""
+                                        },
+                                        {
+                                            "key": "field_5ec2bba3d0acd",
+                                            "label": "Link Type",
+                                            "name": "link_type",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Internal",
+                                                "external": "External",
+                                                "download": "Download"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "internal",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
                                         }
                                     ]
                                 },
@@ -1424,6 +1531,31 @@
                                             "max_height": "",
                                             "max_size": "",
                                             "mime_types": ""
+                                        },
+                                        {
+                                            "key": "field_5ec2bbd3d0ace",
+                                            "label": "Link Type",
+                                            "name": "link_type",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Internal",
+                                                "external": "External",
+                                                "download": "Download"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "internal",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
                                         }
                                     ]
                                 },
@@ -1483,6 +1615,31 @@
                                                 "id": ""
                                             },
                                             "return_format": "url"
+                                        },
+                                        {
+                                            "key": "field_5ec2bbefd0acf",
+                                            "label": "Link Type",
+                                            "name": "link_type",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Internal",
+                                                "external": "External",
+                                                "download": "Download"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "internal",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
                                         }
                                     ]
                                 }
@@ -2353,10 +2510,10 @@
                                     "display": "block",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5e6ad64dfe72b",
-                                            "label": "Button Item",
-                                            "name": "button_link",
-                                            "type": "link",
+                                            "key": "field_5ec2ce8b7da3a",
+                                            "label": "Label",
+                                            "name": "label",
+                                            "type": "text",
                                             "instructions": "",
                                             "required": 1,
                                             "conditional_logic": 0,
@@ -2365,7 +2522,52 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "return_format": "array"
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_5ec2ce967da3b",
+                                            "label": "Link",
+                                            "name": "link",
+                                            "type": "url",
+                                            "instructions": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_5ec2cea77da3c",
+                                            "label": "Link Type",
+                                            "name": "link_type",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Internal",
+                                                "external": "External",
+                                                "download": "Download"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "default_value": "internal",
+                                            "layout": "vertical",
+                                            "return_format": "value",
+                                            "save_other_choice": 0
                                         }
                                     ],
                                     "min": "",
@@ -3156,12 +3358,12 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_5e6c082eb8f7b",
-                                    "label": "Button Style",
-                                    "name": "button_style",
+                                    "key": "field_5ec2bde89e3c2",
+                                    "label": "Link Type",
+                                    "name": "link_type",
                                     "type": "radio",
                                     "instructions": "",
-                                    "required": 1,
+                                    "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -3169,12 +3371,13 @@
                                         "id": ""
                                     },
                                     "choices": {
-                                        "default": "Default",
-                                        "file": "Download File"
+                                        "internal": "Internal",
+                                        "external": "External",
+                                        "download": "Download"
                                     },
                                     "allow_null": 0,
                                     "other_choice": 0,
-                                    "default_value": "",
+                                    "default_value": "internal",
                                     "layout": "vertical",
                                     "return_format": "value",
                                     "save_other_choice": 0
@@ -3479,5 +3682,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1587517757
+    "modified": 1589825229
 }

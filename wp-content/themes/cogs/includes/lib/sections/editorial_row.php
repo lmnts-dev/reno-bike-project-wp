@@ -19,6 +19,8 @@ if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
     $imgColClass = 'img-col-alt';
   }
 
+  $buttons = get_sub_field('buttons');
+
 ?>
 
   <section class="editorial-row <?php echo get_sub_field('layout'); ?> editorial-row-<?php echo $idx ?>">
@@ -51,14 +53,14 @@ if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
           <?php 
               if ( $buttons ){
                   foreach ( $buttons as $button ) { 
-                      if ( $button['button_style'] == "file" ) { 
+                      if ( $button['link_type'] == "download" ) { 
           ?>
                           <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-border-black btn-download" download>
-                              <?php echo $button['call_to_action_label']?>
+                              <?php echo $button['call_to_action_']?>
                           </a>
                       <?php } else { ?>
-                          <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" download>
-                              <?php echo $button['call_to_action_label']?>
+                          <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" <?php echo $button['link_type'] == "external" ? 'target="_blank"' : ''?> >
+                              <?php echo $button['call_to_action_']?>
                           </a>
           <?php 
                       }

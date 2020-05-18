@@ -54,13 +54,13 @@ if (get_row_layout() == 'basic_section' || $rowLayout == 'basic_section') {
         <?php 
             if ( $buttons ){
                 foreach ( $buttons as $button ) { 
-                     if ( $button['button_style'] == "file" ) { 
+                     if ( $button['link_type'] == "download" ) { 
         ?>
                         <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-border-black btn-download" download>
                             <?php echo $button['call_to_action_label']?>
                         </a>
                     <?php } else { ?>
-                        <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" download>
+                        <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" <?php echo $button['link_type'] == 'external' ? ' target="_blank" ' : '' ?>>
                             <?php echo $button['call_to_action_label']?>
                         </a>
         <?php 

@@ -23,9 +23,7 @@ if (get_sub_field('link_list')) {
                           echo 'focus';
                         } ?>">
               <span>
-                <a href="<?php echo get_sub_field('url'); ?>" <?php if (get_sub_field('open_link_in_new_tab') == true) {
-                                                                echo 'target="blank"';
-                                                              } ?>>
+                <a href="<?php echo get_sub_field('url'); ?>" <?php echo get_sub_field('link_type') == 'external' ? ' target="_blank" ' : ( get_sub_field('link_type') == 'download' ? 'download' : ''  ) ?>>
                   <?php echo get_sub_field('label'); ?>
                 </a>
               </span>

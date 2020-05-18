@@ -613,7 +613,7 @@ add_action('login_enqueue_scripts', 'my_login_logo');
 add_action('admin_menu', 'linked_url');
 function linked_url()
 {
-	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 2 );
+	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 1 );
 }
 
 add_action('admin_menu', 'linkedurl_function');
