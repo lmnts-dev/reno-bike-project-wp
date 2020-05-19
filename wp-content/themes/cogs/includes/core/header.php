@@ -38,7 +38,6 @@ if (!$detect_device->isMobile() && !$detect_device->isTablet()) {
 
 $sitename = get_bloginfo('title');
 $title = $sitename;
-$description = get_bloginfo('description');
 
 if (get_the_excerpt() !== false and is_front_page() == false) {
     $description = get_the_excerpt();
@@ -51,14 +50,13 @@ if (is_singular('project')) {
 }
 
 $featured_image = get_the_post_thumbnail_url($post, 'large');
-if ($featured_image == false) {
-    $args = array(
-        'numberposts' => 1,
-        'post_type'   => 'project'
-    );
 
-    $project = get_posts($args);
-    $featured_image = get_the_post_thumbnail_url($project[0]->ID, 'large');
+if ($featured_image == false or is_front_page() == true ) {
+    $featured_image = get_field('default_opengraph', 'options')['image'];
+}
+
+if ($description == false or is_front_page() == true ) {
+    $description = get_field('default_opengraph', 'options')['description'];
 }
 ?>
 

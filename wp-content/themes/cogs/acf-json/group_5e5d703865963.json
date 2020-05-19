@@ -3675,7 +3675,7 @@
                             "label": "Field Rows",
                             "name": "field_rows",
                             "type": "repeater",
-                            "instructions": "",
+                            "instructions": "Labels are used to label the field responses when emailed to you, which means if you have two labels that are the same, you won't be able to decipher which of the responses are which. Labels are also visually shown on the form on text fields only.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -4219,5 +4219,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589839320
+    "modified": 1589929706
 }

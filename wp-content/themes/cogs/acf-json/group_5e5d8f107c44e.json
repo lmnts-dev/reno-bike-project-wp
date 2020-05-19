@@ -910,7 +910,7 @@
                     "label": "Google Maps",
                     "name": "google_maps",
                     "type": "text",
-                    "instructions": "Get an API Key instructions: https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key",
+                    "instructions": "Instructions on how to get an API Key <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\" target=\"_blank\">here<\/a>.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -931,7 +931,7 @@
             "label": "Google Analytic IDs",
             "name": "analytic_ids",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "For a reference on what this is and how to generate it, click <a href=\"https:\/\/support.google.com\/analytics\/answer\/1008080?hl=en\" target=\"_blank\">here<\/a>.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -1030,6 +1030,66 @@
                     "mime_types": ""
                 }
             ]
+        },
+        {
+            "key": "field_5ec46d539922f",
+            "label": "Default Opengraph",
+            "name": "default_opengraph",
+            "type": "group",
+            "instructions": "Explanation on what an opengraph is <a href=\"https:\/\/www.computerhope.com\/jargon\/o\/open-graph.htm\" target=\"_blank\">here<\/a>.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ec46d6a99230",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5ec46d7499231",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -1049,5 +1109,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589824921
+    "modified": 1589931485
 }

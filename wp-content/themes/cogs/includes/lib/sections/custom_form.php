@@ -91,7 +91,7 @@ if (get_row_layout() == 'custom_form' || $rowLayout == 'sections/custom_form') :
                 <div class="input-wrapper input-checkboxes input-col-100 input-col-100-sm" item-<?php echo $x ?>>
                     <?php foreach ($options as $option) : ?>
                         <div class="input-checkbox">
-                            <input type="checkbox" name= "<?php echo $option['option'] ?>" id="<?php echo $ID ?>" <?php echo $required ?>>
+                            <input type="checkbox" name="<?php echo $name ?>" id="<?php echo $option['option'] ?>" value="<?php echo $option['option'] ?>" <?php echo $required ?>>
                             <label class="checkbox-label" for="<?php echo $option['option']?>">
                                 <?php echo $option['option'] ?>
                             </label>
@@ -104,14 +104,14 @@ if (get_row_layout() == 'custom_form' || $rowLayout == 'sections/custom_form') :
               <!-- textarea field -->
               <?php if ( $field == 'textarea' ) : ?>
                 <div class="input-wrapper input-textarea input-col-100">
-                  <textarea rows="4" name= "<?php echo $name ?>" placeholder="<?php echo $placeholder ?>" <?php echo $required ?>></textarea>
+                  <textarea rows="4" name="<?php echo $name ?>" placeholder="<?php echo $placeholder ?>" <?php echo $required ?>></textarea>
                 </div>
               <?php endif; ?>
 
               <!-- legal checkbox field -->
               <?php if ( $field == 'legal' ) : ?>
                 <div class="input-wrapper input-checkbox input-col-100">
-                  <input type="checkbox" name= "<?php echo $name ?>" id="<?php echo $placeholder ?>" checked <?php echo $required ?>>
+                  <input type="checkbox" name="<?php echo $name ?>" id="<?php echo $placeholder ?>" checked <?php echo $required ?>>
                   <label for="<?php echo $placeholder ?>">
                     <?php echo $description ?>
                   </label>
