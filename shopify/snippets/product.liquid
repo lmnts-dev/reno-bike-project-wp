@@ -61,6 +61,11 @@ Begin product page component
         {% endcomment %}
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
+        {% if product.tags contains 'Shop Online' %}
+          {% if pickUpOnlyProduct == true %}
+            <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+          {% endif %}
+        {% else %}
           {% if settings.enable-purchasing == true %}
             {% if pickUpOnlyProduct == true %}
               <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
@@ -68,6 +73,7 @@ Begin product page component
           {% else %}
             <div class="notification-tag p txt-clr-primary">In-store Item</div>
           {% endif %}
+        {% endif %}
 
           <div class="title-and-price">
             <div class="title">
@@ -95,7 +101,7 @@ Begin product page component
             </span>
           </div>
 
-          {% if settings.enable-purchasing == true %}
+          {% if settings.enable-purchasing == true or product.tags contains 'Shop Online' %}
             <div class="quantity-and-purchase">
               {% if product.available %}
                 <div class="quantity">

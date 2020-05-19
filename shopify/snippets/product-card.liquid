@@ -27,12 +27,18 @@ The product card component.
       <img data-src="{{ cover }}" class="lazy" alt="{{ title }}" itemprop="image" />
     </div>
     <div class="product-details">
-      {% if settings.enable-purchasing == true %}
+      {% if product.tags contains 'Shop Online' %}
         {% if pickUpOnlyProduct == true %}
           <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
         {% endif %}
       {% else %}
-        <div class="notification-tag p txt-clr-primary">In-store Item</div>
+        {% if settings.enable-purchasing == true %}
+          {% if pickUpOnlyProduct == true %}
+            <div class="notification-tag p txt-clr-primary">Pick Up Only</div>
+          {% endif %}
+        {% else %}
+          <div class="notification-tag p txt-clr-primary">In-store Item</div>
+        {% endif %}
       {% endif %}
       <div class="title">
         <span itemprop="name">

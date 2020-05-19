@@ -40,8 +40,9 @@ if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listi
 
     <div class="membership-listings-inner">
 
+      <div class="grid-sizer"></div>
       <?php foreach ($membershipListings as $membership) { ?>
-        <?php $includes = get_field( 'includes', $membership->ID); ?>
+        <?php $includes = get_field( 'includes', $membership->ID) ? get_field( 'includes', $membership->ID) : array(); ?>
 
         <div class="membership-listing-card">
           <div class="membership-listing-card-inner">

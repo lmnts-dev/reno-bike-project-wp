@@ -23,6 +23,9 @@ barba.init({
         // Re-init our Lazy Loading
         initLazyLoad();
 
+        //Re-init masonry
+        initMasonry()
+
         // Re-init our bicycle wheel script.
         initBikeWheel();
 

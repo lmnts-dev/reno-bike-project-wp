@@ -613,7 +613,7 @@ add_action('login_enqueue_scripts', 'my_login_logo');
 add_action('admin_menu', 'linked_url');
 function linked_url()
 {
-	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 2 );
+	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 1 );
 }
 
 add_action('admin_menu', 'linkedurl_function');
@@ -913,3 +913,6 @@ function register_my_custom_menu_page() {
   // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
   add_menu_page( 'Help Page', 'Help', 'manage_options', 'lmnts/help.php', '', 'dashicons-lightbulb', 1 );
 } 
+
+wp_register_style('extraACFstyles', get_template_directory_uri() . '/extra-acf-styles.php');
+wp_enqueue_style( 'extraACFstyles');

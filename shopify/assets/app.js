@@ -22,6 +22,25 @@ initCursor();
 "use strict";
 
 /*
+ ** @author: Alisha Garric
+ ** @description: Adds masonry to memberships
+ */
+function initMasonry() {
+  var elem = document.querySelector('.membership-listings-inner');
+
+  if (elem) {
+    var msnry = new Masonry(elem, {
+      columnWidth: '.grid-sizer',
+      itemSelector: '.membership-listing-card',
+      percentPosition: true
+    });
+  }
+}
+
+initMasonry();
+"use strict";
+
+/*
  ** @author: Peter Laxalt
  ** @description: Functions to show/hide the navigation overlay.
  */
@@ -269,29 +288,37 @@ initSocialOverlay();
 function initVideoOverlay() {
   var videoToggleClass = "video-toggle";
   var videoOverlayClass = "video-overlay";
+  var videoOverlay = document.getElementsByClassName(videoOverlayClass)[0];
 
-  var toggleVideoOverlay = function toggleVideoOverlay(e) {
-    var videoOverlay = document.getElementsByClassName(videoOverlayClass)[0];
+  if (videoOverlay) {
+    var toggleVideoOverlay = function toggleVideoOverlay(e) {
+      if (videoOverlay.classList.contains("visible")) {
+        var src = videoOverlay.querySelector('iframe').src.replace("autoplay=1", "autoplay=0");
+        videoOverlay.querySelector('iframe').src = src;
+        document.body.classList.remove("scroll-lock");
+        videoOverlay.classList.remove("visible");
+      } else {
+        var _src = videoOverlay.querySelector('iframe').src.replace("autoplay=0", "autoplay=1");
 
-    if (videoOverlay.classList.contains("visible")) {
-      document.body.classList.remove("scroll-lock");
-      videoOverlay.classList.remove("visible");
-    } else {
-      document.body.classList.add("scroll-lock");
-      videoOverlay.classList.add("visible");
-    }
+        videoOverlay.querySelector('iframe').src = _src;
+        document.body.classList.add("scroll-lock");
+        videoOverlay.classList.add("visible");
+      }
 
+      return;
+    };
+
+    document.addEventListener("click", function (event) {
+      // If the clicked element doesn't have the right selector, bail
+      if (!event.target.classList.contains(videoToggleClass)) return; // Don't follow the link
+
+      event.preventDefault(); // Log the clicked element in the console
+
+      toggleVideoOverlay(event);
+    }, false);
+  } else {
     return;
-  };
-
-  document.addEventListener("click", function (event) {
-    // If the clicked element doesn't have the right selector, bail
-    if (!event.target.classList.contains(videoToggleClass)) return; // Don't follow the link
-
-    event.preventDefault(); // Log the clicked element in the console
-
-    toggleVideoOverlay(event);
-  }, false);
+  }
 }
 
-initVideoOverlay();
+initVideoOverlay(); // __appFunctions.BEFORE_ENTER.push(initVideoOverlay);

@@ -11,7 +11,8 @@
 
 if (get_row_layout() == 'video_row') {
 
-  $videoID = get_sub_field('vimeo_id');
+  $link = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?background=1&autoplay=1&loop=1&byline=0&title=0";
+  $overlayLink = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?autoplay=0";
   $coverImage = get_sub_field('cover_image');
   $altText = get_sub_field('alt_text');
 ?>
@@ -22,7 +23,7 @@ if (get_row_layout() == 'video_row') {
       <span class="video-toggle">
         <span></span>
       </span>
-      <iframe src="<?php echo 'https://player.vimeo.com/video/' . $videoID . '?background=1&autoplay=1&loop=1&byline=0&title=0'?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <iframe src="<?php echo $link ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       <img data-src="<?php echo $coverImage ?>" class="cover lazy" alt="<?php echo $altText ?>" />
 
     </div>
@@ -31,7 +32,7 @@ if (get_row_layout() == 'video_row') {
   <div class="video-overlay">
     <div class="video-toggle"></div>
     <div class="video-overlay-inner">
-      <iframe src="<?php echo 'https://player.vimeo.com/video/' . $videoID . '?background=1&autoplay=1&controls=true'?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <iframe src="<?php echo $overlayLink ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
   </div>
 

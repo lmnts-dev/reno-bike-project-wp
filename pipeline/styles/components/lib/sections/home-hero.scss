@@ -11,8 +11,7 @@ section.home-hero {
   $mobileBikeWheelSize: calc(#{$Base} * 2);
 
   // height: calc(100vh - #{$BaseNavSizeLg});
-  height: 100vh;
-  min-height: 800px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: calc(#{$BaseNavSizeLg} + #{$Base/2});

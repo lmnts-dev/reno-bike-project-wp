@@ -1,0 +1,420 @@
+////////////////////////////////////////
+//
+// Custom Form
+//
+// @author Peter Laxalt and Alisha Garric
+// @since 3/2020
+// @requires custom_form.php
+//
+//
+////////////////////////////////////////
+
+@mixin transition($property, $transition: $baseTransition, $ease: $baseEase) {
+    will-transform: $property;
+    transition: $property $transition $ease;
+}
+
+.custom-form {
+    .custom-form-inner {
+        margin: 0 auto;
+        max-width: 100vw;
+
+        form {
+            background: $clrSteel;
+            font-size: 1.125;
+            line-height: 1;
+            padding: $Base * 2 0;
+            max-width: 1020px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            @media(max-width: $BaseMediaSm) {
+                padding: $Base * 1.5 0;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+
+.custom-form {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .separator {
+        height: calc(#{$Base} * 3.5); 
+        width: 100%;
+        position: relative;
+
+        @media(max-width: $BaseMediaSm) {
+            height: calc(#{$Base} * 2.5);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            top: calc(#{$Base} * 1.5);
+            left: 0;
+            height: 4px;
+            background-color: $clrWhite;
+
+            @media(max-width: $BaseMediaSm) {
+                top: calc(#{$Base} * 1);
+            }
+        }
+    }
+  
+    .input-wrapper {
+        position: relative;
+        padding: 0 calc(#{$Base} * 3);
+        margin-bottom: calc(#{$Base} / 2);
+
+        @media(max-width: $BaseMediaMd) {
+            padding: 0 calc(#{$Base} * 1.5);
+        }
+
+        @media(max-width: $BaseMediaSm) {
+            padding: 0 calc(#{$Base} / 2);
+        }
+
+        &.input-col-50.item-0 {
+            padding-right: calc(#{$Base} / 2);
+            
+        }
+
+        &.input-col-50.item-1 {
+            padding-left: calc(#{$Base} / 2);
+        }
+
+        label:not(.checkbox-label) {
+            width: 100%;
+            @extend .txt-caption;
+        }
+    
+        input,
+        textarea,
+        .input-dropdown-value {
+            flex: 1;
+        }
+    
+        &.input-submit {
+            @media(max-width: $BaseMediaSm) {
+                justify-content: center;
+            }
+        }
+  
+        &.input-col {
+            ////////////////////////
+            // Sizing
+            ////////////////////////
+            &-25 {
+                width: 25%;
+            }
+    
+            &-33 {
+                width: 33.33333333333333%;
+            }
+    
+            &-50 {
+                width: 50%;
+            }
+    
+            &-66 {
+                width: 66.666666666666666%;
+            }
+    
+            &-75 {
+                width: 75%;
+            }
+    
+            &-100 {
+                width: 100%;
+            }
+    
+            @media (max-width: $BaseMediaSm) {
+                &-25-sm {
+                    width: 25%;
+                }
+    
+                &-33-sm {
+                    width: 33.33333333333333%;
+                }
+        
+                &-50-sm {
+                    width: 50%;
+                }
+        
+                &-66-sm {
+                    width: 66.666666666666666%;
+                }
+        
+                &-75-sm {
+                    width: 75%;
+                }
+        
+                &-100-sm {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+
+    // Default Styles
+    input,
+    textarea,
+    .input-dropdown-value {
+        padding: calc(#{$Base} / 2 ) 0;
+        outline: 0;
+        border: 0;
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        resize: none;
+        background: transparent;
+        border-radius: 0;
+        color: $clrBlack;
+        height: calc(#{$Base} * 1.5);
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    textarea {
+        min-height: calc(#{$Base} * 4);
+        border-bottom: 1px solid $clrBlack;
+    }
+
+    textarea, input[type=text] {
+        border-bottom: 1px solid $clrBlack;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-bottom: 1px solid $clrPrimary;
+        }
+    }
+
+    input::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: $clrChrome;
+    }
+    input::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $clrChrome;
+    }
+    input:-ms-input-placeholder {
+        /* IE 10+ */
+        color: $clrChrome;
+    }
+    input:-moz-placeholder {
+        /* Firefox 18- */
+        color: $clrChrome;
+    }
+
+    form {
+        margin: 0;
+    }
+
+    ////////////////////////
+    // Fake Input Types:
+    // For fancy dropdowns, radios, and checkboxes.
+    ////////////////////////
+
+    // Dropdowns
+    .input-dropdown {
+        input {
+            display: none;
+        }
+
+        .input-dropdown-el {
+            $dropdownArrowSize: $Base;
+            $dropdownArrowColor: $clrPrimary;
+
+            display: flex;
+            width: 100%;
+
+            .input-dropdown-value {
+                padding-right: $dropdownArrowSize;
+                position: relative;
+                cursor: pointer;
+                color: $clrWhite;
+
+                &:before {
+                    content: "▼";
+                    font-family: monospace;
+                    position: absolute;
+                    right: 0;
+                    top: calc(#{$Base} / 6);
+                    bottom: calc(#{$Base} / 6);
+                    width: $dropdownArrowSize;
+                    border-left: 1px solid $dropdownArrowColor;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $dropdownArrowColor;
+                    transform: scaleY(0.8);
+                }
+            }
+
+            .input-dropdown-list {
+                position: absolute;
+                top: calc(#{$Base});
+                left: calc(#{$Base} / 4);
+                right: calc(#{$Base} / 4);
+                padding-top: calc(#{$Base} / 2);
+                z-index: 800;
+                display: none;
+
+                ul {
+                    width: 100%;
+                    background: $clrWhite;
+                    border-radius: 0;
+                    font-size: 1.2rem;
+                    box-shadow: 0px 10px 20px rgba($clrBlack, 0.03);
+                    border: 1px solid rgba($clrBlack, 0.06);
+
+                    li {
+                        padding: calc(#{$Base} / 2);
+                        border-bottom: 1px solid rgba($clrBlack, 0.08);
+                        cursor: pointer;
+
+                        &:last-child {
+                            border-bottom: unset;
+                        }
+
+                        &:hover {
+                            background: lighten($clrPrimary, 50%);
+                        }
+
+                        &:focus, &:active {
+                            background: lighten($clrPrimary, 40%);
+                        }
+                    }
+                }
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                .input-dropdown-value {
+                    color: rgba($clrWhite, .5);
+                }
+
+                .input-dropdown-list {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .input-checkboxes {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .input-checkbox {
+            flex: 1;
+            min-width: 50%;
+        }
+    }
+
+    // Checkboxes
+    .input-checkbox {
+        $checkboxSize: #{$Base};
+        display: flex;
+        cursor: pointer;
+        height: $checkboxSize;
+        margin-bottom: calc(#{$Base} / 3);
+        align-items: center;
+
+        @media(max-width: $BaseMediaSm) {
+            height: $checkboxSize / 1.5;
+        }
+
+        input {
+            visibility: hidden;
+            width: 0px;
+            height: 0px;
+            display: none;
+            opacity: 0;
+        }
+
+        label {
+            font-size: 1.2rem;
+            line-height: 1.2;
+            padding-left: calc(#{$checkboxSize} + (#{$Base} / 2));
+            padding-right: calc(#{$checkboxSize} + (#{$Base} / 2));
+            position: relative;
+            cursor: pointer;
+
+            @media(max-width: $BaseMediaSm) {
+                font-size: .8rem;
+                padding-left: calc(#{$checkboxSize / 1.5} + (#{$Base} / 3));
+                padding-right: calc(#{$checkboxSize / 1.5});
+            }
+
+            &:before {
+                @extend .input-dropdown-value;
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: $checkboxSize;
+                height: $checkboxSize;
+                padding: 0;
+                background: transparent;
+                border: 1px solid $clrBlack;
+
+                @media(max-width: $BaseMediaSm) {
+                    width: calc(#{$checkboxSize} / 1.5);
+                    height: calc(#{$checkboxSize} / 1.5);
+                }
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                left: calc(#{$checkboxSize} / 2);
+                top: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                width: calc(#{$checkboxSize} / 1.5);
+                height: calc(#{$checkboxSize} / 1.5);
+                padding: 0;
+                background: $clrPrimary;
+
+                @media(max-width: $BaseMediaSm) {
+                    width: calc(#{$checkboxSize} / 3);
+                    height: calc(#{$checkboxSize} / 3);
+                }
+            }
+        }
+
+        input:checked {
+            + label {
+                &:after {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+        }
+    }
+
+    // Submit Buttons
+    .input-submit {
+        margin-top: $Base;
+
+        @media(max-width: $BaseMediaSm) {
+            justify-content: center;
+        }
+    }
+}
+  
+  

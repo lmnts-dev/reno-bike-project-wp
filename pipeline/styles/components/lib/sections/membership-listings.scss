@@ -9,16 +9,18 @@
 // Listings Container
 .membership-listings {
   .membership-listings-inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
+    position: relative;
 
-    .membership-listing-card {
-      flex: 1;
-      min-width: 40%;
+    .membership-listing-card, .grid-sizer {
+      width: 33.33%;
+      float: left;
+
+      @media (max-width: $BaseMediaMd) {
+        width: 50%;
+      }
 
       @media (max-width: $BaseMediaSm) {
-        min-width: 100%;
+        width: 100%;
       }
     }
   }
@@ -26,18 +28,18 @@
 
 // Cards
 .membership-listing-card {
-  padding: $Base;
+  padding: $Base / 2;
+
+  p {
+    font-size: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 
   @media (max-width: $BaseMediaMd) {
-    padding: $Base / 2 0;
-
-    &:nth-of-type(odd){
-      padding-right: $Base / 2;
-
-      @media (max-width: $BaseMediaSm) {
-        padding-right: 0;
-      }
-    }
+    padding: $Base / 4;
   }
 
   .membership-listing-card-inner {
@@ -45,16 +47,17 @@
 
     .card-top,
     .card-bottom {
-      padding: $Base;
+      padding: $Base * 0.75;
 
       @media (max-width: $BaseMediaMd) {
-        padding: $Base * 0.75;
+        padding: $Base / 2;
       }
     }
 
     .card-top {
       background: $clrSnow;
       position: relative;
+      padding-top: $Base * 1.5;
 
       .title {
         display: flex;
@@ -89,7 +92,7 @@
         right: 0;
         background: $clrAsphalt;
         color: $clrPrimary;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         padding: $Base/3;
 
         @media (max-width: $BaseMediaMd) {
@@ -118,7 +121,6 @@
       }
 
       .content {
-        padding-bottom: $Base/2;
 
         ul,
         p {
@@ -135,6 +137,14 @@
         ul {
           padding-bottom: $Base/2;
           line-height: 2;
+          margin-top: 0;
+
+          li {
+            padding-left: 0;
+            font-size: 1rem;
+            line-height: 1.4rem;
+            padding-bottom: $Base / 4;
+          }
 
           @media (max-width: $BaseMediaMd) {
             padding-bottom: 0;

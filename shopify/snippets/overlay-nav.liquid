@@ -41,6 +41,8 @@ Overlay Site Navigation
                 </ul>
             </div>
         </nav>
+
+        {% comment %}
         {% if settings.enable-purchasing == true %}
             <div class="overlay-nav-cta">
                 <a href="/cart">
@@ -48,6 +50,13 @@ Overlay Site Navigation
                 </a>
             </div>
         {% endif %}
+        {% endcomment %}
+
+        <div class="overlay-nav-cta">
+            <a href="/cart">
+                <span>Cart</span>
+            </a>
+        </div>
     </div>
     <div class="right"></div>
 </div>

@@ -15,9 +15,12 @@ VISUALLY HIDDEN PICK UP PRODUCT FROM CART
 
 {% endcomment %}
 
+
+{% comment %}
 {% unless settings.enable-purchasing == true %}
   <script>window.location.href = "/";</script>
 {% endunless %}
+{% endcomment %}
 
 {% comment %} from pick up app {% endcomment %}
 {% assign pickUpProductID = 4549493915757 %}
