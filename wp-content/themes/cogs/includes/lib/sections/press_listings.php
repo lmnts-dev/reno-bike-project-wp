@@ -45,11 +45,13 @@ if (get_row_layout() == 'press_listings' || $rowLayout == 'press_listings') {
       <ul>
         <?php foreach ($pressArticles as $article) { ?>
           <li>
-            <a href="<?php echo $article->link ?>" target="_blank" title="<?php echo $article->post_title ?>">
-              <span class="tag date">
-                <?php $date = DateTime::createFromFormat('Ymd', $article->date); ?>
-                <?php echo $date->format('m.d.y'); ?>
-              </span>
+            <a href="<?php echo $article->link ?>" target="_blank" rel="noopener nofollow noreferrer" title="<?php echo $article->post_title ?>">
+              <?php if ( $article->date ) : ?>
+                <span class="tag date">
+                  <?php $date = DateTime::createFromFormat('Ymd', $article->date); ?>
+                  <?php echo $date->format('m.d.y'); ?>
+                </span>
+              <?php endif; ?>
               <span class="tag publisher">
                 <?php echo $article->publisher ?>
               </span>
@@ -57,11 +59,13 @@ if (get_row_layout() == 'press_listings' || $rowLayout == 'press_listings') {
                 <?php echo $article->post_title ?>
               </span>
             </a>
-            <div class="img-wrapper">
-              <div>
-                <img data-src="<?php echo get_the_post_thumbnail_url( $article ) ?>" alt="<?php echo $article->post_title ?>" class="lazy" />
+            <?php if ( get_the_post_thumbnail_url( $article ) ) : ?>
+              <div class="img-wrapper">
+                <div>
+                  <img data-src="<?php echo get_the_post_thumbnail_url( $article ) ?>" alt="<?php echo $article->post_title ?>" class="lazy" />
+                </div>
               </div>
-            </div>
+            <?php endif; ?>
           </li>
         <?php } ?>
       </ul>

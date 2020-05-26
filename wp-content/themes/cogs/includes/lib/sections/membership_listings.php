@@ -83,10 +83,10 @@ if (get_row_layout() == 'membership_listings' || $rowLayout == 'membership_listi
               </div>
 
               <div class="actions">
-                <a href="<?php echo $membership->join_link['url'] ?>" class="btn btn-clr-black btn-arrow">
+                <a href="<?php echo $membership->join_link['url'] ?>" class="btn btn-clr-black btn-arrow" target="_blank" rel="nofollow noreferrer noopener">
                   Join
                 </a>
-                <a href="<?php echo $membership->gift_link['url'] ?>" class="btn btn-border-white btn-arrow">
+                <a href="<?php echo $membership->gift_link['url'] ?>" class="btn btn-border-white btn-arrow" target="_blank" rel="nofollow noreferrer noopener">
                   Gift
                 </a>
               </div>

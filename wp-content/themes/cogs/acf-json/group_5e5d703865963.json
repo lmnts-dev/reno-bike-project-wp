@@ -3007,7 +3007,7 @@
                         },
                         {
                             "key": "field_5e8ccd0a4f0f8",
-                            "label": "Vimeo ID",
+                            "label": "Video ID",
                             "name": "vimeo_id",
                             "type": "number",
                             "instructions": "",
@@ -3044,6 +3044,30 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": ""
+                        },
+                        {
+                            "key": "field_5ecd49cc8f1e2",
+                            "label": "Video Type",
+                            "name": "video_type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "vimeo": "Vimeo",
+                                "youtube": "youTube"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "vimeo",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -4219,5 +4243,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589929706
+    "modified": 1590512113
 }
