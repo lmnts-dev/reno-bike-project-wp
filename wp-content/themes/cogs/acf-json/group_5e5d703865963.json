@@ -3009,7 +3009,7 @@
                             "key": "field_5e8ccd0a4f0f8",
                             "label": "Video ID",
                             "name": "vimeo_id",
-                            "type": "number",
+                            "type": "text",
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -3022,16 +3022,14 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "min": "",
-                            "max": "",
-                            "step": ""
+                            "maxlength": ""
                         },
                         {
                             "key": "field_5e8ccd274f0f9",
                             "label": "Alt Text",
                             "name": "alt_text",
                             "type": "text",
-                            "instructions": "",
+                            "instructions": "Short description of video",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -4243,5 +4241,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590512113
+    "modified": 1590517580
 }
