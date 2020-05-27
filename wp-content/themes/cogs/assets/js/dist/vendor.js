@@ -1359,7 +1359,7 @@ barba.init({
 
       initLazyLoad(); // Re-init our Google Maps
 
-      initMaps(); //Re-init masonry
+      initGoogleAPIMaps(); //Re-init masonry
 
       initMasonry(); // Re-init our bicycle wheel script.
 

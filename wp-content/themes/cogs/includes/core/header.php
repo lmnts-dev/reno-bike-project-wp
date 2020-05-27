@@ -110,12 +110,15 @@ if ($description == false or is_front_page() == true ) {
         </script>
     <?php } ?>
 
+    <?php $apis = get_field('api_keys', 'options');?>
+    <script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
+
     <?php wp_head(); ?>
 </head>
 
-<?php $apis = get_field('api_keys', 'options');?>
 
-<body data-barba="wrapper" data-google-api="<?php echo $apis['google_maps'] ?>">
+
+<body data-barba="wrapper">
 
     <?php if (!$detect_device->isMobile() && !$detect_device->isTablet()) { ?>
         <span class="cursor"></span>

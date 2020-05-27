@@ -1,60 +1,62 @@
 "use strict";
 
-function initMaps() {
-  var api = document.querySelector("body").getAttribute('data-google-api');
-  var googleLink = "https://maps.googleapis.com/maps/api/js?key=" + api;
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = googleLink;
-  console.log(script);
-  document.body.appendChild(script);
-  script.onload = mapImplementation();
-  script.onreadystatechange = mapImplementation();
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-  function mapImplementation() {
-    var mapSections = document.querySelectorAll(".map-el");
+function initGoogleAPIMaps() {
+  console.log("initialize");
 
-    for (var i = 0; i < mapSections.length; i++) {
-      var sectionId = mapSections[i].id;
-      var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
-      var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
-      var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
-      var sectionAddress = mapSections[i].getAttribute('data-address');
-      var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
-      var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
-      initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
-    }
+  if ((typeof google === "undefined" ? "undefined" : _typeof(google)) === 'object' && _typeof(google.maps) === 'object') {
+    console.log("exists");
+    findMaps();
   }
 
-  function initMap(id, zoom, lat, lng, addy) {
-    if (google) {
-      var map = new google.maps.Map(document.getElementById(id), {
-        zoom: zoom,
-        center: {
-          lat: lat,
-          lng: lng
-        }
-      });
-      var marker = new google.maps.Marker({
-        position: {
-          lat: lat,
-          lng: lng
-        },
-        map: map
-      }); // Create info window.
-
-      var infowindow = new google.maps.InfoWindow({
-        content: addy
-      }); // Show info window when marker is clicked.
-
-      google.maps.event.addListener(marker, 'click', function () {
-        infowindow.open(map, marker);
-      });
-    }
-  }
+  return;
 }
 
-initMaps();
+initGoogleAPIMaps();
+
+function findMaps() {
+  var mapSections = document.querySelectorAll(".map-el");
+
+  for (var i = 0; i < mapSections.length; i++) {
+    var sectionId = mapSections[i].id;
+    var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
+    var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
+    var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
+    var sectionAddress = mapSections[i].getAttribute('data-address');
+    var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
+    var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
+    initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
+  }
+
+  return;
+}
+
+function initMap(id, zoom, lat, lng, addy) {
+  var map = new google.maps.Map(document.getElementById(id), {
+    zoom: zoom,
+    center: {
+      lat: lat,
+      lng: lng
+    }
+  });
+  var marker = new google.maps.Marker({
+    position: {
+      lat: lat,
+      lng: lng
+    },
+    map: map
+  }); // Create info window.
+
+  var infowindow = new google.maps.InfoWindow({
+    content: addy
+  }); // Show info window when marker is clicked.
+
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.open(map, marker);
+  });
+  return;
+}
 "use strict";
 
 /*
