@@ -113,8 +113,9 @@ if ($description == false or is_front_page() == true ) {
     <?php wp_head(); ?>
 </head>
 
+<?php $apis = get_field('api_keys', 'options');?>
 
-<body data-barba="wrapper">
+<body data-barba="wrapper" data-google-api="<?php echo $apis['google_maps'] ?>">
 
     <?php if (!$detect_device->isMobile() && !$detect_device->isTablet()) { ?>
         <span class="cursor"></span>

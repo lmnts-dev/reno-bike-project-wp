@@ -1,5 +1,62 @@
 "use strict";
 
+function initMaps() {
+  var api = document.querySelector("body").getAttribute('data-google-api');
+  var googleLink = "https://maps.googleapis.com/maps/api/js?key=" + api;
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = googleLink;
+  console.log(script);
+  document.body.appendChild(script);
+  script.onload = mapImplementation();
+  script.onreadystatechange = mapImplementation();
+
+  function mapImplementation() {
+    var mapSections = document.querySelectorAll(".map-el");
+
+    for (var i = 0; i < mapSections.length; i++) {
+      var sectionId = mapSections[i].id;
+      var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
+      var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
+      var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
+      var sectionAddress = mapSections[i].getAttribute('data-address');
+      var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
+      var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
+      initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
+    }
+  }
+
+  function initMap(id, zoom, lat, lng, addy) {
+    if (google) {
+      var map = new google.maps.Map(document.getElementById(id), {
+        zoom: zoom,
+        center: {
+          lat: lat,
+          lng: lng
+        }
+      });
+      var marker = new google.maps.Marker({
+        position: {
+          lat: lat,
+          lng: lng
+        },
+        map: map
+      }); // Create info window.
+
+      var infowindow = new google.maps.InfoWindow({
+        content: addy
+      }); // Show info window when marker is clicked.
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
+    }
+  }
+}
+
+initMaps();
+"use strict";
+
 /*
  ** @author: Peter Laxalt
  ** @description: Super simple custom cursor library.
@@ -322,46 +379,3 @@ function initVideoOverlay() {
 }
 
 initVideoOverlay(); // __appFunctions.BEFORE_ENTER.push(initVideoOverlay);
-"use strict";
-
-function initMaps() {
-  var mapSections = document.querySelectorAll(".map-el");
-
-  function initMap(id, zoom, lat, lng, addy) {
-    var map = new google.maps.Map(document.getElementById(id), {
-      zoom: zoom,
-      center: {
-        lat: lat,
-        lng: lng
-      }
-    });
-    var marker = new google.maps.Marker({
-      position: {
-        lat: lat,
-        lng: lng
-      },
-      map: map
-    }); // Create info window.
-
-    var infowindow = new google.maps.InfoWindow({
-      content: addy
-    }); // Show info window when marker is clicked.
-
-    google.maps.event.addListener(marker, 'click', function () {
-      infowindow.open(map, marker);
-    });
-  }
-
-  for (var i = 0; i < mapSections.length; i++) {
-    var sectionId = mapSections[i].id;
-    var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
-    var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
-    var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
-    var sectionAddress = mapSections[i].getAttribute('data-address');
-    var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
-    var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
-    initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
-  }
-}
-
-initMaps();
