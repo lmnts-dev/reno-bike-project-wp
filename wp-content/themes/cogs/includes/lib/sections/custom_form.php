@@ -91,7 +91,7 @@ if (get_row_layout() == 'custom_form' || $rowLayout == 'sections/custom_form') :
                 <div class="input-wrapper input-checkboxes input-col-100 input-col-100-sm" item-<?php echo $x ?>>
                     <?php foreach ($options as $option) : ?>
                         <div class="input-checkbox">
-                            <input type="checkbox" name="<?php echo $name ?>" id="<?php echo $option['option'] ?>" value="<?php echo $option['option'] ?>" <?php echo $required ?>>
+                            <input type="checkbox" name="<?php echo $name ?>" id="<?php echo $option['option'] ?>" value="<?php echo $option['option'] ?>">
                             <label class="checkbox-label" for="<?php echo $option['option']?>">
                                 <?php echo $option['option'] ?>
                             </label>
