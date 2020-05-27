@@ -10,16 +10,28 @@
  */
 
 if (get_row_layout() == 'video_row') {
+
+  if ( get_sub_field('video_type' ) == 'youtube' ) {
+    $link = "https://www.youtube.com/embed/" . get_sub_field('vimeo_id' ) . "?background=1&autoplay=1&loop=1&byline=0&title=0&mute=1";
+    $overlayLink = "https://www.youtube.com/embed/" . get_sub_field('vimeo_id' ) . "?autoplay=0";
+  }
+  else {
+    $link = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?background=1&autoplay=1&loop=1&byline=0&title=0";
+    $overlayLink = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?autoplay=0";
+  }
+  $coverImage = get_sub_field('cover_image');
+  $altText = get_sub_field('alt_text');
+
 ?>
 
-  <section class="video-row video-row-<?php echo $idx ?>">
+  <section class="video-row padding-top-half padding-bottom-half video-row-<?php echo $idx ?>">
     <div class="video-row-inner">
 
       <span class="video-toggle">
         <span></span>
       </span>
-      <iframe src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      <img data-src="https://source.unsplash.com/1600x900/?cyan" class="cover lazy" alt="Alt Text" />
+      <iframe src="<?php echo $link ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <img data-src="<?php echo $coverImage ?>" class="cover lazy" alt="<?php echo $altText ?>" />
 
     </div>
   </section>
@@ -27,7 +39,7 @@ if (get_row_layout() == 'video_row') {
   <div class="video-overlay">
     <div class="video-toggle"></div>
     <div class="video-overlay-inner">
-      <iframe src="https://player.vimeo.com/video/76979871?background=1&autoplay=1&controls=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <iframe src="<?php echo $overlayLink ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
   </div>
 

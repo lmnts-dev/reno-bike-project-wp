@@ -17,20 +17,29 @@
 if (get_row_layout() == 'icon_block' || $rowLayout == 'icon_block') {
 
   $blocks = get_sub_field('block');
+  $headline = get_sub_field('headline');
 ?>
 
   <section class="icon-block <?php echo get_sub_field('layout'); ?> icon-block-<?php echo $idx ?>">
-    <div class="section-header">
-      <h3>
-        <span>
-          How we’re working towards a cycling-friendly community
-        </span>
-      </h3>
-    </div>
+
+    <?php if ( $headline ){ ?>
+      <div class="section-header">
+      <?php $squiggle['color'] = 'orange' ?>
+      <?php $squiggle['align'] = 'center' ?>
+      <?php $squiggle['size'] = 'short' ?>
+      <?php require ( get_template_directory() . "/assets/images/squiggle-vertical.php");  ?>
+        <h3>
+          <span>
+            <?php echo $headline ?>
+          </span>
+        </h3>
+      </div>
+    <?php } ?>
+
     <div class="icon-block-inner">
       <?php foreach ($blocks as $block) { ?>
         <div class="icon-block">
-          <span class='icon'></span><!-- TODO: Icon -->
+          <span class='icon fas fa-<?php echo $block['icon_id'] ?> txt-clr-<?php echo $block['icon_color'] ?>'></span>
           <h6 class='h5'><?php echo $block['header_text'] ?></h6>
           <p><?php echo $block['paragraph_text'] ?></p>
         </div>

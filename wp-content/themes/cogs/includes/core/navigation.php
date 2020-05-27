@@ -14,6 +14,7 @@
 
 $cta = get_field('navigation_bar', 'option')['call_to_action'];
 $ecommerce = get_field('ecommerce', 'option');
+$logos = get_field('logos', 'option');
 
 ?>
 
@@ -25,8 +26,8 @@ $ecommerce = get_field('ecommerce', 'option');
   <div class="nav-inner">
     <div class="nav-col nav-col-1">
       <div class="nav-branding">
-        <a href="/">
-          <span itemprop="logo"></span>
+        <a href="/" class="nav-overlay-toggle">
+          <img src="<?php echo $logos['logo_light'] ?>" alt="Reno Bike Project">
         </a>
       </div>
       <nav class="nav-switch">
@@ -70,5 +71,26 @@ $ecommerce = get_field('ecommerce', 'option');
     <?php /** /CTA Navigation */
     ?>
 
+    <?php /** Overlay Nav Toggle */
+    ?>
+    <div class="nav-col nav-col-4">
+      <div class="grid nav-overlay-toggle" id="mobile-nav-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <?php /** /Overlay Nav Toggle */
+    ?>
+
   </div>
 </header>
+
+<?php include get_template_directory() . '/includes/core/overlay_nav.php'; ?>

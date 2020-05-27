@@ -9,6 +9,11 @@
 
 /*************************************/
 
+$fields = get_field('newsletter_row', 'options' );
+$headline = $fields['headline'];
+$description = $fields['description'];
+$submitDestination = $fields['submit_destination'];
+
 ?>
 
 <div class="newsletter-overlay">
@@ -20,27 +25,28 @@
     <div class="top">
       <div class="col">
         <h3>
-          <span class="squiggle"></span>
-          <span>Subscribe to our Newsletter</span>
+          <?php $squiggle['color'] = 'primary' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+          <span><?php echo $headline ?></span>
         </h3>
       </div>
       <div class="col">
-        <p>
-          Please enter your information below to sign up for our mailing list. We’ll keep you in the loop on the latest programs, news, events, and activities we got going on.
-        </p>
+        <?php if ( $description ){ ?>
+          <?php echo $description ?>
+        <?php } ?>
       </div>
     </div>
     <div class="bottom">
-      <form>
+      <form action="<?php echo $submitDestination ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
         <div class="row">
           <div class="col">
             <div class="input-outer">
-              <input placeholder="First Name">
+              <input placeholder="First Name" name="FNAME" id="mce-FNAME">
             </div>
           </div>
           <div class="col">
             <div class="input-outer">
-              <input placeholder="Last Name">
+              <input placeholder="Last Name" name="LNAME" id="mce-LNAME">
             </div>
           </div>
         </div>
@@ -48,7 +54,7 @@
         <div class="row">
           <div class="col col-full">
             <div class="input-outer">
-              <input placeholder="Enter your email address">
+              <input placeholder="Enter your email" name="EMAIL" id="mce-EMAIL">
             </div>
           </div>
         </div>
@@ -56,7 +62,7 @@
         <div class="row">
           <div class="col col-submit">
             <div class="input-outer">
-              <button class="btn btn-clr-black btn-arrow">
+              <button type="submit" class="btn btn-clr-black btn-arrow" name="subscribe" id="mc-embedded-subscribe">
                 Submit
               </button>
             </div>

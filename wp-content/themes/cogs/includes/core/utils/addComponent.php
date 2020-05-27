@@ -12,10 +12,11 @@
  */
 
 
-function addComponent($name)
+function addComponent($name, $schema = array() )
 {
-    $rowLayout = $name;
     $idx = 'static';
+    extract($schema);
+    $rowLayout = $name;
 
     include get_template_directory() . '/includes/lib/sections/' . $rowLayout . '.php';
 }

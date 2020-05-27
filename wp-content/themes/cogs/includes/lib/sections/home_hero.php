@@ -22,7 +22,7 @@ if (get_row_layout() == 'home_hero' || $rowLayout == 'home_hero') {
           <p>
             <?php echo get_sub_field('paragraph'); ?>
           </p>
-          <a href="<?php echo get_sub_field('call_to_action')['url']; ?>" class="btn btn-arrow">
+          <a href="<?php echo get_sub_field('call_to_action')['url']; ?>" class="btn btn-arrow" <?php echo get_sub_field('call_to_action')['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( get_sub_field('call_to_action')['link_type'] == 'download' ? 'download' : ''  ) ?>>
             <?php echo get_sub_field('call_to_action')['label']; ?>
           </a>
 

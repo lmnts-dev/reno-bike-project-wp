@@ -178,7 +178,7 @@ function create_events_cpt()
 		'show_in_admin_bar' => true,
 		'show_in_nav_menus' => true,
 		'can_export' => true,
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
 		'exclude_from_search' => false,
 		'show_in_rest' => true,
@@ -229,18 +229,19 @@ function create_membership_cpt()
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-universal-access-alt',
 		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-		'public' => true,
+		'public' => false,
 		'show_ui' => true,
 		'show_in_menu' => true,
+		'rewrite' => false,
 		'menu_position' => 4,
 		'show_in_admin_bar' => true,
-		'show_in_nav_menus' => true,
+		'show_in_nav_menus' => false,
 		'can_export' => true,
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
-		'exclude_from_search' => false,
+		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -345,18 +346,19 @@ function create_press_cpt()
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-megaphone',
 		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-		'public' => true,
+		'public' => false,
 		'show_ui' => true,
 		'show_in_menu' => true,
+		'rewrite' => false,
 		'menu_position' => 4,
 		'show_in_admin_bar' => true,
-		'show_in_nav_menus' => true,
+		'show_in_nav_menus' => false,
 		'can_export' => true,
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
-		'exclude_from_search' => false,
+		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -404,18 +406,19 @@ function create_staff_cpt()
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-admin-users',
 		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-		'public' => true,
+		'public' => false,
 		'show_ui' => true,
 		'show_in_menu' => true,
+		'rewrite' => false,
 		'menu_position' => 8,
 		'show_in_admin_bar' => true,
-		'show_in_nav_menus' => true,
+		'show_in_nav_menus' => false,
 		'can_export' => true,
-		'has_archive' => true,
+		'has_archive' => false,
 		'hierarchical' => false,
-		'exclude_from_search' => false,
+		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 		'taxonomies' => array('post_tag'),
 	);
@@ -610,7 +613,7 @@ add_action('login_enqueue_scripts', 'my_login_logo');
 add_action('admin_menu', 'linked_url');
 function linked_url()
 {
-	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 1);
+	add_menu_page('linked_url', 'Homepage', 'read', 'hompage', '', 'dashicons-admin-home', 1 );
 }
 
 add_action('admin_menu', 'linkedurl_function');
@@ -772,3 +775,144 @@ function custom_image_size() {
 
 }
 add_action('after_setup_theme', 'custom_image_size');
+
+function sortDates($a, $b) {
+	return strtotime($a->date) - strtotime($b->date);
+}
+
+
+//add google maps api key for acf google maps 
+function my_acf_google_map_api( $api ){
+	$apis = get_field('api_keys', 'options');
+    $api['key'] = $apis['google_maps'];
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+//create event object, doing logic with its start and end dates
+function createEventObject( $event ){
+
+	//get todays date (12:00am), start date (12:00am) and end date, and decide if start date has passed
+    $todaysDate = new DateTime('today', new DateTimeZone('America/Los_Angeles'));
+    $startDate = DateTime::createFromFormat('Ymd', $event->start_date); 
+	$startDate = $startDate->modify('midnight');
+	$endDate = DateTime::createFromFormat('Ymd', $event->end_date); 
+    $passedDate = ($todaysDate->format('Y-m-d') <= $startDate->format('Y-m-d')) ? false : true;
+	
+	//format dates
+	$formattedStartDate = $startDate->format('F j'); 
+	$formattedEndDate = $endDate ? $endDate->format('F j') : false;
+	
+	//create string of start date, end date and time
+    $dateString = $endDate ? $formattedStartDate . ' - ' . $formattedEndDate : $formattedStartDate;
+	$dateString = $event->time ? $dateString . ', ' . $event->time : $dateString;
+
+	//turn array of tag objects into array of tag strings
+	$tags = get_the_tags( $event );
+	if ( !is_wp_error( $tags ) && false !== $tags ) {
+		foreach ( $tags as $key=>$tag ) {
+			$replacement = array($key => $tag->name);
+			$tags = array_replace( $tags, $replacement);
+		}
+	}
+
+	$eventObject = new stdClass();
+	$eventObject->title = $event->post_title;
+	$eventObject->excerpt = $event->post_excerpt;
+	$eventObject->date = $startDate->format('Y-m-d H:i:s');
+	$eventObject->link = get_post_permalink( $event );
+	$eventObject->image = get_the_post_thumbnail_url( $event );
+	$eventObject->displayDate = $dateString;
+	$eventObject->passedDate = $passedDate;
+	$eventObject->tags = $tags;
+	
+	
+	return $eventObject;
+} 
+
+
+
+// Custom Pagination
+function custom_pagination() {
+	global $wp_query;
+	$big = 999999999; // need an unlikely integer
+	$pages = paginate_links( array(
+		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format' => '?paged=%#%',
+		'current' => max( 1, get_query_var('paged') ),
+		'total' => $wp_query->max_num_pages,
+		'prev_next' => false,
+		'type'  => 'array',
+		'prev_next'   => true,
+		'prev_text'    => __( '«', 'text-domain' ),
+		'next_text'    => __( '»', 'text-domain'),
+	) );
+	$output = '';
+  
+	if ( is_array( $pages ) ) {
+		$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var( 'paged' );
+  
+		$output .=  '';
+		foreach ( $pages as $page ) {
+			$output .= "$page";
+		}
+		$output .= '';
+  
+		// Create an instance of DOMDocument 
+		$dom = new \DOMDocument();
+  
+		// Populate $dom with $output, making sure to handle UTF-8, otherwise
+		// problems will occur with UTF-8 characters.
+		$dom->loadHTML( mb_convert_encoding( $output, 'HTML-ENTITIES', 'UTF-8' ) );
+  
+		// Create an instance of DOMXpath and all elements with the class 'page-numbers' 
+		$xpath = new \DOMXpath( $dom );
+  
+		// http://stackoverflow.com/a/26126336/3059883
+		$page_numbers = $xpath->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' page-numbers ')]" );
+  
+		// Iterate over the $page_numbers node...
+		foreach ( $page_numbers as $page_numbers_item ) {
+  
+			// Add class="mynewclass" to the <li> when its child contains the current item.
+			$page_numbers_item_classes = explode( ' ', $page_numbers_item->attributes->item(0)->value );
+			if ( in_array( 'current', $page_numbers_item_classes ) ) {          
+				$list_item_attr_class = $dom->createAttribute( 'class' );
+				$list_item_attr_class->value = 'newClass';
+				$page_numbers_item->parentNode->appendChild( $list_item_attr_class );
+  
+				// Add data-barba-prevent
+				$list_item_attr_prevent = $dom->createAttribute( 'data-barba-prevent' );
+				$list_item_attr_prevent->value = 'preventBarba';
+				$page_numbers_item->parentNode->appendChild( $list_item_attr_prevent );
+			}
+  
+			// Replace the class 'current' with 'active'
+			$page_numbers_item->attributes->item(0)->value = str_replace( 
+							'current',
+							'active',
+							$page_numbers_item->attributes->item(0)->value );
+  
+			// Replace the class 'page-numbers' with 'page-link'
+			$page_numbers_item->attributes->item(0)->value = str_replace( 
+							'page-numbers',
+							'page-numbers barba-prevent',
+							$page_numbers_item->attributes->item(0)->value );
+		}
+		
+		// Save the updated HTML and output it.
+		$output = $dom->saveHTML();
+	}
+  
+	return $output;
+}
+
+add_action( 'admin_menu', 'register_my_custom_menu_page' );
+function register_my_custom_menu_page() {
+  // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+  add_menu_page( 'Help Page', 'Help', 'manage_options', 'lmnts/help.php', '', 'dashicons-lightbulb', 1 );
+} 
+
+wp_register_style('extraACFstyles', get_template_directory_uri() . '/extra-acf-styles.php');
+wp_enqueue_style( 'extraACFstyles');

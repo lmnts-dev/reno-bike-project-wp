@@ -38,7 +38,6 @@ if (!$detect_device->isMobile() && !$detect_device->isTablet()) {
 
 $sitename = get_bloginfo('title');
 $title = $sitename;
-$description = get_bloginfo('description');
 
 if (get_the_excerpt() !== false and is_front_page() == false) {
     $description = get_the_excerpt();
@@ -51,14 +50,13 @@ if (is_singular('project')) {
 }
 
 $featured_image = get_the_post_thumbnail_url($post, 'large');
-if ($featured_image == false) {
-    $args = array(
-        'numberposts' => 1,
-        'post_type'   => 'project'
-    );
 
-    $project = get_posts($args);
-    $featured_image = get_the_post_thumbnail_url($project[0]->ID, 'large');
+if ($featured_image == false or is_front_page() == true ) {
+    $featured_image = get_field('default_opengraph', 'options')['image'];
+}
+
+if ($description == false or is_front_page() == true ) {
+    $description = get_field('default_opengraph', 'options')['description'];
 }
 ?>
 
@@ -102,14 +100,30 @@ if ($featured_image == false) {
     <meta name="msapplication-starturl" content="/">
     <meta name="theme-color" content="#000000">
 
+    <?php foreach ( get_field('analytic_ids', 'options') as $tagID ){ ?>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', '<?php echo implode($tagID) ?>', 'auto', {'allowLinker': true});
+            ga('require', 'linker');
+            ga('linker:autoLink', ['store.renobikeproject.org'] );
+            ga('send', 'pageview');
+        </script>
+    <?php } ?>
+
+    <?php $apis = get_field('api_keys', 'options');?>
+    <script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
+
     <?php wp_head(); ?>
 </head>
 
 
+
 <body data-barba="wrapper">
 
-    <span class="cursor"></span>
-    <span class="cursor-outline"></span>
+    <?php if (!$detect_device->isMobile() && !$detect_device->isTablet()) { ?>
+        <span class="cursor"></span>
+        <span class="cursor-outline"></span>
+    <?php } ?>
     <?php include 'navigation.php' ?>
 
     <main role="main" data-barba="container" data-barba-namespace="home">

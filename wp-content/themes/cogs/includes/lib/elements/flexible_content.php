@@ -1,5 +1,5 @@
 <?php if ( get_row_layout() == "paragraph_text") { ?>
-        <p><?php echo get_sub_field('text')?></p>
+    <?php echo get_sub_field('text')?>
 
 
 <?php } else if ( get_row_layout() == "header_text") { ?>
@@ -8,25 +8,23 @@
 
 
 <?php } else if ( get_row_layout() == "squiggly") { ?>
-    <!-- TO DO apply get_sub_field('squiggle_color')-->
-    <span class="squiggle"></span>
+    <?php $squiggle['color'] = get_sub_field('squiggle_color') == 'pink' ? 'primary' : get_sub_field('squiggle_color'); ?>
+    <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
 
 
 <?php } else if ( get_row_layout() == "icon") { ?>
-    <?php $image = get_sub_field('image'); ?>
-    <div class="flexible-content-icon" style="--width:<?php echo get_sub_field('width') . 'px' ?>">
-        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-    </div>
+    <?php $image = get_sub_field('icon_id'); ?>
+    <?php $color = get_sub_field('icon_color'); ?>
+    <span class='icon fas fa-<?php echo $image ?> txt-clr-<?php echo $color ?>'></span>
 
 
 <?php } else if ( get_row_layout() == "button") { ?>
     <?php 
-        $button = get_sub_field('button_link'); 
-        $buttonTarget = $button['target'] ? $button['target'] : '_self';
-        $buttonText = $button['title'];
-        $buttonLink = $button['url'];
+        $buttonTarget = get_sub_field('link_type') == 'external' ? 'target="_blank" rel="nofollow noreferrer noopener" ' : ( get_sub_field('link_type') == 'download' ? ' download ' : '' );
+        $buttonText = get_sub_field('label'); 
+        $buttonLink = get_sub_field('link'); 
     ?>
-    <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn btn-arrow" target="<?php echo esc_attr( $buttonTarget ); ?>">
+    <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn btn-arrow" <?php echo $buttonTarget ?>>
         <?php echo esc_html( $buttonText ); ?>
     </a>
 

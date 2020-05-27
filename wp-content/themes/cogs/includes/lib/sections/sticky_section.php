@@ -32,7 +32,7 @@ if (get_row_layout() == 'sticky_section' || $rowLayout == 'sticky_section') {
   }
 
 ?>
-    <section class="sticky-section <?php echo get_sub_field('layout') . ' ' . $orientation ?> event-row-<?php echo $idx ?>">
+    <section class="sticky-section <?php echo get_sub_field('layout') . ' ' . $orientation ?> sticky-section-<?php echo $idx ?>">
       <div class="sticky-section-inner">
         <div class="images" style="--width: <?php echo $imagesWidth ?>; ">
           <?php foreach ($images as $image) { ?>

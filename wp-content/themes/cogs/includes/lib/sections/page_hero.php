@@ -16,10 +16,10 @@ if (get_row_layout() == 'page_hero' || $rowLayout == 'page_hero') {
     $layout = get_sub_field_object('layout')['value'];
   }
   else {
-    $headline = get_the_title();
-    $excerpt = get_the_excerpt();
-    $image = get_the_post_thumbnail_url();
-    $layout = '5';
+    $headline = $headline ? $headline : get_the_title();
+    $excerpt = $excerpt ? $excerpt : get_the_excerpt();
+    $image = $image ? $image : get_the_post_thumbnail_url();
+    $layout = $layout ? $layout : '5';
   }
   
 ?>
@@ -27,6 +27,8 @@ if (get_row_layout() == 'page_hero' || $rowLayout == 'page_hero') {
   <section class="page-hero page-hero-<?php echo $idx ?>">
     <div class="page-hero-inner layout-<?php echo $layout ?>">
       <div class="col content">
+        <?php $squiggle['color'] = 'primary' ?>
+        <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
         <h1>
           <?php echo $headline ?>
         </h1>

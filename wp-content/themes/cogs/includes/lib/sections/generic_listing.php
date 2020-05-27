@@ -15,27 +15,38 @@
 /** Variables */
 /*************************************/
 
-$listings = get_sub_field('listing');
+
 
 if (get_row_layout() == 'generic_listing' || $rowLayout == 'generic_listing') {
-
+  $headline = get_sub_field('headline');
+  $description = get_sub_field('description');
+  $listings = get_sub_field('listing');
 ?>
-  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">    <span class="squiggle"></span>
-  <div class="section-header split">
-      <h3>
-        <span>Our Partners</span>
-      </h3>
-      <p>
-        We work with other organizations in the Reno-Sparks area to provide underserved youth with an opportunity to enter the world of cycling. Here are some of the organizations that we partner with:
-      </p>
-    </div>
+  <section class="generic-listing <?php echo get_sub_field('layout'); ?> generic-listing-<?php echo $idx ?>">
+    <?php if ( $headline ) { ?>
+      <div class="section-header split">
+        <h3>
+          <?php $squiggle['color'] = 'primary' ?>
+          <?php require ( get_template_directory() . "/assets/images/squiggle-horizontal.php");  ?>
+          <span><?php echo $headline ?></span>
+        </h3>
+        <?php if ( $description ) { ?>
+          <p>
+            <?php echo $description ?>
+          </p>
+        <?php } ?>
+      </div>
+    <?php } ?>
+
     <div class="generic-listing-inner">
         <?php foreach ($listings as $listing) { ?>
             <div class="generic-listing-row">
                 <div class="col img-col">
                   <div class="generic-listing-img">
                       <?php $image = $listing['image']; ?>
-                      <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="lazy" />
+                      <?php if ( $image ) : ?>
+                        <img data-src="<?php echo wp_get_attachment_image_src( $image['id'], 'large')[0]; ?>" alt="<?php echo $listing['header_text'] ?>" class="lazy" />
+                      <?php endif; ?>
                   </div>
                   </div>
                   <div class="col content-col">

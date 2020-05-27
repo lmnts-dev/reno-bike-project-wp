@@ -1,5 +1,64 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function initGoogleAPIMaps() {
+  console.log("initialize");
+
+  if ((typeof google === "undefined" ? "undefined" : _typeof(google)) === 'object' && _typeof(google.maps) === 'object') {
+    console.log("exists");
+    findMaps();
+  }
+
+  return;
+}
+
+initGoogleAPIMaps();
+
+function findMaps() {
+  var mapSections = document.querySelectorAll(".map-el");
+
+  for (var i = 0; i < mapSections.length; i++) {
+    var sectionId = mapSections[i].id;
+    var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
+    var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
+    var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
+    var sectionAddress = mapSections[i].getAttribute('data-address');
+    var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
+    var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';
+    initMap(sectionId, sectionZoom, sectionLat, sectionLng, infoBoxHtml);
+  }
+
+  return;
+}
+
+function initMap(id, zoom, lat, lng, addy) {
+  var map = new google.maps.Map(document.getElementById(id), {
+    zoom: zoom,
+    center: {
+      lat: lat,
+      lng: lng
+    }
+  });
+  var marker = new google.maps.Marker({
+    position: {
+      lat: lat,
+      lng: lng
+    },
+    map: map
+  }); // Create info window.
+
+  var infowindow = new google.maps.InfoWindow({
+    content: addy
+  }); // Show info window when marker is clicked.
+
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.open(map, marker);
+  });
+  return;
+}
+"use strict";
+
 /*
  ** @author: Peter Laxalt
  ** @description: Super simple custom cursor library.
@@ -22,6 +81,65 @@ initCursor();
 "use strict";
 
 /*
+ ** @author: Alisha Garric
+ ** @description: Adds masonry to memberships
+ */
+function initMasonry() {
+  var elem = document.querySelector('.membership-listings-inner');
+
+  if (elem) {
+    var msnry = new Masonry(elem, {
+      columnWidth: '.grid-sizer',
+      itemSelector: '.membership-listing-card',
+      percentPosition: true
+    });
+  }
+}
+
+initMasonry();
+"use strict";
+
+/*
+ ** @author: Peter Laxalt
+ ** @description: Functions to show/hide the navigation overlay.
+ */
+var navigationBtnClass = "nav-overlay-toggle";
+var navigationOverlayClass = "overlay-nav-container";
+var navigationOverlay = document.getElementsByClassName(navigationOverlayClass)[0];
+
+function toggleNavOverlay(e) {
+  if (navigationOverlay.classList.contains("visible")) {
+    // console.log("CLOSE!");
+    document.body.classList.remove("scroll-lock");
+    navigationOverlay.classList.remove("visible");
+    document.getElementsByTagName("header")[0].classList.remove("hidden");
+  } else {
+    // console.log("SHOW!");
+    document.body.classList.add("scroll-lock");
+    navigationOverlay.classList.add("visible");
+    document.getElementsByTagName("header")[0].classList.add("hidden");
+  }
+}
+
+function initNavOverlay() {
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.classList.contains(navigationBtnClass)) {
+      // console.log("WRONG TARGET");
+      return;
+    } else {
+      // Don't follow the link
+      event.preventDefault(); // Log the clicked element in the console
+
+      toggleNavOverlay(event);
+    }
+  }, false);
+}
+
+initNavOverlay();
+"use strict";
+
+/*
  ** @author: Peter Laxalt
  ** @description: Functions to show/hide the newsletter overlay.
  */
@@ -29,7 +147,7 @@ function initNewsletter() {
   var newsletterBtnClass = "btn-newsletter";
   var newsletterOverlayClass = "newsletter-overlay";
 
-  var toggleNavOverlay = function toggleNavOverlay(e) {
+  var toggleNewsletterOverlay = function toggleNewsletterOverlay(e) {
     var newsletterOverlay = document.getElementsByClassName(newsletterOverlayClass)[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
@@ -49,11 +167,84 @@ function initNewsletter() {
 
     event.preventDefault(); // Log the clicked element in the console
 
-    toggleNavOverlay(event);
+    toggleNewsletterOverlay(event);
   }, false);
 }
 
 initNewsletter();
+"use strict";
+
+/*
+ ** @author: Alisha Garric
+ ** @description: Functions to change number input's values
+ */
+function initInputNumberIcons() {
+  var inputDecrementClass = "input-number-decrement";
+  var inputIncrementClass = "input-number-increment";
+
+  var changeInputValue = function changeInputValue(e) {
+    if (event.target.classList.contains(inputDecrementClass)) {
+      var inputTag = event.target.nextSibling;
+      decrement(inputTag);
+    } else {
+      var _inputTag = event.target.previousSibling;
+      increment(_inputTag);
+    }
+
+    return;
+  };
+
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!(event.target.classList.contains(inputDecrementClass) || event.target.classList.contains(inputIncrementClass))) return;
+    changeInputValue(event);
+  }, false);
+}
+
+initInputNumberIcons();
+
+function decrement(input) {
+  var value = input.value;
+  var min = 0;
+  value--;
+
+  if (value >= min) {
+    input.value = value;
+  }
+}
+
+function increment(input) {
+  var value = input.value;
+  value++;
+  input.value = value++;
+}
+"use strict";
+
+/*
+ ** @author: Alisha Garric
+ ** @description: Remove items from cart
+ */
+function initRemoveItem() {
+  var removeItem = function removeItem(e) {
+    var itemIndex = e.target.dataset.item;
+    var state = {};
+    var title = 'Update Cart';
+    var url = '/cart/change?line=' + itemIndex + '&amp;quantity=0';
+    window.location.href = url;
+    return;
+  };
+
+  document.addEventListener("click", function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.classList.contains("remove-item")) return; // Don't follow the link
+
+    event.preventDefault(); // Log the clicked element in the console
+
+    removeItem(event);
+  }, false);
+}
+
+initRemoveItem();
 "use strict";
 
 /*
@@ -92,10 +283,10 @@ initBikeWheel();
  */
 function initSearchOverlay() {
   var searchToggleClass = "search-toggle";
-  var newsletterOverlayClass = "search-overlay";
+  var searchOverlayClass = "search-overlay";
 
-  var toggleNavOverlay = function toggleNavOverlay(e) {
-    var newsletterOverlay = document.getElementsByClassName(newsletterOverlayClass)[0];
+  var toggleSearchOverlay = function toggleSearchOverlay(e) {
+    var newsletterOverlay = document.getElementsByClassName(searchOverlayClass)[0];
 
     if (newsletterOverlay.classList.contains("visible")) {
       document.body.classList.remove("scroll-lock");
@@ -114,7 +305,7 @@ function initSearchOverlay() {
 
     event.preventDefault(); // Log the clicked element in the console
 
-    toggleNavOverlay(event);
+    toggleSearchOverlay(event);
   }, false);
 }
 
@@ -156,29 +347,37 @@ initSocialOverlay();
 function initVideoOverlay() {
   var videoToggleClass = "video-toggle";
   var videoOverlayClass = "video-overlay";
+  var videoOverlay = document.getElementsByClassName(videoOverlayClass)[0];
 
-  var toggleVideoOverlay = function toggleVideoOverlay(e) {
-    var videoOverlay = document.getElementsByClassName(videoOverlayClass)[0];
+  if (videoOverlay) {
+    var toggleVideoOverlay = function toggleVideoOverlay(e) {
+      if (videoOverlay.classList.contains("visible")) {
+        var src = videoOverlay.querySelector('iframe').src.replace("autoplay=1", "autoplay=0");
+        videoOverlay.querySelector('iframe').src = src;
+        document.body.classList.remove("scroll-lock");
+        videoOverlay.classList.remove("visible");
+      } else {
+        var _src = videoOverlay.querySelector('iframe').src.replace("autoplay=0", "autoplay=1");
 
-    if (videoOverlay.classList.contains("visible")) {
-      document.body.classList.remove("scroll-lock");
-      videoOverlay.classList.remove("visible");
-    } else {
-      document.body.classList.add("scroll-lock");
-      videoOverlay.classList.add("visible");
-    }
+        videoOverlay.querySelector('iframe').src = _src;
+        document.body.classList.add("scroll-lock");
+        videoOverlay.classList.add("visible");
+      }
 
+      return;
+    };
+
+    document.addEventListener("click", function (event) {
+      // If the clicked element doesn't have the right selector, bail
+      if (!event.target.classList.contains(videoToggleClass)) return; // Don't follow the link
+
+      event.preventDefault(); // Log the clicked element in the console
+
+      toggleVideoOverlay(event);
+    }, false);
+  } else {
     return;
-  };
-
-  document.addEventListener("click", function (event) {
-    // If the clicked element doesn't have the right selector, bail
-    if (!event.target.classList.contains(videoToggleClass)) return; // Don't follow the link
-
-    event.preventDefault(); // Log the clicked element in the console
-
-    toggleVideoOverlay(event);
-  }, false);
+  }
 }
 
-initVideoOverlay();
+initVideoOverlay(); // __appFunctions.BEFORE_ENTER.push(initVideoOverlay);
