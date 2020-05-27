@@ -20,7 +20,7 @@
 
 <?php } else if ( get_row_layout() == "button") { ?>
     <?php 
-        $buttonTarget = get_sub_field('link_type') == 'external' ? 'target="_blank"' : ( get_sub_field('link_type') == 'download' ? ' download ' : '' );
+        $buttonTarget = get_sub_field('link_type') == 'external' ? 'target="_blank" rel="nofollow noreferrer noopener" ' : ( get_sub_field('link_type') == 'download' ? ' download ' : '' );
         $buttonText = get_sub_field('label'); 
         $buttonLink = get_sub_field('link'); 
     ?>

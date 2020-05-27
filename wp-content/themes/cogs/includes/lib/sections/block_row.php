@@ -49,7 +49,7 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
       <div class="block-row-inner">
 
         <div class="block-item">
-          <a href="<?php echo $data['block_1']['link'] ?>" <?php echo $data['block_1']['link_type'] == 'external' ? ' target="_blank" ' : ( $data['block_1']['link_type'] == 'download' ? 'download' : ''  ) ?>>
+          <a href="<?php echo $data['block_1']['link'] ?>" <?php echo $data['block_1']['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( $data['block_1']['link_type'] == 'download' ? 'download' : ''  ) ?>>
             <div class="block-item-inner">
               <div class="block-item-cover block-item-cover-solid bg-clr-orange">
                 <span class="txt-clr-white">
@@ -61,7 +61,7 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
         </div>
 
         <div class="block-item">
-          <a href="<?php echo $data['block_2']['link'] ?>" <?php echo $data['block_2']['link_type'] == 'external' ? ' target="_blank" ' : ( $data['block_2']['link_type'] == 'download' ? 'download' : ''  ) ?>>
+          <a href="<?php echo $data['block_2']['link'] ?>" <?php echo $data['block_2']['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( $data['block_2']['link_type'] == 'download' ? 'download' : ''  ) ?>>
             <div class="block-item-inner">
               <div class="block-item-cover bg-clr-tint">
                 <span class="txt-clr-white">
@@ -82,7 +82,7 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
       <div class="block-row-inner block-row-reverse">
 
         <div class="block-item">
-          <a href="<?php echo $data['block_4']['link'] ?>" <?php echo $data['block_4']['link_type'] == 'external' ? ' target="_blank" ' : ( $data['block_4']['link_type'] == 'download' ? 'download' : ''  ) ?>>
+          <a href="<?php echo $data['block_4']['link'] ?>" <?php echo $data['block_4']['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( $data['block_4']['link_type'] == 'download' ? 'download' : ''  ) ?>>
             <div class="block-item-inner">
               <div class="block-item-cover block-item-cover-solid bg-clr-mustard">
                 <span class="txt-clr-white">
@@ -94,7 +94,7 @@ if (get_row_layout() == 'block_row' || $rowLayout == 'block_row') {
         </div>
 
         <div class="block-item">
-          <a href="<?php echo $data['block_3']['link'] ?>" <?php echo $data['block_3']['link_type'] == 'external' ? ' target="_blank" ' : ( $data['block_3']['link_type'] == 'download' ? 'download' : ''  ) ?>>
+          <a href="<?php echo $data['block_3']['link'] ?>" <?php echo $data['block_3']['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( $data['block_3']['link_type'] == 'download' ? 'download' : ''  ) ?>>
             <div class="block-item-inner">
               <div class="block-item-cover bg-clr-tint">
                 <span class="txt-clr-white">

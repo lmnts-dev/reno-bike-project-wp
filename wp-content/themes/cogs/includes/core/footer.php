@@ -42,7 +42,7 @@ $info = get_field('contact_information', 'options');
         <ul>
           <?php foreach ($socials as $social ) { ?>
               <li>
-                <a href="<?php echo $social['account_url'] ?>" title="Find us on <?php echo $social['platform'] ?>" target="_blank">
+                <a href="<?php echo $social['account_url'] ?>" title="Find us on <?php echo $social['platform'] ?>" target="_blank" rel="nofollow noreferrer noopener">
                   <span class="ico fab fa-<?php echo $social['icon_id'] ?>"></span>
                 </a>
               </li>
@@ -56,10 +56,10 @@ $info = get_field('contact_information', 'options');
         Contact Us
       </div>
       <div class="footer-info-row">
-        <a href="tel:<?php echo $info['phone_number'] ?>" target="_blank"><?php echo $info['phone_number'] ?></a>
+        <a href="tel:<?php echo $info['phone_number'] ?>" target="_blank" rel="nofollow noreferrer noopener"><?php echo $info['phone_number'] ?></a>
       </div>
       <div class="footer-info-row">
-        <a href="mailto:<?php echo $info['email_address'] ?>" target="_blank"><?php echo $info['email_address'] ?></a>
+        <a href="mailto:<?php echo $info['email_address'] ?>" target="_blank" rel="nofollow noreferrer noopener"><?php echo $info['email_address'] ?></a>
       </div>
     </div>
     <div class="footer-col">
@@ -69,7 +69,7 @@ $info = get_field('contact_information', 'options');
       <?php foreach ($locationsList as $location) { ?>
         <div class="footer-info-row">
           <span><?php echo $location['location_name']?>:</span>
-          <a href="<?php echo $location['google_maps_url'] ?>" title="<?php echo $location['location_name'] ?>" target="_blank"><?php echo $location['address'] ?></a>
+          <a href="<?php echo $location['google_maps_url'] ?>" title="<?php echo $location['location_name'] ?>" target="_blank" rel="nofollow noreferrer noopener"><?php echo $location['address'] ?></a>
         </div>
       <?php
         #/forEach

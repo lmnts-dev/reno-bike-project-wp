@@ -3395,7 +3395,9 @@
                                     "choices": {
                                         "internal": "Internal",
                                         "external": "External",
-                                        "download": "Download"
+                                        "download": "Download",
+                                        "important-internal": "Important Internal",
+                                        "important-external": "Important External"
                                     },
                                     "allow_null": 0,
                                     "other_choice": 0,
@@ -4248,5 +4250,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590601149
+    "modified": 1590603052
 }

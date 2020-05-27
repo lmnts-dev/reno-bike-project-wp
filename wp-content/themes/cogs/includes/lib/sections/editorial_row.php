@@ -59,7 +59,7 @@ if (get_row_layout() == 'editorial_row' || $rowLayout == 'editorial_row') {
                               <?php echo $button['call_to_action_']?>
                           </a>
                       <?php } else { ?>
-                          <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" <?php echo $button['link_type'] == "external" ? 'target="_blank"' : ''?> >
+                          <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" <?php echo $button['link_type'] == "external" ? 'target="_blank" rel="nofollow noreferrer noopener" ' : ''?> >
                               <?php echo $button['call_to_action_']?>
                           </a>
           <?php 
