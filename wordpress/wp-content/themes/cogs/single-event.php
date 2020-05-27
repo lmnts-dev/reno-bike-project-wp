@@ -15,9 +15,6 @@
 
 <?php get_template_part('content', get_post_format()); ?>
 
-<?php $apis = get_field('api_keys', 'options');?>
-<script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
-
 <?php
     // Start the loop.
     while (have_posts()) : the_post();

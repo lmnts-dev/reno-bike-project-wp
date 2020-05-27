@@ -11,10 +11,17 @@
 
 if (get_row_layout() == 'video_row') {
 
-  $link = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?background=1&autoplay=1&loop=1&byline=0&title=0";
-  $overlayLink = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?autoplay=0";
+  if ( get_sub_field('video_type' ) == 'youtube' ) {
+    $link = "https://www.youtube.com/embed/" . get_sub_field('vimeo_id' ) . "?background=1&autoplay=1&loop=1&byline=0&title=0&mute=1";
+    $overlayLink = "https://www.youtube.com/embed/" . get_sub_field('vimeo_id' ) . "?autoplay=0";
+  }
+  else {
+    $link = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?background=1&autoplay=1&loop=1&byline=0&title=0";
+    $overlayLink = "https://player.vimeo.com/video/" . get_sub_field('vimeo_id') . "?autoplay=0";
+  }
   $coverImage = get_sub_field('cover_image');
   $altText = get_sub_field('alt_text');
+
 ?>
 
   <section class="video-row padding-top-half padding-bottom-half video-row-<?php echo $idx ?>">

@@ -44,7 +44,9 @@ if (get_row_layout() == 'generic_listing' || $rowLayout == 'generic_listing') {
                 <div class="col img-col">
                   <div class="generic-listing-img">
                       <?php $image = $listing['image']; ?>
-                      <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="lazy" />
+                      <?php if ( $image ) : ?>
+                        <img data-src="<?php echo wp_get_attachment_image_src( $image['id'], 'large')[0]; ?>" alt="<?php echo $listing['header_text'] ?>" class="lazy" />
+                      <?php endif; ?>
                   </div>
                   </div>
                   <div class="col content-col">

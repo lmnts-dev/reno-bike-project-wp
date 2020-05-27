@@ -110,8 +110,12 @@ if ($description == false or is_front_page() == true ) {
         </script>
     <?php } ?>
 
+    <?php $apis = get_field('api_keys', 'options');?>
+    <script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
+
     <?php wp_head(); ?>
 </head>
+
 
 
 <body data-barba="wrapper">

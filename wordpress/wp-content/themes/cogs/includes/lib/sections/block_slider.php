@@ -28,7 +28,7 @@ if (get_row_layout() == 'block_slider' || $rowLayout == 'block_slider') {
                 <h4>
                   <?php echo get_sub_field('title'); ?>
                 </h4>
-                <a href="<?php echo esc_url($cta['url']) ?>" class="btn btn-arrow" <?php echo get_sub_field('link_type') == 'external' ? ' target="_blank" ' : ( get_sub_field('link_type') == 'download' ? 'download' : ''  ) ?>>
+                <a href="<?php echo esc_url($cta['url']) ?>" class="btn btn-arrow" <?php echo get_sub_field('link_type') == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : ( get_sub_field('link_type') == 'download' ? 'download' : ''  ) ?>>
                   <?php echo $cta['label'] ?>
                 </a>
               </div>

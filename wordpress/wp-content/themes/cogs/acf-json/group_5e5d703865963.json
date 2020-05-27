@@ -3007,29 +3007,8 @@
                         },
                         {
                             "key": "field_5e8ccd0a4f0f8",
-                            "label": "Vimeo ID",
+                            "label": "Video ID",
                             "name": "vimeo_id",
-                            "type": "number",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "min": "",
-                            "max": "",
-                            "step": ""
-                        },
-                        {
-                            "key": "field_5e8ccd274f0f9",
-                            "label": "Alt Text",
-                            "name": "alt_text",
                             "type": "text",
                             "instructions": "",
                             "required": 1,
@@ -3044,6 +3023,49 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": ""
+                        },
+                        {
+                            "key": "field_5e8ccd274f0f9",
+                            "label": "Alt Text",
+                            "name": "alt_text",
+                            "type": "text",
+                            "instructions": "Short description of video",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5ecd49cc8f1e2",
+                            "label": "Video Type",
+                            "name": "video_type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "vimeo": "Vimeo",
+                                "youtube": "youTube"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "vimeo",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -3373,7 +3395,9 @@
                                     "choices": {
                                         "internal": "Internal",
                                         "external": "External",
-                                        "download": "Download"
+                                        "download": "Download",
+                                        "important-internal": "Important Internal",
+                                        "important-external": "Important External"
                                     },
                                     "allow_null": 0,
                                     "other_choice": 0,
@@ -3763,6 +3787,13 @@
                                                 "field": "field_5ec2e03a4ffc2",
                                                 "operator": "!=",
                                                 "value": "separator"
+                                            }
+                                        ],
+                                        [
+                                            {
+                                                "field": "field_5ec2e07d4ffc3",
+                                                "operator": "==",
+                                                "value": "checkboxes"
                                             }
                                         ]
                                     ],
@@ -4219,5 +4250,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589929706
+    "modified": 1590603052
 }

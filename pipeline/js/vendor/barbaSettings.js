@@ -23,6 +23,9 @@ barba.init({
         // Re-init our Lazy Loading
         initLazyLoad();
 
+        // Re-init our Google Maps
+        initGoogleAPIMaps();
+
         //Re-init masonry
         initMasonry()
 

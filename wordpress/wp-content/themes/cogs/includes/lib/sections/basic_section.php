@@ -60,7 +60,7 @@ if (get_row_layout() == 'basic_section' || $rowLayout == 'basic_section') {
                             <?php echo $button['call_to_action_label']?>
                         </a>
                     <?php } else { ?>
-                        <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow" <?php echo $button['link_type'] == 'external' ? ' target="_blank" ' : '' ?>>
+                        <a href="<?php echo $button['call_to_action_url']?>" class="btn btn-arrow <?php echo ($button['link_type'] == 'important-internal' || $button['link_type'] == 'important-external') ? 'btn-clr-black' : '' ?>" <?php echo $button['link_type'] == 'external' ? ' target="_blank" rel="nofollow noreferrer noopener" ' : '' ?>>
                             <?php echo $button['call_to_action_label']?>
                         </a>
         <?php 
