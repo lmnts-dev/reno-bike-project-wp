@@ -1396,7 +1396,9 @@ barba.init({
       // Scroll to top of page
       window.scrollTo(0, 0); // Re-init our Lazy Loading
 
-      initLazyLoad(); //Re-init masonry
+      initLazyLoad(); // Re-init our Google Maps
+
+      initMaps(); //Re-init masonry
 
       initMasonry(); // Re-init our bicycle wheel script.
 
