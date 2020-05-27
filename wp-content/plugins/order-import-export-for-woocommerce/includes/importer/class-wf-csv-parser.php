@@ -63,6 +63,9 @@ class WF_CSV_Parser {
             "shipping_country",
             "shipping_method",
             "download_permissions",
+            "customer_ip_address",
+            "paid_date",
+            "completed_date"
         );
     }
 
@@ -420,6 +423,13 @@ class WF_CSV_Parser {
                     }
             }
         }
+        if(isset($item['paid_date']) && !empty($item['paid_date'])){
+            $postmeta[] = array('key' => '_date_paid', 'value' => strtotime($item['paid_date']));
+        }
+        if(isset($item['completed_date']) && !empty($item['completed_date'])){
+            $postmeta[] = array('key' => '_date_completed', 'value' => strtotime($item['completed_date']));
+        }
+
         if (!empty($item['customer_id']))
             $postmeta[] = array('key' => '_customer_user', 'value' => $item['customer_id']);
         $order_shipping_methods = array();
@@ -495,6 +505,35 @@ class WF_CSV_Parser {
                     if ($item['line_item_' . $i] && empty($_item_meta)) {
                         $_item_meta = explode('|', $item['line_item_' . $i]);
                     }
+
+                    $all_tax_data = array();
+                    foreach ($_item_meta as $item_key => $item_value) {
+                       
+                           $data_exploded = explode(":", $item_value);
+                           if($data_exploded[0] == 'tax_total' && isset($data_exploded[1])&&!empty($data_exploded[1])){
+                               $item_taxs = explode(",", $data_exploded[1]);
+                                $tax_arr = array();
+                               foreach ($item_taxs as $tax_key => $tax_value) {
+                                   $tax_details = explode("=", $tax_value);
+                                   $rate_id = $wpdb->get_var( $wpdb->prepare( "SELECT tax_rate_id FROM {$wpdb->prefix}woocommerce_tax_rates WHERE tax_rate_name = %s", $tax_details[0] ) );
+                                   $tax_arr[intval($rate_id)] = $tax_details[1];
+                               }   
+                               $all_tax_data['total'] = $tax_arr;
+                               unset($_item_meta[$item_key]); 
+                           }
+                           if($data_exploded[0] == 'tax_subtotal'&& isset($data_exploded[1])&&!empty($data_exploded[1])){
+                               $tax_arr = array();
+                               $item_taxs_subtotal = explode(",", $data_exploded[1]);
+                                foreach ($item_taxs_subtotal as $tax_stkey => $tax_stvalue) {
+                                   $st_tax_details = explode("=", $tax_stvalue);
+                                   $rate_id = $wpdb->get_var( $wpdb->prepare( "SELECT tax_rate_id FROM {$wpdb->prefix}woocommerce_tax_rates WHERE tax_rate_name = %s", $st_tax_details[0] ) );
+                                   $tax_arr[intval($rate_id)] = $st_tax_details[1];
+                               }   
+                               $all_tax_data['subtotal'] = $tax_arr;
+                               unset($_item_meta[$item_key]); 
+                           }
+                                                 
+                    }
                     $name = array_shift($_item_meta);
                     $name = substr($name, strpos($name, ":") + 1);
                     $unknown_product_name = $name;
@@ -509,7 +548,7 @@ class WF_CSV_Parser {
                     $tax = array_shift($_item_meta);
                     $tax = substr($tax, strpos($tax, ":") + 1);
                     $tax_data = array_shift($_item_meta);
-                    $tax_data = substr($tax_data, strpos($tax_data, ":") + 1);
+                    $tax_data = $all_tax_data;
                     // find by id
                     if (false !== strpos($product_identifier_by_id, 'product_id:')) {
                         // product by product_id

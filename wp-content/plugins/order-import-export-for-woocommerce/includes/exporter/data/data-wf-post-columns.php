@@ -52,5 +52,8 @@ return apply_filters('woocommerce_csv_order_post_columns', array(
     'coupon_items' => 'coupon_items',
     'refund_items' => 'refund_items',
     'order_notes' => 'order_notes',
-    'download_permissions' => 'download_permissions'
+    'download_permissions' => 'download_permissions',
+    'customer_ip_address' => 'customer_ip_address',
+    'paid_date' => 'paid_date',
+    'completed_date'=>'completed_date'
 ));
