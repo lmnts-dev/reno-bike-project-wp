@@ -15,10 +15,10 @@ button,
   margin: 0;
   box-shadow: 0px 0px 0px 0px rgba($clrBlack, 0);
   // transition: all $BaseTransition ease;
-  line-height: 0;
+  line-height: 1.4;
   border: 0;
+  height: auto;
   outline: 0;
-  height: $BaseBtnHeight;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   cursor: pointer !important;
@@ -93,6 +93,7 @@ button,
   &.btn-download {
     padding: 0 $Base / 4 0 $Base * 1.25;
     position: relative;
+    height: $BaseBtnHeight;
 
     // Icon
     &:after {
@@ -129,6 +130,7 @@ button,
   }
 
   &.btn-clr-black {
+    height: $BaseBtnHeight;
     background-color: $clrBlack;
     color: $clrWhite;
     padding-left: calc(#{$Base} / 3);
@@ -154,6 +156,7 @@ button,
   }
 
   &.btn-clr-snow {
+    height: $BaseBtnHeight;
     background-color: $clrSnow;
     color: $clrPrimary;
     padding-left: calc(#{$Base} / 3);
@@ -178,6 +181,7 @@ button,
   }
 
   &.btn-clr-error {
+    height: $BaseBtnHeight;
     background-color: $clrGold;
     color: $clrWhite;
     &:hover {
@@ -189,6 +193,7 @@ button,
   }
 
   &.btn-clr-success {
+    height: $BaseBtnHeight;
     background-color: $clrLeaf;
     color: $clrWhite;
     &:hover {
@@ -203,6 +208,7 @@ button,
   // These are transparent buttons. Same naming convention
   // as the colored butttons.
   &.btn-border-black {
+    height: $BaseBtnHeight;
     background: rgba($clrBlack, 0);
     border: 1px solid $clrBlack;
     box-shadow: none;
@@ -225,6 +231,7 @@ button,
   }
 
   &.btn-border-red {
+    height: $BaseBtnHeight;
     background: rgba($clrPrimary, 0);
     border: 1px solid $clrPrimary;
     box-shadow: none;
@@ -247,6 +254,7 @@ button,
   }
 
   &.btn-border-white {
+    height: $BaseBtnHeight;
     @extend .btn-clr-black;
     background: rgba($clrPrimary, 0);
     border: 1px solid $clrSnow;
