@@ -125,25 +125,34 @@ class WF_OrderImpExpCsv_Exporter {
                 'quantity' => $item['qty'],
                 'total' => wc_format_decimal($order->get_line_total($item), 2),
                 'sub_total' => wc_format_decimal($order->get_line_subtotal($item), 2),
-//                'refunded' => wc_format_decimal($order->get_total_refunded_for_item($item_id), 2),
-                //'meta' => html_entity_decode($meta, ENT_NOQUOTES, 'UTF-8'),
-            );
+      );
 
             // add line item tax
             $line_tax_data = isset($item['line_tax_data']) ? $item['line_tax_data'] : array();
             $tax_data = maybe_unserialize($line_tax_data);
+          
             $line_item['tax'] = isset($tax_data['total']) ? wc_format_decimal(wc_round_tax_total(array_sum((array) $tax_data['total'])), 2) : '';
-            $line_tax_ser = maybe_serialize($line_tax_data);
-            $line_item['tax_data'] = $line_tax_ser;
+            $line_tax_ser = maybe_serialize($line_tax_data);  
+            foreach ($line_tax_data['total'] as $rate_key => $rate_value) {
+               $tdata =  WC_Tax::get_rate_label($rate_key);
+               $line_tax_total_data[] = $tdata."=".$rate_value;
+            }
+            if(!empty($line_tax_total_data)){
+            $line_tax_totat = implode(",", $line_tax_total_data);
+            $line_item['tax_total'] = !empty($line_tax_totat)?$line_tax_totat:'';
+            }
+            
+             foreach ($line_tax_data['subtotal'] as $srate_key => $srate_value) {
+               $stdata =  WC_Tax::get_rate_label($srate_key);
+               $line_tax_subtotal_data[] = $stdata."=".$srate_value;
+            }
+             if(!empty($line_tax_subtotal_data)){
+            $line_tax_subtotat = implode(",", $line_tax_subtotal_data);
+            $line_item['tax_subtotal'] = !empty($line_tax_subtotat)?$line_tax_subtotat:'';
+             }
+           // $line_item['tax_data'] = $line_tax_ser;
             $line_items[] = $line_item;
-        }
-        
-       /* foreach ($order->get_shipping_methods() as $_ => $shipping_item) {
-            $shipping_items[] = implode('|', array(
-                'method:' . $shipping_item['name'],
-                'total:' . wc_format_decimal($shipping_item['cost'], 2),
-            ));
-        }*/
+        }     
         
         $line_items_shipping = $order->get_items('shipping');
         
@@ -184,7 +193,7 @@ class WF_OrderImpExpCsv_Exporter {
             $fee_total += $fee['line_total'];
             $fee_tax_total += $fee['line_tax'];
         }
-
+        add_filter('woocommerce_order_hide_zero_taxes','__return_false');
         // get tax items
         foreach ($order->get_tax_totals() as $tax_code => $tax) {
             $tax_items[] = implode('|', array(
@@ -324,7 +333,24 @@ class WF_OrderImpExpCsv_Exporter {
                 'refund_items' => implode(';', $refund_items),
                 'order_notes' => implode('||', (defined('WC_VERSION') && (WC_VERSION >= 3.2)) ? WF_OrderImpExpCsv_Exporter::get_order_notes_new($order) : WF_OrderImpExpCsv_Exporter::get_order_notes($order)),
                 'download_permissions' => $order->is_download_permitted() ? $order->is_download_permitted() : 0,
+                'customer_ip_address' => $order->get_customer_ip_address() ? $order->get_customer_ip_address() : '',
+                'paid_date' => '',
+                'completed_date' => '',
             ); 
+            if($order->get_date_paid()){
+                $paid_date = $order->get_date_paid();
+                $paid_date_timestamp = strtotime($paid_date);
+                $formatted_paid_date = date('Y-m-d H:i:s', $paid_date_timestamp);    
+                $order_data['paid_date'] = $formatted_paid_date ;
+                
+            }
+            if($order->get_date_completed()){
+                $date_completed = $order->get_date_completed();
+                $date_completed_timestamp = strtotime($date_completed);
+                $formatted_date_completed = date('Y-m-d H:i:s', $date_completed_timestamp);    
+                $order_data['completed_date'] = $formatted_date_completed ;
+                
+            }
         }
         foreach ($order_data as $key => $value) {
             if (!$export_columns || in_array( $key, $export_columns ) ){

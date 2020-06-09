@@ -18,8 +18,8 @@ function findMaps() {
   for (let i = 0; i < mapSections.length; i++) {
     let sectionId = mapSections[i].id; 
     let sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
-    let sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
-    let sectionLng = parseInt(mapSections[i].getAttribute('data-lng')); 
+    let sectionLat = parseFloat(mapSections[i].getAttribute('data-lat'));
+    let sectionLng = parseFloat(mapSections[i].getAttribute('data-lng'));
     let sectionAddress = mapSections[i].getAttribute('data-address');
     let mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace( /\./g, '+').replace( / /g, "+" ) + '/@' + sectionLat + ',' + sectionLng + ',17z';
     let infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace( /\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>' 

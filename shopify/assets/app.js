@@ -21,8 +21,8 @@ function findMaps() {
   for (var i = 0; i < mapSections.length; i++) {
     var sectionId = mapSections[i].id;
     var sectionZoom = parseInt(mapSections[i].getAttribute('data-zoom'));
-    var sectionLat = parseInt(mapSections[i].getAttribute('data-lat'));
-    var sectionLng = parseInt(mapSections[i].getAttribute('data-lng'));
+    var sectionLat = parseFloat(mapSections[i].getAttribute('data-lat'));
+    var sectionLng = parseFloat(mapSections[i].getAttribute('data-lng'));
     var sectionAddress = mapSections[i].getAttribute('data-address');
     var mapsLink = 'https://www.google.com/maps/place/' + sectionAddress.replace(/\./g, '+').replace(/ /g, "+") + '/@' + sectionLat + ',' + sectionLng + ',17z';
     var infoBoxHtml = '<p class="maps-addy">' + sectionAddress.replace(/\./g, '<br/>') + '</p><a class="btn btn-clr-black btn-arrow" href="' + mapsLink + '" target="_blank">Directions</a>';

@@ -8,7 +8,6 @@ class WF_CpnImpExpCsv_Exporter {
 
     public static function do_export($post_type = 'shop_coupon') {
         global $wpdb;
-        absint($maybeint);
         $export_limit = !empty($_POST['limit']) ? absint($_POST['limit']) : 999999999;
         $export_count = 0;
         $limit = 100;
