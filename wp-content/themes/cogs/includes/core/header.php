@@ -114,6 +114,25 @@ if ($description == false or is_front_page() == true ) {
     <script src="<?php echo 'https://maps.googleapis.com/maps/api/js?key=' . $apis['google_maps'] ?>"></script>
 
     <?php wp_head(); ?>
+
+    <!-- Global site tag (gtag.js) - Google Ads: 726881409 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-726881409"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-726881409');
+    </script>
+
+
+    <script>
+    document.addEventListener('click', function(e){
+        if(e.target.matches('a[href="https://square.site/book/BVD9RGP6QFZGH/reno-bike-project-4th-st-shop-635-e-4th-st-reno-nv"], a[href="https://square.site/book/BVD9RGP6QFZGH/reno-bike-project-4th-st-shop-635-e-4th-st-reno-nv"] *')){
+        gtag('event', 'conversion', {'send_to': 'AW-726881409/pWtcCMi6oNkBEIGpzdoC'});
+        }
+    });
+    </script>
 </head>
 
 
