@@ -30,7 +30,7 @@ $logos = get_field('logos', 'option');
           <img src="<?php echo $logos['logo_light'] ?>" alt="Reno Bike Project">
         </a>
       </div>
-      <nav class="nav-switch">
+      <!--<nav class="nav-switch">
         <ul>
           <li class="active">
             <a href="/">
@@ -43,7 +43,7 @@ $logos = get_field('logos', 'option');
             </a>
           </li>
         </ul>
-      </nav>
+      </nav>-->
     </div>
     <?php /** /Inter-site Navigation  */
     ?>
