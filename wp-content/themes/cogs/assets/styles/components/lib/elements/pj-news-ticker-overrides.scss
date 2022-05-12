@@ -8,6 +8,9 @@ $base: 40px;
 .pjnt-border{
   padding: 10px 0;
   height: $base;
+  position:fixed;
+  top: 0;
+  z-index: 10;
 }
 
 .pjnt-border + header {
