@@ -1,0 +1,20 @@
+.frm_button_submit{
+  padding: 15px 40px!important;
+  background: #f684b4!important;
+  text-transform: capitalize;
+  border-radius: 0!important;
+  border-color: #f684b4!important;
+
+  &:hover{
+    background: #f89cc2!important;
+    border-color: #f89cc2!important;
+    color:#fff!important;
+  }
+}
+
+#form_signup{
+  input, select{
+    border-radius: 0 0 2px 0!important;
+    border-color: #000!important;
+  }
+}
