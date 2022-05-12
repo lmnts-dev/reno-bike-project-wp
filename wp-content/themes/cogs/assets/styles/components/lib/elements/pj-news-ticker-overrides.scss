@@ -1,3 +1,19 @@
-body{
-  color: blue;
+$base: 40px;
+
+.pjnt-label{
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.pjnt-border{
+  padding: 10px 0;
+  height: $base;
+}
+
+.pjnt-border + header {
+  top: $base;
+}
+
+.pjnt-border ~ main {
+  margin-top: $base
 }
