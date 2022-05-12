@@ -143,6 +143,11 @@ if ($description == false or is_front_page() == true ) {
         <span class="cursor"></span>
         <span class="cursor-outline"></span>
     <?php } ?>
+
+    <?php
+    echo do_shortcode('[pj-news-ticker]');
+    ?>
+
     <?php include 'navigation.php' ?>
 
     <main role="main" data-barba="container" data-barba-namespace="home">
