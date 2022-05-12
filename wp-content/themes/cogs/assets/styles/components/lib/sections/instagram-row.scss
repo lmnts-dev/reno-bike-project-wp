@@ -1,0 +1,131 @@
+////////////////////////////////////////
+//
+// Instagram Row
+//
+// @author Alisha Garric
+// @since 4/2020
+//
+////////////////////////////////////////
+
+.instagram-row {
+    @extend .news-listings;
+    padding-left: $BaseGutterLeft;
+    padding-right: $BaseGutterRight;
+
+    @media (max-width: $BaseMediaMd) {
+        padding-right: $BaseGutterRightMd;
+        padding-left: $BaseGutterLeftMd;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+        padding-left: $BaseGutterLeftSm;
+        padding-right: $BaseGutterRightSm;
+    }
+
+    .instagram-row-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: $Base / 2;
+
+        svg {
+            height: $Base * 1.5;
+            width: $Base * 1.5;
+            font-size: $Base * 1.5;
+            width: 100%;
+
+            path {
+                fill: $clrPrimary;
+            }
+        }
+
+        > a {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: $clrBlack;
+
+            @media (max-width: $BaseMediaMd) {
+                position: relative;
+                margin-top: $Base / 2;
+            }
+        }
+
+        h3 {
+            text-align: center;
+
+            a {
+                color: $clrBlack;
+                &:hover {
+                    color: $clrPrimary;
+                }
+            }
+        }
+    }
+
+    .instagram-row-inner {
+        @extend .news-listings-inner;
+
+        //hide things from plugin
+        .sb_instagram_header, #sbi_load {
+            display: none;
+        }
+
+        //override plugin styles
+        #sb_instagram {
+            padding: 0 !important;
+
+            #sbi_images {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                flex-wrap: wrap;
+                padding: 0 !important;
+
+                @media (max-width: $BaseMediaMd) {
+                    margin-top: $Base !important;
+                }
+
+                .sbi_item {
+                    flex: 1;
+                    min-width: 26%;
+                    padding-top: calc(33.33% - #{$Base / 3});
+                    position: relative;
+                    background: $clrPlaceholder;
+                    margin-bottom: $Base / 2 !important;
+
+                    @media (max-width: $BaseMediaSm) {
+                        min-width: 34%;
+                        padding-top: calc(50% - #{$Base / 4});
+                    }
+
+                    &:hover {
+                        box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
+                    }
+
+                    img {
+                        @include objectFit();
+                    }
+
+                    &:nth-of-type(3n-1){
+                        margin: 0 $Base / 2 $Base / 2 $Base / 2 !important;;
+
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: 0 !important;;
+                            margin-right: 0 !important;;
+                        }
+                    }
+
+                    &:nth-of-type(2n){
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: $Base / 2 !important;;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

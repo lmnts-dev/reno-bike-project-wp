@@ -1,0 +1,115 @@
+////////////////////////////////////////
+//
+// Accordion Row Component
+// A simple component for accordion functionality.
+// Mainly used on Product pages.
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.accordion {
+  // overflow: hidden;
+
+  .accordion-row {
+    // overflow: hidden;
+    width: 100%;
+    border-bottom: 2px solid $clrBlack;
+
+    ul {
+      @media (max-width: $BaseMediaMd) {
+        margin-top: $Base / 2;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        margin-top: $Base / 4;
+      }
+    }
+
+    input {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .row-label {
+      display: flex;
+      justify-content: space-between;
+      padding: calc(#{$Base} / 2) 0 calc(#{$Base} / 4) 0;
+      background: $clrWhite;
+      color: $clrBlack;
+      font-weight: bold;
+      font-size: 3rem;
+      cursor: pointer;
+      position: relative;
+
+      @media (max-width: $BaseMediaMd) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        font-size: 1.6rem;
+      }
+
+      // Icon
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 55%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: calc(#{$Base} * 0.3) solid transparent;
+        border-bottom: calc(#{$Base} * 0.3) solid transparent;
+        border-left: calc(#{$Base} * 0.3) solid $clrBlack;
+
+        @media (max-width: $BaseMediaMd) {
+          border-top: calc(#{$Base} * 0.2) solid transparent;
+          border-bottom: calc(#{$Base} * 0.2) solid transparent;
+          border-left: calc(#{$Base} * 0.2) solid $clrBlack;
+        }
+      }
+
+      &:hover {
+        color: $clrPrimary;
+
+        &:after {
+          border-left: calc(#{$Base} * 0.3) solid $clrPrimary;
+        }
+      }
+    }
+
+    .row-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      color: $clrBlack;
+      background: white;
+      max-width: 650px;
+      width: 100%;
+    }
+
+    // Checked State
+    input:checked {
+      + .row-label {
+        background: $clrWhite;
+
+        // Icon
+        &:after {
+          top: 65%;
+          transform: translateY(-50%) rotate(90deg);
+          right: 10px;
+        }
+      }
+
+      ~ .row-content {
+        max-height: 1000vh;
+        padding: 0 0 calc(#{$Base} / 1.5) 0;
+      }
+    }
+  }
+}

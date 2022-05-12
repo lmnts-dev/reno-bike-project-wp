@@ -683,9 +683,9 @@ add_action('wp_enqueue_scripts', 'load_theme_scripts');
 function load_theme_scripts()
 {
 	if (!is_admin()) {
-		wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/dist/app.min.js', '', '', true);
-		wp_enqueue_script('vendor', get_template_directory_uri() . '/assets/js/dist/vendor.min.js', '', '', true);
-		wp_enqueue_style('danny-forster-architecture', get_template_directory_uri() . '/assets/styles/dist/main.min.css');
+		wp_enqueue_script('app', get_template_directory_uri() . '/dist/js/app.min.js', '', '', true);
+		wp_enqueue_script('vendor', get_template_directory_uri() . '/dist/js/vendor.min.js', '', '', true);
+		wp_enqueue_style('danny-forster-architecture', get_template_directory_uri() . '/dist/styles/main.min.css');
 
 		//TO ACCESS ASSETS FROM MAIN.JS
 		$args = array(

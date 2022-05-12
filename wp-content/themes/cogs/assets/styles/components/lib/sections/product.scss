@@ -1,0 +1,358 @@
+////////////////////////////////////////
+//
+// Product Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.product {
+  $offsetTop: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+  $detailsVerticalSpacing: calc(#{$Base} / 2);
+
+  overflow: visible;
+
+  .product-inner {
+    display: flex;
+    margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutter});
+
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeftMd});
+     // padding-bottom: $Base * 2;
+    }
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+      margin-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
+      padding-bottom: 0;
+    }
+
+    .col {
+      &.details {
+        flex: 1;
+        max-width: $BaseSidebarWidth;
+        min-width: $BaseSidebarWidth;
+        height: calc(100vh - #{$offsetTop});
+        min-height: 750px;
+        padding-left: calc(#{$Base});
+        padding-bottom: $BaseGutter;
+        position: sticky;
+        top: $offsetTop;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media (max-width: $BaseMediaMd) {
+          max-width: $BaseSidebarWidth * 0.8;
+          min-width: $BaseSidebarWidth * 0.5;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          position: relative;
+          padding-left: 0;
+          top: 0;
+          min-height: 1px;
+          height: auto;
+          max-width: none;
+          padding-bottom: 0;
+        }
+
+        &.one-image {
+          min-height: 1px;
+
+          .details-bottom {
+            margin-top: $Base;
+          }
+        }
+
+        .details-top {
+          .title-and-price {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: $detailsVerticalSpacing;
+
+            @media (max-width: $BaseMediaSm) {
+              display: block;
+            }
+
+            .title {
+              width: 60%;
+              @media (max-width: $BaseMediaSm) {
+                width: 100%;
+              }
+
+              h1 {
+                font-size: 1.8rem;
+                margin: 0;
+                padding: 0;
+
+                @media (max-width: $BaseMediaSm) {
+                //  font-size: 1.3rem;
+                }
+              }
+            }
+
+            .price {
+              display: flex;
+              flex: 1;
+              justify-content: flex-end;
+              flex-wrap: wrap;
+
+              @media (max-width: $BaseMediaSm) {
+                justify-content: flex-start;
+              }
+
+              span {
+                font-size: 1.5rem;
+                color: $clrPrimary;
+                font-weight: 600;
+                text-align: right;
+
+                &.compare-price {
+                  display: block;
+                  min-width: 100%;
+                  color: $clrGunmetal;
+                  @media (max-width: $BaseMediaSm) {
+                    text-align: left;
+                  }
+                }
+
+                @media (max-width: $BaseMediaSm) {
+                  font-size: 1.3rem;
+                }
+              }
+            }
+          }
+
+          .quantity-and-purchase {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: $detailsVerticalSpacing;
+
+            .quantity {
+              display: flex;
+              flex: 1;
+              justify-content: flex-start;
+              align-items: center;
+              border: 1px solid $clrBlack;
+
+              input {
+                text-align: center;
+                font-size: 1.2rem;
+              }
+            }
+
+            .purchase {
+              flex: 10;
+
+              button {
+                width: 100%;
+
+                &.sold-out-btn {
+                  padding-right: $Base / 4;
+                  background-color: $clrChrome;
+                  color: $clrAsphalt;
+                  pointer-events: none;
+                  
+                  &:hover {
+                    box-shadow: none;
+                    background-color: $clrChrome;
+                    color: $clrAsphalt;
+                  }
+                }
+              }
+            }
+          }
+
+          .select-container {
+            width: 100%;
+            margin-bottom: $detailsVerticalSpacing;
+            position: relative;
+
+            &.visually-hidden {
+              display: none;
+            }
+          }
+        }
+
+        .details-bottom {
+          font-size: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          font-weight: 600;
+
+          @media (max-width: $BaseMediaSm) {
+            padding-top: calc(#{$Base});
+          }
+
+          span {
+            display: block;
+            margin-bottom: $detailsVerticalSpacing;
+            color: $clrChrome;
+          }
+
+          ul {
+            li {
+              margin-bottom: calc(#{$Base} / 6);
+            }
+          }
+        }
+
+        .specifics-outer.mobile-visible {
+          display: none;
+          padding-bottom: $Base / 2;
+          padding-top: $Base / 2;
+
+          @media (max-width: $BaseMediaSm) {
+            display: block;
+          }
+        }
+      }
+
+      &.image-col {
+        flex: 1;
+        min-width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        .img-wrapper {
+          width: 100%;
+          padding-bottom: 80%;
+          position: relative;
+          background: $clrPlaceholder;
+          margin-bottom: $Base / 3;
+
+          img {
+            @include objectFit(contain);
+          }
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          margin-bottom: $Base / 2;
+          height: 50vh;
+          min-height: $Base * 6;
+          
+          &:not(.no-mobile-scroller){
+            $scrollBarHeight: 34px;
+            position: relative;
+
+            &:before, &:after {
+              content: "";
+              width: 0;
+              pointer-events: none;
+              position: absolute;
+              bottom: $Base / 8;
+              height: 0;
+              border-top: calc(#{$Base} * 0.3) solid transparent;
+              border-bottom: calc(#{$Base} * 0.3) solid transparent;
+              border-left: calc(#{$Base} * 0.3) solid $clrPrimary;
+              z-index: 999;
+            }
+
+            &:before {
+              left: $Base / 4;
+              transform: scaleX(-1);
+            } 
+            &:after {
+              right: $Base / 4;
+            }
+
+            .featured-images {
+              display: flex;
+              flex-direction: row;
+              position: relative;
+              width: 100%;
+              height: 100%;
+              overflow-x: auto;
+              overflow-y: hidden;
+              white-space: nowrap;
+              /** Thank you Sergey! http://blog.gospodarets.com/css-scroll-snap/ **/
+                scroll-snap-points-x: repeat(100%);
+                scroll-behavior: smooth;
+                scroll-snap-type: mandatory;
+                -webkit-scroll-snap-type: mandatory;
+                -webkit-scroll-snap-points-x: repeat(100%);
+                font-size: 0;
+              /** **/
+
+              .img-wrapper {
+                height: 100%;
+                display: block;
+                border-right: $Base / 3 solid white;
+                padding: 0;
+                margin-bottom: 0;
+                width: auto;
+                background: $clrWhite;
+
+                &:last-of-type {
+                  border-right: none;
+                }
+
+                img {
+                  height: 100%;
+                  width: auto;
+                  position: relative;
+                  max-width: none;
+                }
+              }
+            }
+
+            /** Chrome Scroll Wheel **/
+            
+
+            ::-webkit-scrollbar {
+              height: $scrollBarHeight;
+            }
+            ::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+
+            }
+            ::-webkit-scrollbar-button:start:decrement,
+            ::-webkit-scrollbar-button:end:increment {
+              position: absolute;
+              top: -34px;
+              display: block;
+              height: $scrollBarHeight;
+              width: $scrollBarHeight;
+              background: transparent;
+              background-size: 100%;
+            }
+            ::-webkit-scrollbar-button:end:increment {
+
+            }
+          }
+
+          .specifics-outer {
+            @media (max-width: $BaseMediaSm) {
+              display: none;
+            }
+          }
+
+          &.no-mobile-scroller {
+
+            .featured-images {
+              height: 100%;
+
+              .img-wrapper {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin-bottom: calc(#{$Base} / 4);
+                background: $clrWhite;
+                padding: 0;
+
+                img {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

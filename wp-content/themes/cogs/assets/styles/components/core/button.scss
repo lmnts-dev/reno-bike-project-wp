@@ -1,0 +1,284 @@
+// Button Component
+
+// Default Styles
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $Base/2;
+  // border-radius: $BaseBtnRadius;
+  font-size: 0.8rem;
+  font-weight: bold;
+  // background-color: $clrWhite;
+  color: $clrBlack;
+  margin: 0;
+  box-shadow: 0px 0px 0px 0px rgba($clrBlack, 0);
+  // transition: all $BaseTransition ease;
+  line-height: 1.4;
+  border: 0;
+  height: auto;
+  outline: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer !important;
+
+  @media (max-width: $BaseMediaMd) {
+    font-size: 0.9rem;
+    padding: 0 $Base/4;
+    height: $BaseBtnHeightMd;
+  }
+  @media (max-width: $BaseMediaSm) {
+    font-size: 0.9rem;
+    padding: 0 $Base/4;
+    height: $BaseBtnHeightSm;
+  }
+
+  &:focus,
+  &:active {
+    outline: 0;
+    border: 0;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 0px 6px rgba($clrBlack, 0.07);
+  }
+
+  // Button Styles
+  &.btn-arrow {
+    padding: 0 $Base 0 0;
+    position: relative;
+    box-shadow: none;
+    color: $clrPrimary;
+
+    &:visited,
+    &:active,
+    &:hover {
+      color: $clrPrimary;
+    }
+
+    // Icon
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transition: all 0.25s ease;
+      transform: translate(-10px, -50%);
+      width: 0;
+      height: 0;
+      border-top: calc(#{$Base} * 0.15) solid transparent;
+      border-bottom: calc(#{$Base} * 0.15) solid transparent;
+      border-left: calc(#{$Base} * 0.15) solid $clrPrimary;
+    }
+
+    // &:after {
+    //   content: "▶";
+    //   font-family: fixed;
+    //   transform: translateX(-10px);
+    //   position: absolute;
+    //   color: $clrPrimary;
+    //   right: 0;
+    // }
+
+    &:hover {
+      box-shadow: none;
+
+      &:after {
+        transform: translate(0px, -50%);
+      }
+    }
+  }
+
+  &.btn-download {
+    padding: 0 $Base / 4 0 $Base * 1.25;
+    position: relative;
+    height: $BaseBtnHeight;
+
+    // Icon
+    &:after {
+      background: url("../../images/icon-file.png");
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transition: all 0.25s ease;
+      transform: translate(15px, -50%);
+      width: 20px;
+      height: 22px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &:hover:after {
+      transform: translate(15px, -50%);
+      filter: brightness(3);
+    }
+  }
+
+  // Button Colors:
+  // Naming convention is .btn-clr-{ClrName}
+  &.btn-clr-red {
+    background-color: $clrPrimary;
+    color: $clrWhite;
+    &:hover {
+      background-color: lighten($clrPrimary, $BaseLighten);
+    }
+    &:active {
+      background-color: darken($clrPrimary, $BaseLighten);
+    }
+  }
+
+  &.btn-clr-black {
+    height: $BaseBtnHeight;
+    background-color: $clrBlack;
+    color: $clrWhite;
+    padding-left: calc(#{$Base} / 3);
+    padding-right: calc(#{$Base} * 1.3);
+
+    &:after {
+      color: $clrWhite;
+      right: calc(#{$Base} / 4);
+    }
+
+    &:hover {
+      background-color: $clrPrimary;
+      color: $clrWhite;
+
+      &:after {
+        color: $clrWhite;
+        border-left: calc(#{$Base} * 0.15) solid $clrWhite;
+      }
+    }
+    &:active {
+      background-color: darken($clrPrimary, $BaseLighten);
+    }
+  }
+
+  &.btn-clr-snow {
+    height: $BaseBtnHeight;
+    background-color: $clrSnow;
+    color: $clrPrimary;
+    padding-left: calc(#{$Base} / 3);
+    padding-right: calc(#{$Base} * 1.3);
+
+    &:after {
+      color: $clrWhite;
+      right: calc(#{$Base} / 4);
+    }
+
+    &:hover {
+      background-color: $clrPrimary;
+      color: $clrWhite;
+
+      &:after {
+        color: $clrWhite;
+      }
+    }
+    &:active {
+      background-color: darken($clrPrimary, $BaseLighten);
+    }
+  }
+
+  &.btn-clr-error {
+    height: $BaseBtnHeight;
+    background-color: $clrGold;
+    color: $clrWhite;
+    &:hover {
+      background-color: lighten($clrGold, $BaseLighten);
+    }
+    &:active {
+      background-color: darken($clrGold, $BaseLighten);
+    }
+  }
+
+  &.btn-clr-success {
+    height: $BaseBtnHeight;
+    background-color: $clrLeaf;
+    color: $clrWhite;
+    &:hover {
+      background-color: lighten($clrLeaf, $BaseLighten);
+    }
+    &:active {
+      background-color: darken($clrLeaf, $BaseLighten);
+    }
+  }
+
+  // Button Borders:
+  // These are transparent buttons. Same naming convention
+  // as the colored butttons.
+  &.btn-border-black {
+    height: $BaseBtnHeight;
+    background: rgba($clrBlack, 0);
+    border: 1px solid $clrBlack;
+    box-shadow: none;
+    color: $clrBlack;
+    // transition: all $BaseTransition ease;
+    svg {
+      fill: none;
+      stroke-width: 1px;
+      stroke: $clrBlack;
+      // transition: all $BaseTransition ease;
+    }
+    &:hover {
+      background: rgba($clrPrimary, 1);
+      border: 1px solid $clrPrimary;
+      color: $clrWhite;
+      svg {
+        stroke: $clrWhite;
+      }
+    }
+  }
+
+  &.btn-border-red {
+    height: $BaseBtnHeight;
+    background: rgba($clrPrimary, 0);
+    border: 1px solid $clrPrimary;
+    box-shadow: none;
+    color: $clrPrimary;
+    // transition: all $BaseTransition ease;
+    svg {
+      fill: none;
+      stroke-width: 1px;
+      stroke: $clrPrimary;
+      // transition: all $BaseTransition ease;
+    }
+    &:hover {
+      background: rgba($clrPrimary, 1);
+      border: 1px solid $clrPrimary;
+      color: $clrWhite;
+      svg {
+        stroke: $clrWhite;
+      }
+    }
+  }
+
+  &.btn-border-white {
+    height: $BaseBtnHeight;
+    @extend .btn-clr-black;
+    background: rgba($clrPrimary, 0);
+    border: 1px solid $clrSnow;
+    box-shadow: none;
+    color: $clrSnow;
+    //  transition: all $BaseTransition ease;
+
+    &:visited {
+      color: $clrSnow;
+    }
+
+    svg {
+      fill: none;
+      stroke-width: 1px;
+      stroke: $clrSnow;
+      // transition: all $BaseTransition ease;
+    }
+    &:hover {
+      background: rgba($clrSnow, 1);
+      border-color: transparent;
+      color: $clrBlack;
+      &:after {
+        color: $clrBlack;
+      }
+    }
+  }
+}

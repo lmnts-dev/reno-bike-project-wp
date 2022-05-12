@@ -1,0 +1,35 @@
+.squiggle-horizontal, .squiggle-vertical {
+  margin-bottom: $Base / 2;
+  pointer-events: none;
+  display: block;
+
+  &.clr-primary path {
+    stroke: $clrPrimary;
+  }
+
+  &.clr-yellow path {
+    stroke: $clrMustard;
+  }
+
+  &.clr-orange path {
+    stroke: $clrOrange;
+  }
+
+  &.align-center {
+    margin: 0 auto;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    transform: scale( 0.6 );
+    margin-bottom: $Base / 3;
+  }
+}
+
+.squiggle-horizontal {
+  transform-origin: left center;
+}
+
+.squiggle-vertical {
+  transform-origin: left bottom;
+  padding-bottom: $Base / 4;
+}

@@ -1,0 +1,40 @@
+////////////////////////////////////////
+//
+// WYSIWYG Content Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.wysiwyg-content-section {
+    @extend article;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+    padding-bottom: $BaseGutter !important;
+    
+    .wysiwyg-content-section-inner {
+        position: relative;
+    }
+
+    .squiggle-vertical {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(calc(-100% - #{$Base}));
+
+        @media (max-width: $BaseMediaSm) {
+            display: none;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+
+        @media (max-width: $BaseMediaSm) {
+                width: 80%;
+        }
+    }
+}

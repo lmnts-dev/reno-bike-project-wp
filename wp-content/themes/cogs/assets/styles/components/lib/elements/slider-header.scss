@@ -1,0 +1,17 @@
+////////////////////////////////////////
+//
+// Slider Header Component
+// A simple component for headers accompanying slider sections.
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.slider-header {
+  padding-bottom: calc(#{$Base} / 2);
+
+  @media (max-width: $BaseMediaMd ){
+    padding-bottom: calc(#{$Base} / 4);
+  }
+}

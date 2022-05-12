@@ -1,0 +1,99 @@
+////////////////////////////////////////
+//
+// Events Listings Component
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+.events-listings {
+  padding-left: 0;
+  padding-right: 0;
+
+  .section-header {
+    padding-left: $BaseGutterRight;
+    padding-right: $BaseGutterLeft;
+  
+    @media (max-width: $BaseMediaMd) {
+      padding-right: $BaseGutterRightMd;
+      padding-left: $BaseGutterLeftMd;
+    }
+  
+    @media (max-width: $BaseMediaSm) {
+      padding-right: $BaseGutterRightSm;
+      padding-left: $BaseGutterLeftSm;
+      padding-bottom: $Base;
+    }
+  }
+
+  .event-row {
+    .event-row-inner {
+      display: flex;
+      flex-direction: row;
+      max-width: $BaseMaxWidth;
+
+      @media (max-width: $BaseMediaSm) {
+        flex-direction: column-reverse;
+      }
+
+      .col {
+        flex: 1;
+        padding: calc(#{$Base} * 2) calc(#{$Base});
+
+        @media (max-width: $BaseMediaSm) {
+          padding: calc(#{$Base}) $BaseGutterLeftSm;
+        }
+      }
+
+      .col.img-col {
+        padding-bottom: 30%;
+        position: relative;
+
+        @media (max-width: $BaseMediaSm) {
+          padding-bottom: 60%;
+        }
+
+        .event-row-img {
+          width: 100%;
+          position: absolute;
+          height: 100%;
+          background: $clrPlaceholder;
+          top: 0;
+          left: 0;
+
+          img {
+            @include objectFit();
+          }
+        }
+      }
+
+      .col.content-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .content-col-inner {
+          max-width: calc(#{$Base} * 13);
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      .event-row-inner {
+        flex-direction: row-reverse;
+
+        @media (max-width: $BaseMediaSm) {
+          flex-direction: column-reverse;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $clrSnow;
+
+      .col.content-col {
+        color: $clrPrimary;
+        background-color: $clrSnow;
+      }
+    }
+  }
+}

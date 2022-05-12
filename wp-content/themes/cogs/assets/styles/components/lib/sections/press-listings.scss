@@ -1,0 +1,158 @@
+////////////////////////////////////////
+//
+// Press Listings Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.press-listings {
+  position: relative;
+  z-index: 1;
+
+  .section-header {
+    position: relative;
+    z-index: 25;
+  }
+
+  .press-listings-inner {
+    overflow: hidden;
+
+    ul {
+      position: relative;
+      z-index: 20;
+
+      li {
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0px;
+          height: 1px;
+          left: 0px;
+          right: 0px;
+          background: darken($clrSteel, 10%);
+          z-index: -1;
+        }
+
+        a {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: calc(#{$Base}) 0;
+          font-size: 1.2rem;
+          font-weight: 700;
+          position: relative;
+          z-index: 5;
+          width: 100%;
+          position: relative;
+
+          @media (max-width: $BaseMediaMd) {
+            flex-wrap: wrap;
+          }
+
+          // Icon
+          &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: calc(#{$Base} * 0.15) solid transparent;
+            border-bottom: calc(#{$Base} * 0.15) solid transparent;
+            border-left: calc(#{$Base} * 0.15) solid $clrBlack;
+          }
+
+          .tag {
+            background: $clrBlack;
+            color: $clrWhite;
+            padding: calc(#{$Base} / 6) calc(#{$Base} / 4);
+            font-size: 0.8rem;
+            margin-right: calc(#{$Base} / 4);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 60px;
+
+            &.date {
+              white-space: nowrap;
+              text-overflow: clip;
+            }
+
+
+            &.publisher {
+              background: $clrPrimary;
+              @media (max-width: $BaseMediaMd) {
+                margin-right: 0;
+              }
+            }
+          }
+
+          .title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: $Base;
+
+            @media (max-width: $BaseMediaMd) {
+              min-width: 100%;
+              padding-top: $Base / 4;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              white-space: normal;
+              padding-right: $Base / 4;
+            }
+          }
+        }
+
+        .img-wrapper {
+          position: fixed;
+          left: 50%;
+          top: calc(50% + #{$BaseNavSizeLg});
+          transform: translate(-50%, calc((50% + #{$BaseNavSizeLg}) * -1));
+          background: $clrPlaceholder;
+          z-index: 1;
+          display: flex;
+          visibility: hidden;
+          pointer-events: none;
+
+          div {
+            position: relative;
+            width: 35vw;
+            padding-bottom: 75%;
+
+            @media (max-width: $BaseMediaSm) {
+              width: 45vw;
+            }
+
+            img {
+              @include objectFit();
+            }
+          }
+        }
+
+        &:hover {
+          z-index: 100;
+
+          a {
+            color: $clrBlack;
+
+            &:visited,
+            &:active {
+              color: $clrBlack;
+            }
+          }
+
+          .img-wrapper {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

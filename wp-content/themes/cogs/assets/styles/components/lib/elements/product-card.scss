@@ -1,0 +1,86 @@
+////////////////////////////////////////
+//
+// Product Card Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: $BaseCardPadding;
+  color: $clrBlack;
+  position: relative;
+
+  @media (max-width: $BaseMediaSm ){
+    padding: $BaseGutterLeftSm / 2;
+  }
+
+  &:hover {
+    color: $clrBlack;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .notification-tag {
+    position: absolute;
+    top: $Base / 4;
+    right: $Base / 4;
+  }
+
+  .product-card-inner {
+    display: block;
+    width: 100%;
+
+    .product-cover {
+      position: relative;
+      width: 100%;
+      padding-bottom: 80%;
+      background: $clrWhite;
+      margin-bottom: $Base / 4;
+
+      img {
+        @include objectFit(contain);
+      }
+    }
+
+    .product-details {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      @media (max-width: $BaseMediaSm ){
+        display: block;
+      }
+
+      .title,
+      .price {
+        width: 50%;
+        font-weight: 700;
+
+        @media (max-width: $BaseMediaSm ){
+          width: 100%;
+        }
+      }
+
+      .title {
+        color: $clrBlack;
+      }
+
+      .price {
+        text-align: right;
+        color: $clrPrimary;
+
+        @media (max-width: $BaseMediaSm ){
+          text-align: left;
+          padding-top: $Base / 5;
+        }
+      }
+    }
+  }
+}

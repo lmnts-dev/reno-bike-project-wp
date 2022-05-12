@@ -1,0 +1,122 @@
+////////////////////////////////////////
+//
+// Sticky Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.sticky-section {
+
+  &.row {
+    padding-left: 0;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-left: $BaseGutterLeftSm;
+    }
+
+    .sticky-section-inner {
+      flex-direction: row;
+
+      @media (max-width: $BaseMediaSm) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .text-content {
+      padding: calc(#{$Base}) 0 calc(#{$Base}) calc(#{$Base});
+
+      @media (max-width: $BaseMediaMd) {
+        padding: calc(#{$Base}) 0 calc(#{$Base}) calc(#{$Base} / 2);
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  &.row-reverse {
+    padding-right: 0;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-right: $BaseGutterRightSm;
+    }
+
+    .sticky-section-inner {
+      flex-direction: row-reverse;
+
+      @media (max-width: $BaseMediaSm) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .text-content {
+      padding: calc(#{$Base}) calc(#{$Base}) calc(#{$Base}) 0;
+      
+      @media (max-width: $BaseMediaMd) {
+        padding: calc(#{$Base}) calc(#{$Base} / 2) calc(#{$Base}) 0;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .sticky-section-inner {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+
+    .images {
+      width: var(--width);
+      display: flex;
+      flex-direction: column;
+
+      @media (max-width: $BaseMediaSm) {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .text-content {
+      width: var(--width);
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0;
+
+      @media (max-width: $BaseMediaSm) {
+        position: relative;
+        width: 100%;
+      }
+
+      * {
+        max-width: calc(#{$Base} * 12);
+
+        @media (max-width: $BaseMediaSm) {
+          max-width: 100%;
+        }
+      }
+
+      h6 {
+        margin-top: calc(#{$Base});
+      }
+
+      .flexible-content-icon,
+      .flexible-content-icon img {
+        max-width: var(--width);
+        margin-top: calc(#{$Base});
+
+        ~ h6 {
+          margin-top: calc(#{$Base} / 2);
+        }
+      }
+    }
+  }
+}

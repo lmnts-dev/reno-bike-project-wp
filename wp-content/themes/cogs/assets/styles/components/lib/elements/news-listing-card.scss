@@ -1,0 +1,85 @@
+////////////////////////////////////////
+//
+// News Listing Card Component
+//
+// @author Peter Laxalt and Alisha Garric (for responsive)
+//
+////////////////////////////////////////
+
+.news-listing-card {
+  padding: $Base / 2;
+  margin-bottom: $Base;
+
+  @media (max-width: $BaseMediaMd) {
+    margin-bottom: $Base / 2;
+  }
+
+  &:hover {
+    background: $clrSnow;
+  }
+
+  &:active {
+    background: darken($clrSnow, 5%);
+  }
+
+  .news-listing-card-inner {
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .cover {
+      width: 100%;
+      padding-bottom: 60%;
+      position: relative;
+      background: $clrPlaceholder;
+
+      img {
+        @include objectFit();
+      }
+    }
+
+    .info {
+      padding: $Base/2 0 $Base/2 0;
+      flex: 1;
+
+      p {
+        padding-top: $Base / 3;
+        margin-bottom: 0;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding-bottom: 0;
+      }
+
+      .title {
+        display: block;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: $clrBlack;
+
+        @media (max-width: $BaseMediaMd) {
+          font-size: 24px;
+        }
+      }
+
+      .excerpt {
+        color: $clrBlack;
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+
+      .col {
+        &:first-child {
+          color: $clrChrome;
+        }
+      }
+    }
+  }
+}

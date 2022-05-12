@@ -1,0 +1,156 @@
+////////////////////////////////////////
+//
+// Membership Listings Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+// Listings Container
+.membership-listings {
+  .membership-listings-inner {
+    position: relative;
+
+    .membership-listing-card, .grid-sizer {
+      width: 33.33%;
+      float: left;
+
+      @media (max-width: $BaseMediaMd) {
+        width: 50%;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Cards
+.membership-listing-card {
+  padding: $Base / 2;
+
+  p {
+    font-size: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: $BaseMediaMd) {
+    padding: $Base / 4;
+  }
+
+  .membership-listing-card-inner {
+    background: $clrAsphalt;
+
+    .card-top,
+    .card-bottom {
+      padding: $Base * 0.75;
+
+      @media (max-width: $BaseMediaMd) {
+        padding: $Base / 2;
+      }
+    }
+
+    .card-top {
+      background: $clrSnow;
+      position: relative;
+      padding-top: $Base * 1.5;
+
+      .title {
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: $Base/2;
+
+        .icon {
+          display: block;
+          width: $Base;
+          height: $Base;
+          font-size: $Base;
+          margin-right: $Base/2;
+        }
+
+        .name {
+          font-weight: 600;
+          font-size: 1.9rem;
+
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.6rem;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .price {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $clrAsphalt;
+        color: $clrPrimary;
+        font-size: 1.2rem;
+        padding: $Base/3;
+
+        @media (max-width: $BaseMediaMd) {
+          font-size: 1.3rem;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .card-bottom {
+      color: $clrWhite;
+
+      .caption {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-bottom: $Base/2;
+        font-size: 0.8rem;
+        display: block;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-bottom: 0;
+        }
+      }
+
+      .content {
+
+        ul,
+        p {
+          font-size: 1.2rem;
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.1rem;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1rem;
+          }
+        }
+
+        ul {
+          padding-bottom: $Base/2;
+          line-height: 2;
+          margin-top: 0;
+
+          li {
+            padding-left: 0;
+            font-size: 1rem;
+            line-height: 1.4rem;
+            padding-bottom: $Base / 4;
+          }
+
+          @media (max-width: $BaseMediaMd) {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

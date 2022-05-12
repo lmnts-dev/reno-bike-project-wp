@@ -1,0 +1,136 @@
+////////////////////////////////////////
+//
+// Measurements
+// Sitewide Measurements
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+// Media Queries
+$BaseMediaSm: 676px;
+$BaseMediaMd: 1024px;
+$BaseMediaLg: 1280px;
+
+// Base Measurement
+$Base: 40px;
+
+// Navigation Size
+$BaseNavSizeLg: 64px;
+$BaseNavSizeSm: 50px;
+$BaseNavBreak: 1155px;
+$BaseNavShopifyBreak: 1035px;
+$BaseNavSizeLgScroll: 53px;
+
+$BaseNavSizeMd: 60px;
+$BaseNavSizeMdScroll: 53px;
+
+$BaseNavSizeSm: 53px;
+$BaseNavSizeSmScroll: 40px;
+
+// Body
+$BaseMaxWidth: 1680px;
+$BaseGutter: 60px;
+$BaseGutterLeft: $BaseGutter;
+$BaseGutterLeftMd: 30px;
+$BaseGutterLeftSm: 20px;
+$BaseGutterRight: $BaseGutter;
+$BaseGutterRightMd: 30px;
+$BaseGutterRightSm: 20px;
+$BasePadding: calc(#{$Base} * 1.25);
+$BasePaddingSm: calc(#{$BasePadding} / 1.5);
+$BaseParagraphWidth: 500px;
+$BaseIndentMaxWidth: calc(#{$BaseMaxWidth} * .8);
+$BaseIndentMaxWidthMd: calc(#{$Base} * 14);
+$BaseArticleWidth: calc(#{$BaseMaxWidth} * .6);
+$BaseSidebarWidth: 450px;
+
+// Buttons
+$BaseBtnRadius: 999px;
+$BaseBtnHeight: 44px;
+$BaseBtnHeightMd: 45px;
+$BaseBtnHeightSm: 45px;
+
+// Cards
+$BaseCardPadding: calc(#{$Base} / 2);
+$BaseCardGutters: calc(#{$BaseGutter} - #{$BaseCardPadding});
+
+// Border Radius
+$BaseCornerRadiusLg: 100px;
+
+// Hovers
+$BaseLighten: 15%;
+
+// Transitions
+$BaseTransition: 0.5s;
+$BaseEase: cubic-bezier(1, 0.01, 0.49, 1);
+
+// Browsers
+$ie11: "all and (-ms-high-contrast:none)";
+/// Usage:
+// @media #{$IE11} { ... }
+
+// Visibility
+
+.hide-sm {
+  @media (max-width: $BaseMediaSm) {
+    display: none;
+  }
+}
+
+.hide-md {
+  @media (max-width: $BaseMediaMd) {
+    display: none;
+  }
+}
+
+.hide-lg {
+  @media (max-width: $BaseMediaLg) {
+    display: none;
+  }
+}
+
+.show-sm {
+  @media (max-width: $BaseMediaSm) {
+    display: block;
+  }
+}
+
+.show-md {
+  @media (max-width: $BaseMediaMd) {
+    display: block;
+  }
+}
+
+.show-lg {
+  @media (max-width: $BaseMediaLg) {
+    display: block;
+  }
+}
+
+// Anchors & Positioning
+
+$BaseAnchorOffsetLg: 80px;
+$BaseAnchorOffsetMd: 80px;
+$BaseAnchorOffsetSm: 80px;
+
+.anchor {
+  display: block;
+  position: relative;
+  visibility: hidden;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+  top: (0- ($BaseNavSizeLg + $BaseAnchorOffsetLg));
+
+  @media (max-width: $BaseMediaMd) {
+    top: (0- ($BaseNavSizeMd + $BaseAnchorOffsetMd));
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    top: (0- ($BaseNavSizeSm + $BaseAnchorOffsetSm));
+  }
+}
+

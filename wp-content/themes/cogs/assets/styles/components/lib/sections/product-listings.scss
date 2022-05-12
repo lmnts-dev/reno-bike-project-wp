@@ -1,0 +1,40 @@
+////////////////////////////////////////
+//
+// Product Listings Component
+//
+// @author Peter Laxalt
+// @since 2/2020
+//
+////////////////////////////////////////
+
+.product-listings {
+  padding: 0 $BaseCardGutters;
+
+  @media (max-width: $BaseMediaSm ){
+    padding-left: $BaseGutterLeftSm / 2;
+    padding-right: $BaseGutterRightSm / 2;
+  }
+
+  .product-listings-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .product-card {
+      width: 33.33%;
+      margin-bottom: $Base;
+
+      @media (max-width: $BaseMediaMd ){
+        width: 50%;
+      }
+
+      @media (max-width: $BaseMediaSm ){
+        margin-bottom: $Base / 2;
+
+        &:nth-of-type(odd):last-of-type {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

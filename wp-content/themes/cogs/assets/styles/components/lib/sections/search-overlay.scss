@@ -1,0 +1,178 @@
+////////////////////////////////////////
+//
+// Search Overlay Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.search-overlay {
+  $searchBarHeight: calc(#{$Base} * 3);
+  $searchBarHeightMd: calc(#{$Base} * 2.5);
+  $searchBarHeightSm: calc(#{$Base} * 2);
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  backdrop-filter: blur(5px);
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+
+  .search-overlay-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .row {
+      &.search-bar {
+        background: $clrWhite;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        position: relative;
+
+        // Close button
+        .btn-cancel {
+          span {
+            position: relative;
+            display: block;
+            width: $searchBarHeight;
+            height: $searchBarHeight;
+
+            @media (max-width: $BaseMediaMd ){
+              width: $searchBarHeightMd;
+              height: $searchBarHeightMd;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              width: calc(#{$searchBarHeightSm} / 2);
+              height: calc(#{$searchBarHeightSm} / 2);
+            }
+
+            &:hover {
+              background: rgba($clrBlack, 0.04);
+            }
+
+            &:active {
+              background: rgba($clrBlack, 0.08);
+            }
+
+            &:before,
+            &:after {
+              content: "";
+              position: absolute;
+              width: calc(#{$searchBarHeight} * 0.8);
+              height: 2px;
+              background: $clrChrome;
+              top: 50%;
+              left: calc(#{$Base} / 4);
+
+              @media (max-width: $BaseMediaMd ){
+                width: calc(#{$searchBarHeightMd} * 0.8);
+              }
+
+              @media (max-width: $BaseMediaSm ){
+                width: calc(#{$searchBarHeightSm} * 0.4);
+              }
+            }
+
+            &:before {
+              transform-origin: center center;
+              transform: rotate(45deg);
+            }
+
+            &:after {
+              transform-origin: center center;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+
+        form {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex: 1;
+
+          input {
+            height: $searchBarHeight;
+            font-size: 3rem;
+            color: $clrBlack;
+            padding-left: $Base;
+            font-weight: 800;
+
+            @media (max-width: $BaseMediaMd ){
+              height: $searchBarHeightMd;
+              font-size: 2rem;
+              padding-left: $Base / 2;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              height: $searchBarHeightSm;
+              font-size: 1rem;
+              padding-left: $Base / 4;
+            }
+          }
+
+          button {
+            background: $clrBlack;
+            height: $searchBarHeight;
+            width: $searchBarHeight;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media (max-width: $BaseMediaMd ){
+              height: $searchBarHeightMd;
+              width: $searchBarHeightMd;
+            }
+
+            @media (max-width: $BaseMediaSm ){
+              height: $searchBarHeightSm;
+              width: $searchBarHeightSm;
+            }
+
+            svg {
+              fill: $clrWhite;
+              width: calc(#{$searchBarHeight} * 0.3);
+              height: calc(#{$searchBarHeight} * 0.3);
+
+              @media (max-width: $BaseMediaMd ){
+                width: calc(#{$searchBarHeightMd} * 0.3);
+                height: calc(#{$searchBarHeightMd} * 0.3);
+              }
+
+              @media (max-width: $BaseMediaSm ){
+                width: calc(#{$searchBarHeightSm} * 0.3);
+                height: calc(#{$searchBarHeightSm} * 0.3);
+              }
+            }
+
+            &:hover {
+              background: $clrPrimary;
+              box-shadow: none;
+            }
+
+            &:active {
+              background: darken($clrPrimary, 0.1);
+            }
+          }
+        }
+      }
+
+      &.close-overlay {
+        flex: 1;
+        background: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}

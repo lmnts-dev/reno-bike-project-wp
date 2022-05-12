@@ -1,0 +1,330 @@
+////////////////////////////////////////
+//
+// Home Hero Component
+//
+// @author Peter Laxalt and Alisha Garric (for responsive)
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+//
+////////////////////////////////////////
+
+section.page-hero {
+  // height: calc(100vh - #{$BaseNavSizeLg});
+  padding-top: $BaseNavSizeLg;
+  overflow: hidden;
+
+  $baseHeight: 80vh;
+  $baseFontSize: 10vw;
+  $gutterOffset: calc(#{$BaseGutterRight} * -1);
+  $baseWidth: 50%;
+  $baseMaxWidth: 650px;
+
+  @media (max-width: $BaseMediaSm) {
+    padding-top: $BaseNavSizeSm;
+  }
+
+  .page-hero-inner {
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    // Default Layout
+    .col {
+      &.content {
+        z-index: 10;
+        padding-top: calc((#{$baseHeight} / 2) - (#{$baseFontSize} / 2));
+        width: 100%;
+
+        h1 {
+          font-size: 10vw;
+          //   max-width: $baseMaxWidth;
+          word-wrap: none;
+          //  white-space: nowrap;
+          margin-top: 0;
+          font-weight: 700;
+          line-height: 1;
+          margin-bottom: calc(#{$Base} / 2);
+          -webkit-text-stroke: 1px $clrBlack;
+          -webkit-text-fill-color: rgba($clrWhite, 0);
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 4rem;
+          }
+        }
+
+        .squiggle-svg {
+          display: none;
+        }
+
+        p {
+          max-width: $baseMaxWidth;
+          font-size: 1.6rem;
+
+          &:last-of-type {
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      &.image {
+        position: absolute;
+        top: 0;
+        right: calc(#{$BaseGutterRight} * -1);
+        width: 70vw;
+        object-fit: cover;
+
+        @media (max-width: $BaseMediaMd) {
+          width: 85vw;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          width: 90vw;
+        }
+
+        .image-wrapper {
+          position: relative;
+          display: flex;
+          height: calc(#{$baseHeight} / 2);
+          width: 70vw;
+          overflow: hidden;
+          background-color: $clrPlaceholder;
+
+          @media (max-width: $BaseMediaMd) {
+            width: 85vw;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            width: 90vw;
+          }
+
+          img {
+            @include objectFit();
+          }
+        }
+      }
+    }
+
+    &.layout-1 {
+      .col {
+        &.content {
+          padding-left: calc(#{$Base} * 2);
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base});
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    &.layout-2 {
+      .col {
+        &.content {
+          padding-left: calc(#{$Base} * 3);
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base});
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
+        }
+        &.image {
+          justify-content: flex-end;
+          right: unset;
+          left: $gutterOffset;
+
+          @media (max-width: $BaseMediaSm) {
+            width: 100vw;
+
+            .image-wrapper {
+              width: 100vw;
+            }
+          }
+        }
+      }
+    }
+
+    &.layout-3 {
+      .col {
+        &.content {
+          width: $baseWidth;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc((#{$baseHeight} / 2) - (#{$baseFontSize} / 2));
+            width: 100%;
+          }
+        }
+
+        &.image {
+          position: relative;
+          top: unset;
+          bottom: unset;
+          right: #{$gutterOffset};
+          left: unset;
+          width: calc(100% - #{$baseWidth});
+          height: $baseHeight;
+
+          @media (max-width: $BaseMediaMd) {
+            width: 60%;
+            position: absolute;
+            height: calc( #{$baseHeight} / 1.5);
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 1.5);
+            }
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            width: 100%;
+            height: calc( #{$baseHeight} / 2);
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 2);
+            }
+          }
+
+          .image-wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: $baseHeight;
+          }
+        }
+      }
+    }
+
+    &.layout-4 {
+      flex-direction: row-reverse;
+
+      .col {
+        &.content {
+          width: $baseWidth;
+
+          @media (max-width: $BaseMediaSm) {
+            width: calc(100% - #{$Base});
+          }
+
+          h1 {
+            position: relative;
+            left: calc((#{$baseMaxWidth} / 4) * -1);
+
+            @media (max-width: $BaseMediaSm) {
+              left: calc(#{$Base} * -1);
+            }
+          }
+        }
+
+        &.image {
+          position: relative;
+          top: unset;
+          bottom: unset;
+          left: #{$gutterOffset};
+          right: unset;
+          width: calc(100% - #{$baseWidth});
+          height: $baseHeight;
+
+          @media (max-width: $BaseMediaSm) {
+            position: absolute;
+            height: calc( #{$baseHeight} / 2);
+            width: 100%;
+
+            .image-wrapper {
+              height: calc( #{$baseHeight} / 2);
+            }
+          }
+
+          .image-wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: $baseHeight;
+          }
+        }
+      }
+    }
+
+    &.layout-5 {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+
+      .col {
+        &.image {
+          position: relative;
+          right: #{$gutterOffset};
+          width: 90vw;
+
+          @media (max-width: $BaseMediaSm) {
+            width: 100%;
+            right: 0;
+          }
+
+          .image-wrapper {
+            width: calc(100% + #{$Base / 2});
+          }
+        }
+
+        &.content {
+          padding-top: calc(#{$Base} * 1.5);
+          width: 90vw;
+          right: #{$gutterOffset};
+          position: relative;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc(#{$Base});
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            right: 0;
+            width: 100%;
+          }
+
+          .squiggle-svg {
+            display: block;
+          }
+
+          h1 {
+            @extend .h2;
+            word-wrap: wrap;
+            white-space: wrap;
+            margin-bottom: calc(#{$Base} / 2);
+            -webkit-text-stroke: none;
+            -webkit-text-fill-color: $clrBlack;
+            max-width: 650px;
+            
+
+            @media (max-width: $BaseMediaMd) {
+              margin-bottom: 0;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              margin-top: 0;
+            }
+          }
+
+          h1, p {
+            margin-right: $Base * 2;
+
+            @media (max-width: $BaseMediaSm) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

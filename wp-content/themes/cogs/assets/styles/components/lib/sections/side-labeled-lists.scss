@@ -1,0 +1,91 @@
+////////////////////////////////////////
+//
+// Side Labeled List
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.side-labeled-lists {
+    padding-left: 0;
+    padding-right: 0;
+
+    .side-labeled-lists-inner {
+        .side-labeled-lists-row {
+            display: flex;
+            flex-direction: row;
+
+            &:nth-of-type(even) {
+                background: $clrSteel;
+            }
+
+            &:nth-of-type(3n - 1) .label {
+                background: $clrMustard;
+            }
+
+            &:nth-of-type(3n) .label {
+                background: $clrPrimary;
+            }
+
+            .label {
+                background: $clrOrange;
+                color: $clrSnow;
+                width: calc( #{$Base} * 3.5);
+                min-width: calc( #{$Base} * 3.5);
+                position: relative;
+
+                @media (max-width: $BaseMediaMd) {
+                    width: calc( #{$Base} * 2.5);
+                    min-width: calc( #{$Base} * 2.5);
+                }
+
+                @media (max-width: $BaseMediaSm) {
+                    width: calc( #{$Base} * 1.5);
+                    min-width: calc( #{$Base} * 1.5);
+                }
+
+                .h4 {
+                    position: absolute;
+                    top: calc( #{$Base} / 1.5);
+                    right: calc( #{$Base} / 2);
+                    height: 0;
+                    width: 0;
+                    transform: rotate(90deg);
+                    transform-origin: top right;
+
+                    @media (max-width: $BaseMediaSm) {
+                        top: calc( #{$Base} / 2.5);
+                        right: calc( #{$Base} / 2.5);
+                    }
+                }
+            }
+
+            .items {
+                padding: calc( #{$Base} * 1.2);
+                column-count: 2;
+
+                @media (max-width: $BaseMediaMd) {
+                    padding: calc( #{$Base});
+                }
+
+                @media (max-width: $BaseMediaSm) {
+                    column-count: 1;
+                    padding: calc( #{$Base} / 2);
+                }
+
+                .item {
+                    padding-right: calc( #{$Base} * 2);
+                    //   white-space: nowrap;
+
+                    @media (max-width: $BaseMediaMd) {
+                        padding-right: calc( #{$Base} * 1.5);
+                    }
+
+                    @media (max-width: $BaseMediaSm) {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+////////////////////////////////////////
+//
+// Icon Block Component
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.icon-block {
+
+  .icon-block-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .icon-block {
+      min-width: 33.33%;
+      flex: 1;
+      text-align: center;
+      padding: calc(#{$Base} / 2);
+      @media (max-width: $BaseMediaMd) {
+        min-width: 50%;
+      }
+      @media (max-width: $BaseMediaSm) {
+        min-width: 100%;
+      }
+
+      p,
+      .h5 {
+        max-width: calc(#{$Base} * 11);
+        margin: 0 auto;
+
+        @media (max-width: $BaseMediaMd) {
+          max-width: calc(#{$Base} * 9);
+        }
+      }
+
+      .h5 {
+        margin-bottom: calc(#{$Base} / 4);
+      }
+    }
+
+    .icon {
+      display: block;
+      height: calc(#{$Base} * 1.5);
+      width: calc(#{$Base} * 1.5);
+      font-size: calc(#{$Base} * 1.5);
+      margin: 0 auto;
+      margin-bottom: calc(#{$Base} / 2);
+    }
+  }
+}

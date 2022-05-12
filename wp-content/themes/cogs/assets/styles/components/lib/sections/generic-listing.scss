@@ -1,0 +1,53 @@
+////////////////////////////////////////
+//
+// Generic Listing
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+
+.generic-listing {
+    @extend .staff-listings;
+    max-width: $BaseMaxWidth;
+
+    .generic-listing-inner {
+
+        .generic-listing-row {
+            @extend .staff-listings-item;
+
+            &:nth-of-type(even) {
+                flex-direction: row;
+
+                .col.content-col {
+                    padding: 0 0 0 calc(#{$Base} * 2);
+                    @media (max-width: $BaseMediaMd) {
+                        padding-left: calc(#{$Base} / 1.5);
+                        padding-right: 0;
+                    }
+
+                    @media (max-width: $BaseMediaSm) {
+                        padding-left: 0;
+                    }
+                }
+            }
+
+            .col.img-col {
+                .generic-listing-img {
+                    @extend .staff-listings-img;
+                    padding-top: 54%;
+
+                }
+            }
+
+            .col.content-col, .col.img-col { 
+                flex: 1;
+
+                .content-col-inner {
+                    max-width: calc(#{$Base} * 11.25);
+                }
+            }
+        }
+
+    }
+}

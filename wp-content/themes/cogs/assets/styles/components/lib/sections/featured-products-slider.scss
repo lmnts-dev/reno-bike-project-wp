@@ -1,0 +1,187 @@
+////////////////////////////////////////
+//
+// Featured Products Slider Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.featured-products-slider {
+  $cardSize: 29%;
+  $cardSizeSm: 45%;
+
+  position: relative;
+  overflow: visible;
+  padding: calc(#{$Base} + #{$BaseCardPadding}) 0 0
+    $BaseCardGutters;
+  background: $clrWhite;
+
+  @media (max-width: $BaseMediaSm ){
+    padding-left: $BaseGutterLeftSm / 2;
+  }
+
+  // Pseudo element to compensate for card gutters
+  &:after {
+  //  content: "";
+    position: absolute;
+    top: 0;
+    right: calc(#{$BaseCardGutters} - 1px);
+    bottom: 0;
+    width: calc(#{$BaseCardPadding} + 1px);
+    background: $clrWhite;
+  }
+
+  .featured-products-slider-inner {
+    padding: $Base 0;
+    width: 100%;
+    position: relative;
+    background: $clrWhite;
+    margin-bottom: calc(#{$Base} * 2);
+
+    @media (max-width: $BaseMediaSm ){
+      padding: $Base 0 $Base / 2 0;
+    }
+
+    .product-card .product-details {
+      @media (max-width: $BaseMediaMd ){
+        display: block;
+
+        div:not(.notification-tag) {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      left: $cardSize;
+      background: $clrAsphalt;
+
+      @media (max-width: $BaseMediaSm ){
+        left: $cardSizeSm;
+      }
+    }
+
+    // The Slider Element Itself
+    .featured-products-slider-el {
+      width: 100%;
+
+      .product-card {
+        display: flex;
+        width: $cardSize;
+
+        @media (max-width: $BaseMediaSm ){
+          width: $cardSizeSm;
+        }
+
+        &:not(.is-selected) {
+          .product-card-inner {
+            .product-details {
+              .title {
+                color: $clrWhite;
+                position: relative;
+
+                span {
+                  color: $clrWhite;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            .product-card-inner {
+              .product-details {
+                .title {
+                  color: $clrWhite;
+
+                  span {
+                    color: $clrWhite;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .flickity-button {
+        $buttonSize: $Base;
+        $buttonBorder: 6px;
+
+        position: absolute;
+        top: calc((#{$buttonSize} * 2) * -1);
+
+        @media (max-width: $BaseMediaSm ){
+          top: $Base / -2;
+        }
+
+        &.flickity-prev-next-button {
+          width: $buttonSize;
+          height: $buttonSize;
+          border-radius: 0;
+
+          svg {
+            display: none;
+          }
+
+          &.next {
+            right: calc(#{$buttonBorder} + #{$BaseCardPadding});
+
+            @media (max-width: $BaseMediaSm ){
+              right: unset;
+              left: calc(
+                #{$buttonSize} + #{$BaseCardPadding / 2} + #{$buttonSize /
+                  2}
+              );
+            }
+
+            &:before {
+              content: "";
+              width: 0;
+              height: 0;
+              border-top: calc(#{$buttonSize} * 0.3) solid transparent;
+              border-bottom: calc(#{$buttonSize} * 0.3) solid transparent;
+              border-left: calc(#{$buttonSize} * 0.3) solid $clrPrimary;
+            }
+          }
+
+          &.previous {
+            left: unset;
+            right: calc(
+              #{$buttonSize} + #{$buttonBorder} + #{$BaseCardPadding} + #{$buttonSize /
+                2}
+            );
+
+            @media (max-width: $BaseMediaSm ){
+              right: unset;
+              left: calc(#{$BaseCardPadding} / 2);
+            }
+
+            &:before {
+              content: "";
+              width: 0;
+              height: 0;
+              border-top: calc(#{$buttonSize} * 0.3) solid transparent;
+              border-bottom: calc(#{$buttonSize} * 0.3) solid transparent;
+              border-right: calc(#{$buttonSize} * 0.3) solid $clrPrimary;
+            }
+          }
+        }
+      }
+
+      // .flickity-page-dots {
+      //   position: absolute;
+      //   left: 0;
+      //   top: $Base * 3;
+      //   height: 50px;
+      //   width: auto;
+      // }
+    }
+  }
+}

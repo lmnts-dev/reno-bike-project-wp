@@ -1,0 +1,162 @@
+////////////////////////////////////////
+//
+// Featured News Listings Slider Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+section.featured-news-slider {
+  --headerHeight: 200px;
+
+  @media (max-width: $BaseMediaSm) {
+    --headerHeight: 100px;
+  }
+
+  $headerHeight: var(--headerHeight);
+
+  position: relative;
+  padding-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
+
+  .featured-news-slider-header {
+    height: $headerHeight;
+    padding-bottom: $Base;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .squiggle {
+      display: block;
+      line-height: 0;
+      width: 100px;
+      height: 2px;
+      margin-bottom: calc(#{$Base} / 2);
+      background: $clrGold;
+    }
+
+    h1 {
+      font-weight: 700;
+    }
+  }
+
+  .featured-news-slider-inner {
+    // The Slider Element Itself
+    .featured-news-slider-el {
+      width: 100%;
+      // Individual Slide
+      .featured-news-slide {
+        width: 100%;
+
+        .featured-news-slide-inner {
+          position: relative;
+          height: calc(
+            100vh -
+              (#{$BaseNavSizeLg} + #{$headerHeight} + (#{$BaseGutter} * 2))
+          );
+          min-height: 400px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          &:hover {
+            .title, .col, .excerpt {
+                color: $clrPrimary;
+              
+            }
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            height: calc(
+              100vh -
+                (
+                  #{$BaseNavSizeSm} + #{$headerHeight} +
+                    (#{$BaseGutter} * 2)
+                )
+            );
+            align-items: flex-start;
+            padding-top: $Base;
+          }
+
+          .news-listing-card {
+            background: $clrWhite;
+            padding: $Base 0 $Base $Base;
+            max-width: 450px;
+            position: relative;
+            z-index: 2;
+            min-width: 280px;
+
+            @media (max-width: $BaseMediaSm) {
+              padding: $Base / 2 $Base / 4 $Base / 2 $Base / 2;
+              max-width: 80%;
+            }
+
+            h4 {
+              font-weight: 500;
+              font-size: 5vw;
+            }
+
+            .actions col:first-of-type {
+              padding-right: $Base / 4;
+            }
+          }
+
+          .featured-news-slide-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: calc(#{$Base} * 6);
+            display: flex;
+
+            @media (max-width: $BaseMediaSm) {
+              right: 0;
+            }
+
+            .featured-news-slide-cover-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              background: $clrPlaceholder;
+
+              img {
+                @include objectFit();
+              }
+            }
+          }
+        }
+      }
+
+      .flickity-page-dots {
+        position: absolute;
+        right: 0;
+        top: $Base;
+        height: 50px;
+        width: auto;
+
+        @media (max-width: $BaseMediaSm) {
+          top: calc(#{$Base} * -0.8);
+          right: unset;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+// Shopify Overrides
+.shop-wrapper {
+  .featured-news-slider {
+    padding-top: 0;
+    margin-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
+
+    .featured-news-slider-inner {
+      .featured-news-slider-el {
+        .block-slide-inner {
+          // Readjust for bottom / top paddings to be consistent relative to viewport
+          height: calc(100vh - (#{$BaseNavSizeLg} + (#{$BaseGutter} * 2)));
+        }
+      }
+    }
+  }
+}

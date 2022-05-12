@@ -1,0 +1,116 @@
+////////////////////////////////////////
+//
+// Grid Section Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.grid-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 30%;
+    background: $clrSnow;
+  }
+
+  .grid-section-inner {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative; 
+    z-index: 2;
+    max-width: $BaseIndentMaxWidth;
+
+    @media (max-width: $BaseMediaMd) {
+      flex-wrap: wrap;
+      max-width: $BaseIndentMaxWidthMd
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      max-width: 100%;
+      padding-top: $Base;
+    }
+
+    .grid-card {
+      min-width: 40%;
+      flex: 1;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.grid-card {
+  padding: $Base;
+  display: flex;
+
+  @media (max-width: $BaseMediaMd) {
+    padding: calc(#{$Base} / 4);
+    
+    &:nth-of-type(odd){
+      margin-right: calc(#{$Base} / 4);
+    }
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding: 0;
+
+    &:nth-of-type(odd){
+      margin-right: calc(#{$Base} / 2);
+    }
+  }
+
+  .grid-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .cover {
+      width: 100%;
+      padding-bottom: 60%;
+      position: relative;
+      background: $clrPlaceholder;
+
+      img {
+        @include objectFit();
+      }
+    }
+
+    .info {
+      padding-bottom: $Base/2;
+
+      span {
+        display: block;
+
+        &.title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: $clrBlack;
+          margin: $Base/2 0;
+
+          @media (max-width: $BaseMediaMd) {
+            font-size: 1.1rem;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            margin-bottom: $Base / 4;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+////////////////////////////////////////
+//
+// Newsletter Row Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+section.newsletter-row {
+  position: relative;
+  background: $clrBlack;
+  color: $clrWhite;
+
+  + section {
+    margin-top: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: $BasePaddingSm;
+    }
+    
+  }
+
+  @media (max-width: $BaseMediaMd) {
+    padding-top: $Base * 2;
+    padding-bottom: $Base * 1.5;
+  }
+
+  .section-header {
+    align-items: flex-start;
+
+    h3 {
+      color: $clrPrimary;
+    }
+  }
+
+  .newsletter-row-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: $Base/2;
+    width: 100%;
+    @media (max-width: $BaseMediaMd) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      @media (max-width: $BaseMediaMd) {
+        flex-wrap: wrap;
+      }
+
+      .col {
+        display: flex;
+        align-items: center;
+        width: 25%;
+
+        @media (max-width: $BaseMediaMd) {
+          &.col-fname,
+          &.col-lname {
+            flex: 1;
+          }
+
+          &.col-lname .input-outer {
+            padding-right: 0;
+          }
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          &.col-fname .input-outer {
+            padding-right: calc(#{$Base} / 2);
+          }
+        }
+
+        &.col-email {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-top: calc(#{$Base});
+            min-width: 100%;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            flex-wrap: wrap;
+            padding-top: calc(#{$Base} / 2);
+
+            .col-submit {
+              min-width: 100%;
+              margin-top: calc(#{$Base});
+            }
+          }
+
+          .col {
+            width: unset;
+
+            &:first-child {
+              flex: 1;
+
+              .input-outer {
+                padding-right: $Base;
+                @media (max-width: $BaseMediaSm) {
+                  padding-right: 0;
+                }
+              }
+            }
+
+            &.last-child {
+              flex: 1;
+              background: yellow;
+
+              .input-outer {
+                width: 100%;
+
+                button {
+                  width: 100%;
+                }
+              }
+            }
+
+            button {
+              border: 1px solid $clrPrimary;
+            }
+          }
+        }
+
+        .input-outer {
+          width: 100%;
+          padding-right: $Base;
+
+          input {
+            width: 100%;
+            background: none;
+            border-bottom: $clrWhite 1px solid;
+            color: $clrWhite;
+            border-radius: 0;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1rem;
+            }
+
+            &:focus,
+            &:active {
+              border-bottom: $clrPrimary 1px solid;
+            }
+          }
+        }
+
+        &:last-child {
+          .input-outer {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,185 @@
+////////////////////////////////////////
+//
+// Block Row Component
+//
+// @author Peter Laxalt and Alisha Garric (for responsive)
+// @since 2/2020
+//
+////////////////////////////////////////
+
+section.block-row {
+    padding-bottom: 0;
+
+    ~ .block-row {
+      padding-top: 0;
+    }
+
+  //change up the colors if there's three block rows in a row
+  + .block-row {
+    .block-row-inner .block-item:first-of-type .block-item-cover {
+      background-color: $clrPrimary;
+    }
+  }
+
+  //if its not the last section in the page add a margin to the following sibling section
+  + section:not(.block-row) {
+    margin-top: $BasePadding;
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: $BasePaddingSm;
+    }
+  }
+
+  //if its the last section in the page add padding on the bottom
+  &:last-of-type {
+    padding-bottom: $BasePadding;
+    @media (max-width: $BaseMediaSm) {
+      margin-top: $BasePaddingSm;
+    }
+  }
+
+  .block-row-inner {
+    display: flex;
+
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+    }
+
+    &.block-row-reverse {
+      flex-direction: row-reverse;
+
+      .block-item {
+        &:first-child {
+          padding-left: $Base / 2;
+          padding-right: 0px;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-left: calc(#{$Base} / 3);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: 0;
+          }
+        }
+
+        &:last-child {
+          padding-left: 0px;
+          padding-right: $Base / 2;
+
+          @media (max-width: $BaseMediaMd) {
+            padding-right: calc(#{$Base} / 3);
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    .block-item {
+      flex: 1;
+      flex-shrink: 0;
+      padding: $Base/2;
+
+      @media (max-width: $BaseMediaMd) {
+        padding: calc(#{$Base} / 3);
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding: calc(#{$Base} / 8) 0;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      &:first-child {
+        width: 100%;
+        max-width: 33%;
+        padding-left: 0;
+
+        @media (max-width: $BaseMediaSm) {
+          max-width: 100%;
+        }
+
+        .block-item-inner {
+          padding-bottom: 100%;
+
+          @media (max-width: $BaseMediaSm) {
+            padding-bottom: 33%;
+          }
+        }
+      }
+
+      &:last-child {
+        padding-right: 0;
+
+        .block-item-inner {
+          padding-bottom: 33%;
+        }
+      }
+
+      // Block Item Cover
+      .block-item-inner {
+        position: relative;
+        height: 100%;
+
+        // Positioning of Content
+        .block-item-image,
+        .block-item-cover {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+
+        // Cover Images
+        .block-item-image {
+          img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+
+        // Content Covers / Overlays
+        .block-item-cover {
+          z-index: 2;
+          padding: $Base/2;
+          // transition: all 0.25s ease;
+
+          // Content Headline
+          span {
+            font-size: 4vw;
+            font-weight: bold;
+            display: flex;
+            width: 100%;
+            line-height: 1;
+            max-width: 400px;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1.2rem;
+            }
+          }
+
+          // Hovers
+          &:hover {
+            background-color: $clrBlack;
+          }
+        }
+      }
+    }
+  }
+
+  // For repeating block rows
+  & + .block-row {
+  //  padding-bottom: $Base;
+  }
+}

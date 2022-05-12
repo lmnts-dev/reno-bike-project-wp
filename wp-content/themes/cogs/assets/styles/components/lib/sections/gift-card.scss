@@ -1,0 +1,72 @@
+////////////////////////////////////////
+//
+// Gift Card Page
+//
+// @author Alisha Garric
+// @since 4/2020
+//
+////////////////////////////////////////
+
+.gift-card, .gift-card-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        margin-top: $BaseNavSizeLg;
+        max-width: $Base * 12;
+
+        @media (max-width: $BaseMediaSm) {
+            margin-top: $BaseNavSizeSm;
+            max-width: none;
+        }
+        
+        .gift-card-header {
+            @extend .search-results-header;
+            text-align: center;
+            .btn {
+                margin-top: $Base / 2;
+            }
+
+            .code-explanation {
+                margin-top: $Base;
+            }
+
+            .code {
+                @extend .btn;
+                @extend .btn-border-black;
+                font-size: 30px !important;
+                line-height: 30px !important;
+                margin-top: 0;
+                color: $clrPrimary;
+
+                @media (max-width: $BaseMediaSm) {
+                    font-size: 20px !important;
+                    line-height: 20px !important;
+                }
+
+                &:hover {
+                    color: $clrPrimary;
+                    background-color: transparent;
+                    box-shadow: none;
+                }
+            }
+
+            #apple-wallet-badge {
+                margin-top: $Base;
+            }
+
+            #qr-code {
+                margin-top: $Base;
+                img {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: none;
+    }
+}

@@ -1,0 +1,110 @@
+////////////////////////////////////////
+//
+// Four Column Grid Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+$gridSpacing: calc(#{$Base} / 3);
+
+.four-column-grid-section {
+
+  h2 {
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .four-column-grid-section-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .grid-item {
+      padding: $gridSpacing;
+      min-width: 21%;
+      flex: 1;
+
+      //three columns
+      @media (max-width: $BaseMediaMd) {
+        min-width: 33%;
+      }
+
+      // two columns
+      @media (max-width: $BaseMediaSm) {
+        min-width: 50%;
+        padding-top: calc(#{$gridSpacing} / 2);
+        padding-bottom: calc(#{$gridSpacing} / 2);
+      }
+
+      //spacing for default four columns
+      &:nth-of-type(4n), &:last-of-type {
+        padding-right: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-right: $gridSpacing;
+        }
+      }
+
+      &:nth-of-type(4n - 3) {
+        padding-left: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          padding-left: $gridSpacing;
+        }
+      }
+
+      //spacing for three columns
+      @media (max-width: $BaseMediaMd) {
+        &:nth-of-type(3n), &:last-of-type {
+            padding-right: 0;
+        }
+
+        &:nth-of-type(3n - 2) {
+            padding-left: 0;
+        }
+      }
+
+      //spacing for two columns
+      @media (max-width: $BaseMediaSm) {
+        &:nth-of-type(2n), &:last-of-type {
+            padding-right: 0;
+            padding-left: calc(#{$gridSpacing} / 2);
+        }
+
+        &:nth-of-type(2n - 1) {
+          padding-left: 0;
+          padding-right: calc(#{$gridSpacing} / 2);
+        }
+      }
+
+      .grid-item-img {
+        padding-top: 75%;
+        position: relative;
+        background: $clrPlaceholder;
+
+        &.image-type-logos {
+          img {
+            object-fit: contain;
+            background-color: $clrWhite;
+          }
+        }
+
+        img {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+      }
+
+      p {
+        margin-top: calc(#{$Base} / 4);
+        font-weight: 600;
+      }
+    }
+  }
+}

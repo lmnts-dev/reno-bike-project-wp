@@ -1,0 +1,102 @@
+////////////////////////////////////////
+//
+// Section Header Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.section-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: $Base;
+  margin: 0 auto;
+
+  @media (max-width: $BaseMediaMd) {
+    padding-bottom: calc(#{$Base} / 2);
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding-bottom: 0;
+  }
+
+  h3,
+  h2,
+  p {
+    text-align: center;
+    max-width: 850px;
+  }
+
+  h3,
+  h2 {
+    font-weight: 600;
+    max-width: 650px;
+
+    span {
+      &.squiggle {
+        display: block;
+        line-height: 0;
+        width: 100px;
+        height: 2px;
+        margin-bottom: $Base / 2;
+        background: $clrGold;
+
+        &.vertical {
+          width: 2px;
+          height: 100px;
+          margin: 0 auto $Base auto;
+        }
+      }
+    }
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 80px;
+    display: flex;
+    margin-bottom: $Base/2;
+  }
+
+  &.split {
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: $BaseMediaSm) {
+      display: block;
+    }
+
+    h3,
+    h2 {
+      max-width: 650px;
+      
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: 0;
+      }
+    }
+
+    h3,
+    h2,
+    p {
+      text-align: left;
+      padding-bottom: $Base/2;
+    }
+
+    p {
+      width: auto;
+      max-width: 450px;
+      padding-left: $Base/2;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        padding-left: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+// Section wrapper
+
+section,
+article {
+  width: 100%;
+  max-width: $BaseMaxWidth;
+  padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+  margin: 0 auto;
+  padding-top: $BasePadding;
+  padding-bottom: $BasePadding;
+  position: relative;
+  z-index: 5;
+
+  @media (max-width: $BaseMediaMd) {
+    padding-right: $BaseGutterRightMd;
+    padding-left: $BaseGutterLeftMd;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding: $BasePaddingSm $BaseGutterRightSm $BasePaddingSm $BaseGutterLeftSm;
+  }
+
+  &.padding-top-none {
+    padding-top: 0;
+  }
+
+  &.padding-bottom-none {
+    padding-bottom: 0;
+  }
+
+  &.padding-top-half {
+    padding-top: calc(#{$BasePadding} / 2);
+
+    @media (max-width: $BaseMediaSm) {
+      padding-top: $BaseGutterRightSm / 2;
+    }
+  }
+
+  &.padding-bottom-half {
+    padding-bottom: calc(#{$BasePadding} / 2);
+
+    @media (max-width: $BaseMediaSm) {
+      padding-bottom: $BaseGutterRightSm / 2;
+    }
+  }
+
+}
+
+// From FullpageJS
+.section {
+  width: 100%;
+}

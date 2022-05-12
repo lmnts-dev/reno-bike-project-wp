@@ -1,0 +1,110 @@
+////////////////////////////////////////
+//
+// News Listings Component
+//
+// @author Peter Laxalt and Alisha Garric (for responsive)
+//
+////////////////////////////////////////
+
+section.news-listings {
+  position: relative;
+  z-index: 5;
+  padding-left: $BaseCardGutters;
+  padding-right: $BaseCardGutters;
+
+  @media (max-width: $BaseMediaSm) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.margin-top {
+    margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeft});
+    padding-top: 0;
+
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$BaseNavSizeLg} + #{$BaseGutterLeftMd});
+      padding-top: 0;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: calc(#{$BaseNavSizeSm} + #{$BaseGutterLeftSm});
+      padding-top: 0;
+    }
+  }
+
+  .page-count {
+    @extend p;
+    padding-left: calc(#{$BaseCardPadding});
+    padding-right: calc(#{$BaseCardPadding});
+  }
+
+  .news-listings-header {
+    position: relative;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+    }
+
+    a {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @media (max-width: $BaseMediaSm) {
+        display: none;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: $Base;
+      margin-top: $Base / 4;
+
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: $Base / 4;
+        margin-top: 0;
+      }
+    }
+  }
+
+  .news-listings-inner {
+    display: flex;
+    flex-wrap: wrap;
+
+    .news-listing-card {
+      width: 33%;
+
+      @media (max-width: $BaseMediaMd) {
+        width: 50%;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        width: 100%;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .mobile-btn {
+      display: none;
+      width: 100%;
+      text-align: center;
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+      margin-top: $Base;
+
+      @media (max-width: $BaseMediaSm) {
+        display: block;
+      }
+    }
+  }
+
+  .pagination {
+    margin-bottom: $Base * 2;
+  }
+}

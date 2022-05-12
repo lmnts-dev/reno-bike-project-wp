@@ -1,0 +1,176 @@
+////////////////////////////////////////
+//
+// Newsletter Overlay Component
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.newsletter-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: $clrSteel;
+  z-index: 800;
+  padding: 0;
+  margin: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.visible {
+    display: flex;
+  }
+
+  // Close button
+  .btn-close {
+    position: absolute;
+    right: $Base * 0.75;
+    top: $Base * 1.25;
+    pointer-events: all;
+    z-index: 999;
+
+    @media (max-width: $BaseMediaMd) {
+      right: $Base / 2;
+      top: $Base / 2;
+    }
+
+    span {
+      position: relative;
+      display: block;
+      max-width: calc(#{$Base} * 3);
+      max-height: calc(#{$Base} * 3);
+      width: 10vw;
+      height: 10vw;
+
+      @media (max-width: $BaseMediaMd) {
+        width: $Base;
+        height: $Base;
+      }
+
+      &:hover {
+        background: rgba($clrBlack, 0.04);
+      }
+
+      &:active {
+        background: rgba($clrBlack, 0.08);
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        max-width: calc(#{$Base} * 3);
+        height: 2px;
+        background: $clrPrimary;
+        top: 50%;
+        width: 10vw;
+
+        @media (max-width: $BaseMediaMd) {
+          width: $Base;
+        }
+      }
+
+      &:before {
+        transform-origin: center center;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform-origin: center center;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .newsletter-overlay-inner {
+    position: relative;
+    width: 100%;
+    max-width: 950px;
+    padding: $BaseGutterLeft;
+    margin: 0;
+
+    @media (max-width: $BaseMediaSm) {
+      padding-left: $BaseGutterLeftSm;
+      padding-right: $BaseGutterRightSm;
+    }
+
+    .top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: $Base;
+
+      @media (max-width: $BaseMediaMd) {
+        align-items: flex-start;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        display: block;
+        padding-bottom: $Base / 4;
+      }
+
+      .col {
+        width: 50%;
+        padding: $Base/4;
+
+        @media (max-width: $BaseMediaSm) {
+          width: 100%;
+        }
+
+        h3 {
+          font-weight: 600;
+
+          span {
+            display: block;
+          }
+
+          .squiggle {
+            height: 2px;
+            width: 150px;
+            background: $clrPrimary;
+            margin-bottom: $Base;
+          }
+        }
+      }
+    }
+
+    .bottom {
+      form {
+        .row {
+          display: flex;
+          width: 100%;
+
+          .col {
+            width: 50%;
+            flex: 1;
+
+            .input-outer {
+              padding: $Base/4;
+
+              input {
+                font-size: 1.5rem;
+                height: $Base * 1.5;
+                background: none;
+                border-bottom: 2px solid $clrBlack;
+
+                @media (max-width: $BaseMediaMd) {
+                  font-size: 1rem;
+                  height: $Base;
+                }
+              }
+            }
+
+            &.col-submit {
+              .input-outer {
+                padding: $Base/4;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

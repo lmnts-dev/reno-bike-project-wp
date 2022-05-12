@@ -1,0 +1,70 @@
+// Animation.scss:
+// Animation classes, mixins, etc.
+// You can find the Keyframes loaded last on Styles.scss to fix
+// a bug with Safari.
+
+// Slide Up
+
+@mixin slide-up($duration) {
+  -webkit-animation: slide-up $duration 1;
+  -moz-animation: slide-up $duration 1;
+  -o-animation: slide-up $duration 1;
+  animation: slide-up $duration 1;
+}
+
+.slide-up-1 {
+  @include slide-up(0.25s);
+}
+.slide-up-2 {
+  @include slide-up(0.5s);
+}
+.slide-up-3 {
+  @include slide-up(1s);
+}
+.slide-up-4 {
+  @include slide-up(1.2s);
+}
+
+// Fade In
+
+@mixin fadein($duration) {
+  -webkit-animation: fadein $duration 1;
+  -moz-animation: fadein $duration 1;
+  -o-animation: fadein $duration 1;
+  animation: fadein $duration 1;
+}
+
+.fadein-1 {
+  @include fadein(0.25s);
+}
+.fadein-2 {
+  @include fadein(0.5s);
+}
+.fadein-3 {
+  @include fadein(1s);
+}
+
+// Fade Out
+
+@mixin fadeout($duration) {
+  animation: fadeout $duration forwards;
+}
+
+.fadeout-1 {
+  @include fadeout(0.25s);
+}
+.fadeout-2 {
+  @include fadeout(0.5s);
+}
+.fadeout-3 {
+  @include fadeout(1s);
+}
+
+// Bounce
+
+@mixin bounce($duration) {
+  -webkit-animation: bounce $duration infinite;
+  -moz-animation: bounce $duration infinite;
+  -o-animation: bounce $duration infinite;
+  animation: bounce $duration infinite;
+}

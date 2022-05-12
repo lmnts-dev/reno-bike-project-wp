@@ -1,0 +1,191 @@
+////////////////////////////////////////
+//
+// Video Row
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+.video-row {
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+
+  .video-row-inner {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9
+    background: $clrPlaceholder;
+    overflow: hidden;
+    z-index: -1;
+
+    @media (max-width: $BaseMediaSm) {
+      display: none;
+    }
+
+    .cover {
+      @include objectFit();
+      z-index: 2;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+      min-height: 100vh;
+      min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .video-toggle {
+      $buttonSize: calc(#{$Base} * 5);
+      $buttonSizeMd: calc(#{$Base} * 4);
+      $buttonSizeSm: calc(#{$Base} * 3);
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      background: rgba($clrWhite, 0.5);
+      width: $buttonSize;
+      height: $buttonSize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+
+      @media (max-width: $BaseMediaMd) {
+        width: $buttonSizeMd;
+        height: $buttonSizeMd;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        width: $buttonSizeSm;
+        height: $buttonSizeSm;
+      }
+
+      &:hover {
+        background: rgba($clrWhite, 0.8);
+      }
+
+      &:active {
+        background: rgba($clrWhite, 0.95);
+      }
+
+      span {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-top: calc(#{$buttonSize} * 0.25) solid transparent;
+        border-bottom: calc(#{$buttonSize} * 0.25) solid transparent;
+        border-left: calc(#{$buttonSize} * 0.25) solid $clrBlack;
+        transform: scaleY(0.7);
+        transform-origin: center center;
+        right: calc((#{$Base} / 4) * -1);
+        pointer-events: none;
+        cursor: pointer;
+
+        @media (max-width: $BaseMediaMd) {
+          border-top: calc(#{$buttonSizeMd} * 0.25) solid transparent;
+          border-bottom: calc(#{$buttonSizeMd} * 0.25) solid transparent;
+          border-left: calc(#{$buttonSizeMd} * 0.25) solid $clrBlack;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          border-top: calc(#{$buttonSizeSm} * 0.25) solid transparent;
+          border-bottom: calc(#{$buttonSizeSm} * 0.25) solid transparent;
+          border-left: calc(#{$buttonSizeSm} * 0.25) solid $clrBlack;
+        }
+
+        &:hover {
+          border-left-color: $clrPrimary;
+        }
+      }
+    }
+  }
+}
+
+.video-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+
+  @media (max-width: $BaseMediaSm) {
+    position: relative;
+    visibility: visible;
+    width: 100%;
+    height: auto;
+    top: unset;
+    left: unset;
+    background: transparent;
+    margin: 0 auto;
+    margin-bottom: calc(#{$Base});
+    padding-bottom: 56.25%;
+  }
+
+  &.visible {
+    visibility: visible;
+  }
+
+  .video-overlay-inner {
+    width: auto;
+    position: relative;
+
+    @media (max-width: $BaseMediaSm) {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    iframe {
+      padding: 0;
+      margin: 0;
+      width: calc(100vw / 1.5);
+      height: calc(56.25vw / 1.5);
+      min-height: calc(100vh / 1.5);
+      min-width: calc(177.77vh / 1.5);
+
+      @media (max-width: $BaseMediaSm) {
+        min-height: 0;
+        min-width: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .video-toggle {
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    @media (max-width: $BaseMediaSm) {
+      display: none;
+    }
+  }
+
+  // Block Alignment
+  & + .events-listings {
+    margin-top: calc(#{$Base} * 2);
+  }
+}

@@ -1,0 +1,93 @@
+////////////////////////////////////////
+//
+// 404 Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+.four-oh-four {
+  .four-oh-four-inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1,
+    p {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 10vw;
+
+      @media (max-width: $BaseMediaSm ){
+        font-size: 4rem;
+      }
+    }
+
+    h1 + p {
+      color: $clrPrimary;
+      font-weight: 800;
+    }
+
+    p {
+      font-size: 2.3vw;
+      margin: 0;
+
+      @media (max-width: $BaseMediaSm ){
+        font-size: 1rem;
+      }
+    }
+
+    .btn {
+      margin-top: $Base;
+    }
+  }
+}
+
+.glitch {
+  color: $clrBlack;
+  position: relative;
+  margin: 0 auto;
+}
+.glitch:after {
+  left: 5px;
+  text-shadow: -5px 0 $clrPrimary;
+  animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+.glitch:before {
+  left: -5px;
+  text-shadow: 5px 0 $clrGold;
+  animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+.glitch:before,
+.glitch:after {
+  content: "Flat Tire";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: $clrWhite;
+  clip: rect(0, 0, 0, 0);
+}
+
+@keyframes glitch-anim-1 {
+  $steps: 30;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(200) + px, 9999px, random(200) + px, 0);
+    }
+  }
+}
+@keyframes glitch-anim-2 {
+  $steps: 10;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(200) + px, 9999px, random(200) + px, 0);
+    }
+  }
+}

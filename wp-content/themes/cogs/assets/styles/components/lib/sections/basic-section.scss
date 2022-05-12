@@ -1,0 +1,98 @@
+////////////////////////////////////////
+//
+// basic Section
+//
+// @author Alisha Garric
+//
+////////////////////////////////////////
+
+.basic-section {
+
+    &:first-of-type {
+        margin-top: $BaseNavSizeLg;
+  
+        @media (max-width: $BaseMediaSm) {
+          margin-top: $BaseNavSizeSm;
+        }
+    }
+
+    .basic-section-inner {
+        max-width: $Base * 24;
+
+        @media (max-width: $BaseMediaMd) {
+            max-width: $Base * 20;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    a.btn {
+        margin-right: $Base;
+        margin-top: $Base / 2;
+
+        @media (max-width: $BaseMediaSm) {
+            margin-top: $Base / 4;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        padding-bottom: $Base / 4;
+    }
+
+    &.align-left {
+
+        .section-header * {
+            text-align: left;
+        }
+
+        a.btn-border-black, a.btn-border-black ~ .btn {
+            @media (max-width: $BaseMediaMd) {
+                margin-top: $Base / 1.5;
+            }
+        }
+
+        a.btn-border-black ~ .btn {
+            @media (max-width: $BaseMediaSm) {
+                margin-top: $Base / 4;
+            }
+        }
+
+        .section-header {
+            align-items: flex-start;
+        }
+    }
+
+    &.align-center {
+        p, .basic-section-inner {
+            text-align: center;
+        }
+
+        .squiggle {
+            @extend .squiggle-vertical;
+
+            @media (max-width: $BaseMediaSm) {
+                top: $Base * -2;
+            }
+        }
+
+        .basic-section-inner { 
+            margin: 0 auto;
+
+            @media (max-width: $BaseMediaSm) {
+                align-items: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.notification-tag {
+    background: $clrPrimary;
+    color: $clrWhite;
+    padding: $Base / 8 $Base / 3;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    margin-bottom: $Base / 6;
+    line-height: 1;
+
+    @media (max-width: $BaseMediaSm) {
+        font-size: 0.6rem;  
+        letter-spacing: 1.1px;
+        padding: $Base / 9 $Base / 3.5;
+    }
+}

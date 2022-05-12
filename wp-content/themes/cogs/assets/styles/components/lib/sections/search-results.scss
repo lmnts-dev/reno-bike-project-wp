@@ -1,0 +1,265 @@
+////////////////////////////////////////
+//
+// Search Results Component
+//
+// @author Peter Laxalt
+// @since 3/2020
+//
+////////////////////////////////////////
+
+section.search-results {
+  --searchResultImgSize: calc(#{$Base} * 5);
+  $searchResultImgSize: var(--searchResultImgSize);
+
+  --searchResultImgSizeSm: calc(#{$Base} * 2.5);
+  $searchResultImgSizeSm: var(--searchResultImgSizeSm);
+
+  position: relative;
+  padding-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
+  max-width: calc(#{$BaseMaxWidth} * 0.7);
+  width: 100%;
+  margin: 0;
+
+  @media (max-width: $BaseMediaMd) {
+    padding-top: calc(#{$BaseGutterLeftMd} + #{$BaseNavSizeLg});
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding-top: calc(#{$BaseGutterLeftSm} + #{$BaseNavSizeSm});
+  }
+
+  .search-results-header {
+    padding-top: $Base;
+    padding-bottom: $Base;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @media (max-width: $BaseMediaMd) {
+      padding-top: $Base / 2;
+    }
+
+    .squiggle {
+      display: block;
+      line-height: 0;
+      width: 100px;
+      height: 2px;
+      margin-bottom: calc(#{$Base} / 2);
+      background: $clrGold;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+
+      .query {
+        color: $clrBlack;
+      }
+
+      &:first-of-type {
+        color: $clrPrimary;
+      }
+    }
+
+    .search-results-input {
+      position: relative;
+      border-radius: none;
+      display: flex;
+      align-items: center;
+      background: $clrSnow;
+      // border-bottom: 2px solid $clrBlack;
+      width: 100%;
+      margin-top: calc(#{$Base} / 2);
+      padding-left: calc(#{$Base} / 4);
+
+      svg * {
+        fill: $clrPrimary;
+      }
+
+      .ico:not(svg) {
+        width: calc(#{$Base} * 0.7);
+        height: calc(#{$Base} * 0.7);
+        border: 2px solid $clrPrimary;
+        border-radius: 50%;
+        display: block;
+
+        @media (max-width: $BaseMediaSm) {
+          width: calc(#{$Base} / 2);
+          height: calc(#{$Base} / 2);
+        }
+      }
+
+      form {
+        flex: 1;
+
+        input {
+          background: none;
+          color: $clrBlack;
+          font-size: 1.8rem;
+
+          @media (max-width: $BaseMediaSm) {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .search-other-site-header {
+    @extend .search-results-header;
+    max-width: $Base * 15;
+    align-items: flex-start;
+
+    .btn {
+      margin-top: $Base / 2;
+    }
+
+  }
+
+  .search-results-listings {
+    margin-bottom: calc(#{$Base} * 4);
+
+    @media (max-width: $BaseMediaMd) {
+      margin-bottom: calc(#{$Base} * 2);
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-bottom: calc(#{$Base});
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        width: 100%;
+
+        .news-listing-card {
+          width: 100%;
+          display: block;
+          border-bottom: 2px solid $clrBlack;
+          margin-bottom: 0;
+
+          @media (max-width: $BaseMediaSm) {
+            padding-left: $Base / 8;
+            padding-right: $Base / 8;
+          }
+
+          .news-listing-card-inner {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+
+            .cover {
+              width: $searchResultImgSize;
+              height: calc(#{$searchResultImgSize} * 0.8);
+              padding-bottom: unset;
+              flex-shrink: 0;
+              margin-right: calc(#{$Base} * 0.5);
+
+              @media (max-width: $BaseMediaSm) {
+                width: $searchResultImgSizeSm;
+                height: calc(#{$searchResultImgSizeSm} * 0.8);
+              }
+            }
+
+            .info {
+              padding: 0;
+              color: $clrBlack;
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              align-items: flex-start;
+
+              .title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                
+                @media (max-width: $BaseMediaSm) {
+                  font-size: 20px;
+                  margin-bottom: $Base / 8;
+                }
+              }
+
+              .notification-tag {
+                display: inline-block;
+                
+                @media (max-width: $BaseMediaSm) {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: $searchResultImgSizeSm;
+                  padding-left: 0;
+                  padding-right: 0;
+                  text-align: center;
+                }
+              }
+
+              p {
+                margin: 0;
+                padding: 0;
+                flex: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                opacity: 0.45;
+              }
+            }
+
+            .actions {
+              position: absolute;
+              left: calc(#{$searchResultImgSize} + (#{$Base} * 0.5));
+              right: 0;
+              bottom: 0;
+              background: $clrWhite;
+              width: unset;
+
+              @media (max-width: $BaseMediaSm) {
+                left: calc(#{$searchResultImgSizeSm} + (#{$Base} * 0.5));
+
+                .btn {
+                  display: none;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            .news-listing-card-inner {
+              .actions {
+                background: $clrSnow;
+              }
+            }
+          }
+
+          &:active {
+            .news-listing-card-inner {
+              .actions {
+                background: darken($clrSnow, 5%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .news-listings {
+    &.news-listings-search-results {
+      padding: 0;
+
+      .news-listings-inner {
+        .news-listing-card {
+          width: 33.33333%;
+        }
+      }
+    }
+  }
+}

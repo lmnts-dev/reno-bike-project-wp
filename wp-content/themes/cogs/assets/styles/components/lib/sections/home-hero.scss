@@ -1,0 +1,222 @@
+////////////////////////////////////////
+//
+// Home Hero Component
+//
+// @author Peter Laxalt
+// @see https://codepen.io/peterlaxalt/pen/XWJyLJE
+//
+////////////////////////////////////////
+
+section.home-hero {
+  $mobileBikeWheelSize: calc(#{$Base} * 2);
+
+  // height: calc(100vh - #{$BaseNavSizeLg});
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(#{$BaseNavSizeLg} + #{$Base/2});
+  padding-right: 0;
+
+  @media (max-width: $BaseMediaMd) {
+    align-items: flex-start;
+    height: unset;
+    min-height: unset;
+    padding-top: calc(#{$BaseNavSizeSm});
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-hero-inner {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $BaseMediaMd) {
+      //temporary just so the home screen isn't so wide on mobile
+      flex-direction: column-reverse;
+    }
+
+    // Info Column
+    .col-info {
+      @include fadein(2s);
+      max-width: 350px;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 400;
+
+      @media (max-width: $BaseMediaMd) {
+        justify-content: flex-start;
+        max-width: unset;
+        width: 100%;
+        position: relative;
+
+        .btn-newsletter {
+          position: absolute;
+          top: calc(#{$Base} / 2.3);
+          right: 0;
+          width: calc(100vw - (#{$mobileBikeWheelSize} + (#{$Base} * 1)));
+          background: $clrBlack;
+          color: $clrWhite;
+
+          //for smaller than iphone 6
+          @media (max-width: 374px ) {
+            text-overflow: clip;
+            overflow: hidden;
+            white-space: nowrap;
+            justify-content: flex-start;
+            padding-right: 0;
+            font-size: 11px;
+          }
+
+          &:hover {
+            border-color: $clrBlack;
+          }
+        }
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      // Hours
+      .col-info-hours {
+        margin-top: $Base;
+        width: 100%;
+
+        .headline {
+          color: $clrChrome;
+          font-weight: bold;
+        }
+
+        ul {
+          border-left: 7px solid $clrPrimary;
+          padding-left: $Base / 4;
+          margin: $Base / 2 0;
+          line-height: 1.4;
+          width: 100%;
+
+          li {
+            display: flex;
+            width: 100%;
+
+            span {
+              flex: 1;
+
+              &:first-child {
+                max-width: 30%;
+              }
+
+              &.label {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+        @media (max-width: $BaseMediaMd) {
+          background: $clrSnow;
+        }
+      }
+
+      .btn-newsletter {
+        width: 100%;
+      }
+
+      // Bike Wheel
+      .bike-wheel {
+        margin-top: $Base;
+      }
+
+      @media (max-width: $BaseMediaMd) {
+        .col-info-top {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          position: relative;
+          z-index: 500;
+          top: calc((#{$mobileBikeWheelSize} / 2) * -1);
+
+          .bike-wheel {
+            order: 1;
+            margin-top: 0px;
+            margin-left: $BaseGutterLeftSm;
+
+            svg {
+              width: $mobileBikeWheelSize;
+              height: $mobileBikeWheelSize;
+            }
+          }
+
+          h1,
+          p,
+          .btn,
+          .col-info-hours,
+          .btn-newsletter {
+            order: 2;
+            padding: 0 $BaseGutterLeftSm;
+          }
+
+          .col-info-hours {
+            padding-top: $BaseGutterLeftSm;
+            // padding-bottom: $BaseGutterLeftSm;
+            margin-top: $BaseGutterLeftSm;
+
+            ul {
+              display: flex;
+              width: 100%;
+              border-left: unset;
+              padding-left: 0;
+              margin-left: 0;
+
+              li {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                  width: 100%;
+                  max-width: unset;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Main Column
+    .col-main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include fadein(3s);
+      flex: 1;
+
+      @media (max-width: $BaseMediaMd) {
+        height: unset;
+        position: relative;
+        z-index: 200;
+      }
+
+      ul {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (max-width: $BaseMediaMd) {
+          height: unset;
+          display: block;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}

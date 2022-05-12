@@ -1,0 +1,533 @@
+// Sitewide Navigation Component
+
+// For nested navigation.
+$SubItemsWidth: 300px;
+
+
+//nav CTA styles
+.nav-cta-styles {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $BaseNavBreak) {
+    margin-left: auto;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    display: none;
+  }
+
+  // CTA Button
+  a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 $Base;
+    background: $clrPrimary;
+    color: $clrWhite;
+
+    @media (max-width: $BaseMediaSm) {
+      padding: 0 $Base / 2;
+    }
+
+    &:visited,
+    &:active {
+      color: $clrWhite;
+    }
+
+    &:hover {
+      background: lighten($clrPrimary, 5%);
+    }
+
+    &:active {
+      background: darken($clrPrimary, 5%);
+    }
+  }
+}
+
+//bottom underline styles
+.bottom-underline-styles {
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgba($clrPrimary, 0);
+  }
+
+  &:hover {
+    &:before {
+      background: rgba($clrBlack, 0.1);
+    }
+  }
+}
+
+// Default Navigation Styles
+header {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  z-index: 800;
+  background: $clrWhite;
+  transition-duration: 0s;
+
+  //to hide for overlay nav
+  &.hidden .nav-inner {
+    opacity: 0;
+    @media (min-width: $BaseNavBreak) {
+      opacity: 1;
+    }
+  }
+
+  // Base List Styles
+  ul {
+    display: flex;
+
+    li {
+      flex-shrink: 0;
+    }
+  }
+
+  // Base Link Styles
+  a {
+    font-weight: 600;
+    color: $clrBlack;
+  
+    &:visited {
+      color: $clrBlack;
+    }
+  
+    &:hover,
+    &:active,
+    &:focus {
+      color: $clrPrimary;
+    }
+  }
+
+  // Base Nav Styles
+  nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    div {
+      height: 100%;
+    }
+
+    ul {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        a {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0 $Base/2;
+
+          @media (max-width: $BaseMediaSm) {
+            padding: 0 $Base/4;
+            font-size: 1rem;
+          }
+        }
+
+        @extend .bottom-underline-styles;
+
+        // Active Links & Underlines
+        &.active {
+          a,
+          a:visited {
+            color: $clrPrimary;
+          }
+          &:before {
+            background: rgba($clrPrimary, 1);
+          }
+        }
+
+        // Inactive Links & Underlines
+        &.inactive {
+          a,
+          a:visited {
+            color: $clrChrome;
+          }
+
+          @media (min-width: $BaseMediaMd) {
+            a:hover {
+              color: $clrPrimary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Navigation Inner
+  .nav-inner {
+    width: 100%;
+    max-width: $BaseMaxWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background-color: rgba($clrWhite, 0);
+    transition: all $BaseTransition $BaseEase;
+    transition: opacity 0s $BaseEase;
+
+    .nav-col {
+      display: flex;
+      align-items: center;
+      height: $BaseNavSizeLg;
+
+      @media (max-width: $BaseMediaSm) {
+        height: $BaseNavSizeSm;
+      }
+
+      /////// COL 1: Branding Column ////////
+      &.nav-col-1 {
+        // Branding itself
+        .nav-branding {
+          height: 100%;
+          width: $BaseGutter;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $clrPrimary; // Default
+
+          @media (max-width: $BaseMediaSm) {
+            width: $BaseNavSizeSm;
+          }
+
+          a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $clrPrimary;
+
+            &:visited,
+            &:active {
+              color: $clrWhite;
+            }
+
+            &:hover {
+              background: lighten($clrPrimary, 5%);
+            }
+
+            &:active {
+              background: darken($clrPrimary, 5%);
+            }
+            span {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: $clrWhite;
+            }
+            
+            img {
+              height: 40px;
+              width: auto;
+
+              @media (max-width: $BaseMediaSm) {
+                height: 30px;
+              }
+            }
+          }
+        }
+      }
+      
+
+      /////////// COL 2: Main Links ////////////
+      &.nav-col-2 {
+        @media (max-width: $BaseNavBreak) {
+          display: none;
+        }
+      }
+
+      /////////// COL 3: CTA Column ////////////
+      &.nav-col-3 {
+        @media (max-width: $BaseNavBreak) {
+          flex: 10;
+        }
+
+        .nav-cta {
+          @extend .nav-cta-styles;
+        }
+      }
+
+      /////////// COL 4: Grid Icon Column ////////////
+      &.nav-col-4 {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0 $Base / 4;
+
+        @media (max-width: $BaseNavBreak) {
+          display: flex;
+        }
+
+        .grid {
+          $gridItemWidth: 10px;
+          width: $gridItemWidth * 3;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          &:hover span {
+            background: $clrBlack;
+          }
+
+          span {
+            width: $gridItemWidth;
+            height: $gridItemWidth;
+            border: 2px solid $clrWhite;
+            background: $clrPrimary;
+            border-radius: 3px;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+/////// Shopify style alterations and additions ///////
+header {
+
+  //to hide for overlay nav
+  &.hidden .nav-inner.nav-shop {
+    @media (max-width: $BaseNavBreak) {
+      opacity: 0;
+    }
+
+    @media (min-width: $BaseNavShopifyBreak) {
+      opacity: 1;
+    }
+  }
+  
+  .nav-inner.nav-shop {
+
+    nav ul li.active {
+      a,
+      a:visited {
+        color: $clrBlack;
+      }
+
+      &:before {
+        background: rgba($clrBlack, 1);
+      }
+
+      &:hover {
+        color: $clrBlack;
+      }
+    }
+
+    /////// COL 1: Branding Column ////////
+    .nav-col-1 .nav-branding {
+      background: $clrBlack;
+
+      a {
+        background: $clrBlack;
+      }
+    }
+
+    /////////// COL 2: Main Links ////////////
+    .nav-col-2 { 
+      @media (max-width: $BaseNavBreak) {
+        display: flex;
+      }
+
+      @media (max-width: $BaseNavShopifyBreak) {
+        display: none;
+      }
+    }
+
+    /////////// COL 3: CTA Column ////////////
+    .nav-col-3 {
+      flex: 10;
+      justify-content: flex-end;
+
+      .nav-cta {
+        @media (max-width: $BaseNavBreak) {
+          margin-left: 0;
+        }
+
+        @media (max-width: $BaseNavShopifyBreak) {
+          margin-left: auto;
+        }
+
+        a {
+          background: $clrBlack;
+          @media (max-width: $BaseMediaSm) {
+            background: transparent;
+            position: relative;
+            padding-left: $Base / 8;
+          }
+
+          #cart-icon {
+            display: none;
+            width: $Base * 0.8;
+
+            @media (max-width: $BaseMediaSm) {
+              display: block;
+            }
+          }
+
+          //cart label
+          span {
+            @media (max-width: $BaseMediaSm) {
+              display: none;
+            }
+          }
+
+          &:hover {
+            background: $clrPrimary;
+
+            @media (max-width: $BaseMediaSm) {
+              background: $clrSnow;
+            }
+          }
+
+          .count {
+            // background: $clrWhite;
+            border: 2px solid $clrWhite;
+            color: $clrWhite;
+            width: calc(#{$Base});
+            height: calc(#{$Base});
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            margin-left: calc(#{$Base} / 2);
+            margin-right: calc(#{$Base} / 2);
+
+            @media (max-width: $BaseMediaSm) {
+              position: absolute;
+              background: $clrPrimary;
+              border-radius: $Base;
+              padding: $Base / 8;
+              height: $Base / 2;
+              width: $Base / 2;
+              border: none;
+              top: 15px;
+              right: $Base / -8;
+              font-size: 12px;
+              margin: 0;
+            }
+          }
+        }
+
+        &.items-added {
+          a {
+            padding-right: 0;
+          }
+        }
+      }
+
+      .nav-search {
+        display: flex;
+        height: 100%;
+        align-items: center;
+
+        @media (max-width: $BaseNavBreak) {
+          margin-left: 0;
+        }
+
+        @media (max-width: $BaseNavShopifyBreak) {
+          margin-left: auto;
+
+          //if there is a search icon next to the cta then its shopify
+          //and we don't want a margin spacing out the cta and the search icon
+          ~ .nav-cta {
+            margin-left: 0;
+          }
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          //if there is a search icon next to the cta then its shopify
+          //and we don't want to get rid of the cta
+          ~ .nav-cta {
+            display: block;
+          }
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          padding: 0 $Base/2;
+          position: relative;
+          background: transparent;
+
+          @media (max-width: $BaseMediaSm) {
+            padding: $Base / 6;
+          }
+
+          &:hover {
+            background: $clrSnow;
+            box-shadow: none;
+          }
+
+          &:active {
+            background: darken($clrSnow, 5%);
+          }
+
+          svg {
+            fill: $clrBlack;
+            transform: scale(1);
+            width: calc(#{$Base} * 0.8);
+            height: calc(#{$Base} * 0.8);
+            transform-origin: center center;
+
+            @media (max-width: $BaseMediaSm) {
+              width: calc(#{$Base} * 0.6);
+              height: calc(#{$Base} * 0.6);
+            }
+          }
+        }
+      }
+    }
+
+    /////////// COL 4: Grid Icon Column ////////////
+    .nav-col-4 {
+      @media (max-width: $BaseNavBreak) {
+        display: none;
+      }
+
+      @media (max-width: $BaseNavShopifyBreak) {
+        display: flex;
+      }
+
+      .grid {
+        span {
+          background: $clrBlack;
+        }
+
+        &:hover span {
+          background: $clrPrimary;
+        }
+      }
+    }
+  }
+}

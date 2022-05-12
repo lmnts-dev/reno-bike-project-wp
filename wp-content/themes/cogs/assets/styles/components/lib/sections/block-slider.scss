@@ -1,0 +1,149 @@
+////////////////////////////////////////
+//
+// Block Slider Component
+//
+// @author Peter Laxalt and Alisha Garric (for responsiveness)
+// @since 2/2020
+//
+////////////////////////////////////////
+
+$SmallContentOffset: $Base;
+
+.block-slider {
+  position: relative;
+
+  .block-slider-inner {
+    // The Slider Element Itself
+    .block-slider-el {
+      width: 100%;
+      // Individual Slide
+      .block-slide {
+        width: 100%;
+
+        .block-slide-inner {
+          position: relative;
+          height: 80vh;
+          min-height: 640px;
+          padding-top: calc(#{$Base} * 4);
+
+          @media (max-width: $BaseMediaMd) {
+            min-height: 500px;
+          }
+
+          @media (max-width: $BaseMediaSm) {
+            margin-bottom: $SmallContentOffset;
+            min-height: 300px;
+          }
+
+          .block-slide-content {
+            background: $clrWhite;
+            padding: calc(#{$Base} * 2) $Base calc(#{$Base} * 2) 0;
+            max-width: 450px;
+            min-width: 200px;
+            position: relative;
+            z-index: 2;
+            width: 35vw;
+
+            @media (max-width: $BaseMediaMd) {
+              min-width: 40vw;
+              width: 100%;
+              max-width: 60vw;
+              padding: calc(#{$Base} * 1.5) $Base calc(#{$Base} * 1.5) 0;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              position: absolute;
+              top: calc(#{$Base} * 2);
+              left: 0;
+              padding: calc(#{$Base} / 2);
+            }
+
+            h4 {
+              font-weight: 500;
+              font-size: 5vw;
+
+              @media (max-width: $BaseMediaSm) {
+                font-size: 8vw;
+              }
+            }
+          }
+
+          .block-slide-cover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 80%;
+            // max-width: $Base * 25;
+            display: flex;
+
+            @media (max-width: $BaseMediaMd) {
+              width: 77%;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+              width: 100%;
+            }
+
+            .block-slide-cover-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              background: $clrPlaceholder;
+
+              img {
+                @include objectFit();
+              }
+            }
+          }
+        }
+      }
+
+      .flickity-page-dots {
+        position: absolute;
+        left: 0;
+        top: calc(#{$Base} * 3);
+        height: 50px;
+        width: auto;
+
+        @media (max-width: $BaseMediaSm) {
+          bottom: $Base / -2;
+          top: auto;
+          left: auto;
+          text-align: left;
+
+          .dot {
+            width: 7px;
+            height: 7px;
+            margin: 0 $Base / 3 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Shopify Overrides
+.shop-wrapper {
+  .block-slider {
+    padding-top: 0;
+    margin-top: calc(#{$BaseGutter} + #{$BaseNavSizeLg});
+
+    @media (max-width: $BaseMediaMd) {
+      margin-top: calc(#{$BaseGutterLeftMd} + #{$BaseNavSizeLg});
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      margin-top: calc(#{$BaseGutterLeftSm} + #{$BaseNavSizeSm});
+    }
+
+    .block-slider-inner {
+      .block-slider-el {
+        .block-slide-inner {
+          // Readjust for bottom / top paddings to be consistent relative to viewport
+          height: calc(100vh - (#{$BaseNavSizeLg} + (#{$BaseGutter} * 2)));
+        }
+      }
+    }
+  }
+}

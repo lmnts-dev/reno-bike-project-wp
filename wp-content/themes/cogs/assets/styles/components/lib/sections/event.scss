@@ -1,0 +1,340 @@
+////////////////////////////////////////
+//
+// Event Article Component
+//
+// @author Alisha Garric
+// @since 3/2020
+//
+////////////////////////////////////////
+
+article.event-article {
+    max-width: $BaseMaxWidth;
+    padding-bottom: $Base * 2;
+    
+    @media (max-width: $BaseMediaSm) {
+        padding-bottom: $Base;
+
+        h1 {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .details-box {
+        .text-container, .box-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            @media (max-width: $BaseMediaSm) {
+                display: block;
+            }
+        }
+
+        .text-container {
+            color: $clrChrome;
+            font-size: 1.25rem;
+            padding: $Base 0 $Base / 2 0;
+
+            @media (max-width: $BaseMediaMd) {
+                font-size: 1.1rem;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+                text-align: center;
+                padding-top: $Base / 4;
+            }
+
+            > div {
+                padding-right: $Base / 2;
+                flex: 1;
+
+                @media (max-width: $BaseMediaSm) {
+                    line-height: 1.5;
+                    padding-right: 0;
+                }
+
+                &:nth-of-type(2){
+                    text-align: center;
+                }
+
+                &:last-of-type {
+                    padding-right: 0;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    @media (max-width: $BaseMediaSm) {
+                        justify-content: center;
+                        padding-top: $Base / 2;
+                    }
+                }
+
+            }
+
+            .social-icons span {
+                height: $Base / 1.5;
+                width: $Base / 1.5;
+                font-size: 1rem;
+            }
+        }
+
+        .box-container {
+            background-color: $clrSteel;
+            padding: $Base / 2 $Base / 1.5;
+
+            .item {
+                padding-right: $Base / 2;
+
+                @media (max-width: $BaseMediaSm) {
+                    padding-right: 0;
+                }
+
+                a {
+                    color: $clrPrimary;
+                }
+
+                &:last-of-type {
+                    padding-right: 0;
+                }
+
+                .label {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                    padding-bottom: $Base / 3;
+
+                    @media (max-width: $BaseMediaMd) {
+                        font-size: 1.1rem;
+                    }
+
+                    @media (max-width: $BaseMediaSm) {
+                        padding-bottom: $Base / 5;
+                        padding-top: $Base / 3;
+                    }
+                }
+
+                @media (max-width: $BaseMediaSm) {
+                    &:first-of-type .label {
+                        padding-top: 0;
+                    }
+                }
+
+                .text, .text p {
+                    font-size: 1rem;
+                    @media (max-width: $BaseMediaMd) {
+                        font-size: .9rem;
+                    }
+
+                    p {
+                        margin-bottom: $Base / 10;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .description-block {
+        display: flex;
+        flex-direction: row;
+
+        @media (max-width: $BaseMediaSm) {
+            flex-direction: column-reverse;
+        }
+
+        .image {
+            width: 50%;
+            flex: 1;
+
+            @media (max-width: $BaseMediaSm) {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .description {
+            width: 50%;
+            flex: 1;
+            padding-right: $Base;
+            font-size: 1.5rem;
+
+            @media (max-width: $BaseMediaMd) {
+                font-size: 1.25rem;
+            }
+
+            @media (max-width: $BaseMediaSm) {
+                width: 100%;
+                padding-right: 0;
+                padding-top: $Base;
+            }
+
+            .more, .more p {
+                font-size: 1rem;
+
+                p {
+                    margin-bottom: $Base / 6;
+                }
+            }
+
+            .more {
+                padding-top: $Base / 2;
+            }
+        }
+    }
+}
+
+section.article-details {
+    &.google-maps {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+
+        .acf-map {
+            width: 100%;
+            height: 400px;
+            border: #ccc solid 1px;
+            margin: 20px 0;
+        }
+        
+        .acf-map img {
+           max-width: inherit !important;
+        }
+
+        .gm-style-iw {
+            padding: $Base / 2 $Base / 4 $Base / 4 $Base / 2 !important;
+
+            button:hover {
+                box-shadow: none;
+            }
+        }
+    }
+
+    &.article-body {
+        max-width: $BaseArticleWidth;
+    }
+
+    &.article-footer {
+        padding: $Base / 1.5 0;
+
+        @media (max-width: $BaseMediaSm) {
+            padding-top: 0;
+            padding-bottom: $BaseGutterLeftSm;
+        }
+
+        .event-post-nav {
+            display: flex;
+            align-items: stretch;
+
+            @media (max-width: $BaseMediaSm) {
+                flex-direction: column-reverse;
+            }
+            
+            a {
+                padding: $Base;
+                flex: 1;
+                color: white;
+                max-width: 50%;
+
+                @media (max-width: $BaseMediaSm) {
+                    margin-top: $BaseGutterLeftSm;
+                    padding: $Base $BaseGutterLeftSm;
+                    max-width: 100%;
+                }
+                
+                &.prev-post {
+                    margin-right: $Base / 1.5;
+                    background-color: $clrBlack;
+
+                    @media (max-width: $BaseMediaSm) {
+                        margin-right: 0;
+                    }
+
+                    .arrow {
+                        padding-right: 0;
+                        padding-left: $Base / 2;
+
+                        &:after {
+                            border-left: calc(#{$Base} * 0.15) solid transparent;
+                            border-right: calc(#{$Base} * 0.15) solid $clrPrimary;
+                            left: 0;
+                            
+                        }
+
+                        &:hover {
+                            &:after {
+                                transform: translate(-20px, -50%);
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $clrGunmetal;
+                      
+                        .arrow:after {
+                            transform: translate(-20px, -50%);
+                        }
+                    }
+                }
+
+                &.next-post {
+                    background-color: $clrGunmetal;
+                    text-align: right;
+
+                    @media (max-width: $BaseMediaSm) {
+                        text-align: left;
+                    }
+
+                    .arrow {
+                        padding-left: 0;
+                        padding-right: $Base / 2;
+
+                        &:after {
+                            right: $Base / -4;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $clrBlack;
+
+                        .arrow:after {
+                            transform: translate(0px, -50%);
+                        }
+                    }
+
+                    &:first-of-type {
+                        margin-left: 50%;
+                        @media (max-width: $BaseMediaSm) {
+                            margin-left: 0;
+                        }
+                    }
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+
+                    @media (max-width: $BaseMediaSm) {
+                        margin-top: 0;
+                    }
+                }
+
+                .arrow {
+                    @extend .btn;
+                    @extend .btn-clr-black;
+                    @extend .btn-arrow;
+                    background-color: transparent;
+                    margin-bottom: $Base * 1.5;
+
+                    @media (max-width: $BaseMediaSm) {
+                        margin-bottom: $Base;
+                    }
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,267 @@
+////////////////////////////////////////
+//
+// Sitewide Footer Component:
+// Appears on all pages.
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+footer {
+  background-color: $clrSteel;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  max-width: $BaseMaxWidth;
+  margin: 0 auto;
+  padding: 0 $BaseGutterRight 0 $BaseGutterLeft;
+  position: relative;
+  z-index: 5;
+
+  @media (max-width: $BaseMediaMd) {
+    padding: 0 $BaseGutterRightMd 0 $BaseGutterLeftMd;
+  }
+
+  @media (max-width: $BaseMediaSm) {
+    padding: 0 $BaseGutterRightSm 0 $BaseGutterLeftSm;
+  }
+
+  // Inner
+  .footer-inner {
+    display: flex;
+    width: 100%;
+    padding: $Base * 2 0;
+    margin: 0;
+    font-size: .9rem;
+    @media (max-width: $BaseMediaMd) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $BaseMediaSm) {
+      flex-direction: column;
+      padding-bottom: $Base / 2;
+      font-size: .85rem;
+    }
+
+    .footer-col {
+      flex: 1;
+      padding-right: $Base / 1.5;
+
+      @media (max-width: $BaseMediaMd) {
+        order: 2;
+      }
+
+      @media (max-width: $BaseMediaSm) {
+        margin-bottom: $Base;
+        padding-right: 0;
+      }
+
+      //search bar
+      &:last-of-type {
+        padding-right: 0;
+
+        @media (max-width: $BaseMediaMd) {
+          order: 1;
+          margin-bottom: $Base * 1.5;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          margin-bottom: $Base;
+        }
+      }
+
+      // copywright/legal and search bar
+      &:last-of-type, &:first-of-type {
+        flex: 2;
+
+        @media (max-width: $BaseMediaMd) {
+          min-width: 100%;
+        }
+      }
+
+      //copywright/legal
+      &:first-of-type {
+        @media (max-width: $BaseMediaMd) {
+          margin-top: $Base * 1.5;
+          order: 4;
+        }
+
+        @media (max-width: $BaseMediaSm) {
+          margin-bottom: 0;
+          margin-top: $Base / 2;
+        }
+      }
+
+      // Base Column Styles
+
+      a {
+        color: $clrBlack;
+
+        &:visited,
+        &:active {
+          color: $clrBlack;
+        }
+
+        &:hover {
+          color: $clrPrimary;
+        }
+      }
+
+      // Copyright & Legal Stuff
+      .copyright,
+      .legal-stuff {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        white-space: nowrap;
+      }
+
+      .copyright {
+        font-weight: bold;
+        font-size: .7rem;
+        margin-bottom: $Base/3;
+      }
+
+      .legal-stuff {
+        display: flex;
+
+        a {
+          margin-right: $Base/2;
+          position: relative;
+          color: $clrChrome;
+
+          &:visited {
+            color: $clrChrome;
+          }
+
+          &:hover {
+            color: $clrBlack;
+          }
+
+          &:first-child {
+            &:after {
+              content: "|";
+              position: absolute;
+              right: -11px;
+            }
+          }
+        }
+      }
+
+      // Social
+      .social {
+        display: flex;
+
+        ul {
+          display: flex;
+
+          li {
+            a {
+              margin: $Base/2 $Base/4 0 0;
+
+              &:visited,
+              &:active {
+                color: $clrPrimary;
+              }
+
+              &:hover {
+                background: lighten($clrPrimary, 50%);
+                opacity: 0.8;
+              }
+
+              &:active {
+                background: darken($clrPrimary, 5%);
+              }
+            }
+          }
+        }
+      }
+
+      // Footer Headers
+      .footer-header {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+        color: $clrGunmetal;
+        position: relative;
+        top: -5px;
+
+        @media (max-width: $BaseMediaSm) {
+          font-size: 1.4rem;
+        }
+      }
+
+      // Footer Info Rows
+      .footer-info-row {
+        line-height: 1.6;
+        display: flex;
+
+        &.hours-row {
+          padding-top: $Base / 4;
+          opacity: 0.6;
+        }
+
+        span {
+          font-weight: 600;
+          margin-right: $Base/4;
+        }
+
+        a {
+          white-space: nowrap;
+        }
+      }
+
+      // Footer Search
+      .footer-search {
+        position: relative;
+        border-radius: none;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 0;
+        border-bottom: 2px solid $clrBlack;
+        top: -10px;
+        width: 80%;
+
+        svg * {
+          fill: $clrPrimary;
+        }
+
+        @media (max-width: $BaseMediaMd) {
+          width: 100%;
+          max-width: $Base * 9;
+          margin-left: 0;
+          margin-right: auto;
+        }
+
+        .ico:not(svg) {
+          width: $Base * 0.7;
+          height: $Base * 0.7;
+          font-size: $Base * 0.7;
+          color: $clrPrimary;
+          display: block;
+
+          @media (max-width: $BaseMediaSm) {
+            width: $Base / 2;
+            height: $Base / 2;
+            font-size: $Base / 2;
+          }
+        }
+
+        form {
+          flex: 1;
+
+          input {
+            background: none;
+            color: $clrBlack;
+            font-size: 1.8rem;
+
+            @media (max-width: $BaseMediaSm) {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

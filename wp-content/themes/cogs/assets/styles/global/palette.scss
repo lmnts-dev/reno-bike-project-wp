@@ -1,0 +1,95 @@
+////////////////////////////////////////
+//
+// Sitewide Palette
+//
+// @author Peter Laxalt
+//
+////////////////////////////////////////
+
+// Primary
+$clrPrimary: #f684b4;
+
+// Grayscale
+$clrBlack: #000000;
+$clrWhite: #ffffff;
+$clrPlaceholder: rgba($clrBlack, 0.05);
+
+$clrAsphalt: #3A3A3A;
+$clrGunmetal: #565c63;
+$clrChrome: #929293;
+$clrSteel: #f2f1f1;
+$clrSnow: #f4f8f8;
+
+// Extended
+$clrGold: #f6aa1b;
+$clrOrange: #ff9a4a;
+$clrMustard: #e8cc66;
+$clrLeaf: rgb(17, 189, 83);
+
+// Universal Color Styles
+body, html {
+  background-color: $clrWhite;
+  color: $clrBlack;
+  main {
+    background-color: $clrWhite;
+    .wrapper {
+      background-color: $clrWhite;
+    }
+  }
+}
+
+// Text Colors
+.txt-clr-white {
+  color: $clrWhite;
+}
+
+.txt-clr-black {
+  color: $clrBlack;
+}
+
+.txt-clr-mustard {
+  color: $clrMustard;
+}
+
+.txt-clr-orange {
+  color: $clrOrange;
+}
+
+.txt-clr-red {
+  color: $clrPrimary;
+}
+
+.txt-clr-primary {
+  color: $clrPrimary;
+}
+
+.txt-clr-gunmetal {
+  color: $clrGunmetal;
+}
+
+// Background Colors
+.bg-clr-white {
+  background-color: $clrWhite;
+}
+
+.bg-clr-primary {
+  background-color: $clrPrimary;
+}
+
+.bg-clr-tint {
+  background-color: rgba($clrBlack, 0.3);
+}
+
+.bg-clr-snow {
+  background-color: $clrSnow;
+}
+
+.bg-clr-orange {
+  background-color: $clrOrange;
+}
+
+.bg-clr-mustard {
+  background-color: $clrMustard;
+}
+
+
