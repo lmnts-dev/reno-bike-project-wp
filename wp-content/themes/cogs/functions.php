@@ -529,10 +529,6 @@ function custom_styles()
 					display: none;
 				}
 
-				#menu-users {
-					display: none;
-				}
-
 				#wp-admin-bar-edit-profile, #wp-admin-bar-user-info {
 					display: none;
 				}
