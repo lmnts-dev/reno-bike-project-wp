@@ -280,8 +280,7 @@ section.page-hero {
 
         &.content {
           padding-top: calc(#{$Base} * 1.5);
-          width: 90vw;
-          right: #{$gutterOffset};
+          width: 100%;
           position: relative;
 
           @media (max-width: $BaseMediaMd) {
